@@ -17,6 +17,10 @@ function App() {
         </div>
         <div className="navbar-login"></div>
       </div>
+      <div className="main">
+        <img className="main-logo" src="http://localhost:3000/logo.png" alt="" />
+        <h2 style={{ marginTop: '10px' }}>Based On The <a href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468" target="_blank"><span style={{ color: '#FFE76E', fontWeight: '700' }}>Unofficial ADOFAI Forum</span></a></h2>
+      </div>
     </div>
   );
 }

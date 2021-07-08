@@ -54,7 +54,28 @@ li a {
   text-align: center;
   padding: 0px 16px;
   color: white;
+}
+
+a {
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  color: white;
+  margin: 0;
+}
+
+h1 {
+
+}
+
+h2 {
+  font-weight: 600;
 }
 
 .container {
@@ -86,6 +107,14 @@ li a {
 .navbar-logo, .navbar-content, .navbar-login {
   height: 40px;
   background-color: rgba(26, 37, 51, 0.7);
+}
+
+.main {
+  text-align: center;
+}
+
+.main-logo {
+  margin-top: 60px;
 }
 
 
