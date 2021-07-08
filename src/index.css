@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300;
+  src: url('http://localhost:3000/fonts/Quicksand-Light.ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: url('http://localhost:3000/fonts/Quicksand-Regular.ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  src: url('http://localhost:3000/fonts/Quicksand-Medium.ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 600;
+  src: url('http://localhost:3000/fonts/Quicksand-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  src: url('http://localhost:3000/fonts/Quicksand-Bold.ttf');
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand;
+  font-weight: 400;
+  background-image: url('http://localhost:3000/background.png')
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 50px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+li {
+  display: inline-block;
+}
+
+li a {
+  font-size: 20px;
+  text-align: center;
+  padding: 0px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+}
+
+.logo-middle {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.navbar {
+  display: flex;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.navbar-content {
+  flex-basis: 80%;
+  min-width: 500px;
+}
+
+.navbar-logo, .navbar-login {
+  flex-basis: 10%;
+  min-width: 250px;
+}
+
+.navbar-logo, .navbar-content, .navbar-login {
+  height: 40px;
+  background-color: rgba(26, 37, 51, 0.7);
+}
+
+
