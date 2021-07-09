@@ -39,6 +39,33 @@ function App() {
             <tr><h2><span className="yellow-highlight">999999</span></h2></tr>
           </table>
         </div>
+        <div className="main-popular-maps-title">
+          {/* <div style={{ flexBasis: '80%', textAlign: 'left' }}><h1>Recent Popular Maps</h1></div> */}
+          {/* <div style={{ flexBasis: '20%', textAlign: 'right' }}><h3><a style={{ color: 'white' }} href="#maps">See All ▹</a></h3></div> */}
+          <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Recent Popular Maps</h1>
+          <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a style={{ color: 'white' }} href="#maps">See All ▹</a></h3>
+        </div>
+        <div className="main-popular-maps">
+          <div className="map-info-container">
+            <img style={{ marginRight: '20px' }} src="http://localhost:3000/level.png" alt="" />
+            <table border="0" cellSpacing="0" cellPadding="0" width="300" style={{ textAlign: "left" }}>
+              <tr>
+                <td className="map-info-top">Song</td>
+              </tr>
+              <tr>
+                <td valign="bottom" className="map-info-bottom">I love girrafes</td>
+              </tr>  
+            </table>
+            <table border="0" cellSpacing="0" cellPadding="0" width="200" style={{ textAlign: "left" }}>
+              <tr>
+                <td className="map-info-top">Artist</td>
+              </tr>
+              <tr>
+                <td valign="bottom" className="map-info-bottom" style={{ maxWidth: "200px" }}>かめりあ(Camellia)</td>
+              </tr>  
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );
