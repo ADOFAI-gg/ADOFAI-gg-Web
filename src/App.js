@@ -4,7 +4,7 @@ function App() {
       <div className="navbar">
         <div className="navbar-logo">
           <a href="#home">
-            <img className="logo-middle" style={{ height: '20px', marginLeft: '10px' }} src="http://localhost:3000/logo.png" alt="" />
+            <img className="logo-middle" style={{ height: '20px', marginLeft: '10px' }} src="http://localhost:3000/logo.svg" alt="" />
           </a>
         </div>
         <div className="navbar-content">
@@ -18,7 +18,7 @@ function App() {
         <div className="navbar-login"></div>
       </div>
       <div className="main">
-        <img className="main-logo" src="http://localhost:3000/logo.png" alt="" />
+        <img className="main-logo" src="http://localhost:3000/logo.svg" alt="" />
         <h2 style={{ marginTop: '10px' }}>Based On The <a href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468" target="_blank"><span className="yellow-highlight">Unofficial ADOFAI Forum</span></a></h2>
         <input className="main-search-bar" type="text" placeholder="Search Song, Artist, or Creator" />
         <div className="main-additional-information">
@@ -88,7 +88,7 @@ function App() {
             </table>
             <table border="0" cellSpacing="0" cellPadding="0" width="70" style={{ textAlign: "center", marginLeft: "10px" }}>
               <tr>
-                <td valign="bottom" className="map-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/heart.png" alt="" /></td>
+                <td valign="bottom" className="map-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/heart.svg" alt="" /></td>
               </tr>
               <tr>
                 <td valign="bottom" className="map-info-likes">9999</td>
