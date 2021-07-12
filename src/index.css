@@ -186,12 +186,100 @@ input:focus {
   justify-content: space-around;
 }
 
-.main-popular-maps-title {
+.content-title {
   margin-top: 40px;
   display: flex;
-  width: 1075px;
+  width: 1085px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.main-top-plays {
+  margin-top: 10px;
+  width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.main-top-plays-container {
+  position: relative;
+  transition: all .2s ease-in-out;
+}
+
+.main-top-plays-container:hover {
+  transform: scale(1.05);
+}
+
+.main-top-plays-image {
+  width: 256px;
+  height: 144px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.3);
+}
+
+.main-top-plays-title {
+  position: absolute;
+  max-width: 215px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  top: 5px;
+  left: 8px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.main-top-plays-tag {
+  position: absolute;
+  top: 35px;
+  left: 8px;
+  color: greenyellow;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.main-top-plays-player {
+  position: absolute;
+  max-width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  bottom: 35px;
+  left: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.main-top-plays-speed {
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-top-plays-acc {
+  position: absolute;
+  bottom: 10px;
+  right: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-top-plays-level {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 4px;
+  right: 2px;
 }
 
 .float-left {
@@ -213,7 +301,8 @@ input:focus {
   display: flex;
   width: 100%;
   height: 50px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 25px;
   background-color: rgba(26, 37, 51, 0.7);
 }
@@ -226,7 +315,7 @@ input:focus {
 }
 
 .map-info-song {
-  max-width: 335px;
+  max-width: 320px;
   height: 30px;
   text-overflow: ellipsis;
   white-space: nowrap;

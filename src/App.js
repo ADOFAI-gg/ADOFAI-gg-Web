@@ -39,19 +39,115 @@ function App() {
             <tr><h2><span className="yellow-highlight">999999</span></h2></tr>
           </table>
         </div>
-        <div className="main-popular-maps-title">
+        <div className="content-title">
+          <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Recent Top Plays</h1>
+          <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#maps">See All ▹</a></h3>
+        </div>
+        <div className="main-top-plays">
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+        </div>
+        <div className="main-top-plays">
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=kTwAMfwvnz0" target="_blank">
+            <div className="main-top-plays-container">
+              <img className="main-top-plays-image" src="https://i3.ytimg.com/vi/kTwAMfwvnz0/0.jpg" alt="" />
+              <div className="main-top-plays-title"><a href="">A very very very long title</a></div>
+              <img className="main-top-plays-level" src="http://localhost:3000/level.png" alt="" />
+              <div className="main-top-plays-tag">(Nerfed)</div>
+              <div className="main-top-plays-player">A very very very long username</div>
+              <div className="main-top-plays-speed">Speed: <span className="yellow-highlight">999.99%</span></div>
+              <div className="main-top-plays-acc">Acc: <span className="yellow-highlight">999.99%</span></div>
+            </div>
+          </a>
+        </div>
+        <div className="content-title">
           <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Recent Popular Maps</h1>
           <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#maps">See All ▹</a></h3>
         </div>
         <div className="main-popular-maps">
           <div className="map-info-container">
-            <img src="http://localhost:3000/level.png" alt="" />
-            <table border="0" cellSpacing="0" cellPadding="0" width="340" style={{ textAlign: "left", marginLeft: "10px" }}>
+            <img style={{ marginLeft: '10px' }} src="http://localhost:3000/level.png" alt="" />
+            <table border="0" cellSpacing="0" cellPadding="0" width="320" style={{ textAlign: "left", marginLeft: "10px" }}>
               <tr>
                 <td className="map-info-top">Song</td>
               </tr>
               <tr>
-                <td valign="bottom" className="map-info-song"><a href="">A very very very very very very long title</a></td>
+                <td valign="bottom" className="map-info-song"><a href="">A very very very very very long title</a></td>
               </tr>  
             </table>
             <table border="0" cellSpacing="0" cellPadding="0" width="200" style={{ textAlign: "left", marginLeft: "10px" }}>
