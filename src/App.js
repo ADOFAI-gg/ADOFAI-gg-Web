@@ -12,7 +12,6 @@ function App() {
             <li><a href="#maps">Maps</a></li>
             <li><a href="#mods">Mods</a></li>
             <li><a href="#ranking">Ranking</a></li>
-            <li><a href="#discord">Join Discord</a></li>
           </ul>
         </div>
         <div className="navbar-login"></div>
