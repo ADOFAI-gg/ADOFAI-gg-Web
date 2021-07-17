@@ -98,15 +98,42 @@ function App() {
                   </tr>
                   <tr>
                     <td valign="bottom" className="map-info-tags">
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/updown.svg" alt="" />
-                      <img style={{ height:'20px', marginTop:'8px', marginRight:'5px'}} src="http://localhost:3000/add.svg" alt="" />
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 1<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 2<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 3<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 4<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 5<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 6<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 7<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 8<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/updown.svg" alt="" />
+                      </div>
+                      <div className="tag-container">
+                        <span className="tooltiptext">Tag Name 9<br /><br />This tag means that this map is like this and that.<br /><br />Tag Name 10<br /><br />This tag means that this map is like this and that.</span>
+                        <img className="tag" src="http://localhost:3000/add.svg" alt="" />
+                      </div>
                     </td>
                   </tr>  
                 </table>
