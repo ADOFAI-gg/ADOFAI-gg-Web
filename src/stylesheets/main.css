@@ -1,0 +1,341 @@
+/* TODO ClassName To {CssFileName}-{Feature} */
+
+.main-logo {
+  margin-top: 60px;
+}
+
+.yellow-highlight {
+  color: #FFE76E;
+}
+
+.main-search-bar {
+  margin-top: 40px;
+  width: 680px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Quicksand;
+  font-weight: 300;
+  font-size: 15px;
+  color: white;
+}
+
+.main-additional-information {
+  margin-top: 30px;
+  display: flex;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
+
+.content-title {
+  margin-top: 40px;
+  display: flex;
+  width: 1085px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-top-plays {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.main-top-plays-container {
+  margin-top: 10px;
+  position: relative;
+  transition: all .2s ease-in-out;
+}
+
+.main-top-plays-container:hover {
+  transform: scale(1.05);
+}
+
+.main-top-plays-image {
+  width: 256px;
+  height: 144px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.3);
+}
+
+.main-top-plays-title {
+  position: absolute;
+  max-width: 215px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  top: 5px;
+  left: 8px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.main-top-plays-subtitle {
+  position: absolute;
+  top: 35px;
+  left: 8px;
+  color: greenyellow;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.main-top-plays-player {
+  position: absolute;
+  max-width: 240px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  bottom: 35px;
+  left: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.main-top-plays-speed {
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-top-plays-acc {
+  position: absolute;
+  bottom: 10px;
+  right: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-top-plays-level {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 4px;
+  right: 2px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.main-popular-maps {
+  margin-top: 10px;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-info {
+  position: relative;
+  width: 1100px;
+  height: 70px;
+  margin-bottom: 8px;
+}
+
+.map-info-container-background {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  background-position: center;
+  transition-duration: 0.3s;
+}
+
+.map-info-container-bottom {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+
+.map-info-container-top {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+  opacity: 0;
+  z-index: 1;
+}
+
+.map-info:hover .map-info-container-background {
+  filter: brightness(0.5);
+}
+
+.map-info:hover .map-info-container-top {
+  opacity: 1;
+}
+
+.map-info:hover .map-info-container-bottom {
+  opacity: 0;
+}
+
+.map-info-top {
+  height: 20px;
+  font-size: 15px;
+  color: #B3B3B3;
+  font-weight: 600;
+}
+
+.map-info-map {
+  max-width: 400px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-creator {
+  max-width: 200px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-bpm {
+  max-width: 130px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-tiles {
+  max-width: 80px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-likes {
+  max-width: 80px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-comments {
+  max-width: 80px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-song {
+  max-width: 400px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-artist {
+  max-width: 250px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.map-info-tags {
+  max-width: 335px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  display: flex;
+}
+
+.tag-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tag {
+  height: 20px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.tag-container .tooltiptext {
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  visibility: hidden;
+  width: 120px;
+  top: 120%;
+  left: -50px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tag-container:hover .tooltiptext {
+  visibility: visible;
+}

@@ -1,0 +1,254 @@
+.level-info-main {
+  display: flex;
+  min-width: 1100px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level-info {
+  margin-top: 30px;
+}
+
+.lavel-info-header {
+  position: relative;
+  height: 190px;
+}
+
+.level-info-thumbnail {
+  width: 1100px;
+  height: 190px;
+  object-fit: cover;
+  object-position: 0 50%;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  filter: brightness(70%);
+}
+
+.level-info-basic {
+  width: 1060px;
+  height: 160px;
+  padding: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  text-shadow: black 0 0 10px;
+  top: 0;
+}
+
+.level-info-name {
+  width: 800px;
+  min-height: 1.3em;
+  max-height: 2.3em;
+  line-height: 1.05em;
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-wrap: break-word; 
+  overflow: hidden;
+}
+
+.level-info-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.level-info-tags {
+  display: flex;
+  width: 880px;
+  overflow-x: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+
+.level-info-tags::-webkit-scrollbar {
+  display: none;
+}
+
+.level-info-tag {
+  border-radius: 100em;
+  background-color: #F2F2F2;
+  margin-right: 10px;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 8px;
+  white-space: nowrap;
+  text-shadow: 0 0 0;
+  box-shadow: rgba(0, 0, 0, 50%) 0 0 10px;
+}
+
+.level-info-tag::before {
+  content: "#";
+  height: 20px;
+  width: 20px;
+  margin-right: 3px;
+  border-radius: 100em;
+  background-color: #dfdfdf;
+  display: inline-block;
+  text-align: center;
+}
+
+.level-info-epilepsy-seizure-tag-container {
+  width: 166px;
+  transition: all .2s ease; 
+}
+
+.level-info-epilepsy-seizure-tag {
+  position: absolute;
+  overflow: hidden;
+  width: 142px;
+  background-color: #ff4646;
+  color: white;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.level-info-epilepsy-seizure-tag:hover,
+.level-info-epilepsy-seizure-tag:focus {
+  width: 253px;
+}
+
+.level-info-epilepsy-seizure-tag-container:hover {
+  width: 276px;
+}
+
+.level-info-epilepsy-seizure-tag span {
+  transition: all .2s ease;
+}
+
+.level-info-epilepsy-seizure-tag #normal-text {
+  position: absolute;
+  transform: none;
+}
+
+.level-info-epilepsy-seizure-tag:hover #normal-text,
+.level-info-epilepsy-seizure-tag:focus #normal-text {
+  transform: translateY(2em);
+}
+
+.level-info-epilepsy-seizure-tag #hover-text {
+  position: absolute;
+  transform: translateY(-2em);
+}
+
+.level-info-epilepsy-seizure-tag:hover #hover-text,
+.level-info-epilepsy-seizure-tag:focus #hover-text {
+  transform: none;
+}
+
+.level-info-epilepsy-seizure-tag::before {
+  content: "!";
+  background-color: #8b3030;
+  color: white;
+}
+
+.level-info-swal-popup {
+  width: 900px;
+}
+
+.level-info-author {
+  width: 800px;
+  color: white;
+  margin-top: 10px;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.level-info-header-buttons {
+  margin: 10px;
+}
+
+.level-info-header-button {
+  width: 50px;
+  margin-left: 30px;
+  transition: all .2s ease;
+  filter: drop-shadow(0 0 10px rgb(0 0 0 / 0.4));
+}
+
+.level-info-header-button:hover {
+  transform: scale(0.9);
+}
+
+.content-title {
+  margin-top: 40px;
+  display: flex;
+  width: 1085px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.level-info-details {
+  height: 270px;
+  background-color: #0f172163;
+  padding: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.level-info-detail-info-section {
+  margin-right: 25px;
+}
+
+.level-info-label {
+  height: 20px;
+  font-size: 18px;
+  color: #B3B3B3;
+  font-weight: 600;
+}
+
+.level-info-value {
+  color: white;
+  font-size: 32px;
+}
+
+.level-info-value .level-info-value-decimal {
+  font-size: 16px;
+}
+
+.level-info-detail-info-description {
+  font-size: 28px!important;
+  height: 5em;
+  line-height: 1.25em;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-wrap: break-word; 
+  overflow: hidden;
+}
+
+.level-info-detail-info-like {
+  color: white;
+}
+
+.level-info-detail-info-video {
+  border-radius: 10px;
+  background-color: #0f172163;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-info-detail-info-video iframe {
+  border-radius: 10px;
+  height: 270px;
+  width: 432px;
+}
+
+.level-info-detail-info-video div {
+  position: absolute;
+  font-size: 1.5em;
+  z-index: -1;
+  color: white;
+}
