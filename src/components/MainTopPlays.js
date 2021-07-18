@@ -93,10 +93,16 @@ const recentTopPlays = [
 
 const MainTopPlays = () => {
     return (
-        <div className="main-top-plays">
-            {recentTopPlays.map((recentTopPlay) => (
-                <MainTopPlay recentTopPlay={recentTopPlay} />
-            ))}
+        <div>
+            <div className="content-title">
+                <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Recent Top Plays</h1>
+                <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#top-plays">See All ▹</a></h3>
+            </div>
+            <div className="main-top-plays">
+                {recentTopPlays.map((recentTopPlay) => (
+                    <MainTopPlay recentTopPlay={recentTopPlay} />
+                ))}
+            </div>
         </div>
     )
 }
