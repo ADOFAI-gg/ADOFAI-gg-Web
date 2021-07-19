@@ -3,7 +3,7 @@ const MainTopPlay = ({ recentTopPlay }) => {
     <a key={recentTopPlay.id} href={recentTopPlay.playVideo} target="_blank" rel="noreferrer">
     <div className="main-top-plays-container">
       <img className="main-top-plays-image" src={'https://i3.ytimg.com/vi/' + recentTopPlay.playVideo.split('=')[1] + '/0.jpg'} alt="" />
-      <div className="main-top-plays-title"><a href={'#level?id=' + recentTopPlay.levelId}>{recentTopPlay.levelTitle}</a></div>
+      <div className="main-top-plays-title"><a href={'/levels/' + recentTopPlay.levelId}>{recentTopPlay.levelTitle}</a></div>
       <img className="main-top-plays-level" src={'http://localhost:3000/level_icons/' + recentTopPlay.levelLevel + '.png'} alt="" />
       <div className="main-top-plays-subtitle">{recentTopPlay.levelSubTitle}</div>
       <div className="main-top-plays-player">{recentTopPlay.playerName}</div>

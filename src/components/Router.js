@@ -7,7 +7,11 @@ const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/level">
+        <Route exact path="/levels">
+            
+        </Route>
+
+        <Route exact path="/levels/:id">
             <LevelPage />
         </Route>
 

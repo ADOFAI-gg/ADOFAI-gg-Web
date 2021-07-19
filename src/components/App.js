@@ -12,7 +12,7 @@ function App() {
         </div>
         <div className="navbar-content">
           <ul>
-            <li><a href="/maps">Maps</a></li>
+            <li><a href="/levels">Levels</a></li>
             <li><a href="/mods">Mods</a></li>
             <li><a href="/ranking">Ranking</a></li>
           </ul>
@@ -20,7 +20,7 @@ function App() {
         <div className="navbar-login"></div>
       </div>
 
-      {/* PAGE */}
+      {/* MAIN */}
       <AppRouter />
 
       {/* FOOTER */}

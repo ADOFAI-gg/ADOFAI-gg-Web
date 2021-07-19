@@ -2,7 +2,7 @@ import LevelTags from './LevelTags';
 
 const LevelInfo = ({ recentPopularLevel }) => {
   return (
-    <a key={recentPopularLevel.id} href={'#level?id=' + recentPopularLevel.levelId}>
+    <a key={recentPopularLevel.id} href={'/levels/' + recentPopularLevel.levelId}>
       <div className="map-info">
         <div style={{ backgroundImage: `url(${'http://localhost:3000/' + recentPopularLevel.levelBackground})` }} className="map-info-container-background"></div>
         <div className="map-info-container-bottom">

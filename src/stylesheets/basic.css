@@ -38,6 +38,7 @@ html, body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 html {
@@ -48,8 +49,14 @@ html {
 
 body {
   margin: 0;
-  font-family: Quicksand;
+  font-family: Quicksand, sans-serif;
   font-weight: 400;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .container {

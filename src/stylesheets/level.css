@@ -88,62 +88,61 @@
   content: "#";
   height: 20px;
   width: 20px;
-  margin-right: 3px;
+  margin-right: 5px;
   border-radius: 100em;
   background-color: #dfdfdf;
   display: inline-block;
   text-align: center;
 }
 
-.level-info-epilepsy-seizure-tag-container {
-  width: 166px;
+.level-info-seizure-tag-container {
   transition: all .2s ease; 
 }
 
-.level-info-epilepsy-seizure-tag {
-  position: absolute;
+.level-info-seizure-tag {
   overflow: hidden;
-  width: 142px;
+  width: 147px;
   background-color: #ff4646;
   color: white;
   transition: all .2s ease;
   cursor: pointer;
+  display: flex;
 }
 
-.level-info-epilepsy-seizure-tag:hover,
-.level-info-epilepsy-seizure-tag:focus {
-  width: 253px;
+.level-info-seizure-tag-text-area {
+  position: absolute;
 }
 
-.level-info-epilepsy-seizure-tag-container:hover {
-  width: 276px;
+.level-info-seizure-tag:hover,
+.level-info-seizure-tag:focus {
+  width: 255px;
 }
 
-.level-info-epilepsy-seizure-tag span {
+.level-info-seizure-tag span {
+  position: absolute;
   transition: all .2s ease;
+  left: 25px;
 }
 
-.level-info-epilepsy-seizure-tag #normal-text {
-  position: absolute;
-  transform: none;
+.level-info-seizure-tag #normal-text {
+  opacity: 100;
 }
 
-.level-info-epilepsy-seizure-tag:hover #normal-text,
-.level-info-epilepsy-seizure-tag:focus #normal-text {
-  transform: translateY(2em);
+.level-info-seizure-tag:hover #normal-text,
+.level-info-seizure-tag:focus #normal-text {
+  opacity: 0;
 }
 
-.level-info-epilepsy-seizure-tag #hover-text {
-  position: absolute;
-  transform: translateY(-2em);
+.level-info-seizure-tag #hover-text {
+  opacity: 0;
 }
 
-.level-info-epilepsy-seizure-tag:hover #hover-text,
-.level-info-epilepsy-seizure-tag:focus #hover-text {
-  transform: none;
+.level-info-seizure-tag:hover #hover-text,
+.level-info-seizure-tag:focus #hover-text {
+  opacity: 100;
 }
 
-.level-info-epilepsy-seizure-tag::before {
+.level-info-seizure-tag::before {
   content: "!";
   background-color: #8b3030;
   color: white;
