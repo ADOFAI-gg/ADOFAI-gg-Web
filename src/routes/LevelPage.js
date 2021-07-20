@@ -58,8 +58,8 @@ const LevelPage = () => {
                 </div>
               </div>
               <div className="level-info-header-buttons">
-                <a href="#a"><img className="level-info-header-button" src="http://localhost:3000/steam.svg" alt="steam workshop" /></a>
-                <a href="#a"><img className="level-info-header-button" src="http://localhost:3000/download.svg" alt="level download" /></a>
+                <a href="#a"><img className="level-info-header-button" src="http://localhost:3000/other_icons/steam.svg" alt="steam workshop" /></a>
+                <a href="#a"><img className="level-info-header-button" src="http://localhost:3000/other_icons/download.svg" alt="level download" /></a>
               </div>
             </div>
           </div>

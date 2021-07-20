@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-level-icon-14">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="level-icon-14" clip-path="url(#clip-level-icon-14)">
+    <circle id="타원_19" data-name="타원 19" cx="25" cy="25" r="25" transform="translate(7 7)" fill="#f80"/>
+    <path id="패스_30" data-name="패스 30" d="M4.47-2.43V-20.58H1.53v-2.55H7.32v20.7h3.57V0H.72V-2.43Zm7.26-2.58-.42-2.31L21.33-23.13H24V-7.62h2.04v2.61H24V0H21.15V-5.01Zm9.42-13.08L14.64-7.62h6.51Z" transform="translate(19 44)"/>
+  </g>
+</svg>

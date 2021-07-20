@@ -13,6 +13,7 @@ const HomePage = () => {
       <MainAddInfo playersOnline='999999' rankedPlayers='999999' rankedLevels='999999' unclearedLevels='999999'/>
       <MainTopPlays />
       <MainPopularLevels />
+      <img className="inquiry" src="http://localhost:3000/other_icons/message.svg" alt="" /> 
     </main>
   );
 };

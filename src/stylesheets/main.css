@@ -150,7 +150,17 @@
   margin-bottom: 8px;
 }
 
-.map-info-container-background {
+.level-background-container {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 1100px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.level-background {
   top: 0;
   left: 0;
   position: absolute;
@@ -158,9 +168,10 @@
   height: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 10px;
   background-position: center;
+  background-size: cover;
   transition-duration: 0.3s;
+  filter: blur(3px) brightness(0.25);
 }
 
 .map-info-container-bottom {
@@ -189,8 +200,8 @@
   z-index: 1;
 }
 
-.map-info:hover .map-info-container-background {
-  filter: brightness(0.5);
+.map-info:hover .level-background {
+  filter: blur(3px) brightness(0.40);
 }
 
 .map-info:hover .map-info-container-top {
@@ -338,4 +349,19 @@
 
 .tag-container:hover .tooltiptext {
   visibility: visible;
+}
+
+.inquiry {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+  z-index: 1;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+  filter: brightness(0.8);
+}
+
+.inquiry:hover {
+  transform: scale(1.15);
+  filter: brightness(1);
 }
