@@ -1,3 +1,5 @@
+/* This file contains CSS that is common across all pages */
+
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
@@ -166,6 +168,44 @@ main {
   text-align: center;
   min-width: 1120px;
 }
+
+
+/* SHOW TOOLTIPTEXT */
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltiptext {
+  width: 120px;
+  top: 120%;
+  left: -50px;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  text-align: center;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 70%);
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  transition: all .2s ease;
+}
+
+.tooltip-container:hover .tooltiptext {
+  visibility: visible;
+  opacity: 100;
+}
+
+
+/* FOOTER */
 
 footer {
   position: absolute;

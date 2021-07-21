@@ -53,13 +53,13 @@ const tagDescription = [
 
 const MapTags = ({ tag }) => {
   return (
-    <div key={tag} className="tag-container">
+    <div key={tag} className="tooltip-container">
       <span className="tooltiptext">
         {tagDescription[tag].tagName}
         <br /><br />
         <span style={{ fontWeight:'500' }}>{tagDescription[tag].tagDescription}</span>
       </span>
-      <img className="tag" src={'http://localhost:3000/tag_icons/' + tag + '.svg'} alt="" />
+      <img className="tag" src={`http://localhost:3000/tag_icons/${tag}.svg`} alt="" />
     </div>
   )
 }

@@ -316,39 +316,10 @@
   display: flex;
 }
 
-.tag-container {
-  position: relative;
-  display: inline-block;
-}
-
 .tag {
   height: 20px;
   margin-top: 8px;
   margin-right: 5px;
-}
-
-.tag-container .tooltiptext {
-  text-overflow: ellipsis;
-  white-space: normal;
-  word-break: break-all;
-  overflow: hidden;
-  font-size: 14px;
-  font-weight: 700;
-  visibility: hidden;
-  width: 120px;
-  top: 120%;
-  left: -50px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #fff;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-}
-
-.tag-container:hover .tooltiptext {
-  visibility: visible;
 }
 
 .inquiry {
