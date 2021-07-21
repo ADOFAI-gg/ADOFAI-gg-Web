@@ -6,7 +6,7 @@ const recentTopPlays = [
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '18.5', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
@@ -17,44 +17,44 @@ const recentTopPlays = [
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '19', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=ELOLmVDLC8w'
   },
   {
     id: 3,
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '20.5', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=SW0dTKOse-U'
   },
   {
     id: 4,
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '17.5', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=xGoPVsl3n1c'
   },
   {
     id: 5,
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '20.5', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=B9iDpTEcTMM'
   },
   {
     id: 6,
@@ -65,29 +65,29 @@ const recentTopPlays = [
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=1kn5PflT0l4'
   },
   {
     id: 7,
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '17', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=b8FDJfqQ82Y'
   },
   {
     id: 8,
     levelId: '000000', 
     levelTitle: 'A very very very long title', 
     levelSubTitle: '(Nerfed)', 
-    levelDifficulty: '18', 
+    levelDifficulty: '20', 
     playerName: 'A very very very long player name', 
     playPitch: '999.99', 
     playAcc: '999.99',
-    playVideo: 'https://www.youtube.com/watch?v=kTwAMfwvnz0'
+    playVideo: 'https://www.youtube.com/watch?v=SXvUH-fiHgU'
   }
 ];
 

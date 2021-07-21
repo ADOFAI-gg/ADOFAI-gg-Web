@@ -5,7 +5,7 @@
     </clipPath>
   </defs>
   <g id="level-icon-17.5" clip-path="url(#clip-level-icon-17.5)">
-    <circle id="타원_19" data-name="타원 19" cx="25" cy="25" r="25" transform="translate(7 7)" fill="#e80000"/>
+    <circle id="타원_19" data-name="타원 19" cx="25" cy="25" r="25" transform="translate(7 7)" fill="#e80000" opacity="0.7"/>
     <path id="패스_17" data-name="패스 17" d="M4.47-2.43V-20.58H1.53v-2.55H7.32v20.7h3.57V0H.72V-2.43ZM16.44,0H13.35l7.2-20.43H11.76v-2.7H24.24v.69Z" transform="translate(20 44)"/>
     <path id="패스_32" data-name="패스 32" d="M10.178-7.547V-1.5H6.762V-7.547H.99V-10.61H6.762V-16.5h3.416v5.89H15.99v3.063Z" transform="translate(41.01 23.5)" stroke="#e80000" stroke-width="1.5"/>
   </g>

@@ -59,12 +59,23 @@
   transform: scale(1.05);
 }
 
+.main-top-plays-container:hover .main-top-plays-image{
+  filter: blur(0px) brightness(0.5);
+}
+
+.main-top-plays-image-container {
+  overflow: hidden;
+  width: 256px;
+  height: 144px;
+  border-radius: 8px;
+}
+
 .main-top-plays-image {
   width: 256px;
   height: 144px;
   object-fit: cover;
-  border-radius: 8px;
-  filter: brightness(0.3);
+  filter: blur(2px) brightness(0.3);
+  transition: all .2s ease-in-out;
 }
 
 .main-top-plays-title {
@@ -122,10 +133,10 @@
 
 .main-top-plays-level {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  top: 4px;
-  right: 2px;
+  width: 36px;
+  height: 36px;
+  top: -9px;
+  right: -13px;
 }
 
 .float-left {
@@ -171,7 +182,7 @@
   background-position: center;
   background-size: cover;
   transition-duration: 0.3s;
-  filter: blur(3px) brightness(0.25);
+  filter: blur(5px) brightness(0.30);
 }
 
 .map-info-container-bottom {
@@ -322,17 +333,35 @@
   margin-right: 5px;
 }
 
-.inquiry {
+.user-menu-button {
+  padding: 0;
+  border: none;
+  width: 64px;
+  height: 64px;
   position: fixed;
   bottom: 40px;
   right: 50px;
   z-index: 1;
   cursor: pointer;
+  background: url('http://localhost:3000/other_icons/message.svg');
   transition: all .15s ease-in-out;
   filter: brightness(0.8);
 }
 
-.inquiry:hover {
+.user-menu-button:hover {
   transform: scale(1.15);
   filter: brightness(1);
 }
+
+.user-menu {
+  width: 300px;
+}
+
+.user-menu-context {
+  color: #545454;
+}
+
+.user-menu-context:hover {
+  font-weight: 600;
+}
+
