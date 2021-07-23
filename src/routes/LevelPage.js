@@ -2,6 +2,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+// Components
+import LevelTags from '../components/LevelTags';
+
+// Stylesheets
+import '../stylesheets/level.css';
+
 const LevelPage = () => {
   function PSSwal() {
     Swal.fire({
@@ -28,28 +34,39 @@ const LevelPage = () => {
   const { id } = useParams();
 
   // TODO replace with object
-  const levelName = `ラグトレイン`;
+  const levelName = `LagTrain`;
+  const levelSongName = `ラグトレイン`;
+
   const artistName = `稲葉曇`;
   const levelCreatorName = `undefined`;
-  const levelThumbnail = `http://localhost:3000/level_backgrounds/level-background-2.jpg`;
+  const levelThumbnail = `https://cdn.discordapp.com/attachments/697417647721021442/867295578161020968/unknown.png`;
 
   const levelDifficulty = 17.5;
-  const levelMinBPM = 1;
-  const levelMaxBPM = 9999.99;
-  const levelTiles = 152478;
-  const levelDescription = `안녕하세요, 이 텍스트는 테스트 텍스트입니다. 日本語テスト。　URL Param은 ${id}입니다, <script>alret('hi!')</script> bla bla bla bla bla bla bla bla 만약 공간을 넘게 되면 어떻게 될까요?`;
-  const levelVideo = `fu6mHX8VhxE`;
-
+  const levelMinBPM = 9999.636;
+  const levelMaxBPM = 9913499.99;
+  const levelTiles = 345348123123;
+  const levelDescription = `Good luck`;
+  const levelYoutubeID = `UnIhRpIT7nc`;
+  const levelLikeCount = 18342;
+  
   const steamWorkshop = `https://steamcommunity.com`;
   const levelDownload = `https://cdn.discordapp.com/attachments/697417647721021442/867317985890926602/METADATA.txt`;
 
   const hasSeizureWarning = true;
   const levelTags = [
-    `Multiple Press`,
-    `Polyrhythm`,
-    `Frums moment`,
-    `Memorization`
+    0,
+    2,
+    3,
+    6,
+    1
+    // `Multiple Press`,
+    // `Polyrhythm`,
+    // `Frums moment`,
+    // `Memorization`
   ];
+
+  const levelMinBPMInt = String(levelMinBPM).split('.')[0]
+  const levelMinBPmDecimal = String(levelMinBPM).split('.')[1]
 
   const levelMaxBPMInt = String(levelMaxBPM).split('.')[0]
   const levelMaxBPmDecimal = String(levelMaxBPM).split('.')[1]
@@ -77,6 +94,7 @@ const LevelPage = () => {
 
                     <div className="level-info-name">{levelName}</div>
                   </div>
+                  <div className="level-info-song-name">{levelSongName}</div>
                   <div className="level-info-author">
                     <strong>{artistName}</strong> ─ Level by <strong>{levelCreatorName}</strong>
                   </div>
@@ -87,8 +105,11 @@ const LevelPage = () => {
                   }})()}
 
                   {levelTags.map((tag) => (
-                    <div className="level-info-tag">{tag}</div>
+                    <LevelTags tag={tag} />
                   ))}
+                  {/* {levelTags.map((tag) => (
+                    <div className="level-info-tag">{tag}</div>
+                  ))} */}
                 </div>
               </div>
               <div className="level-info-header-buttons">
@@ -114,7 +135,7 @@ const LevelPage = () => {
                       BPM
                     </div>
                     <div className="level-info-value">
-                      {levelMinBPM} - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPmDecimal}</span>
+                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPmDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPmDecimal}</span>
                     </div>
                   </div>
                   <div className="level-info-detail-info-section">
@@ -126,7 +147,7 @@ const LevelPage = () => {
                     </div>
                   </div>
                 </div>
-                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                   <div className="level-info-detail-info-section">
                     <div className="level-info-label">
                       Description
@@ -135,13 +156,17 @@ const LevelPage = () => {
                       {levelDescription}
                     </div>
                   </div>
-                  <div className="level-info-detail-info-like">ここに「いいね」ボタン</div>
+                  <div className="level-info-detail-info-like">
+                    {/* NO FUNCTIONALITY */}
+                    <img style={{ height: '12px' }} src="http://localhost:3000/other_icons/un_heart.svg" alt="" />
+                    {levelLikeCount}
+                  </div>
                 </div>
                   
               </div>
               <div className="level-info-detail-info-video">
                 <div>Wait a moment please!</div>
-                <iframe src={`https://www.youtube.com/embed/${levelVideo}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                <iframe src={`https://www.youtube.com/embed/${levelYoutubeID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
               </div>
             </div>
 

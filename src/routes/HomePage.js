@@ -1,8 +1,13 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+
+// Components
 import MainAddInfo from '../components/MainAddInfo';
 import MainTopPlays from '../components/MainTopPlays';
 import MainPopularLevels from '../components/MainPopularLevels';
-import Swal from 'sweetalert2';
+
+// Stylesheets
+import '../stylesheets/main.css';
 
 const HomePage = () => {
   function userMenu() {
