@@ -365,3 +365,7 @@
   font-weight: 600;
 }
 
+.user-menu-context:hover::before {
+  content: '> ';
+}
+

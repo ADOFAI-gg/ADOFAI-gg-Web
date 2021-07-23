@@ -12,7 +12,7 @@ import '../stylesheets/main.css';
 const HomePage = () => {
   function userMenu() {
     Swal.fire({
-      title: 'User Menu',
+      title: 'Submit & Info',
       html: `
       <a class="user-menu-context" href="https://forms.gle/XdKNuqVrt974F7Ab6">Submit your play</a>
       <hr>
