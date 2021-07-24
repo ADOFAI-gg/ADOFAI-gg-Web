@@ -144,9 +144,10 @@
   height: 26px;
 }
 
-.tag {
+.level-tag {
   height: 26px;
   margin-top: 0;
+  margin-right: 5px;
 }
 
 .level-info-swal-popup {

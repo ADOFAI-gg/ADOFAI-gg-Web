@@ -51,7 +51,7 @@ const tagDescription = [
   }
 ]
 
-const LevelTags = ({ tag }) => {
+const LevelTags = ({ tag, style }) => {
   return (
     <div key={tag} className="tooltip-container">
       <span className="tooltiptext">
@@ -59,7 +59,7 @@ const LevelTags = ({ tag }) => {
         <br /><br />
         <span style={{ fontWeight:'500' }}>{tagDescription[tag].tagDescription}</span>
       </span>
-      <img className='tag' src={`http://localhost:3000/tag_icons/${tag}.svg`} alt="" />
+      <img className={style} src={`http://localhost:3000/tag_icons/${tag}.svg`} alt="" />
     </div>
   )
 }

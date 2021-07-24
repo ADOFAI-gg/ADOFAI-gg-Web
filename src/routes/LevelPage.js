@@ -105,7 +105,7 @@ const LevelPage = () => {
                   }})()}
 
                   {levelTags.map((tag) => (
-                    <LevelTags tag={tag} />
+                    <LevelTags tag={tag} style='level-tag' />
                   ))}
                   {/* {levelTags.map((tag) => (
                     <div className="level-info-tag">{tag}</div>

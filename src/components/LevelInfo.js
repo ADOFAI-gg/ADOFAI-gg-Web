@@ -83,7 +83,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             <tr>
               <td valign="bottom" className="map-info-tags">
                 {recentPopularLevel.tags.map((tag) => (
-                  <LevelTags tag={tag} />
+                  <LevelTags tag={tag} style='main-tag' />
                 ))}
               </td>
             </tr>  
