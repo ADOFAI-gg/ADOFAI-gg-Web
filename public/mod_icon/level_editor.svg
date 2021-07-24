@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-level_editor">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="level_editor" clip-path="url(#clip-level_editor)">
+    <g id="Icon_feather-edit-3" data-name="Icon feather-edit-3" transform="translate(76.5 85.682)">
+      <path id="패스_8" data-name="패스 8" d="M18,30H183.2" transform="translate(171.305 307.233)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_9" data-name="패스 9" d="M267.755,16.4a41.307,41.307,0,0,1,58.5,58.333L82.5,317.788l-78,19.444L24,259.455Z" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+  </g>
+</svg>

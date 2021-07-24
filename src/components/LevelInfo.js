@@ -3,87 +3,87 @@ import LevelTags from './LevelTags';
 const LevelInfo = ({ recentPopularLevel }) => {
   return (
     <a key={recentPopularLevel.id} href={'/levels/' + recentPopularLevel.levelId}>
-      <div className="map-info">
-        <div className="level-background-container"> 
-          <div style={{ backgroundImage: `url(${'http://localhost:3000/level_backgrounds/' + recentPopularLevel.levelBackground})` }} className="level-background"></div>
+      <div className="main-level-info">
+        <div className="main-level-background-container"> 
+          <div style={{ backgroundImage: `url(${'http://localhost:3000/level_backgrounds/' + recentPopularLevel.levelBackground})` }} className="main-level-background"></div>
         </div>
-        <div className="map-info-container-bottom">
+        <div className="main-level-info-container-bottom">
           <img style={{ marginLeft: '10px' }} src={'http://localhost:3000/level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Level</td>
+              <td className="main-level-info-top">Level</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-map">{recentPopularLevel.levelTitle}</td>
+              <td valign="bottom" className="main-level-info-level">{recentPopularLevel.levelTitle}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="200" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Creator</td>
+              <td className="main-level-info-top">Creator</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-creator">{recentPopularLevel.levelCreator}</td>
+              <td valign="bottom" className="main-level-info-creator">{recentPopularLevel.levelCreator}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="130" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">BPM</td>
+              <td className="main-level-info-top">BPM</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-bpm">{recentPopularLevel.levelBpm}</td>
+              <td valign="bottom" className="main-level-info-bpm">{recentPopularLevel.levelBpm}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Tiles</td>
+              <td className="main-level-info-top">Tiles</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-tiles">{recentPopularLevel.levelTiles}</td>
+              <td valign="bottom" className="main-level-info-tiles">{recentPopularLevel.levelTiles}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td valign="bottom" className="map-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/comment.svg" alt="" /></td>
+              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/comment.svg" alt="" /></td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-comments">{recentPopularLevel.levelComments}</td>
+              <td valign="bottom" className="main-level-info-comments">{recentPopularLevel.levelComments}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td valign="bottom" className="map-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/heart.svg" alt="" /></td>
+              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/heart.svg" alt="" /></td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-likes">{recentPopularLevel.levelLikes}</td>
+              <td valign="bottom" className="main-level-info-likes">{recentPopularLevel.levelLikes}</td>
             </tr>  
           </table>
         </div>
-        <div className="map-info-container-top">
+        <div className="main-level-info-container-top">
           <img style={{ marginLeft: '10px' }} src={'http://localhost:3000/level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Song</td>
+              <td className="main-level-info-top">Song</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-song">{recentPopularLevel.songTitle}</td>
+              <td valign="bottom" className="main-level-info-song">{recentPopularLevel.songTitle}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="250" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Artist</td>
+              <td className="main-level-info-top">Artist</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-artist">{recentPopularLevel.songArtist}</td>
+              <td valign="bottom" className="main-level-info-artist">{recentPopularLevel.songArtist}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="335" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
-              <td className="map-info-top">Tags</td>
+              <td className="main-level-info-top">Tags</td>
             </tr>
             <tr>
-              <td valign="bottom" className="map-info-tags">
+              <td valign="bottom" className="main-level-info-tags">
                 {recentPopularLevel.tags.map((tag) => (
-                  <LevelTags tag={tag} style='main-tag' />
+                  <LevelTags tag={tag} styleClass='main-tag' />
                 ))}
               </td>
             </tr>  

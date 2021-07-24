@@ -169,6 +169,21 @@ main {
   min-width: 1120px;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.content-title {
+  margin-top: 40px;
+  display: flex;
+  width: 1085px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* SHOW TOOLTIPTEXT */
 

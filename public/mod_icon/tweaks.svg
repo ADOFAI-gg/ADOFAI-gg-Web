@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-tweaks">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="tweaks" clip-path="url(#clip-tweaks)">
+    <g id="Icon_feather-inbox" data-name="Icon feather-inbox" transform="translate(78 110)">
+      <path id="패스_21" data-name="패스 21" d="M353,18H248L213,69.56H143L108,18H3" transform="translate(0 128.578)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_22" data-name="패스 22" d="M63.375,25.425,3,146V251a35,35,0,0,0,35,35H318a35,35,0,0,0,35-35V146L292.625,25.425A35,35,0,0,0,261.3,6H94.7A35,35,0,0,0,63.375,25.425Z" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+  </g>
+</svg>

@@ -1,10 +1,8 @@
-/* TODO ClassName To {CssFileName}-{Feature} */
-
 .main-logo {
   margin-top: 60px;
 }
 
-.yellow-highlight {
+.main-yellow-highlight {
   color: #FFE76E;
 }
 
@@ -30,14 +28,6 @@
   justify-content: space-around;
 }
 
-.content-title {
-  margin-top: 40px;
-  display: flex;
-  width: 1085px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .main-top-plays {
   width: 1100px;
   display: flex;
@@ -60,7 +50,7 @@
 }
 
 .main-top-plays-container:hover .main-top-plays-image{
-  filter: blur(0px) brightness(0.5);
+  filter: blur(0) brightness(0.5);
 }
 
 .main-top-plays-image-container {
@@ -139,29 +129,21 @@
   right: -13px;
 }
 
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
-}
-
-.main-popular-maps {
+.main-popular-levels {
   margin-top: 10px;
   width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.map-info {
+.main-level-info {
   position: relative;
   width: 1100px;
   height: 70px;
   margin-bottom: 8px;
 }
 
-.level-background-container {
+.main-level-background-container {
   top: 0;
   left: 0;
   position: absolute;
@@ -171,7 +153,7 @@
   overflow: hidden;
 }
 
-.level-background {
+.main-level-background {
   top: 0;
   left: 0;
   position: absolute;
@@ -185,7 +167,7 @@
   filter: blur(5px) brightness(0.30);
 }
 
-.map-info-container-bottom {
+.main-level-info-container-bottom {
   position: absolute;
   display: flex;
   width: 100%;
@@ -196,7 +178,7 @@
   transition-duration: 0.3s;
 }
 
-.map-info-container-top {
+.main-level-info-container-top {
   top: 0;
   left: 0;
   position: absolute;
@@ -211,26 +193,26 @@
   z-index: 1;
 }
 
-.map-info:hover .level-background {
+.main-level-info:hover .main-level-background {
   filter: blur(3px) brightness(0.40);
 }
 
-.map-info:hover .map-info-container-top {
+.main-level-info:hover .main-level-info-container-top {
   opacity: 1;
 }
 
-.map-info:hover .map-info-container-bottom {
+.main-level-info:hover .main-level-info-container-bottom {
   opacity: 0;
 }
 
-.map-info-top {
+.main-level-info-top {
   height: 20px;
   font-size: 15px;
   color: #B3B3B3;
   font-weight: 600;
 }
 
-.map-info-map {
+.main-level-info-level {
   max-width: 400px;
   height: 30px;
   text-overflow: ellipsis;
@@ -241,7 +223,7 @@
   font-weight: 500;
 }
 
-.map-info-creator {
+.main-level-info-creator {
   max-width: 200px;
   height: 30px;
   text-overflow: ellipsis;
@@ -252,7 +234,7 @@
   font-weight: 500;
 }
 
-.map-info-bpm {
+.main-level-info-bpm {
   max-width: 130px;
   height: 30px;
   text-overflow: ellipsis;
@@ -263,7 +245,7 @@
   font-weight: 500;
 }
 
-.map-info-tiles {
+.main-level-info-tiles {
   max-width: 80px;
   height: 30px;
   text-overflow: ellipsis;
@@ -274,7 +256,7 @@
   font-weight: 500;
 }
 
-.map-info-likes {
+.main-level-info-likes {
   max-width: 80px;
   height: 30px;
   text-overflow: ellipsis;
@@ -285,7 +267,7 @@
   font-weight: 500;
 }
 
-.map-info-comments {
+.main-level-info-comments {
   max-width: 80px;
   height: 30px;
   text-overflow: ellipsis;
@@ -296,7 +278,7 @@
   font-weight: 500;
 }
 
-.map-info-song {
+.main-level-info-song {
   max-width: 400px;
   height: 30px;
   text-overflow: ellipsis;
@@ -307,7 +289,7 @@
   font-weight: 500;
 }
 
-.map-info-artist {
+.main-level-info-artist {
   max-width: 250px;
   height: 30px;
   text-overflow: ellipsis;
@@ -318,7 +300,7 @@
   font-weight: 500;
 }
 
-.map-info-tags {
+.main-level-info-tags {
   max-width: 335px;
   height: 30px;
   font-size: 20px;
@@ -333,7 +315,7 @@
   margin-right: 5px;
 }
 
-.user-menu-button {
+.main-user-menu-button {
   padding: 0;
   border: none;
   width: 64px;
@@ -348,24 +330,24 @@
   filter: brightness(0.8);
 }
 
-.user-menu-button:hover {
+.main-user-menu-button:hover {
   transform: scale(1.15);
   filter: brightness(1);
 }
 
-.user-menu {
+.main-user-menu {
   width: 300px;
 }
 
-.user-menu-context {
+.main-user-menu-context {
   color: #545454;
 }
 
-.user-menu-context:hover {
+.main-user-menu-context:hover {
   font-weight: 600;
 }
 
-.user-menu-context:hover::before {
+.main-user-menu-context:hover::before {
   content: '> ';
 }
 

@@ -6,7 +6,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-1.jpg',
     levelDifficulty: 14,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -21,7 +21,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-2.jpg',
     levelDifficulty: 20.5,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -36,7 +36,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-3.jpg',
     levelDifficulty: 2,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -51,7 +51,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-4.jpg',
     levelDifficulty: 7,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -66,7 +66,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-5.jpg',
     levelDifficulty: 19.5,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -81,7 +81,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-6.jpg',
     levelDifficulty: 16,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -96,7 +96,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-7.jpg',
     levelDifficulty: 5,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -111,7 +111,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-8.jpg',
     levelDifficulty: 9,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -126,7 +126,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-9.jpg',
     levelDifficulty: 17,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -141,7 +141,7 @@ const recentPopularLevels = [
     levelId: '000000',
     levelBackground: 'level-background-10.jpg',
     levelDifficulty: 3,
-    levelTitle: 'A very very very very very long map title',
+    levelTitle: 'A very very very very very long level title',
     levelCreator: 'A very very long creator',
     levelBpm: '9999-9999',
     levelTiles: '9999+',
@@ -158,9 +158,9 @@ const MainPopularLevels = () => {
     <div>
       <div className="content-title">
         <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Recent Popular Levels</h1>
-        <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#maps">See All ▹</a></h3>
+        <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
       </div>
-      <div className="main-popular-maps">
+      <div className="main-popular-levels">
         {
           recentPopularLevels.map((recentPopularLevel) => (
             <LevelInfo recentPopularLevel={recentPopularLevel} />

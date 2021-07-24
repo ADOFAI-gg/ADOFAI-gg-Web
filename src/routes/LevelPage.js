@@ -59,10 +59,6 @@ const LevelPage = () => {
     3,
     6,
     1
-    // `Multiple Press`,
-    // `Polyrhythm`,
-    // `Frums moment`,
-    // `Memorization`
   ];
 
   const levelMinBPMInt = String(levelMinBPM).split('.')[0]
@@ -105,7 +101,7 @@ const LevelPage = () => {
                   }})()}
 
                   {levelTags.map((tag) => (
-                    <LevelTags tag={tag} style='level-tag' />
+                    <LevelTags tag={tag} styleClass='level-tag' />
                   ))}
                   {/* {levelTags.map((tag) => (
                     <div className="level-info-tag">{tag}</div>
@@ -176,12 +172,12 @@ const LevelPage = () => {
 
         <div className="content-title">
           <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
-          <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#maps">See All ▹</a></h3>
+          <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
         </div>
 
       </div>
     </>
   );
-}
+};
 
 export default LevelPage;
