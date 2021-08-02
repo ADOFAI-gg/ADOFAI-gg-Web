@@ -25,6 +25,13 @@ const AppRouter = () => {
           <HomePage />
         </Route>
 
+        {/* 404 NOT FOUND PAGE */}
+        <Route>
+          <main>
+            <br />
+            <h2>Oops! This page does not exist.</h2>
+          </main>
+        </Route>
       </Switch>
     </Router>
   );

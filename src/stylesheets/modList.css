@@ -1,0 +1,83 @@
+.mods-main {
+  display: flex;
+  min-width: 1120px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+
+/* MODS LIST */
+
+.mods-list {
+  margin-top: 5px;
+  width: 1100px;
+}
+
+.mods-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  padding-left: 15px;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-top-width: 1px;
+  border-top-style: solid;
+  transition: all .2s ease;
+}
+
+.mods-list-item-left {
+  display: flex;
+}
+
+.mods-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.mods-mod-category {
+  margin-right: 5px;
+}
+
+.mods-mod-category img {
+  width: 25px;
+  opacity: 70%;
+}
+
+.mods-mod-title {
+  margin-bottom: 5px;
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.mods-mod-version {
+  opacity: 50%;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.mods-mod-description {
+  width: 950px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mods-mod-footer {
+  display: flex;
+  opacity: 80%;
+  margin-top: 5px;
+  font-size: 0.9em;
+  font-weight: 200;
+}
+
+.mods-mod-footer-item {
+  margin-right: 10px;
+  
+}
+
+.mods-mod-footer-item svg {
+  margin-right: 3px;
+}

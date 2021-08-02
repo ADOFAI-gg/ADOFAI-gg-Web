@@ -46,7 +46,7 @@ html, body {
 html {
   background-image: url('http://localhost:3000/background.png');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
@@ -210,7 +210,7 @@ main {
   padding: 5px;
   border-radius: 6px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   transition: all .2s ease;
 }
 
@@ -219,6 +219,127 @@ main {
   opacity: 100;
 }
 
+
+/* SEARCH SECTION */
+
+.list-search-container {
+  width: 1080px;
+  min-height: 32px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.list-search-section {
+  display: flex;
+}
+
+.list-text-input {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  font-family: Quicksand;
+  font-weight: 300;
+  font-size: 15px;
+  color: white;
+}
+
+.list-text-input::placeholder {
+  color: white;
+  opacity: 70%;
+}
+
+.list-search-bar {
+  width: 1000em;
+}
+
+.list-search-content-toggle,
+.list-search-content-toggle img {
+  height: 32px;
+  cursor: pointer;
+}
+
+.list-search-content-toggle-button {
+  display: none;
+}
+
+.list-search-content-toggle label {
+  opacity: 50%;
+  transition: all .2s ease;
+}
+
+.list-search-content-toggle-button:checked + label {
+  opacity: 100%;
+}
+
+.list-search-filter-button,
+.list-search-sort-button {
+  margin-left: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all .2s ease;
+}
+
+.list-search-filter-button svg,
+.list-search-sort-button svg {
+  height: 32px;
+  width: 20px!important;
+}
+
+.list-search-filter,
+.list-search-sort {
+  margin-top: 20px;
+}
+
+.list-search-content-title {
+  width: 1080px;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding-top: 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.list-search-content-show {
+  animation-name: list-search-content-show-animation;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.list-search-content-hide {
+  animation-name: list-search-content-hide-animation;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes list-search-content-hide-animation {
+  from {
+    height: auto;
+    opacity: 100%;
+    visibility: visible;
+  } to {
+    opacity: 0%;
+    height: 0;
+    margin: 0;
+  }
+}
+
+@keyframes list-search-content-show-animation {
+  from {
+    opacity: 0%;
+    height: 0;
+    margin: 0;
+  } to {
+    height: auto;
+    opacity: 100%;
+    visibility: visible;
+  }
+}
 
 /* FOOTER */
 
