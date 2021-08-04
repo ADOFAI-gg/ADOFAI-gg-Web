@@ -1,17 +1,27 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRestore } from '@fortawesome/free-regular-svg-icons'
 
 // Components
 import { SearchSection, SearchContentItem, SearchContentBtn } from '../components/SearchSection';
+import ModsListItem from '../components/ModsListItem';
 
 // Stylesheets
 import '../stylesheets/modList.css';
 
 const ModListPage = () => {
-  const [items, setItems] = React.useState(Array.from({ length: 20 }));
+  const exampleModInfo = {
+    name: "AdofaiTweaks",
+    version: "2.3.5",
+    description: "description",
+    likes: "45",
+    downloads: "1069",
+    supportVersion: "r75",
+    category: "Game Play",
+    author: "PizzaLover007"
+  };
+
+
+  const [items, setItems] = React.useState([exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo]);
   const [hasMore, setHasMore] = React.useState(true);
 
   const fetchMoreData = () => {
@@ -21,7 +31,7 @@ const ModListPage = () => {
     }
 
     setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 20 })));
+      setItems(items.concat([exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo]));
     }, 500);
   };
 
@@ -29,7 +39,7 @@ const ModListPage = () => {
     <>
       <div className="mods-main">
         <SearchSection
-          placeholder='Search to Mod Name'
+          placeholder='Search Mod'  
 
           filterContent={
             <div style={{ display: 'flex' }}>
@@ -75,47 +85,14 @@ const ModListPage = () => {
           dataLength={items.length}
           next={fetchMoreData}
           hasMore={hasMore}
-          loader={<h4 style={{textAlign: 'center'}}>Wait a second please!</h4>}
+          loader={
+            <h4 style={{ textAlign: 'center', fontWeight: '300', marginTop: '10px', marginBottom: '10px' }}>
+              Wait a second please!
+            </h4>
+          }
         >
           {items.map((i, index) => (
-            // TODO ok i think it must be component
-            <div className="mods-list-item">
-              <div className="mods-list-item-left">
-                <div className="mods-mod-category">
-                  <img src="http://localhost:3000/mod_icons/tweaks.svg" alt="category icon" />
-                </div>
-
-                <div className="mods-mod-info">
-                  <div className="mods-mod-title">
-                    AdofaiTweaks
-                    <span className="mods-mod-version">v2.3.5</span>
-                  </div>
-                  <div className="mods-mod-description">
-                    wow! the {index + 1}st/nd/rd/th article!
-                  </div>
-                  <div className="mods-mod-footer">
-                    <div className="mods-mod-footer-item">
-                      <FontAwesomeIcon icon={faHeart} />45
-                    </div>
-                    <div className="mods-mod-footer-item">
-                      <FontAwesomeIcon icon={faArrowAltCircleDown} />1069
-                    </div>
-                    <div className="mods-mod-footer-item">
-                      <FontAwesomeIcon icon={faWindowRestore} />r75
-                    </div>
-                    <div className="mods-mod-footer-item">
-                      <FontAwesomeIcon icon={faFolderOpen} />Tweaks
-                    </div>
-                    <div className="mods-mod-footer-item">
-                      <FontAwesomeIcon icon={faUserCircle} />PizzaLover007
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mods-mod-download">
-                <FontAwesomeIcon icon={faDownload} size="2x" />
-              </div>
-            </div>
+            <ModsListItem modInfo={i}/>
           ))}
           
         </InfiniteScroll>

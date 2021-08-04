@@ -1,18 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSortAmountDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
 
 const SearchSection = ({placeholder, filterContent, sortContent}) => {
   const [showFilter, setShowFilter] = React.useState(false);
   const [showSort, setShowSort] = React.useState(false);
 
-  const onClickFilterButton = () => {
-    setShowFilter(!showFilter);
-  };
-  const onClickSortButton = () => {
-    setShowSort(!showSort);
-  };
-  
+  const onClickFilterButton = () => setShowFilter(!showFilter);
+  const onClickSortButton = () => setShowSort(!showSort);
   
   return (
     <div className="list-search-container">
