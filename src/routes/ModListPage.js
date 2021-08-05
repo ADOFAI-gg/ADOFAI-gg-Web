@@ -16,22 +16,40 @@ const ModListPage = () => {
     likes: "45",
     downloads: "1069",
     supportVersion: "r75",
-    category: "Game Play",
+    category: "Level Editor",
     author: "PizzaLover007"
   };
 
-
-  const [items, setItems] = React.useState([exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo]);
+  const [items, setItems] = React.useState([exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, ]);
   const [hasMore, setHasMore] = React.useState(true);
 
   const fetchMoreData = () => {
+    // in order for this to work => need to send me the number of modes that the API has
+    // wouldnt it be possible for the backend developer to make it????
     if (items.length >= 300) {
       setHasMore(false);
       return;
     }
 
     setTimeout(() => {
-      setItems(items.concat([exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo, exampleModInfo]));
+      // TEST CODE START  
+      fetch('https://official-joke-api.appspot.com/jokes/ten').then((res) => {
+        return res.json();
+      }).then((data) => {
+        console.log('fetch')
+        const newItems = Array.from({ length: 10 });
+        
+        data.map((item, index) => {
+          newItems[index] = { ...exampleModInfo };
+          newItems[index].description = item.setup;
+          newItems[index].name = item.punchline;
+          newItems[index].version = `${item.id}-${item.type}`;
+        })
+
+        setItems(items.concat(newItems));
+      });
+      // TEST CODE END
+
     }, 500);
   };
 
