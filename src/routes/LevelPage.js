@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // Components
@@ -31,8 +30,6 @@ const LevelPage = () => {
     });
   }
 
-  const { id } = useParams();
-
   // TODO replace with object
   const levelName = `LagTrain`;
   const levelSongName = `ラグトレイン`;
@@ -62,10 +59,10 @@ const LevelPage = () => {
   ];
 
   const levelMinBPMInt = String(levelMinBPM).split('.')[0]
-  const levelMinBPmDecimal = String(levelMinBPM).split('.')[1]
+  const levelMinBPMDecimal = String(levelMinBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
 
   const levelMaxBPMInt = String(levelMaxBPM).split('.')[0]
-  const levelMaxBPmDecimal = String(levelMaxBPM).split('.')[1]
+  const levelMaxBPMDecimal = String(levelMaxBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
 
   return (
     <>
@@ -131,7 +128,7 @@ const LevelPage = () => {
                       BPM
                     </div>
                     <div className="level-info-value">
-                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPmDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPmDecimal}</span>
+                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPMDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPMDecimal}</span>
                     </div>
                   </div>
                   <div className="level-info-detail-info-section">

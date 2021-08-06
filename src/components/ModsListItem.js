@@ -2,17 +2,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRestore } from '@fortawesome/free-regular-svg-icons'
 
-// modInfo must be ...
-const modInfo = {
-  name: "AdofaiTweaks",
-  version: "2.3.5",
-  description: "description",
-  likes: "45",
-  downloads: "1069",
-  supportVersion: "r75",
-  category: "Tweaks", // Tweaks, Game Play, Level Editor, Text Edit, Bug Fix, Planet Edit, Library, Other
-  author: "PizzaLover007"
-};
+/** modInfo must be ...
+ * {
+ *   id: 123123,
+ *   name: "AdofaiTweaks",
+ *   version: "2.3.5",
+ *   description: "description",
+ *   likes: "45",
+ *   downloads: "1069",
+ *   supportVersion: "r75",
+ *   category: "Tweaks", // Tweaks, Game Play, Level Editor, Text Edit, Bug Fix, Planet Edit, Library, Other
+ *   author: "PizzaLover007"
+ * };
+ */
 
 const ModsListItem = ({ modInfo }) => {
   const categoryIconDict = {
@@ -26,12 +28,12 @@ const ModsListItem = ({ modInfo }) => {
     'Other': 'other'
   };
 
-  const { name, version, description, likes, downloads, supportVersion, category, author } = modInfo;
+  const { id, name, version, description, likes, downloads, supportVersion, category, author } = modInfo;
   const categoryIcon = categoryIconDict[category];
 
   return (
     <div className="mods-list-item">
-      <div className="mods-list-item-left">
+      <a href={`/mods/${id}`} className="mods-list-item-left">
         <div className="mods-mod-category">
           <img src={`http://localhost:3000/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
         </div>
@@ -62,7 +64,7 @@ const ModsListItem = ({ modInfo }) => {
             </div>
           </div>
         </div>
-      </div>
+      </a>
       <div className="mods-mod-download">
         <FontAwesomeIcon icon={faDownload} size="2x" />
       </div>

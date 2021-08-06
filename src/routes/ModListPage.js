@@ -10,6 +10,7 @@ import '../stylesheets/modList.css';
 
 const ModListPage = () => {
   const exampleModInfo = {
+    id: 123,
     name: "AdofaiTweaks",
     version: "2.3.5",
     description: "description",
@@ -44,7 +45,15 @@ const ModListPage = () => {
           newItems[index].description = item.setup;
           newItems[index].name = item.punchline;
           newItems[index].version = `${item.id}-${item.type}`;
-        })
+
+          /* XXX
+           * i put it(return null) in bcz of a FUCKING EXCEPTION:
+           * Expected to return a value in arrow function  array-callback-return
+           * 
+           * if u know the solution, plz fix it!
+           */
+          return null;
+        });
 
         setItems(items.concat(newItems));
       });
