@@ -2,6 +2,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 // Components
+import LikeButton from '../components/LikeButton';
 import LevelTags from '../components/LevelTags';
 
 // Stylesheets
@@ -149,11 +150,7 @@ const LevelPage = () => {
                       {levelDescription}
                     </div>
                   </div>
-                  <div className="level-info-detail-info-like">
-                    {/* NO FUNCTIONALITY */}
-                    <img style={{ height: '12px' }} src="http://localhost:3000/other_icons/un_heart.svg" alt="" />
-                    {levelLikeCount}
-                  </div>
+                  <LikeButton likes={levelLikeCount} />
                 </div>
                   
               </div>
@@ -162,8 +159,6 @@ const LevelPage = () => {
                 <iframe src={`https://www.youtube.com/embed/${levelYoutubeID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
               </div>
             </div>
-
-            
           </div>
         </div>
 
@@ -171,7 +166,6 @@ const LevelPage = () => {
           <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
           <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
         </div>
-
       </div>
     </>
   );

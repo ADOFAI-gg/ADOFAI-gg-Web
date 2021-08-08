@@ -223,26 +223,6 @@
   overflow: hidden;
 }
 
-.level-info-detail-info-like {
-  padding: 15px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  margin-top: 5px;
-  background-color: white;
-  border-radius: 100em;
-  font-weight: 400;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.level-info-detail-info-like:hover {
-  background-color: rgb(211, 211, 211);
-}
-
-.level-info-detail-info-like img {
-  margin-right: 5px;
-}
-
 .level-info-detail-info-video {
   border-radius: 10px;
   background-color: #0f172163;

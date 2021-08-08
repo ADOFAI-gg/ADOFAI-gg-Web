@@ -1,4 +1,4 @@
-.mods-main {
+.mod-list-main {
   display: flex;
   min-width: 1120px;
   flex-direction: column;
@@ -9,12 +9,12 @@
 
 /* MODS LIST */
 
-.mods-list {
+.mod-list {
   margin-top: 5px;
   width: 1100px;
 }
 
-.mods-list-item {
+.mod-list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,48 +28,48 @@
   transition: all .2s ease;
 }
 
-.mods-list-item-left {
+.mod-list-item-left {
   display: flex;
 }
 
-.mods-list-item-left:hover {
+.mod-list-item-left:hover {
   text-decoration: none;
 }
 
-.mods-list-item:hover {
+.mod-list-item:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
-.mods-mod-category {
+.mod-list-mod-category {
   margin-right: 5px;
 }
 
-.mods-mod-category img {
+.mod-list-mod-category img {
   width: 25px;
   opacity: 70%;
 }
 
-.mods-mod-title {
+.mod-list-mod-title {
   margin-bottom: 5px;
   font-size: 1.25em;
   font-weight: 500;
 }
 
-.mods-mod-version {
+.mod-list-mod-version {
   opacity: 50%;
   margin-left: 10px;
   font-size: 0.8em;
 }
 
-.mods-mod-description {
+.mod-list-mod-description {
   width: 950px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.mods-mod-footer {
+.mod-list-mod-footer {
   display: flex;
   opacity: 80%;
   margin-top: 5px;
@@ -77,11 +77,11 @@
   font-weight: 200;
 }
 
-.mods-mod-footer-item {
+.mod-list-mod-footer-item {
   margin-right: 10px;
   
 }
 
-.mods-mod-footer-item svg {
+.mod-list-mod-footer-item svg {
   margin-right: 3px;
 }

@@ -64,7 +64,7 @@ const ModListPage = () => {
 
   return (
     <>
-      <div className="mods-main">
+      <div className="mod-list-main">
         <SearchSection
           placeholder='Search Mod'  
 
@@ -107,7 +107,7 @@ const ModListPage = () => {
           }
         />
 
-        <div className="mods-list">
+        <div className="mod-list">
         <InfiniteScroll
           dataLength={items.length}
           next={fetchMoreData}

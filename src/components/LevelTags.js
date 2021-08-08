@@ -49,7 +49,7 @@ const tagDescription = [
     tagName: 'Tag Name 9',
     tagDescription: 'This tag means that this level is like this and that 9.'
   }
-]
+];
 
 const LevelTags = ({ tag, styleClass }) => {
   return (
@@ -61,7 +61,7 @@ const LevelTags = ({ tag, styleClass }) => {
       </span>
       <img className={styleClass} src={`http://localhost:3000/tag_icons/${tag}.svg`} alt="" />
     </div>
-  )
-}
+  );
+};
 
-export default LevelTags
+export default LevelTags;

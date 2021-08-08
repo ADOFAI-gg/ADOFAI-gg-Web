@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRestore } from '@fortawesome/free-regular-svg-icons'
+import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRestore } from '@fortawesome/free-regular-svg-icons';
 
 /** modInfo must be ...
  * {
@@ -32,40 +32,40 @@ const ModsListItem = ({ modInfo }) => {
   const categoryIcon = categoryIconDict[category];
 
   return (
-    <div className="mods-list-item">
-      <a href={`/mods/${id}`} className="mods-list-item-left">
-        <div className="mods-mod-category">
+    <div className="mod-list-item">
+      <a href={`/mods/${id}`} className="mod-list-item-left">
+        <div className="mod-list-mod-category">
           <img src={`http://localhost:3000/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
         </div>
 
-        <div className="mods-mod-info">
-          <div className="mods-mod-title">
+        <div className="mod-list-mod-info">
+          <div className="mod-list-mod-title">
             {name}
-            <span className="mods-mod-version">v{version}</span>
+            <span className="mod-list-mod-version">v{version}</span>
           </div>
-          <div className="mods-mod-description">
+          <div className="mod-list-mod-description">
             {description}
           </div>
-          <div className="mods-mod-footer">
-            <div className="mods-mod-footer-item">
+          <div className="mod-list-mod-footer">
+            <div className="mod-list-mod-footer-item">
               <FontAwesomeIcon icon={faHeart} />{likes}
             </div>
-            <div className="mods-mod-footer-item">
+            <div className="mod-list-mod-footer-item">
               <FontAwesomeIcon icon={faArrowAltCircleDown} />{downloads}
             </div>
-            <div className="mods-mod-footer-item">
+            <div className="mod-list-mod-footer-item">
               <FontAwesomeIcon icon={faWindowRestore} />{supportVersion}
             </div>
-            <div className="mods-mod-footer-item">
+            <div className="mod-list-mod-footer-item">
               <FontAwesomeIcon icon={faFolderOpen} />{category}
             </div>
-            <div className="mods-mod-footer-item">
+            <div className="mod-list-mod-footer-item">
               <FontAwesomeIcon icon={faUserCircle} />{author}
             </div>
           </div>
         </div>
       </a>
-      <div className="mods-mod-download">
+      <div className="mod-list-mod-download">
         <FontAwesomeIcon icon={faDownload} size="2x" />
       </div>
     </div>
