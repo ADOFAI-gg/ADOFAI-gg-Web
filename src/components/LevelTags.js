@@ -59,7 +59,7 @@ const LevelTags = ({ tag, styleClass }) => {
         <br /><br />
         <span style={{ fontWeight:'500' }}>{tagDescription[tag].tagDescription}</span>
       </span>
-      <img className={styleClass} src={`http://localhost:3000/tag_icons/${tag}.svg`} alt="" />
+      <img className={styleClass} src={`/tag_icons/${tag}.svg`} alt="" />
     </div>
   );
 };

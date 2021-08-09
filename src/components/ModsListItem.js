@@ -35,7 +35,7 @@ const ModsListItem = ({ modInfo }) => {
     <div className="mod-list-item">
       <a href={`/mods/${id}`} className="mod-list-item-left">
         <div className="mod-list-mod-category">
-          <img src={`http://localhost:3000/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
+          <img src={`/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
         </div>
 
         <div className="mod-list-mod-info">

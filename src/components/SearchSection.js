@@ -85,7 +85,7 @@ const SearchContentBtn = ({tooltip, img, isRadio}) => {
     <div className="list-search-content-toggle">
       <input type={isRadio ? "radio" : "checkbox"} id={tooltip} name={isRadio ? "radio" : null} className="list-search-content-toggle-button" />
       <label for={tooltip}>
-        <img src={`http://localhost:3000/${img}`} alt={tooltip} />
+        <img src={`/${img}`} alt={tooltip} />
       </label>
     </div>
   );

@@ -84,7 +84,7 @@ const ModPage = () => {
         <div className="mod-info-feature-top">
           <div>
             <div className="mod-info-title">
-              <img className="mod-info-category-icon" src={`http://localhost:3000/mod_icons/${categoryIcon}.svg`} alt="category icon" />
+              <img className="mod-info-category-icon" src={`/mod_icons/${categoryIcon}.svg`} alt="category icon" />
               <div className="mod-info-name">{name}</div>
               <div className="mod-info-version">v{version}</div>
             </div>

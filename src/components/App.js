@@ -7,7 +7,7 @@ function App() {
       <div className="navbar">
         <div className="navbar-logo">
           <a href="/">
-            <img className="logo-middle" style={{ height: '20px', marginLeft: '10px' }} src="http://localhost:3000/logo.svg" alt="" />
+            <img className="logo-middle" style={{ height: '20px', marginLeft: '10px' }} src={"/logo.svg"} alt="" />
           </a>
         </div>
         <div className="navbar-content">

@@ -107,8 +107,8 @@ const LevelPage = () => {
                 </div>
               </div>
               <div className="level-info-header-buttons">
-                <a href={steamWorkshop}><img className="level-info-header-button" src="http://localhost:3000/other_icons/steam.svg" alt="steam workshop" /></a>
-                <a href={levelDownload}><img className="level-info-header-button" src="http://localhost:3000/other_icons/download.svg" alt="level download" /></a>
+                <a href={steamWorkshop}><img className="level-info-header-button" src="/other_icons/steam.svg" alt="steam workshop" /></a>
+                <a href={levelDownload}><img className="level-info-header-button" src="/other_icons/download.svg" alt="level download" /></a>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ const LevelPage = () => {
                       Lv.
                     </div>
                     <div className="level-info-value">
-                      <img style={{ width: '40px' }} src={`http://localhost:3000/level_icons/level-icon-${levelDifficulty}.svg`} alt="" />
+                      <img style={{ width: '40px' }} src={`/level_icons/level-icon-${levelDifficulty}.svg`} alt="" />
                     </div>
                   </div>
                   <div className="level-info-detail-info-section">

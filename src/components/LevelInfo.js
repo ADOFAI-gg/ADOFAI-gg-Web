@@ -5,10 +5,10 @@ const LevelInfo = ({ recentPopularLevel }) => {
     <a key={recentPopularLevel.id} href={'/levels/' + recentPopularLevel.levelId}>
       <div className="main-level-info">
         <div className="main-level-background-container"> 
-          <div style={{ backgroundImage: `url(${'http://localhost:3000/level_backgrounds/' + recentPopularLevel.levelBackground})` }} className="main-level-background"></div>
+          <div style={{ backgroundImage: `url(${'level_backgrounds/' + recentPopularLevel.levelBackground})` }} className="main-level-background"></div>
         </div>
         <div className="main-level-info-container-bottom">
-          <img style={{ marginLeft: '10px' }} src={'http://localhost:3000/level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
+          <img style={{ marginLeft: '10px' }} src={'level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
               <td className="main-level-info-top">Level</td>
@@ -43,7 +43,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/comment.svg" alt="" /></td>
+              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="other_icons/comment.svg" alt="" /></td>
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-comments">{recentPopularLevel.levelComments}</td>
@@ -51,7 +51,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="http://localhost:3000/other_icons/heart.svg" alt="" /></td>
+              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="other_icons/heart.svg" alt="" /></td>
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-likes">{recentPopularLevel.levelLikes}</td>
@@ -59,7 +59,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
           </table>
         </div>
         <div className="main-level-info-container-top">
-          <img style={{ marginLeft: '10px' }} src={'http://localhost:3000/level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
+          <img style={{ marginLeft: '10px' }} src={'level_icons/level-icon-' + recentPopularLevel.levelDifficulty + '.svg'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
               <td className="main-level-info-top">Song</td>
