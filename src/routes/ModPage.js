@@ -11,49 +11,34 @@ import LikeButton from '../components/LikeButton';
 // Stylesheets
 import '../stylesheets/mod.css';
 
+const markdownExample = `
+## 기능
+
+아래 기능들을 사용자가 활성화/비활성화할 수 있음.
+
+- 레벨 에디터에서:
+    - 첫 번째 타일에 이벤트 추가가 가능해짐
+    - BPM, 피치 등 여러 값들의 한도를 제거
+    - [mXparser의 math eval](https://mathparser.org/mxparser-math-collection/) 기능 제공:
+        - 연산자 (더하기 +, 빼기 - , 곱하기 *, 나누기 /, 팩토리얼 !, 거듭제곱 ^ 등)
+        - 삼각 함수 (sin, cos, tan 등)
+        - e를 표현한 숫자 표현 (1e+10)
+        - 수학에서 쓰이는 상수 (pi, e 등)
+        - 비트 연산자 (앞에 \`@\`를 붙여 사용함, \`@~\`)
+    - 허가된 아티스트를 추가할 경우, 아티스트 URL을 자동으로 추가함
+    - \`Ctrl + Alt + , 또는 .\` 키를 사용했을 때 90° 대신 15°로 회전하게 하기
+
+## 안내 사항
+
+- \`v1.1.0-r73+\` 버전은 게임 버전 r71 이하와 호환되지 않음.
+`;
 const ModPage = () => {
   // detailModInfo must be ...
   const exampleModInfo = {
     id: 123,
     name: "oh no there are too many adofai tweaks22",
     version: "2.3.5",
-    detailDescription: `
-    ## 기능
-
-    아래 기능들을 사용자가 활성화/비활성화할 수 있음.
-    
-    - 특정 이펙트 비활성화
-        - VFX 필터 (흑백, 아케이드 등) 끄기
-        - 블룸 끄기
-        - 스크린 플래시 끄기
-        - "필터 설정" 이펙트 끄기
-        - 화면 흔들림 끄기
-    - 특정 UI 숨기기
-        - 판정 텍스트 숨기기 (정확, 빠름 등)
-        - 미스 표시 아이콘 숨기기
-    
-            ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad753c46-6382-4d3b-82ef-e0f644dd830f/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad753c46-6382-4d3b-82ef-e0f644dd830f/Untitled.png)
-    
-        - 노래 이름 및 작곡가 숨기기
-            - 오토, 자동 플레이 텍스트, 판정 조정 아이콘(보통 판정, 엄격한 판정 등) 숨기기
-        - Beta Build 텍스트 숨기기
-    - 판정 표시
-        - 입력 실수 미터 표시
-    
-            ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99c3e491-5f96-4d73-b714-08f11f6e14b3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/99c3e491-5f96-4d73-b714-08f11f6e14b3/Untitled.png)
-    
-        - "정확" 텍스트 숨기기
-    - 입력되는 키 제한하기
-    - 키뷰어
-    - 행성 색상과 행성 불투명도
-    - 기타
-        - 레벨 에디터에서 플레이 도중 마우스 휠로 확대/축소 사용 안 함
-        - "글리치" 필터에서 화면이 뒤집히는 것을 방지
-    
-    ## 안내 사항
-    
-    - 키뷰어에서는 초당 입력 수, 총 입력 횟수를 표시하는 기능을 지원하지 않으며, 입력 횟수는 게임 실행마다 초기화됨.
-  `,
+    detailDescription: markdownExample,
     likes: "124780345",
     downloads: "1069",
     supportVersion: ["r75", "r76", "r77", "r78", "r79", "r80", "r81", "r82", "r83", "r84", "r85"],
@@ -142,10 +127,12 @@ const ModPage = () => {
           <LikeButton likes={likes} />
         </div>
       </div>
-
+      
       <div className="mod-info-body">
         {console.log(detailDescription)}
-        <ReactMarkdown remarkPlugins={[gfm]} children={detailDescription} />
+        <ReactMarkdown unwrapDisallowed className="mod-info-markdown">
+          {detailDescription}
+        </ReactMarkdown>
       </div>
     </div>
   );
