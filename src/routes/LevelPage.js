@@ -1,8 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 // Components
+import LikeButton from '../components/LikeButton';
 import LevelTags from '../components/LevelTags';
 
 // Stylesheets
@@ -30,8 +30,6 @@ const LevelPage = () => {
       }
     });
   }
-
-  const { id } = useParams();
 
   // TODO replace with object
   const levelName = `LagTrain`;
@@ -62,10 +60,10 @@ const LevelPage = () => {
   ];
 
   const levelMinBPMInt = String(levelMinBPM).split('.')[0]
-  const levelMinBPmDecimal = String(levelMinBPM).split('.')[1]
+  const levelMinBPMDecimal = String(levelMinBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
 
   const levelMaxBPMInt = String(levelMaxBPM).split('.')[0]
-  const levelMaxBPmDecimal = String(levelMaxBPM).split('.')[1]
+  const levelMaxBPMDecimal = String(levelMaxBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
 
   return (
     <>
@@ -101,7 +99,7 @@ const LevelPage = () => {
                   }})()}
 
                   {levelTags.map((tag) => (
-                    <LevelTags tag={tag} styleClass='level-tag' />
+                    console.log(<LevelTags tag={tag} styleClass='level-tag' />)
                   ))}
                   {/* {levelTags.map((tag) => (
                     <div className="level-info-tag">{tag}</div>
@@ -109,8 +107,8 @@ const LevelPage = () => {
                 </div>
               </div>
               <div className="level-info-header-buttons">
-                <a href={steamWorkshop}><img className="level-info-header-button" src="http://localhost:3000/other_icons/steam.svg" alt="steam workshop" /></a>
-                <a href={levelDownload}><img className="level-info-header-button" src="http://localhost:3000/other_icons/download.svg" alt="level download" /></a>
+                <a href={steamWorkshop}><img className="level-info-header-button" src="/other_icons/steam.svg" alt="steam workshop" /></a>
+                <a href={levelDownload}><img className="level-info-header-button" src="/other_icons/download.svg" alt="level download" /></a>
               </div>
             </div>
           </div>
@@ -123,7 +121,7 @@ const LevelPage = () => {
                       Lv.
                     </div>
                     <div className="level-info-value">
-                      <img style={{ width: '40px' }} src={`http://localhost:3000/level_icons/level-icon-${levelDifficulty}.svg`} alt="" />
+                      <img style={{ width: '40px' }} src={`/level_icons/level-icon-${levelDifficulty}.svg`} alt="" />
                     </div>
                   </div>
                   <div className="level-info-detail-info-section">
@@ -131,7 +129,7 @@ const LevelPage = () => {
                       BPM
                     </div>
                     <div className="level-info-value">
-                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPmDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPmDecimal}</span>
+                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPMDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPMDecimal}</span>
                     </div>
                   </div>
                   <div className="level-info-detail-info-section">
@@ -152,11 +150,7 @@ const LevelPage = () => {
                       {levelDescription}
                     </div>
                   </div>
-                  <div className="level-info-detail-info-like">
-                    {/* NO FUNCTIONALITY */}
-                    <img style={{ height: '12px' }} src="http://localhost:3000/other_icons/un_heart.svg" alt="" />
-                    {levelLikeCount}
-                  </div>
+                  <LikeButton likes={levelLikeCount} />
                 </div>
                   
               </div>
@@ -165,8 +159,6 @@ const LevelPage = () => {
                 <iframe src={`https://www.youtube.com/embed/${levelYoutubeID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
               </div>
             </div>
-
-            
           </div>
         </div>
 
@@ -174,7 +166,6 @@ const LevelPage = () => {
           <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
           <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
         </div>
-
       </div>
     </>
   );

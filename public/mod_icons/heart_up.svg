@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="610" height="512" viewBox="0 0 610 512">
+  <defs>
+    <clipPath id="clip-heart_up">
+      <rect width="610" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="heart_up" clip-path="url(#clip-heart_up)">
+    <g id="Icon_feather-arrow-up" data-name="Icon feather-arrow-up" transform="translate(456.44 81.5)">
+      <path id="패스_27" data-name="패스 27" d="M18,340.989V7.5" transform="translate(24.034 0)" fill="none" stroke="#ff9797" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_28" data-name="패스 28" d="M7.5,42.293,42.034,7.5,76.568,42.293" transform="translate(0 0)" fill="none" stroke="#ff9797" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+    <path id="Icon_awesome-heart" data-name="Icon awesome-heart" d="M278.346,20.691C245.352-7.426,196.283-2.368,166,28.879L154.138,41.1,142.277,28.879C112.053-2.368,62.923-7.426,29.93,20.691c-37.81,32.271-39.8,90.191-5.961,125.171l116.5,120.295a18.875,18.875,0,0,0,27.274,0l116.5-120.295c33.9-34.981,31.91-92.9-5.9-125.171Z" transform="translate(99.001 118.753)" fill="#fff"/>
+  </g>
+</svg>

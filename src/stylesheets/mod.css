@@ -1,0 +1,144 @@
+.mod-info-main {
+  display: flex;
+  min-width: 1120px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.mod-info-feature {
+  margin-top: 30px;
+  padding-bottom: 15px;
+  width: 1100px;
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.mod-info-feature-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mod-info-title {
+  display: flex;
+  align-items: center;
+}
+
+.mod-info-category-icon {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.mod-info-name {
+  max-width: 800px;
+  line-height: 1.05em;
+  height: 1.1em;
+  font-size: 40px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mod-info-version {
+  font-size: 24px;
+  opacity: 70%;
+}
+
+.mod-info-date {
+  display: flex;
+  opacity: 70%;
+}
+
+.mod-info-date div {
+  margin-right: 10px;
+}
+
+.mod-info-date div:first-child::after {
+  content: "/";
+  margin-left: 10px;
+}
+
+.mod-info-buttons .mod-info-button svg {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+}
+
+.mod-info-feature-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+}
+
+.mod-info-feature-bottom-detail {
+  display: flex;
+}
+
+.mod-info-feature-bottom-item {
+  margin-right: 30px;
+}
+
+.mod-info-feature-bottom-item-title {
+  opacity: 70%;
+}
+
+.mod-info-feature-bottom-item-title svg {
+  margin-right: 5px;
+}
+
+.mod-info-feature-bottom-item-content {
+  font-size: 22px;
+}
+
+.mod-info-body {
+  width: 1100px;
+  margin-top: 5px;
+  word-break: break-word;
+  /* font-family: "Quicksand", "나눔스퀘어라운드", "나눔고딕", "나눔스퀘어", "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Segoe UI WP", "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
+}
+
+.mod-info-markdown * {
+  padding: 4px 5px;
+}
+
+.mod-info-markdown h2,
+.mod-info-markdown h3 {
+  padding: 5px 0;
+  margin-left: 0;
+}
+
+.mod-info-markdown p {
+  margin: 0;
+}
+
+.mod-info-markdown ul {
+  margin-left: 0;
+  padding-inline-start: 35px;
+  list-style-type: revert;
+  text-align: left;
+}
+
+.mod-info-markdown li {
+  list-style-type: disc;
+  display: revert;
+}
+
+.mod-info-markdown li a {
+  font-weight: 800;
+  font-size: revert;
+  text-align: revert;
+  padding: revert;
+  color: #fff5c1;
+}
+
+.mod-info-markdown code {
+  font-family: 'Roboto Mono', 'Quicksand', monospace;
+  letter-spacing: -.75px;
+  font-size: .8em;
+  background-color: #ffffff25;
+  border-radius: 5px;
+  padding: 3px 7px;
+}

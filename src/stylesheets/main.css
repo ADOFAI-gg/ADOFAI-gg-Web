@@ -325,7 +325,6 @@
   right: 50px;
   z-index: 1;
   cursor: pointer;
-  background: url('http://localhost:3000/other_icons/message.svg');
   transition: all .15s ease-in-out;
   filter: brightness(0.8);
 }

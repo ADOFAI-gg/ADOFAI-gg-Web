@@ -1,58 +1,54 @@
 /* This file contains CSS that is common across all pages */
 
+/* Roboto Mono (monospace) font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+/* Quicksand fonts */
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 300;
-  src: url('http://localhost:3000/fonts/Quicksand-Light.ttf');
+  src: url('../fonts/Quicksand-Light.ttf');
 }
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 400;
-  src: url('http://localhost:3000/fonts/Quicksand-Regular.ttf');
+  src: url('../fonts/Quicksand-Regular.ttf');
 }
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
-  src: url('http://localhost:3000/fonts/Quicksand-Medium.ttf');
+  src: url('../fonts/Quicksand-Medium.ttf');
 }
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 600;
-  src: url('http://localhost:3000/fonts/Quicksand-SemiBold.ttf');
+  src: url('../fonts/Quicksand-SemiBold.ttf');
 }
 @font-face {
   font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
-  src: url('http://localhost:3000/fonts/Quicksand-Bold.ttf');
+  src: url('../fonts/Quicksand-Bold.ttf');
 }
 
-html, body {
-  width: 100%;
+body {
+  height: 100%;
   min-width: 1120px;
+  margin: 0;
+  font-family: Quicksand, sans-serif;
+  font-weight: 400;
+  background-size: cover;
+  background-attachment: fixed;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
-}
-
-html {
-  background-image: url('http://localhost:3000/background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-body {
-  margin: 0;
-  font-family: Quicksand, sans-serif;
-  font-weight: 400;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -82,7 +78,7 @@ li {
 li a {
   font-size: 20px;
   text-align: center;
-  padding: 0px 25px;
+  padding: 0 25px;
   color: white;
 }
 
@@ -210,7 +206,7 @@ main {
   padding: 5px;
   border-radius: 6px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   transition: all .2s ease;
 }
 
@@ -219,6 +215,164 @@ main {
   opacity: 100;
 }
 
+
+/* SEARCH SECTION */
+
+.list-search-container {
+  width: 1080px;
+  min-height: 32px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.list-search-section {
+  display: flex;
+}
+
+.list-text-input {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-style: none;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  font-family: Quicksand;
+  font-weight: 300;
+  font-size: 15px;
+  color: white;
+}
+
+.list-text-input::placeholder {
+  color: white;
+  opacity: 70%;
+}
+
+.list-search-bar {
+  width: 1000em;
+}
+
+.list-search-content-toggle,
+.list-search-content-toggle img {
+  height: 32px;
+  cursor: pointer;
+}
+
+.list-search-content-toggle-button {
+  display: none;
+}
+
+.list-search-content-toggle label {
+  opacity: 50%;
+  transition: all .2s ease;
+}
+
+.list-search-content-toggle-button:checked + label {
+  opacity: 100%;
+}
+
+.list-search-filter-button,
+.list-search-sort-button {
+  margin-left: 10px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all .2s ease;
+}
+
+.list-search-filter-button svg,
+.list-search-sort-button svg {
+  height: 32px;
+  width: 20px!important;
+}
+
+.list-search-filter,
+.list-search-sort {
+  margin-top: 10px;
+}
+
+.list-search-content-title {
+  width: 1080px;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding-top: 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.list-search-content-show {
+  animation-name: list-search-content-show-animation;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.list-search-content-hide {
+  animation-name: list-search-content-hide-animation;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes list-search-content-hide-animation {
+  from {
+    height: auto;
+    opacity: 100%;
+    visibility: visible;
+  } to {
+    opacity: 0%;
+    height: 0;
+    margin: 0;
+  }
+}
+
+@keyframes list-search-content-show-animation {
+  from {
+    opacity: 0%;
+    height: 0;
+    margin: 0;
+  } to {
+    height: auto;
+    opacity: 100%;
+    visibility: visible;
+  }
+}
+
+/* LIKE BUTTON */
+
+.like-button {
+  max-width: 100px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-top: 5px;
+  border-radius: 100em;
+  font-weight: 400;
+  color: rgb(90, 90, 90);
+  background-color: white;
+  font-family: 'Roboto Mono', 'Quicksand', monospace;
+  letter-spacing: -.5px;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.like-button:hover {
+  background-color: rgb(197, 197, 197);
+}
+
+.like-button svg {
+  margin-right: 5px;
+  transition: all .2s ease;
+}
+
+.like-button-clicked {
+  background-color: rgb(228, 228, 228);
+}
+
+.like-button-clicked svg {
+  color: rgb(255, 77, 77)
+}
 
 /* FOOTER */
 
