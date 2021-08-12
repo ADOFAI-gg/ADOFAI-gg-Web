@@ -1,4 +1,6 @@
 import LevelTags from './LevelTags';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const LevelInfo = ({ recentPopularLevel }) => {
   return (
@@ -51,7 +53,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="80" style={{ textAlign: "center", marginLeft: "10px" }}>
             <tr>
-              <td valign="bottom" className="main-level-info-top"><img style={{ height: '12px' }} src="other_icons/heart.svg" alt="" /></td>
+              <td valign="bottom" className="main-level-info-top"><FontAwesomeIcon icon={faHeart} style={{ height: '12px', weight: '12px', color: '#FF4E4E' }}/></td>
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-likes">{recentPopularLevel.levelLikes}</td>
