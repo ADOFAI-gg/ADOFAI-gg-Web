@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
-import gfm from 'remark-gfm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faUserCircle, faFileDownload, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
