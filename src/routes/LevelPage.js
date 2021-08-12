@@ -1,5 +1,8 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faSteam } from '@fortawesome/free-brands-svg-icons';
 
 // Components
 import LikeButton from '../components/LikeButton';
@@ -107,8 +110,12 @@ const LevelPage = () => {
                 </div>
               </div>
               <div className="level-info-header-buttons">
-                <a href={steamWorkshop}><img className="level-info-header-button" src="/other_icons/steam.svg" alt="steam workshop" /></a>
-                <a href={levelDownload}><img className="level-info-header-button" src="/other_icons/download.svg" alt="level download" /></a>
+                <a href={steamWorkshop} className="level-info-header-button" >
+                  <FontAwesomeIcon icon={faSteam} />
+                </a>
+                <a href={levelDownload} className="level-info-header-button">
+                <FontAwesomeIcon icon={faDownload} />
+                </a>
               </div>
             </div>
           </div>
