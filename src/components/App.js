@@ -14,7 +14,7 @@ function App() {
           <ul>
             <li><a href="/levels">Levels</a></li>
             <li><a href="/mods">Mods</a></li>
-            <li><a href="/ranking">Ranking</a></li>
+            <li><a href="/ranks">Ranking</a></li>
           </ul>
         </div>
         <div className="navbar-login"></div>

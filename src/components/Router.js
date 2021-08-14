@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import HomePage from '../routes/HomePage';
 import LevelPage from '../routes/LevelPage';
+import LevelListPage from '../routes/LevelListPage';
 import ModListPage from '../routes/ModListPage';
 import ModPage from '../routes/ModPage';
-import LevelListPage from '../routes/LevelListPage'
+import RankingPage from '../routes/RankingPage';
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
         <Route path="/levels/:id" component={LevelPage} />
         <Route path="/mods" component={ModListPage} />
         <Route path="/mods/:id" component={ModPage} />
+        <Route path="/ranks" component={RankingPage} />
 
         <Route>
           {/* XXX to component */}
