@@ -13,11 +13,11 @@ const AppRouter = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/levels" component={LevelListPage} />
-        <Route path="/levels/:id" component={LevelPage} />
-        <Route path="/mods" component={ModListPage} />
-        <Route path="/mods/:id" component={ModPage} />
-        <Route path="/ranks" component={RankingPage} />
+        <Route exact path="/levels" component={LevelListPage} />
+        <Route exact path="/levels/:id" component={LevelPage} />
+        <Route exact path="/mods" component={ModListPage} />
+        <Route exact path="/mods/:id" component={ModPage} />
+        <Route exact path="/ranks" component={RankingPage} />
 
         <Route>
           {/* XXX to component */}
