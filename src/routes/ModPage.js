@@ -31,6 +31,7 @@ const markdownExample = `
 
 - \`v1.1.0-r73+\` 버전은 게임 버전 r71 이하와 호환되지 않음.
 `;
+
 const ModPage = () => {
   // detailModInfo must be ...
   const exampleModInfo = {
