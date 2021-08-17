@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown'
-import gfm from 'remark-gfm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faUserCircle, faFileDownload, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -32,6 +31,7 @@ const markdownExample = `
 
 - \`v1.1.0-r73+\` 버전은 게임 버전 r71 이하와 호환되지 않음.
 `;
+
 const ModPage = () => {
   // detailModInfo must be ...
   const exampleModInfo = {

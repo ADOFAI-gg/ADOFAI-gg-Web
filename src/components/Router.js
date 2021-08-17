@@ -1,37 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import HomePage from '../routes/HomePage';
 import LevelPage from '../routes/LevelPage';
+import LevelListPage from '../routes/LevelListPage';
 import ModListPage from '../routes/ModListPage';
 import ModPage from '../routes/ModPage';
-import LevelListPage from '../routes/LevelListPage'
+import RankingPage from '../routes/RankingPage';
 
 const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/levels">
-          <LevelListPage />
-        </Route>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/levels" component={LevelListPage} />
+        <Route exact path="/levels/:id" component={LevelPage} />
+        <Route exact path="/mods" component={ModListPage} />
+        <Route exact path="/mods/:id" component={ModPage} />
+        <Route exact path="/ranks" component={RankingPage} />
 
-        <Route exact path="/levels/:id">
-          <LevelPage />
-        </Route>
-
-        <Route exact path="/mods">
-          <ModListPage />
-        </Route>
-
-        <Route exact path="/mods/:id">
-          <ModPage />
-        </Route>
-
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-
-        {/* 404 NOT FOUND PAGE */}
         <Route>
+          {/* XXX to component */}
           <main>
             <br />
             <h2>Oops! This page does not exist.</h2>
