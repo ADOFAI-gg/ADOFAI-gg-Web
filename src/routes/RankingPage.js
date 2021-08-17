@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
 
@@ -9,18 +9,59 @@ import RankingItem from '../components/RankingItem';
 import '../stylesheets/ranking.css';
 
 const RankingPage = () => {
-  const [items, setItems] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(null);
-  const [hasMore, setHasMore] = useState(true);
-  const [itemCount, setItemCount] = useState(0);
+  const reduce = (state, action) => {
+    switch (action.type) {
+      case 'RANKING_REQUEST':
+        return {
+          ...state,
+          isLoading: true,
+        };
+        
+      case 'RANKING_FETCH':
+        return {
+          ...state,
+          isLoading: false,
+          items: action.items,
+        };
+      
+      case 'RANKING_ERROR':
+        return {
+          ...state,
+          isLoading: false,
+          error: action.error,
+        };
+      
+      case 'HAS_MORE_RANKING':
+        return {
+          ...state,
+          hasMore: action.hasMore,
+        };
+      
+      case 'ITEM_COUNT':
+        return {
+          ...state,
+          itemCount: action.itemCount,
+        };
+      
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reduce, {
+    isLoading: false,
+    isError: null,
+    hasMore: true,
+    itemCount: 0,
+    items: null,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setItems(null);
-        setIsError(null);
-        setIsLoading(true);
+        dispatch({ type: 'RANKING_FETCH', items: null });
+        dispatch({ type: 'RANKING_ERROR', error: null });
+        dispatch({ type: 'RANKING_REQUEST' });
 
         const response = await axios.get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`, {
@@ -30,39 +71,38 @@ const RankingPage = () => {
           }
         });
 
-        setItems(response.data.results);
-        setItemCount(response.data.count);
+        dispatch({ type: 'RANKING_FETCH', items: response.data.results });
+        dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
       } catch (e) {
-        setIsError(e);
+        dispatch({ type: 'RANKING_ERROR', error: e });
       }
 
-      setIsLoading(false);
+      ;
     };
 
     fetchData();
   }, []);
 
   const fetchMoreData = async () => {
-    console.log(items);
-    if (items.length >= itemCount) {
-      setHasMore(false);
+    if (state.items.length >= state.itemCount) {
+      dispatch({ type: 'HAS_MORE_RANKING', hasMore: false });
       return;
     }
 
     try {
-      setIsError(null);
+      dispatch({ type: 'RANKING_ERROR', error: null });
 
       const response = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`, {
         params: {
-          offset: items.length,
+          offset: state.items.length,
           amount: 30,
         }
       });
 
-      setItems(items.concat(response.data.results));
+      dispatch({ type: 'RANKING_FETCH', items: state.items.concat(response.data.results) });
     } catch (e) {
-      setIsError(e);
+      dispatch({ type: 'RANKING_ERROR', error: e });
     }
   };
 
@@ -73,21 +113,21 @@ const RankingPage = () => {
       </div>
 
       <div className="ranking-content">
-        { isLoading ? null
-        : !items ? null
-        : isError ? (<h2>Oops! An error occurred.</h2>)
+        { state.isLoading ? null
+        : !state.items ? null
+        : state.isError ? (<h2>Oops! An error occurred.</h2>)
         : (
           <InfiniteScroll
-            dataLength={items.length}
+            dataLength={state.items.length}
             next={fetchMoreData}
-            hasMore={hasMore}
+            hasMore={state.hasMore}
             loader={
               <h4 style={{ textAlign: 'center', fontWeight: '300', marginTop: '10px', marginBottom: '10px' }}>
                 Wait a second please!
               </h4>
             }
           >
-            {items.map((i, index) => {
+            {state.items.map((i, index) => {
               return <RankingItem rank={i} index={index} />
             })}
           </InfiniteScroll>
