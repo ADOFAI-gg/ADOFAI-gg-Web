@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useReducer, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +15,51 @@ import LevelTags from '../components/LevelTags';
 import '../stylesheets/level.css';
 
 const LevelPage = () => {
-  function PSSwal() {
+  const reduce = (state, action) => {
+    switch (action.type) {
+      case 'FETCH_REQUEST':
+        return {
+          ...state,
+          isLoading: true,
+        };
+        
+      case 'FETCH_RESULT':
+        return {
+          ...state,
+          isLoading: false,
+          level: {
+            ...action.level,
+            thumbnail: null,
+            youtubeId: !action.level ? null : /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/.exec(action.level.video)[1],
+            levelTags: [
+              0,
+              2,
+              3,
+              6,
+              1
+            ],
+          },
+        };
+      
+      case 'FETCH_ERROR':
+        return {
+          ...state,
+          isLoading: false,
+          error: action.error,
+        };
+      
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reduce, {
+    isLoading: false,
+    isError: null,
+    level: null
+  });
+
+  const PSSwal = () => {
     Swal.fire({
       title: 'What is Photosensitive Seizure?',
       html: `
@@ -34,140 +81,144 @@ const LevelPage = () => {
     });
   }
 
-  // TODO replace with object
-  const levelName = `LagTrain`;
-  const levelSongName = `ラグトレイン`;
+  const { id } = useParams();
 
-  const artistName = `稲葉曇`;
-  const levelCreatorName = `undefined`;
-  const levelThumbnail = `https://cdn.discordapp.com/attachments/697417647721021442/867295578161020968/unknown.png`;
+  useEffect(() => {
+    const fetchData = async () => {
 
-  const levelDifficulty = 17.5;
-  const levelMinBPM = 9999.636;
-  const levelMaxBPM = 9913499.99;
-  const levelTiles = 345348123123;
-  const levelDescription = `Good luck`;
-  const levelYoutubeID = `UnIhRpIT7nc`;
-  const levelLikeCount = 18342;
-  
-  const steamWorkshop = `https://steamcommunity.com`;
-  const levelDownload = `https://cdn.discordapp.com/attachments/697417647721021442/867317985890926602/METADATA.txt`;
+      try {
+        dispatch({ type: 'FETCH_RESULT', level: null });
+        dispatch({ type: 'FETCH_ERROR', error: null });
+        dispatch({ type: 'FETCH_REQUEST' });
 
-  const hasSeizureWarning = true;
-  const levelTags = [
-    0,
-    2,
-    3,
-    6,
-    1
-  ];
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${id}`);
 
-  const levelMinBPMInt = String(levelMinBPM).split('.')[0]
-  const levelMinBPMDecimal = String(levelMinBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
+        console.log(response)
+        dispatch({ type: 'FETCH_RESULT', level: response.data });
+      } catch (e) {
+        dispatch({ type: 'FETCH_ERROR', error: e });
+      }
+    };
 
-  const levelMaxBPMInt = String(levelMaxBPM).split('.')[0]
-  const levelMaxBPMDecimal = String(levelMaxBPM).split('.')[1] === undefined ? null : `.${String(levelMinBPM).split('.')[1]}`
+    fetchData();
+    
+  }, []);
 
   return (
     <>
       {/* Main */}
       <div className="level-info-main">
-        <div className="level-info">
-          <div className="lavel-info-header">
-            <img className="level-info-thumbnail" src={levelThumbnail} alt="Level Thumbnail." />
-            <div className="level-info-basic">
-              <div className="level-info-title">
-                <div>
-                  <div className="tooltip-container">
-                    {(() => { if (levelName.length > 21) {
-                      return ( 
-                        <span className="level-info-tooltiptext">
-                          Full Name of Level
-                          <br />
-                          <span style={{ fontWeight:'300' }}>{levelName}</span>
-                        </span>
-                       )
-                    }})()}
+        { state.isLoading ? null
+          : !state.level ? null
+          : state.isError ? (<h2>Oops! An error occurred.</h2>)
+          : ( 
+              <div className="level-info">
+                <div className="lavel-info-header">
+                  <img className="level-info-thumbnail" src={state.level.thumbnail ? state.level.thumbnail : `https://img.youtube.com/vi/${state.level.youtubeId}/0.jpg`} alt="Level Thumbnail." />
+                  <div className="level-info-basic">
+                    <div className="level-info-title">
+                      <div>
+                        <div className="tooltip-container">
+                          {state.level.title.length > 21 ?
+                            <span className="level-info-tooltiptext tooltiptext">
+                              Full Name of Level
+                              <br />
+                              <span style={{ fontWeight:'300' }}>{state.level.title}</span>
+                            </span>
+                          : null}
 
-                    <div className="level-info-name">{levelName}</div>
-                  </div>
-                  <div className="level-info-song-name">{levelSongName}</div>
-                  <div className="level-info-author">
-                    <strong>{artistName}</strong> ─ Level by <strong>{levelCreatorName}</strong>
-                  </div>
-                </div>
-                <div className="level-info-tags">
-                  {(() => { if (hasSeizureWarning) {
-                    return <div className="level-info-tag level-info-seizure-tag" onClick={PSSwal} />
-                  }})()}
+                          <div className="level-info-name">{state.level.title}</div>
+                        </div>
+                        <div className="level-info-song-name">{state.level.song}</div>
+                        <div className="level-info-author">
+                          <strong>{state.level.artists.join(', ')}</strong> ─ Level by <strong>{state.level.creators.join(' & ')}</strong>
+                        </div>
+                      </div>
+                      <div className="level-info-tags">
+                      {state.level.nsfw ? 
+                          <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
+                        : null}
 
-                  {levelTags.map((tag) => (
-                    console.log(<LevelTags tag={tag} styleClass='level-tag' />)
-                  ))}
-                  {/* {levelTags.map((tag) => (
-                    <div className="level-info-tag">{tag}</div>
-                  ))} */}
-                </div>
-              </div>
-              <div className="level-info-header-buttons">
-                <a href={steamWorkshop} className="level-info-header-button" >
-                  <FontAwesomeIcon icon={faSteam} />
-                </a>
-                <a href={levelDownload} className="level-info-header-button">
-                <FontAwesomeIcon icon={faDownload} />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="level-info-details">
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', width: '600px' }}>
-                <div style={{ display: 'flex' }}>
-                  <div className="level-info-detail-info-section">
-                    <div className="level-info-label">
-                      Lv.
+                        {state.level.epilepsyWarning ? 
+                          <div className="level-info-tag level-info-warn-tag level-info-seizure-tag" onClick={PSSwal} />
+                        : null}
+
+                        {state.level.levelTags.map((tag) => (
+                          console.log(<LevelTags tag={tag} styleClass='level-tag' />)
+                        ))}
+                      </div>
                     </div>
-                    <div className="level-info-value">
-                      <img style={{ width: '40px' }} src={`/level_icons/level-icon-${levelDifficulty}.svg`} alt="" />
-                    </div>
-                  </div>
-                  <div className="level-info-detail-info-section">
-                    <div className="level-info-label">
-                      BPM
-                    </div>
-                    <div className="level-info-value">
-                      {levelMinBPMInt}<span className="level-info-value-decimal">.{levelMinBPMDecimal}</span> - {levelMaxBPMInt}<span className="level-info-value-decimal">.{levelMaxBPMDecimal}</span>
-                    </div>
-                  </div>
-                  <div className="level-info-detail-info-section">
-                    <div className="level-info-label">
-                      Tiles
-                    </div>
-                    <div className="level-info-value">
-                      {levelTiles}
+                    <div className="level-info-header-buttons">
+                      {!state.level.workshop ? null :
+                        <a href={state.level.workshop} className="level-info-header-button" >
+                          <FontAwesomeIcon icon={faSteam} />
+                        </a>
+                      }
+                      <a href={state.level.download} className="level-info-header-button">
+                      <FontAwesomeIcon icon={faDownload} />
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                  <div className="level-info-detail-info-section">
-                    <div className="level-info-label">
-                      Description
+                <div className="level-info-details">
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '600px' }}>
+                      <div style={{ display: 'flex' }}>
+                        <div className="level-info-detail-info-section">
+                          <div className="level-info-label">
+                            Lv.
+                          </div>
+                          <div className="level-info-value">
+                            <img style={{ width: '40px' }} src={`/level_icons/level-icon-${state.level.difficulty}.svg`} alt="" />
+                          </div>
+                        </div>
+                        <div className="level-info-detail-info-section">
+                          <div className="level-info-label">
+                            BPM
+                          </div>
+                          <div className="level-info-value">            
+                            {String(state.level.minBpm).split('.')[0]}
+                            <span className="level-info-value-decimal">.{String(state.level.minBpm).split('.')[1] === undefined ? null : `.${String(state.level.minBpm).split('.')[1]}`}</span>
+                             - 
+                            {String(state.level.maxBpm).split('.')[0]}
+                            <span className="level-info-value-decimal">.{String(state.level.maxBpm).split('.')[1] === undefined ? null : `.${String(state.level.minBpm).split('.')[1]}`}</span>
+                          </div>
+                        </div>
+                        <div className="level-info-detail-info-section">
+                          <div className="level-info-label">
+                            Tiles
+                          </div>
+                          <div className="level-info-value">
+                            {state.level.tiles}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <div className="level-info-detail-info-section">
+                          <div className="level-info-label">
+                            Description
+                          </div>
+                          <div className="level-info-value level-info-detail-info-description ">
+                            {state.level.description}
+                          </div>
+                        </div>
+                        <LikeButton likes={state.level.likes} />
+                      </div>
+                        
                     </div>
-                    <div className="level-info-value level-info-detail-info-description ">
-                      {levelDescription}
+                    <div className="level-info-detail-info-video">
+                      <div>Wait a moment please!</div>
+                      <iframe
+                        src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      />
                     </div>
                   </div>
-                  <LikeButton likes={levelLikeCount} />
                 </div>
-                  
               </div>
-              <div className="level-info-detail-info-video">
-                <div>Wait a moment please!</div>
-                <iframe src={`https://www.youtube.com/embed/${levelYoutubeID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
 
         <div className="content-title">
           <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>

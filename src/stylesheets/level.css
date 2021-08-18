@@ -67,11 +67,13 @@
 }
 
 .tooltip-container .level-info-tooltiptext {
-  top: 105%;
-  left: 0;
-  font-size: 16px;
-  max-width: 800px;
-  width: auto;
+  top: 105%!important;
+  left: 0!important;
+  font-size: 16px!important;
+  max-width: 800px!important;
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+  width: auto!important;
 }
 
 .level-info-author {
@@ -116,11 +118,11 @@
   text-align: center;
 }
 
-.level-info-seizure-tag-container {
+.level-info-warn-tag-container {
   transition: all .2s ease; 
 }
 
-.level-info-seizure-tag {
+.level-info-warn-tag {
   overflow: hidden;
   width: 147px;
   background-color: #ff4646;
@@ -130,7 +132,7 @@
   display: flex;
 }
 
-.level-info-seizure-tag::before {
+.level-info-warn-tag::before {
   content: "!";
   background-color: #8b3030;
   color: white;
@@ -138,6 +140,10 @@
 
 .level-info-seizure-tag::after {
   content: "Seizure Warning";
+}
+
+.level-info-nsfw-tag::after {
+  content: "NSFW";
 }
 
 .level-info-tooltip-container {
@@ -169,14 +175,6 @@
 
 .level-info-header-buttons .level-info-header-button svg:hover {
   transform: scale(0.9);
-}
-
-.content-title {
-  margin-top: 40px;
-  display: flex;
-  width: 1085px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .level-info-details {
