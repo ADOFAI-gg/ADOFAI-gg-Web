@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
 
-const SearchSection = ({placeholder, onSomething, filterContent, sortContent}) => {
+const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
   const [showFilter, setShowFilter] = React.useState(false);
   const [showSort, setShowSort] = React.useState(false);
 
@@ -12,7 +12,7 @@ const SearchSection = ({placeholder, onSomething, filterContent, sortContent}) =
   return (
     <div className="list-search-container">
       <div className="list-search-section">
-        <input className="list-text-input list-search-bar" type="text" placeholder={placeholder} onChange={event => {onSomething(event.target.value)}}/>
+        <input className="list-text-input list-search-bar" type="text" placeholder={placeholder} onChange={event => {onSearch(event.target.value)}}/>
         
         <div className="list-search-filter-button" onClick={onClickFilterButton} style={showFilter ? { backgroundColor: 'rgb(255 255 255 / 50%)'} : null}>
           <div className="tooltip-container">
@@ -79,11 +79,11 @@ const SearchContentItem = ({title, children}) => {
   );
 };
 
-const SearchContentBtn = ({tooltip, img, isRadio}) => {
+const SearchContentBtn = ({onSelect, tooltip, img, isRadio}) => {
   // TODO Tooltiptext
   return (
     <div className="list-search-content-toggle">
-      <input type={isRadio ? "radio" : "checkbox"} id={tooltip} name={isRadio ? "radio" : null} className="list-search-content-toggle-button" />
+      <input type={isRadio ? "radio" : "checkbox"} id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} name={isRadio ? "radio" : null} className="list-search-content-toggle-button" />
       <label for={tooltip}>
         <img src={`/${img}`} alt={tooltip} />
       </label>

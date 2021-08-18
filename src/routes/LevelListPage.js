@@ -18,6 +18,7 @@ const LevelListPage = () => {
   const [hasMore, setHasMore] = useState(true);
   const [itemCount, setItemCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+	const [sortBy, setSortBy] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +29,7 @@ const LevelListPage = () => {
 				const params = new URLSearchParams();
         params.append('offset', 0);
         params.append('amount', 15);
+				params.append('sort', sortBy);
 				params.append('queryTitle', searchTerm);
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
@@ -40,7 +42,7 @@ const LevelListPage = () => {
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, [searchTerm, sortBy]);
 
   const fetchMoreData = async () => {
     // console.log(items);
@@ -56,6 +58,7 @@ const LevelListPage = () => {
       params.append('offset', items.length);
       params.append('amount', 15);
 			params.append('queryTitle', searchTerm);
+			params.append('sort', sortBy);
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
     } catch (e) {
@@ -67,7 +70,7 @@ const LevelListPage = () => {
     <div className="mod-list-main">
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
-				onSomething={(value) => setSearchTerm(value)}
+				onSearch={(value) => setSearchTerm(value)}
         filterContent={
           <div style={{ display: 'flex' }}>
             <SearchContentItem title='Support Version'>
@@ -87,17 +90,17 @@ const LevelListPage = () => {
         }
         sortContent={
           <form style={{ display: 'flex' }}>
-            <SearchContentItem title='Downloads'>
-              <SearchContentBtn isRadio tooltip="download_up" img="mod_icons/download_up.svg" />
-              <SearchContentBtn isRadio tooltip="download_down" img="mod_icons/download_down.svg" />
+            <SearchContentItem title='Difficulty'>
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_DESC" img="mod_icons/download_up.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_ASC" img="mod_icons/download_down.svg" />
             </SearchContentItem>
             <SearchContentItem title='Likes'>
-              <SearchContentBtn isRadio tooltip="heart_up" img="mod_icons/heart_up.svg" />
-              <SearchContentBtn isRadio tooltip="heart_down" img="mod_icons/heart_down.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_DESC" img="mod_icons/heart_up.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_ASC" img="mod_icons/heart_down.svg" />
             </SearchContentItem>
-            <SearchContentItem title="Created Time">
-              <SearchContentBtn isRadio tooltip="created_at_up" img="mod_icons/created_at_up.svg" />
-              <SearchContentBtn isRadio tooltip="created_at_down" img="mod_icons/created_at_down.svg" />
+            <SearchContentItem title="Recent">
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_ASC" img="mod_icons/created_at_up.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_DESC" img="mod_icons/created_at_down.svg" />
             </SearchContentItem>
           </form>
         }
