@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 // Components
-import { SearchSection, SearchContentItem, SearchContentBtn } from '../components/SearchSection';
+import { SearchSection, SearchContentItem, SearchContentBtn } from '../components/LevelListSearchSection';
 
 // Stylesheets
 import '../stylesheets/levelList.css';
@@ -17,6 +17,7 @@ const LevelListPage = () => {
   const [isError, setIsError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
   const [itemCount, setItemCount] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,15 +25,11 @@ const LevelListPage = () => {
         setItems(null);
         setIsError(null);
         setIsLoading(true);
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, {
-          params: {
-            offset: 0,
-            amount: 20,
-            sort: 'RECENT_ASC'
-          }
-        });
-
+				const params = new URLSearchParams();
+        params.append('offset', 0);
+        params.append('amount', 15);
+				params.append('queryTitle', searchTerm);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
         setItemCount(response.data.count);
       } catch (e) {
@@ -43,7 +40,7 @@ const LevelListPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [searchTerm]);
 
   const fetchMoreData = async () => {
     // console.log(items);
@@ -55,15 +52,11 @@ const LevelListPage = () => {
     try {
       setIsError(null);
 
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, {
-        params: {
-          offset: items.length,
-          amount: 20,
-          sort: 'RECENT_ASC'
-        }
-      });
-
+      const params = new URLSearchParams();
+      params.append('offset', items.length);
+      params.append('amount', 15);
+			params.append('queryTitle', searchTerm);
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
     } catch (e) {
       setIsError(e);
@@ -74,6 +67,7 @@ const LevelListPage = () => {
     <div className="mod-list-main">
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
+				onSomething={(value) => setSearchTerm(value)}
         filterContent={
           <div style={{ display: 'flex' }}>
             <SearchContentItem title='Support Version'>
@@ -124,7 +118,7 @@ const LevelListPage = () => {
             }
           >
             {items.map((i, index) => (
-              <LevelInfo2 recentPopularLevel={i} />
+              <LevelInfo2 levelData={i} key={index} />
             ))}
           </InfiniteScroll>
         )}
