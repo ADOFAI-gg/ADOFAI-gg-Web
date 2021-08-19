@@ -18,7 +18,7 @@ const LevelListPage = () => {
   const [hasMore, setHasMore] = useState(true);
   const [itemCount, setItemCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-	const [sortBy, setSortBy] = useState('');
+	const [sortBy, setSortBy] = useState('RECENT_DESC');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +31,8 @@ const LevelListPage = () => {
         params.append('amount', 15);
 				params.append('sort', sortBy);
 				params.append('queryTitle', searchTerm);
+				params.append('queryArtist', searchTerm);
+				params.append('queryCreator', searchTerm);
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
         setItemCount(response.data.count);
@@ -58,6 +60,8 @@ const LevelListPage = () => {
       params.append('offset', items.length);
       params.append('amount', 15);
 			params.append('queryTitle', searchTerm);
+			params.append('queryArtist', searchTerm);
+			params.append('queryCreator', searchTerm);
 			params.append('sort', sortBy);
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
@@ -99,8 +103,8 @@ const LevelListPage = () => {
               <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_ASC" img="mod_icons/heart_down.svg" />
             </SearchContentItem>
             <SearchContentItem title="Recent">
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_ASC" img="mod_icons/created_at_up.svg" />
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_DESC" img="mod_icons/created_at_down.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_DESC" img="mod_icons/created_at_up.svg" />
+              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_ASC" img="mod_icons/created_at_down.svg" />
             </SearchContentItem>
           </form>
         }
