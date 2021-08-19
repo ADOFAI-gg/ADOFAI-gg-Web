@@ -19,6 +19,26 @@ const LevelListPage = () => {
   const [itemCount, setItemCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
 	const [sortBy, setSortBy] = useState('RECENT_DESC');
+	const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+
+	function tagChange(value) {
+		// console.log(value);
+		const newTag = tag;
+		newTag[value - 1] = !tag[value - 1];
+		setTag([...newTag]);
+		// console.log(tag);
+		// console.log(tagConvert(tag));
+	}
+
+	function tagConvert(tags) {
+		let tagNumbers = []
+		tags.map(function(bool, index) {
+			if(bool) {
+				tagNumbers.push(index + 1);
+			}
+		});
+		return tagNumbers;
+	}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +53,8 @@ const LevelListPage = () => {
 				params.append('queryTitle', searchTerm);
 				params.append('queryArtist', searchTerm);
 				params.append('queryCreator', searchTerm);
+				params.append('includeTags', tagConvert(tag).toString());
+				console.log(tagConvert(tag).toString());
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
         setItemCount(response.data.count);
@@ -44,7 +66,7 @@ const LevelListPage = () => {
     };
 
     fetchData();
-  }, [searchTerm, sortBy]);
+  }, [searchTerm, sortBy, tag]);
 
   const fetchMoreData = async () => {
     // console.log(items);
@@ -58,17 +80,34 @@ const LevelListPage = () => {
 
       const params = new URLSearchParams();
       params.append('offset', items.length);
+			params.append('sort', sortBy);
       params.append('amount', 15);
 			params.append('queryTitle', searchTerm);
 			params.append('queryArtist', searchTerm);
 			params.append('queryCreator', searchTerm);
-			params.append('sort', sortBy);
+			params.append('includeTags', tagConvert(tag).toString());
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
     } catch (e) {
       setIsError(e);
     }
   };
+
+	// function tagChange2(value) {
+	// 	// console.log(value);
+	// 	let newTag = tag2;
+	// 	if(newTag.includes(value)) {
+	// 		newTag = tag2.filter((item) => item !== value);
+	// 		// console.log(newTag)
+	// 		setTag2(...newTag);
+	// 	}
+	// 	else {
+	// 		newTag.push(value);
+	// 		setTag2(newTag);
+	// 	}
+		
+	// 	console.log(tag2);
+	// }
 
   return (
     <div className="mod-list-main">
@@ -77,18 +116,28 @@ const LevelListPage = () => {
 				onSearch={(value) => setSearchTerm(value)}
         filterContent={
           <div style={{ display: 'flex' }}>
-            <SearchContentItem title='Support Version'>
-              <input className="list-text-input" type="text" value='r' />
-            </SearchContentItem>
-            <SearchContentItem title='Category'>
-              <SearchContentCheckbox tooltip="tweaks" img="mod_icons/tweaks.svg" />
-              <SearchContentCheckbox tooltip="game_play" img="mod_icons/game_play.svg" />
-              <SearchContentCheckbox tooltip="level_editor" img="mod_icons/level_editor.svg" />
-              <SearchContentCheckbox tooltip="text_edit" img="mod_icons/text_edit.svg" />
-              <SearchContentCheckbox tooltip="bug_fix" img="mod_icons/bug_fix.svg" />
-              <SearchContentCheckbox tooltip="planet_edit" img="mod_icons/planet_edit.svg" />
-              <SearchContentCheckbox tooltip="library" img="mod_icons/library.svg" />
-              <SearchContentCheckbox tooltip="other" img="mod_icons/other.svg" />
+            <SearchContentItem title='Tags'>
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="1" img="tag/1.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="2" img="tag/2.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="3" img="tag/3.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="4" img="tag/4.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="5" img="tag/5.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="6" img="tag/6.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="7" img="tag/7.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="8" img="tag/8.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="9" img="tag/9.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="10" img="tag/10.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="11" img="tag/11.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="12" img="tag/12.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="13" img="tag/13.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="14" img="tag/14.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="15" img="tag/15.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="16" img="tag/16.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="17" img="tag/17.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="18" img="tag/18.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="19" img="tag/19.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="20" img="tag/20.svg" />
+              <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="21" img="tag/21.svg" />
             </SearchContentItem>
           </div>
         }

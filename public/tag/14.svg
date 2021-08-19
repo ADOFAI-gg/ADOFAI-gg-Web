@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_14">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_14" data-name="14" clip-path="url(#clip-_14)">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="3">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30.5" fill="none"/>
+    </g>
+    <path id="패스_14" data-name="패스 14" d="M16.25-28.633V0H10.1V-21.68a7.368,7.368,0,0,1-1.2.85,12.4,12.4,0,0,1-1.475.723,13.167,13.167,0,0,1-1.621.547,11.84,11.84,0,0,1-1.66.322v-5.2a25.664,25.664,0,0,0,4.531-1.8,25.787,25.787,0,0,0,3.848-2.4Zm25.352.625v17.656h3.359v4.609H41.6V0H35.977V-5.742H23.77v-4.824q1.621-1.816,3.359-3.975t3.359-4.443q1.621-2.285,3.018-4.6a46.109,46.109,0,0,0,2.373-4.424ZM29.3-10.352h6.68v-9.785q-.684,1.27-1.484,2.568t-1.68,2.559q-.879,1.26-1.777,2.441T29.3-10.352Z" transform="translate(7 46)" fill="#fff"/>
+  </g>
+</svg>

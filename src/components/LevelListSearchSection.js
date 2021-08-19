@@ -85,7 +85,7 @@ const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
     <div className="list-search-content-toggle">
       <input type="checkbox" id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} className="list-search-content-toggle-button"/>
       <label for={tooltip}>
-        <img src={`/${img}`} alt={tooltip} />
+        <img src={`/${img}`} alt={tooltip} style={{ marginRight: '5px' }}/>
       </label>
     </div>
   );
