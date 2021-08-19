@@ -79,11 +79,11 @@ const SearchContentItem = ({title, children}) => {
   );
 };
 
-const SearchContentBtn = ({onSelect, tooltip, img, isRadio}) => {
+const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
   // TODO Tooltiptext
   return (
     <div className="list-search-content-toggle">
-      <input type={isRadio ? "radio" : "checkbox"} id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} name={isRadio ? "radio" : null} className="list-search-content-toggle-button" />
+      <input type="checkbox" id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} className="list-search-content-toggle-button"/>
       <label for={tooltip}>
         <img src={`/${img}`} alt={tooltip} />
       </label>
@@ -91,4 +91,16 @@ const SearchContentBtn = ({onSelect, tooltip, img, isRadio}) => {
   );
 };
 
-export { SearchSection, SearchContentItem, SearchContentBtn };
+const SearchContentRadio = ({onSelect, tooltip, img, isDefault}) => {
+  // TODO Tooltiptext
+  return (
+    <div className="list-search-content-toggle">
+      <input type="radio" id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} name="radio" className="list-search-content-toggle-button" defaultChecked={isDefault}/>
+      <label for={tooltip}>
+        <img src={`/${img}`} alt={tooltip} />
+      </label>
+    </div>
+  );
+};
+
+export { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentRadio };

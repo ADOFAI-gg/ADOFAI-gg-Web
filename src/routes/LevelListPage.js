@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 // Components
-import { SearchSection, SearchContentItem, SearchContentBtn } from '../components/LevelListSearchSection';
+import { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentRadio } from '../components/LevelListSearchSection';
 
 // Stylesheets
 import '../stylesheets/levelList.css';
@@ -81,30 +81,30 @@ const LevelListPage = () => {
               <input className="list-text-input" type="text" value='r' />
             </SearchContentItem>
             <SearchContentItem title='Category'>
-              <SearchContentBtn tooltip="tweaks" img="mod_icons/tweaks.svg" />
-              <SearchContentBtn tooltip="game_play" img="mod_icons/game_play.svg" />
-              <SearchContentBtn tooltip="level_editor" img="mod_icons/level_editor.svg" />
-              <SearchContentBtn tooltip="text_edit" img="mod_icons/text_edit.svg" />
-              <SearchContentBtn tooltip="bug_fix" img="mod_icons/bug_fix.svg" />
-              <SearchContentBtn tooltip="planet_edit" img="mod_icons/planet_edit.svg" />
-              <SearchContentBtn tooltip="library" img="mod_icons/library.svg" />
-              <SearchContentBtn tooltip="other" img="mod_icons/other.svg" />
+              <SearchContentCheckbox tooltip="tweaks" img="mod_icons/tweaks.svg" />
+              <SearchContentCheckbox tooltip="game_play" img="mod_icons/game_play.svg" />
+              <SearchContentCheckbox tooltip="level_editor" img="mod_icons/level_editor.svg" />
+              <SearchContentCheckbox tooltip="text_edit" img="mod_icons/text_edit.svg" />
+              <SearchContentCheckbox tooltip="bug_fix" img="mod_icons/bug_fix.svg" />
+              <SearchContentCheckbox tooltip="planet_edit" img="mod_icons/planet_edit.svg" />
+              <SearchContentCheckbox tooltip="library" img="mod_icons/library.svg" />
+              <SearchContentCheckbox tooltip="other" img="mod_icons/other.svg" />
             </SearchContentItem>
           </div>
         }
         sortContent={
           <form style={{ display: 'flex' }}>
             <SearchContentItem title='Difficulty'>
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_DESC" img="mod_icons/download_up.svg" />
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_ASC" img="mod_icons/download_down.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_DESC" img="mod_icons/download_up.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_ASC" img="mod_icons/download_down.svg" />
             </SearchContentItem>
             <SearchContentItem title='Likes'>
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_DESC" img="mod_icons/heart_up.svg" />
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_ASC" img="mod_icons/heart_down.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_DESC" img="mod_icons/heart_up.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_ASC" img="mod_icons/heart_down.svg" />
             </SearchContentItem>
             <SearchContentItem title="Recent">
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_DESC" img="mod_icons/created_at_up.svg" />
-              <SearchContentBtn onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_ASC" img="mod_icons/created_at_down.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_DESC" img="mod_icons/created_at_up.svg" isDefault/>
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="RECENT_ASC" img="mod_icons/created_at_down.svg" />
             </SearchContentItem>
           </form>
         }
