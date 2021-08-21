@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
+import ReactTooltip from 'react-tooltip';
+import LevelTags from './LevelTags';
 
 const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
   const [showFilter, setShowFilter] = React.useState(false);
@@ -82,12 +84,15 @@ const SearchContentItem = ({title, children}) => {
 const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
   // TODO Tooltiptext
   return (
-    <div className="list-search-content-toggle">
+    <>
+    <div data-tip={tooltip} data-for={'tag' + tooltip} className="list-search-content-toggle">
       <input type="checkbox" id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} className="list-search-content-toggle-button"/>
       <label for={tooltip}>
-        <img src={`/${img}`} alt={tooltip} style={{ marginRight: '5px' }}/>
+        <img src={`/${img}`} alt={tooltip} style={{ width: '28px', marginRight: '8px' }}/>
       </label>
     </div>
+    <ReactTooltip id={'tag' + tooltip} place='bottom' type='dark' effect='solid'/>
+    </>
   );
 };
 
