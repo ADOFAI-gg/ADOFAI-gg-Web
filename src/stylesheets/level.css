@@ -56,6 +56,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 7px;
+  margin: -7px;
 }
 
 .level-info-song-name {
@@ -64,6 +66,8 @@
   margin-top: -10px;
   font-size: 16px;
   overflow: hidden;
+  padding: 7px;
+  margin: -7px;
 }
 
 .tooltip-container .level-info-tooltiptext {
@@ -82,12 +86,13 @@
   margin-top: 25px;
   font-size: 20px;
   overflow: hidden;
+  padding: 7px;
+  margin: -7px;
 }
 
 .level-info-tags {
   display: flex;
   width: 880px;
-  /* overflow-x: scroll; */
   -ms-overflow-style: none; 
   scrollbar-width: none;
 }
@@ -124,7 +129,6 @@
 
 .level-info-warn-tag {
   overflow: hidden;
-  width: 147px;
   background-color: #ff4646;
   color: white;
   transition: all .2s ease;
@@ -142,8 +146,21 @@
   content: "Seizure Warning";
 }
 
+.level-info-nsfw-tag,
+.level-info-incomplete-tag {
+  cursor: revert;
+}
+
+.level-info-nsfw-tag::before {
+  content: "18";
+}
+
 .level-info-nsfw-tag::after {
   content: "NSFW";
+}
+
+.level-info-incomplete-tag::after {
+  content: "Incomplete!";
 }
 
 .level-info-tooltip-container {
@@ -242,4 +259,107 @@
   font-size: 1.5em;
   z-index: -1;
   color: white;
+}
+
+.level-info-leaderboard-content {
+  margin-top: 10px;  
+}
+
+.level-info-leaderboard-item {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #fafbff1f;
+  border-radius: 10px;
+  margin-bottom: 7.5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  transition: all .2s ease;
+}
+
+.level-info-leaderboard-item * {
+  transition: all .2s ease;
+}
+
+.level-info-leaderboard-item:hover {
+  background-color: #33416199;
+}
+
+.level-info-leaderboard-item-rank {
+  width: 72px;
+  height: calc(100% + 6px);
+  padding-left: 17.5px;
+  padding-right: 17.5px;
+  margin-right: 20px;
+  font-size: 1.75em;
+  font-weight: 700;
+  font-family: 'Roboto Mono', 'Quicksand', monospace;
+  background-color: #b2c1ff23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.level-info-leaderboard-item-content {
+  width: 980px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.level-info-leaderboard-item-name {
+  width: 600px;
+  margin-right: 65px;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.level-info-leaderboard-item-detail {
+  width: 98%;
+  font-size: 1.1em;
+  opacity: 80%;
+}
+
+.level-info-leaderboard-item-detail-pp {
+  width: 180px;
+  font-weight: 600;
+}
+
+.level-info-leaderboard-item-detail-pp::before {
+  content: 'Total PP';
+  font-weight: 400;
+  margin-right: 7.5px;
+}
+
+.level-info-leaderboard-item-detail-timestamp {
+  font-weight: 600;
+  float: right;
+}
+
+.level-info-leaderboard-item-detail-timestamp::before {
+  content: 'Cleared At ';
+  font-weight: 400;
+  margin-right: 7.5px;
+}
+
+.level-info-leaderboard-item-detail-play {
+  display: flex;
+  position: absolute;
+}
+
+.level-info-leaderboard-item-detail-description {
+  position: absolute;
+  opacity: 0;
+}
+
+.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-play {
+  opacity: 0;
+}
+
+.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
+  opacity: 1;
 }
