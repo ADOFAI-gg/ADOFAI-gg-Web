@@ -106,4 +106,4 @@ const LevelTags2 = ({ tag, id, styleClass }) => {
   );
 };
   
-  export default LevelTags2;
+export default LevelTags2;

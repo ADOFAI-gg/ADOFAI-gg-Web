@@ -20,7 +20,7 @@ const LevelListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 	const [sortBy, setSortBy] = useState('RECENT_DESC');
 	const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
-	const [numbers, setNumbers] = useState([-99999, 99999, -99999, 99999, -99999, 99999]);
+	const [numbers, setNumbers] = useState(['', '', '', '', '', '']);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,12 +36,12 @@ const LevelListPage = () => {
 				params.append('queryArtist', searchTerm);
 				params.append('queryCreator', searchTerm);
 				params.append('includeTags', tagConvert(tag).toString());
-				params.append('minDifficulty', isNaN(numbers[0]) ? -99999 : numbers[0]);
-				params.append('maxDifficulty', isNaN(numbers[1]) ? 99999 : numbers[1]);
-				params.append('minBpm', isNaN(numbers[2]) ? -99999 : numbers[2]);
-				params.append('maxBpm', isNaN(numbers[3]) ? 99999 : numbers[3]);
-				params.append('minTiles', isNaN(numbers[4]) ? -99999 : numbers[4]);
-				params.append('maxTiles', isNaN(numbers[5]) ? 99999 : numbers[5]);
+				params.append('minDifficulty', numbers[0]);
+				params.append('maxDifficulty', numbers[1]);
+				params.append('minBpm', numbers[2]);
+				params.append('maxBpm', numbers[3]);
+				params.append('minTiles', numbers[4]);
+				params.append('maxTiles', numbers[5]);
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
         setItemCount(response.data.count);
@@ -73,10 +73,10 @@ const LevelListPage = () => {
 			params.append('includeTags', tagConvert(tag).toString());
 			params.append('minDifficulty', numbers[0]);
 			params.append('maxDifficulty', numbers[1]);
-			params.append('minBpm', isNaN(numbers[2]) ? -99999 : numbers[2]);
-			params.append('maxBpm', isNaN(numbers[3]) ? 99999 : numbers[3]);
-			params.append('minTiles', isNaN(numbers[4]) ? -99999 : numbers[4]);
-			params.append('maxTiles', isNaN(numbers[5]) ? 99999 : numbers[5]);
+			params.append('minBpm', numbers[2]);
+			params.append('maxBpm', numbers[3]);
+			params.append('minTiles', numbers[4]);
+			params.append('maxTiles', numbers[5]);
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
     } catch (e) {
@@ -103,7 +103,7 @@ const LevelListPage = () => {
 	function numberChange(index, value) {
 	  console.log(numbers);
 		let newNumbers = numbers;
-		newNumbers[index] = parseInt(value);
+		newNumbers[index] = value;
 		setNumbers([...newNumbers]);
 	}
 
@@ -144,7 +144,7 @@ const LevelListPage = () => {
             </SearchContentItem>
           </div>
           <div style={{ display: 'flex', marginTop: '10px' }}>
-						<SearchContentItem title='Lv.'>
+						<SearchContentItem title='Lv.' isLv>
 							<SearchContentInput onInput={(value) => numberChange(0, value)} placeholder='Min Lv.'/>
 							<SearchContentInput onInput={(value) => numberChange(1, value)} placeholder='Max Lv.' isLast/>
             </SearchContentItem>

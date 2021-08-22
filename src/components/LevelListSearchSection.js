@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSortAmountDown, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
 
 const tagDescription = [
@@ -156,10 +156,22 @@ const SearchSort = ({show, children}) => {
   );
 };
 
-const SearchContentItem = ({title, children}) => {
+const SearchContentItem = ({title, children, isLv}) => {
   return (
     <div style={{ marginRight: '20px' }}>
-      <h4 style={{ marginBottom: '5px', marginTop: '5px' }}>{title}</h4>
+      <div style={{ display: 'flex' }}>
+        <h4 style={{ marginBottom: '5px', marginTop: '5px' }}>{title}</h4>
+        {isLv ? 
+        <>
+          <FontAwesomeIcon data-tip data-for='lvDescription' icon={faQuestionCircle} size="lg" style={{ height: '16px', marginTop: '7px', marginLeft: '5px' }}/> 
+          <ReactTooltip id='lvDescription' place='bottom' type='dark' effect='solid'>
+            <span style={{ whiteSpace: 'pre-line' }}>
+              {'Add 0.5 instead of +\nex) 18+ -> 18.5'}
+            </span>
+          </ReactTooltip>
+        </>
+          : null}
+      </div>
       <div style={{ display: 'flex' }}>
         {children}
       </div>
@@ -171,13 +183,13 @@ const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
   // TODO Tooltiptext
   return (
     <>
-    <div data-tip data-for={'tag' + tooltip} className="list-search-content-toggle">
+    <div data-tip data-for={'tag_' + tooltip} className="list-search-content-toggle">
       <input type="checkbox" id={tooltip} onChange={tooltip => {onSelect(tooltip.target.id)}} className="list-search-content-toggle-button"/>
       <label for={tooltip}>
         <img src={`/${img}`} alt={tooltip} style={{ width: '28px', marginRight: '8px' }}/>
       </label>
     </div>
-    <ReactTooltip id={'tag' + tooltip} place='bottom' type='dark' effect='solid'>
+    <ReactTooltip id={'tag_' + tooltip} place='bottom' type='dark' effect='solid'>
       <span style={{ whiteSpace: 'pre-line' }}>
         {tagDescription[tooltip - 1].tagName.toString() + '\n' + tagDescription[tooltip - 1].tagDescription.toString()}
       </span>
