@@ -1,4 +1,4 @@
-import LevelTags from './LevelTags';
+import LevelTags2 from './LevelTags2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
@@ -84,11 +84,11 @@ const LevelInfo2 = ({ levelData, key }) => {
               <td className="main-level-info-top">Tags</td>
             </tr>
             <tr>
-              {/* <td valign="bottom" className="main-level-info-tags">
-                {levelData.tags.map((tag) => (
-                  <LevelTags tag={tag} styleClass='main-tag' />
-                ))}
-              </td> */}
+              <td valign="bottom" className="main-level-info-tags">
+                {
+									(levelData.tags.length !== 0) ? levelData.tags.map((tag) => (<LevelTags2 tag={tag.id} id={levelData.id} styleClass='main-tag' />)) : <span style={{ marginTop: 'auto' }}>&nbsp;&nbsp;-</span>
+                }
+              </td>
             </tr>  
           </table>
         </div>
