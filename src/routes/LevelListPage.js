@@ -20,12 +20,6 @@ const LevelListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 	const [sortBy, setSortBy] = useState('RECENT_DESC');
 	const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
-	// const [minDifficulty, setMinDifficulty] = useState(); 
-	// const [maxDifficulty, setMaxDifficulty] = useState(); 
-	// const [minBpm, setMinBpm] = useState(); 
-	// const [maxBpm, setMaxBpm] = useState(); 
-	// const [minTiles, setMinTiles] = useState(); 
-	// const [maxTiles, setMaxTiles] = useState(); 
 	const [numbers, setNumbers] = useState([-99999, 99999, -99999, 99999, -99999, 99999]);
 
   useEffect(() => {
