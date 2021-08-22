@@ -96,6 +96,12 @@ const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
   );
 };
 
+const SearchContentInput = ({onInput, placeholder, isLast}) => {
+  return (
+    <input className="list-text-input" type="number" placeholder={placeholder} onChange={event => {onInput(event.target.value)}} style={isLast ? {width: '100px', marginLeft: '5px'} : {width: '100px'}}/>
+  );
+}
+
 const SearchContentRadio = ({onSelect, tooltip, img, isDefault}) => {
   // TODO Tooltiptext
   return (
@@ -108,4 +114,4 @@ const SearchContentRadio = ({onSelect, tooltip, img, isDefault}) => {
   );
 };
 
-export { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentRadio };
+export { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentInput, SearchContentRadio };

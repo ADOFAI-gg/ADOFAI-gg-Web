@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 // Components
-import { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentRadio } from '../components/LevelListSearchSection';
+import { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentInput, SearchContentRadio } from '../components/LevelListSearchSection';
 
 // Stylesheets
 import '../stylesheets/levelList.css';
@@ -20,6 +20,13 @@ const LevelListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 	const [sortBy, setSortBy] = useState('RECENT_DESC');
 	const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
+	// const [minDifficulty, setMinDifficulty] = useState(); 
+	// const [maxDifficulty, setMaxDifficulty] = useState(); 
+	// const [minBpm, setMinBpm] = useState(); 
+	// const [maxBpm, setMaxBpm] = useState(); 
+	// const [minTiles, setMinTiles] = useState(); 
+	// const [maxTiles, setMaxTiles] = useState(); 
+	const [numbers, setNumbers] = useState([-99999, 99999, -99999, 99999, -99999, 99999]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +42,12 @@ const LevelListPage = () => {
 				params.append('queryArtist', searchTerm);
 				params.append('queryCreator', searchTerm);
 				params.append('includeTags', tagConvert(tag).toString());
+				params.append('minDifficulty', isNaN(numbers[0]) ? -99999 : numbers[0]);
+				params.append('maxDifficulty', isNaN(numbers[1]) ? 99999 : numbers[1]);
+				params.append('minBpm', isNaN(numbers[2]) ? -99999 : numbers[2]);
+				params.append('maxBpm', isNaN(numbers[3]) ? 99999 : numbers[3]);
+				params.append('minTiles', isNaN(numbers[4]) ? -99999 : numbers[4]);
+				params.append('maxTiles', isNaN(numbers[5]) ? 99999 : numbers[5]);
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
         setItems(response.data.results);
         setItemCount(response.data.count);
@@ -46,7 +59,7 @@ const LevelListPage = () => {
     };
 
     fetchData();
-  }, [searchTerm, sortBy, tag]);
+  }, [searchTerm, sortBy, tag, numbers]);
 
   const fetchMoreData = async () => {
     if (items.length >= itemCount) {
@@ -64,6 +77,12 @@ const LevelListPage = () => {
 			params.append('queryArtist', searchTerm);
 			params.append('queryCreator', searchTerm);
 			params.append('includeTags', tagConvert(tag).toString());
+			params.append('minDifficulty', numbers[0]);
+			params.append('maxDifficulty', numbers[1]);
+			params.append('minBpm', isNaN(numbers[2]) ? -99999 : numbers[2]);
+			params.append('maxBpm', isNaN(numbers[3]) ? 99999 : numbers[3]);
+			params.append('minTiles', isNaN(numbers[4]) ? -99999 : numbers[4]);
+			params.append('maxTiles', isNaN(numbers[5]) ? 99999 : numbers[5]);
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
       setItems(items.concat(response.data.results));
     } catch (e) {
@@ -87,12 +106,20 @@ const LevelListPage = () => {
 		return tagNumbers;
 	}
 
+	function numberChange(index, value) {
+	  console.log(numbers);
+		let newNumbers = numbers;
+		newNumbers[index] = parseInt(value);
+		setNumbers([...newNumbers]);
+	}
+
   return (
     <div className="mod-list-main">
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
 				onSearch={(value) => setSearchTerm(value)}
         filterContent={
+					<>
           <div style={{ display: 'flex' }}>
             <SearchContentItem title='Chart Related'>
               <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="1" img="tag/1.svg" />
@@ -122,6 +149,21 @@ const LevelListPage = () => {
               <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="21" img="tag/21.svg" />
             </SearchContentItem>
           </div>
+          <div style={{ display: 'flex', marginTop: '10px' }}>
+						<SearchContentItem title='Lv.'>
+							<SearchContentInput onInput={(value) => numberChange(0, value)} placeholder='Min Lv.'/>
+							<SearchContentInput onInput={(value) => numberChange(1, value)} placeholder='Max Lv.' isLast/>
+            </SearchContentItem>
+						<SearchContentItem title='BPM'>
+							<SearchContentInput onInput={(value) => numberChange(2, value)} placeholder='Min BPM'/>
+							<SearchContentInput onInput={(value) => numberChange(3, value)} placeholder='Max BPM' isLast/>
+            </SearchContentItem>
+						<SearchContentItem title='Tiles'>
+							<SearchContentInput onInput={(value) => numberChange(4, value)} placeholder='Min Tiles'/>
+							<SearchContentInput onInput={(value) => numberChange(5, value)} placeholder='Max Tiles' isLast/>
+            </SearchContentItem>
+					</div>
+					</>
         }
         sortContent={
           <form style={{ display: 'flex' }}>
