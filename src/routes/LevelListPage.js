@@ -28,6 +28,7 @@ const LevelListPage = () => {
         setItems(null);
         setIsError(null);
         setIsLoading(true);
+				setHasMore(true);
 				const params = new URLSearchParams();
         params.append('offset', 0);
         params.append('amount', 15);
@@ -101,7 +102,6 @@ const LevelListPage = () => {
 	}
 
 	function numberChange(index, value) {
-	  console.log(numbers);
 		let newNumbers = numbers;
 		newNumbers[index] = value;
 		setNumbers([...newNumbers]);
