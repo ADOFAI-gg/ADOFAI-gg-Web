@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSortAmountDown, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSortAmountDown, faQuestionCircle, faEraser } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
 
 const tagDescription = [
@@ -96,7 +96,10 @@ const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
-  
+
+  const refreshPage = () => {
+    window.location.reload();
+  }
   return (
     <div className="list-search-container">
       <div className="list-search-section">
@@ -119,6 +122,16 @@ const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
             </span>
 
             <FontAwesomeIcon icon={faSortAmountDown} size="lg" />
+          </div>
+        </div>
+
+        <div className="list-search-sort-button" onClick={refreshPage}>
+          <div className="tooltip-container">
+            <span className="tooltiptext">
+              Reset Filter
+            </span>
+
+            <FontAwesomeIcon icon={faEraser} size="lg" />
           </div>
         </div>
       </div>
