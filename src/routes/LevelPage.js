@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import MetaTags from 'react-meta-tags';
 import axios from "axios";
 
 import Swal from 'sweetalert2';
@@ -30,7 +31,6 @@ const LevelPage = () => {
           isLoading: false,
           level: {
             ...action.level,
-            nsfw: true,
             thumbnail: null,
             youtubeId: !action.level ? null : /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(action.level.video)[1],
           },
@@ -117,6 +117,10 @@ const LevelPage = () => {
           : !state.level || !state.leaderboard ? null
           : state.isError || state.level.title === undefined ? (<h2 style={{ margin: '30px' }}>Oops! An error occurred.</h2>)
           : ( <>
+            <MetaTags>
+              <title>{state.level.title} ─ Adofai.gg</title>
+            </MetaTags>
+            
             <div className="level-info">
               <div className="lavel-info-header">
                 <img className="level-info-thumbnail" src={state.level.thumbnail ? state.level.thumbnail : `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`} alt="Level Thumbnail." />
@@ -140,7 +144,7 @@ const LevelPage = () => {
                         {state.level.song}
                       </div>
                       <div className="level-info-author">
-                        <strong>{state.level.artists.join(', ')}</strong> ─ Level by <strong>{state.level.creators.join(' & ')}</strong>
+                        <strong>{state.level.artists.join(' & ')}</strong> ─ Level by <strong>{state.level.creators.join(' & ')}</strong>
                       </div>
                     </div>
                     <div className="level-info-tags">
@@ -241,49 +245,51 @@ const LevelPage = () => {
               </div>
             </div>
             
-            <div className="level-info-leaderboard">
-              <div className="content-title">
-                <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
-                <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
-              </div>
+            {state.leaderboard.length > 0 ?
+              <div className="level-info-leaderboard">
+                <div className="content-title">
+                  <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
+                  <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
+                </div>
 
-              <div className="level-info-leaderboard-content">
-                {Object.values(state.leaderboard).map((v, index) => {
-                  return <div className="level-info-leaderboard-item" style={{ color: 'white' }}>
-                    <div className="level-info-leaderboard-item-rank">
-                      #{index + 1}
-                    </div>
-
-                    <div className="level-info-leaderboard-item-content">
-                      <div className="level-info-leaderboard-item-name">
-                        {v.player.name}
+                <div className="level-info-leaderboard-content">
+                  {Object.values(state.leaderboard).map((v, index) => {
+                    return <div className="level-info-leaderboard-item" style={{ color: 'white' }}>
+                      <div className="level-info-leaderboard-item-rank">
+                        #{index + 1}
                       </div>
 
-                      <div className="level-info-leaderboard-item-detail">
-                        <div className="level-info-leaderboard-item-detail-play">
-                          <div className="level-info-leaderboard-item-detail-pp">
-                            {(v.playPoint).toFixed(2)}
+                      <div className="level-info-leaderboard-item-content">
+                        <div className="level-info-leaderboard-item-name">
+                          {v.player.name}
+                        </div>
+
+                        <div className="level-info-leaderboard-item-detail">
+                          <div className="level-info-leaderboard-item-detail-play">
+                            <div className="level-info-leaderboard-item-detail-pp">
+                              {(v.playPoint).toFixed(2)}
+                            </div>
+
+                            <div className="level-info-leaderboard-item-detail-play-info">
+                              x{v.speed / 100} Acc {v.rawAccuracy ? `${v.rawAccuracy.toFixed(1)}%` : `UNKNOWN`}
+                            </div>
                           </div>
 
-                          <div className="level-info-leaderboard-item-detail-play-info">
-                            x{v.speed / 100} Acc {v.rawAccuracy ? `${v.rawAccuracy.toFixed(1)}%` : `UNKNOWN`}
+                          <div className='level-info-leaderboard-item-detail-description'>
+                            "{v.description ? v.description : `Wow! There's no description.`}"
                           </div>
-                        </div>
 
-                        <div className='level-info-leaderboard-item-detail-description'>
-                          "{v.description ? v.description : `Wow! There's no description.`}"
-                        </div>
+                          <div className="level-info-leaderboard-item-detail-timestamp">
+                            {new Date(v.timestamp).toLocaleDateString()}
+                          </div>
 
-                        <div className="level-info-leaderboard-item-detail-timestamp">
-                          {new Date(v.timestamp).toLocaleDateString()}
                         </div>
-
                       </div>
                     </div>
-                  </div>
-                })}
+                  })}
+                </div>
               </div>
-            </div>
+            : null}
           </>)}
       </div>
     </>
