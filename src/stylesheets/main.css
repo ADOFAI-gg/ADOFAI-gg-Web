@@ -50,56 +50,81 @@
 }
 
 .main-top-plays-container:hover .main-top-plays-image{
-  filter: blur(0) brightness(0.5);
+  filter: blur(0.5px) brightness(0.5);
 }
 
 .main-top-plays-image-container {
   overflow: hidden;
-  width: 256px;
-  height: 144px;
+  width: 352px;
+  height: 198px;
   border-radius: 8px;
 }
 
 .main-top-plays-image {
-  width: 256px;
-  height: 144px;
+  width: 352px;
+  height: 198px;
   object-fit: cover;
-  filter: blur(2px) brightness(0.3);
+  filter: blur(2px) brightness(0.4);
   transition: all .2s ease-in-out;
 }
 
 .main-top-plays-title {
   position: absolute;
-  max-width: 215px;
+  max-width: 340px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  top: 5px;
-  left: 8px;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, 0);
   color: white;
   font-size: 20px;
   font-weight: 500;
 }
 
-.main-top-plays-subtitle {
+/* .main-top-plays-subtitle {
   position: absolute;
   top: 35px;
   left: 8px;
   color: greenyellow;
   font-size: 12px;
   font-weight: 500;
-}
+} */
 
 .main-top-plays-player {
   position: absolute;
-  max-width: 240px;
+  max-width: 340px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  bottom: 35px;
-  left: 8px;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
   color: white;
   font-size: 18px;
+  font-weight: 500;
+}
+
+.main-top-plays-spac {
+  display: flex;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-top-plays-pp {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  color: rgb(255, 212, 70);
+  font-size: 22px;
   font-weight: 500;
 }
 
@@ -123,10 +148,10 @@
 
 .main-top-plays-level {
   position: absolute;
-  width: 36px;
-  height: 36px;
-  top: -9px;
-  right: -13px;
+  width: 40px;
+  height: 40px;
+  top: 8px;
+  right: 8px;
 }
 
 .main-popular-levels {
