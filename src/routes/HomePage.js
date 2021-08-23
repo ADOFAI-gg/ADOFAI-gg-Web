@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 // Components
 import MainAddInfo from '../components/MainAddInfo';
 import MainTopPlays from '../components/MainTopPlays';
-import MainPopularLevels from '../components/MainPopularLevels';
+import MainPopularLevels2 from '../components/MainPopularLevels2';
 
 // Stylesheets
 import '../stylesheets/main.css';
@@ -36,7 +36,7 @@ const HomePage = () => {
       <input className="main-search-bar" type="text" placeholder="Search Song, Artist, or Creator" />
       <MainAddInfo playersOnline='999999' rankedPlayers='999999' rankedLevels='999999' unclearedLevels='999999'/>
       <MainTopPlays />
-      <MainPopularLevels />
+      <MainPopularLevels2 />
       <button onClick={userMenu} className='main-user-menu-button' style={{ background: 'url("/other_icons/message.svg")' }}/>
     </main>
   );
