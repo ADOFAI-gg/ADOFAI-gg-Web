@@ -11,7 +11,6 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 // Components
 import LikeButton from '../components/LikeButton';
 import LevelTags from '../components/LevelTags';
-import RankingItem from '../components/RankingItem';
 
 // Stylesheets
 import '../stylesheets/level.css';
@@ -186,7 +185,7 @@ const LevelPage = () => {
                           Lv.
                         </div>
                         <div className="level-info-value">
-                          <img style={{ width: '40px' }} src={`/level_icons/level-icon-${state.level.difficulty}.svg`} alt="" />
+                          <img style={{ width: '40px' }} src={`/difficulty_icons/${state.level.difficulty}.png`} alt="" />
                         </div>
                       </div>
                       <div className="level-info-detail-info-section">
