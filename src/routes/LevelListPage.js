@@ -22,10 +22,10 @@ const LevelListPage = () => {
   const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const [numbers, setNumbers] = useState(['', '', '', '', '', '']);
 
-  const fetchParams = () => {
+  const fetchParams = (offset) => {
     const params = new URLSearchParams();
 
-    params.append('offset', items.length);
+    params.append('offset', offset);
     params.append('amount', 15);
     params.append('sort', sortBy);
     params.append('queryTitle', searchTerm);
@@ -50,12 +50,13 @@ const LevelListPage = () => {
         setIsLoading(true);
         setHasMore(true);
 
-        const params = fetchParams();
+        const params = fetchParams(0);
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
-
+        
         setItems(response.data.results);
         setItemCount(response.data.count);
       } catch (e) {
+        console.log(e)
         setIsError(e);
       }
 
@@ -74,7 +75,7 @@ const LevelListPage = () => {
     try {
       setIsError(null);
 
-      const params = fetchParams();
+      const params = fetchParams(items.length);
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, { params });
 
       setItems(items.concat(response.data.results));
