@@ -11,27 +11,27 @@ import '../stylesheets/ranking.css';
 const RankingPage = () => {
   const reduce = (state, action) => {
     switch (action.type) {
-      case 'RANKING_REQUEST':
+      case 'FETCH_REQUEST':
         return {
           ...state,
           isLoading: true,
         };
         
-      case 'RANKING_FETCH':
+      case 'FETCH_RESULT':
         return {
           ...state,
           isLoading: false,
           items: action.items,
         };
       
-      case 'RANKING_ERROR':
+      case 'FETCH_ERROR':
         return {
           ...state,
           isLoading: false,
           error: action.error,
         };
       
-      case 'HAS_MORE_RANKING':
+      case 'HAS_MORE_ITEMS':
         return {
           ...state,
           hasMore: action.hasMore,
@@ -59,9 +59,9 @@ const RankingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch({ type: 'RANKING_FETCH', items: null });
-        dispatch({ type: 'RANKING_ERROR', error: null });
-        dispatch({ type: 'RANKING_REQUEST' });
+        dispatch({ type: 'FETCH_RESULT', items: null });
+        dispatch({ type: 'FETCH_ERROR', error: null });
+        dispatch({ type: 'FETCH_REQUEST' });
 
         const response = await axios.get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`, {
@@ -71,10 +71,10 @@ const RankingPage = () => {
           }
         });
 
-        dispatch({ type: 'RANKING_FETCH', items: response.data.results });
+        dispatch({ type: 'FETCH_RESULT', items: response.data.results });
         dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
       } catch (e) {
-        dispatch({ type: 'RANKING_ERROR', error: e });
+        dispatch({ type: 'FETCH_ERROR', error: e });
       }
 
       ;
@@ -90,7 +90,7 @@ const RankingPage = () => {
     }
 
     try {
-      dispatch({ type: 'RANKING_ERROR', error: null });
+      dispatch({ type: 'FETCH_ERROR', error: null });
 
       const response = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`, {
@@ -100,9 +100,9 @@ const RankingPage = () => {
         }
       });
 
-      dispatch({ type: 'RANKING_FETCH', items: state.items.concat(response.data.results) });
+      dispatch({ type: 'FETCH_RESULT', items: state.items.concat(response.data.results) });
     } catch (e) {
-      dispatch({ type: 'RANKING_ERROR', error: e });
+      dispatch({ type: 'FETCH_ERROR', error: e });
     }
   };
 
