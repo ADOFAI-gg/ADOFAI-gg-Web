@@ -55,6 +55,7 @@ body {
   font-weight: 400;
   background-size: cover;
   background-attachment: fixed;
+  overflow: overlay;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -62,10 +63,28 @@ body {
   -ms-user-select: none;
   user-select: none;
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.658);
+  border-radius: 10px;
+  transition: all .2s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(202, 202, 202, 0.658);
+}
+
+body::-webkit-scrollbar-corner {
   display: none;
 }
 

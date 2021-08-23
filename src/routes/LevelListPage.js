@@ -45,7 +45,6 @@ const LevelListPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setItems(null);
         setIsError(null);
         setIsLoading(true);
         setHasMore(true);
@@ -56,7 +55,6 @@ const LevelListPage = () => {
         setItems(response.data.results);
         setItemCount(response.data.count);
       } catch (e) {
-        console.log(e)
         setIsError(e);
       }
 
@@ -177,8 +175,7 @@ const LevelListPage = () => {
         }
       /> 
       <div className="mod-list">
-      { isLoading ? null
-        : !items ? null
+      { !items ? null
         : isError ? (<h2>Oops! An error occurred.</h2>)
         : (
           <InfiniteScroll
