@@ -90,7 +90,7 @@ const tagDescription = [
   }
 ]
 
-const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
+const SearchSection = ({placeholder, value, onSearch, filterContent, sortContent}) => {
   const [showFilter, setShowFilter] = React.useState(false);
   const [showSort, setShowSort] = React.useState(false);
 
@@ -103,7 +103,7 @@ const SearchSection = ({placeholder, onSearch, filterContent, sortContent}) => {
   return (
     <div className="list-search-container">
       <div className="list-search-section">
-        <input className="list-text-input list-search-bar" type="text" placeholder={placeholder} onChange={event => {onSearch(event.target.value)}}/>
+        <input className="list-text-input list-search-bar" type="text" value={value} placeholder={placeholder} onChange={event => {onSearch(event.target.value)}}/>
         
         <div className="list-search-filter-button" onClick={onClickFilterButton} style={showFilter ? { backgroundColor: 'rgb(255 255 255 / 50%)'} : null}>
           <div className="tooltip-container">

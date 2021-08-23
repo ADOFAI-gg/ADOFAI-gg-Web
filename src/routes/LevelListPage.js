@@ -17,14 +17,13 @@ const LevelListPage = () => {
   const [isError, setIsError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
   const [itemCount, setItemCount] = useState(0);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(getQuery());
   const [sortBy, setSortBy] = useState('RECENT_DESC');
   const [tag, setTag] = useState([false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]);
   const [numbers, setNumbers] = useState(['', '', '', '', '', '']);
 
   const fetchParams = (offset) => {
     const params = new URLSearchParams();
-
     params.append('offset', offset);
     params.append('amount', 15);
     params.append('sort', sortBy);
@@ -104,11 +103,18 @@ const LevelListPage = () => {
     setNumbers([...newNumbers]);
   }
 
+	function getQuery()
+	{
+    var query = decodeURI(window.location.search).substring(7);
+    return query;
+	}
+
   return (
     <div className="mod-list-main">
 			<ScrollButton></ScrollButton>
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
+				value={searchTerm}
         onSearch={(value) => setSearchTerm(value)}
         filterContent={
           <>
