@@ -24,7 +24,7 @@ const LevelInfo2 = ({ levelData, key }) => {
               <td className="main-level-info-top">Creator</td>
             </tr>
             <tr>
-              <td valign="bottom" className="main-level-info-creator">{levelData.creators}</td>
+              <td valign="bottom" className="main-level-info-creator">{levelData.creators.join(' & ')}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="130" style={{ textAlign: "center", marginLeft: "10px" }}>
@@ -76,7 +76,7 @@ const LevelInfo2 = ({ levelData, key }) => {
               <td className="main-level-info-top">Artist</td>
             </tr>
             <tr>
-              <td valign="bottom" className="main-level-info-artist">{levelData.artists}</td>
+              <td valign="bottom" className="main-level-info-artist">{levelData.artists.join(' & ')}</td>
             </tr>  
           </table>
           <table border="0" cellSpacing="0" cellPadding="0" width="335" style={{ textAlign: "left", marginLeft: "10px" }}>
