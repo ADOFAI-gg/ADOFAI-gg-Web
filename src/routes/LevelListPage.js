@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 // Components
 import { SearchSection, SearchContentItem, SearchContentCheckbox, SearchContentInput, SearchContentRadio } from '../components/LevelListSearchSection';
+import ScrollButton from '../components/ScrollButton';
 
 // Stylesheets
 import '../stylesheets/levelList.css';
@@ -106,6 +107,7 @@ const LevelListPage = () => {
 
   return (
     <div className="mod-list-main">
+			<ScrollButton></ScrollButton>
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
         onSearch={(value) => setSearchTerm(value)}
