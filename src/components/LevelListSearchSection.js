@@ -202,6 +202,7 @@ const SearchContentCheckbox = ({onSelect, tooltip, img}) => {
         <img src={`/${img}`} alt={tooltip} style={{ width: '28px', marginRight: '8px' }}/>
       </label>
     </div>
+
     <ReactTooltip id={'tag_' + tooltip} place='bottom' type='dark' effect='solid'>
       <span style={{ whiteSpace: 'pre-line' }}>
         {tagDescription[tooltip - 1].tagName.toString() + '\n' + tagDescription[tooltip - 1].tagDescription.toString()}

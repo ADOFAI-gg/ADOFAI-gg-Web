@@ -10,7 +10,7 @@ const LevelInfo2 = ({ levelData, key }) => {
           <div style={{ backgroundImage: `url(${'level_backgrounds/' + levelData.levelBackground})` }} className="main-level-background"></div>
         </div> */}
         <div className="main-level-info-container-bottom">
-          <img style={{ marginLeft: '10px', padding: '5px' }} src={'difficulty_icons/' + levelData.difficulty + '.png'} alt="" />
+          <img class="main-level-info-difficulty" src={'difficulty_icons/' + levelData.difficulty + '.png'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
               <td className="main-level-info-top">Level</td>
