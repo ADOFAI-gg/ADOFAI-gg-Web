@@ -95,7 +95,7 @@ const LevelPage = () => {
             offset: 0,
             amount: 10,
             levelId: id,
-            sort: 'RECENT_DESC'
+            sort: 'PP_DESC'
           }
         });
 
