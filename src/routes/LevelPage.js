@@ -243,8 +243,7 @@ const LevelPage = () => {
                 </div>
               </div>
             </div>
-            
-            {state.leaderboard.length > 0 ?
+            {Object.keys(state.leaderboard).length > 0 ?
               <div className="level-info-leaderboard">
                 <div className="content-title">
                   <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
