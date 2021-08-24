@@ -107,7 +107,7 @@
 }
 
 .ranking-item-detail-highest-title {
-  max-width: 290px;
+  max-width: 280px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

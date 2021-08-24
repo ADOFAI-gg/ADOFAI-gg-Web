@@ -101,7 +101,6 @@ const LevelPage = () => {
 
         dispatch({ type: 'FETCH_RESULT', level: levelResponse.data, leaderboard: leaderboardResponse.data.results});
       } catch (e) {
-        console.log(e)
         dispatch({ type: 'FETCH_ERROR', error: e });
       }
     };

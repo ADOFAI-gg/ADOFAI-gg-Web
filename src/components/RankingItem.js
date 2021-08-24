@@ -18,11 +18,11 @@ const RankingItem = ({ rank, index }) => {
 
           <div className="ranking-item-detail-highest">
             {/* href={`/levels/${rank.bestPlay.id}`} */}
-            <span className="ranking-item-detail-highest-title">
+            <a href={`/levels/${rank.bestPlay.levelId}`} target="_blank" rel="noreferrer" className="ranking-item-detail-highest-title">
               {rank.bestPlay.artists[1] ? `${rank.bestPlay.artists[0]}…` : rank.bestPlay.artists[0]}
               {' - '}
               {rank.bestPlay.title}
-            </span>
+            </a>
             <span className="ranking-item-detail-highest-info">
               x{rank.bestPlay.speed / 100}, {rank.bestPlay.rawAccuracy ? `Acc ${rank.bestPlay.rawAccuracy.toFixed(1)}%` : null} (Lv. {String(rank.bestPlay.difficulty).replace('.5', '+')})
             </span>
