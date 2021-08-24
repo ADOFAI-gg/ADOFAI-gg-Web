@@ -7,10 +7,12 @@ import LevelListPage from '../routes/LevelListPage';
 import ModListPage from '../routes/ModListPage';
 import ModPage from '../routes/ModPage';
 import RankingPage from '../routes/RankingPage';
+import PageTracking from './PageTracking';
 
 const AppRouter = () => {
   return (
     <Router>
+      <PageTracking/>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/levels" component={LevelListPage} />

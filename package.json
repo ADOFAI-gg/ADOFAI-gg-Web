@@ -16,6 +16,7 @@
     "dotenv": "^10.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-markdown": "^6.0.3",
     "react-meta-tags": "^1.0.1",
