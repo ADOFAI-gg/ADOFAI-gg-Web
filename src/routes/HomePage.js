@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from "react";
 import Swal from 'sweetalert2';
 
 // Components
 import MainAddInfo from '../components/MainAddInfo';
 import MainTopPlays2 from '../components/MainTopPlays2';
 import MainPopularLevels2 from '../components/MainPopularLevels2';
+import { useHistory } from "react-router-dom";
 
 // Stylesheets
 import '../stylesheets/main.css';
 
 const HomePage = () => {
+  const [searchTerm, setSearchTerm] = useState('') 
+  let history = useHistory();
   function userMenu() {
     Swal.fire({
       title: 'Submit & Info',
@@ -33,7 +36,7 @@ const HomePage = () => {
     <main>
       <img className="main-logo" src="/logo.svg" alt="" />
       <h2 style={{ marginTop: '10px' }}>Based On The <a href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468" target="_blank" rel="noreferrer"><span className="main-yellow-highlight">Unofficial ADOFAI Forum</span></a></h2>
-      <input className="main-search-bar" type="text" placeholder="Search Song, Artist, or Creator" />
+      <input className="main-search-bar" type="text" placeholder="Search Song, Artist, or Creator" onChange={(e) => setSearchTerm(e.target.value)}  onKeyPress={(event) => (event.charCode === 13) ? history.push('/levels?query=' + searchTerm) : ''}/>
       <MainAddInfo playersOnline='999999' rankedPlayers='999999' rankedLevels='999999' unclearedLevels='999999'/>
       <MainTopPlays2 />
       <MainPopularLevels2 />
