@@ -13,7 +13,7 @@ function App() {
         <div className="navbar-content">
           <ul>
             <li><a href="/levels">Levels</a></li>
-            <li><a href="/mods">Mods</a></li>
+            {/* <li><a href="/mods">Mods</a></li> */}
             <li><a href="/ranks">Ranking</a></li>
           </ul>
         </div>
