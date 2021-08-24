@@ -13,7 +13,6 @@ import '../stylesheets/levelList.css';
 
 const LevelListPage = () => {
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   const [hasMore, setHasMore] = useState(true);
   const [itemCount, setItemCount] = useState(0);
@@ -46,7 +45,6 @@ const LevelListPage = () => {
     const fetchData = async () => {
       try {
         setIsError(null);
-        setIsLoading(true);
         setHasMore(true);
 
         const params = fetchParams(0);
@@ -57,8 +55,6 @@ const LevelListPage = () => {
       } catch (e) {
         setIsError(e);
       }
-
-      setIsLoading(false);
     };
 
     fetchData();

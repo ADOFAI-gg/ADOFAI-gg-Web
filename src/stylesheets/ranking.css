@@ -57,7 +57,7 @@
 }
 
 .ranking-item-name {
-  width: 310px;
+  width: 190px;
   margin-right: 65px;
   font-size: 1.2em;
   font-weight: 500;
@@ -107,7 +107,7 @@
 }
 
 .ranking-item-detail-highest-title {
-  max-width: 200px;
+  max-width: 290px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

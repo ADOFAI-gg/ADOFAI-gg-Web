@@ -121,11 +121,6 @@ const RankingPage = () => {
             dataLength={state.items.length}
             next={fetchMoreData}
             hasMore={state.hasMore}
-            loader={
-              <h4 style={{ textAlign: 'center', fontWeight: '300', marginTop: '10px', marginBottom: '10px' }}>
-                Wait a second please!
-              </h4>
-            }
           >
             {state.items.map((i, index) => {
               return <RankingItem rank={i} index={index} />

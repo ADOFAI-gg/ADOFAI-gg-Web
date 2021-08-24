@@ -5,7 +5,7 @@ import { faHeart, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 const LevelInfo2 = ({ levelData, key }) => {
   return (
     <a key={key} href={'/levels/' + levelData.id}>
-      <div className="main-level-info">
+      <div key={key} className="main-level-info">
         {/* <div className="main-level-background-container"> 
           <div style={{ backgroundImage: `url(${'level_backgrounds/' + levelData.levelBackground})` }} className="main-level-background"></div>
         </div> */}
