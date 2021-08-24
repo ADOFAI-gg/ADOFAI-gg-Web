@@ -96,7 +96,7 @@ function idConvert(id) {
 const LevelTags2 = ({ tag, id, styleClass }) => {
   return (
 		<>
-			<img data-tip data-for={'tag_' + tag + '_' + idConvert(id)} className={styleClass} src={'tag/' + tag + '.svg'} alt="" />
+			<img data-tip data-for={'tag_' + tag + '_' + idConvert(id)} className={styleClass} src={'/tag/' + tag + '.svg'} alt="" />
     	<ReactTooltip id={'tag_' + tag + '_' + idConvert(id)} place='bottom' type='dark' effect='solid'>
       	<span style={{ whiteSpace: 'pre-line' }}>
         	{tagDescription[tag - 1].tagName.toString() + '\n' + tagDescription[tag - 1].tagDescription.toString()}

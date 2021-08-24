@@ -11,6 +11,7 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 // Components
 import LikeButton from '../components/LikeButton';
 import LevelTags from '../components/LevelTags';
+import LevelTags2 from '../components/LevelTags2';
 
 // Stylesheets
 import '../stylesheets/level.css';
@@ -159,9 +160,10 @@ const LevelPage = () => {
                         <div className="level-info-tag level-info-warn-tag level-info-seizure-tag" onClick={PSSwal} />
                       : null}
 
-                      {state.level.tags.map((tag) => (
-                        <LevelTags tag={tag['id']} styleClass='level-tag' />
-                      ))}
+                      {(state.level.tags.length !== 0)
+                        ? state.level.tags.map((tag) => (<LevelTags2 tag={tag.id} id={state.level.id} styleClass='main-tag' />))
+                        : <span style={{ marginTop: 'auto' }}>&nbsp;&nbsp;-</span>
+                      }
                     </div>
                   </div>
                   <div className="level-info-header-buttons">

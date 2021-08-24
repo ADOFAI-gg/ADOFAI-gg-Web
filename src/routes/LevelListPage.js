@@ -107,7 +107,7 @@ const LevelListPage = () => {
 
   return (
     <div className="mod-list-main">
-			<ScrollButton></ScrollButton>
+			<ScrollButton />
       <SearchSection
         placeholder='Search Level Title, Song Title, Artist, Creator'  
 				value={searchTerm}
