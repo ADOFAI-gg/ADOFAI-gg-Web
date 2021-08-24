@@ -13,7 +13,7 @@ import '../stylesheets/main.css';
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('') 
   let history = useHistory();
-  function userMenu() {
+  const userMenu = () => {
     Swal.fire({
       title: 'Submit & Info',
       html: `
