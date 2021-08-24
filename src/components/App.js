@@ -24,7 +24,7 @@ function App() {
       <AppRouter />
 
       {/* FOOTER */}
-      {!['/mods', '/ranks', '/levels'].includes(window.location.pathname) ? (
+      {!(window.location.pathname.includes('/mods') || window.location.pathname.includes('/ranks') || window.location.pathname.includes('/levels')) ? (
         <footer>
           <div className="footer-content">
             <h4 style={{ fontWeight: '400' }}>ADOFAI.GG is not associated with <a href="https://7thbe.at/" target="_blank" rel="noreferrer">7th Beat Games</a>.&ensp;|&ensp;<a href="https://discord.gg/Fx9TZNftFP" target="_blank" rel="noreferrer">Join Our Discord</a>&ensp;|&ensp;<a href="mailto:adofai.gg@gmail.com">Contact Us</a>&ensp;|&ensp;Powered By <a href="https://www.hanmesoft.com/" target="_blank" rel="noreferrer">Hanmesoft</a></h4>

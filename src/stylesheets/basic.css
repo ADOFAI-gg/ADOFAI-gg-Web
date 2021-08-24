@@ -90,7 +90,7 @@ body::-webkit-scrollbar-corner {
 
 .container {
   position: relative;
-  height: 1920px;
+  height: 100%;
 }
 
 ul {
@@ -416,6 +416,7 @@ footer {
 .footer-content {
   height: 100%;
   width: 1060px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   line-height: 90px;
