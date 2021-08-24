@@ -253,7 +253,7 @@ const LevelPage = () => {
 
                 <div className="level-info-leaderboard-content">
                   {Object.values(state.leaderboard).map((v, index) => {
-                    return <div className="level-info-leaderboard-item" style={{ color: 'white' }}>
+                    return <a href={v.url} target="_blank" rel="noreferrer" className="level-info-leaderboard-item" style={{ color: 'white' }}>
                       <div className="level-info-leaderboard-item-rank">
                         #{index + 1}
                       </div>
@@ -284,7 +284,7 @@ const LevelPage = () => {
 
                         </div>
                       </div>
-                    </div>
+                    </a>
                   })}
                 </div>
               </div>
