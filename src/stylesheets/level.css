@@ -283,6 +283,7 @@
 
 .level-info-leaderboard-item:hover {
   background-color: #33416199;
+  text-decoration: none;
 }
 
 .level-info-leaderboard-item-rank {
