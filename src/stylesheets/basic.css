@@ -243,7 +243,7 @@ main {
 
 .tooltip-container:hover .tooltiptext {
   visibility: visible;
-  opacity: 100;
+  opacity: 1;
 }
 
 
@@ -274,7 +274,7 @@ main {
 
 .list-text-input::placeholder {
   color: white;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .list-search-bar {
@@ -292,12 +292,12 @@ main {
 }
 
 .list-search-content-toggle label {
-  opacity: 50%;
+  opacity: 0.5;
   transition: all .2s ease;
 }
 
 .list-search-content-toggle-button:checked + label {
-  opacity: 100%;
+  opacity: 1;
 }
 
 .list-search-filter-button,
@@ -347,10 +347,10 @@ main {
 @keyframes list-search-content-hide-animation {
   from {
     height: auto;
-    opacity: 100%;
+    opacity: 1;
     visibility: visible;
   } to {
-    opacity: 0%;
+    opacity: 0;
     height: 0;
     margin: 0;
     visibility: hidden;

@@ -70,7 +70,7 @@
   width: 780px;
   display: flex;
   align-items: center;
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .ranking-item-detail-pp {
@@ -98,7 +98,7 @@
 
 .ranking-item-detail-highest-info {
   margin-left: 10px;
-  opacity: 80%;
+  opacity: 0.8;
   font-size: 0.9em;
   font-weight: 400;
   display: flex;
