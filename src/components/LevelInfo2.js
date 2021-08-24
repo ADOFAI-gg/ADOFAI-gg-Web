@@ -62,7 +62,7 @@ const LevelInfo2 = ({ levelData, key }) => {
           </table>
         </div>
         <div className="main-level-info-container-top" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-          <img style={{ marginLeft: '10px', padding: '5px' }} src={'difficulty_icons/' + levelData.difficulty + '.png'} alt="" />
+          <img class="main-level-info-difficulty" style={{ marginLeft: '10px', padding: '5px' }} src={'difficulty_icons/' + levelData.difficulty + '.png'} alt="" />
           <table border="0" cellSpacing="0" cellPadding="0" width="400" style={{ textAlign: "left", marginLeft: "10px" }}>
             <tr>
               <td className="main-level-info-top">Song</td>
