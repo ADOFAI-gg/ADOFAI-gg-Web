@@ -161,7 +161,7 @@ const LevelPage = () => {
                       : null}
 
                       {(state.level.tags.length !== 0)
-                        ? state.level.tags.map((tag) => (<LevelTags2 tag={tag.id} id={state.level.id} styleClass='main-tag' />))
+                        ? state.level.tags.map((tag) => (<LevelTags2 tag={tag.id} id={state.level.id} styleClass='level-info-tag-icon' />))
                         : <span style={{ marginTop: 'auto' }}>&nbsp;&nbsp;-</span>
                       }
                     </div>
@@ -187,7 +187,7 @@ const LevelPage = () => {
                           Lv.
                         </div>
                         <div className="level-info-value">
-                          <img style={{ width: '40px' }} src={`/difficulty_icons/${state.level.difficulty}.png`} alt="" />
+                          <img style={{ marginTop: '5px', width: '32px' }} src={`/difficulty_icons/${state.level.difficulty}.png`} alt="" />
                         </div>
                       </div>
                       <div className="level-info-detail-info-section">

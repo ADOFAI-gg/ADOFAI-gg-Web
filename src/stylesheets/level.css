@@ -101,6 +101,16 @@
   display: none;
 }
 
+/**
+ * tag-icon : ① ② ③
+ * tag (# Frum Moment) (# SOF-LAN):
+ */
+
+.level-info-tag-icon {
+  height: 24px;
+  margin-right: 5px;
+}
+
 .level-info-tag {
   border-radius: 100em;
   background-color: #F2F2F2;
@@ -219,6 +229,7 @@
 .level-info-value {
   color: white;
   font-size: 32px;
+  display: flex;
 }
 
 .level-info-value .level-info-value-decimal {
