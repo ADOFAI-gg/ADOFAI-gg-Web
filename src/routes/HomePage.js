@@ -19,7 +19,7 @@ const HomePage = () => {
       html: `
       <a class="main-user-menu-context" href="https://forms.gle/XdKNuqVrt974F7Ab6">Submit your play</a>
       <hr>
-      <a class="main-user-menu-context" href="https://docs.google.com/forms/d/e/1FAIpQLSfSSgeXVkIdeZesYJLkxTGTa9HOvlorJRQybVVOnVoObf67QA/viewform">Submit your custom level</a>
+      <a class="main-user-menu-context" href="https://forms.gle/cW9wGpEoTV4yD57b7">Submit your custom level</a>
       <hr>
       <a class="main-user-menu-context" href="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link">Request for re-leveling</a>
       <hr>
