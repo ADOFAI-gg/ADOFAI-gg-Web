@@ -162,8 +162,8 @@ const LevelListPage = () => {
         sortContent={
           <form style={{ display: 'flex' }}>
             <SearchContentItem title='Difficulty'>
-              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_DESC" img="mod_icons/download_up.svg" />
-              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_ASC" img="mod_icons/download_down.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_DESC" img="mod_icons/difficulty_up.svg" />
+              <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="DIFFICULTY_ASC" img="mod_icons/difficulty_down.svg" />
             </SearchContentItem>
             <SearchContentItem title='Likes'>
               <SearchContentRadio onSelect={(value) => setSortBy(value)} isRadio tooltip="LIKE_DESC" img="mod_icons/heart_up.svg" />

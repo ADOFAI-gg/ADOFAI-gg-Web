@@ -183,7 +183,7 @@ const LevelPage = () => {
                   <div style={{ display: 'flex', flexDirection: 'column', width: '600px' }}>
                     <div style={{ display: 'flex' }}>
                       <div className="level-info-detail-info-section">
-                        <div className="level-info-label">
+                        <div className="level-info-label" style={{ textAlign: 'center' }}>
                           Lv.
                         </div>
                         <div className="level-info-value">
@@ -249,7 +249,7 @@ const LevelPage = () => {
               <div className="level-info-leaderboard">
                 <div className="content-title">
                   <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Leaderboard</h1>
-                  <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3>
+                  {/* <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3> */}
                 </div>
 
                 <div className="level-info-leaderboard-content">
