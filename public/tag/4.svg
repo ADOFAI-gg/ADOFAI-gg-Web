@@ -5,10 +5,18 @@
     </clipPath>
   </defs>
   <g id="_4" data-name="4" clip-path="url(#clip-_4)">
-    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="3">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
       <circle cx="32" cy="32" r="32" stroke="none"/>
-      <circle cx="32" cy="32" r="30.5" fill="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
     </g>
-    <path id="패스_4" data-name="패스 4" d="M18.594-28.008v17.656h3.359v4.609H18.594V0H12.969V-5.742H.762v-4.824q1.621-1.816,3.359-3.975T7.48-18.984Q9.1-21.27,10.5-23.584a46.108,46.108,0,0,0,2.373-4.424ZM6.289-10.352h6.68v-9.785q-.684,1.27-1.484,2.568T9.8-15.01q-.879,1.26-1.777,2.441T6.289-10.352Z" transform="translate(20.643 46.004)" fill="#fff"/>
+    <g id="그룹_92" data-name="그룹 92" transform="translate(70.352 8.379) rotate(121)">
+      <g id="그룹_91" data-name="그룹 91" transform="translate(38.069 4.485)" opacity="0.98">
+        <circle id="타원_16" data-name="타원 16" cx="18" cy="18" r="18" transform="translate(-16.069 -1.776)" fill="none" opacity="0.07"/>
+      </g>
+      <g id="그룹_86" data-name="그룹 86" transform="translate(64.896 19.002) rotate(120)">
+        <path id="패스_30" data-name="패스 30" d="M2.421.286,17.6,11.194a4.593,4.593,0,1,1-5.34,7.475A4.435,4.435,0,0,1,11.193,17.6L.285,2.422A1.531,1.531,0,0,1,2.421.286Z" transform="translate(13.564 0) rotate(44)" fill="#fff"/>
+        <path id="패스_31" data-name="패스 31" d="M2.421.286,17.6,11.194a4.593,4.593,0,1,1-5.34,7.475A4.435,4.435,0,0,1,11.193,17.6L.285,2.422A1.531,1.531,0,0,1,2.421.286Z" transform="translate(14.288 41.413) rotate(-136)" opacity="0"/>
+      </g>
+    </g>
   </g>
 </svg>

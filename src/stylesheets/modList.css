@@ -43,7 +43,7 @@
 
 .mod-list-mod-category img {
   width: 25px;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .mod-list-mod-title {
@@ -53,7 +53,7 @@
 }
 
 .mod-list-mod-version {
-  opacity: 50%;
+  opacity: 0.5;
   margin-left: 10px;
   font-size: 0.8em;
 }
@@ -67,7 +67,7 @@
 
 .mod-list-mod-footer {
   display: flex;
-  opacity: 80%;
+  opacity: 0.8;
   margin-top: 5px;
   font-size: 0.9em;
   font-weight: 200;

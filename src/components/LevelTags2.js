@@ -2,88 +2,88 @@ import ReactTooltip from 'react-tooltip';
 
 const tagDescription = [
   {
-    tagName: 'Tag Name 1',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Short',
+    tagDescription: 'Levels that are under a minute.'
   },
   {
-    tagName: 'Tag Name 2',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Triplet',
+    tagDescription: 'This level contains triplets.'
   },
   {
-    tagName: 'Tag Name 3',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'No Speed Change',
+    tagDescription: 'The tile bpm remains constant throughout this level.'
   },
   {
-    tagName: 'Tag Name 4',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Medium',
+    tagDescription: 'Levels that are under 4 minutes.'
   },
   {
-    tagName: 'Tag Name 5',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Memorization',
+    tagDescription: 'This level requires memorization.'
   },
   {
-    tagName: 'Tag Name 6',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'No Swirls',
+    tagDescription: 'This level has no swirls.'
   },
   {
-    tagName: 'Tag Name 7',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Acceleration / Deceleration',
+    tagDescription: 'This level uses a song that changes BPM.'
   },
   {
-    tagName: 'Tag Name 8',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Magic Shape',
+    tagDescription: 'This level contains magic shapes.'
   },
   {
-    tagName: 'Tag Name 9',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Septuplet',
+    tagDescription: 'This level contains septuplets.'
   },
   {
-    tagName: 'Tag Name 10',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: '64+ Beat',
+    tagDescription: 'This level contains beats higher than 64.'
   },
   {
-    tagName: 'Tag Name 11',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Long',
+    tagDescription: 'Levels that are over 4 minutes.'
   },
   {
-    tagName: 'Tag Name 12',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Funky Beat',
+    tagDescription: 'This level contains funky beats.'
   },
   {
-    tagName: 'Tag Name 13',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Pseudo',
+    tagDescription: 'This level contains parts where you have to press two fingers at once.'
   },
   {
-    tagName: 'Tag Name 14',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Gallop',
+    tagDescription: 'This level contains parts where you do fast streams.'
   },
   {
-    tagName: 'Tag Name 15',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Pseudo +2',
+    tagDescription: 'This level contains parts where you have to press multiple fingers at once.'
   },
   {
-    tagName: 'Tag Name 16',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Swing',
+    tagDescription: 'This level contains swing rhythms.'
   },
   {
-    tagName: 'Tag Name 17',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Slow',
+    tagDescription: 'This level\'s BPM is under 300.'
   },
   {
-    tagName: 'Tag Name 18',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Polyrhythm',
+    tagDescription: 'This level contains polyrhythms.'
   },
   {
-    tagName: 'Tag Name 19',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Quintuplet',
+    tagDescription: 'This level contains quintuplets.'
   },
   {
-    tagName: 'Tag Name 20',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Subjective',
+    tagDescription: 'This level\'s difficulty can vary by person.'
   },
   {
-    tagName: 'Tag Name 21',
-    tagDescription: 'This tag means that this level is like this and that.'
+    tagName: 'Tresillo',
+    tagDescription: 'This level contains tresillos.'
   }
 ]
 

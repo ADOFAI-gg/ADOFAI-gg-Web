@@ -116,31 +116,31 @@ const LevelListPage = () => {
           <>
             <div style={{ display: 'flex' }}>
               <SearchContentItem title='Chart Related'>
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="1" img="tag/1.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="2" img="tag/2.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="20" img="tag/20.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="13" img="tag/13.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="15" img="tag/15.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="14" img="tag/14.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="8" img="tag/8.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="5" img="tag/5.svg" />
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="3" img="tag/3.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="4" img="tag/4.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="5" img="tag/5.svg" />
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="6" img="tag/6.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="7" img="tag/7.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="8" img="tag/8.svg" />
               </SearchContentItem>
               <SearchContentItem title='Rhythm Related'>
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="2" img="tag/2.svg" />
+								<SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="19" img="tag/19.svg" />
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="9" img="tag/9.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="10" img="tag/10.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="11" img="tag/11.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="12" img="tag/12.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="13" img="tag/13.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="14" img="tag/14.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="15" img="tag/15.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="16" img="tag/16.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="17" img="tag/17.svg" />
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="18" img="tag/18.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="16" img="tag/16.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="21" img="tag/21.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="12" img="tag/12.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="10" img="tag/10.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="7" img="tag/7.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="17" img="tag/17.svg" />
               </SearchContentItem>
               <SearchContentItem title='Length'>
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="19" img="tag/19.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="20" img="tag/20.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="21" img="tag/21.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="1" img="tag/1.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="4" img="tag/4.svg" />
+                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="11" img="tag/11.svg" />
               </SearchContentItem>
             </div>
             <div style={{ display: 'flex', marginTop: '10px' }}>
