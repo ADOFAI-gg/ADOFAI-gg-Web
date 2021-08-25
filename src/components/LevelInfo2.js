@@ -12,7 +12,7 @@ const LevelInfo2 = ({ levelData, key }) => {
         <div className="main-level-info-container-bottom">
           <img
             class="main-level-info-difficulty"
-            src={"difficulty_icons/" + levelData.difficulty + ".png"}
+            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
             alt=""
           />
           <table
@@ -133,7 +133,7 @@ const LevelInfo2 = ({ levelData, key }) => {
           <img
             class="main-level-info-difficulty"
             style={{ marginLeft: "10px", padding: "5px" }}
-            src={"difficulty_icons/" + levelData.difficulty + ".png"}
+            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
             alt=""
           />
           <table

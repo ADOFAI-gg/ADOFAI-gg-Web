@@ -41,7 +41,7 @@ const MainTopPlay2 = ({ topPlay }) => {
         </div>
         <img
           className="main-top-plays-level"
-          src={"difficulty_icons/" + difficulty + ".png"}
+          src={"difficulty_icons/" + difficulty + ".svg"}
           alt=""
         />
         {/* <div className="main-top-plays-subtitle">{topPlay.levelSubTitle}</div> */}
