@@ -48,7 +48,7 @@
 
 .mod-info-date {
   display: flex;
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .mod-info-date div {
@@ -82,7 +82,7 @@
 }
 
 .mod-info-feature-bottom-item-title {
-  opacity: 70%;
+  opacity: 0.7;
 }
 
 .mod-info-feature-bottom-item-title svg {
@@ -135,9 +135,9 @@
 }
 
 .mod-info-markdown code {
-  font-family: 'Roboto Mono', 'Quicksand', monospace;
-  letter-spacing: -.75px;
-  font-size: .8em;
+  font-family: "Roboto Mono", "Quicksand", monospace;
+  letter-spacing: -0.75px;
+  font-size: 0.8em;
   background-color: #ffffff25;
   border-radius: 5px;
   padding: 3px 7px;

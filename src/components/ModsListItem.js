@@ -1,6 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRestore } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faHeart,
+  faFolderOpen,
+  faArrowAltCircleDown,
+  faWindowRestore,
+} from "@fortawesome/free-regular-svg-icons";
 
 /** modInfo must be ...
  * {
@@ -18,17 +24,27 @@ import { faUserCircle, faHeart, faFolderOpen, faArrowAltCircleDown, faWindowRest
 
 const ModsListItem = ({ modInfo }) => {
   const categoryIconDict = {
-    'Tweaks': 'tweaks',
-    'Game Play': 'game_play',
-    'Level Editor': 'level_editor',
-    'Text Edit': 'text_edit',
-    'Bug Fix': 'bug_fix',
-    'Planet Edit': 'planet_edit',
-    'Library': 'library',
-    'Other': 'other'
+    Tweaks: "tweaks",
+    "Game Play": "game_play",
+    "Level Editor": "level_editor",
+    "Text Edit": "text_edit",
+    "Bug Fix": "bug_fix",
+    "Planet Edit": "planet_edit",
+    Library: "library",
+    Other: "other",
   };
 
-  const { id, name, version, description, likes, downloads, supportVersion, category, author } = modInfo;
+  const {
+    id,
+    name,
+    version,
+    description,
+    likes,
+    downloads,
+    supportVersion,
+    category,
+    author,
+  } = modInfo;
   const categoryIcon = categoryIconDict[category];
 
   return (
@@ -43,24 +59,27 @@ const ModsListItem = ({ modInfo }) => {
             {name}
             <span className="mod-list-mod-version">v{version}</span>
           </div>
-          <div className="mod-list-mod-description">
-            {description}
-          </div>
+          <div className="mod-list-mod-description">{description}</div>
           <div className="mod-list-mod-footer">
             <div className="mod-list-mod-footer-item">
-              <FontAwesomeIcon icon={faHeart} />{likes}
+              <FontAwesomeIcon icon={faHeart} />
+              {likes}
             </div>
             <div className="mod-list-mod-footer-item">
-              <FontAwesomeIcon icon={faArrowAltCircleDown} />{downloads}
+              <FontAwesomeIcon icon={faArrowAltCircleDown} />
+              {downloads}
             </div>
             <div className="mod-list-mod-footer-item">
-              <FontAwesomeIcon icon={faWindowRestore} />{supportVersion}
+              <FontAwesomeIcon icon={faWindowRestore} />
+              {supportVersion}
             </div>
             <div className="mod-list-mod-footer-item">
-              <FontAwesomeIcon icon={faFolderOpen} />{category}
+              <FontAwesomeIcon icon={faFolderOpen} />
+              {category}
             </div>
             <div className="mod-list-mod-footer-item">
-              <FontAwesomeIcon icon={faUserCircle} />{author}
+              <FontAwesomeIcon icon={faUserCircle} />
+              {author}
             </div>
           </div>
         </div>

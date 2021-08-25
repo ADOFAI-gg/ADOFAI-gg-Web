@@ -21,7 +21,7 @@
   border-top-color: rgba(255, 255, 255, 0.4);
   border-top-width: 1px;
   border-top-style: solid;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .mod-list-item-left {
@@ -75,7 +75,6 @@
 
 .mod-list-mod-footer-item {
   margin-right: 10px;
-  
 }
 
 .mod-list-mod-footer-item svg {

@@ -23,11 +23,11 @@
   margin-bottom: 7.5px;
   padding-top: 3px;
   padding-bottom: 3px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .ranking-item * {
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .ranking-item:hover {
@@ -42,7 +42,7 @@
   margin-right: 15px;
   font-size: 1.25em;
   font-weight: 700;
-  font-family: 'Roboto Mono', 'Quicksand', monospace;
+  font-family: "Roboto Mono", "Quicksand", monospace;
   background-color: #020c1a4f;
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
 }
 
 .ranking-item-detail-pp::before {
-  content: 'Total PP';
+  content: "Total PP";
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -91,7 +91,7 @@
 }
 
 .ranking-item-detail-highest::before {
-  content: 'Highest Play';
+  content: "Highest Play";
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -119,7 +119,7 @@
  * the first to three elements
  */
 
-.ranking-item:nth-child(-n+3) {
+.ranking-item:nth-child(-n + 3) {
   background-color: #fafbff1f;
 }
 
@@ -135,31 +135,31 @@
   height: 80px;
 }
 
-.ranking-item:nth-child(-n+3):hover {
+.ranking-item:nth-child(-n + 3):hover {
   background-color: #33416199;
 }
 
-.ranking-item:nth-child(-n+3) .ranking-item-rank {
+.ranking-item:nth-child(-n + 3) .ranking-item-rank {
   margin-right: 20px;
   font-size: 1.75em;
   background-color: #b2c1ff23;
 }
 
-.ranking-item:nth-child(-n+3) .ranking-item-content {
+.ranking-item:nth-child(-n + 3) .ranking-item-content {
   align-items: flex-start;
   flex-direction: column;
 }
 
-.ranking-item:nth-child(-n+3) .ranking-item-name {
+.ranking-item:nth-child(-n + 3) .ranking-item-name {
   width: 600px;
   font-size: 1.5em;
   font-weight: 500;
 }
 
-.ranking-item:nth-child(-n+3) .ranking-item-detail {
+.ranking-item:nth-child(-n + 3) .ranking-item-detail {
   width: 900px;
   font-size: 1.1em;
 }
-.ranking-item:nth-child(-n+3) .ranking-item-detail-highest-title {
+.ranking-item:nth-child(-n + 3) .ranking-item-detail-highest-title {
   max-width: 400px;
 }

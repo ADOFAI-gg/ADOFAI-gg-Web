@@ -1,14 +1,19 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faUserCircle, faFileDownload, faWindowRestore } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDownload,
+  faUserCircle,
+  faFileDownload,
+  faWindowRestore,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 // Components
-import LikeButton from '../components/LikeButton';
+import LikeButton from "../components/LikeButton";
 
 // Stylesheets
-import '../stylesheets/mod.css';
+import "../stylesheets/mod.css";
 
 const markdownExample = `
 ## 기능
@@ -41,35 +46,63 @@ const ModPage = () => {
     detailDescription: markdownExample,
     likes: "124780345",
     downloads: "1069",
-    supportVersion: ["r75", "r76", "r77", "r78", "r79", "r80", "r81", "r82", "r83", "r84", "r85"],
+    supportVersion: [
+      "r75",
+      "r76",
+      "r77",
+      "r78",
+      "r79",
+      "r80",
+      "r81",
+      "r82",
+      "r83",
+      "r84",
+      "r85",
+    ],
     category: "Level Editor",
     author: "PizzaLover007",
     updatedAt: new Date(),
     createdAt: new Date(-1),
-    githubRepository: "https://github.com/"
-  };
-  
-  const categoryIconDict = {
-    'Tweaks': 'tweaks',
-    'Game Play': 'game_play',
-    'Level Editor': 'level_editor',
-    'Text Edit': 'text_edit',
-    'Bug Fix': 'bug_fix',
-    'Planet Edit': 'planet_edit',
-    'Library': 'library',
-    'Other': 'other'
+    githubRepository: "https://github.com/",
   };
 
-  const { /* id, */ name, version, detailDescription, likes, downloads, supportVersion, category, author, updatedAt, createdAt, githubRepository } = exampleModInfo;
+  const categoryIconDict = {
+    Tweaks: "tweaks",
+    "Game Play": "game_play",
+    "Level Editor": "level_editor",
+    "Text Edit": "text_edit",
+    "Bug Fix": "bug_fix",
+    "Planet Edit": "planet_edit",
+    Library: "library",
+    Other: "other",
+  };
+
+  const {
+    /* id, */ name,
+    version,
+    detailDescription,
+    likes,
+    downloads,
+    supportVersion,
+    category,
+    author,
+    updatedAt,
+    createdAt,
+    githubRepository,
+  } = exampleModInfo;
   const categoryIcon = categoryIconDict[category];
-  
+
   return (
     <div className="mod-info-main">
       <div className="mod-info-feature">
         <div className="mod-info-feature-top">
           <div>
             <div className="mod-info-title">
-              <img className="mod-info-category-icon" src={`/mod_icons/${categoryIcon}.svg`} alt="category icon" />
+              <img
+                className="mod-info-category-icon"
+                src={`/mod_icons/${categoryIcon}.svg`}
+                alt="category icon"
+              />
               <div className="mod-info-name">{name}</div>
               <div className="mod-info-version">v{version}</div>
             </div>
@@ -79,13 +112,18 @@ const ModPage = () => {
             </div>
           </div>
           <div className="mod-info-buttons">
-            {githubRepository !== null ?
-              <a href={githubRepository} target="_blank" rel="noreferrer" className="mod-info-button">
+            {githubRepository !== null ? (
+              <a
+                href={githubRepository}
+                target="_blank"
+                rel="noreferrer"
+                className="mod-info-button"
+              >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-            : null}
-            
-            <a href='#ay' target="_blank" className="mod-info-button">
+            ) : null}
+
+            <a href="#ay" target="_blank" className="mod-info-button">
               <FontAwesomeIcon icon={faDownload} />
             </a>
           </div>
@@ -119,7 +157,9 @@ const ModPage = () => {
                 Supported Version
               </div>
               <div className="mod-info-feature-bottom-item-content">
-                {supportVersion.map(version => <span style={{ marginRight: '10px' }}>{version}</span>)}
+                {supportVersion.map((version) => (
+                  <span style={{ marginRight: "10px" }}>{version}</span>
+                ))}
               </div>
             </div>
           </div>
@@ -127,7 +167,7 @@ const ModPage = () => {
           <LikeButton likes={likes} />
         </div>
       </div>
-      
+
       <div className="mod-info-body">
         {console.log(detailDescription)}
         <ReactMarkdown unwrapDisallowed className="mod-info-markdown">

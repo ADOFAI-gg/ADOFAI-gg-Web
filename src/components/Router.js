@@ -1,18 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import HomePage from '../routes/HomePage';
-import LevelPage from '../routes/LevelPage';
-import LevelListPage from '../routes/LevelListPage';
-import ModListPage from '../routes/ModListPage';
-import ModPage from '../routes/ModPage';
-import RankingPage from '../routes/RankingPage';
-import PageTracking from './PageTracking';
+import HomePage from "../routes/HomePage";
+import LevelPage from "../routes/LevelPage";
+import LevelListPage from "../routes/LevelListPage";
+import ModListPage from "../routes/ModListPage";
+import ModPage from "../routes/ModPage";
+import RankingPage from "../routes/RankingPage";
+import PageTracking from "./PageTracking";
 
 const AppRouter = () => {
   return (
     <Router>
-      <PageTracking/>
+      <PageTracking />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/levels" component={LevelListPage} />
@@ -28,7 +28,6 @@ const AppRouter = () => {
             <h2>Oops! This page does not exist.</h2>
           </main>
         </Route>
-
       </Switch>
     </Router>
   );

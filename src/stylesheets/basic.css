@@ -1,38 +1,38 @@
 /* This file contains CSS that is common across all pages */
 
 /* Roboto Mono (monospace) font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
 
 /* Quicksand fonts */
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/Quicksand-Light.ttf');
+  src: url("../fonts/Quicksand-Light.ttf");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/Quicksand-Regular.ttf');
+  src: url("../fonts/Quicksand-Regular.ttf");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/Quicksand-Medium.ttf');
+  src: url("../fonts/Quicksand-Medium.ttf");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/Quicksand-SemiBold.ttf');
+  src: url("../fonts/Quicksand-SemiBold.ttf");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/Quicksand-Bold.ttf');
+  src: url("../fonts/Quicksand-Bold.ttf");
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -43,7 +43,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -51,7 +51,7 @@ body {
   height: 100%;
   min-width: 1120px;
   margin: 0;
-  font-family: Quicksand, '나눔스퀘어라운드', sans-serif;
+  font-family: Quicksand, "나눔스퀘어라운드", sans-serif;
   font-weight: 400;
   background-size: cover;
   background-attachment: fixed;
@@ -77,7 +77,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.658);
   border-radius: 10px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 body::-webkit-scrollbar-thumb:hover {
@@ -123,7 +123,11 @@ a:hover {
   text-decoration-color: white;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: white;
   margin: 0;
 }
@@ -144,11 +148,9 @@ h3 {
 }
 
 h4 {
-
 }
 
 h5 {
-
 }
 
 input:focus {
@@ -181,12 +183,15 @@ input:focus {
   min-width: 550px;
 }
 
-.navbar-logo, .navbar-login {
+.navbar-logo,
+.navbar-login {
   flex-basis: 10%;
   min-width: 275px;
 }
 
-.navbar-logo, .navbar-content, .navbar-login {
+.navbar-logo,
+.navbar-content,
+.navbar-login {
   height: 40px;
   background-color: rgba(26, 37, 51, 0.7);
 }
@@ -238,14 +243,13 @@ main {
   border-radius: 6px;
   position: absolute;
   z-index: 2;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .tooltip-container:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
-
 
 /* SEARCH SECTION */
 
@@ -293,7 +297,7 @@ main {
 
 .list-search-content-toggle label {
   opacity: 0.5;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .list-search-content-toggle-button:checked + label {
@@ -307,13 +311,13 @@ main {
   padding-right: 6px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.3);
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .list-search-filter-button svg,
 .list-search-sort-button svg {
   height: 32px;
-  width: 20px!important;
+  width: 20px !important;
 }
 
 .list-search-filter,
@@ -349,7 +353,8 @@ main {
     height: auto;
     opacity: 1;
     visibility: visible;
-  } to {
+  }
+  to {
     opacity: 0;
     height: 0;
     margin: 0;
@@ -361,7 +366,8 @@ main {
   from {
     height: 0;
     margin: 0;
-  } to {
+  }
+  to {
     height: auto;
   }
 }
@@ -380,9 +386,9 @@ main {
   font-weight: 400;
   color: rgb(90, 90, 90);
   background-color: white;
-  font-family: 'Roboto Mono', 'Quicksand', monospace;
-  letter-spacing: -.5px;
-  transition: all .2s ease;
+  font-family: "Roboto Mono", "Quicksand", monospace;
+  letter-spacing: -0.5px;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
@@ -392,7 +398,7 @@ main {
 
 .like-button svg {
   margin-right: 5px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .like-button-clicked {
@@ -400,7 +406,7 @@ main {
 }
 
 .like-button-clicked svg {
-  color: rgb(255, 77, 77)
+  color: rgb(255, 77, 77);
 }
 
 /* FOOTER */

@@ -12,7 +12,11 @@
 .lavel-info-header {
   position: relative;
   height: 190px;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 66%, rgba(0,0,0,0.1407913507199755) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 66%,
+    rgba(0, 0, 0, 0.1407913507199755) 100%
+  );
 }
 
 .level-info-thumbnail {
@@ -71,13 +75,13 @@
 }
 
 .tooltip-container .level-info-tooltiptext {
-  top: 105%!important;
-  left: 0!important;
-  font-size: 16px!important;
-  max-width: 800px!important;
-  padding-left: 10px!important;
-  padding-right: 10px!important;
-  width: auto!important;
+  top: 105% !important;
+  left: 0 !important;
+  font-size: 16px !important;
+  max-width: 800px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  width: auto !important;
 }
 
 .level-info-author {
@@ -93,7 +97,7 @@
 .level-info-tags {
   display: flex;
   width: 880px;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
@@ -113,7 +117,7 @@
 
 .level-info-tag {
   border-radius: 100em;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   margin-right: 10px;
   padding: 3px;
   padding-left: 5px;
@@ -134,14 +138,14 @@
 }
 
 .level-info-warn-tag-container {
-  transition: all .2s ease; 
+  transition: all 0.2s ease;
 }
 
 .level-info-warn-tag {
   overflow: hidden;
   background-color: #ff4646;
   color: white;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
   display: flex;
 }
@@ -196,7 +200,7 @@
   width: 50px;
   height: 50px;
   margin-left: 20px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   filter: drop-shadow(0 0 10px rgb(0 0 0 / 0.4));
 }
 
@@ -222,7 +226,7 @@
 .level-info-label {
   height: 20px;
   font-size: 18px;
-  color: #B3B3B3;
+  color: #b3b3b3;
   font-weight: 600;
 }
 
@@ -239,14 +243,14 @@
 .level-info-detail-info-description {
   height: 5em;
   max-width: 600px;
-  font-size: 28px!important;
+  font-size: 28px !important;
   line-height: 1.25em;
   margin-top: 5px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   overflow: hidden;
 }
 
@@ -273,7 +277,7 @@
 }
 
 .level-info-leaderboard-content {
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 
 .level-info-leaderboard-item {
@@ -285,11 +289,11 @@
   margin-bottom: 7.5px;
   padding-top: 3px;
   padding-bottom: 3px;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .level-info-leaderboard-item * {
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .level-info-leaderboard-item:hover {
@@ -305,7 +309,7 @@
   margin-right: 20px;
   font-size: 1.75em;
   font-weight: 700;
-  font-family: 'Roboto Mono', 'Quicksand', monospace;
+  font-family: "Roboto Mono", "Quicksand", monospace;
   background-color: #b2c1ff23;
   display: flex;
   align-items: center;
@@ -342,7 +346,7 @@
 }
 
 .level-info-leaderboard-item-detail-pp::before {
-  content: 'Total PP';
+  content: "Total PP";
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -353,7 +357,7 @@
 }
 
 .level-info-leaderboard-item-detail-timestamp::before {
-  content: 'Cleared At ';
+  content: "Cleared At ";
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -372,6 +376,7 @@
   opacity: 0;
 }
 
-.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
+.level-info-leaderboard-item:hover
+  .level-info-leaderboard-item-detail-description {
   opacity: 1;
 }
