@@ -387,7 +387,7 @@ main {
   color: rgb(90, 90, 90);
   background-color: white;
   font-family: "Roboto Mono", "Quicksand", monospace;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
   transition: all 0.2s ease;
   cursor: pointer;
 }

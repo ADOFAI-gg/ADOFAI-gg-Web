@@ -9,7 +9,7 @@ const RankingItem = ({ rank, index }) => {
 
         <div className="ranking-item-detail">
           <div className="ranking-item-detail-pp">
-            {rank.totalPp.toFixed(2)}
+            {rank.totalBpm.toFixed(0)}
           </div>
 
           <div className="ranking-item-detail-highest">

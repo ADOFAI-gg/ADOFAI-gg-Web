@@ -345,10 +345,10 @@
   font-weight: 600;
 }
 
-.level-info-leaderboard-item-detail-pp::before {
+.level-info-leaderboard-item-detail-pp::after {
   content: "PP";
   font-weight: 400;
-  margin-right: 7.5px;
+  margin-left: 5px;
 }
 
 .level-info-leaderboard-item-detail-timestamp {
@@ -357,9 +357,9 @@
 }
 
 .level-info-leaderboard-item-detail-timestamp::before {
-  content: "Cleared At ";
+  content: "Cleared At - ";
   font-weight: 400;
-  margin-right: 7.5px;
+  /* margin-right: 7.5px; */
 }
 
 .level-info-leaderboard-item-detail-play {
