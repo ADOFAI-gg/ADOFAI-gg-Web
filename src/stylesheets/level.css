@@ -346,7 +346,7 @@
 }
 
 .level-info-leaderboard-item-detail-pp::before {
-  content: "Total PP";
+  content: "PP";
   font-weight: 400;
   margin-right: 7.5px;
 }
