@@ -375,7 +375,7 @@ main {
 /* LIKE BUTTON */
 
 .like-button {
-  max-width: 100px;
+  max-width: 200px;
   display: flex;
   align-items: center;
   padding: 15px;

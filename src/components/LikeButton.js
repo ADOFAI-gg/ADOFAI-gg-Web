@@ -14,7 +14,8 @@ const LikeButton = (likes) => {
       onClick={handleClick}
     >
       <FontAwesomeIcon icon={faHeart} style={{ height: "12px" }} />
-      {isLiked ? Number(likes) + 1 : likes}
+      {!isLiked ? "To be added" : "To be added!!"}
+      {/* {isLiked ? Number(likes) + 1 : likes} */}
     </div>
   );
 };
