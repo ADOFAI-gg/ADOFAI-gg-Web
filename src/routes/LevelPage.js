@@ -10,7 +10,6 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 
 // Components
 import LikeButton from '../components/LikeButton';
-import LevelTags from '../components/LevelTags';
 import LevelTags2 from '../components/LevelTags2';
 
 // Stylesheets
@@ -144,7 +143,27 @@ const LevelPage = () => {
                         {state.level.song}
                       </div>
                       <div className="level-info-author">
-                        <strong>{state.level.artists.join(' & ')}</strong> ─ Level by <strong>{state.level.creators.join(' & ')}</strong>
+                        <strong>
+                          {state.level.artists.map((artist, index) => {return (
+                            <>
+                              <span>{index > 0 ? ' & ': null}</span>
+                              <a href={`/levels?query=${artist}`}>
+                                {artist}
+                              </a>
+                            </>
+                          )})}
+                        </strong>
+                        {' ─ Level by '}
+                        <strong>
+                          {state.level.creators.map((creator, index) => {return (
+                            <>
+                              <span>{index > 0 ? ' & ': null}</span>
+                              <a href={`/levels?query=${creator}`}>
+                                {creator}
+                              </a>
+                            </>
+                          )})}
+                        </strong>
                       </div>
                     </div>
                     <div className="level-info-tags">
