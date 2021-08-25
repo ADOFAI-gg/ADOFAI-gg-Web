@@ -340,7 +340,6 @@ const LevelPage = () => {
                   <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
                     Leaderboard
                   </h1>
-                  {/* <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#levels">See All ▹</a></h3> */}
                 </div>
 
                 <div className="level-info-leaderboard-content">
@@ -378,9 +377,11 @@ const LevelPage = () => {
 
                             <div className="level-info-leaderboard-item-detail-description">
                               "
-                              {v.description
-                                ? v.description
-                                : `Wow! There's no description.`}
+                              {v.description ? (
+                                v.description
+                              ) : (
+                                <i>No description.</i>
+                              )}
                               "
                             </div>
 
