@@ -315,7 +315,7 @@ const LevelPage = () => {
                         <div className="level-info-label">Description</div>
                         <div className="level-info-value level-info-detail-info-description ">
                           {!state.level.description
-                            ? `Woah.. There's no description for this level.`
+                            ? `There's no description for this level.`
                             : state.level.description}
                         </div>
                       </div>
@@ -364,7 +364,7 @@ const LevelPage = () => {
                           <div className="level-info-leaderboard-item-detail">
                             <div className="level-info-leaderboard-item-detail-play">
                               <div className="level-info-leaderboard-item-detail-pp">
-                                {v.playPoint.toFixed(2)}
+                                {v.playPoint.toFixed(0)}
                               </div>
 
                               <div className="level-info-leaderboard-item-detail-play-info">
