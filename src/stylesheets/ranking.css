@@ -1,0 +1,165 @@
+.ranking-main {
+  display: flex;
+  min-width: 1120px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.ranking-title {
+  width: 1100px;
+}
+
+.ranking-content {
+  width: 1100px;
+}
+
+.ranking-item {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: #04152b80;
+  border-radius: 10px;
+  margin-bottom: 7.5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  transition: all 0.2s ease;
+}
+
+.ranking-item * {
+  transition: all 0.2s ease;
+}
+
+.ranking-item:hover {
+  background-color: #233b5e80;
+}
+
+.ranking-item-rank {
+  width: 72px;
+  height: calc(100% + 6px);
+  padding-left: 17.5px;
+  padding-right: 17.5px;
+  margin-right: 15px;
+  font-size: 1.25em;
+  font-weight: 700;
+  font-family: "Roboto Mono", "Quicksand", monospace;
+  background-color: #020c1a4f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.ranking-item-content {
+  width: 980px;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-item-name {
+  width: 190px;
+  margin-right: 65px;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ranking-item-detail {
+  width: 780px;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.ranking-item-detail-pp {
+  width: 180px;
+  font-weight: 600;
+}
+
+.ranking-item-detail-pp::before {
+  content: "Total PP - ";
+  font-weight: 400;
+  /* margin-right: 7.5px; */
+}
+
+.ranking-item-detail-highest {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-item-detail-highest::before {
+  content: "Highest Play";
+  font-weight: 400;
+  margin-right: 7.5px;
+}
+
+.ranking-item-detail-highest-info {
+  margin-left: 10px;
+  opacity: 0.8;
+  font-size: 0.9em;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.ranking-item-detail-highest-title {
+  max-width: 280px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/**
+ * ".ranking-item:nth-child(-n+3)" means
+ * the first to three elements
+ */
+
+.ranking-item:nth-child(-n + 3) {
+  background-color: #fafbff1f;
+}
+
+.ranking-item:nth-child(1) {
+  height: 100px;
+}
+
+.ranking-item:nth-child(2) {
+  height: 90px;
+}
+
+.ranking-item:nth-child(3) {
+  height: 80px;
+}
+
+.ranking-item:nth-child(-n + 3):hover {
+  background-color: #33416199;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-rank {
+  margin-right: 20px;
+  font-size: 1.75em;
+  background-color: #b2c1ff23;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-content {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-name {
+  width: 600px;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-detail {
+  width: 900px;
+  font-size: 1.1em;
+}
+.ranking-item:nth-child(-n + 3) .ranking-item-detail-highest-title {
+  max-width: 400px;
+}

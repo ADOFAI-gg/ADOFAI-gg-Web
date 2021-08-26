@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="610" height="512" viewBox="0 0 610 512">
+  <defs>
+    <clipPath id="clip-created_at_down">
+      <rect width="610" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="created_at_down" clip-path="url(#clip-created_at_down)">
+    <g id="Icon_feather-calendar" data-name="Icon feather-calendar" transform="translate(94.501 78)">
+      <path id="패스_23" data-name="패스 23" d="M38.752,6H278.515a34.252,34.252,0,0,1,34.252,34.252V280.015a34.252,34.252,0,0,1-34.252,34.252H38.752A34.252,34.252,0,0,1,4.5,280.015V40.252A34.252,34.252,0,0,1,38.752,6Z" transform="translate(0 31.252)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_24" data-name="패스 24" d="M24,3V71.5" transform="translate(203.137 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_25" data-name="패스 25" d="M12,3V71.5" transform="translate(78.13 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_26" data-name="패스 26" d="M4.5,15H312.767" transform="translate(0 125.007)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+    <g id="Icon_feather-arrow-up" data-name="Icon feather-arrow-up" transform="translate(540.508 429.989) rotate(180)">
+      <path id="패스_27" data-name="패스 27" d="M18,340.989V7.5" transform="translate(24.034 0)" fill="none" stroke="#97b9ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_28" data-name="패스 28" d="M7.5,42.293,42.034,7.5,76.568,42.293" transform="translate(0 0)" fill="none" stroke="#97b9ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+  </g>
+</svg>

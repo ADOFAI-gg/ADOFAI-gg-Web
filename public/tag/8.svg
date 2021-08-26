@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_8">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_8" data-name="8" clip-path="url(#clip-_8)">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
+    </g>
+    <g id="다각형_1" data-name="다각형 1" transform="translate(5)" fill="none">
+      <path d="M27,0,54,47H0Z" stroke="none"/>
+      <path d="M 27 8.030124664306641 L 6.910923004150391 43 L 47.08907699584961 43 L 27 8.030124664306641 M 27 0 L 54 47 L 0 47 L 27 0 Z" stroke="none" fill="#fff"/>
+    </g>
+    <g id="다각형_2" data-name="다각형 2" transform="translate(59 64) rotate(180)" fill="none">
+      <path d="M27,0,54,47H0Z" stroke="none"/>
+      <path d="M 27 8.030124664306641 L 6.910923004150391 43 L 47.08907699584961 43 L 27 8.030124664306641 M 27 0 L 54 47 L 0 47 L 27 0 Z" stroke="none" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_4">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_4" data-name="4" clip-path="url(#clip-_4)">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
+    </g>
+    <g id="그룹_92" data-name="그룹 92" transform="translate(70.352 8.379) rotate(121)">
+      <g id="그룹_91" data-name="그룹 91" transform="translate(38.069 4.485)" opacity="0.98">
+        <circle id="타원_16" data-name="타원 16" cx="18" cy="18" r="18" transform="translate(-16.069 -1.776)" fill="none" opacity="0.07"/>
+      </g>
+      <g id="그룹_86" data-name="그룹 86" transform="translate(64.896 19.002) rotate(120)">
+        <path id="패스_30" data-name="패스 30" d="M2.421.286,17.6,11.194a4.593,4.593,0,1,1-5.34,7.475A4.435,4.435,0,0,1,11.193,17.6L.285,2.422A1.531,1.531,0,0,1,2.421.286Z" transform="translate(13.564 0) rotate(44)" fill="#fff"/>
+        <path id="패스_31" data-name="패스 31" d="M2.421.286,17.6,11.194a4.593,4.593,0,1,1-5.34,7.475A4.435,4.435,0,0,1,11.193,17.6L.285,2.422A1.531,1.531,0,0,1,2.421.286Z" transform="translate(14.288 41.413) rotate(-136)" opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

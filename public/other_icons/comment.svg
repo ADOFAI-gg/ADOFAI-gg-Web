@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-comment">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="comment" clip-path="url(#clip-comment)">
+    <path id="Icon_awesome-comment-dots" data-name="Icon awesome-comment-dots" d="M32,2.25c-17.675,0-32,11.637-32,26A23.077,23.077,0,0,0,7.125,44.587C5.562,50.887.338,56.5.275,56.562A.994.994,0,0,0,.087,57.65a.979.979,0,0,0,.912.6,28.587,28.587,0,0,0,17.575-6.425A38.122,38.122,0,0,0,32,54.25c17.675,0,32-11.638,32-26S49.675,2.25,32,2.25Zm-16,30a4,4,0,1,1,4-4A4,4,0,0,1,16,32.25Zm16,0a4,4,0,1,1,4-4A4,4,0,0,1,32,32.25Zm16,0a4,4,0,1,1,4-4A4,4,0,0,1,48,32.25Z" transform="translate(0 1.75)" fill="#fff"/>
+  </g>
+</svg>

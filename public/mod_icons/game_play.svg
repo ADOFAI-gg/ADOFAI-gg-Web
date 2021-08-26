@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-game_play">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="game_play" clip-path="url(#clip-game_play)">
+    <g id="Icon_feather-play-circle" data-name="Icon feather-play-circle" transform="translate(78 78)">
+      <path id="패스_10" data-name="패스 10" d="M353,178A175,175,0,1,1,178,3,175,175,0,0,1,353,178Z" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+      <path id="패스_11" data-name="패스 11" d="M15,12,123.176,84.117,15,156.234Z" transform="translate(126.185 93.883)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
+    </g>
+  </g>
+</svg>

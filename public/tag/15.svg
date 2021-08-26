@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_15">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_15" data-name="15" clip-path="url(#clip-_15)">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
+    </g>
+    <g id="타원_4" data-name="타원 4" transform="translate(9 9)" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="23" cy="23" r="23" stroke="none"/>
+      <circle cx="23" cy="23" r="21" fill="none"/>
+    </g>
+    <g id="타원_5" data-name="타원 5" transform="translate(18 18)" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="14" cy="14" r="14" stroke="none"/>
+      <circle cx="14" cy="14" r="12" fill="none"/>
+    </g>
+    <g id="타원_6" data-name="타원 6" transform="translate(18 18)" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="14" cy="14" r="14" stroke="none"/>
+      <circle cx="14" cy="14" r="12" fill="none"/>
+    </g>
+  </g>
+</svg>
