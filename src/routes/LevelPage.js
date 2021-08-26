@@ -264,7 +264,11 @@ const LevelPage = () => {
                         </div>
                         <div className="level-info-value">
                           <img
-                            style={{ marginTop: "5px", width: "32px" }}
+                            style={{
+                              marginTop: "5px",
+                              width: "32px",
+                              height: "32px",
+                            }}
                             src={`/difficulty_icons/${state.level.difficulty}.svg`}
                             alt=""
                           />
