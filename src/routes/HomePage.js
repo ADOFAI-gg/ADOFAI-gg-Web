@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 // Components
-import MainAddInfo from "../components/MainAddInfo";
+// import MainAddInfo from "../components/MainAddInfo";
 import MainTopPlays from "../components/MainTopPlays";
 import MainPopularLevels from "../components/MainPopularLevels";
 import { useHistory } from "react-router-dom";

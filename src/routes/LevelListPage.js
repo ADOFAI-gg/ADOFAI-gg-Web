@@ -57,6 +57,9 @@ const LevelListPage = () => {
     };
 
     fetchData();
+
+    // disable warning because fetchParams method is intentionally not added
+    // eslint-disable-next-line
   }, [searchTerm, sortBy, tag, numbers]);
 
   const fetchMoreData = async () => {

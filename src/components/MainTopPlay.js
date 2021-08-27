@@ -6,6 +6,9 @@ const MainTopPlay = ({ topPlay }) => {
 
   useEffect(() => {
     getAllDifficulty();
+
+    // disable warning because getAllDifficulty method is intentionally not added
+    // eslint-disable-next-line
   }, []);
 
   const getAllDifficulty = () => {
