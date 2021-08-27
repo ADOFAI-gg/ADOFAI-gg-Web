@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Components
 import RankingItem from "../components/RankingItem";
+import ScrollButton from '../components/ScrollButton';
 
 // Stylesheets
 import "../stylesheets/ranking.css";
@@ -113,6 +114,7 @@ const RankingPage = () => {
 
   return (
     <div className="ranking-main">
+      <ScrollButton />
       <div
         className="content-title"
         style={{ margin: "15px", fontSize: "2em" }}
