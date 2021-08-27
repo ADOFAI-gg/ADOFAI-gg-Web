@@ -142,7 +142,6 @@ const LevelListPage = () => {
               </SearchContentItem>
               <SearchContentItem title='Length'>
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="1" img="tag/1.svg" />
-                <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="4" img="tag/4.svg" />
                 <SearchContentCheckbox onSelect={(value) => tagChange(value)} tooltip="11" img="tag/11.svg" />
               </SearchContentItem>
             </div>
