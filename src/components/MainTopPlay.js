@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const MainTopPlay2 = ({ topPlay }) => {
+const MainTopPlay = ({ topPlay }) => {
   const [difficulty, getDifficulty] = useState([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const MainTopPlay2 = ({ topPlay }) => {
   );
 };
 
-export default MainTopPlay2;
+export default MainTopPlay;

@@ -95,7 +95,7 @@ const idConvert = (id) => {
   return id;
 };
 
-const LevelTags2 = ({ tag, id, styleClass }) => {
+const LevelTags = ({ tag, id, styleClass }) => {
   return (
     <>
       <img
@@ -121,4 +121,4 @@ const LevelTags2 = ({ tag, id, styleClass }) => {
   );
 };
 
-export default LevelTags2;
+export default LevelTags;

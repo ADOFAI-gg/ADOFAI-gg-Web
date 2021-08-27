@@ -1,8 +1,8 @@
-import LevelTags2 from "./LevelTags2";
+import LevelTags from "./LevelTags";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
-const LevelInfo2 = ({ levelData, key }) => {
+const LevelInfo = ({ levelData, key }) => {
   return (
     <a 
 			key={key} 
@@ -187,7 +187,7 @@ const LevelInfo2 = ({ levelData, key }) => {
               <td valign="bottom" className="main-level-info-tags">
                 {levelData.tags.length !== 0 ? (
                   levelData.tags.map((tag) => (
-                    <LevelTags2
+                    <LevelTags
                       tag={tag.id}
                       id={levelData.id}
                       styleClass="main-tag"
@@ -205,4 +205,4 @@ const LevelInfo2 = ({ levelData, key }) => {
   );
 };
 
-export default LevelInfo2;
+export default LevelInfo;

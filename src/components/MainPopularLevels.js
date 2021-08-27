@@ -1,8 +1,8 @@
-import LevelInfo2 from "./LevelInfo";
+import LevelInfo from "./LevelInfo";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const MainPopularLevels2 = () => {
+const MainPopularLevels = () => {
   const [levelData, getLevelData] = useState([]);
 
   useEffect(() => {
@@ -37,11 +37,11 @@ const MainPopularLevels2 = () => {
       </div>
       <div className="main-popular-levels">
         {levelData.map((i, index) => (
-          <LevelInfo2 levelData={i} key={index} />
+          <LevelInfo levelData={i} key={index} />
         ))}
       </div>
     </div>
   );
 };
 
-export default MainPopularLevels2;
+export default MainPopularLevels;

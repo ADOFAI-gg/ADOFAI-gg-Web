@@ -1,8 +1,8 @@
-import MainTopPlay2 from "./MainTopPlay2";
+import MainTopPlay from "./MainTopPlay";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const MainTopPlays2 = () => {
+const MainTopPlays = () => {
   const [playData, getPlayData] = useState([]);
 
   useEffect(() => {
@@ -31,11 +31,11 @@ const MainTopPlays2 = () => {
       </div>
       <div className="main-top-plays">
         {playData.map((topPlay) => (
-          <MainTopPlay2 topPlay={topPlay} />
+          <MainTopPlay topPlay={topPlay} />
         ))}
       </div>
     </div>
   );
 };
 
-export default MainTopPlays2;
+export default MainTopPlays;
