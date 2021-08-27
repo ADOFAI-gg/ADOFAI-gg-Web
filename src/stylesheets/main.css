@@ -348,25 +348,6 @@
   margin-right: 5px;
 }
 
-.main-user-menu-button {
-  padding: 0;
-  border: none;
-  width: 64px;
-  height: 64px;
-  position: fixed;
-  bottom: 40px;
-  right: 50px;
-  z-index: 1;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  filter: brightness(0.8);
-}
-
-.main-user-menu-button:hover {
-  transform: scale(1.15);
-  filter: brightness(1);
-}
-
 .main-user-menu {
   width: 300px;
 }

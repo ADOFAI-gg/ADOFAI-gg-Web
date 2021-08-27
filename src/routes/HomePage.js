@@ -61,7 +61,7 @@ const HomePage = () => {
       <MainPopularLevels />
       <button
         onClick={userMenu}
-        className="main-user-menu-button"
+        className="user-menu-button"
         style={{ background: 'url("/other_icons/message.svg")' }}
       />
     </main>
