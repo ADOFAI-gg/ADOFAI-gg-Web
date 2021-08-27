@@ -1,6 +1,7 @@
 import LevelInfo from "./LevelInfo";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MainPopularLevels = () => {
   const [levelData, getLevelData] = useState([]);
@@ -32,7 +33,7 @@ const MainPopularLevels = () => {
         <h3
           style={{ flexBasis: "20%", textAlign: "right", paddingTop: "20px" }}
         >
-          <a href="levels">See All ▹</a>
+          <Link to="levels">See All ▹</Link>
         </h3>
       </div>
       <div className="main-popular-levels">

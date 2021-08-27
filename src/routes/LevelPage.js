@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import axios from "axios";
 
@@ -172,7 +172,9 @@ const LevelPage = () => {
                             return (
                               <>
                                 <span>{index > 0 ? " & " : null}</span>
-                                <a href={`/levels?query=${artist}`}>{artist}</a>
+                                <Link to={`/levels?query=${artist}`}>
+                                  {artist}
+                                </Link>
                               </>
                             );
                           })}
@@ -183,9 +185,9 @@ const LevelPage = () => {
                             return (
                               <>
                                 <span>{index > 0 ? " & " : null}</span>
-                                <a href={`/levels?query=${creator}`}>
+                                <Link to={`/levels?query=${creator}`}>
                                   {creator}
-                                </a>
+                                </Link>
                               </>
                             );
                           })}

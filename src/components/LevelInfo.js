@@ -1,15 +1,19 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+// Components
 import LevelTags from "./LevelTags";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
 const LevelInfo = ({ levelData, key }) => {
   return (
-    <a 
-			key={key} 
-			href={"/levels/" + levelData.id}
-			target="_blank"
-      rel="noreferrer"
-		>
+    <Link
+      key={key}
+      to={"/levels/" + levelData.id}
+      // target="_blank"
+      // rel="noreferrer"
+    >
       <div key={key} className="main-level-info">
         {/* <div className="main-level-background-container"> 
           <div style={{ backgroundImage: `url(${'level_backgrounds/' + levelData.levelBackground})` }} className="main-level-background"></div>
@@ -201,7 +205,7 @@ const LevelInfo = ({ levelData, key }) => {
           </table>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

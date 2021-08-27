@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MainTopPlay = ({ topPlay }) => {
   const [difficulty, getDifficulty] = useState([]);
@@ -37,7 +38,7 @@ const MainTopPlay = ({ topPlay }) => {
           />
         </div>
         <div className="main-top-plays-title">
-          <a href={"/levels/" + topPlay.level.id}>{topPlay.level.name}</a>
+          <Link to={`/levels/${topPlay.level.id}`}>{topPlay.level.name}</Link>
         </div>
         <div className="main-top-plays-pp">
           {topPlay.playPoint.toFixed(0) + " PP"}
