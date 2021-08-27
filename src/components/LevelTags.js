@@ -1,130 +1,124 @@
+import ReactTooltip from "react-tooltip";
+
 const tagDescription = [
   {
-    id: 0,
-    tagName: "Tag Name 0",
-    tagDescription: "This tag means that this level is like this and that 0.",
+    tagName: "Short",
+    tagDescription: "Levels that are under a minute.",
   },
   {
-    id: 1,
-    tagName: "Tag Name 1",
-    tagDescription: "This tag means that this level is like this and that 1.",
+    tagName: "Triplet",
+    tagDescription: "This level contains triplets.",
   },
   {
-    id: 2,
-    tagName: "Tag Name 2",
-    tagDescription: "This tag means that this level is like this and that 2.",
+    tagName: "No Speed Change",
+    tagDescription: "The tile bpm remains constant throughout this level.",
   },
   {
-    id: 3,
-    tagName: "Tag Name 3",
-    tagDescription: "This tag means that this level is like this and that 3.",
+    tagName: "Medium",
+    tagDescription: "Levels that are under 4 minutes.",
   },
   {
-    id: 4,
-    tagName: "Tag Name 4",
-    tagDescription: "This tag means that this level is like this and that 4.",
+    tagName: "Memorization",
+    tagDescription: "This level requires memorization.",
   },
   {
-    id: 5,
-    tagName: "Tag Name 5",
-    tagDescription: "This tag means that this level is like this and that 5.",
+    tagName: "No Swirls",
+    tagDescription: "This level has no swirls.",
   },
   {
-    id: 6,
-    tagName: "Tag Name 6",
-    tagDescription: "This tag means that this level is like this and that 6.",
+    tagName: "Acceleration / Deceleration",
+    tagDescription: "This level uses a song that changes BPM.",
   },
   {
-    id: 7,
-    tagName: "Tag Name 7",
-    tagDescription: "This tag means that this level is like this and that 7.",
+    tagName: "Magic Shape",
+    tagDescription: "This level contains magic shapes.",
   },
   {
-    id: 8,
-    tagName: "Tag Name 8",
-    tagDescription: "This tag means that this level is like this and that 8.",
+    tagName: "Septuplet",
+    tagDescription: "This level contains septuplets.",
   },
   {
-    id: 9,
-    tagName: "Tag Name 9",
-    tagDescription: "This tag means that this level is like this and that 9.",
+    tagName: "64+ Beat",
+    tagDescription: "This level contains beats higher than 64.",
   },
   {
-    id: 10,
-    tagName: "Tag Name 10",
-    tagDescription: "This tag means that this level is like this and that 10.",
+    tagName: "Long",
+    tagDescription: "Levels that are over 4 minutes.",
   },
   {
-    id: 11,
-    tagName: "Tag Name 11",
-    tagDescription: "This tag means that this level is like this and that 11.",
+    tagName: "Funky Beat",
+    tagDescription: "This level contains funky beats.",
   },
   {
-    id: 12,
-    tagName: "Tag Name 12",
-    tagDescription: "This tag means that this level is like this and that 12.",
+    tagName: "Pseudo",
+    tagDescription:
+      "This level contains parts where you have to press two fingers at once.",
   },
   {
-    id: 13,
-    tagName: "Tag Name 13",
-    tagDescription: "This tag means that this level is like this and that 13.",
+    tagName: "Gallop",
+    tagDescription: "This level contains parts where you do fast streams.",
   },
   {
-    id: 14,
-    tagName: "Tag Name 14",
-    tagDescription: "This tag means that this level is like this and that 14.",
+    tagName: "Pseudo +2",
+    tagDescription:
+      "This level contains parts where you have to press multiple fingers at once.",
   },
   {
-    id: 15,
-    tagName: "Tag Name 15",
-    tagDescription: "This tag means that this level is like this and that 15.",
+    tagName: "Swing",
+    tagDescription: "This level contains swing rhythms.",
   },
   {
-    id: 16,
-    tagName: "Tag Name 16",
-    tagDescription: "This tag means that this level is like this and that 16.",
+    tagName: "Slow",
+    tagDescription: "This level's BPM is under 300.",
   },
   {
-    id: 17,
-    tagName: "Tag Name 17",
-    tagDescription: "This tag means that this level is like this and that 17.",
+    tagName: "Polyrhythm",
+    tagDescription: "This level contains polyrhythms.",
   },
   {
-    id: 18,
-    tagName: "Tag Name 18",
-    tagDescription: "This tag means that this level is like this and that 18.",
+    tagName: "Quintuplet",
+    tagDescription: "This level contains quintuplets.",
   },
   {
-    id: 19,
-    tagName: "Tag Name 19",
-    tagDescription: "This tag means that this level is like this and that 19.",
+    tagName: "Subjective",
+    tagDescription: "This level's difficulty can vary by person.",
   },
   {
-    id: 20,
-    tagName: "Tag Name 20",
-    tagDescription: "This tag means that this level is like this and that 20.",
-  },
-  {
-    id: 21,
-    tagName: "Tag Name 21",
-    tagDescription: "This tag means that this level is like this and that 21.",
+    tagName: "Tresillo",
+    tagDescription: "This level contains tresillos.",
   },
 ];
 
-const LevelTags = ({ tag, styleClass }) => {
+const idConvert = (id) => {
+  id = id.toString();
+  while (id.length < 6) id = "0" + id;
+  return id;
+};
+
+const LevelTags2 = ({ tag, id, styleClass }) => {
   return (
-    <div key={tag} className="tooltip-container">
-      <span className="tooltiptext">
-        {tagDescription[tag].tagName}
-        <br />
-        <br />
-        <span style={{ fontWeight: "500" }}>
-          {tagDescription[tag].tagDescription}
+    <>
+      <img
+        data-tip
+        data-for={"tag_" + tag + "_" + idConvert(id)}
+        className={styleClass}
+        src={"/tag/" + tag + ".svg"}
+        alt=""
+      />
+      <ReactTooltip
+        id={"tag_" + tag + "_" + idConvert(id)}
+        place="bottom"
+        type="dark"
+        effect="solid"
+      >
+        <span style={{ whiteSpace: "pre-line" }}>
+          {tagDescription[tag - 1].tagName.toString() +
+            "\n" +
+            tagDescription[tag - 1].tagDescription.toString()}
         </span>
-      </span>
-      <img className={styleClass} src={`/tag_icons/${tag}.svg`} alt="" />
-    </div>
+      </ReactTooltip>
+    </>
   );
 };
 
-export default LevelTags;
+export default LevelTags2;
