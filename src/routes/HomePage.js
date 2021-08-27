@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 // Components
-import MainAddInfo from "../components/MainAddInfo";
-import MainTopPlays2 from "../components/MainTopPlays2";
-import MainPopularLevels2 from "../components/MainPopularLevels2";
+// import MainAddInfo from "../components/MainAddInfo";
+import MainTopPlays from "../components/MainTopPlays";
+import MainPopularLevels from "../components/MainPopularLevels";
 import { useHistory } from "react-router-dom";
 
 // Stylesheets
@@ -57,8 +57,8 @@ const HomePage = () => {
         }
       />
       {/* <MainAddInfo playersOnline='999999' rankedPlayers='999999' rankedLevels='999999' unclearedLevels='999999'/> */}
-      <MainTopPlays2 />
-      <MainPopularLevels2 />
+      <MainTopPlays />
+      <MainPopularLevels />
       <button
         onClick={userMenu}
         className="main-user-menu-button"

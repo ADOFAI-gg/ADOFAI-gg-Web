@@ -1,32 +1,23 @@
 import LevelTags from "./LevelTags";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
-const LevelInfo = ({ recentPopularLevel }) => {
+const LevelInfo = ({ levelData, key }) => {
   return (
-    <a
-      key={recentPopularLevel.id}
-      href={"/levels/" + recentPopularLevel.levelId}
-    >
-      <div className="main-level-info">
-        <div className="main-level-background-container">
-          <div
-            style={{
-              backgroundImage: `url(${
-                "level_backgrounds/" + recentPopularLevel.levelBackground
-              })`,
-            }}
-            className="main-level-background"
-          ></div>
-        </div>
+    <a 
+			key={key} 
+			href={"/levels/" + levelData.id}
+			target="_blank"
+      rel="noreferrer"
+		>
+      <div key={key} className="main-level-info">
+        {/* <div className="main-level-background-container"> 
+          <div style={{ backgroundImage: `url(${'level_backgrounds/' + levelData.levelBackground})` }} className="main-level-background"></div>
+        </div> */}
         <div className="main-level-info-container-bottom">
           <img
-            style={{ marginLeft: "10px" }}
-            src={
-              "level_icons/level-icon-" +
-              recentPopularLevel.levelDifficulty +
-              ".svg"
-            }
+            class="main-level-info-difficulty"
+            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
             alt=""
           />
           <table
@@ -41,7 +32,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-level">
-                {recentPopularLevel.levelTitle}
+                {levelData.title}
               </td>
             </tr>
           </table>
@@ -57,7 +48,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-creator">
-                {recentPopularLevel.levelCreator.join(" & ")}
+                {levelData.creators.join(" & ")}
               </td>
             </tr>
           </table>
@@ -73,7 +64,11 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-bpm">
-                {recentPopularLevel.levelBpm}
+                {levelData.minBpm === levelData.maxBpm
+                  ? levelData.minBpm
+                  : levelData.minBpm.toString() +
+                    "-" +
+                    levelData.maxBpm.toString()}
               </td>
             </tr>
           </table>
@@ -89,7 +84,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-tiles">
-                {recentPopularLevel.levelTiles}
+                {levelData.tiles}
               </td>
             </tr>
           </table>
@@ -101,17 +96,16 @@ const LevelInfo = ({ recentPopularLevel }) => {
             style={{ textAlign: "center", marginLeft: "10px" }}
           >
             <tr>
-              <td valign="bottom" className="main-level-info-top">
-                <img
-                  style={{ height: "12px" }}
-                  src="other_icons/comment.svg"
-                  alt=""
+              <td valign="top" className="main-level-info-top">
+                <FontAwesomeIcon
+                  icon={faCommentDots}
+                  style={{ height: "12px", weight: "12px", color: "white" }}
                 />
               </td>
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-comments">
-                {recentPopularLevel.levelComments}
+                {levelData.comments}
               </td>
             </tr>
           </table>
@@ -123,7 +117,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             style={{ textAlign: "center", marginLeft: "10px" }}
           >
             <tr>
-              <td valign="bottom" className="main-level-info-top">
+              <td valign="top" className="main-level-info-top">
                 <FontAwesomeIcon
                   icon={faHeart}
                   style={{ height: "12px", weight: "12px", color: "#FF4E4E" }}
@@ -132,19 +126,19 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-likes">
-                {recentPopularLevel.levelLikes}
+                {levelData.likes}
               </td>
             </tr>
           </table>
         </div>
-        <div className="main-level-info-container-top">
+        <div
+          className="main-level-info-container-top"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+        >
           <img
-            style={{ marginLeft: "10px" }}
-            src={
-              "level_icons/level-icon-" +
-              recentPopularLevel.levelDifficulty +
-              ".svg"
-            }
+            class="main-level-info-difficulty"
+            style={{ marginLeft: "10px", padding: "5px" }}
+            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
             alt=""
           />
           <table
@@ -159,7 +153,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-song">
-                {recentPopularLevel.songTitle}
+                {levelData.song}
               </td>
             </tr>
           </table>
@@ -175,7 +169,7 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-artist">
-                {recentPopularLevel.songArtist.join(" & ")}
+                {levelData.artists.join(" & ")}
               </td>
             </tr>
           </table>
@@ -191,9 +185,17 @@ const LevelInfo = ({ recentPopularLevel }) => {
             </tr>
             <tr>
               <td valign="bottom" className="main-level-info-tags">
-                {recentPopularLevel.tags.map((tag) => (
-                  <LevelTags tag={tag} styleClass="main-tag" />
-                ))}
+                {levelData.tags.length !== 0 ? (
+                  levelData.tags.map((tag) => (
+                    <LevelTags
+                      tag={tag.id}
+                      id={levelData.id}
+                      styleClass="main-tag"
+                    />
+                  ))
+                ) : (
+                  <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
+                )}
               </td>
             </tr>
           </table>

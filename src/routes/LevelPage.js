@@ -10,7 +10,7 @@ import { faSteam } from "@fortawesome/free-brands-svg-icons";
 
 // Components
 import LikeButton from "../components/LikeButton";
-import LevelTags2 from "../components/LevelTags2";
+import LevelTags from "../components/LevelTags";
 
 // Stylesheets
 import "../stylesheets/level.css";
@@ -210,7 +210,7 @@ const LevelPage = () => {
 
                       {state.level.tags.length !== 0 ? (
                         state.level.tags.map((tag) => (
-                          <LevelTags2
+                          <LevelTags
                             tag={tag.id}
                             id={state.level.id}
                             styleClass="level-info-tag-icon"

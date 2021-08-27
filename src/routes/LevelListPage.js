@@ -1,6 +1,6 @@
 // import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import LevelInfo2 from '../components/LevelInfo2';
+import LevelInfo from '../components/LevelInfo';
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -57,6 +57,9 @@ const LevelListPage = () => {
     };
 
     fetchData();
+
+    // disable warning because fetchParams method is intentionally not added
+    // eslint-disable-next-line
   }, [searchTerm, sortBy, tag, numbers]);
 
   const fetchMoreData = async () => {
@@ -191,7 +194,7 @@ const LevelListPage = () => {
             }
           >
             {items.map((i, index) => (
-              <LevelInfo2 levelData={i} key={index} />
+              <LevelInfo levelData={i} key={index} />
             ))}
           </InfiniteScroll>
         )}
