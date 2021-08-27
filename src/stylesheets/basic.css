@@ -47,8 +47,16 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-body {
+html,
+body,
+#root,
+.container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
   min-width: 1120px;
   margin: 0;
   font-family: Quicksand, "나눔스퀘어라운드", sans-serif;
@@ -412,9 +420,9 @@ main {
 /* FOOTER */
 
 footer {
-  position: absolute;
   left: 0;
   bottom: 0;
+  margin-top: auto;
   width: 100%;
   height: 90px;
 }
@@ -422,7 +430,8 @@ footer {
 .footer-content {
   height: 100%;
   width: 1060px;
-  margin-top: 150px;
+  bottom: 0;
+  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
   line-height: 90px;
