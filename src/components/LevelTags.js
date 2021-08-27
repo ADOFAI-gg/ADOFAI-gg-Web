@@ -87,6 +87,14 @@ const tagDescription = [
     tagName: "Tresillo",
     tagDescription: "This level contains tresillos.",
   },
+  {
+    tagName: "Gimmick",
+    tagDescription: "This level contains gimmicks.",
+  },
+  {
+    tagName: "NSFW",
+    tagDescription: "This level contains NSFW content.",
+  },
 ];
 
 const idConvert = (id) => {
@@ -96,6 +104,8 @@ const idConvert = (id) => {
 };
 
 const LevelTags = ({ tag, id, styleClass }) => {
+  if (tagDescription[tag - 1] === undefined) return;
+
   return (
     <>
       <img
