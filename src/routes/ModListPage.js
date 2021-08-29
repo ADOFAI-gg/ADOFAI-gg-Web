@@ -8,7 +8,7 @@ import {
   SearchContentBtn,
 } from "../components/SearchSection";
 import ModsListItem from "../components/ModsListItem";
-import ScrollButton from '../components/ScrollButton';
+import ScrollButton from "../components/ScrollButton";
 
 // Stylesheets
 import "../stylesheets/modList.css";
@@ -71,7 +71,7 @@ const ModListPage = () => {
 
   return (
     <>
-      <div className="mod-list-main">
+      <main>
         <ScrollButton />
         <SearchSection
           placeholder="Search Mod"
@@ -178,7 +178,7 @@ const ModListPage = () => {
             ))}
           </InfiniteScroll>
         </div>
-      </div>
+      </main>
     </>
   );
 };

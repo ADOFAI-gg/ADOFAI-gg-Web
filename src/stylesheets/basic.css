@@ -205,8 +205,11 @@ input:focus {
 }
 
 main {
-  text-align: center;
+  display: flex;
   min-width: 1120px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
 .float-left {

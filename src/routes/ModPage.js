@@ -93,7 +93,7 @@ const ModPage = () => {
   const categoryIcon = categoryIconDict[category];
 
   return (
-    <div className="mod-info-main">
+    <main>
       <div className="mod-info-feature">
         <div className="mod-info-feature-top">
           <div>
@@ -174,7 +174,7 @@ const ModPage = () => {
           {detailDescription}
         </ReactMarkdown>
       </div>
-    </div>
+    </main>
   );
 };
 

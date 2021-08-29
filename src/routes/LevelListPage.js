@@ -183,7 +183,7 @@ const LevelListPage = () => {
   }
 
   return (
-    <div className="mod-list-main">
+    <main>
       <ScrollButton />
       <SearchSection
         placeholder="Search Level Title, Song Title, Artist, Creator"
@@ -425,7 +425,7 @@ const LevelListPage = () => {
           </InfiniteScroll>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

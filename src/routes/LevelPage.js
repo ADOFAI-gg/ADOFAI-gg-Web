@@ -123,7 +123,7 @@ const LevelPage = () => {
   return (
     <>
       {/* Main */}
-      <div className="level-info-main">
+      <main>
         {state.isLoading ? null : !state.level ||
           !state.leaderboard ? null : state.isError ||
           state.level.title === undefined ? (
@@ -404,7 +404,7 @@ const LevelPage = () => {
             ) : null}
           </>
         )}
-      </div>
+      </main>
     </>
   );
 };
