@@ -7,202 +7,134 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
 const LevelInfo = ({ levelData, key }) => {
+  const {
+    id,
+    title,
+    difficulty,
+    creators,
+    // songId,
+    song,
+    artists,
+    minBpm,
+    maxBpm,
+    tiles,
+    comments,
+    likes,
+    tags,
+  } = levelData;
+
+  const LevelDifficulty = () => {
+    return (
+      <img
+        class="level-item-info-difficulty"
+        src={`difficulty_icons/${difficulty}.svg`}
+        alt={`Lv. ${difficulty}`}
+      />
+    );
+  };
+
   return (
-    <Link
-      key={key}
-      to={"/levels/" + levelData.id}
-      // target="_blank"
-      // rel="noreferrer"
-    >
+    <Link key={key} to={"/levels/" + id}>
       <div key={key} className="main-level-info">
-        {/* <div className="main-level-background-container"> 
-          <div style={{ backgroundImage: `url(${'level_backgrounds/' + levelData.levelBackground})` }} className="main-level-background"></div>
+        {/* <div className="level-item-info-background-container ">
+          <div
+            style={{
+              backgroundImage: `url(${
+                "level_backgrounds/" + levelData.levelBackground
+              })`,
+            }}
+            className="level-item-info-background"
+          ></div>
         </div> */}
-        <div className="main-level-info-container-bottom">
-          <img
-            class="main-level-info-difficulty"
-            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
-            alt=""
-          />
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="400"
-            style={{ textAlign: "left", marginLeft: "10px" }}
+
+        <div className="level-info-container-normal">
+          <LevelDifficulty />
+
+          <div className="level-item-info-section" style={{ width: "400px" }}>
+            <div className="level-item-info-label">Level</div>
+            <div className="level-item-info-value">{title}</div>
+          </div>
+
+          <div className="level-item-info-section" style={{ width: "200px" }}>
+            <div className="level-item-info-label">Creator</div>
+            <div className="level-item-info-value">{creators.join(" & ")}</div>
+          </div>
+
+          <div
+            className="level-item-info-section level-item-info-section-center"
+            style={{ width: "130px" }}
           >
-            <tr>
-              <td className="main-level-info-top">Level</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-level">
-                {levelData.title}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="200"
-            style={{ textAlign: "left", marginLeft: "10px" }}
+            <div className="level-item-info-label">BPM</div>
+            <div className="level-item-info-value">
+              {minBpm === maxBpm
+                ? minBpm
+                : minBpm.toString() + "-" + maxBpm.toString()}
+            </div>
+          </div>
+
+          <div
+            className="level-item-info-section level-item-info-section-center"
+            style={{ width: "80px" }}
           >
-            <tr>
-              <td className="main-level-info-top">Creator</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-creator">
-                {levelData.creators.join(" & ")}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="130"
-            style={{ textAlign: "center", marginLeft: "10px" }}
+            <div className="level-item-info-label">Tiles</div>
+            <div className="level-item-info-value">{tiles}</div>
+          </div>
+
+          <div
+            className="level-item-info-section level-item-info-section-center"
+            style={{ width: "80px" }}
           >
-            <tr>
-              <td className="main-level-info-top">BPM</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-bpm">
-                {levelData.minBpm === levelData.maxBpm
-                  ? levelData.minBpm
-                  : levelData.minBpm.toString() +
-                    "-" +
-                    levelData.maxBpm.toString()}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="80"
-            style={{ textAlign: "center", marginLeft: "10px" }}
+            <div className="level-item-info-label">
+              <FontAwesomeIcon
+                icon={faCommentDots}
+                style={{ height: "12px", weight: "12px", color: "white" }}
+              />
+            </div>
+            <div className="level-item-info-value">{comments}</div>
+          </div>
+
+          <div
+            className="level-item-info-section level-item-info-section-center"
+            style={{ width: "80px" }}
           >
-            <tr>
-              <td className="main-level-info-top">Tiles</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-tiles">
-                {levelData.tiles}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="80"
-            style={{ textAlign: "center", marginLeft: "10px" }}
-          >
-            <tr>
-              <td valign="top" className="main-level-info-top">
-                <FontAwesomeIcon
-                  icon={faCommentDots}
-                  style={{ height: "12px", weight: "12px", color: "white" }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-comments">
-                {levelData.comments}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="80"
-            style={{ textAlign: "center", marginLeft: "10px" }}
-          >
-            <tr>
-              <td valign="top" className="main-level-info-top">
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ height: "12px", weight: "12px", color: "#FF4E4E" }}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-likes">
-                {levelData.likes}
-              </td>
-            </tr>
-          </table>
+            <div className="level-item-info-label">
+              <FontAwesomeIcon
+                icon={faHeart}
+                style={{ height: "12px", weight: "12px", color: "#FF4E4E" }}
+              />
+            </div>
+            <div className="level-item-info-value">{likes}</div>
+          </div>
         </div>
+
         <div
-          className="main-level-info-container-top"
+          className="level-info-container-hover"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          <img
-            class="main-level-info-difficulty"
-            style={{ marginLeft: "10px", padding: "5px" }}
-            src={"difficulty_icons/" + levelData.difficulty + ".svg"}
-            alt=""
-          />
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="400"
-            style={{ textAlign: "left", marginLeft: "10px" }}
-          >
-            <tr>
-              <td className="main-level-info-top">Song</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-song">
-                {levelData.song}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="250"
-            style={{ textAlign: "left", marginLeft: "10px" }}
-          >
-            <tr>
-              <td className="main-level-info-top">Artist</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-artist">
-                {levelData.artists.join(" & ")}
-              </td>
-            </tr>
-          </table>
-          <table
-            border="0"
-            cellSpacing="0"
-            cellPadding="0"
-            width="335"
-            style={{ textAlign: "left", marginLeft: "10px" }}
-          >
-            <tr>
-              <td className="main-level-info-top">Tags</td>
-            </tr>
-            <tr>
-              <td valign="bottom" className="main-level-info-tags">
-                {levelData.tags.length !== 0 ? (
-                  levelData.tags.map((tag) => (
-                    <LevelTags
-                      tag={tag.id}
-                      id={levelData.id}
-                      styleClass="main-tag"
-                    />
-                  ))
-                ) : (
-                  <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
-                )}
-              </td>
-            </tr>
-          </table>
+          <LevelDifficulty />
+          <div className="level-item-info-section" style={{ width: "400px" }}>
+            <div className="level-item-info-label">Song</div>
+            <div className="level-item-info-value">{song}</div>
+          </div>
+
+          <div className="level-item-info-section" style={{ width: "250px" }}>
+            <div className="level-item-info-label">Artist</div>
+            <div className="level-item-info-value">{artists.join(" & ")}</div>
+          </div>
+
+          <div className="level-item-info-section" style={{ width: "335px" }}>
+            <div className="level-item-info-label">Tags</div>
+            <div className="level-item-info-value">
+              {" "}
+              {tags.length !== 0 ? (
+                tags.map((tag) => (
+                  <LevelTags tag={tag.id} id={id} styleClass="main-tag" />
+                ))
+              ) : (
+                <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </Link>

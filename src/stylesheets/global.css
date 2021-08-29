@@ -228,6 +228,99 @@ main {
   margin-right: auto;
 }
 
+/* LEVEL ITEM */
+
+/* UNUSED :
+ * .level-item-info-background-container
+ * .level-item-info-background
+ */
+
+.level-item-info-background-container {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 1100px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.level-item-info-background {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-position: center;
+  background-size: cover;
+  transition-duration: 0.3s;
+  filter: blur(5px) brightness(0.3);
+}
+
+.level-info-container-normal {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+}
+
+.level-info-container-hover {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  transition-duration: 0.3s;
+  opacity: 0;
+  z-index: 1;
+}
+
+.level-item-info-difficulty {
+  margin-left: 10px;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.level-item-info-section {
+  margin-left: 10px;
+}
+
+.level-item-info-section-center * {
+  text-align: center;
+  justify-content: center;
+}
+
+.level-item-info-label {
+  height: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #b3b3b3;
+}
+
+.level-item-info-value {
+  max-width: 400px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+}
+
 /* SHOW TOOLTIPTEXT */
 
 .tooltip-container {
