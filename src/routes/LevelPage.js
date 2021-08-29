@@ -12,9 +12,6 @@ import { faSteam } from "@fortawesome/free-brands-svg-icons";
 import LikeButton from "../components/LikeButton";
 import LevelTags from "../components/LevelTags";
 
-// Stylesheets
-import "../stylesheets/level.css";
-
 const LevelPage = () => {
   const reduce = (state, action) => {
     switch (action.type) {

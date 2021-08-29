@@ -10,9 +10,6 @@ import {
 import ModsListItem from "../components/ModsListItem";
 import ScrollButton from "../components/ScrollButton";
 
-// Stylesheets
-import "../stylesheets/modList.css";
-
 const ModListPage = () => {
   const exampleModInfo = {
     id: 123,

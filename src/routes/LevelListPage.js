@@ -14,9 +14,6 @@ import {
 } from "../components/LevelListSearchSection";
 import ScrollButton from "../components/ScrollButton";
 
-// Stylesheets
-import "../stylesheets/levelList.css";
-
 const LevelListPage = () => {
   const recude = (state, action) => {
     switch (action.type) {

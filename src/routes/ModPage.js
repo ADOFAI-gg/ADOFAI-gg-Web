@@ -12,9 +12,6 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 // Components
 import LikeButton from "../components/LikeButton";
 
-// Stylesheets
-import "../stylesheets/mod.css";
-
 const markdownExample = `
 ## 기능
 

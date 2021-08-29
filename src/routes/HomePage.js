@@ -7,9 +7,6 @@ import MainTopPlays from "../components/MainTopPlays";
 import MainPopularLevels from "../components/MainPopularLevels";
 import { useHistory } from "react-router-dom";
 
-// Stylesheets
-import "../stylesheets/main.css";
-
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   let history = useHistory();
