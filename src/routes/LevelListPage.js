@@ -42,7 +42,7 @@ const LevelListPage = () => {
           itemCount: action.itemCount,
         };
 
-      case "SERCH_TERM":
+      case "SEARCH_TERM":
         return {
           ...state,
           searchTerm: action.searchTerm,
