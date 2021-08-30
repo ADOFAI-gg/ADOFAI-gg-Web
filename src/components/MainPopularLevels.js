@@ -25,7 +25,7 @@ const MainPopularLevels = () => {
       .catch((error) => console.error(`Error: ${error}`));
   };
   return (
-    <div>
+    <section>
       <div className="content-title">
         <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
           Recent Ranked Levels
@@ -41,7 +41,7 @@ const MainPopularLevels = () => {
           <LevelInfo levelData={i} key={index} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

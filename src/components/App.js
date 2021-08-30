@@ -14,7 +14,7 @@ const App = () => {
     <Router>
       <div className="container">
         {/* HEADER */}
-        <div className="navbar">
+        <nav>
           <div className="navbar-logo">
             <Link to="/">
               <img
@@ -26,7 +26,7 @@ const App = () => {
             </Link>
           </div>
 
-          <div className="navbar-content">
+          <div className="nav-pages">
             <ul>
               <li>
                 <Link to="/levels">Levels</Link>
@@ -39,7 +39,7 @@ const App = () => {
           </div>
 
           <div className="navbar-login"></div>
-        </div>
+        </nav>
 
         {/* MAIN */}
         <PageTracking />

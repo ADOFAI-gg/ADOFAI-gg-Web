@@ -91,7 +91,7 @@ const ModPage = () => {
 
   return (
     <main>
-      <div className="mod-info-feature">
+      <header className="mod-info-feature">
         <div className="mod-info-feature-top">
           <div>
             <div className="mod-info-title">
@@ -163,7 +163,7 @@ const ModPage = () => {
 
           <LikeButton likes={likes} />
         </div>
-      </div>
+      </header>
 
       <div className="mod-info-body">
         {console.log(detailDescription)}

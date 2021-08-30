@@ -2,7 +2,7 @@ import React from "react";
 
 const RankingItem = ({ rank, index }) => {
   return (
-    <div className="ranking-item">
+    <article className="ranking-item">
       <div className="ranking-item-rank">#{index + 1}</div>
       <div className="ranking-item-content">
         <div className="ranking-item-name">{rank.name}</div>
@@ -36,7 +36,7 @@ const RankingItem = ({ rank, index }) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -27,7 +27,7 @@ const MainTopPlay = ({ topPlay }) => {
   };
   return (
     <a key={topPlay.id} href={topPlay.url} target="_blank" rel="noreferrer">
-      <div className="main-top-plays-container">
+      <section className="main-top-plays-container">
         <div className="main-top-plays-image-container">
           <img
             className="main-top-plays-image"
@@ -56,7 +56,7 @@ const MainTopPlay = ({ topPlay }) => {
             {"Acc: " + topPlay.rawAccuracy.toFixed(2) + "%"}
           </span>
         </div>
-      </div>
+      </section>
     </a>
   );
 };

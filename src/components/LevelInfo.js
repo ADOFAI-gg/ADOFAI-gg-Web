@@ -35,7 +35,7 @@ const LevelInfo = ({ levelData, key }) => {
 
   return (
     <Link key={key} to={"/levels/" + id}>
-      <div key={key} className="main-level-info">
+      <article key={key} className="main-level-info">
         {/* <div className="level-item-info-background-container ">
           <div
             style={{
@@ -136,7 +136,7 @@ const LevelInfo = ({ levelData, key }) => {
             </div>
           </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 };

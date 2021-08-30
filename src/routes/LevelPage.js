@@ -131,8 +131,8 @@ const LevelPage = () => {
               <title>{state.level.title} ─ Adofai.gg</title>
             </MetaTags>
 
-            <div className="level-info">
-              <div className="lavel-info-header">
+            <section className="level-info">
+              <header className="level-info-header">
                 <img
                   className="level-info-thumbnail"
                   src={
@@ -241,7 +241,8 @@ const LevelPage = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </header>
+
               <div className="level-info-details">
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
@@ -336,9 +337,10 @@ const LevelPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
+
             {Object.keys(state.leaderboard).length > 0 ? (
-              <div className="level-info-leaderboard">
+              <section className="level-info-leaderboard">
                 <div className="content-title">
                   <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
                     Leaderboard
@@ -397,7 +399,7 @@ const LevelPage = () => {
                     );
                   })}
                 </div>
-              </div>
+              </section>
             ) : null}
           </>
         )}

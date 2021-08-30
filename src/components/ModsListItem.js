@@ -51,7 +51,7 @@ const ModsListItem = ({ modInfo }) => {
   const categoryIcon = categoryIconDict[category];
 
   return (
-    <div className="mod-list-item">
+    <article className="mod-list-item">
       <Link to={`/mods/${id}`} className="mod-list-item-left">
         <div className="mod-list-mod-category">
           <img src={`/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
@@ -90,7 +90,7 @@ const ModsListItem = ({ modInfo }) => {
       <div className="mod-list-mod-download">
         <FontAwesomeIcon icon={faDownload} size="2x" />
       </div>
-    </div>
+    </article>
   );
 };
 

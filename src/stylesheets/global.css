@@ -180,26 +180,24 @@ input:focus {
   vertical-align: middle;
 }
 
-.navbar {
+nav {
   display: flex;
   line-height: 40px;
   vertical-align: middle;
 }
 
-.navbar-content {
+.nav-pages {
   flex-basis: 80%;
   min-width: 550px;
 }
 
-.navbar-logo,
-.navbar-login {
+.nav-logo,
+.nav-login {
   flex-basis: 10%;
   min-width: 275px;
 }
 
-.navbar-logo,
-.navbar-content,
-.navbar-login {
+nav div {
   height: 40px;
   background-color: rgba(26, 37, 51, 0.7);
 }

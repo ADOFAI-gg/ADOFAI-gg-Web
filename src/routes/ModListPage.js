@@ -152,7 +152,7 @@ const ModListPage = () => {
           }
         />
 
-        <div className="mod-list">
+        <section className="mod-list">
           <InfiniteScroll
             dataLength={items.length}
             next={fetchMoreData}
@@ -174,7 +174,7 @@ const ModListPage = () => {
               <ModsListItem modInfo={i} />
             ))}
           </InfiniteScroll>
-        </div>
+        </section>
       </main>
     </>
   );

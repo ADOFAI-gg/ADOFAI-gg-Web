@@ -27,7 +27,7 @@ const LevelListPage = () => {
         return {
           ...state,
           error: action.error,
-          isError: !!action.error,
+          isError: action.error ? true : false,
         };
 
       case "HAS_MORE_ITEMS":
