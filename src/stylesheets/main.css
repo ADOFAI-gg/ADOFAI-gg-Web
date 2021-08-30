@@ -54,7 +54,7 @@
 }
 
 .main-top-plays-image-container {
-  border-inline: 2px solid white;
+  border: 3px solid;
   overflow: hidden;
   width: 336px;
   height: 189px;
@@ -117,7 +117,17 @@
   transform: translate(-50%, 0);
   color: white;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
+}
+
+.main-top-plays-spac div {
+  display: flex;
+}
+
+.main-top-plays-spac img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .main-top-plays-pp {
