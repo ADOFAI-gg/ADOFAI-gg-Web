@@ -342,7 +342,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="DIFFICULTY_DESC"
                 img="sort_icons/difficulty_up.svg"
               />
@@ -350,7 +349,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="DIFFICULTY_ASC"
                 img="sort_icons/difficulty_down.svg"
               />
@@ -360,7 +358,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="LIKE_DESC"
                 img="sort_icons/heart_up.svg"
               />
@@ -368,7 +365,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="LIKE_ASC"
                 img="sort_icons/heart_down.svg"
               />
@@ -378,7 +374,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="RECENT_DESC"
                 img="sort_icons/created_at_up.svg"
                 isDefault
@@ -387,7 +382,6 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: "SORT_BY", sortBy: value })
                 }
-                isRadio
                 tooltip="RECENT_ASC"
                 img="sort_icons/created_at_down.svg"
               />
