@@ -344,7 +344,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="DIFFICULTY_DESC"
-                img="mod_icons/difficulty_up.svg"
+                img="sort_icons/difficulty_up.svg"
               />
               <SearchContentRadio
                 onSelect={(value) =>
@@ -352,7 +352,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="DIFFICULTY_ASC"
-                img="mod_icons/difficulty_down.svg"
+                img="sort_icons/difficulty_down.svg"
               />
             </SearchContentItem>
             <SearchContentItem title="Likes">
@@ -362,7 +362,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="LIKE_DESC"
-                img="mod_icons/heart_up.svg"
+                img="sort_icons/heart_up.svg"
               />
               <SearchContentRadio
                 onSelect={(value) =>
@@ -370,7 +370,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="LIKE_ASC"
-                img="mod_icons/heart_down.svg"
+                img="sort_icons/heart_down.svg"
               />
             </SearchContentItem>
             <SearchContentItem title="Recent">
@@ -380,7 +380,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="RECENT_DESC"
-                img="mod_icons/created_at_up.svg"
+                img="sort_icons/created_at_up.svg"
                 isDefault
               />
               <SearchContentRadio
@@ -389,7 +389,7 @@ const LevelListPage = () => {
                 }
                 isRadio
                 tooltip="RECENT_ASC"
-                img="mod_icons/created_at_down.svg"
+                img="sort_icons/created_at_down.svg"
               />
             </SearchContentItem>
           </form>
