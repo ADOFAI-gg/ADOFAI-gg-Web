@@ -15,7 +15,7 @@ const App = () => {
       <div className="container">
         {/* HEADER */}
         <nav>
-          <div className="navbar-logo">
+          <div className="nav-logo">
             <Link to="/">
               <img
                 className="logo-middle"
@@ -38,7 +38,7 @@ const App = () => {
             </ul>
           </div>
 
-          <div className="navbar-login"></div>
+          <div className="nav-login"></div>
         </nav>
 
         {/* MAIN */}

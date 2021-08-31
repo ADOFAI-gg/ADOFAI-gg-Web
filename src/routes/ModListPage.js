@@ -13,9 +13,9 @@ import ScrollButton from "../components/ScrollButton";
 const ModListPage = () => {
   const exampleModInfo = {
     id: 123,
-    name: "AdofaiTweaks",
+    name: "Why Are You Here?",
     version: "2.3.5",
-    description: "description",
+    description: "Get out",
     likes: "45",
     downloads: "1069",
     supportVersion: "r75",
