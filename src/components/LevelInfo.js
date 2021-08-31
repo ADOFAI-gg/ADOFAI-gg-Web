@@ -26,7 +26,7 @@ const LevelInfo = ({ levelData, key }) => {
   const LevelDifficulty = () => {
     return (
       <img
-        class="level-item-info-difficulty"
+        className="level-item-info-difficulty"
         src={`difficulty_icons/${difficulty}.svg`}
         alt={`Lv. ${difficulty}`}
       />
