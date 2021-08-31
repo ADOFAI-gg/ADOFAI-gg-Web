@@ -54,7 +54,8 @@
 }
 
 .main-top-plays-image-container {
-  border: 3px solid;
+  border: solid 3px transparent;
+  background-color: black;
   overflow: hidden;
   width: 336px;
   height: 189px;
@@ -177,18 +178,6 @@
   width: 1100px;
   height: 70px;
   margin-bottom: 8px;
-}
-
-.main-level-info:hover .main-level-background {
-  filter: blur(3px) brightness(0.4);
-}
-
-.main-level-info:hover .main-level-info-container-top {
-  opacity: 1;
-}
-
-.main-level-info:hover .main-level-info-container-bottom {
-  opacity: 0;
 }
 
 .main-level-info-top {

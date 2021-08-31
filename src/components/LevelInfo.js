@@ -47,7 +47,7 @@ const LevelInfo = ({ levelData, key }) => {
           ></div>
         </div> */}
 
-        <div className="level-info-container-normal">
+        <div className="level-item-info-container-normal">
           <LevelDifficulty />
 
           <div className="level-item-info-section" style={{ width: "400px" }}>
@@ -108,7 +108,7 @@ const LevelInfo = ({ levelData, key }) => {
         </div>
 
         <div
-          className="level-info-container-hover"
+          className="level-item-info-container-hover"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
           <LevelDifficulty />

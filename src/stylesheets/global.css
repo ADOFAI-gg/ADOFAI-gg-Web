@@ -257,7 +257,7 @@ main {
   filter: blur(5px) brightness(0.3);
 }
 
-.level-info-container-normal {
+.level-item-info-container-normal {
   position: absolute;
   display: flex;
   width: 100%;
@@ -268,7 +268,7 @@ main {
   transition-duration: 0.3s;
 }
 
-.level-info-container-hover {
+.level-item-info-container-hover {
   top: 0;
   left: 0;
   position: absolute;
@@ -281,6 +281,18 @@ main {
   transition-duration: 0.3s;
   opacity: 0;
   z-index: 1;
+}
+
+.main-level-info:hover .level-item-info-background {
+  filter: blur(3px) brightness(0.4);
+}
+
+.main-level-info:hover .level-item-info-container-hover {
+  opacity: 1;
+}
+
+.main-level-info:hover .level-item-info-container-normal {
+  opacity: 0;
 }
 
 .level-item-info-difficulty {

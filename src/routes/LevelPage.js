@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import MetaTags from "react-meta-tags";
 import axios from "axios";
 
 import Swal from "sweetalert2";
@@ -28,11 +27,11 @@ const LevelPage = () => {
           level: {
             ...action.level,
             thumbnail: null,
-            youtubeId: !action.level
-              ? null
-              : /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
-                  action.level.video
-                )[1],
+            youtubeId:
+              action.level &&
+              /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
+                action.level.video
+              )[1],
           },
           leaderboard: {
             ...action.leaderboard,
@@ -127,10 +126,6 @@ const LevelPage = () => {
           <h2 style={{ margin: "30px" }}>Oops! An error occurred.</h2>
         ) : (
           <>
-            <MetaTags>
-              <title>{state.level.title} ─ Adofai.gg</title>
-            </MetaTags>
-
             <section className="level-info">
               <header className="level-info-header">
                 <img

@@ -23,6 +23,7 @@ const MainTopPlays = () => {
       })
       .catch((error) => console.error(`Error: ${error}`));
   };
+
   return (
     <section>
       <div className="content-title">
