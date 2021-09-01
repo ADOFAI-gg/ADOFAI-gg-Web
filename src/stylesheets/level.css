@@ -20,7 +20,7 @@
   border-radius: 20px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  filter: brightness(1);
+  filter: brightness(0.7);
 }
 
 .level-info-basic {
