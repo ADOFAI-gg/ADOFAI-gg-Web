@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const RankingItem = ({ rank, index }) => {
   return (
@@ -14,10 +15,8 @@ const RankingItem = ({ rank, index }) => {
 
           <div className="ranking-item-detail-highest">
             {/* href={`/levels/${rank.bestPlay.id}`} */}
-            <a
-              href={`/levels/${rank.bestPlay.levelId}`}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to={`/levels/${rank.bestPlay.levelId}`}
               className="ranking-item-detail-highest-title"
             >
               {rank.bestPlay.artists[1]
@@ -25,7 +24,7 @@ const RankingItem = ({ rank, index }) => {
                 : rank.bestPlay.artists[0]}
               {" - "}
               {rank.bestPlay.title}
-            </a>
+            </Link>
             <span className="ranking-item-detail-highest-info">
               x{rank.bestPlay.speed / 100},{" "}
               {rank.bestPlay.rawAccuracy
