@@ -1,6 +1,5 @@
 // import React from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
-import LevelInfo from "../components/LevelInfo";
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 
@@ -12,6 +11,7 @@ import {
   SearchContentInput,
   SearchContentRadio,
 } from "../components/LevelListSearchSection";
+import LevelInfo from "../components/LevelInfo";
 import ScrollButton from "../components/ScrollButton";
 
 const LevelListPage = () => {
@@ -397,18 +397,7 @@ const LevelListPage = () => {
             dataLength={state.items.length}
             next={fetchMoreData}
             hasMore={state.hasMore}
-            loader={
-              <h4
-                style={{
-                  textAlign: "center",
-                  fontWeight: "300",
-                  marginTop: "10px",
-                  marginBottom: "10px",
-                }}
-              >
-                Wait a second please!
-              </h4>
-            }
+            scrollThreshold={0.8}
           >
             {state.items.map((i, index) => (
               <LevelInfo levelData={i} key={index} />

@@ -26,10 +26,26 @@ const RankingItem = ({ rank, index }) => {
               {rank.bestPlay.title}
             </Link>
             <span className="ranking-item-detail-highest-info">
-              x{rank.bestPlay.speed / 100},{" "}
-              {rank.bestPlay.rawAccuracy
-                ? `Acc ${rank.bestPlay.rawAccuracy.toFixed(1)}%`
-                : null}{" "}
+              <img
+                src={"other_icons/speed.svg"}
+                alt="Speed Trial: "
+                style={{ height: "0.9em", marginRight: "3px" }}
+              />
+              {rank.bestPlay.speed / 100}x
+              {rank.bestPlay.rawAccuracy ? (
+                <>
+                  <img
+                    src={"other_icons/accuracy.svg"}
+                    alt="Accurancy: "
+                    style={{
+                      height: "0.9em",
+                      marginLeft: "5px",
+                      marginRight: "3px",
+                    }}
+                  />
+                  {rank.bestPlay.rawAccuracy.toFixed(1)}%
+                </>
+              ) : null}{" "}
               (Lv. {String(rank.bestPlay.difficulty).replace(".5", "+")})
             </span>
           </div>

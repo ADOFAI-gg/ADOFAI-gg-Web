@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
+import PageTracking from "./PageTracking";
 import HomePage from "../routes/HomePage";
 import LevelPage from "../routes/LevelPage";
 import LevelListPage from "../routes/LevelListPage";
 import ModListPage from "../routes/ModListPage";
 import ModPage from "../routes/ModPage";
 import RankingPage from "../routes/RankingPage";
-import PageTracking from "./PageTracking";
 
 const App = () => {
   return (
@@ -31,7 +31,9 @@ const App = () => {
               <li>
                 <Link to="/levels">Levels</Link>
               </li>
-              {/* <li><Link to="/mods">Mods</Link></li> */}
+              {/* <li>
+                <Link to="/mods">Mods</Link>
+              </li> */}
               <li>
                 <Link to="/ranks">Ranking</Link>
               </li>

@@ -368,10 +368,28 @@ const LevelPage = () => {
                               </div>
 
                               <div className="level-info-leaderboard-item-detail-play-info">
-                                x{v.speed / 100} Acc{" "}
-                                {v.rawAccuracy
-                                  ? `${v.rawAccuracy.toFixed(1)}%`
-                                  : `UNKNOWN`}
+                                <div style={{ minWidth: "4em" }}>
+                                  <img
+                                    src={"/other_icons/speed.svg"}
+                                    alt="Speed Trial: "
+                                    style={{
+                                      height: "0.9em",
+                                    }}
+                                  />
+                                  {v.speed / 100}x
+                                </div>
+                                <div>
+                                  <img
+                                    src={"/other_icons/accuracy.svg"}
+                                    alt="Accurancy: "
+                                    style={{
+                                      height: "0.9em",
+                                    }}
+                                  />
+                                  {v.rawAccuracy
+                                    ? `${v.rawAccuracy.toFixed(1)}%`
+                                    : "UNKNOWN"}
+                                </div>
                               </div>
                             </div>
 

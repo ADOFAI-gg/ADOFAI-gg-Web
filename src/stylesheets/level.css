@@ -360,6 +360,20 @@
   position: absolute;
 }
 
+.level-info-leaderboard-item-detail-play-info {
+  display: flex;
+  align-items: center;
+}
+
+.level-info-leaderboard-item-detail-play-info div {
+  display: flex;
+  align-items: center;
+}
+
+.level-info-leaderboard-item-detail-play-info img {
+  margin-right: 4px;
+}
+
 .level-info-leaderboard-item-detail-description {
   position: absolute;
   opacity: 0;
