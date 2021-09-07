@@ -96,10 +96,16 @@
   display: flex;
   align-items: center;
   float: right;
+  gap: 5px;
+}
+
+.ranking-item-detail-highest-info div {
+  display: flex;
+  align-items: center;
 }
 
 .ranking-item-detail-highest-title {
-  max-width: 280px;
+  width: 280px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
