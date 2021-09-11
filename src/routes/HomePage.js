@@ -7,9 +7,6 @@ import MainTopPlays from "../components/MainTopPlays";
 import MainPopularLevels from "../components/MainPopularLevels";
 import { useHistory } from "react-router-dom";
 
-// Stylesheets
-import "../stylesheets/main.css";
-
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   let history = useHistory();
@@ -61,7 +58,7 @@ const HomePage = () => {
       <MainPopularLevels />
       <button
         onClick={userMenu}
-        className="main-user-menu-button"
+        className="user-menu-button"
         style={{ background: 'url("/other_icons/message.svg")' }}
       />
     </main>

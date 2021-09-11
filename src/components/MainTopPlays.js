@@ -23,8 +23,9 @@ const MainTopPlays = () => {
       })
       .catch((error) => console.error(`Error: ${error}`));
   };
+
   return (
-    <div>
+    <section>
       <div className="content-title">
         <h1 style={{ flexBasis: "80%", textAlign: "left" }}>Top Plays</h1>
         {/* <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#top-plays">See All ▹</a></h3> */}
@@ -34,7 +35,7 @@ const MainTopPlays = () => {
           <MainTopPlay topPlay={topPlay} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

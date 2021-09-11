@@ -10,7 +10,7 @@ const SearchSection = ({ placeholder, filterContent, sortContent }) => {
   const onClickSortButton = () => setShowSort(!showSort);
 
   return (
-    <div className="list-search-container">
+    <section className="list-search-container">
       <div className="list-search-section">
         <input
           className="list-text-input list-search-bar"
@@ -50,7 +50,7 @@ const SearchSection = ({ placeholder, filterContent, sortContent }) => {
       <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
 
       <SearchSort show={showSort}>{sortContent}</SearchSort>
-    </div>
+    </section>
   );
 };
 

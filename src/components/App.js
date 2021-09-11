@@ -1,43 +1,69 @@
-import AppRouter from "./AppRouter";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-function App() {
+import PageTracking from "./PageTracking";
+import HomePage from "../routes/HomePage";
+import LevelPage from "../routes/LevelPage";
+import LevelListPage from "../routes/LevelListPage";
+import ModListPage from "../routes/ModListPage";
+import ModPage from "../routes/ModPage";
+import RankingPage from "../routes/RankingPage";
+
+const App = () => {
   return (
-    <div className="container">
-      {/* HEADER */}
-      <div className="navbar">
-        <div className="navbar-logo">
-          <a href="/">
-            <img
-              className="logo-middle"
-              style={{ height: "20px", marginLeft: "10px" }}
-              src={"/logo.svg"}
-              alt=""
-            />
-          </a>
-        </div>
-        <div className="navbar-content">
-          <ul>
-            <li>
-              <a href="/levels">Levels</a>
-            </li>
-            {/* <li><a href="/mods">Mods</a></li> */}
-            <li>
-              <a href="/ranks">Ranking</a>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-login"></div>
-      </div>
+    <Router>
+      <div className="container">
+        {/* HEADER */}
+        <nav>
+          <div className="nav-logo">
+            <Link to="/">
+              <img
+                className="logo-middle"
+                style={{ height: "20px", marginLeft: "10px" }}
+                src={"/logo.svg"}
+                alt=""
+              />
+            </Link>
+          </div>
 
-      {/* MAIN */}
-      <AppRouter />
+          <div className="nav-pages">
+            <ul>
+              <li>
+                <Link to="/levels">Levels</Link>
+              </li>
+              {/* <li>
+                <Link to="/mods">Mods</Link>
+              </li> */}
+              <li>
+                <Link to="/ranks">Ranking</Link>
+              </li>
+            </ul>
+          </div>
 
-      {/* FOOTER */}
-      {!(
-        window.location.pathname.includes("/mods") ||
-        window.location.pathname.includes("/ranks") ||
-        window.location.pathname.includes("/levels")
-      ) ? (
+          <div className="nav-login"></div>
+        </nav>
+
+        {/* MAIN */}
+        <PageTracking />
+
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/levels" component={LevelListPage} />
+          <Route exact path="/levels/:id" component={LevelPage} />
+          <Route exact path="/mods" component={ModListPage} />
+          <Route exact path="/mods/:id" component={ModPage} />
+          <Route exact path="/ranks" component={RankingPage} />
+
+          <Route>
+            {/* XXX to component */}
+            <main>
+              <br />
+              <h2>Oops! This page does not exist.</h2>
+            </main>
+          </Route>
+        </Switch>
+
+        {/* FOOTER */}
         <footer>
           <div className="footer-content">
             <h4 style={{ fontWeight: "400" }}>
@@ -66,9 +92,9 @@ function App() {
             </h4>
           </div>
         </footer>
-      ) : null}
-    </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

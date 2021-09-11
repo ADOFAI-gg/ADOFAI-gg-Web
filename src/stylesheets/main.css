@@ -54,7 +54,8 @@
 }
 
 .main-top-plays-image-container {
-  border-inline: 2px solid white;
+  border: solid 3px transparent;
+  background-color: black;
   overflow: hidden;
   width: 336px;
   height: 189px;
@@ -117,7 +118,17 @@
   transform: translate(-50%, 0);
   color: white;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
+}
+
+.main-top-plays-spac div {
+  display: flex;
+}
+
+.main-top-plays-spac img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .main-top-plays-pp {
@@ -162,209 +173,10 @@
   margin-right: auto;
 }
 
-.main-level-info {
-  position: relative;
-  width: 1100px;
-  height: 70px;
-  margin-bottom: 8px;
-}
-
-.main-level-background-container {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 1100px;
-  height: 70px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.main-level-background {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-position: center;
-  background-size: cover;
-  transition-duration: 0.3s;
-  filter: blur(5px) brightness(0.3);
-}
-
-.main-level-info-difficulty {
-  margin-left: 10px;
-  padding: 5px;
-  height: 40px;
-  width: 40px;
-}
-
-.main-level-info-container-bottom {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 10px;
-  transition-duration: 0.3s;
-}
-
-.main-level-info-container-top {
-  top: 0;
-  left: 0;
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 10px;
-  transition-duration: 0.3s;
-  opacity: 0;
-  z-index: 1;
-}
-
-.main-level-info:hover .main-level-background {
-  filter: blur(3px) brightness(0.4);
-}
-
-.main-level-info:hover .main-level-info-container-top {
-  opacity: 1;
-}
-
-.main-level-info:hover .main-level-info-container-bottom {
-  opacity: 0;
-}
-
-.main-level-info-top {
-  height: 20px;
-  font-size: 15px;
-  color: #b3b3b3;
-  font-weight: 600;
-}
-
-.main-level-info-level {
-  max-width: 400px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-creator {
-  max-width: 200px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-bpm {
-  max-width: 130px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-tiles {
-  max-width: 80px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-likes {
-  max-width: 80px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-comments {
-  max-width: 80px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-song {
-  max-width: 400px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-artist {
-  max-width: 250px;
-  height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-}
-
-.main-level-info-tags {
-  max-width: 335px;
-  height: 30px;
-  font-size: 20px;
-  color: white;
-  font-weight: 500;
-  display: flex;
-}
-
 .main-tag {
   height: 24px;
   margin-top: 4px;
   margin-right: 5px;
-}
-
-.main-user-menu-button {
-  padding: 0;
-  border: none;
-  width: 64px;
-  height: 64px;
-  position: fixed;
-  bottom: 40px;
-  right: 50px;
-  z-index: 1;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-  filter: brightness(0.8);
-}
-
-.main-user-menu-button:hover {
-  transform: scale(1.15);
-  filter: brightness(1);
 }
 
 .main-user-menu {

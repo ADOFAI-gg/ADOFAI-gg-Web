@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-tooltip": "^4.2.21",
+    "react-virtualized": "^9.22.3",
     "sweetalert2": "^11.0.18",
     "web-vitals": "^1.1.2"
   },

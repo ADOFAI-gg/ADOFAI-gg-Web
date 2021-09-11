@@ -8,16 +8,14 @@ import {
   SearchContentBtn,
 } from "../components/SearchSection";
 import ModsListItem from "../components/ModsListItem";
-
-// Stylesheets
-import "../stylesheets/modList.css";
+import ScrollButton from "../components/ScrollButton";
 
 const ModListPage = () => {
   const exampleModInfo = {
     id: 123,
-    name: "AdofaiTweaks",
+    name: "Why Are You Here?",
     version: "2.3.5",
-    description: "description",
+    description: "Get out",
     likes: "45",
     downloads: "1069",
     supportVersion: "r75",
@@ -70,7 +68,8 @@ const ModListPage = () => {
 
   return (
     <>
-      <div className="mod-list-main">
+      <main>
+        <ScrollButton />
         <SearchSection
           placeholder="Search Mod"
           filterContent={
@@ -115,12 +114,12 @@ const ModListPage = () => {
                 <SearchContentBtn
                   isRadio
                   tooltip="download_up"
-                  img="mod_icons/download_up.svg"
+                  img="sort_icons/download_up.svg"
                 />
                 <SearchContentBtn
                   isRadio
                   tooltip="download_down"
-                  img="mod_icons/download_down.svg"
+                  img="sort_icons/download_down.svg"
                 />
               </SearchContentItem>
 
@@ -128,12 +127,12 @@ const ModListPage = () => {
                 <SearchContentBtn
                   isRadio
                   tooltip="heart_up"
-                  img="mod_icons/heart_up.svg"
+                  img="sort_icons/heart_up.svg"
                 />
                 <SearchContentBtn
                   isRadio
                   tooltip="heart_down"
-                  img="mod_icons/heart_down.svg"
+                  img="sort_icons/heart_down.svg"
                 />
               </SearchContentItem>
 
@@ -141,19 +140,19 @@ const ModListPage = () => {
                 <SearchContentBtn
                   isRadio
                   tooltip="created_at_up"
-                  img="mod_icons/created_at_up.svg"
+                  img="sort_icons/created_at_up.svg"
                 />
                 <SearchContentBtn
                   isRadio
                   tooltip="created_at_down"
-                  img="mod_icons/created_at_down.svg"
+                  img="sort_icons/created_at_down.svg"
                 />
               </SearchContentItem>
             </form>
           }
         />
 
-        <div className="mod-list">
+        <section className="mod-list">
           <InfiniteScroll
             dataLength={items.length}
             next={fetchMoreData}
@@ -175,8 +174,8 @@ const ModListPage = () => {
               <ModsListItem modInfo={i} />
             ))}
           </InfiniteScroll>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };

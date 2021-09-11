@@ -1,11 +1,3 @@
-.mod-info-main {
-  display: flex;
-  min-width: 1120px;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-
 .mod-info-feature {
   margin-top: 30px;
   padding-bottom: 15px;

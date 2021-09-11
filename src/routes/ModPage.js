@@ -12,9 +12,6 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 // Components
 import LikeButton from "../components/LikeButton";
 
-// Stylesheets
-import "../stylesheets/mod.css";
-
 const markdownExample = `
 ## 기능
 
@@ -93,8 +90,8 @@ const ModPage = () => {
   const categoryIcon = categoryIconDict[category];
 
   return (
-    <div className="mod-info-main">
-      <div className="mod-info-feature">
+    <main>
+      <header className="mod-info-feature">
         <div className="mod-info-feature-top">
           <div>
             <div className="mod-info-title">
@@ -166,7 +163,7 @@ const ModPage = () => {
 
           <LikeButton likes={likes} />
         </div>
-      </div>
+      </header>
 
       <div className="mod-info-body">
         {console.log(detailDescription)}
@@ -174,7 +171,7 @@ const ModPage = () => {
           {detailDescription}
         </ReactMarkdown>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import MetaTags from "react-meta-tags";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 import Swal from "sweetalert2";
@@ -11,9 +10,6 @@ import { faSteam } from "@fortawesome/free-brands-svg-icons";
 // Components
 import LikeButton from "../components/LikeButton";
 import LevelTags from "../components/LevelTags";
-
-// Stylesheets
-import "../stylesheets/level.css";
 
 const LevelPage = () => {
   const reduce = (state, action) => {
@@ -31,11 +27,11 @@ const LevelPage = () => {
           level: {
             ...action.level,
             thumbnail: null,
-            youtubeId: !action.level
-              ? null
-              : /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
-                  action.level.video
-                )[1],
+            youtubeId:
+              action.level &&
+              /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
+                action.level.video
+              )[1],
           },
           leaderboard: {
             ...action.leaderboard,
@@ -123,19 +119,15 @@ const LevelPage = () => {
   return (
     <>
       {/* Main */}
-      <div className="level-info-main">
+      <main>
         {state.isLoading ? null : !state.level ||
           !state.leaderboard ? null : state.isError ||
           state.level.title === undefined ? (
           <h2 style={{ margin: "30px" }}>Oops! An error occurred.</h2>
         ) : (
           <>
-            <MetaTags>
-              <title>{state.level.title} ─ Adofai.gg</title>
-            </MetaTags>
-
-            <div className="level-info">
-              <div className="lavel-info-header">
+            <section className="level-info">
+              <header className="level-info-header">
                 <img
                   className="level-info-thumbnail"
                   src={
@@ -172,7 +164,9 @@ const LevelPage = () => {
                             return (
                               <>
                                 <span>{index > 0 ? " & " : null}</span>
-                                <a href={`/levels?query=${artist}`}>{artist}</a>
+                                <Link to={`/levels?query=${artist}`}>
+                                  {artist}
+                                </Link>
                               </>
                             );
                           })}
@@ -183,9 +177,9 @@ const LevelPage = () => {
                             return (
                               <>
                                 <span>{index > 0 ? " & " : null}</span>
-                                <a href={`/levels?query=${creator}`}>
+                                <Link to={`/levels?query=${creator}`}>
                                   {creator}
-                                </a>
+                                </Link>
                               </>
                             );
                           })}
@@ -242,7 +236,8 @@ const LevelPage = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </header>
+
               <div className="level-info-details">
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
@@ -337,9 +332,10 @@ const LevelPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
+
             {Object.keys(state.leaderboard).length > 0 ? (
-              <div className="level-info-leaderboard">
+              <section className="level-info-leaderboard">
                 <div className="content-title">
                   <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
                     Leaderboard
@@ -372,10 +368,28 @@ const LevelPage = () => {
                               </div>
 
                               <div className="level-info-leaderboard-item-detail-play-info">
-                                x{v.speed / 100} Acc{" "}
-                                {v.rawAccuracy
-                                  ? `${v.rawAccuracy.toFixed(1)}%`
-                                  : `UNKNOWN`}
+                                <div style={{ minWidth: "4em" }}>
+                                  <img
+                                    src={"/other_icons/speed.svg"}
+                                    alt="Speed Trial: "
+                                    style={{
+                                      height: "0.9em",
+                                    }}
+                                  />
+                                  {v.speed / 100}x
+                                </div>
+                                <div>
+                                  <img
+                                    src={"/other_icons/accuracy.svg"}
+                                    alt="Accurancy: "
+                                    style={{
+                                      height: "0.9em",
+                                    }}
+                                  />
+                                  {v.rawAccuracy
+                                    ? `${v.rawAccuracy.toFixed(1)}%`
+                                    : "UNKNOWN"}
+                                </div>
                               </div>
                             </div>
 
@@ -398,11 +412,11 @@ const LevelPage = () => {
                     );
                   })}
                 </div>
-              </div>
+              </section>
             ) : null}
           </>
         )}
-      </div>
+      </main>
     </>
   );
 };

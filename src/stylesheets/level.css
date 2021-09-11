@@ -1,15 +1,8 @@
-.level-info-main {
-  display: flex;
-  min-width: 1120px;
-  flex-direction: column;
-  align-items: center;
-}
-
 .level-info {
   margin-top: 30px;
 }
 
-.lavel-info-header {
+.level-info-header {
   position: relative;
   height: 190px;
   background: linear-gradient(
@@ -27,7 +20,7 @@
   border-radius: 20px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  filter: brightness(70%);
+  filter: brightness(0.7);
 }
 
 .level-info-basic {
@@ -365,6 +358,20 @@
 .level-info-leaderboard-item-detail-play {
   display: flex;
   position: absolute;
+}
+
+.level-info-leaderboard-item-detail-play-info {
+  display: flex;
+  align-items: center;
+}
+
+.level-info-leaderboard-item-detail-play-info div {
+  display: flex;
+  align-items: center;
+}
+
+.level-info-leaderboard-item-detail-play-info img {
+  margin-right: 4px;
 }
 
 .level-info-leaderboard-item-detail-description {

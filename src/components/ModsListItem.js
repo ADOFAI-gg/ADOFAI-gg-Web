@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -48,8 +51,8 @@ const ModsListItem = ({ modInfo }) => {
   const categoryIcon = categoryIconDict[category];
 
   return (
-    <div className="mod-list-item">
-      <a href={`/mods/${id}`} className="mod-list-item-left">
+    <article className="mod-list-item">
+      <Link to={`/mods/${id}`} className="mod-list-item-left">
         <div className="mod-list-mod-category">
           <img src={`/mod_icons/${categoryIcon}.svg`} alt="category icon"></img>
         </div>
@@ -83,11 +86,11 @@ const ModsListItem = ({ modInfo }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
       <div className="mod-list-mod-download">
         <FontAwesomeIcon icon={faDownload} size="2x" />
       </div>
-    </div>
+    </article>
   );
 };
 

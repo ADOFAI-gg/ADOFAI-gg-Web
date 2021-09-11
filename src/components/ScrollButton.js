@@ -18,8 +18,6 @@ const ScrollButton = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-      /* you can also use 'auto' behaviour
-    in place of 'smooth' */
     });
   };
 
@@ -28,7 +26,7 @@ const ScrollButton = () => {
   return (
     <FontAwesomeIcon
       icon={faArrowCircleUp}
-      className="main-user-menu-button"
+      className="user-menu-button"
       onClick={scrollToTop}
       style={{ display: visible ? "inline" : "none", width: "64px" }}
     />

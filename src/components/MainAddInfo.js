@@ -5,7 +5,7 @@ const MainAddInfo = ({
   unclearedLevels,
 }) => {
   return (
-    <div className="main-additional-information">
+    <section className="main-additional-information">
       <table>
         <tr>
           <h3>Players Online</h3>
@@ -46,7 +46,7 @@ const MainAddInfo = ({
           </h2>
         </tr>
       </table>
-    </div>
+    </section>
   );
 };
 

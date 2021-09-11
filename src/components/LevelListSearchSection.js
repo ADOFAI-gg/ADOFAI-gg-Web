@@ -114,8 +114,8 @@ const SearchSection = ({
     window.location.reload();
   };
   return (
-    <div className="list-search-container">
-      <div className="list-search-section">
+    <section className="list-search-container">
+      <section className="list-search-section">
         <input
           className="list-text-input list-search-bar"
           type="text"
@@ -161,38 +161,38 @@ const SearchSection = ({
             <FontAwesomeIcon icon={faEraser} size="lg" />
           </div>
         </div>
-      </div>
+      </section>
 
       <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
 
       <SearchSort show={showSort}>{sortContent}</SearchSort>
-    </div>
+    </section>
   );
 };
 
 const SearchFilter = ({ show, children }) => {
   return (
-    <div
+    <section
       className={`list-search-filter ${
         show ? "list-search-content-show" : "list-search-content-hide"
       }`}
     >
       <div className="list-search-content-title">Filter</div>
       {children}
-    </div>
+    </section>
   );
 };
 
 const SearchSort = ({ show, children }) => {
   return (
-    <div
+    <section
       className={`list-search-sort ${
         show ? "list-search-content-show" : "list-search-content-hide"
       }`}
     >
       <div className="list-search-content-title">Sort by</div>
       {children}
-    </div>
+    </section>
   );
 };
 

@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const RankingItem = ({ rank, index }) => {
   return (
-    <div className="ranking-item">
+    <article className="ranking-item">
       <div className="ranking-item-rank">#{index + 1}</div>
       <div className="ranking-item-content">
         <div className="ranking-item-name">{rank.name}</div>
@@ -14,10 +15,8 @@ const RankingItem = ({ rank, index }) => {
 
           <div className="ranking-item-detail-highest">
             {/* href={`/levels/${rank.bestPlay.id}`} */}
-            <a
-              href={`/levels/${rank.bestPlay.levelId}`}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to={`/levels/${rank.bestPlay.levelId}`}
               className="ranking-item-detail-highest-title"
             >
               {rank.bestPlay.artists[1]
@@ -25,18 +24,37 @@ const RankingItem = ({ rank, index }) => {
                 : rank.bestPlay.artists[0]}
               {" - "}
               {rank.bestPlay.title}
-            </a>
+            </Link>
             <span className="ranking-item-detail-highest-info">
-              x{rank.bestPlay.speed / 100},{" "}
-              {rank.bestPlay.rawAccuracy
-                ? `Acc ${rank.bestPlay.rawAccuracy.toFixed(1)}%`
-                : null}{" "}
-              (Lv. {String(rank.bestPlay.difficulty).replace(".5", "+")})
+              <div>
+                <img
+                  src={"other_icons/speed.svg"}
+                  alt="Speed Trial: "
+                  style={{ height: "0.9em", marginRight: "3px" }}
+                />
+                {rank.bestPlay.speed / 100}x
+              </div>
+              {rank.bestPlay.rawAccuracy && (
+                <div>
+                  <img
+                    src={"other_icons/accuracy.svg"}
+                    alt="Accurancy: "
+                    style={{
+                      height: "0.9em",
+                      marginRight: "3px",
+                    }}
+                  />
+                  {rank.bestPlay.rawAccuracy.toFixed(1)}%
+                </div>
+              )}
+              <div>
+                (Lv. {String(rank.bestPlay.difficulty).replace(".5", "+")})
+              </div>
             </span>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
