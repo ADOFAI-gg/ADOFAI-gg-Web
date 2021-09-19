@@ -193,6 +193,10 @@
   width: 900px;
 }
 
+.level-info-nsfwswal-container {
+  backdrop-filter: blur(30px) brightness(0.5);
+}
+
 .level-info-header-buttons {
   margin: 10px;
   height: 0;

@@ -11,7 +11,7 @@ import { faSteam } from "@fortawesome/free-brands-svg-icons";
 import LikeButton from "../components/LikeButton";
 import LevelTags from "../components/LevelTags";
 
-const LevelPage = () => {
+const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
     switch (action.type) {
       case "FETCH_REQUEST":
@@ -75,10 +75,36 @@ const LevelPage = () => {
       <br>- Play this level in a bright place
       <br>- Avoid playing this level when you are tired
       `,
-
       customClass: {
         popup: "level-info-swal-popup",
       },
+    });
+  };
+
+  const NSFWWarningSwal = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      html: `
+      This level contains <strong>NSFW content</strong>.
+      <br>
+      <br>If you are a minor or don't want to see a level with sexual content, please <strong>press Cancel and do NOT play this level</strong>.
+      `,
+      icon: "warning",
+      showCancelButton: true,
+      allowOutsideClick: false,
+      customClass: {
+        popup: "level-info-swal-popup",
+        container: "level-info-nsfwswal-container",
+      },
+    }).then((result) => {
+      console.log(history);
+      if (result.isDismissed) {
+        if (history.length > 1) {
+          history.goBack();
+        } else {
+          history.push("/");
+        }
+      }
     });
   };
 
@@ -118,6 +144,12 @@ const LevelPage = () => {
 
     fetchData();
   }, [id]);
+
+  useEffect(() => {
+    if (state.level && state.level.hasNSFW) {
+      NSFWWarningSwal();
+    }
+  }, [state.level]);
 
   return (
     <>
