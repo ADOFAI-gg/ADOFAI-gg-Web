@@ -131,7 +131,11 @@ const LevelInfo = ({ levelData, key }) => {
                   <LevelTags tag={tag.id} id={id} styleClass="main-tag" />
                 ))
               ) : (
-                <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
+                <img
+                  className="main-tag"
+                  src={"/tag/empty.svg"}
+                  alt="No Tags"
+                />
               )}
             </div>
           </div>

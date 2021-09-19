@@ -27,6 +27,8 @@ const LevelPage = () => {
           level: {
             ...action.level,
             thumbnail: null,
+            hasNSFW:
+              action.level && action.level.tags.some((tag) => tag.id === 23),
             youtubeId:
               action.level &&
               /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
@@ -197,7 +199,7 @@ const LevelPage = () => {
                         <div className="level-info-tag level-info-warn-tag level-info-censored-tag" />
                       ) : null}
 
-                      {state.level.tags.some((tag) => tag.id === 23) ? (
+                      {state.level.hasNSFW ? (
                         <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
                       ) : null}
 
@@ -208,17 +210,23 @@ const LevelPage = () => {
                         />
                       ) : null}
 
-                      {state.level.tags.length !== 0 ? (
-                        state.level.tags.map((tag) => (
-                          <LevelTags
-                            tag={tag.id}
-                            id={state.level.id}
-                            styleClass="level-info-tag-icon"
-                          />
-                        ))
-                      ) : (
-                        <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
-                      )}
+                      {state.level.tags.length !== 0
+                        ? state.level.tags.map((tag) => (
+                            <LevelTags
+                              tag={tag.id}
+                              id={state.level.id}
+                              styleClass="level-info-tag-icon"
+                            />
+                          ))
+                        : !state.level.epilepsyWarning &&
+                          !state.level.censored &&
+                          !state.level.tags.hasNSFW && (
+                            <img
+                              className="level-info-tag-icon"
+                              src={"/tag/empty.svg"}
+                              alt="No Tags"
+                            />
+                          )}
                     </div>
                   </div>
                   <div className="level-info-header-buttons">

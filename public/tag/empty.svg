@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-empty">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="empty" clip-path="url(#clip-empty)">
+    <rect id="長方形_55" data-name="長方形 55" width="40" height="4.852" rx="2.426" transform="translate(20.029 16.598) rotate(45)" fill="#fff"/>
+  </g>
+</svg>
