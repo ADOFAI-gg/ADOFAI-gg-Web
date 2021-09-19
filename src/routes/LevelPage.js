@@ -73,6 +73,7 @@ const LevelPage = () => {
       <br>- Play this level in a bright place
       <br>- Avoid playing this level when you are tired
       `,
+
       customClass: {
         popup: "level-info-swal-popup",
       },
@@ -131,9 +132,10 @@ const LevelPage = () => {
                 <img
                   className="level-info-thumbnail"
                   src={
-                    state.level.thumbnail
-                      ? state.level.thumbnail
-                      : `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`
+                    state.level.censored
+                      ? "/level_background/censored_level.svg"
+                      : state.level.thumbnail ||
+                        `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`
                   }
                   alt="Level Thumbnail."
                 />
@@ -187,11 +189,15 @@ const LevelPage = () => {
                       </div>
                     </div>
                     <div className="level-info-tags">
-                      {state.level.difficulty === 0 ? (
+                      {!state.level.censored && state.level.difficulty === 0 ? (
                         <div className="level-info-tag level-info-warn-tag level-info-incomplete-tag" />
                       ) : null}
 
-                      {state.level.nsfw ? (
+                      {state.level.censored ? (
+                        <div className="level-info-tag level-info-warn-tag level-info-censored-tag" />
+                      ) : null}
+
+                      {state.level.tags.some((tag) => tag.id === 23) ? (
                         <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
                       ) : null}
 
@@ -264,7 +270,11 @@ const LevelPage = () => {
                               width: "32px",
                               height: "32px",
                             }}
-                            src={`/difficulty_icons/${state.level.difficulty}.svg`}
+                            src={`/difficulty_icons/${
+                              state.level.censored
+                                ? "-2"
+                                : state.level.difficulty
+                            }.svg`}
                             alt=""
                           />
                         </div>

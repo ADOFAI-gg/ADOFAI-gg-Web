@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="gray"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x2="1" y2="1.01" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#242454"/>
+      <stop offset="1" stop-color="#0d0d30"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect width="2064" height="1729" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="2064" height="2629" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-アートボード_26">
+      <rect width="1920" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="アートボード_26" data-name="アートボード – 26" clip-path="url(#clip-アートボード_26)">
+    <rect width="1920" height="1080" fill="url(#linear-gradient)"/>
+    <g id="長方形_140" data-name="長方形 140" stroke="#707070" stroke-width="1" fill="url(#linear-gradient-2)">
+      <rect width="1920" height="1080" stroke="none"/>
+      <rect x="0.5" y="0.5" width="1919" height="1079" fill="none"/>
+    </g>
+    <g id="グループ_339" data-name="グループ 339" opacity="0.31" style="mix-blend-mode: overlay;isolation: isolate">
+      <g id="リピートグリッド_14" data-name="リピートグリッド 14" transform="translate(-262.625 -36.106) rotate(-17)" clip-path="url(#clip-path)">
+        <g transform="translate(-177 65.5)">
+          <line id="線_31" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(82 65.5)">
+          <line id="線_31-2" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(341 65.5)">
+          <line id="線_31-3" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(600 65.5)">
+          <line id="線_31-4" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(859 65.5)">
+          <line id="線_31-5" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1118 65.5)">
+          <line id="線_31-6" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1377 65.5)">
+          <line id="線_31-7" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1636 65.5)">
+          <line id="線_31-8" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(-177 1441.5)">
+          <line id="線_31-9" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(82 1441.5)">
+          <line id="線_31-10" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(341 1441.5)">
+          <line id="線_31-11" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(600 1441.5)">
+          <line id="線_31-12" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(859 1441.5)">
+          <line id="線_31-13" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1118 1441.5)">
+          <line id="線_31-14" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1377 1441.5)">
+          <line id="線_31-15" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1636 1441.5)">
+          <line id="線_31-16" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+      </g>
+      <g id="リピートグリッド_15" data-name="リピートグリッド 15" transform="translate(2016.497 -698.38) rotate(82)" clip-path="url(#clip-path-2)">
+        <g transform="translate(-177 65.5)">
+          <line id="線_31-17" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(82 65.5)">
+          <line id="線_31-18" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(341 65.5)">
+          <line id="線_31-19" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(600 65.5)">
+          <line id="線_31-20" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(859 65.5)">
+          <line id="線_31-21" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1118 65.5)">
+          <line id="線_31-22" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1377 65.5)">
+          <line id="線_31-23" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1636 65.5)">
+          <line id="線_31-24" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(-177 1441.5)">
+          <line id="線_31-25" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(82 1441.5)">
+          <line id="線_31-26" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(341 1441.5)">
+          <line id="線_31-27" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(600 1441.5)">
+          <line id="線_31-28" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(859 1441.5)">
+          <line id="線_31-29" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1118 1441.5)">
+          <line id="線_31-30" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1377 1441.5)">
+          <line id="線_31-31" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+        <g transform="translate(1636 1441.5)">
+          <line id="線_31-32" data-name="線 31" y2="1404" transform="translate(192.5 -65.5)" fill="none" stroke="#fff" stroke-width="16"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
