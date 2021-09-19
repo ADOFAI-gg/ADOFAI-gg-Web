@@ -226,6 +226,10 @@ main {
   margin-right: auto;
 }
 
+.react-loading-skeleton {
+  background-image: none !important;
+}
+
 /* LEVEL ITEM */
 
 /* UNUSED :

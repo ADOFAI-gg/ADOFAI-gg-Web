@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 import PageTracking from "./PageTracking";
 import HomePage from "../routes/HomePage";
@@ -44,24 +45,26 @@ const App = () => {
         </nav>
 
         {/* MAIN */}
-        <PageTracking />
+        <SkeletonTheme color="#ffffff59" highlightColor="#ffffff00">
+          <PageTracking />
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/levels" component={LevelListPage} />
-          <Route exact path="/levels/:id" component={LevelPage} />
-          <Route exact path="/mods" component={ModListPage} />
-          <Route exact path="/mods/:id" component={ModPage} />
-          <Route exact path="/ranks" component={RankingPage} />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/levels" component={LevelListPage} />
+            <Route exact path="/levels/:id" component={LevelPage} />
+            <Route exact path="/mods" component={ModListPage} />
+            <Route exact path="/mods/:id" component={ModPage} />
+            <Route exact path="/ranks" component={RankingPage} />
 
-          <Route>
-            {/* XXX to component */}
-            <main>
-              <br />
-              <h2>Oops! This page does not exist.</h2>
-            </main>
-          </Route>
-        </Switch>
+            <Route>
+              {/* XXX to component */}
+              <main>
+                <br />
+                <h2>Oops! This page does not exist.</h2>
+              </main>
+            </Route>
+          </Switch>
+        </SkeletonTheme>
 
         {/* FOOTER */}
         <footer>

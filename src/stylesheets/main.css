@@ -1,5 +1,7 @@
 .main-logo {
   margin-top: 60px;
+  width: 700px;
+  height: 100px;
 }
 
 .main-yellow-highlight {
@@ -36,7 +38,7 @@
   justify-content: space-around;
   margin-left: auto;
   margin-right: auto;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .main-top-plays-container {
