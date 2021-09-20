@@ -341,6 +341,18 @@ main {
   color: white;
 }
 
+.level-item-info-label-ew::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #ff5c3187;
+  border-radius: 100%;
+}
+
 /* SHOW TOOLTIPTEXT */
 
 .tooltip-container {

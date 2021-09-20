@@ -149,6 +149,7 @@ const LevelPage = ({ history }) => {
     if (state.level && state.level.hasNSFW) {
       NSFWWarningSwal();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.level]);
 
   return (
@@ -243,13 +244,17 @@ const LevelPage = ({ history }) => {
                       ) : null}
 
                       {state.level.tags.length !== 0
-                        ? state.level.tags.map((tag) => (
-                            <LevelTags
-                              tag={tag.id}
-                              id={state.level.id}
-                              styleClass="level-info-tag-icon"
-                            />
-                          ))
+                        ? // eslint-disable-next-line array-callback-return
+                          state.level.tags.map((tag) => {
+                            if (tag.id !== 23)
+                              return (
+                                <LevelTags
+                                  tag={tag.id}
+                                  id={state.level.id}
+                                  styleClass="level-info-tag-icon"
+                                />
+                              );
+                          })
                         : !state.level.epilepsyWarning &&
                           !state.level.censored &&
                           !state.level.tags.hasNSFW && (

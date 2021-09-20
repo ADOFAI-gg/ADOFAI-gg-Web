@@ -21,6 +21,7 @@ const LevelInfo = ({ levelData, key }) => {
     comments,
     likes,
     tags,
+    epilepsyWarning,
   } = levelData;
 
   const LevelDifficulty = () => {
@@ -33,6 +34,7 @@ const LevelInfo = ({ levelData, key }) => {
     );
   };
 
+  console.log(epilepsyWarning);
   return (
     <Link key={key} to={"/levels/" + id}>
       <article key={key} className="level-item-info">
@@ -51,7 +53,13 @@ const LevelInfo = ({ levelData, key }) => {
           <LevelDifficulty />
 
           <div className="level-item-info-section" style={{ width: "400px" }}>
-            <div className="level-item-info-label">Level</div>
+            <div
+              className={`level-item-info-label ${
+                epilepsyWarning && "level-item-info-label-ew"
+              }`}
+            >
+              Level
+            </div>
             <div className="level-item-info-value">{title}</div>
           </div>
 
@@ -113,7 +121,13 @@ const LevelInfo = ({ levelData, key }) => {
         >
           <LevelDifficulty />
           <div className="level-item-info-section" style={{ width: "400px" }}>
-            <div className="level-item-info-label">Song</div>
+            <div
+              className={`level-item-info-label ${
+                epilepsyWarning ? "level-item-info-label-ew" : ""
+              }`}
+            >
+              Song
+            </div>
             <div className="level-item-info-value">{song}</div>
           </div>
 
@@ -125,18 +139,17 @@ const LevelInfo = ({ levelData, key }) => {
           <div className="level-item-info-section" style={{ width: "335px" }}>
             <div className="level-item-info-label">Tags</div>
             <div className="level-item-info-value">
-              {" "}
-              {tags.length !== 0 ? (
-                tags.map((tag) => (
-                  <LevelTags tag={tag.id} id={id} styleClass="main-tag" />
-                ))
-              ) : (
-                <img
-                  className="main-tag"
-                  src={"/tag/empty.svg"}
-                  alt="No Tags"
-                />
-              )}
+              {tags.length !== 0
+                ? tags.map((tag) => (
+                    <LevelTags tag={tag.id} id={id} styleClass="main-tag" />
+                  ))
+                : tags.length === 0 && (
+                    <img
+                      className="main-tag"
+                      src={"/tag/empty.svg"}
+                      alt="No Tags"
+                    />
+                  )}
             </div>
           </div>
         </div>
