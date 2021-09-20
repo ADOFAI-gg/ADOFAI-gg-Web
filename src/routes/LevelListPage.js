@@ -14,7 +14,7 @@ import {
 import LevelInfo from "../components/LevelInfo";
 import ScrollButton from "../components/ScrollButton";
 
-const LevelListPage = () => {
+const LevelListPage = ({ history }) => {
   const recude = (state, action) => {
     switch (action.type) {
       case "FETCH_RESULT":
@@ -104,6 +104,37 @@ const LevelListPage = () => {
   };
 
   useEffect(() => {
+    console.log("yes");
+    const setParamsFromState = () => {
+      const locationState = history.location.state;
+
+      if (locationState !== undefined) {
+        locationState.filterInput &&
+          dispatch({
+            type: "FILTER_INPUT",
+            filterInput: locationState.filterInput,
+          });
+
+        locationState.term &&
+          dispatch({
+            type: "SEARCH_TERM",
+            searchTerm: locationState.term,
+          });
+
+        locationState.tag &&
+          dispatch({ type: "TAG_CHANGE", tag: locationState.tag });
+
+        locationState.sortBy &&
+          dispatch({ type: "SORT_BY", sortBy: locationState.sortBy });
+      }
+    };
+
+    setParamsFromState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    console.log(history.location.state);
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_ERROR", error: null });
@@ -127,6 +158,42 @@ const LevelListPage = () => {
     // disable warning because fetchParams method is intentionally not added
     // eslint-disable-next-line
   }, [state.searchTerm, state.sortBy, state.tag, state.filterInput]);
+
+  useEffect(() => {
+    history.replace({
+      state: {
+        ...history.location.state,
+        tag: state.tag,
+      },
+    });
+  }, [state.tag]);
+
+  useEffect(() => {
+    history.push({
+      state: {
+        ...history.location.state,
+        filterInput: state.filterInput,
+      },
+    });
+  }, [state.filterInput]);
+
+  useEffect(() => {
+    history.push({
+      state: {
+        ...history.location.state,
+        sortBy: state.sortBy,
+      },
+    });
+  }, [state.sortBy]);
+
+  useEffect(() => {
+    history.push({
+      state: {
+        ...history.location.state,
+        term: state.searchTerm,
+      },
+    });
+  }, [state.searchTerm]);
 
   const fetchMoreData = async () => {
     if (state.items.length >= state.itemCount) {
