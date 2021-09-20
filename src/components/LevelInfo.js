@@ -34,7 +34,6 @@ const LevelInfo = ({ levelData, key }) => {
     );
   };
 
-  console.log(epilepsyWarning);
   return (
     <Link key={key} to={"/levels/" + id}>
       <article key={key} className="level-item-info">
