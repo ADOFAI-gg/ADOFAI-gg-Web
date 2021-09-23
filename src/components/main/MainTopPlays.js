@@ -36,7 +36,6 @@ const MainTopPlays = () => {
         <h1 style={{ flexBasis: "80%", textAlign: "left" }}>Top Plays</h1>
         {/* <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#top-plays">See All ▹</a></h3> */}
       </div>
-      {console.log(isLoading)}
       <div className="main-top-plays">
         {isLoading
           ? Array.from({ length: 3 }, () => (

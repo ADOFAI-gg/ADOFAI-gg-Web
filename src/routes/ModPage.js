@@ -10,7 +10,7 @@ import {
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 // Components
-import LikeButton from "../components/LikeButton";
+import LikeButton from "../components/global/LikeButton";
 
 const markdownExample = `
 ## 기능
@@ -166,7 +166,6 @@ const ModPage = () => {
       </header>
 
       <div className="mod-info-body">
-        {console.log(detailDescription)}
         <ReactMarkdown unwrapDisallowed className="mod-info-markdown">
           {detailDescription}
         </ReactMarkdown>

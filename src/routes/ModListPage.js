@@ -6,9 +6,9 @@ import {
   SearchSection,
   SearchContentItem,
   SearchContentBtn,
-} from "../components/SearchSection";
-import ModsListItem from "../components/ModsListItem";
-import ScrollButton from "../components/ScrollButton";
+} from "../components/search/SearchSection";
+import ModsListItem from "../components/mod/ModsListItem";
+import ScrollButton from "../components/global/ScrollButton";
 
 const ModListPage = () => {
   const exampleModInfo = {
@@ -50,7 +50,6 @@ const ModListPage = () => {
           return res.json();
         })
         .then((data) => {
-          console.log("fetch");
           const newItems = Array.from({ length: 10 });
 
           data.forEach((item, index) => {

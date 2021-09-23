@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 // Components
-import LevelInfo from "./LevelInfo";
+import LevelInfo from "../level/LevelInfo";
 
 const MainPopularLevels = () => {
   const [levelData, setLevelData] = useState([]);

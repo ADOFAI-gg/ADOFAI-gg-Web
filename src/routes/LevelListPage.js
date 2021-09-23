@@ -2,6 +2,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
+// import { useLocation } from "react-router-dom";
 
 // Components
 import {
@@ -10,9 +11,9 @@ import {
   SearchContentCheckbox,
   SearchContentInput,
   SearchContentRadio,
-} from "../components/LevelListSearchSection";
-import LevelInfo from "../components/LevelInfo";
-import ScrollButton from "../components/ScrollButton";
+} from "../components/search/LevelListSearchSection";
+import LevelInfo from "../components/level/LevelInfo";
+import ScrollButton from "../components/global/ScrollButton";
 
 const LevelListPage = ({ history }) => {
   const recude = (state, action) => {
@@ -104,7 +105,6 @@ const LevelListPage = ({ history }) => {
   };
 
   useEffect(() => {
-    console.log("yes");
     const setParamsFromState = () => {
       const locationState = history.location.state;
 
@@ -134,7 +134,6 @@ const LevelListPage = ({ history }) => {
   }, []);
 
   useEffect(() => {
-    console.log(history.location.state);
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_ERROR", error: null });
@@ -159,41 +158,18 @@ const LevelListPage = ({ history }) => {
     // eslint-disable-next-line
   }, [state.searchTerm, state.sortBy, state.tag, state.filterInput]);
 
-  useEffect(() => {
-    history.replace({
-      state: {
-        ...history.location.state,
-        tag: state.tag,
-      },
-    });
-  }, [state.tag]);
-
-  useEffect(() => {
-    history.push({
-      state: {
-        ...history.location.state,
-        filterInput: state.filterInput,
-      },
-    });
-  }, [state.filterInput]);
-
-  useEffect(() => {
-    history.push({
-      state: {
-        ...history.location.state,
-        sortBy: state.sortBy,
-      },
-    });
-  }, [state.sortBy]);
-
-  useEffect(() => {
-    history.push({
-      state: {
-        ...history.location.state,
-        term: state.searchTerm,
-      },
-    });
-  }, [state.searchTerm]);
+  // useEffect(() => {
+  //   history.push({
+  //     state: {
+  //       ...history.location.state,
+  //       tag: state.tag,
+  //       filterInput: state.filterInput,
+  //       sortBy: state.sortBy,
+  //       term  : state.searchTerm,
+  //     },
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const fetchMoreData = async () => {
     if (state.items.length >= state.itemCount) {

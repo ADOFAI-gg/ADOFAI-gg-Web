@@ -8,8 +8,8 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faSteam } from "@fortawesome/free-brands-svg-icons";
 
 // Components
-import LikeButton from "../components/LikeButton";
-import LevelTags from "../components/LevelTags";
+import LikeButton from "../components/global/LikeButton";
+import LevelTags from "../components/level/LevelTags";
 
 const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
@@ -97,7 +97,6 @@ const LevelPage = ({ history }) => {
         container: "level-info-nsfwswal-container",
       },
     }).then((result) => {
-      console.log(history);
       if (result.isDismissed) {
         if (history.length > 1) {
           history.goBack();

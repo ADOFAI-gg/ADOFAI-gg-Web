@@ -3,8 +3,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 
 // Components
-import RankingItem from "../components/RankingItem";
-import ScrollButton from "../components/ScrollButton";
+import RankingItem from "../components/ranking/RankingItem";
+import ScrollButton from "../components/global/ScrollButton";
 
 // Stylesheets
 import "../stylesheets/ranking.css";
