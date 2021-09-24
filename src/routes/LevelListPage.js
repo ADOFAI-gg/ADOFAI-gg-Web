@@ -90,9 +90,7 @@ const LevelListPage = ({ history }) => {
     params.append("offset", offset);
     params.append("amount", 15);
     params.append("sort", state.sortBy);
-    params.append("queryTitle", state.searchTerm);
-    params.append("queryArtist", state.searchTerm);
-    params.append("queryCreator", state.searchTerm);
+    params.append("query", state.searchTerm);
     params.append("includeTags", tagConvert(state.tag).toString());
     params.append("minDifficulty", state.filterInput[0]);
     params.append("maxDifficulty", state.filterInput[1]);
