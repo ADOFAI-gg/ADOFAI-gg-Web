@@ -59,12 +59,14 @@ const LevelInfo = ({ levelData, key }) => {
             >
               Level
             </div>
-            <div className="level-item-info-value">{title}</div>
+            <div className="level-item-info-value notranslate">{title}</div>
           </div>
 
           <div className="level-item-info-section" style={{ width: "200px" }}>
             <div className="level-item-info-label">Creator</div>
-            <div className="level-item-info-value">{creators.join(" & ")}</div>
+            <div className="level-item-info-value notranslate">
+              {creators.join(" & ")}
+            </div>
           </div>
 
           <div
@@ -72,7 +74,7 @@ const LevelInfo = ({ levelData, key }) => {
             style={{ width: "130px" }}
           >
             <div className="level-item-info-label">BPM</div>
-            <div className="level-item-info-value">
+            <div className="level-item-info-value notranslate">
               {minBpm === maxBpm
                 ? minBpm
                 : minBpm.toString() + "-" + maxBpm.toString()}
@@ -84,7 +86,7 @@ const LevelInfo = ({ levelData, key }) => {
             style={{ width: "80px" }}
           >
             <div className="level-item-info-label">Tiles</div>
-            <div className="level-item-info-value">{tiles}</div>
+            <div className="level-item-info-value notranslate">{tiles}</div>
           </div>
 
           <div
@@ -97,7 +99,7 @@ const LevelInfo = ({ levelData, key }) => {
                 style={{ height: "12px", weight: "12px", color: "white" }}
               />
             </div>
-            <div className="level-item-info-value">{comments}</div>
+            <div className="level-item-info-value notranslate">{comments}</div>
           </div>
 
           <div
@@ -110,7 +112,7 @@ const LevelInfo = ({ levelData, key }) => {
                 style={{ height: "12px", weight: "12px", color: "#FF4E4E" }}
               />
             </div>
-            <div className="level-item-info-value">{likes}</div>
+            <div className="level-item-info-value notranslate">{likes}</div>
           </div>
         </div>
 
@@ -127,12 +129,14 @@ const LevelInfo = ({ levelData, key }) => {
             >
               Song
             </div>
-            <div className="level-item-info-value">{song}</div>
+            <div className="level-item-info-value notranslate">{song}</div>
           </div>
 
           <div className="level-item-info-section" style={{ width: "250px" }}>
             <div className="level-item-info-label">Artist</div>
-            <div className="level-item-info-value">{artists.join(" & ")}</div>
+            <div className="level-item-info-value notranslate">
+              {artists.join(" & ")}
+            </div>
           </div>
 
           <div className="level-item-info-section" style={{ width: "335px" }}>
