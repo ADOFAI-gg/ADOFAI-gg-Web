@@ -6,14 +6,14 @@ const RankingItem = ({ rank, index }) => {
     <article className="ranking-item">
       <div className="ranking-item-rank">#{index + 1}</div>
       <div className="ranking-item-content">
-        <div className="ranking-item-name">{rank.name}</div>
+        <div className="ranking-item-name notranslate">{rank.name}</div>
 
         <div className="ranking-item-detail">
           <div className="ranking-item-detail-pp">
             {rank.totalBpm.toFixed(0)}
           </div>
 
-          <div className="ranking-item-detail-highest">
+          <div className="ranking-item-detail-highest notranslate">
             {/* href={`/levels/${rank.bestPlay.id}`} */}
             <Link
               to={`/levels/${rank.bestPlay.levelId}`}
