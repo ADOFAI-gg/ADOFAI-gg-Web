@@ -181,20 +181,23 @@ const LevelPage = ({ history }) => {
                           <span className="level-info-tooltiptext tooltiptext">
                             Full Name of Level
                             <br />
-                            <span style={{ fontWeight: "300" }}>
+                            <span
+                              style={{ fontWeight: "300" }}
+                              className="notranslate"
+                            >
                               {state.level.title}
                             </span>
                           </span>
                         ) : null}
 
-                        <div className="level-info-name">
+                        <div className="level-info-name notranslate">
                           {state.level.title}
                         </div>
                       </div>
-                      <div className="level-info-song-name">
+                      <div className="level-info-song-name notranslate">
                         {state.level.song}
                       </div>
-                      <div className="level-info-author">
+                      <div className="level-info-author notranslate">
                         <strong>
                           {state.level.artists.map((artist, index) => {
                             return (
@@ -411,7 +414,7 @@ const LevelPage = ({ history }) => {
                         </div>
 
                         <div className="level-info-leaderboard-item-content">
-                          <div className="level-info-leaderboard-item-name">
+                          <div className="level-info-leaderboard-item-name notranslate">
                             {v.player.name}
                           </div>
 
