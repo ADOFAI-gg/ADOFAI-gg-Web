@@ -8,10 +8,10 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { faSteam } from "@fortawesome/free-brands-svg-icons";
 
 // Components
-import LikeButton from "../components/LikeButton";
-import LevelTags from "../components/LevelTags";
+import LikeButton from "../components/global/LikeButton";
+import LevelTags from "../components/level/LevelTags";
 
-const LevelPage = () => {
+const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
     switch (action.type) {
       case "FETCH_REQUEST":
@@ -27,6 +27,8 @@ const LevelPage = () => {
           level: {
             ...action.level,
             thumbnail: null,
+            hasNSFW:
+              action.level && action.level.tags.some((tag) => tag.id === 23),
             youtubeId:
               action.level &&
               /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
@@ -79,6 +81,32 @@ const LevelPage = () => {
     });
   };
 
+  const NSFWWarningSwal = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      html: `
+      This level contains <strong>NSFW content</strong>.
+      <br>
+      <br>If you are a minor or don't want to see a level with sexual content, please <strong>press Cancel and do NOT play this level</strong>.
+      `,
+      icon: "warning",
+      showCancelButton: true,
+      allowOutsideClick: false,
+      customClass: {
+        popup: "level-info-swal-popup",
+        container: "level-info-nsfwswal-container",
+      },
+    }).then((result) => {
+      if (result.isDismissed) {
+        if (history.length > 1) {
+          history.goBack();
+        } else {
+          history.push("/");
+        }
+      }
+    });
+  };
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -116,6 +144,13 @@ const LevelPage = () => {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    if (state.level && state.level.hasNSFW) {
+      NSFWWarningSwal();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.level]);
+
   return (
     <>
       {/* Main */}
@@ -131,9 +166,10 @@ const LevelPage = () => {
                 <img
                   className="level-info-thumbnail"
                   src={
-                    state.level.thumbnail
-                      ? state.level.thumbnail
-                      : `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`
+                    state.level.censored
+                      ? "/level_background/censored_level.svg"
+                      : state.level.thumbnail ||
+                        `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`
                   }
                   alt="Level Thumbnail."
                 />
@@ -145,20 +181,23 @@ const LevelPage = () => {
                           <span className="level-info-tooltiptext tooltiptext">
                             Full Name of Level
                             <br />
-                            <span style={{ fontWeight: "300" }}>
+                            <span
+                              style={{ fontWeight: "300" }}
+                              className="notranslate"
+                            >
                               {state.level.title}
                             </span>
                           </span>
                         ) : null}
 
-                        <div className="level-info-name">
+                        <div className="level-info-name notranslate">
                           {state.level.title}
                         </div>
                       </div>
-                      <div className="level-info-song-name">
+                      <div className="level-info-song-name notranslate">
                         {state.level.song}
                       </div>
-                      <div className="level-info-author">
+                      <div className="level-info-author notranslate">
                         <strong>
                           {state.level.artists.map((artist, index) => {
                             return (
@@ -187,11 +226,15 @@ const LevelPage = () => {
                       </div>
                     </div>
                     <div className="level-info-tags">
-                      {state.level.difficulty === 0 ? (
+                      {!state.level.censored && state.level.difficulty === 0 ? (
                         <div className="level-info-tag level-info-warn-tag level-info-incomplete-tag" />
                       ) : null}
 
-                      {state.level.nsfw ? (
+                      {state.level.censored ? (
+                        <div className="level-info-tag level-info-warn-tag level-info-censored-tag" />
+                      ) : null}
+
+                      {state.level.hasNSFW ? (
                         <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
                       ) : null}
 
@@ -202,17 +245,27 @@ const LevelPage = () => {
                         />
                       ) : null}
 
-                      {state.level.tags.length !== 0 ? (
-                        state.level.tags.map((tag) => (
-                          <LevelTags
-                            tag={tag.id}
-                            id={state.level.id}
-                            styleClass="level-info-tag-icon"
-                          />
-                        ))
-                      ) : (
-                        <span style={{ marginTop: "auto" }}>&nbsp;&nbsp;-</span>
-                      )}
+                      {state.level.tags.length !== 0
+                        ? // eslint-disable-next-line array-callback-return
+                          state.level.tags.map((tag) => {
+                            if (tag.id !== 23)
+                              return (
+                                <LevelTags
+                                  tag={tag.id}
+                                  id={state.level.id}
+                                  styleClass="level-info-tag-icon"
+                                />
+                              );
+                          })
+                        : !state.level.epilepsyWarning &&
+                          !state.level.censored &&
+                          !state.level.tags.hasNSFW && (
+                            <img
+                              className="level-info-tag-icon"
+                              src={"/tag/empty.svg"}
+                              alt="No Tags"
+                            />
+                          )}
                     </div>
                   </div>
                   <div className="level-info-header-buttons">
@@ -264,7 +317,11 @@ const LevelPage = () => {
                               width: "32px",
                               height: "32px",
                             }}
-                            src={`/difficulty_icons/${state.level.difficulty}.svg`}
+                            src={`/difficulty_icons/${
+                              state.level.censored
+                                ? "-2"
+                                : state.level.difficulty
+                            }.svg`}
                             alt=""
                           />
                         </div>
@@ -357,7 +414,7 @@ const LevelPage = () => {
                         </div>
 
                         <div className="level-info-leaderboard-item-content">
-                          <div className="level-info-leaderboard-item-name">
+                          <div className="level-info-leaderboard-item-name notranslate">
                             {v.player.name}
                           </div>
 

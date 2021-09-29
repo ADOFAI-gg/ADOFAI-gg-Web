@@ -3,13 +3,14 @@ import Swal from "sweetalert2";
 
 // Components
 // import MainAddInfo from "../components/MainAddInfo";
-import MainTopPlays from "../components/MainTopPlays";
-import MainPopularLevels from "../components/MainPopularLevels";
+import MainTopPlays from "../components/main/MainTopPlays";
+import MainPopularLevels from "../components/main/MainPopularLevels";
 import { useHistory } from "react-router-dom";
 
-const HomePage = () => {
+const MainPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   let history = useHistory();
+
   const userMenu = () => {
     Swal.fire({
       title: "Submit & Info",
@@ -64,4 +65,4 @@ const HomePage = () => {
     </main>
   );
 };
-export default HomePage;
+export default MainPage;

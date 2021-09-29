@@ -2,6 +2,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
+// import { useLocation } from "react-router-dom";
 
 // Components
 import {
@@ -10,11 +11,11 @@ import {
   SearchContentCheckbox,
   SearchContentInput,
   SearchContentRadio,
-} from "../components/LevelListSearchSection";
-import LevelInfo from "../components/LevelInfo";
-import ScrollButton from "../components/ScrollButton";
+} from "../components/search/LevelListSearchSection";
+import LevelInfo from "../components/level/LevelInfo";
+import ScrollButton from "../components/global/ScrollButton";
 
-const LevelListPage = () => {
+const LevelListPage = ({ history }) => {
   const recude = (state, action) => {
     switch (action.type) {
       case "FETCH_RESULT":
@@ -89,9 +90,7 @@ const LevelListPage = () => {
     params.append("offset", offset);
     params.append("amount", 15);
     params.append("sort", state.sortBy);
-    params.append("queryTitle", state.searchTerm);
-    params.append("queryArtist", state.searchTerm);
-    params.append("queryCreator", state.searchTerm);
+    params.append("query", state.searchTerm);
     params.append("includeTags", tagConvert(state.tag).toString());
     params.append("minDifficulty", state.filterInput[0]);
     params.append("maxDifficulty", state.filterInput[1]);
@@ -102,6 +101,35 @@ const LevelListPage = () => {
 
     return params;
   };
+
+  useEffect(() => {
+    const setParamsFromState = () => {
+      const locationState = history.location.state;
+
+      if (locationState !== undefined) {
+        locationState.filterInput &&
+          dispatch({
+            type: "FILTER_INPUT",
+            filterInput: locationState.filterInput,
+          });
+
+        locationState.term &&
+          dispatch({
+            type: "SEARCH_TERM",
+            searchTerm: locationState.term,
+          });
+
+        locationState.tag &&
+          dispatch({ type: "TAG_CHANGE", tag: locationState.tag });
+
+        locationState.sortBy &&
+          dispatch({ type: "SORT_BY", sortBy: locationState.sortBy });
+      }
+    };
+
+    setParamsFromState();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,6 +155,19 @@ const LevelListPage = () => {
     // disable warning because fetchParams method is intentionally not added
     // eslint-disable-next-line
   }, [state.searchTerm, state.sortBy, state.tag, state.filterInput]);
+
+  // useEffect(() => {
+  //   history.push({
+  //     state: {
+  //       ...history.location.state,
+  //       tag: state.tag,
+  //       filterInput: state.filterInput,
+  //       sortBy: state.sortBy,
+  //       term  : state.searchTerm,
+  //     },
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const fetchMoreData = async () => {
     if (state.items.length >= state.itemCount) {

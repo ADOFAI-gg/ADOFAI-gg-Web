@@ -154,6 +154,7 @@
 }
 
 .level-info-nsfw-tag,
+.level-info-censored-tag,
 .level-info-incomplete-tag {
   cursor: revert;
 }
@@ -164,6 +165,14 @@
 
 .level-info-nsfw-tag::after {
   content: "NSFW";
+}
+
+.level-info-censored-tag::before {
+  content: "X";
+}
+
+.level-info-censored-tag::after {
+  content: "Censored!";
 }
 
 .level-info-incomplete-tag::after {
@@ -182,6 +191,10 @@
 
 .level-info-swal-popup {
   width: 900px;
+}
+
+.level-info-nsfwswal-container {
+  backdrop-filter: blur(30px) brightness(0.5);
 }
 
 .level-info-header-buttons {
