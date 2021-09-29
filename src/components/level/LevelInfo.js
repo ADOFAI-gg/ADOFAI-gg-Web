@@ -57,7 +57,7 @@ const LevelInfo = ({ levelData, key }) => {
                 epilepsyWarning && "level-item-info-label-ew"
               }`}
             >
-              Level
+              Level<span className="level-item-info-id">{id}</span>
             </div>
             <div className="level-item-info-value notranslate">{title}</div>
           </div>
