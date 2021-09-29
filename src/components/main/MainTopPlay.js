@@ -77,6 +77,11 @@ const MainTopPlay = ({ topPlay }) => {
             alt=""
           />
         </div>
+
+        <div className="main-top-plays-pp">
+          {topPlay.playPoint.toFixed(0)} PP
+        </div>
+
         <div className="main-top-plays-title">
           <Link to={`/levels/${topPlay.level.id}`}>{topPlay.level.name}</Link>
         </div>
