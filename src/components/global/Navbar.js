@@ -29,8 +29,32 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="nav-login"></div>
+      <NavbarMenu>
+        <NavbarMenuIconBtn src="/mod_icons/planet_edit.svg" size={0.45} />
+        <NavbarMenuIconBtn src="/mod_icons/level_editor.svg" size={0.45} />
+        <NavbarMenuIconBtn src="/mod_icons/game_play.svg" size={0.5} />
+        <NavbarMenuIconBtn src="/mod_icons/other.svg" />
+      </NavbarMenu>
     </nav>
+  );
+};
+
+const NavbarMenu = ({ children }) => {
+  return (
+    <div className="nav-menu">
+      <ul className="nav-menu-list">{children}</ul>
+    </div>
+  );
+};
+
+const NavbarMenuIconBtn = ({ icon, src, link, size }) => {
+  return (
+    <li
+      className="nav-menu-icon-button"
+      style={{ "--nav-icon-size": `calc(var(--nav-height) * ${size ?? 0.4})` }}
+    >
+      <Link to={link}>{icon ?? <img src={src} alt="" />}</Link>
+    </li>
   );
 };
 
