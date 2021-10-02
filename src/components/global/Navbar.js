@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faChevronRight,
+  faPaperPlane,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
+import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
   return (
@@ -29,17 +38,19 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <NavbarMenu>
-        <NavbarMenuIconBtn src="/mod_icons/planet_edit.svg" size={0.45} />
-        <NavbarMenuIconBtn src="/mod_icons/level_editor.svg" size={0.45} />
-        <NavbarMenuIconBtn src="/mod_icons/game_play.svg" size={0.5} />
-        <NavbarMenuIconBtn src="/mod_icons/other.svg" />
-      </NavbarMenu>
+      <NavMenu>
+        <NavMenuItem icon={<img src="/mod_icons/planet_edit.svg" alt="" />} />
+        <NavMenuItem icon={<img src="/mod_icons/level_editor.svg" alt="" />} />
+        <NavMenuItem icon={<img src="/mod_icons/game_play.svg" alt="" />} />
+        <NavMenuItem icon={<img src="/mod_icons/other.svg" alt="" />}>
+          <NavDropdown />
+        </NavMenuItem>
+      </NavMenu>
     </nav>
   );
 };
 
-const NavbarMenu = ({ children }) => {
+const NavMenu = ({ children }) => {
   return (
     <div className="nav-menu">
       <ul className="nav-menu-list">{children}</ul>
@@ -47,14 +58,151 @@ const NavbarMenu = ({ children }) => {
   );
 };
 
-const NavbarMenuIconBtn = ({ icon, src, link, size }) => {
+const NavMenuItem = ({ icon, link, children }) => {
+  const [isOpned, setIsOpned] = useState(false);
+
   return (
-    <li
-      className="nav-menu-icon-button"
-      style={{ "--nav-icon-size": `calc(var(--nav-height) * ${size ?? 0.4})` }}
-    >
-      <Link to={link}>{icon ?? <img src={src} alt="" />}</Link>
+    <li>
+      <Link
+        to={link}
+        className="nav-menu-icon-button"
+        onClick={() => setIsOpned(!isOpned)}
+      >
+        {icon}
+      </Link>
+
+      {isOpned && children}
     </li>
+  );
+};
+
+const NavDropdown = () => {
+  const [activeMenu, setActiveMenu] = useState("main");
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  const calcHeight = (el) => {
+    const height = el.offsetHeight;
+
+    setMenuHeight(height);
+  };
+
+  const NavDropdownItem = ({
+    children,
+    leftIcon,
+    goToMenu,
+    link,
+    externalLink,
+  }) => {
+    const ItemContent = () => {
+      return (
+        <>
+          <span className="nav-menu-icon-button">{leftIcon}</span>
+
+          <span className="nav-menu-dropdown-item-text">{children}</span>
+
+          {goToMenu && (
+            <span className="nav-menu-dropdown-more">
+              <FontAwesomeIcon icon={faChevronRight} />
+            </span>
+          )}
+        </>
+      );
+    };
+
+    if (link) {
+      return (
+        <Link
+          to={link}
+          className="nav-menu-dropdown-item"
+          onClick={() => goToMenu && setActiveMenu(goToMenu)}
+        >
+          <ItemContent />
+        </Link>
+      );
+    } else if (externalLink) {
+      return (
+        <a
+          href={externalLink ?? ""}
+          className="nav-menu-dropdown-item"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => goToMenu && setActiveMenu(goToMenu)}
+        >
+          <ItemContent />
+        </a>
+      );
+    } else {
+      return (
+        <div
+          className="nav-menu-dropdown-item"
+          style={{ cursor: "pointer" }}
+          onClick={() => goToMenu && setActiveMenu(goToMenu)}
+        >
+          <ItemContent />
+        </div>
+      );
+    }
+  };
+
+  const NavDropdownSecondaryTitle = ({ title }) => {
+    return (
+      <div className="nav-menu-dropdown-secondary-title">
+        <Link
+          className="nav-menu-dropdown-back-button"
+          onClick={() => setActiveMenu("main")}
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Link>
+        <span>{title}</span>
+      </div>
+    );
+  };
+
+  return (
+    <div className="nav-menu-dropdown" style={{ height: menuHeight }}>
+      <CSSTransition
+        in={activeMenu === "main"}
+        unmountOnExit
+        timeout={500}
+        onEnter={calcHeight}
+        classNames="nav-menu-dropdown-primary"
+      >
+        <div className="nav-menu-dropdown-container">
+          <NavDropdownItem>My Profile</NavDropdownItem>
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faEnvelope} />}
+            goToMenu="contact"
+          >
+            Contact
+          </NavDropdownItem>
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={activeMenu === "contact"}
+        unmountOnExit
+        timeout={500}
+        onEnter={calcHeight}
+        classNames="nav-menu-dropdown-secondary"
+      >
+        <div className="nav-menu-dropdown-container">
+          <NavDropdownSecondaryTitle title="Contact" />
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faDiscord} />}
+            externalLink="https://discord.gg/adofai"
+          >
+            Join our Discord server
+          </NavDropdownItem>
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faPaperPlane} />}
+            externalLink="mailto:adofai.gg@gmail.com"
+          >
+            Send an email
+          </NavDropdownItem>
+        </div>
+      </CSSTransition>
+    </div>
   );
 };
 
