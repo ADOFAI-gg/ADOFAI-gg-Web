@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,9 +42,10 @@ const Navbar = () => {
         <NavMenuItem icon={<img src="/mod_icons/planet_edit.svg" alt="" />} />
         <NavMenuItem icon={<img src="/mod_icons/level_editor.svg" alt="" />} />
         <NavMenuItem icon={<img src="/mod_icons/game_play.svg" alt="" />} />
-        <NavMenuItem icon={<img src="/mod_icons/other.svg" alt="" />}>
-          <NavDropdown />
-        </NavMenuItem>
+        <NavMenuItem
+          icon={<img src="/mod_icons/other.svg" alt="" />}
+          dropdown
+        />
       </NavMenu>
     </nav>
   );
@@ -58,7 +59,7 @@ const NavMenu = ({ children }) => {
   );
 };
 
-const NavMenuItem = ({ icon, link, children }) => {
+const NavMenuItem = ({ icon, link, dropdown }) => {
   const [isOpned, setIsOpned] = useState(false);
 
   return (
@@ -71,14 +72,29 @@ const NavMenuItem = ({ icon, link, children }) => {
         {icon}
       </Link>
 
-      {isOpned && children}
+      {dropdown && (
+        <CSSTransition
+          in={isOpned}
+          timeout={200}
+          unmountOnExit
+          classNames="nav-menu-dropdown"
+        >
+          <>
+            <NavDropdown />
+            <div
+              className="nav-menu-dropdown-backdrop"
+              onClick={() => setIsOpned(false)}
+            />
+          </>
+        </CSSTransition>
+      )}
     </li>
   );
 };
 
 const NavDropdown = () => {
   const [activeMenu, setActiveMenu] = useState("main");
-  const [menuHeight, setMenuHeight] = useState(null);
+  const [menuHeight, setMenuHeight] = useState("auto");
 
   const calcHeight = (el) => {
     const height = el.offsetHeight;

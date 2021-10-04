@@ -47,6 +47,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+:root {
+  --nav-height: 56px;
+  --nav-menu-size: 100px;
+}
+
 html,
 body,
 #root,
@@ -102,6 +107,10 @@ body::-webkit-scrollbar-corner {
 .container {
   position: relative;
   height: 100%;
+}
+
+main {
+  margin-top: var(--nav-height);
 }
 
 ul {
@@ -184,12 +193,14 @@ input:focus {
 }
 
 nav {
-  --nav-height: 56px;
-  --nav-menu-size: 100px;
   height: var(--nav-height);
+  width: 100%;
+  position: fixed;
   display: flex;
   vertical-align: middle;
   align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
 }
 
 .nav-logo,
@@ -237,7 +248,6 @@ nav {
   cursor: pointer;
   font-size: 20px;
   text-align: center;
-
   color: white;
 }
 
@@ -273,12 +283,32 @@ nav {
   overflow: hidden;
   background-color: rgba(25, 39, 56, 01);
   border: rgba(255, 255, 255, 0.333) solid 1px;
-  z-index: 10000;
   transition: height 0.2s ease;
 }
 
 .nav-menu-dropdown-container {
   width: 100%;
+}
+
+.nav-menu-dropdown-enter {
+  opacity: 0;
+  transform: translateX(110%);
+}
+
+.nav-menu-dropdown-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 0.2s ease;
+}
+
+.nav-menu-dropdown-exit {
+  opacity: 1;
+}
+
+.nav-menu-dropdown-exit-active {
+  opacity: 0;
+  transform: translateX(110%);
+  transition: all 0.2s ease;
 }
 
 .nav-menu-dropdown-primary-enter {
@@ -369,6 +399,16 @@ nav {
 .nav-menu-dropdown-more {
   margin-left: auto;
   color: white;
+}
+
+.nav-menu-dropdown-backdrop {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 main {
