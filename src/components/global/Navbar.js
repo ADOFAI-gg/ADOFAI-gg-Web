@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +7,18 @@ import {
   faChevronRight,
   faPaperPlane,
   faEnvelope,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle, faCopyright } from "@fortawesome/free-regular-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = () => {
+  const exampleUser = {
+    name: "CrackThrough",
+    avatar:
+      "https://cdn.discordapp.com/avatars/543672901585469441/672d6992a72ffe021a1a0c45e3ade56d.webp?size=1024",
+  };
+
   return (
     <nav>
       <div className="nav-logo">
@@ -39,13 +47,17 @@ const Navbar = () => {
       </div>
 
       <NavMenu>
+        <Link to="/users/crackthrough" className="nav-menu-user">
+          <img
+            src={exampleUser.avatar}
+            className="nav-menu-user-avatar"
+            alt=""
+          />
+          <div className="nav-menu-user-name">{exampleUser.name}</div>
+        </Link>
         <NavMenuItem icon={<img src="/mod_icons/planet_edit.svg" alt="" />} />
         <NavMenuItem icon={<img src="/mod_icons/level_editor.svg" alt="" />} />
-        <NavMenuItem icon={<img src="/mod_icons/game_play.svg" alt="" />} />
-        <NavMenuItem
-          icon={<img src="/mod_icons/other.svg" alt="" />}
-          dropdown
-        />
+        <NavMenuItem icon={<FontAwesomeIcon icon={faCaretDown} />} dropdown />
       </NavMenu>
     </nav>
   );
@@ -59,18 +71,30 @@ const NavMenu = ({ children }) => {
   );
 };
 
-const NavMenuItem = ({ icon, link, dropdown }) => {
+const NavMenuItem = ({ icon, link, externalLink, dropdown }) => {
   const [isOpned, setIsOpned] = useState(false);
 
   return (
     <li>
-      <Link
-        to={link}
-        className="nav-menu-icon-button"
-        onClick={() => setIsOpned(!isOpned)}
-      >
-        {icon}
-      </Link>
+      {link ? (
+        <Link
+          to={link}
+          className="nav-menu-icon-button"
+          onClick={() => setIsOpned(!isOpned)}
+        >
+          {icon}
+        </Link>
+      ) : (
+        <a
+          href={externalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-menu-icon-button"
+          onClick={() => setIsOpned(!isOpned)}
+        >
+          {icon}
+        </a>
+      )}
 
       {dropdown && (
         <CSSTransition
@@ -184,7 +208,9 @@ const NavDropdown = () => {
         classNames="nav-menu-dropdown-primary"
       >
         <div className="nav-menu-dropdown-container">
-          <NavDropdownItem>My Profile</NavDropdownItem>
+          <NavDropdownItem leftIcon={<FontAwesomeIcon icon={faUserCircle} />}>
+            My Profile
+          </NavDropdownItem>
 
           <NavDropdownItem
             leftIcon={<FontAwesomeIcon icon={faEnvelope} />}

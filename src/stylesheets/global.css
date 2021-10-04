@@ -194,11 +194,13 @@ input:focus {
 
 nav {
   height: var(--nav-height);
-  width: 100%;
+  width: 100vw;
   position: fixed;
   display: flex;
   vertical-align: middle;
   align-items: center;
+  justify-content: space-between;
+  background-color: rgba(26, 37, 51, 0.7);
   z-index: 10000;
   backdrop-filter: blur(5px);
 }
@@ -209,26 +211,47 @@ nav {
   display: flex;
   height: 100%;
   align-items: center;
-  background-color: rgba(26, 37, 51, 0.7);
 }
 
 .nav-logo,
 .nav-menu {
-  flex-basis: 10%;
-  min-width: 275px;
+  position: absolute;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .nav-pages {
-  flex-basis: 80%;
+  width: 100vw;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  min-width: 550px;
 }
 
 .nav-menu {
   justify-content: flex-end;
   display: flex;
+  right: 0;
+}
+
+.nav-menu-user {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: white;
+}
+
+.nav-menu-user-avatar {
+  width: calc(var(--nav-height) * 0.45);
+  height: calc(var(--nav-height) * 0.45);
+  border-radius: 100%;
+}
+
+.nav-menu-user-name {
+  margin-left: 10px;
+}
+
+.nav-menu-user-name:hover {
+  text-decoration: none;
 }
 
 .nav-menu-list {
@@ -292,12 +315,12 @@ nav {
 
 .nav-menu-dropdown-enter {
   opacity: 0;
-  transform: translateX(110%);
+  transform: translateY(-110%);
 }
 
 .nav-menu-dropdown-enter-active {
   opacity: 1;
-  transform: translateX(0%);
+  transform: translateY(0%);
   transition: all 0.2s ease;
 }
 
@@ -307,7 +330,7 @@ nav {
 
 .nav-menu-dropdown-exit-active {
   opacity: 0;
-  transform: translateX(110%);
+  transform: translateY(-110%);
   transition: all 0.2s ease;
 }
 
@@ -402,7 +425,7 @@ nav {
 }
 
 .nav-menu-dropdown-backdrop {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
