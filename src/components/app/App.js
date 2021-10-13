@@ -4,8 +4,8 @@ import { SkeletonTheme } from "react-loading-skeleton";
 
 // Components
 import PageTracking from "../global/PageTracking";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../global/Navbar";
+import Footer from "../global/Footer";
 import AppContainer from "./AppContainer";
 
 // Pages

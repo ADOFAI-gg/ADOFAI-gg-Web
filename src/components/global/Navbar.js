@@ -8,17 +8,21 @@ import {
   faPaperPlane,
   faEnvelope,
   faCaretDown,
+  faPlusCircle,
+  faSort,
+  faPlayCircle,
+  faUserCircle,
+  faUserCog,
 } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle, faCopyright } from "@fortawesome/free-regular-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 
-const Navbar = () => {
-  const exampleUser = {
-    name: "CrackThrough",
-    avatar:
-      "https://cdn.discordapp.com/avatars/543672901585469441/672d6992a72ffe021a1a0c45e3ade56d.webp?size=1024",
-  };
+const exampleUser = {
+  name: "CrackThrough",
+  avatar:
+    "https://cdn.discordapp.com/avatars/543672901585469441/672d6992a72ffe021a1a0c45e3ade56d.webp?size=1024",
+};
 
+const Navbar = () => {
   return (
     <nav>
       <div className="nav-logo">
@@ -47,17 +51,19 @@ const Navbar = () => {
       </div>
 
       <NavMenu>
-        <Link to="/users/crackthrough" className="nav-menu-user">
-          <img
-            src={exampleUser.avatar}
-            className="nav-menu-user-avatar"
-            alt=""
-          />
-          <div className="nav-menu-user-name">{exampleUser.name}</div>
-        </Link>
-        <NavMenuItem icon={<img src="/mod_icons/planet_edit.svg" alt="" />} />
-        <NavMenuItem icon={<img src="/mod_icons/level_editor.svg" alt="" />} />
-        <NavMenuItem icon={<FontAwesomeIcon icon={faCaretDown} />} dropdown />
+        <NavMenuItem
+          icon={
+            <>
+              <img
+                src={exampleUser.avatar}
+                className="nav-menu-user-avatar"
+                alt=""
+              />
+              <FontAwesomeIcon icon={faCaretDown} />
+            </>
+          }
+          dropdown
+        />
       </NavMenu>
     </nav>
   );
@@ -175,7 +181,7 @@ const NavDropdown = () => {
       return (
         <div
           className="nav-menu-dropdown-item"
-          style={{ cursor: "pointer" }}
+          style={goToMenu && { cursor: "pointer" }}
           onClick={() => goToMenu && setActiveMenu(goToMenu)}
         >
           <ItemContent />
@@ -186,13 +192,13 @@ const NavDropdown = () => {
 
   const NavDropdownSecondaryTitle = ({ title }) => {
     return (
-      <div className="nav-menu-dropdown-secondary-title">
-        <Link
-          className="nav-menu-dropdown-back-button"
-          onClick={() => setActiveMenu("main")}
-        >
+      <div
+        className="nav-menu-dropdown-secondary-title"
+        onClick={() => setActiveMenu("main")}
+      >
+        <div className="nav-menu-dropdown-back-button">
           <FontAwesomeIcon icon={faArrowLeft} />
-        </Link>
+        </div>
         <span>{title}</span>
       </div>
     );
@@ -208,8 +214,40 @@ const NavDropdown = () => {
         classNames="nav-menu-dropdown-primary"
       >
         <div className="nav-menu-dropdown-container">
-          <NavDropdownItem leftIcon={<FontAwesomeIcon icon={faUserCircle} />}>
-            My Profile
+          <div className="nav-menu-dropdown-item nav-menu-dropdown-userinfo">
+            <img
+              src={exampleUser.avatar}
+              className="nav-menu-dropdown-user-avatar"
+              alt=""
+            />
+            <span className="nav-menu-dropdown-item-text">
+              {exampleUser.name}
+            </span>
+          </div>
+
+          <hr />
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faUserCircle} />}
+            link={`/user/${exampleUser.name}`}
+          >
+            My profile
+          </NavDropdownItem>
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faUserCog} />}
+            link={`/setting/myaccount`}
+          >
+            Account settings
+          </NavDropdownItem>
+
+          <hr />
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faPlusCircle} />}
+            goToMenu="submit"
+          >
+            Submit
           </NavDropdownItem>
 
           <NavDropdownItem
@@ -232,7 +270,7 @@ const NavDropdown = () => {
           <NavDropdownSecondaryTitle title="Contact" />
           <NavDropdownItem
             leftIcon={<FontAwesomeIcon icon={faDiscord} />}
-            externalLink="https://discord.gg/adofai"
+            externalLink="https://discord.gg/adofaigg"
           >
             Join our Discord server
           </NavDropdownItem>
@@ -241,6 +279,39 @@ const NavDropdown = () => {
             externalLink="mailto:adofai.gg@gmail.com"
           >
             Send an email
+          </NavDropdownItem>
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={activeMenu === "submit"}
+        unmountOnExit
+        timeout={500}
+        onEnter={calcHeight}
+        classNames="nav-menu-dropdown-secondary"
+      >
+        <div className="nav-menu-dropdown-container">
+          <NavDropdownSecondaryTitle title="Submit" />
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faPlayCircle} />}
+            externalLink="https://forms.gle/XdKNuqVrt974F7Ab6"
+          >
+            Submit your play
+          </NavDropdownItem>
+
+          <NavDropdownItem
+            leftIcon={<img src="/mod_icons/planet_edit.svg" alt="" />}
+            externalLink="https://forms.gle/cW9wGpEoTV4yD57b7"
+          >
+            Submit your custom level
+          </NavDropdownItem>
+
+          <NavDropdownItem
+            leftIcon={<FontAwesomeIcon icon={faSort} />}
+            externalLink="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link"
+          >
+            Request for re-leveling
           </NavDropdownItem>
         </div>
       </CSSTransition>
