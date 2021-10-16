@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
-  <defs>
-    <clipPath id="clip-other">
-      <rect width="512" height="512"/>
-    </clipPath>
-  </defs>
-  <g id="other" clip-path="url(#clip-other)">
-    <g id="그룹_79" data-name="그룹 79" transform="translate(81 223.663)">
-      <circle id="타원_10" data-name="타원 10" cx="32.5" cy="32.5" r="32.5" fill="#fff"/>
-      <circle id="타원_10-2" data-name="타원 10" cx="32.5" cy="32.5" r="32.5" transform="translate(142.5)" fill="#fff"/>
-      <circle id="타원_10-3" data-name="타원 10" cx="32.5" cy="32.5" r="32.5" transform="translate(285)" fill="#fff"/>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512"><defs><clipPath id="b"><rect width="512" height="512"/></clipPath></defs><g id="a" clip-path="url(#b)"><g transform="translate(0 208.62)"><circle cx="47.543" cy="47.543" r="47.543" fill="#fff"/><circle cx="47.543" cy="47.543" r="47.543" transform="translate(208.457)" fill="#fff"/><circle cx="47.543" cy="47.543" r="47.543" transform="translate(416.914)" fill="#fff"/></g></g></svg>

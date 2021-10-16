@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="512" height="102" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-more">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="more" clip-path="url(#clip-more)">
+    <g id="반복_그리드_14" data-name="반복 그리드 14" transform="translate(0 205)" clip-path="url(#clip-path)">
+      <g transform="translate(0 -219)">
+        <circle id="타원_91" data-name="타원 91" cx="51" cy="51" r="51" transform="translate(0 219)" fill="#fff"/>
+      </g>
+      <g transform="translate(205 -219)">
+        <circle id="타원_91-2" data-name="타원 91" cx="51" cy="51" r="51" transform="translate(0 219)" fill="#fff"/>
+      </g>
+      <g transform="translate(410 -219)">
+        <circle id="타원_91-3" data-name="타원 91" cx="51" cy="51" r="51" transform="translate(0 219)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

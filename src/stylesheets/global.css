@@ -47,6 +47,11 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+:root {
+  --nav-height: 56px;
+  --nav-menu-size: 100px;
+}
+
 html,
 body,
 #root,
@@ -59,11 +64,12 @@ body,
 body {
   min-width: 1120px;
   margin: 0;
+  padding-right: 0 !important; /* swal changes body stlye */
   font-family: Quicksand, "나눔스퀘어라운드", sans-serif;
   font-weight: 400;
   background-size: cover;
   background-attachment: fixed;
-  overflow: overlay;
+  /* overflow: overlay; */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -74,8 +80,10 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 0;
+  height: 0;
+  /* width: 10px;
+  height: 10px; */
 }
 
 body::-webkit-scrollbar-track {
@@ -99,6 +107,10 @@ body::-webkit-scrollbar-corner {
 .container {
   position: relative;
   height: 100%;
+}
+
+main {
+  margin-top: var(--nav-height);
 }
 
 ul {
@@ -155,11 +167,11 @@ h3 {
   font-weight: 600;
 }
 
-h4 {
+/* h4 {
 }
 
 h5 {
-}
+} */
 
 input:focus {
   outline: none;
@@ -181,25 +193,260 @@ input:focus {
 }
 
 nav {
+  height: var(--nav-height);
+  width: 100vw;
+  position: fixed;
   display: flex;
-  line-height: 40px;
   vertical-align: middle;
-}
-
-.nav-pages {
-  flex-basis: 80%;
-  min-width: 550px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(26, 37, 51, 0.7);
+  z-index: 10000;
+  backdrop-filter: blur(5px);
 }
 
 .nav-logo,
-.nav-login {
-  flex-basis: 10%;
-  min-width: 275px;
+.nav-pages,
+.nav-menu {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
-nav div {
-  height: 40px;
-  background-color: rgba(26, 37, 51, 0.7);
+.nav-logo,
+.nav-menu {
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.nav-pages {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-menu {
+  justify-content: flex-end;
+  display: flex;
+  right: 0;
+}
+
+.nav-menu-user-avatar {
+  width: calc(var(--nav-height) * 0.45);
+  height: calc(var(--nav-height) * 0.45);
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.nav-menu-user-name:hover {
+  text-decoration: none;
+}
+
+.nav-menu-list {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-menu-icon-button {
+  height: calc(var(--nav-height) * 0.6);
+  min-width: calc(var(--nav-height) * 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+
+.nav-menu-icon-button a {
+  padding: 0;
+}
+
+.nav-menu-icon-button:hover {
+  filter: brightness(1.2);
+}
+
+.nav-menu-icon-button :is(a, img) {
+  font-size: calc(var(--nav-height) * 0.3);
+  width: calc(var(--nav-height) * 0.4);
+  height: calc(var(--nav-height) * 0.4);
+}
+
+.nav-menu-icon-button a:hover {
+  text-decoration: none;
+}
+
+.nav-menu-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: var(--nav-height);
+  right: 0;
+  gap: 0.5rem;
+  width: 300px;
+  margin: 10px;
+  padding: 0.5rem;
+  padding-top: 0;
+  border-radius: 10px;
+  z-index: 10000;
+  overflow: hidden;
+  background-color: rgba(25, 39, 56, 01);
+  border: rgba(255, 255, 255, 0.333) solid 1px;
+  transition: all 0.2s ease;
+  will-change: opacity, transform;
+}
+
+.nav-menu-dropdown-container {
+  width: 100%;
+  will-change: transform, position;
+  transition: all 0.2s ease;
+}
+
+.nav-menu-dropdown-enter {
+  opacity: 0;
+  transform: translateY(-110%);
+}
+
+.nav-menu-dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 0.2s ease;
+}
+
+.nav-menu-dropdown-exit {
+  opacity: 1;
+}
+
+.nav-menu-dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-110%);
+}
+
+.nav-menu-dropdown-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.nav-menu-dropdown-primary-enter-active {
+  transform: translateX(0%);
+}
+
+.nav-menu-dropdown-primary-exit {
+  position: absolute;
+}
+
+.nav-menu-dropdown-primary-exit-active {
+  transform: translateX(-110%);
+}
+
+.nav-menu-dropdown-secondary-enter {
+  transform: translateX(110%);
+}
+
+.nav-menu-dropdown-secondary-enter-active {
+  transform: translateX(0%);
+}
+
+/* .nav-menu-dropdown-secondary-exit {
+} */
+
+.nav-menu-dropdown-secondary-exit-active {
+  transform: translateX(110%);
+}
+
+.nav-menu-dropdown-secondary-title {
+  display: flex;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.333);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+}
+
+.nav-menu-dropdown-back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  padding: 7.5px;
+  margin: 7.5px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+
+.nav-menu-dropdown-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-menu-dropdown-item {
+  height: 50px;
+  width: calc(300px - 1rem);
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.nav-menu-dropdown-item:hover {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-menu-dropdown-item-text {
+  margin-left: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+
+.nav-menu-dropdown hr {
+  height: 1px;
+  background-color: #ffffff5d;
+  border: unset;
+  margin: 10px 0;
+}
+
+.nav-menu-dropdown-userinfo {
+  padding: 10px 0.7rem;
+  padding-bottom: 0;
+  border-radius: 0;
+}
+
+.nav-menu-dropdown-userinfo:hover {
+  background-color: unset;
+}
+
+.nav-menu-dropdown-user-avatar {
+  width: calc(var(--nav-height) * 0.7);
+  height: calc(var(--nav-height) * 0.7);
+  margin: calc(var(--nav-height) * 0.1) 0;
+  border-radius: 100%;
+}
+
+.nav-menu-dropdown-more {
+  margin-left: auto;
+  color: white;
+}
+
+.nav-menu-dropdown-backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 main {

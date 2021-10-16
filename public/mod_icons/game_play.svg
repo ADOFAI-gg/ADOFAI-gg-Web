@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
-  <defs>
-    <clipPath id="clip-game_play">
-      <rect width="512" height="512"/>
-    </clipPath>
-  </defs>
-  <g id="game_play" clip-path="url(#clip-game_play)">
-    <g id="Icon_feather-play-circle" data-name="Icon feather-play-circle" transform="translate(78 78)">
-      <path id="패스_10" data-name="패스 10" d="M353,178A175,175,0,1,1,178,3,175,175,0,0,1,353,178Z" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
-      <path id="패스_11" data-name="패스 11" d="M15,12,123.176,84.117,15,156.234Z" transform="translate(126.185 93.883)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="27"/>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512"><defs><clipPath id="b"><rect width="512" height="512"/></clipPath></defs><g id="a" clip-path="url(#b)"><g transform="translate(-3 -3)"><g transform="translate(0 0)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M515,259c0,141.385-114.615,256-256,256S3,400.385,3,259,117.615,3,259,3,515,117.615,515,259Z" stroke="none"/><path d="M 258.9999389648438 38.00003051757812 C 137.14013671875 38.00003051757812 38.00003051757812 137.14013671875 38.00003051757812 258.9999389648438 C 38.00003051757812 380.8598327636719 137.14013671875 480.0000305175781 258.9999389648438 480.0000305175781 C 380.8598327636719 480.0000305175781 480.0000305175781 380.8598327636719 480.0000305175781 258.9999389648438 C 480.0000305175781 137.14013671875 380.8598327636719 38.00003051757812 258.9999389648438 38.00003051757812 M 258.9999389648438 3.00006103515625 C 400.3849487304688 3.00006103515625 515 117.6151428222656 515 258.9999389648438 C 515 400.3849487304688 400.3849487304688 515 258.9999389648438 515 C 117.6151428222656 515 3.00006103515625 400.3849487304688 3.00006103515625 258.9999389648438 C 3.00006103515625 117.6151428222656 117.6151428222656 3.00006103515625 258.9999389648438 3.00006103515625 Z" stroke="none" fill="#fff"/></g><path d="M15,12,173.246,117.5,15,222.994Z" transform="translate(190.145 141.503)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="35"/></g></g></svg>
