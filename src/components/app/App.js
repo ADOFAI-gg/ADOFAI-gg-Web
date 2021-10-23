@@ -15,7 +15,6 @@ import LevelListPage from "../../routes/LevelListPage";
 import ModListPage from "../../routes/ModListPage";
 import ModPage from "../../routes/ModPage";
 import RankingPage from "../../routes/RankingPage";
-import TestPage from "../../routes/TestPage";
 
 const App = () => {
   return (
@@ -35,7 +34,6 @@ const App = () => {
               <Route exact path="/mods" component={ModListPage} />
               <Route exact path="/mods/:id" component={ModPage} />
               <Route exact path="/ranks" component={RankingPage} />
-              <Route exact path="/test" component={TestPage} />
 
               <Route>
                 {/* XXX to component */}
