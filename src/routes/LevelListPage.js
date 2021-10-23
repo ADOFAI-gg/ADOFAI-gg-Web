@@ -220,18 +220,6 @@ const LevelListPage = ({ history }) => {
     return query;
   }
 
-  const SearchTagFilter = ({ id }) => {
-    return (
-      <SearchContentCheckbox
-        onSelect={(value) => {
-          tagChange(value);
-        }}
-        tooltip={id}
-        img={`tag/${id}.svg`}
-      />
-    );
-  };
-
   return (
     <main>
       <ScrollButton />
