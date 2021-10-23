@@ -1,4 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  // useRef,
+  useState,
+  // useEffect
+} from "react";
 import InfiniteLoading from "react-simple-infinite-loading";
 
 const TestPage = () => {

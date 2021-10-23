@@ -1,7 +1,6 @@
-// import React from 'react';
+import React, { useEffect, useReducer } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
-import React, { useEffect, useReducer } from "react";
 // import { useLocation } from "react-router-dom";
 
 // Components
