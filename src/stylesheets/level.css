@@ -193,8 +193,11 @@
   width: 900px;
 }
 
-.level-info-nsfwswal-container {
-  backdrop-filter: blur(30px) brightness(0.5);
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  .level-info-nsfwswal-container {
+    -webkit-backdrop-filter: blur(30px) brightness(0.5);
+    backdrop-filter: blur(30px) brightness(0.5);
+  }
 }
 
 .level-info-header-buttons {

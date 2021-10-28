@@ -141,6 +141,7 @@
   color: rgba(255, 255, 255, 1);
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 0 0 8px 8px;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   transform: translate(-50%, 0);
 }
