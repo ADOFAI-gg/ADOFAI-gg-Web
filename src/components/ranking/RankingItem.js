@@ -48,7 +48,11 @@ const RankingItem = ({ rank, index }) => {
                 </div>
               )}
               <div>
-                (Lv. {String(rank.bestPlay.difficulty).replace(".5", "+")})
+                (Lv.{" "}
+                {rank.bestPlay.difficulty < 20
+                  ? String(rank.bestPlay.difficulty).replace(".5", "+")
+                  : rank.bestPlay.difficulty}
+                )
               </div>
             </span>
           </div>

@@ -111,7 +111,12 @@ const MainTopPlay = ({ topPlay }) => {
           </div>
 
           <div style={{ marginLeft: "40px" }}>
-            <span>Lv. {String(difficulty).replace(".5", "+")}</span>
+            <span>
+              Lv.{" "}
+              {difficulty < 20
+                ? String(difficulty).replace(".5", "+")
+                : difficulty}
+            </span>
           </div>
         </div>
       </section>
