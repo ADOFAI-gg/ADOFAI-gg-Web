@@ -34,7 +34,7 @@
   margin-right: 15px;
   font-size: 1.25em;
   font-weight: 700;
-  font-family: "Roboto Mono", "Quicksand", monospace;
+  font-family: var(--monospace-font);
   background-color: #020c1a4f;
   display: flex;
   align-items: center;

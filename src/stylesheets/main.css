@@ -15,7 +15,7 @@
   border-style: none;
   border-radius: 5px;
   padding: 10px;
-  font-family: Quicksand;
+  font-family: var(--normal-font);
   font-weight: 300;
   font-size: 15px;
   color: white;

@@ -50,6 +50,11 @@ input[type="number"] {
 :root {
   --nav-height: 56px;
   --nav-menu-size: 100px;
+  --normal-font: "Quicksand", "나눔스퀘어라운드", "나눔고딕", "나눔스퀘어",
+    "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Segoe UI WP",
+    "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
+  --monospace-font: "Roboto Mono", monospace;
 }
 
 html,
@@ -65,7 +70,7 @@ body {
   min-width: 1120px;
   margin: 0;
   padding-right: 0 !important; /* swal changes body stlye */
-  font-family: Quicksand, "나눔스퀘어라운드", sans-serif;
+  font-family: var(--normal-font);
   font-weight: 400;
   background-size: cover;
   background-attachment: fixed;
@@ -679,7 +684,7 @@ main {
   border-radius: 5px;
   padding: 5px;
   padding-left: 10px;
-  font-family: Quicksand;
+  font-family: var(--normal-font);
   font-weight: 300;
   font-size: 15px;
   color: white;
@@ -795,7 +800,7 @@ main {
   font-weight: 400;
   color: rgb(90, 90, 90);
   background-color: white;
-  font-family: "Roboto Mono", "Quicksand", monospace;
+  font-family: var(--monospace-font);
   letter-spacing: -1px;
   transition: all 0.2s ease;
   cursor: pointer;

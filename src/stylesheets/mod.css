@@ -127,7 +127,7 @@
 }
 
 .mod-info-markdown code {
-  font-family: "Roboto Mono", "Quicksand", monospace;
+  font-family: var(--monospace-font);
   letter-spacing: -0.75px;
   font-size: 0.8em;
   background-color: #ffffff25;
