@@ -113,6 +113,7 @@ const SearchSection = ({
   const refreshPage = () => {
     window.location.reload();
   };
+
   return (
     <section className="list-search-container">
       <section className="list-search-section">
@@ -240,12 +241,12 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
         <input
           type="checkbox"
           id={tooltip}
-          onChange={(tooltip) => {
-            onSelect(tooltip.target.id);
+          onChange={(event) => {
+            onSelect(event.target.id);
           }}
           className="list-search-content-toggle-button"
         />
-        <label for={tooltip}>
+        <label htmlFor={tooltip}>
           <img
             src={`/${img}`}
             alt={tooltip}
@@ -300,7 +301,7 @@ const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
         className="list-search-content-toggle-button"
         defaultChecked={isDefault}
       />
-      <label for={tooltip}>
+      <label htmlFor={tooltip}>
         <img src={`/${img}`} alt={tooltip} />
       </label>
     </div>

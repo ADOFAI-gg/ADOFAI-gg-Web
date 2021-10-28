@@ -1,7 +1,6 @@
-// import React from 'react';
+import React, { useEffect, useReducer } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
-import React, { useEffect, useReducer } from "react";
 // import { useLocation } from "react-router-dom";
 
 // Components
@@ -195,6 +194,7 @@ const LevelListPage = ({ history }) => {
 
   const tagChange = (value) => {
     const newTag = state.tag;
+
     newTag[value - 1] = !state.tag[value - 1];
     dispatch({ type: "TAG_CHANGE", tag: [...newTag] });
   };
@@ -233,140 +233,81 @@ const LevelListPage = ({ history }) => {
           <>
             <div style={{ display: "flex" }}>
               <SearchContentItem title="Chart Related">
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="20"
-                  img="tag/20.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="13"
-                  img="tag/13.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="15"
-                  img="tag/15.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="14"
-                  img="tag/14.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="8"
-                  img="tag/8.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="5"
-                  img="tag/5.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="3"
-                  img="tag/3.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="6"
-                  img="tag/6.svg"
-                />
+                {[20, 13, 15, 14, 8, 5, 3, 6].map((id) => {
+                  return (
+                    <SearchContentCheckbox
+                      onSelect={(value) => {
+                        tagChange(value);
+                      }}
+                      tooltip={id}
+                      img={`tag/${id}.svg`}
+                    />
+                  );
+                })}
               </SearchContentItem>
+
               <SearchContentItem title="Rhythm Related">
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="2"
-                  img="tag/2.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="19"
-                  img="tag/19.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="9"
-                  img="tag/9.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="18"
-                  img="tag/18.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="16"
-                  img="tag/16.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="21"
-                  img="tag/21.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="12"
-                  img="tag/12.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="10"
-                  img="tag/10.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="7"
-                  img="tag/7.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="17"
-                  img="tag/17.svg"
-                />
+                {[2, 19, 9, 18, 16, 21, 12, 10, 7, 17].map((id) => {
+                  return (
+                    <SearchContentCheckbox
+                      onSelect={(value) => {
+                        tagChange(value);
+                      }}
+                      tooltip={id}
+                      img={`tag/${id}.svg`}
+                    />
+                  );
+                })}
               </SearchContentItem>
+
               <SearchContentItem title="Length">
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="1"
-                  img="tag/1.svg"
-                />
-                <SearchContentCheckbox
-                  onSelect={(value) => tagChange(value)}
-                  tooltip="11"
-                  img="tag/11.svg"
-                />
+                {[1, 11].map((id) => {
+                  return (
+                    <SearchContentCheckbox
+                      onSelect={(value) => {
+                        tagChange(value);
+                      }}
+                      tooltip={id}
+                      img={`tag/${id}.svg`}
+                    />
+                  );
+                })}
               </SearchContentItem>
             </div>
+
             <div style={{ display: "flex", marginTop: "10px" }}>
               <SearchContentItem title="Lv." isLv>
                 <SearchContentInput
                   onInput={(value) => numberChange(0, value)}
                   placeholder="Min Lv."
                 />
+
                 <SearchContentInput
                   onInput={(value) => numberChange(1, value)}
                   placeholder="Max Lv."
                   isLast
                 />
               </SearchContentItem>
+
               <SearchContentItem title="BPM">
                 <SearchContentInput
                   onInput={(value) => numberChange(2, value)}
                   placeholder="Min BPM"
                 />
+
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
                   placeholder="Max BPM"
                   isLast
                 />
               </SearchContentItem>
+
               <SearchContentItem title="Tiles">
                 <SearchContentInput
                   onInput={(value) => numberChange(4, value)}
                   placeholder="Min Tiles"
                 />
+
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
                   placeholder="Max Tiles"

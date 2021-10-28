@@ -23,6 +23,7 @@
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-simple-infinite-loading": "^1.1.0",
     "react-tooltip": "^4.2.21",
     "react-transition-group": "^4.4.2",
     "react-virtualized": "^9.22.3",
@@ -52,5 +53,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
