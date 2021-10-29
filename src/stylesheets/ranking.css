@@ -50,7 +50,7 @@
 
 .ranking-item-name {
   width: 190px;
-  margin-right: 65px;
+  margin-right: 45px;
   font-size: 1.2em;
   font-weight: 500;
   text-overflow: ellipsis;
@@ -66,7 +66,7 @@
 }
 
 .ranking-item-detail-pp {
-  width: 180px;
+  width: 160px;
   font-weight: 600;
 }
 
@@ -88,6 +88,14 @@
   margin-right: 7.5px;
 }
 
+.ranking-item-detail-highest-title {
+  width: 270px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
 .ranking-item-detail-highest-info {
   margin-left: 10px;
   opacity: 0.8;
@@ -97,6 +105,8 @@
   align-items: center;
   float: right;
   gap: 5px;
+  font-family: var(--monospace-font);
+  letter-spacing: -1.25px;
 }
 
 .ranking-item-detail-highest-info div {
@@ -104,12 +114,24 @@
   align-items: center;
 }
 
-.ranking-item-detail-highest-title {
-  width: 280px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
+.ranking-item-detail-highest-info div:nth-last-child(-n + 2)::before {
+  content: "・";
+  opacity: 0.5;
+  width: 14px;
+}
+
+.ranking-item-detail-highest-info-speed {
+  width: 40px;
+  /* letter-spacing: -2px; */
+}
+
+.ranking-item-detail-highest-info-accuracy {
+  width: 75px;
+  letter-spacing: -0.5px;
+}
+
+.ranking-item-detail-highest-info-difficulty {
+  width: 50px;
 }
 
 /**
@@ -158,6 +180,15 @@
   width: 900px;
   font-size: 1.1em;
 }
+
 .ranking-item:nth-child(-n + 3) .ranking-item-detail-highest-title {
   max-width: 400px;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-detail-highest-info div {
+  width: auto;
+}
+
+.ranking-item:nth-child(-n + 3) .ranking-item-detail-highest-info div::before {
+  margin-right: 5px;
 }
