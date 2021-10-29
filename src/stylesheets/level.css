@@ -243,10 +243,12 @@
   color: white;
   font-size: 32px;
   display: flex;
+  align-items: flex-end;
 }
 
 .level-info-value .level-info-value-decimal {
   font-size: 16px;
+  padding-bottom: 4px;
 }
 
 .level-info-detail-info-description {
