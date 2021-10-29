@@ -2,29 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const RankingItem = ({ rank, index }) => {
-  const speed = String(rank.bestPlay.speed / 100);
+  const { name, totalBpm, bestPlay } = rank;
+  const speedFormat = String(bestPlay.speed / 100);
 
   return (
     <article className="ranking-item">
       <div className="ranking-item-rank">#{index + 1}</div>
       <div className="ranking-item-content">
-        <div className="ranking-item-name notranslate">{rank.name}</div>
+        <div className="ranking-item-name notranslate">{name}</div>
 
         <div className="ranking-item-detail">
-          <div className="ranking-item-detail-pp">
-            {rank.totalBpm.toFixed(0)}
-          </div>
+          <div className="ranking-item-detail-pp">{totalBpm.toFixed(0)}</div>
 
           <div className="ranking-item-detail-highest notranslate">
             <Link
-              to={`/levels/${rank.bestPlay.levelId}`}
+              to={`/levels/${bestPlay.levelId}`}
               className="ranking-item-detail-highest-title"
             >
-              {rank.bestPlay.artists[1]
-                ? `${rank.bestPlay.artists[0]}…`
-                : rank.bestPlay.artists[0]}
+              {bestPlay.artists[1]
+                ? `${bestPlay.artists[0]}…`
+                : bestPlay.artists[0]}
               {" - "}
-              {rank.bestPlay.title}
+              {bestPlay.title}
             </Link>
 
             <span className="ranking-item-detail-highest-info">
@@ -34,7 +33,10 @@ const RankingItem = ({ rank, index }) => {
                   alt="Speed Trial: "
                   style={{ height: "0.9em", marginRight: "3px" }}
                 />
-                {speed.startsWith("0.") ? speed.replace("0", "") : speed}x
+                {speedFormat.startsWith("0.")
+                  ? speedFormat.replace("0", "")
+                  : speedFormat}
+                x
               </div>
 
               <div className="ranking-item-detail-highest-info-accuracy">
@@ -46,16 +48,16 @@ const RankingItem = ({ rank, index }) => {
                     marginRight: "3px",
                   }}
                 />
-                {rank.bestPlay.rawAccuracy
-                  ? `${rank.bestPlay.rawAccuracy.toFixed(1)}%`
+                {bestPlay.rawAccuracy
+                  ? `${bestPlay.rawAccuracy.toFixed(1)}%`
                   : `///./%`}
               </div>
 
               <div className="ranking-item-detail-highest-info-difficulty">
                 Lv.
-                {rank.bestPlay.difficulty < 20
-                  ? String(rank.bestPlay.difficulty).replace(".5", "+")
-                  : rank.bestPlay.difficulty}
+                {bestPlay.difficulty < 20
+                  ? String(bestPlay.difficulty).replace(".5", "+")
+                  : bestPlay.difficulty}
               </div>
             </span>
           </div>

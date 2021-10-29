@@ -48,10 +48,10 @@ const MainTopPlay = ({ topPlay }) => {
   const getAllDifficulty = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${topPlay.level.id}`,
-        {
-          params: {},
-        }
+        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${topPlay.level.id}`
+        // {
+        //   params: {},
+        // }
       )
       .then((response) => {
         getDifficulty(response.data.difficulty);
@@ -64,8 +64,10 @@ const MainTopPlay = ({ topPlay }) => {
       topPlay.url
     )[1];
 
+  const { id, url, playPoint, level, player, speed, rawAccuracy } = topPlay;
+
   return (
-    <a key={topPlay.id} href={topPlay.url} target="_blank" rel="noreferrer">
+    <a key={id} href={url} target="_blank" rel="noreferrer">
       <section className="main-top-plays-container">
         <div
           className="main-top-plays-image-container"
@@ -73,40 +75,29 @@ const MainTopPlay = ({ topPlay }) => {
         >
           <img
             className="main-top-plays-image"
-            src={"https://i3.ytimg.com/vi/" + videoId + "/0.jpg"}
+            src={`https://i3.ytimg.com/vi/${videoId}/0.jpg`}
             alt=""
           />
         </div>
 
-        <div className="main-top-plays-pp">
-          {topPlay.playPoint.toFixed(0)} PP
-        </div>
+        <div className="main-top-plays-pp">{playPoint.toFixed(0)} PP</div>
 
         <div className="main-top-plays-title">
-          <Link to={`/levels/${topPlay.level.id}`}>{topPlay.level.name}</Link>
+          <Link to={`/levels/${level.id}`}>{level.name}</Link>
         </div>
-        {/* <div className="main-top-plays-pp">
-          {topPlay.playPoint.toFixed(0) + " PP"}
-        </div> */}
-        {/* <img
-          className="main-top-plays-level"
-          src={"difficulty_icons/" + difficulty + ".svg"}
-          alt=""
-        /> */}
-        {/* <div className="main-top-plays-subtitle">{topPlay.levelSubTitle}</div> */}
-        <div className="main-top-plays-player">{topPlay.player.name}</div>
+
+        <div className="main-top-plays-player">{player.name}</div>
+
         <div className="main-top-plays-spac">
           <div>
             <img src={"other_icons/speed.svg"} alt="Speed Trial: " />
-            <span>{`${topPlay.speed / 100}x`}</span>
+            <span>{`${speed / 100}x`}</span>
           </div>
 
           <div style={{ marginLeft: "40px" }}>
             <img src={"other_icons/accuracy.svg"} alt="Accurancy: " />
             <span>
-              {topPlay.rawAccuracy
-                ? `${topPlay.rawAccuracy.toFixed(2)}%`
-                : "UNKNOWN"}
+              {rawAccuracy ? `${rawAccuracy.toFixed(2)}%` : "UNKNOWN"}
             </span>
           </div>
 
