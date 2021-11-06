@@ -38,14 +38,17 @@ const MainTopPlays = () => {
       </div>
       <div className="main-top-plays">
         {isLoading
-          ? Array.from({ length: 3 }, () => (
+          ? Array.from({ length: 3 }, (i, index) => (
               <Skeleton
                 width={"336px"}
                 height={"189px"}
+                key={index}
                 className={"main-top-plays-container"}
               />
             ))
-          : playData.map((topPlay) => <MainTopPlay topPlay={topPlay} />)}
+          : playData.map((topPlay, index) => (
+              <MainTopPlay key={index} topPlay={topPlay} />
+            ))}
       </div>
     </section>
   );

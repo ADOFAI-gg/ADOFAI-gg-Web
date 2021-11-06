@@ -240,6 +240,7 @@ const LevelListPage = ({ history }) => {
                         tagChange(value);
                       }}
                       tooltip={id}
+                      key={`search${id}`}
                       img={`tag/${id}.svg`}
                     />
                   );
@@ -254,6 +255,7 @@ const LevelListPage = ({ history }) => {
                         tagChange(value);
                       }}
                       tooltip={id}
+                      key={`search${id}`}
                       img={`tag/${id}.svg`}
                     />
                   );
@@ -268,6 +270,7 @@ const LevelListPage = ({ history }) => {
                         tagChange(value);
                       }}
                       tooltip={id}
+                      key={`search${id}`}
                       img={`tag/${id}.svg`}
                     />
                   );

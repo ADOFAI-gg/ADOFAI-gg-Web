@@ -132,7 +132,7 @@ const RankingPage = () => {
             hasMore={state.hasMore}
           >
             {state.items.map((i, index) => {
-              return <RankingItem rank={i} index={index} />;
+              return <RankingItem key={index} rank={i} index={index} />;
             })}
           </InfiniteScroll>
         )}

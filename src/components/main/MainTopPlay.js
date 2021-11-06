@@ -84,6 +84,7 @@ const MainTopPlay = ({ topPlay }) => {
 
         <div className="main-top-plays-title">
           <Link to={`/levels/${level.id}`}>{level.name}</Link>
+          {/* XXX <a> cannot appear as a descendant of <a> */}
         </div>
 
         <div className="main-top-plays-player">{player.name}</div>

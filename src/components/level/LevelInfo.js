@@ -7,7 +7,7 @@ import LevelTags from "./LevelTags";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
-const LevelInfo = ({ levelData, key }) => {
+const LevelInfo = ({ levelData }) => {
   const [isOpned, setIsOpned] = useState(false);
 
   const {
@@ -38,9 +38,8 @@ const LevelInfo = ({ levelData, key }) => {
   };
 
   return (
-    <Link key={key} to={"/levels/" + id}>
+    <Link to={"/levels/" + id}>
       <article
-        key={key}
         className="level-item-info"
         onMouseLeave={(event) => {
           event.preventDefault();
@@ -172,8 +171,13 @@ const LevelInfo = ({ levelData, key }) => {
               <div className="level-item-info-label">Tags</div>
               <div className="level-item-info-value">
                 {tags.length !== 0
-                  ? tags.map((tag) => (
-                      <LevelTags tag={tag.id} id={id} styleClass="main-tag" />
+                  ? tags.map((tag, index) => (
+                      <LevelTags
+                        tag={tag.id}
+                        id={id}
+                        key={index}
+                        styleClass="main-tag"
+                      />
                     ))
                   : tags.length === 0 && (
                       <img

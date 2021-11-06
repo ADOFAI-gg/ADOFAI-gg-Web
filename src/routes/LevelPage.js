@@ -201,12 +201,12 @@ const LevelPage = ({ history }) => {
                         <strong>
                           {state.level.artists.map((artist, index) => {
                             return (
-                              <>
-                                <span>{index > 0 ? " & " : null}</span>
+                              <span key={`art${index}`}>
+                                {index > 0 && <span>{" & "}</span>}
                                 <Link to={`/levels?query=${artist}`}>
                                   {artist}
                                 </Link>
-                              </>
+                              </span>
                             );
                           })}
                         </strong>
@@ -214,12 +214,12 @@ const LevelPage = ({ history }) => {
                         <strong>
                           {state.level.creators.map((creator, index) => {
                             return (
-                              <>
-                                <span>{index > 0 ? " & " : null}</span>
+                              <span key={`creator${index}`}>
+                                {index > 0 && <span>{" & "}</span>}
                                 <Link to={`/levels?query=${creator}`}>
                                   {creator}
                                 </Link>
-                              </>
+                              </span>
                             );
                           })}
                         </strong>
@@ -230,29 +230,30 @@ const LevelPage = ({ history }) => {
                         <div className="level-info-tag level-info-warn-tag level-info-incomplete-tag" />
                       ) : null}
 
-                      {state.level.censored ? (
+                      {state.level.censored && (
                         <div className="level-info-tag level-info-warn-tag level-info-censored-tag" />
-                      ) : null}
+                      )}
 
-                      {state.level.hasNSFW ? (
+                      {state.level.hasNSFW && (
                         <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
-                      ) : null}
+                      )}
 
-                      {state.level.epilepsyWarning ? (
+                      {state.level.epilepsyWarning && (
                         <div
                           className="level-info-tag level-info-warn-tag level-info-seizure-tag"
                           onClick={PSSwal}
                         />
-                      ) : null}
+                      )}
 
                       {state.level.tags.length !== 0
                         ? // eslint-disable-next-line array-callback-return
-                          state.level.tags.map((tag) => {
+                          state.level.tags.map((tag, index) => {
                             if (tag.id !== 23)
                               return (
                                 <LevelTags
                                   tag={tag.id}
                                   id={state.level.id}
+                                  key={`tag${index}`}
                                   styleClass="level-info-tag-icon"
                                 />
                               );
@@ -269,7 +270,7 @@ const LevelPage = ({ history }) => {
                     </div>
                   </div>
                   <div className="level-info-header-buttons">
-                    {!state.level.workshop ? null : (
+                    {state.level.workshop && (
                       <a
                         href={state.level.workshop}
                         target="_blank"
@@ -331,22 +332,18 @@ const LevelPage = ({ history }) => {
                         <div className="level-info-value">
                           {String(state.level.minBpm).split(".")[0]}
                           <span className="level-info-value-decimal">
-                            {String(state.level.minBpm).split(".")[1] ===
-                            undefined
-                              ? null
-                              : `.${String(state.level.minBpm).split(".")[1]}`}
+                            {String(state.level.minBpm).split(".")[1] &&
+                              `.${String(state.level.minBpm).split(".")[1]}`}
                           </span>
 
                           {state.level.minBpm === state.level.maxBpm ? null : (
                             <>
                               -{String(state.level.maxBpm).split(".")[0]}
                               <span className="level-info-value-decimal">
-                                {String(state.level.maxBpm).split(".")[1] ===
-                                undefined
-                                  ? null
-                                  : `.${
-                                      String(state.level.minBpm).split(".")[1]
-                                    }`}
+                                {String(state.level.maxBpm).split(".")[1] &&
+                                  `.${
+                                    String(state.level.minBpm).split(".")[1]
+                                  }`}
                               </span>
                             </>
                           )}
@@ -383,15 +380,15 @@ const LevelPage = ({ history }) => {
                     <iframe
                       src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
                       title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      frameBorder="0"
+                      // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     />
                   </div>
                 </div>
               </div>
             </section>
 
-            {Object.keys(state.leaderboard).length > 0 ? (
+            {Object.keys(state.leaderboard).length > 0 && (
               <section className="level-info-leaderboard">
                 <div className="content-title">
                   <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
@@ -407,6 +404,7 @@ const LevelPage = ({ history }) => {
                         target="_blank"
                         rel="noreferrer"
                         className="level-info-leaderboard-item"
+                        key={`lb${index}`}
                         style={{ color: "white" }}
                       >
                         <div className="level-info-leaderboard-item-rank">
@@ -470,7 +468,7 @@ const LevelPage = ({ history }) => {
                   })}
                 </div>
               </section>
-            ) : null}
+            )}
           </>
         )}
       </main>
