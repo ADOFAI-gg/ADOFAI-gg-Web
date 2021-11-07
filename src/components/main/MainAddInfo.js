@@ -2,17 +2,17 @@ const MainAddInfo = ({
   playersOnline,
   rankedPlayers,
   rankedLevels,
-  unclearedLevels,
+  unclearedLevels
 }) => {
   return (
-    <section className="main-additional-information">
+    <section className='main-additional-information'>
       <table>
         <tr>
           <h3>Players Online</h3>
         </tr>
         <tr>
           <h2>
-            <span className="main-yellow-highlight">{playersOnline}</span>
+            <span className='main-yellow-highlight'>{playersOnline}</span>
           </h2>
         </tr>
       </table>
@@ -22,7 +22,7 @@ const MainAddInfo = ({
         </tr>
         <tr>
           <h2>
-            <span className="main-yellow-highlight">{rankedPlayers}</span>
+            <span className='main-yellow-highlight'>{rankedPlayers}</span>
           </h2>
         </tr>
       </table>
@@ -32,7 +32,7 @@ const MainAddInfo = ({
         </tr>
         <tr>
           <h2>
-            <span className="main-yellow-highlight">{rankedLevels}</span>
+            <span className='main-yellow-highlight'>{rankedLevels}</span>
           </h2>
         </tr>
       </table>
@@ -42,7 +42,7 @@ const MainAddInfo = ({
         </tr>
         <tr>
           <h2>
-            <span className="main-yellow-highlight">{unclearedLevels}</span>
+            <span className='main-yellow-highlight'>{unclearedLevels}</span>
           </h2>
         </tr>
       </table>

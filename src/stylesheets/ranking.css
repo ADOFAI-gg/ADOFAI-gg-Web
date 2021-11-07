@@ -71,7 +71,7 @@
 }
 
 .ranking-item-detail-pp::before {
-  content: "Total PP - ";
+  content: 'Total PP - ';
   font-weight: 400;
   /* margin-right: 7.5px; */
 }
@@ -83,7 +83,7 @@
 }
 
 .ranking-item-detail-highest::before {
-  content: "Highest Play";
+  content: 'Highest Play';
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -115,7 +115,7 @@
 }
 
 .ranking-item-detail-highest-info div:nth-last-child(-n + 2)::before {
-  content: "・";
+  content: '・';
   opacity: 0.5;
   width: 14px;
 }

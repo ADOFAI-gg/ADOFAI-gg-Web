@@ -198,5 +198,5 @@
 }
 
 .main-user-menu-context:hover::before {
-  content: "> ";
+  content: '> ';
 }

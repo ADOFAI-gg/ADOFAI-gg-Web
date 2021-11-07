@@ -1,38 +1,38 @@
 /* This file contains CSS that is common across all pages */
 
 /* Roboto Mono (monospace) font */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 /* Quicksand fonts */
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 300;
-  src: url("../fonts/Quicksand-Light.ttf");
+  src: url('../fonts/Quicksand-Light.ttf');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/Quicksand-Regular.ttf");
+  src: url('../fonts/Quicksand-Regular.ttf');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/Quicksand-Medium.ttf");
+  src: url('../fonts/Quicksand-Medium.ttf');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/Quicksand-SemiBold.ttf");
+  src: url('../fonts/Quicksand-SemiBold.ttf');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/Quicksand-Bold.ttf");
+  src: url('../fonts/Quicksand-Bold.ttf');
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -44,7 +44,7 @@ input::-webkit-inner-spin-button {
 
 /* Firefox */
 @supports (-moz-appearance: textfield) {
-  input[type="number"] {
+  input[type='number'] {
     -moz-appearance: textfield;
   }
 }
@@ -52,11 +52,11 @@ input::-webkit-inner-spin-button {
 :root {
   --nav-height: 56px;
   --nav-menu-size: 100px;
-  --normal-font: "Quicksand", "나눔스퀘어라운드", "나눔고딕", "나눔스퀘어",
-    "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Segoe UI WP",
-    "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Helvetica", "Arial",
+  --normal-font: 'Quicksand', '나눔스퀘어라운드', '나눔고딕', '나눔스퀘어',
+    'Segoe UI', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Segoe UI WP',
+    'Segoe UI Light', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;
-  --monospace-font: "Roboto Mono", monospace;
+  --monospace-font: 'Roboto Mono', monospace;
 }
 
 html,
@@ -619,7 +619,7 @@ main {
 }
 
 .level-item-info-label-ew::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 10px;
   height: 10px;
@@ -636,7 +636,7 @@ main {
 }
 
 .level-item-info-id::before {
-  content: "#";
+  content: '#';
 }
 
 /* SHOW TOOLTIPTEXT */

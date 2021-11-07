@@ -48,7 +48,7 @@
 }
 
 .mod-info-date div:first-child::after {
-  content: "/";
+  content: '/';
   margin-left: 10px;
 }
 
