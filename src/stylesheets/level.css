@@ -5,11 +5,12 @@
 .level-info-header {
   position: relative;
   height: 190px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 66%,
-    rgba(0, 0, 0, 0.1407913507199755) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 66%,
+      rgba(0, 0, 0, 0.14) 100%
+    );
 }
 
 .level-info-thumbnail {
@@ -49,22 +50,22 @@
   color: white;
   font-size: 40px;
   font-weight: 700;
+  margin: -7px;
   margin-bottom: 7px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 7px;
-  margin: -7px;
 }
 
 .level-info-song-name {
   width: 800px;
-  color: rgba(255, 255, 255, 80%);
+  color: rgba(255, 255, 255, 0.8);
+  margin: -7px;
   margin-top: -10px;
   font-size: 16px;
   overflow: hidden;
   padding: 7px;
-  margin: -7px;
 }
 
 .tooltip-container .level-info-tooltiptext {
@@ -80,11 +81,11 @@
 .level-info-author {
   width: 800px;
   color: white;
+  margin: -7px;
   margin-top: 25px;
   font-size: 20px;
   overflow: hidden;
   padding: 7px;
-  margin: -7px;
 }
 
 .level-info-tags {
@@ -110,7 +111,7 @@
 
 .level-info-tag {
   border-radius: 100em;
-  background-color: #f2f2f2;
+  background-color: rgb(242, 242, 242);
   margin-right: 10px;
   padding: 3px;
   padding-left: 5px;
@@ -125,7 +126,7 @@
   width: 20px;
   margin-right: 5px;
   border-radius: 100em;
-  background-color: #dfdfdf;
+  background-color: rgb(223, 223, 223);
   display: inline-block;
   text-align: center;
 }
@@ -136,7 +137,7 @@
 
 .level-info-warn-tag {
   overflow: hidden;
-  background-color: #ff4646;
+  background-color: rgb(255, 70, 70);
   color: white;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -145,7 +146,7 @@
 
 .level-info-warn-tag::before {
   content: '!';
-  background-color: #8b3030;
+  background-color: rgb(139, 48, 48);
   color: white;
 }
 
@@ -210,7 +211,7 @@
   height: 50px;
   margin-left: 20px;
   transition: all 0.2s ease;
-  filter: drop-shadow(0 0 10px rgb(0 0 0 / 0.4));
+  filter: drop-shadow(0 0 10px rgb(0, 0, 0, 0.4));
 }
 
 .level-info-header-buttons .level-info-header-button svg:hover {
@@ -219,7 +220,7 @@
 
 .level-info-details {
   height: 270px;
-  background-color: #0f172163;
+  background-color: rgba(15, 23, 33, 0.39);
   padding: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -235,12 +236,12 @@
 .level-info-label {
   height: 20px;
   font-size: 18px;
-  color: #b3b3b3;
+  color: rgb(179, 179, 179);
   font-weight: 600;
 }
 
 .level-info-value {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 32px;
   display: flex;
   align-items: flex-end;
@@ -267,7 +268,7 @@
 
 .level-info-detail-info-video {
   border-radius: 10px;
-  background-color: #0f172163;
+  background-color: rgba(15, 23, 33, 0.39);
   position: relative;
   display: flex;
   justify-content: center;
@@ -295,7 +296,7 @@
   height: 80px;
   display: flex;
   align-items: center;
-  background-color: #fafbff1f;
+  background-color: rgba(250, 251, 255, 0.13);
   border-radius: 10px;
   margin-bottom: 7.5px;
   padding-top: 3px;
@@ -308,7 +309,7 @@
 }
 
 .level-info-leaderboard-item:hover {
-  background-color: #33416199;
+  background-color: rgba(51, 65, 97, 0.6);
   text-decoration: none;
 }
 
@@ -321,7 +322,7 @@
   font-size: 1.75em;
   font-weight: 700;
   font-family: var(--monospace-font);
-  background-color: #b2c1ff23;
+  background-color: rgba(178, 193, 255, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -401,7 +402,6 @@
   opacity: 0;
 }
 
-.level-info-leaderboard-item:hover
-  .level-info-leaderboard-item-detail-description {
+.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
   opacity: 1;
 }
