@@ -5,36 +5,35 @@
 .level-info-header {
   position: relative;
   height: 190px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 66%,
-      rgba(0, 0, 0, 0.14) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 66%,
+    rgba(0, 0, 0, 0.14) 100%
+  );
 }
 
 .level-info-thumbnail {
+  object-fit: cover;
   width: 1100px;
   height: 190px;
-  object-fit: cover;
-  object-position: 0 50%;
   border-radius: 20px;
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   filter: brightness(0.7);
+  object-position: 0 50%;
 }
 
 .level-info-basic {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
   width: 1060px;
   height: 160px;
   padding: 23px;
   padding-top: 18px;
   padding-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
   text-shadow: black 0 0 8px;
-  top: 0;
 }
 
 .level-info-title {
@@ -44,48 +43,48 @@
 }
 
 .level-info-name {
+  overflow: hidden;
   max-width: 800px;
-  line-height: 1.05em;
   height: 1.1em;
-  color: white;
-  font-size: 40px;
-  font-weight: 700;
   margin: -7px;
   margin-bottom: 7px;
-  overflow: hidden;
+  padding: 7px;
+  color: white;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.05em;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 7px;
 }
 
 .level-info-song-name {
+  overflow: hidden;
   width: 800px;
-  color: rgba(255, 255, 255, 0.8);
   margin: -7px;
   margin-top: -10px;
-  font-size: 16px;
-  overflow: hidden;
   padding: 7px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
 }
 
 .tooltip-container .level-info-tooltiptext {
   top: 105% !important;
   left: 0 !important;
-  font-size: 16px !important;
-  max-width: 800px !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
   width: auto !important;
+  max-width: 800px !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  font-size: 16px !important;
 }
 
 .level-info-author {
+  overflow: hidden;
   width: 800px;
-  color: white;
   margin: -7px;
   margin-top: 25px;
-  font-size: 20px;
-  overflow: hidden;
   padding: 7px;
+  color: white;
+  font-size: 20px;
 }
 
 .level-info-tags {
@@ -110,24 +109,24 @@
 }
 
 .level-info-tag {
-  border-radius: 100em;
-  background-color: rgb(242, 242, 242);
   margin-right: 10px;
   padding: 3px;
-  padding-left: 5px;
   padding-right: 8px;
-  white-space: nowrap;
+  padding-left: 5px;
+  border-radius: 100em;
+  background-color: rgb(242, 242, 242);
   text-shadow: 0 0 0;
+  white-space: nowrap;
 }
 
 .level-info-tag::before {
   content: '#';
-  height: 20px;
+  display: inline-block;
   width: 20px;
+  height: 20px;
   margin-right: 5px;
   border-radius: 100em;
   background-color: rgb(223, 223, 223);
-  display: inline-block;
   text-align: center;
 }
 
@@ -136,12 +135,12 @@
 }
 
 .level-info-warn-tag {
+  display: flex;
   overflow: hidden;
   background-color: rgb(255, 70, 70);
   color: white;
-  transition: all 0.2s ease;
   cursor: pointer;
-  display: flex;
+  transition: all 0.2s ease;
 }
 
 .level-info-warn-tag::before {
@@ -202,16 +201,16 @@
 }
 
 .level-info-header-buttons {
-  margin: 10px;
   height: 0;
+  margin: 10px;
 }
 
 .level-info-header-buttons .level-info-header-button svg {
   width: 50px;
   height: 50px;
   margin-left: 20px;
-  transition: all 0.2s ease;
   filter: drop-shadow(0 0 10px rgb(0, 0, 0, 0.4));
+  transition: all 0.2s ease;
 }
 
 .level-info-header-buttons .level-info-header-button svg:hover {
@@ -220,13 +219,13 @@
 
 .level-info-details {
   height: 270px;
-  background-color: rgba(15, 23, 33, 0.39);
   padding: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
   border-radius: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  background-color: rgba(15, 23, 33, 0.39);
 }
 
 .level-info-detail-info-section {
@@ -235,57 +234,57 @@
 
 .level-info-label {
   height: 20px;
-  font-size: 18px;
   color: rgb(179, 179, 179);
   font-weight: 600;
+  font-size: 18px;
 }
 
 .level-info-value {
-  color: rgb(255, 255, 255);
-  font-size: 32px;
   display: flex;
   align-items: flex-end;
+  color: rgb(255, 255, 255);
+  font-size: 32px;
 }
 
 .level-info-value .level-info-value-decimal {
-  font-size: 16px;
   padding-bottom: 4px;
+  font-size: 16px;
 }
 
 .level-info-detail-info-description {
-  height: 5em;
+  display: -webkit-box;
+  overflow: hidden;
   max-width: 600px;
+  height: 5em;
+  margin-top: 5px;
   font-size: 28px !important;
   line-height: 1.25em;
-  margin-top: 5px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   word-wrap: break-word;
-  overflow: hidden;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .level-info-detail-info-video {
-  border-radius: 10px;
-  background-color: rgba(15, 23, 33, 0.39);
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgba(15, 23, 33, 0.39);
 }
 
 .level-info-detail-info-video iframe {
-  border-radius: 10px;
-  height: 270px;
   width: 432px;
+  height: 270px;
+  border-radius: 10px;
 }
 
 .level-info-detail-info-video div {
   position: absolute;
-  font-size: 1.5em;
   z-index: -1;
   color: white;
+  font-size: 1.5em;
 }
 
 .level-info-leaderboard-content {
@@ -293,14 +292,14 @@
 }
 
 .level-info-leaderboard-item {
-  height: 80px;
   display: flex;
   align-items: center;
-  background-color: rgba(250, 251, 255, 0.13);
-  border-radius: 10px;
+  height: 80px;
   margin-bottom: 7.5px;
   padding-top: 3px;
   padding-bottom: 3px;
+  border-radius: 10px;
+  background-color: rgba(250, 251, 255, 0.13);
   transition: all 0.2s ease;
 }
 
@@ -314,35 +313,35 @@
 }
 
 .level-info-leaderboard-item-rank {
-  width: 72px;
-  height: calc(100% + 6px);
-  padding-left: 17.5px;
-  padding-right: 17.5px;
-  margin-right: 20px;
-  font-size: 1.75em;
-  font-weight: 700;
-  font-family: var(--monospace-font);
-  background-color: rgba(178, 193, 255, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 72px;
+  height: calc(100% + 6px);
+  margin-right: 20px;
+  padding-right: 17.5px;
+  padding-left: 17.5px;
   border-radius: 10px;
+  background-color: rgba(178, 193, 255, 0.14);
+  font-weight: 700;
+  font-size: 1.75em;
+  font-family: var(--monospace-font);
 }
 
 .level-info-leaderboard-item-content {
-  width: 980px;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-start;
+  width: 980px;
 }
 
 .level-info-leaderboard-item-name {
+  overflow: hidden;
   width: 600px;
   margin-right: 65px;
-  font-size: 1.5em;
   font-weight: 500;
+  font-size: 1.5em;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -359,13 +358,13 @@
 
 .level-info-leaderboard-item-detail-pp::after {
   content: 'PP';
-  font-weight: 400;
   margin-left: 5px;
+  font-weight: 400;
 }
 
 .level-info-leaderboard-item-detail-timestamp {
-  font-weight: 600;
   float: right;
+  font-weight: 600;
 }
 
 .level-info-leaderboard-item-detail-timestamp::before {
@@ -375,8 +374,8 @@
 }
 
 .level-info-leaderboard-item-detail-play {
-  display: flex;
   position: absolute;
+  display: flex;
 }
 
 .level-info-leaderboard-item-detail-play-info {
@@ -402,6 +401,9 @@
   opacity: 0;
 }
 
-.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
+/* stylelint-disable -- conflict between the two formator. I'll fix it */
+.level-info-leaderboard-item:hover
+  .level-info-leaderboard-item-detail-description {
+  /* stylelint-enable */
   opacity: 1;
 }
