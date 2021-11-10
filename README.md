@@ -2,6 +2,6 @@
 
 Web for ADOFAI.gg
 
-## Use source
+## Used source
 
 in `.stylelintrc.js`, [(GitHub) hudochenkov/stylelint-config-hudochenkov/order.js](https://github.com/hudochenkov/stylelint-config-hudochenkov/blob/master/order.js) to sort the css properties
