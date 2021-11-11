@@ -28,7 +28,7 @@
     "media-feature-name-no-vendor-prefix": null,
     "at-rule-no-vendor-prefix": null,
     "string-quotes": "single",
-    "indentation": 2,
+    "indentation": null,
     "selector-descendant-combinator-no-non-space": null,
     "order/order": [
       [

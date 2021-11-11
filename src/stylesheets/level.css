@@ -401,9 +401,7 @@
   opacity: 0;
 }
 
-/* stylelint-disable -- conflict between the two formator. I'll fix it */
 .level-info-leaderboard-item:hover
   .level-info-leaderboard-item-detail-description {
-  /* stylelint-enable */
   opacity: 1;
 }
