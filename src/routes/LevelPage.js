@@ -21,19 +21,22 @@ const LevelPage = ({ history }) => {
         };
 
       case 'FETCH_RESULT':
+        const youtubeIdRegex =
+          /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
+        const extractedYoutubeId =
+          action.level && youtubeIdRegex.exec(action.level.video);
+
+        const hasNSFW =
+          action.level && action.level.tags.some((tag) => tag.id === 23);
+
         return {
           ...state,
           isLoading: false,
           level: {
             ...action.level,
             thumbnail: null,
-            hasNSFW:
-              action.level && action.level.tags.some((tag) => tag.id === 23),
-            youtubeId:
-              action.level &&
-              /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
-                action.level.video
-              )[1]
+            hasNSFW: hasNSFW,
+            youtubeId: extractedYoutubeId && extractedYoutubeId[1]
           },
           leaderboard: {
             ...action.leaderboard
