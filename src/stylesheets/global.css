@@ -247,6 +247,10 @@ nav {
   width: 100vw;
 }
 
+.nav-pages ul {
+  margin: 0;
+}
+
 .nav-menu {
   right: 0;
   display: flex;

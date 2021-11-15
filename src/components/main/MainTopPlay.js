@@ -28,14 +28,22 @@ const MainTopPlay = ({ topPlay }) => {
     18.5: { borderColor: '#A61C00' },
     19: { borderColor: '#660000' },
     19.5: { borderColor: '#460C00' },
-    20: { borderColor: '#000000' },
-    20.5: {
+    20: { borderColor: '#360900' },
+    20.1: { borderColor: '#240600' },
+    20.2: { borderColor: '#130400' },
+    20.3: { borderColor: '#000000' },
+    20.4: { borderColor: '#0A031F' },
+    20.5: { borderColor: '#0A031F' },
+    20.6: { borderColor: '#180B3B' },
+    20.7: { borderColor: '#180B3B' },
+    20.8: { borderColor: '#261358' },
+    20.9: { borderColor: '#2D1766' },
+    21: {
       backgroundImage:
-        'linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(255,0,0,1) 100%)',
-      backgroundColor: 'black',
+        'linear-gradient(45deg, rgb(104, 57, 224) 0%, rgb(39, 1, 132) 100%)',
+      backgroundColor: '#351C75',
       backgroundOrigin: 'border-box'
-    },
-    21: { borderColor: '#4C1130' }
+    }
   };
 
   useEffect(() => {
