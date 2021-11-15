@@ -199,6 +199,7 @@ input:focus {
   opacity: 0.35;
 }
 
+/* XXX logo of the navbar */
 .logo-middle {
   display: inline-block;
   vertical-align: middle;
@@ -486,134 +487,6 @@ nav {
 
 .react-loading-skeleton {
   background-image: none !important;
-}
-
-/* LEVEL ITEM */
-
-/* UNUSED :
- * .level-item-info-background-container
- * .level-item-info-background
- */
-
-.level-item-info {
-  position: relative;
-  width: 1100px;
-  height: 70px;
-  margin-bottom: 8px;
-}
-
-.level-item-info-background-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 1100px;
-  height: 70px;
-  border-radius: 10px;
-}
-
-.level-item-info-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-position: center;
-  background-size: cover;
-  filter: blur(5px) brightness(0.3);
-  transition-duration: 0.3s;
-}
-
-.level-item-info-container-normal,
-.level-item-info-container-hover {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 10px;
-  transition-duration: 0.3s;
-}
-
-.level-item-info-animation-enter {
-  opacity: 0;
-}
-
-.level-item-info-animation-enter-active {
-  opacity: 1;
-}
-
-.level-item-info-animation-exit {
-  opacity: 1;
-}
-
-.level-item-info-animation-exit-active {
-  opacity: 0;
-}
-
-.level-item-info-difficulty {
-  width: 40px;
-  height: 40px;
-  margin: 10px;
-  margin-right: 5px;
-  margin-left: 15px;
-  border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.level-item-info-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  margin-left: 10px;
-}
-
-.level-item-info-section-center * {
-  justify-content: center;
-  text-align: center;
-}
-
-.level-item-info-label {
-  height: 20px;
-  color: rgb(179, 179, 179);
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.level-item-info-value {
-  overflow: hidden;
-  max-width: 400px;
-  color: white;
-  font-weight: 500;
-  font-size: 20px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.level-item-info-label-ew::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  border-radius: 100%;
-  background-color: rgba(255, 92, 49, 0.53);
-}
-
-.level-item-info-id {
-  margin-left: 5px;
-  opacity: 0.5;
-}
-
-.level-item-info-id::before {
-  content: '#';
 }
 
 /* SHOW TOOLTIPTEXT */

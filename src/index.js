@@ -4,6 +4,7 @@ import App from './components/app/App';
 
 // Stylesheets
 import './stylesheets/global.css';
+import './stylesheets/levelItem.css';
 import './stylesheets/main.css';
 import './stylesheets/mod.css';
 import './stylesheets/modList.css';
