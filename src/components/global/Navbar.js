@@ -1,6 +1,5 @@
-import React from // useState
-"react";
-import { Link } from "react-router-dom";
+import React from 'react'; // useState
+import { Link } from 'react-router-dom';
 // import { CSSTransition } from "react-transition-group";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
@@ -26,27 +25,27 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav>
-      <div className="nav-logo">
-        <Link to="/">
+      <div className='nav-logo'>
+        <Link to='/'>
           <img
-            className="logo-middle"
-            style={{ height: "20px", marginLeft: "10px" }}
-            src={"/logo.svg"}
-            alt=""
+            className='logo-middle'
+            style={{ height: '20px', marginLeft: '10px' }}
+            src={'/logo.svg'}
+            alt=''
           />
         </Link>
       </div>
 
-      <div className="nav-pages">
+      <div className='nav-pages'>
         <ul>
           <li>
-            <Link to="/levels">Levels</Link>
+            <Link to='/levels'>Levels</Link>
           </li>
           {/* <li>
           <Link to="/mods">Mods</Link>
         </li> */}
           <li>
-            <Link to="/ranks">Ranking</Link>
+            <Link to='/ranks'>Ranking</Link>
           </li>
         </ul>
       </div>

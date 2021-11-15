@@ -10,7 +10,7 @@
   height: 30px;
   display: flex;
   align-items: center;
-  background-color: #04152b80;
+  background-color: rgba(4, 21, 43, 0.5);
   border-radius: 10px;
   margin-bottom: 7.5px;
   padding-top: 3px;
@@ -23,7 +23,7 @@
 }
 
 .ranking-item:hover {
-  background-color: #233b5e80;
+  background-color: rgba(35, 59, 94, 0.5);
 }
 
 .ranking-item-rank {
@@ -35,7 +35,7 @@
   font-size: 1.25em;
   font-weight: 700;
   font-family: var(--monospace-font);
-  background-color: #020c1a4f;
+  background-color: rgba(2, 12, 26, 0.31);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,7 +71,7 @@
 }
 
 .ranking-item-detail-pp::before {
-  content: "Total PP - ";
+  content: 'Total PP - ';
   font-weight: 400;
   /* margin-right: 7.5px; */
 }
@@ -83,7 +83,7 @@
 }
 
 .ranking-item-detail-highest::before {
-  content: "Highest Play";
+  content: 'Highest Play';
   font-weight: 400;
   margin-right: 7.5px;
 }
@@ -115,7 +115,7 @@
 }
 
 .ranking-item-detail-highest-info div:nth-last-child(-n + 2)::before {
-  content: "・";
+  content: '・';
   opacity: 0.5;
   width: 14px;
 }
@@ -140,7 +140,7 @@
  */
 
 .ranking-item:nth-child(-n + 3) {
-  background-color: #fafbff1f;
+  background-color: rgba(250, 251, 255, 0.13);
 }
 
 .ranking-item:nth-child(1) {
@@ -156,13 +156,13 @@
 }
 
 .ranking-item:nth-child(-n + 3):hover {
-  background-color: #33416199;
+  background-color: rgba(51, 65, 97, 0.6);
 }
 
 .ranking-item:nth-child(-n + 3) .ranking-item-rank {
   margin-right: 20px;
   font-size: 1.75em;
-  background-color: #b2c1ff23;
+  background-color: rgba(178, 193, 255, 0.14);
 }
 
 .ranking-item:nth-child(-n + 3) .ranking-item-content {

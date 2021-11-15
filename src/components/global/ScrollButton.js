@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
@@ -17,18 +17,18 @@ const ScrollButton = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth'
     });
   };
 
-  window.addEventListener("scroll", toggleVisible);
+  window.addEventListener('scroll', toggleVisible);
 
   return (
     <FontAwesomeIcon
       icon={faArrowCircleUp}
-      className="user-menu-button"
+      className='user-menu-button'
       onClick={scrollToTop}
-      style={{ display: visible ? "inline" : "none", width: "64px" }}
+      style={{ display: visible ? 'inline' : 'none', width: '64px' }}
     />
   );
 };

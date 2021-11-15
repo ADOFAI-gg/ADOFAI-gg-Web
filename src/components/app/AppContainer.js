@@ -1,5 +1,5 @@
-import React from "react"; // useEffect
-import { withRouter } from "react-router-dom";
+import React from 'react'; // useEffect
+import { withRouter } from 'react-router-dom';
 
 const AppContainer = ({ children, history }) => {
   // useEffect(() => {
@@ -25,7 +25,7 @@ const AppContainer = ({ children, history }) => {
   //   };
   // }, []);
 
-  return <div className="container">{children}</div>;
+  return <div className='container'>{children}</div>;
 };
 
 export default withRouter(AppContainer);

@@ -1,9 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 // Components
-import MainTopPlay from "./MainTopPlay";
+import MainTopPlay from './MainTopPlay';
 
 const MainTopPlays = () => {
   const [playData, setPlayData] = useState([]);
@@ -16,8 +16,8 @@ const MainTopPlays = () => {
           params: {
             offset: 0,
             amount: 3,
-            sort: "PP_DESC",
-          },
+            sort: 'PP_DESC'
+          }
         })
         .then((response) => {
           setPlayData(response.data.results);
@@ -32,18 +32,18 @@ const MainTopPlays = () => {
 
   return (
     <section>
-      <div className="content-title">
-        <h1 style={{ flexBasis: "80%", textAlign: "left" }}>Top Plays</h1>
+      <div className='content-title'>
+        <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>Top Plays</h1>
         {/* <h3 style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}><a href="#top-plays">See All ▹</a></h3> */}
       </div>
-      <div className="main-top-plays">
+      <div className='main-top-plays'>
         {isLoading
           ? Array.from({ length: 3 }, (i, index) => (
               <Skeleton
-                width={"336px"}
-                height={"189px"}
+                width={'336px'}
+                height={'189px'}
                 key={index}
-                className={"main-top-plays-container"}
+                className={'main-top-plays-container'}
               />
             ))
           : playData.map((topPlay, index) => (
