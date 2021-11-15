@@ -7,14 +7,14 @@
 }
 
 .ranking-item {
-  height: 30px;
   display: flex;
   align-items: center;
-  background-color: rgba(4, 21, 43, 0.5);
-  border-radius: 10px;
+  height: 30px;
   margin-bottom: 7.5px;
   padding-top: 3px;
   padding-bottom: 3px;
+  border-radius: 10px;
+  background-color: rgba(4, 21, 43, 0.5);
   transition: all 0.2s ease;
 }
 
@@ -27,41 +27,41 @@
 }
 
 .ranking-item-rank {
-  width: 72px;
-  height: calc(100% + 6px);
-  padding-left: 17.5px;
-  padding-right: 17.5px;
-  margin-right: 15px;
-  font-size: 1.25em;
-  font-weight: 700;
-  font-family: var(--monospace-font);
-  background-color: rgba(2, 12, 26, 0.31);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 72px;
+  height: calc(100% + 6px);
+  margin-right: 15px;
+  padding-right: 17.5px;
+  padding-left: 17.5px;
   border-radius: 10px;
+  background-color: rgba(2, 12, 26, 0.31);
+  font-weight: 700;
+  font-size: 1.25em;
+  font-family: var(--monospace-font);
 }
 
 .ranking-item-content {
-  width: 980px;
   display: flex;
   align-items: center;
+  width: 980px;
 }
 
 .ranking-item-name {
+  overflow: hidden;
   width: 190px;
   margin-right: 45px;
-  font-size: 1.2em;
   font-weight: 500;
+  font-size: 1.2em;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
 }
 
 .ranking-item-detail {
-  width: 780px;
   display: flex;
   align-items: center;
+  width: 780px;
   opacity: 0.8;
 }
 
@@ -77,36 +77,36 @@
 }
 
 .ranking-item-detail-highest {
-  font-weight: 600;
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .ranking-item-detail-highest::before {
   content: 'Highest Play';
-  font-weight: 400;
   margin-right: 7.5px;
+  font-weight: 400;
 }
 
 .ranking-item-detail-highest-title {
+  display: inline-block;
+  overflow: hidden;
   width: 270px;
   text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
-  display: inline-block;
 }
 
 .ranking-item-detail-highest-info {
-  margin-left: 10px;
-  opacity: 0.8;
-  font-size: 0.9em;
-  font-weight: 400;
   display: flex;
+  gap: 5px;
   align-items: center;
   float: right;
-  gap: 5px;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 0.9em;
   font-family: var(--monospace-font);
   letter-spacing: -1.25px;
+  opacity: 0.8;
 }
 
 .ranking-item-detail-highest-info div {
@@ -116,8 +116,8 @@
 
 .ranking-item-detail-highest-info div:nth-last-child(-n + 2)::before {
   content: '・';
-  opacity: 0.5;
   width: 14px;
+  opacity: 0.5;
 }
 
 .ranking-item-detail-highest-info-speed {
@@ -161,19 +161,19 @@
 
 .ranking-item:nth-child(-n + 3) .ranking-item-rank {
   margin-right: 20px;
-  font-size: 1.75em;
   background-color: rgba(178, 193, 255, 0.14);
+  font-size: 1.75em;
 }
 
 .ranking-item:nth-child(-n + 3) .ranking-item-content {
-  align-items: flex-start;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .ranking-item:nth-child(-n + 3) .ranking-item-name {
   width: 600px;
-  font-size: 1.5em;
   font-weight: 500;
+  font-size: 1.5em;
 }
 
 .ranking-item:nth-child(-n + 3) .ranking-item-detail {

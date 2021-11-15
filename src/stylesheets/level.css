@@ -47,7 +47,6 @@
   max-width: 800px;
   height: 1.1em;
   margin: -7px;
-  margin-bottom: 7px;
   padding: 7px;
   color: white;
   font-weight: 700;
@@ -61,7 +60,6 @@
   overflow: hidden;
   width: 800px;
   margin: -7px;
-  margin-top: -10px;
   padding: 7px;
   color: rgba(255, 255, 255, 0.8);
   font-size: 16px;

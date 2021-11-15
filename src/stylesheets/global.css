@@ -139,7 +139,6 @@ a {
 ul {
   overflow: hidden;
   margin: 0;
-  margin-left: 50px;
   padding: 0;
   list-style-type: none;
   text-align: center;
@@ -245,10 +244,6 @@ nav {
   align-items: center;
   justify-content: center;
   width: 100vw;
-}
-
-.nav-pages ul {
-  margin: 0;
 }
 
 .nav-menu {
