@@ -5,8 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "precommit": "lint-staged"
+    "lint": "next lint"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^4.0.0",
