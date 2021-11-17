@@ -1,54 +1,63 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const RankingItem = ({ rank, index }) => {
+  const { name, totalBpm, bestPlay } = rank;
+  const speedFormat = String(bestPlay.speed / 100);
+
   return (
-    <article className="ranking-item">
-      <div className="ranking-item-rank">#{index + 1}</div>
-      <div className="ranking-item-content">
-        <div className="ranking-item-name notranslate">{rank.name}</div>
+    <article className='ranking-item'>
+      <div className='ranking-item-rank'>#{index + 1}</div>
+      <div className='ranking-item-content'>
+        <div className='ranking-item-name notranslate'>{name}</div>
 
-        <div className="ranking-item-detail">
-          <div className="ranking-item-detail-pp">
-            {rank.totalBpm.toFixed(0)}
-          </div>
+        <div className='ranking-item-detail'>
+          <div className='ranking-item-detail-pp'>{totalBpm.toFixed(0)}</div>
 
-          <div className="ranking-item-detail-highest notranslate">
-            {/* href={`/levels/${rank.bestPlay.id}`} */}
+          <div className='ranking-item-detail-highest notranslate'>
             <Link
-              to={`/levels/${rank.bestPlay.levelId}`}
-              className="ranking-item-detail-highest-title"
+              to={`/levels/${bestPlay.levelId}`}
+              className='ranking-item-detail-highest-title'
             >
-              {rank.bestPlay.artists[1]
-                ? `${rank.bestPlay.artists[0]}…`
-                : rank.bestPlay.artists[0]}
-              {" - "}
-              {rank.bestPlay.title}
+              {bestPlay.artists[1]
+                ? `${bestPlay.artists[0]}…`
+                : bestPlay.artists[0]}
+              {' - '}
+              {bestPlay.title}
             </Link>
-            <span className="ranking-item-detail-highest-info">
-              <div>
+
+            <span className='ranking-item-detail-highest-info'>
+              <div className='ranking-item-detail-highest-info-speed'>
                 <img
-                  src={"other_icons/speed.svg"}
-                  alt="Speed Trial: "
-                  style={{ height: "0.9em", marginRight: "3px" }}
+                  src={'other_icons/speed.svg'}
+                  alt='Speed Trial: '
+                  style={{ height: '0.9em', marginRight: '3px' }}
                 />
-                {rank.bestPlay.speed / 100}x
+                {speedFormat.startsWith('0.')
+                  ? speedFormat.replace('0', '')
+                  : speedFormat}
+                x
               </div>
-              {rank.bestPlay.rawAccuracy && (
-                <div>
-                  <img
-                    src={"other_icons/accuracy.svg"}
-                    alt="Accurancy: "
-                    style={{
-                      height: "0.9em",
-                      marginRight: "3px",
-                    }}
-                  />
-                  {rank.bestPlay.rawAccuracy.toFixed(1)}%
-                </div>
-              )}
-              <div>
-                (Lv. {String(rank.bestPlay.difficulty).replace(".5", "+")})
+
+              <div className='ranking-item-detail-highest-info-accuracy'>
+                <img
+                  src={'other_icons/accuracy.svg'}
+                  alt='Accurancy: '
+                  style={{
+                    height: '0.9em',
+                    marginRight: '3px'
+                  }}
+                />
+                {bestPlay.rawAccuracy
+                  ? `${bestPlay.rawAccuracy.toFixed(1)}%`
+                  : `///./%`}
+              </div>
+
+              <div className='ranking-item-detail-highest-info-difficulty'>
+                Lv.
+                {bestPlay.difficulty < 20
+                  ? String(bestPlay.difficulty).replace('.5', '+')
+                  : bestPlay.difficulty}
               </div>
             </span>
           </div>

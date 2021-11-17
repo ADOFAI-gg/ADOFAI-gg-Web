@@ -1,10 +1,8 @@
 .mod-info-feature {
+  width: 1100px;
   margin-top: 30px;
   padding-bottom: 15px;
-  width: 1100px;
-  border-bottom-color: rgba(255, 255, 255, 0.4);
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .mod-info-feature-top {
@@ -23,12 +21,12 @@
 }
 
 .mod-info-name {
-  max-width: 800px;
-  line-height: 1.05em;
-  height: 1.1em;
-  font-size: 40px;
-  font-weight: 700;
   overflow: hidden;
+  max-width: 800px;
+  height: 1.1em;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.05em;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -48,8 +46,12 @@
 }
 
 .mod-info-date div:first-child::after {
-  content: "/";
+  content: '/';
   margin-left: 10px;
+}
+
+.mod-info-feature-bottom-item-title svg {
+  margin-right: 5px;
 }
 
 .mod-info-buttons .mod-info-button svg {
@@ -60,8 +62,8 @@
 
 .mod-info-feature-bottom {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  justify-content: space-between;
   margin-top: 40px;
 }
 
@@ -77,10 +79,6 @@
   opacity: 0.7;
 }
 
-.mod-info-feature-bottom-item-title svg {
-  margin-right: 5px;
-}
-
 .mod-info-feature-bottom-item-content {
   font-size: 22px;
 }
@@ -89,7 +87,6 @@
   width: 1100px;
   margin-top: 5px;
   word-break: break-word;
-  /* font-family: "Quicksand", "나눔스퀘어라운드", "나눔고딕", "나눔스퀘어", "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Segoe UI WP", "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
 }
 
 .mod-info-markdown * {
@@ -98,8 +95,8 @@
 
 .mod-info-markdown h2,
 .mod-info-markdown h3 {
-  padding: 5px 0;
   margin-left: 0;
+  padding: 5px 0;
 }
 
 .mod-info-markdown p {
@@ -108,29 +105,29 @@
 
 .mod-info-markdown ul {
   margin-left: 0;
-  padding-inline-start: 35px;
   list-style-type: revert;
   text-align: left;
+  padding-inline-start: 35px;
 }
 
 .mod-info-markdown li {
-  list-style-type: disc;
   display: revert;
+  list-style-type: disc;
 }
 
 .mod-info-markdown li a {
+  padding: revert;
+  color: rgb(255, 245, 193);
   font-weight: 800;
   font-size: revert;
   text-align: revert;
-  padding: revert;
-  color: #fff5c1;
 }
 
 .mod-info-markdown code {
-  font-family: "Roboto Mono", "Quicksand", monospace;
-  letter-spacing: -0.75px;
-  font-size: 0.8em;
-  background-color: #ffffff25;
-  border-radius: 5px;
   padding: 3px 7px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 0.8em;
+  font-family: var(--monospace-font);
+  letter-spacing: -0.75px;
 }

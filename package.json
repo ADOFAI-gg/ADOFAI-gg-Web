@@ -23,6 +23,7 @@
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-simple-infinite-loading": "^1.1.0",
     "react-tooltip": "^4.2.21",
     "react-transition-group": "^4.4.2",
     "react-virtualized": "^9.22.3",
@@ -33,7 +34,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "csslint": "npx stylelint --fix ./src/stylesheets/"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +54,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "stylelint": "^14.0.1",
+    "stylelint-config-standard": "^23.0.0",
+    "stylelint-order": "^5.0.0"
   }
 }

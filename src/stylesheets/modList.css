@@ -10,9 +10,7 @@
   z-index: 1;
   padding: 20px;
   padding-left: 15px;
-  border-top-color: rgba(255, 255, 255, 0.4);
-  border-top-width: 1px;
-  border-top-style: solid;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
   transition: all 0.2s ease;
 }
 

@@ -1,49 +1,48 @@
 .main-logo {
-  margin-top: 60px;
   width: 700px;
   height: 100px;
+  margin-top: 60px;
 }
 
 .main-yellow-highlight {
-  color: #ffe76e;
+  color: rgb(255, 231, 110);
 }
 
 .main-search-bar {
-  margin-top: 40px;
   width: 680px;
-  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: 40px;
+  padding: 10px;
   border-style: none;
   border-radius: 5px;
-  padding: 10px;
-  font-family: Quicksand;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
   font-weight: 300;
   font-size: 15px;
-  color: white;
+  font-family: var(--normal-font);
 }
 
 .main-additional-information {
-  margin-top: 30px;
   display: flex;
-  width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
   justify-content: space-around;
+  width: 1100px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .main-top-plays {
-  width: 1100px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
-  margin-left: auto;
+  width: 1100px;
   margin-right: auto;
+  margin-left: auto;
   /* cursor: pointer; */
 }
 
 .main-top-plays-container {
-  margin-top: 10px;
   position: relative;
+  margin-top: 10px;
   transition: all 0.2s ease-in-out;
 }
 
@@ -51,39 +50,39 @@
   transform: scale(1.05);
 }
 
+.main-top-plays-image {
+  object-fit: cover;
+  width: 336px;
+  height: 189px;
+  filter: blur(2px) brightness(0.4);
+  transition: all 0.2s ease-in-out;
+}
+
 .main-top-plays-container:hover .main-top-plays-image {
   filter: blur(0.5px) brightness(0.5);
 }
 
 .main-top-plays-image-container {
-  border: solid 3px transparent;
-  background-color: black;
   overflow: hidden;
   width: 336px;
   height: 189px;
+  border: solid 3px transparent;
   border-radius: 8px;
-}
-
-.main-top-plays-image {
-  width: 336px;
-  height: 189px;
-  object-fit: cover;
-  filter: blur(2px) brightness(0.4);
-  transition: all 0.2s ease-in-out;
+  background-color: black;
 }
 
 .main-top-plays-title {
   position: absolute;
-  max-width: 340px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   top: 70px;
   left: 50%;
-  transform: translate(-50%, 0);
+  overflow: hidden;
+  max-width: 340px;
   color: white;
-  font-size: 20px;
   font-weight: 500;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translate(-50%, 0);
 }
 
 /* .main-top-plays-subtitle {
@@ -97,30 +96,30 @@
 
 .main-top-plays-player {
   position: absolute;
-  max-width: 340px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   top: 100px;
   left: 50%;
-  transform: translate(-50%, 0);
+  overflow: hidden;
+  max-width: 340px;
   color: white;
-  font-size: 18px;
   font-weight: 500;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translate(-50%, 0);
 }
 
 .main-top-plays-spac {
-  display: flex;
   position: absolute;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   top: 150px;
   left: 50%;
-  transform: translate(-50%, 0);
+  display: flex;
+  overflow: hidden;
   color: white;
-  font-size: 15px;
   font-weight: 700;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translate(-50%, 0);
 }
 
 .main-top-plays-spac div {
@@ -138,11 +137,12 @@
   top: 3px;
   left: 50%;
   padding: 10px 30px;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 0 0 8px 8px;
-  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 1);
   transform: translate(-50%, 0);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 .main-top-plays-speed {
@@ -150,32 +150,32 @@
   bottom: 10px;
   left: 8px;
   color: white;
-  font-size: 15px;
   font-weight: 500;
+  font-size: 15px;
 }
 
 .main-top-plays-acc {
   position: absolute;
-  bottom: 10px;
   right: 8px;
+  bottom: 10px;
   color: white;
-  font-size: 15px;
   font-weight: 500;
+  font-size: 15px;
 }
 
 .main-top-plays-level {
   position: absolute;
-  width: 40px;
-  height: 40px;
   top: 8px;
   right: 8px;
+  width: 40px;
+  height: 40px;
 }
 
 .main-popular-levels {
-  margin-top: 10px;
   width: 1100px;
-  margin-left: auto;
+  margin-top: 10px;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .main-tag {
@@ -189,7 +189,7 @@
 }
 
 .main-user-menu-context {
-  color: #545454;
+  color: rgb(84, 84, 84);
 }
 
 .main-user-menu-context:hover {
@@ -197,5 +197,5 @@
 }
 
 .main-user-menu-context:hover::before {
-  content: "> ";
+  content: '> ';
 }

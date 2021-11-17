@@ -1,50 +1,53 @@
-import React, { useReducer, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import React, { useReducer, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 
-import Swal from "sweetalert2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { faSteam } from "@fortawesome/free-brands-svg-icons";
+import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faSteam } from '@fortawesome/free-brands-svg-icons';
 
 // Components
-import LikeButton from "../components/global/LikeButton";
-import LevelTags from "../components/level/LevelTags";
+import LikeButton from '../components/global/LikeButton';
+import LevelTags from '../components/level/LevelTags';
 
 const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
     switch (action.type) {
-      case "FETCH_REQUEST":
+      case 'FETCH_REQUEST':
         return {
           ...state,
-          isLoading: true,
+          isLoading: true
         };
 
-      case "FETCH_RESULT":
+      case 'FETCH_RESULT':
+        const youtubeIdRegex =
+          /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
+        const extractedYoutubeId =
+          action.level && youtubeIdRegex.exec(action.level.video);
+
+        const hasNSFW =
+          action.level && action.level.tags.some((tag) => tag.id === 23);
+
         return {
           ...state,
           isLoading: false,
           level: {
             ...action.level,
             thumbnail: null,
-            hasNSFW:
-              action.level && action.level.tags.some((tag) => tag.id === 23),
-            youtubeId:
-              action.level &&
-              /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/.exec(
-                action.level.video
-              )[1],
+            hasNSFW: hasNSFW,
+            youtubeId: extractedYoutubeId && extractedYoutubeId[1]
           },
           leaderboard: {
-            ...action.leaderboard,
-          },
+            ...action.leaderboard
+          }
         };
 
-      case "FETCH_ERROR":
+      case 'FETCH_ERROR':
         return {
           ...state,
           isLoading: false,
-          error: action.error,
+          error: action.error
         };
 
       default:
@@ -56,12 +59,12 @@ const LevelPage = ({ history }) => {
     isLoading: false,
     isError: null,
     level: null,
-    leaderboard: null,
+    leaderboard: null
   });
 
   const PSSwal = () => {
     Swal.fire({
-      title: "What is Photosensitive Seizure?",
+      title: 'What is Photosensitive Seizure?',
       html: `
       Some people may experience seizures when exposed to certain visual effects, such as <strong>severely flashing lights</strong> during the game. These symptoms are called "photosensitive seizures".
       <br>
@@ -76,32 +79,32 @@ const LevelPage = ({ history }) => {
       <br>- Avoid playing this level when you are tired
       `,
       customClass: {
-        popup: "level-info-swal-popup",
-      },
+        popup: 'level-info-swal-popup'
+      }
     });
   };
 
   const NSFWWarningSwal = () => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       html: `
       This level contains <strong>NSFW content</strong>.
       <br>
       <br>If you are a minor or don't want to see a level with sexual content, please <strong>press Cancel and do NOT play this level</strong>.
       `,
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
       allowOutsideClick: false,
       customClass: {
-        popup: "level-info-swal-popup",
-        container: "level-info-nsfwswal-container",
-      },
+        popup: 'level-info-swal-popup',
+        container: 'level-info-nsfwswal-container'
+      }
     }).then((result) => {
       if (result.isDismissed) {
         if (history.length > 1) {
           history.goBack();
         } else {
-          history.push("/");
+          history.push('/');
         }
       }
     });
@@ -112,9 +115,9 @@ const LevelPage = ({ history }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch({ type: "FETCH_RESULT", level: null });
-        dispatch({ type: "FETCH_ERROR", error: null });
-        dispatch({ type: "FETCH_REQUEST" });
+        dispatch({ type: 'FETCH_RESULT', level: null });
+        dispatch({ type: 'FETCH_ERROR', error: null });
+        dispatch({ type: 'FETCH_REQUEST' });
 
         const levelResponse = await axios.get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${id}`
@@ -126,18 +129,18 @@ const LevelPage = ({ history }) => {
               offset: 0,
               amount: 10,
               levelId: id,
-              sort: "PP_DESC",
-            },
+              sort: 'PP_DESC'
+            }
           }
         );
 
         dispatch({
-          type: "FETCH_RESULT",
+          type: 'FETCH_RESULT',
           level: levelResponse.data,
-          leaderboard: leaderboardResponse.data.results,
+          leaderboard: leaderboardResponse.data.results
         });
       } catch (e) {
-        dispatch({ type: "FETCH_ERROR", error: e });
+        dispatch({ type: 'FETCH_ERROR', error: e });
       }
     };
 
@@ -158,102 +161,103 @@ const LevelPage = ({ history }) => {
         {state.isLoading ? null : !state.level ||
           !state.leaderboard ? null : state.isError ||
           state.level.title === undefined ? (
-          <h2 style={{ margin: "30px" }}>Oops! An error occurred.</h2>
+          <h2 style={{ margin: '30px' }}>Oops! An error occurred.</h2>
         ) : (
           <>
-            <section className="level-info">
-              <header className="level-info-header">
+            <section className='level-info'>
+              <header className='level-info-header'>
                 <img
-                  className="level-info-thumbnail"
+                  className='level-info-thumbnail'
                   src={
                     state.level.censored
-                      ? "/level_background/censored_level.svg"
+                      ? '/level_background/censored_level.svg'
                       : state.level.thumbnail ||
                         `https://i.ytimg.com/vi/${state.level.youtubeId}/original.jpg`
                   }
-                  alt="Level Thumbnail."
+                  alt='Level Thumbnail.'
                 />
-                <div className="level-info-basic">
-                  <div className="level-info-title">
+                <div className='level-info-basic'>
+                  <div className='level-info-title'>
                     <div>
-                      <div className="tooltip-container">
+                      <div className='tooltip-container'>
                         {state.level.title.length > 21 ? (
-                          <span className="level-info-tooltiptext tooltiptext">
+                          <span className='level-info-tooltiptext tooltiptext'>
                             Full Name of Level
                             <br />
                             <span
-                              style={{ fontWeight: "300" }}
-                              className="notranslate"
+                              style={{ fontWeight: '300' }}
+                              className='notranslate'
                             >
                               {state.level.title}
                             </span>
                           </span>
                         ) : null}
 
-                        <div className="level-info-name notranslate">
+                        <div className='level-info-name notranslate'>
                           {state.level.title}
                         </div>
                       </div>
-                      <div className="level-info-song-name notranslate">
+                      <div className='level-info-song-name notranslate'>
                         {state.level.song}
                       </div>
-                      <div className="level-info-author notranslate">
+                      <div className='level-info-author notranslate'>
                         <strong>
                           {state.level.artists.map((artist, index) => {
                             return (
-                              <>
-                                <span>{index > 0 ? " & " : null}</span>
+                              <span key={`art${index}`}>
+                                {index > 0 && <span>{' & '}</span>}
                                 <Link to={`/levels?query=${artist}`}>
                                   {artist}
                                 </Link>
-                              </>
+                              </span>
                             );
                           })}
                         </strong>
-                        {" ─ Level by "}
+                        {' ─ Level by '}
                         <strong>
                           {state.level.creators.map((creator, index) => {
                             return (
-                              <>
-                                <span>{index > 0 ? " & " : null}</span>
+                              <span key={`creator${index}`}>
+                                {index > 0 && <span>{' & '}</span>}
                                 <Link to={`/levels?query=${creator}`}>
                                   {creator}
                                 </Link>
-                              </>
+                              </span>
                             );
                           })}
                         </strong>
                       </div>
                     </div>
-                    <div className="level-info-tags">
+                    <div className='level-info-tags'>
                       {!state.level.censored && state.level.difficulty === 0 ? (
-                        <div className="level-info-tag level-info-warn-tag level-info-incomplete-tag" />
+                        <div className='level-info-tag level-info-warn-tag level-info-incomplete-tag' />
                       ) : null}
 
-                      {state.level.censored ? (
-                        <div className="level-info-tag level-info-warn-tag level-info-censored-tag" />
-                      ) : null}
+                      {state.level.censored && (
+                        <div className='level-info-tag level-info-warn-tag level-info-censored-tag' />
+                      )}
 
-                      {state.level.hasNSFW ? (
-                        <div className="level-info-tag level-info-warn-tag level-info-nsfw-tag" />
-                      ) : null}
+                      {state.level.hasNSFW && (
+                        <div className='level-info-tag level-info-warn-tag level-info-nsfw-tag' />
+                      )}
 
-                      {state.level.epilepsyWarning ? (
+                      {state.level.epilepsyWarning && (
                         <div
-                          className="level-info-tag level-info-warn-tag level-info-seizure-tag"
+                          className='level-info-tag level-info-warn-tag level-info-seizure-tag'
                           onClick={PSSwal}
                         />
-                      ) : null}
+                      )}
 
                       {state.level.tags.length !== 0
                         ? // eslint-disable-next-line array-callback-return
-                          state.level.tags.map((tag) => {
+                          state.level.tags.map((tag, index) => {
                             if (tag.id !== 23)
                               return (
                                 <LevelTags
                                   tag={tag.id}
                                   id={state.level.id}
-                                  styleClass="level-info-tag-icon"
+                                  key={`tag${index}`}
+                                  styleClass='level-info-tag-icon'
                                 />
                               );
                           })
@@ -261,29 +265,29 @@ const LevelPage = ({ history }) => {
                           !state.level.censored &&
                           !state.level.tags.hasNSFW && (
                             <img
-                              className="level-info-tag-icon"
-                              src={"/tag/empty.svg"}
-                              alt="No Tags"
+                              className='level-info-tag-icon'
+                              src={'/tag/empty.svg'}
+                              alt='No Tags'
                             />
                           )}
                     </div>
                   </div>
-                  <div className="level-info-header-buttons">
-                    {!state.level.workshop ? null : (
+                  <div className='level-info-header-buttons'>
+                    {state.level.workshop && (
                       <a
                         href={state.level.workshop}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="level-info-header-button"
+                        target='_blank'
+                        rel='noreferrer'
+                        className='level-info-header-button'
                       >
                         <FontAwesomeIcon icon={faSteam} />
                       </a>
                     )}
                     <a
                       href={state.level.download}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="level-info-header-button"
+                      target='_blank'
+                      rel='noreferrer'
+                      className='level-info-header-button'
                     >
                       <FontAwesomeIcon icon={faDownload} />
                     </a>
@@ -291,85 +295,81 @@ const LevelPage = ({ history }) => {
                 </div>
               </header>
 
-              <div className="level-info-details">
+              <div className='level-info-details'>
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                   <div
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "600px",
+                      display: 'flex',
+                      flexDirection: 'column',
+                      width: '600px'
                     }}
                   >
-                    <div style={{ display: "flex" }}>
-                      <div className="level-info-detail-info-section">
+                    <div style={{ display: 'flex' }}>
+                      <div className='level-info-detail-info-section'>
                         <div
-                          className="level-info-label"
-                          style={{ textAlign: "center" }}
+                          className='level-info-label'
+                          style={{ textAlign: 'center' }}
                         >
                           Lv.
                         </div>
-                        <div className="level-info-value">
+                        <div className='level-info-value'>
                           <img
                             style={{
-                              marginTop: "5px",
-                              width: "32px",
-                              height: "32px",
+                              marginTop: '5px',
+                              width: '32px',
+                              height: '32px'
                             }}
                             src={`/difficulty_icons/${
                               state.level.censored
-                                ? "-2"
+                                ? '-2'
                                 : state.level.difficulty
                             }.svg`}
-                            alt=""
+                            alt=''
                           />
                         </div>
                       </div>
-                      <div className="level-info-detail-info-section">
-                        <div className="level-info-label">BPM</div>
-                        <div className="level-info-value">
-                          {String(state.level.minBpm).split(".")[0]}
-                          <span className="level-info-value-decimal">
-                            {String(state.level.minBpm).split(".")[1] ===
-                            undefined
-                              ? null
-                              : `.${String(state.level.minBpm).split(".")[1]}`}
+                      <div className='level-info-detail-info-section'>
+                        <div className='level-info-label'>BPM</div>
+                        <div className='level-info-value'>
+                          {String(state.level.minBpm).split('.')[0]}
+                          <span className='level-info-value-decimal'>
+                            {String(state.level.minBpm).split('.')[1] &&
+                              `.${String(state.level.minBpm).split('.')[1]}`}
                           </span>
 
                           {state.level.minBpm === state.level.maxBpm ? null : (
                             <>
-                              -{String(state.level.maxBpm).split(".")[0]}
-                              <span className="level-info-value-decimal">
-                                {String(state.level.maxBpm).split(".")[1] ===
-                                undefined
-                                  ? null
-                                  : `.${
-                                      String(state.level.minBpm).split(".")[1]
-                                    }`}
+                              -{String(state.level.maxBpm).split('.')[0]}
+                              <span className='level-info-value-decimal'>
+                                {String(state.level.maxBpm).split('.')[1] &&
+                                  `.${
+                                    String(state.level.minBpm).split('.')[1]
+                                  }`}
                               </span>
                             </>
                           )}
                         </div>
                       </div>
-                      <div className="level-info-detail-info-section">
-                        <div className="level-info-label">Tiles</div>
-                        <div className="level-info-value">
+                      <div className='level-info-detail-info-section'>
+                        <div className='level-info-label'>Tiles</div>
+                        <div className='level-info-value'>
                           {state.level.tiles}
                         </div>
                       </div>
                     </div>
                     <div
                       style={{
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start'
                       }}
                     >
-                      <div className="level-info-detail-info-section">
-                        <div className="level-info-label">Description</div>
-                        <div className="level-info-value level-info-detail-info-description ">
+                      <div className='level-info-detail-info-section'>
+                        <div className='level-info-label'>Description</div>
+                        <div className='level-info-value level-info-detail-info-description '>
                           {!state.level.description
                             ? `There's no description for this level.`
                             : state.level.description}
@@ -378,79 +378,80 @@ const LevelPage = ({ history }) => {
                       <LikeButton likes={state.level.likes} />
                     </div>
                   </div>
-                  <div className="level-info-detail-info-video">
+                  <div className='level-info-detail-info-video'>
                     <div>Wait a moment please!</div>
                     <iframe
                       src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
-                      title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      title='YouTube video player'
+                      frameBorder='0'
+                      // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                     />
                   </div>
                 </div>
               </div>
             </section>
 
-            {Object.keys(state.leaderboard).length > 0 ? (
-              <section className="level-info-leaderboard">
-                <div className="content-title">
-                  <h1 style={{ flexBasis: "80%", textAlign: "left" }}>
+            {Object.keys(state.leaderboard).length > 0 && (
+              <section className='level-info-leaderboard'>
+                <div className='content-title'>
+                  <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>
                     Leaderboard
                   </h1>
                 </div>
 
-                <div className="level-info-leaderboard-content">
+                <div className='level-info-leaderboard-content'>
                   {Object.values(state.leaderboard).map((v, index) => {
                     return (
                       <a
                         href={v.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="level-info-leaderboard-item"
-                        style={{ color: "white" }}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='level-info-leaderboard-item'
+                        key={`lb${index}`}
+                        style={{ color: 'white' }}
                       >
-                        <div className="level-info-leaderboard-item-rank">
+                        <div className='level-info-leaderboard-item-rank'>
                           #{index + 1}
                         </div>
 
-                        <div className="level-info-leaderboard-item-content">
-                          <div className="level-info-leaderboard-item-name notranslate">
+                        <div className='level-info-leaderboard-item-content'>
+                          <div className='level-info-leaderboard-item-name notranslate'>
                             {v.player.name}
                           </div>
 
-                          <div className="level-info-leaderboard-item-detail">
-                            <div className="level-info-leaderboard-item-detail-play">
-                              <div className="level-info-leaderboard-item-detail-pp">
+                          <div className='level-info-leaderboard-item-detail'>
+                            <div className='level-info-leaderboard-item-detail-play'>
+                              <div className='level-info-leaderboard-item-detail-pp'>
                                 {v.playPoint.toFixed(0)}
                               </div>
 
-                              <div className="level-info-leaderboard-item-detail-play-info">
-                                <div style={{ minWidth: "4em" }}>
+                              <div className='level-info-leaderboard-item-detail-play-info'>
+                                <div style={{ minWidth: '4em' }}>
                                   <img
-                                    src={"/other_icons/speed.svg"}
-                                    alt="Speed Trial: "
+                                    src={'/other_icons/speed.svg'}
+                                    alt='Speed Trial: '
                                     style={{
-                                      height: "0.9em",
+                                      height: '0.9em'
                                     }}
                                   />
                                   {v.speed / 100}x
                                 </div>
                                 <div>
                                   <img
-                                    src={"/other_icons/accuracy.svg"}
-                                    alt="Accurancy: "
+                                    src={'/other_icons/accuracy.svg'}
+                                    alt='Accurancy: '
                                     style={{
-                                      height: "0.9em",
+                                      height: '0.9em'
                                     }}
                                   />
                                   {v.rawAccuracy
                                     ? `${v.rawAccuracy.toFixed(1)}%`
-                                    : "UNKNOWN"}
+                                    : 'UNKNOWN'}
                                 </div>
                               </div>
                             </div>
 
-                            <div className="level-info-leaderboard-item-detail-description">
+                            <div className='level-info-leaderboard-item-detail-description'>
                               "
                               {v.description ? (
                                 v.description
@@ -460,7 +461,7 @@ const LevelPage = ({ history }) => {
                               "
                             </div>
 
-                            <div className="level-info-leaderboard-item-detail-timestamp">
+                            <div className='level-info-leaderboard-item-detail-timestamp'>
                               {new Date(v.timestamp).toLocaleDateString()}
                             </div>
                           </div>
@@ -470,7 +471,7 @@ const LevelPage = ({ history }) => {
                   })}
                 </div>
               </section>
-            ) : null}
+            )}
           </>
         )}
       </main>
