@@ -44,7 +44,7 @@ const MainSection: React.FC = () => {
       <InputField
         style={{ marginTop: 30 }}
         inputType='home'
-        placeholder='Search Song, Artist, or Creator'
+        placeholder={t('searchPlaceholder')}
       />
     </Container>
   );
