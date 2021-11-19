@@ -8,13 +8,17 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 20px;
+`;
+
+const Content = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1000px;
-  padding-left: 20px;
-  padding-right: 20px;
+  max-width: 1100px;
 `;
 
 const Layout: React.FC = ({ children }) => {
@@ -24,7 +28,9 @@ const Layout: React.FC = ({ children }) => {
         <title>Adofai.gg</title>
       </Head>
       <Header />
-      <Main>{children}</Main>
+      <Main>
+        <Content>{children}</Content>
+      </Main>
     </Container>
   );
 };
