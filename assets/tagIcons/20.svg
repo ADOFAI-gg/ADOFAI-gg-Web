@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_20">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_20" data-name="20" clip-path="url(#clip-_20)">
+    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
+    </g>
+    <circle id="타원_2" data-name="타원 2" cx="3.5" cy="3.5" r="3.5" transform="translate(16 20)" fill="#fff"/>
+    <circle id="타원_3" data-name="타원 3" cx="3.5" cy="3.5" r="3.5" transform="translate(41 20)" fill="#fff"/>
+    <line id="선_1" data-name="선 1" y2="60" transform="translate(32 2.5)" fill="none" stroke="#fff" stroke-width="3"/>
+    <path id="패스_1" data-name="패스 1" d="M98.449,41.775a19.553,19.553,0,0,0,6.875,6.134,23.761,23.761,0,0,0,7.789,2.212" transform="translate(-81 -2)" fill="none" stroke="#fff" stroke-width="3"/>
+    <path id="패스_2" data-name="패스 2" d="M113.113,50.121a19.553,19.553,0,0,0-6.875-6.134,23.761,23.761,0,0,0-7.789-2.212" transform="translate(-66.449 -2)" fill="none" stroke="#fff" stroke-width="3"/>
+  </g>
+</svg>

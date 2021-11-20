@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const Container = styled.div`
 const Title = styled.h1`
   flex-grow: 1;
   margin: 0;
+  font-size: 28px;
 `;
 
 const ShowMoreLink = styled.a`
@@ -25,6 +27,8 @@ const SectionTitle: React.FC<{ showMoreLink?: string }> = ({
   children,
   showMoreLink
 }) => {
+  const { t } = useTranslation('common');
+
   return (
     <Container>
       <div>
@@ -33,7 +37,7 @@ const SectionTitle: React.FC<{ showMoreLink?: string }> = ({
 
       {showMoreLink && (
         <Link passHref href={showMoreLink}>
-          <ShowMoreLink>Show More ▹</ShowMoreLink>
+          <ShowMoreLink>{t('showMore')} ▹</ShowMoreLink>
         </Link>
       )}
     </Container>

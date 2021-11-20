@@ -3,6 +3,29 @@
     "links": {
       "levels": "레벨",
       "ranking": "랭킹"
+    },
+    "menu": {
+      "signIn": "로그인"
     }
-  }
+  },
+  "footer": {
+    "description": "ADOFAI.gg는 ADOFAI 비공식 포럼을 바탕으로 하며, 7th Beat Games에서 제작되거나 승인받지 않았습니다. 이 웹사이트는 Hanmesoft의 지원으로 제공됩니다.",
+    "legal": {
+      "notice": "법적고지",
+      "terms": "서비스이용약관",
+      "privacy": "개인정보처리방침"
+    },
+    "links": {
+      "contact": {
+        "mail": "문의 메일 전송",
+        "discord": "Discord 서버 가입"
+      },
+      "github": {
+        "org": "GitHub Organization",
+        "frontRepo": "Frontend 리포지토리",
+        "backRepo": "Backend 리포지토리"
+      }
+    }
+  },
+  "showMore": "더 보기"
 }

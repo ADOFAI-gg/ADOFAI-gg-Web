@@ -20,6 +20,10 @@ const Description = styled.div`
   font-weight: 600;
   text-align: center;
 
+  @media (max-width: 512px) {
+    font-size: 20px;
+  }
+
   & > a {
     color: #ffe76e;
   }

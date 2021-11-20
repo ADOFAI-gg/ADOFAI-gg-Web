@@ -3,6 +3,28 @@
     "links": {
       "levels": "Levels",
       "ranking": "Ranking"
+    },
+    "menu": {
+      "signIn": "Sign In"
+    }
+  },
+  "footer": {
+    "description": "ADOFAI.gg is based on the Unofficial ADOFAI Forum and has not been produced or approved by 7th Beat Games. This website is provided with the support of Hanmesoft.",
+    "legal": {
+      "notice": "Legal Notice",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    },
+    "links": {
+      "contact": {
+        "mail": "Send an Email to ADOFAI.gg Dev",
+        "discord": "Join Our Discord Server"
+      },
+      "github": {
+        "org": "GitHub Organization",
+        "frontRepo": "Frontend Repository",
+        "backRepo": "Backend Repository"
+      }
     }
   },
   "showMore": "Show More"

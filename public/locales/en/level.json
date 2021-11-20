@@ -1,0 +1,10 @@
+{
+  "level": "Level",
+  "creator": "Creator",
+  "bpm": "BPM",
+  "tiles": "Tiles",
+  "hearts": "Hearts",
+  "song": "Song",
+  "artist": "Artist",
+  "tags": "Tags"
+}

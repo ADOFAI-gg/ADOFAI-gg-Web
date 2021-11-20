@@ -1,0 +1,34 @@
+export type Play = {
+  accept: boolean;
+  accuracy: number;
+  description: string;
+  id: number;
+  level: { id: number; name: string };
+  playPoint: number;
+  player: {
+    id: number;
+    name: string;
+  };
+  rawAccuracy: number;
+  speed: number;
+  timestamp: string;
+  url: string;
+};
+
+export type Tag = {
+  id: number;
+  name: string;
+};
+
+export type Level = {
+  title: string;
+  artist: string[];
+  song: string;
+  creator: string[];
+  minBpm: number;
+  maxBpm: number;
+  tiles: number;
+  hearts: number;
+  tags: Tag[];
+  difficulty: number;
+};

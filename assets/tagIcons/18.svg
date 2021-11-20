@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-_18">
+      <rect width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="_18" data-name="18" clip-path="url(#clip-_18)">
+    <g id="circles_1" fill="none" stroke="#fff" stroke-width="4">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="30" fill="none"/>
+    </g>
+    <path id="icon_1" d="M-24,4c0,2,1.5,8,3.5,8H-16a.884.884,0,0,0,1-1V5a.884.884,0,0,0-1-1m5,0a.884.884,0,0,0-1,1v6a.884.884,0,0,0,1,1H1a1.6,1.6,0,0,0,1.5-1l6-12.5Q9-2.6,8-2.6H1A1.175,1.175,0,0,0,0-2L-3,3A1.6,1.6,0,0,1-4.5,4M.962-6.636a.884.884,0,0,0,1,1h6a1.6,1.6,0,0,0,1.5-1l4-7q.5-1-.5-1h-12a.884.884,0,0,0-1,1m-3.5,0a.884.884,0,0,0-1-1h-10q-1,0-.5,1l6.5,14q1.5,3,3,0l2.5-4a4.438,4.438,0,0,0,.5-2M10,4A1.6,1.6,0,0,0,8.5,5l-3,6Q5,12,6,12H20.5c2,0,3.5-6,3.5-8" transform="translate(32 32)" fill="#fff"/>
+  </g>
+</svg>

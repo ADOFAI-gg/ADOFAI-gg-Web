@@ -5,6 +5,7 @@ import Layout from '@components/Layout';
 import App from 'next/app';
 import { initI18n } from '../utils/i18n';
 import { I18nextProvider } from 'react-i18next';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = pageProps;

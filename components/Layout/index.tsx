@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '@components/Layout/Header';
+import Navbar from '@components/Layout/Navbar';
+import Footer from '@components/Layout/Footer';
 import styled from 'styled-components';
 import Head from 'next/head';
 
@@ -9,9 +10,8 @@ const Container = styled.div`
 
 const Main = styled.main`
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 20px;
+  padding-bottom: 30px;
 `;
 
 const Content = styled.div`
@@ -27,10 +27,14 @@ const Layout: React.FC = ({ children }) => {
       <Head>
         <title>Adofai.gg</title>
       </Head>
-      <Header />
+
+      <Navbar />
+
       <Main>
         <Content>{children}</Content>
       </Main>
+
+      <Footer />
     </Container>
   );
 };

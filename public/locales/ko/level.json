@@ -1,0 +1,10 @@
+{
+  "level": "레벨",
+  "creator": "제작자",
+  "bpm": "BPM",
+  "tiles": "타일",
+  "hearts": "하트",
+  "song": "곡",
+  "artist": "작곡가",
+  "tags": "태그"
+}

@@ -11,6 +11,7 @@ export const initI18n = (lng: string) => {
         useSuspense: false
       },
       supportedLngs: ['en', 'ko'],
+      fallbackLng: 'en',
       lng,
       interpolation: {
         escapeValue: false

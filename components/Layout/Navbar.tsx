@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
+  backdrop-filter: blur(4px);
 
   width: 100%;
   height: var(--header-height);
@@ -64,7 +65,7 @@ const Actions = {
   `
 };
 
-const Header: React.FC = () => {
+const Navbar: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -74,6 +75,7 @@ const Header: React.FC = () => {
           <Image alt='' height={20} width={140} src={LogoImg} />
         </a>
       </NextLink>
+
       <Link.Container>
         <NextLink href='/levels' passHref>
           <Link.Item>{t('header.links.levels')}</Link.Item>
@@ -82,10 +84,13 @@ const Header: React.FC = () => {
           <Link.Item>{t('header.links.ranking')}</Link.Item>
         </NextLink>
       </Link.Container>
+
       <div style={{ flexGrow: 1 }} />
+
       <Actions.Container>
-        <Actions.Item>Sign in</Actions.Item>
-        <Actions.Item>Sign up</Actions.Item>
+        <Actions.Item>{t('header.menu.signIn')}</Actions.Item>
+        {/*<Actions.Item></Actions.Item>*/}
+
         <Actions.Item>
           <Actions.MenuIcon />
         </Actions.Item>
@@ -94,4 +99,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default Navbar;

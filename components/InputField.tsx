@@ -10,7 +10,7 @@ const Container = styled.div<{ inputType?: InputType }>`
   font-weight: 300;
   font-size: 15px;
   color: white;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
 
   ${({ inputType = 'searchPage' }) => {
@@ -28,12 +28,6 @@ const Container = styled.div<{ inputType?: InputType }>`
           padding: 0 13px;
           height: 34px;
           background-color: rgba(255, 255, 255, 0.2);
-
-          input::placeholder {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-          }
         `;
     }
   }}
@@ -49,16 +43,22 @@ const Input = styled.input<{ inputType?: InputType }>`
 
   &::placeholder {
     color: white;
-    opacity: 0.3;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+  }
+
+  &:focus::placeholder {
+    opacity: 0.2;
   }
 `;
 
 const InputField: React.FC<
-  React.InputHTMLAttributes<any> & {
-    containerProps?: React.HTMLAttributes<any>;
-    inputType?: InputType;
-    leftIcon?: React.ReactNode;
-  }
+  React.InputHTMLAttributes<any> &
+    Partial<{
+      containerProps: React.HTMLAttributes<any>;
+      inputType: InputType;
+      leftIcon: React.ReactNode;
+    }>
 > = ({ containerProps, inputType, leftIcon, ...props }) => {
   return (
     <Container inputType={inputType} {...containerProps}>
