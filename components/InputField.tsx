@@ -1,20 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-`;
-
 export type InputType = 'home' | 'searchPage';
 
-const Input = styled.input<{ inputType?: InputType }>`
-  flex-grow: 1;
+const Container = styled.div<{ inputType?: InputType }>`
+  width: 100%;
+  display: flex;
   border-radius: 5px;
   font-weight: 300;
   font-size: 15px;
   color: white;
-  border: none;
+  gap: 10px;
+  align-items: center;
 
   ${({ inputType = 'searchPage' }) => {
     switch (inputType) {
@@ -26,11 +23,27 @@ const Input = styled.input<{ inputType?: InputType }>`
 
       case 'home':
         return css`
-          padding: 10px;
-          background-color: rgba(0, 0, 0, 0.3);
+          position: relative;
+          border-radius: 100px;
+          padding: 0 13px;
+          height: 34px;
+          background-color: rgba(255, 255, 255, 0.2);
+
+          input::placeholder {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+          }
         `;
     }
   }}
+`;
+
+const Input = styled.input<{ inputType?: InputType }>`
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  color: white;
 
   outline: none;
 
@@ -44,10 +57,12 @@ const InputField: React.FC<
   React.InputHTMLAttributes<any> & {
     containerProps?: React.HTMLAttributes<any>;
     inputType?: InputType;
+    leftIcon?: React.ReactNode;
   }
-> = ({ containerProps, inputType, ...props }) => {
+> = ({ containerProps, inputType, leftIcon, ...props }) => {
   return (
-    <Container {...containerProps}>
+    <Container inputType={inputType} {...containerProps}>
+      {leftIcon && leftIcon}
       <Input {...props} inputType={inputType} />
     </Container>
   );

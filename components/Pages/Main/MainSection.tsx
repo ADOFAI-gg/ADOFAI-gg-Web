@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Logo from '@assets/logo.svg';
 import InputField from '@components/InputField';
 import { Trans, useTranslation } from 'react-i18next';
+import SearchIcon from '@assets/icons/search.svg';
 
 const Container = styled.div`
   width: 100%;
@@ -42,7 +43,18 @@ const MainSection: React.FC = () => {
         </Trans>
       </Description>
       <InputField
-        style={{ marginTop: 30 }}
+        leftIcon={
+          <Image
+            alt=''
+            onDragStart={(e) => e.preventDefault()}
+            src={SearchIcon}
+            width={17.5}
+            height={18.79}
+          />
+        }
+        containerProps={{
+          style: { marginTop: 30, maxWidth: 700 }
+        }}
         inputType='home'
         placeholder={t('searchPlaceholder')}
       />
