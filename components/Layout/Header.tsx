@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import LogoImage from '@assets/logo.svg';
+import LogoImg from '@assets/logo.svg';
 import NextLink from 'next/link';
 import { useTranslation } from 'react-i18next';
+import Menu from '@assets/icons/menu.svg';
+import Image from 'next/image';
 
 const Container = styled.div`
   background-color: rgba(26, 37, 51, 0.7);
@@ -11,18 +13,12 @@ const Container = styled.div`
   top: 0;
   display: flex;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
 
   width: 100%;
   height: var(--header-height);
 `;
-
-const Logo = {
-  Image: styled.img`
-    height: 20px;
-  `
-};
 
 const Link = {
   Container: styled.div`
@@ -43,6 +39,31 @@ const Link = {
   `
 };
 
+const Actions = {
+  Container: styled.div`
+    display: flex;
+    gap: 24px;
+  `,
+  Item: styled.div<{ active?: boolean }>`
+    font-size: 20px;
+    font-weight: 400;
+    opacity: ${({ active }) => (active ? 1 : 0.6)};
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover {
+      opacity: 1;
+    }
+  `,
+  MenuIcon: styled.div`
+    width: 14px;
+    height: 13px;
+    background: url(${Menu.src}) no-repeat center;
+    background-size: contain;
+  `
+};
+
 const Header: React.FC = () => {
   const { t } = useTranslation();
 
@@ -50,7 +71,7 @@ const Header: React.FC = () => {
     <Container>
       <NextLink href='/' passHref>
         <a>
-          <Logo.Image src={LogoImage.src} />
+          <Image alt='' height={20} width={140} src={LogoImg} />
         </a>
       </NextLink>
       <Link.Container>
@@ -61,6 +82,14 @@ const Header: React.FC = () => {
           <Link.Item>{t('header.links.ranking')}</Link.Item>
         </NextLink>
       </Link.Container>
+      <div style={{ flexGrow: 1 }} />
+      <Actions.Container>
+        <Actions.Item>Sign in</Actions.Item>
+        <Actions.Item>Sign up</Actions.Item>
+        <Actions.Item>
+          <Actions.MenuIcon />
+        </Actions.Item>
+      </Actions.Container>
     </Container>
   );
 };
