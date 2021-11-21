@@ -13,8 +13,8 @@ const lvl: Level = {
   title: '[ns]',
   minBpm: 180,
   maxBpm: 180,
-  artist: ['Camellia'],
-  creator: ['방금산싱싱한샌드위치'],
+  artists: ['Camellia'],
+  creators: ['방금산싱싱한샌드위치'],
   hearts: 10000,
   song: '[ns]',
   tags: [

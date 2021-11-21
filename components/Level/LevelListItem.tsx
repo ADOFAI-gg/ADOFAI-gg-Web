@@ -113,7 +113,7 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
               paddingRight: 24
             }}
             label={t('creator')}
-            value={level.creator.join(' & ')}
+            value={level.creators.join(' & ')}
           />
           <LevelListItemDetail
             align='center'
@@ -164,7 +164,7 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
               paddingLeft: 12
             }}
             label={t('artist')}
-            value={level.artist.join(' & ')}
+            value={level.artists.join(' & ')}
           />
           <LevelListItemDetail
             style={{

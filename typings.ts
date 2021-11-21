@@ -22,9 +22,9 @@ export type Tag = {
 
 export type Level = {
   title: string;
-  artist: string[];
+  artists: string[];
   song: string;
-  creator: string[];
+  creators: string[];
   minBpm: number;
   maxBpm: number;
   tiles: number;

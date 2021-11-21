@@ -4,7 +4,11 @@ import SectionTitle from '@components/SectionTitle';
 import Skeleton from 'react-loading-skeleton';
 import { api } from '../../../utils/api';
 import useSWR from 'swr';
-import { Play } from '../../../typings';
+import { Level, Play } from '../../../typings';
+import Image from 'next/image';
+import AccuracyIcon from '@assets/otherIcons/accuracy.svg';
+import SpeedIcon from '@assets/otherIcons/speed.svg';
+import PPIcon from '@assets/otherIcons/pp.svg';
 
 const Container = styled.div`
   padding-top: 40px;
@@ -16,7 +20,7 @@ const PlayItemContainer = styled.div`
   position: relative;
 `;
 
-const PlayItemContent = styled.div<{ background?: string }>`
+const PlayItemBackground = styled.div<{ background?: string }>`
   position: absolute;
   left: 0;
   top: 0;
@@ -37,49 +41,164 @@ const PlayItemContent = styled.div<{ background?: string }>`
           z-index: -2;
           justify-content: center;
           align-items: center;
-          &::before {
-            z-index: -1;
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-          }
         `
       : ''}
 `;
 
 const PlayTitle = styled.div`
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 800;
 `;
+
+const PlayLevelInfo = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  gap: 6px;
+`;
+
+const PlayLevelDetails = styled.div`
+  display: flex;
+  gap: 24px;
+`;
+
+const PlayLevelDetail = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
+const PlayLevelDetailLabel = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const itemFetcher = (url: string) => api.get(url).then((x) => x.data);
 
 const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
   const youtubeIdRegex =
     /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
   const youtubeId = youtubeIdRegex.exec(play.url)?.[1];
-  console.log(play, youtubeId);
+
+  const { data: level } = useSWR<Level>(
+    `/levels/${play.level.id}`,
+    itemFetcher,
+    {
+      suspense: true
+    }
+  );
 
   return (
-    <div style={{ flexGrow: 1 }}>
+    <div
+      style={{
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        width: 0
+      }}
+    >
       <PlayItemContainer>
-        <PlayItemContent background={youtubeId}>
-          <PlayTitle>{play.level.name}</PlayTitle>
-        </PlayItemContent>
+        <PlayItemBackground background={youtubeId} />
       </PlayItemContainer>
+      <div
+        style={{
+          marginTop: 15,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 5,
+          alignItems: 'center'
+        }}
+      >
+        <PlayTitle>{play.player.name}</PlayTitle>
+        <PlayLevelInfo>
+          <div>
+            <Image
+              alt=''
+              src={require(`@assets/difficultyIcons/${level?.difficulty}.svg`)}
+              width={24}
+              height={24}
+            />
+          </div>
+          <div>
+            {level?.artists.join(' & ')} - {level?.title}
+          </div>
+        </PlayLevelInfo>
+        <PlayLevelDetails>
+          <PlayLevelDetail>
+            <Image src={AccuracyIcon} width={16} height={16} alt='Accuracy' />
+            <PlayLevelDetailLabel>
+              {play.rawAccuracy.toFixed(2)}%
+            </PlayLevelDetailLabel>
+          </PlayLevelDetail>
+          <PlayLevelDetail>
+            <Image src={SpeedIcon} width={16} height={12.92} alt='Speed' />
+            <PlayLevelDetailLabel>
+              {(play.speed / 100).toFixed(1)}X
+            </PlayLevelDetailLabel>
+          </PlayLevelDetail>
+          <PlayLevelDetail>
+            <Image src={PPIcon} width={10.67} height={16} alt='PP' />
+            <PlayLevelDetailLabel>
+              {play.playPoint.toFixed(0)} PP
+            </PlayLevelDetailLabel>
+          </PlayLevelDetail>
+        </PlayLevelDetails>
+      </div>
     </div>
   );
 };
 
 const PlaySkeleton: React.FC = () => {
   return (
-    <div style={{ flexGrow: 1 }}>
+    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
       <PlayItemContainer>
-        <PlayItemContent>
+        <PlayItemBackground>
           <Skeleton width='100%' height='100%' />
-        </PlayItemContent>
+        </PlayItemBackground>
       </PlayItemContainer>
+      <div
+        style={{
+          marginTop: 15,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 5
+        }}
+      >
+        <div style={{ width: '70%' }}>
+          <Skeleton />
+        </div>
+        <div
+          style={{
+            width: '70%',
+            display: 'flex',
+            gap: 6,
+            alignItems: 'center'
+          }}
+        >
+          <Skeleton circle width={30} height={30} />
+          <div style={{ flexGrow: 1 }}>
+            <Skeleton />
+          </div>
+        </div>
+        <div
+          style={{
+            width: '80%',
+            display: 'flex',
+            gap: 6,
+            alignItems: 'center'
+          }}
+        >
+          <div style={{ flexGrow: 1 }}>
+            <Skeleton />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <Skeleton />
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <Skeleton />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -99,7 +218,10 @@ const fetcher = (url: string) => api.get(url).then((res) => res.data.results);
 const PlaysView: React.FC = () => {
   const { data } = useSWR<Play[]>(
     '/playLogs?offset=0&amount=3&sort=PP_DESC',
-    fetcher
+    fetcher,
+    {
+      suspense: true
+    }
   );
 
   return (
