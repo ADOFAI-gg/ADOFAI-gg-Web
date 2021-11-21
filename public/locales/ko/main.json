@@ -2,6 +2,7 @@
     "description": "<0>ADOFAI 비공식 포럼</0>을 기반으로 제작됨",
     "searchPlaceholder": "레벨, 곡, 작곡가, 제작자를 입력해 레벨 검색",
     "sectionTitle": {
-        "recentLevels" : "최근 등재된 레벨들"
+        "recentLevels" : "최근 등재된 레벨들",
+        "topPlays": "최고의 플레이"
     }
 }

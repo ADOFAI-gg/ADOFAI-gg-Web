@@ -11,10 +11,13 @@
 * {
   font-family: var(--normal-font);
   box-sizing: border-box;
+  scrollbar-width: none;
 }
 
 html,
 body {
+  scrollbar-width: thin;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
 }
@@ -36,9 +39,22 @@ body {
   color: #fff;
   user-select: none;
   min-height: 100vh;
+
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.4);
+  }
 }
 
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
 }

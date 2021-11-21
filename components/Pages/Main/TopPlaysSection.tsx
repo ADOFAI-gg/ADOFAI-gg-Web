@@ -9,6 +9,8 @@ import Image from 'next/image';
 import AccuracyIcon from '@assets/otherIcons/accuracy.svg';
 import SpeedIcon from '@assets/otherIcons/speed.svg';
 import PPIcon from '@assets/otherIcons/pp.svg';
+import { useTranslation } from 'react-i18next';
+import NextLink from 'next/link';
 
 const Container = styled.div`
   padding-top: 40px;
@@ -50,7 +52,7 @@ const PlayTitle = styled.div`
   font-weight: 800;
 `;
 
-const PlayLevelInfo = styled.div`
+const PlayLevelInfo = styled.a`
   font-size: 16px;
   font-weight: 500;
   display: flex;
@@ -60,6 +62,7 @@ const PlayLevelInfo = styled.div`
 const PlayLevelDetails = styled.div`
   display: flex;
   gap: 24px;
+  opacity: 0.6;
 `;
 
 const PlayLevelDetail = styled.div`
@@ -109,19 +112,21 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
         }}
       >
         <PlayTitle>{play.player.name}</PlayTitle>
-        <PlayLevelInfo>
-          <div>
-            <Image
-              alt=''
-              src={require(`@assets/difficultyIcons/${level?.difficulty}.svg`)}
-              width={24}
-              height={24}
-            />
-          </div>
-          <div>
-            {level?.artists.join(' & ')} - {level?.title}
-          </div>
-        </PlayLevelInfo>
+        <NextLink href='/levels/[id]' as={`/levels/${level?.id}`} passHref>
+          <PlayLevelInfo>
+            <div>
+              <Image
+                alt=''
+                src={require(`@assets/difficultyIcons/${level?.difficulty}.svg`)}
+                width={24}
+                height={24}
+              />
+            </div>
+            <div>
+              {level?.artists.join(' & ')} - {level?.title}
+            </div>
+          </PlayLevelInfo>
+        </NextLink>
         <PlayLevelDetails>
           <PlayLevelDetail>
             <Image src={AccuracyIcon} width={16} height={16} alt='Accuracy' />
@@ -234,9 +239,13 @@ const PlaysView: React.FC = () => {
 };
 
 const TopPlaysSection: React.FC = () => {
+  const { t } = useTranslation('main');
+
   return (
     <Container>
-      <SectionTitle showMoreLink='/ranking'>Top Plays</SectionTitle>
+      <SectionTitle showMoreLink='/ranking'>
+        {t('sectionTitle.topPlays')}
+      </SectionTitle>
 
       <div style={{ marginTop: 16, display: 'flex', gap: 20 }}>
         <React.Suspense fallback={<PlayLoading />}>

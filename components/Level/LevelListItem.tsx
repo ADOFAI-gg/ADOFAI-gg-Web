@@ -176,13 +176,19 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
               label={t('tags')}
               value={
                 <div style={{ display: 'flex', gap: 5, marginTop: 2 }}>
+                  {!level.tags.length && (
+                    <span>
+                      <Image src={EmptyIcon} alt='' width={25} height={25} />
+                    </span>
+                  )}
                   {level.tags.map((x, i) => {
                     let icon;
                     try {
                       icon = require(`@assets/tagIcons/${x.id}.svg`).default;
                     } catch (e: any) {
-                      icon = EmptyIcon;
+                      icon = null;
                     }
+                    if (!icon) return null;
                     return (
                       <span key={i}>
                         <Image src={icon} alt='' width={25} height={25} />

@@ -2,6 +2,7 @@
     "description": "Based On The <0>Unofficial ADOFAI Forum</0>",
     "searchPlaceholder": "Search Level, Song, Artist, or Creator",
     "sectionTitle": {
-        "recentLevels" : "Recent Ranked Levels"
+        "recentLevels" : "Recent Ranked Levels",
+        "topPlays": "Top Plays"
     }
 }
