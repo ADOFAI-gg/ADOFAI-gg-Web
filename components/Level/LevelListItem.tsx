@@ -5,6 +5,7 @@ import { Level } from '../../typings';
 import Image from 'next/image';
 import millify from 'millify';
 import EmptyIcon from '@assets/tagIcons/empty.svg';
+import NextLink from 'next/link';
 
 type DetailAlign = 'left' | 'center';
 
@@ -50,7 +51,7 @@ const DetailItemValue = styled.div`
   padding-bottom: 10px;
 `;
 
-const Container = styled.div`
+const Container = styled.a`
   height: 72px;
   position: relative;
   display: flex;
@@ -58,6 +59,7 @@ const Container = styled.div`
   padding: 12px 16px;
   border-radius: 12px;
   transition: background-color 0.2s ease;
+  text-decoration: none !important;
 
   &:hover {
     background: rgba(0, 0, 0, 0.2);
@@ -89,109 +91,111 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
   const { t } = useTranslation('level');
 
   return (
-    <Container>
-      <Image
-        width={42}
-        height={42}
-        alt=''
-        src={require(`@assets/difficultyIcons/${level.difficulty}.svg`)}
-      />
-      <div style={{ flexGrow: 1, height: '100%' }}>
-        <DetailsContainer>
-          <LevelListItemDetail
-            style={{
-              width: '36%',
-              paddingRight: 12
-            }}
-            label={t('level')}
-            value={level.title}
-          />
-          <LevelListItemDetail
-            style={{
-              width: '26%',
-              paddingLeft: 12,
-              paddingRight: 24
-            }}
-            label={t('creator')}
-            value={level.creators.join(' & ')}
-          />
-          <LevelListItemDetail
-            align='center'
-            style={{
-              width: '16%',
-              paddingLeft: 24,
-              paddingRight: 12
-            }}
-            label={t('bpm')}
-            value={
-              level.minBpm === level.maxBpm
-                ? level.minBpm
-                : `${level.minBpm} - ${level.maxBpm}`
-            }
-          />
-          <LevelListItemDetail
-            style={{
-              width: '11%',
-              paddingLeft: 12,
-              paddingRight: 12
-            }}
-            label={t('tiles')}
-            align='center'
-            value={level.tiles}
-          />
-          <LevelListItemDetail
-            style={{
-              width: '11%'
-            }}
-            align='center'
-            label={t('hearts')}
-            value={millify(level.likes)}
-          />
-        </DetailsContainer>
+    <NextLink href='/levels/[id]' as={`/levels/${level.id}`} passHref>
+      <Container>
+        <Image
+          width={42}
+          height={42}
+          alt=''
+          src={require(`@assets/difficultyIcons/${level.difficulty}.svg`)}
+        />
+        <div style={{ flexGrow: 1, height: '100%' }}>
+          <DetailsContainer>
+            <LevelListItemDetail
+              style={{
+                width: '36%',
+                paddingRight: 12
+              }}
+              label={t('level')}
+              value={level.title}
+            />
+            <LevelListItemDetail
+              style={{
+                width: '26%',
+                paddingLeft: 12,
+                paddingRight: 24
+              }}
+              label={t('creator')}
+              value={level.creators.join(' & ')}
+            />
+            <LevelListItemDetail
+              align='center'
+              style={{
+                width: '16%',
+                paddingLeft: 24,
+                paddingRight: 12
+              }}
+              label={t('bpm')}
+              value={
+                level.minBpm === level.maxBpm
+                  ? level.minBpm
+                  : `${level.minBpm} - ${level.maxBpm}`
+              }
+            />
+            <LevelListItemDetail
+              style={{
+                width: '11%',
+                paddingLeft: 12,
+                paddingRight: 12
+              }}
+              label={t('tiles')}
+              align='center'
+              value={level.tiles}
+            />
+            <LevelListItemDetail
+              style={{
+                width: '11%'
+              }}
+              align='center'
+              label={t('hearts')}
+              value={millify(level.likes)}
+            />
+          </DetailsContainer>
 
-        <DetailsContainerHovered>
-          <LevelListItemDetail
-            style={{
-              width: 'calc(36% - 28px)',
-              paddingRight: 12
-            }}
-            label={t('song')}
-            value={level.song}
-          />
-          <LevelListItemDetail
-            style={{
-              width: 'calc(26% + 28px)',
-              paddingLeft: 12
-            }}
-            label={t('artist')}
-            value={level.artists.join(' & ')}
-          />
-          <LevelListItemDetail
-            style={{
-              paddingLeft: 24
-            }}
-            label={t('tags')}
-            value={
-              <div style={{ display: 'flex', gap: 5, marginTop: 2 }}>
-                {level.tags.map((x, i) => {
-                  let icon;
-                  try {
-                    icon = require(`@assets/tagIcons/${x.id}.svg`).default;
-                  } catch (e: any) {
-                    icon = EmptyIcon;
-                  }
-                  return (
-                    <span key={i}>
-                      <Image src={icon} alt='' width={25} height={25} />
-                    </span>
-                  );
-                })}
-              </div>
-            }
-          />
-        </DetailsContainerHovered>
-      </div>
-    </Container>
+          <DetailsContainerHovered>
+            <LevelListItemDetail
+              style={{
+                width: 'calc(36% - 28px)',
+                paddingRight: 12
+              }}
+              label={t('song')}
+              value={level.song}
+            />
+            <LevelListItemDetail
+              style={{
+                width: 'calc(26% + 28px)',
+                paddingLeft: 12
+              }}
+              label={t('artist')}
+              value={level.artists.join(' & ')}
+            />
+            <LevelListItemDetail
+              style={{
+                paddingLeft: 24
+              }}
+              label={t('tags')}
+              value={
+                <div style={{ display: 'flex', gap: 5, marginTop: 2 }}>
+                  {level.tags.map((x, i) => {
+                    let icon;
+                    try {
+                      icon = require(`@assets/tagIcons/${x.id}.svg`).default;
+                    } catch (e: any) {
+                      icon = EmptyIcon;
+                    }
+                    return (
+                      <span key={i}>
+                        <Image src={icon} alt='' width={25} height={25} />
+                      </span>
+                    );
+                  })}
+                </div>
+              }
+            />
+          </DetailsContainerHovered>
+        </div>
+      </Container>
+    </NextLink>
   );
 };
 

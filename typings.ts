@@ -21,6 +21,7 @@ export type Tag = {
 };
 
 export type Level = {
+  id: number;
   title: string;
   artists: string[];
   song: string;
