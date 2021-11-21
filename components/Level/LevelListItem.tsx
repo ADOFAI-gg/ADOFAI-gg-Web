@@ -145,7 +145,7 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
             }}
             align='center'
             label={t('hearts')}
-            value={millify(level.hearts)}
+            value={millify(level.likes)}
           />
         </DetailsContainer>
 

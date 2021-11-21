@@ -4,40 +4,48 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import LevelListItem from '@components/Level/LevelListItem';
 import { Level } from '../../../typings';
+import Skeleton from 'react-loading-skeleton';
+import { api } from '../../../utils/api';
+import useSWR from 'swr';
 
 const Container = styled.div`
   margin-top: 40px;
 `;
 
-const lvl: Level = {
-  title: '[ns]',
-  minBpm: 180,
-  maxBpm: 180,
-  artists: ['Camellia'],
-  creators: ['방금산싱싱한샌드위치'],
-  hearts: 10000,
-  song: '[ns]',
-  tags: [
+const fetcher = (url: string) => api.get(url).then((x) => x.data.results);
+
+const LevelList: React.FC = () => {
+  const { data: levels } = useSWR<Level[]>(
+    '/levels?offset=0&amount=10&sort=RECENT_DESC',
+    fetcher,
     {
-      id: 11,
-      name: '4분이상'
-    },
-    {
-      id: 12,
-      name: '개박'
-    },
-    {
-      id: 13,
-      name: '동시치기'
-    },
-    {
-      id: 14,
-      name: '질주'
+      suspense: true
     }
-  ],
-  tiles: 1638,
-  difficulty: 10
+  );
+
+  return (
+    <>
+      {levels?.map((x, i) => (
+        <LevelListItem key={i} level={x} />
+      ))}
+    </>
+  );
 };
+
+const LevelListLoading: React.FC = () => (
+  <>
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+    <Skeleton height={72} />
+  </>
+);
 
 const RecentLevelsSection: React.FC = () => {
   const { t } = useTranslation('main');
@@ -56,16 +64,9 @@ const RecentLevelsSection: React.FC = () => {
           gap: 10
         }}
       >
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
-        <LevelListItem level={lvl} />
+        <React.Suspense fallback={<LevelListLoading />}>
+          <LevelList />
+        </React.Suspense>
       </div>
     </Container>
   );

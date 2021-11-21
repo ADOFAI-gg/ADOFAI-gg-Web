@@ -28,7 +28,7 @@ export type Level = {
   minBpm: number;
   maxBpm: number;
   tiles: number;
-  hearts: number;
+  likes: number;
   tags: Tag[];
   difficulty: number;
 };
