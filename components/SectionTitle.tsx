@@ -16,11 +16,12 @@ const Title = styled.h1`
   flex-grow: 1;
   margin: 0;
   font-size: 28px;
+  font-weight: 400;
 `;
 
 const ShowMoreLink = styled.a`
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 300;
 `;
 
 const SectionTitle: React.FC<{ showMoreLink?: string }> = ({

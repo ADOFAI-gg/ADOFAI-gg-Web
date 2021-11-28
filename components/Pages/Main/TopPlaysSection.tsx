@@ -20,9 +20,10 @@ const PlayItemContainer = styled.div`
   width: 100%;
   padding-bottom: 56.25%;
   position: relative;
+  transition: transform 0.2s ease;
 `;
 
-const PlayItemBackground = styled.div<{ background?: string }>`
+const PlayItemBackground = styled.a<{ background?: string }>`
   position: absolute;
   left: 0;
   top: 0;
@@ -31,6 +32,7 @@ const PlayItemBackground = styled.div<{ background?: string }>`
   background: #000;
   border-radius: 10px;
   overflow: hidden;
+
   ${({ background }) =>
     background
       ? css`
@@ -40,7 +42,6 @@ const PlayItemBackground = styled.div<{ background?: string }>`
           display: flex;
           flex-direction: column;
           gap: 10px;
-          z-index: -2;
           justify-content: center;
           align-items: center;
         `
@@ -90,6 +91,10 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
     }
   );
 
+  // &:hover {
+  //   transform: scale(1.05);
+  // }
+
   return (
     <div
       style={{
@@ -100,7 +105,12 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
       }}
     >
       <PlayItemContainer>
-        <PlayItemBackground background={youtubeId} />
+        <PlayItemBackground
+          rel='noreferrer'
+          target='_blank'
+          href={play.url}
+          background={youtubeId}
+        />
       </PlayItemContainer>
       <div
         style={{
