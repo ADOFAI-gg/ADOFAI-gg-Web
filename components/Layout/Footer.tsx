@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NextLink from 'next/link';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.footer`
   width: 100vw;
@@ -50,12 +50,14 @@ const Link = styled.a`
     transition: margin-right 0.2s ease;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
     font-weight: 700;
   }
 
-  &:hover::before {
+  &:hover::before,
+  &:focus::before {
     text-decoration: none;
     margin-right: 10px;
   }

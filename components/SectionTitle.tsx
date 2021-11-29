@@ -22,6 +22,13 @@ const Title = styled.h1`
 const ShowMoreLink = styled.a`
   font-size: 20px;
   font-weight: 300;
+  transition: font-weight 0.2s ease;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    font-weight: 600;
+  }
 `;
 
 const SectionTitle: React.FC<{ showMoreLink?: string }> = ({

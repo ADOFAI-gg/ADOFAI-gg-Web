@@ -6,19 +6,29 @@ import Head from 'next/head';
 
 const Container = styled.div`
   padding-top: var(--header-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Main = styled.main`
   width: 100%;
-  padding: 20px;
-  padding-bottom: 30px;
+  padding: 24px 20px 30px;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Content = styled.div`
+  flex-grow: 1;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   max-width: 1100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Layout: React.FC = ({ children }) => {

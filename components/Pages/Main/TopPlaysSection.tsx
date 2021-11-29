@@ -54,26 +54,32 @@ const PlayTitle = styled.div`
 `;
 
 const PlayLevelInfo = styled.a`
+  width: 100%;
   font-size: 16px;
   font-weight: 500;
   display: flex;
   gap: 6px;
+  justify-content: center;
 `;
 
 const PlayLevelDetails = styled.div`
   display: flex;
   gap: 24px;
   opacity: 0.6;
+  width: 100%;
 `;
 
 const PlayLevelDetail = styled.div`
   display: flex;
+  flex-grow: 1;
   gap: 6px;
+  justify-content: center;
 `;
 
 const PlayLevelDetailLabel = styled.span`
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
 `;
 
 const itemFetcher = (url: string) => api.get(url).then((x) => x.data);
@@ -90,10 +96,6 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
       suspense: true
     }
   );
-
-  // &:hover {
-  //   transform: scale(1.05);
-  // }
 
   return (
     <div
@@ -132,7 +134,13 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
                 height={24}
               />
             </div>
-            <div>
+            <div
+              style={{
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap'
+              }}
+            >
               {level?.artists.join(' & ')} - {level?.title}
             </div>
           </PlayLevelInfo>

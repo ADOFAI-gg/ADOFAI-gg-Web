@@ -61,7 +61,8 @@ const Container = styled.a`
   transition: background-color 0.2s ease;
   text-decoration: none !important;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: rgba(0, 0, 0, 0.2);
     ${DetailsContainer} {
       opacity: 0;
@@ -99,7 +100,7 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
           alt=''
           src={require(`@assets/difficultyIcons/${level.difficulty}.svg`)}
         />
-        <div style={{ flexGrow: 1, height: '100%' }}>
+        <div style={{ flexGrow: 1, height: '100%', width: 0 }}>
           <DetailsContainer>
             <LevelListItemDetail
               style={{

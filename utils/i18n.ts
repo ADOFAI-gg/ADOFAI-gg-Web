@@ -17,7 +17,7 @@ export const initI18n = (lng: string) => {
         escapeValue: false
       },
       defaultNS: 'common',
-      ns: ['common', 'main'],
+      ns: ['common', 'main', 'errors', 'level'],
       backend: {
         loadPath: '/locales/{{lng}}/{{ns}}.json'
       }

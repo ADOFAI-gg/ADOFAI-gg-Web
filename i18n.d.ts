@@ -1,6 +1,7 @@
 import common from './public/locales/en/common.json';
 import main from './public/locales/en/main.json';
 import level from './public/locales/en/level.json';
+import errors from './public/locales/en/errors.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
@@ -9,6 +10,7 @@ declare module 'react-i18next' {
       common: typeof common;
       main: typeof main;
       level: typeof level;
+      errors: typeof errors;
     };
   }
 }
