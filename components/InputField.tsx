@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { LegacyRef } from 'react';
 import styled, { css } from 'styled-components';
 
 export type InputType = 'home' | 'searchPage';
@@ -52,20 +52,23 @@ const Input = styled.input<{ inputType?: InputType }>`
   }
 `;
 
-const InputField: React.FC<
-  React.InputHTMLAttributes<any> &
-    Partial<{
-      containerProps: React.HTMLAttributes<any>;
-      inputType: InputType;
-      leftIcon: React.ReactNode;
-    }>
-> = ({ containerProps, inputType, leftIcon, ...props }) => {
+const InputField = React.forwardRef<
+  HTMLInputElement,
+  Partial<{
+    containerProps: React.HTMLAttributes<any>;
+    inputType: InputType;
+    leftIcon: React.ReactNode;
+  }> &
+    React.InputHTMLAttributes<HTMLInputElement>
+>(({ containerProps, inputType, leftIcon, ...props }, ref) => {
   return (
     <Container inputType={inputType} {...containerProps}>
       {leftIcon && leftIcon}
-      <Input {...props} inputType={inputType} />
+      <Input {...props} inputType={inputType} ref={ref} />
     </Container>
   );
-};
+});
+
+InputField.displayName = 'InputField';
 
 export default InputField;
