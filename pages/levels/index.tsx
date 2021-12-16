@@ -16,6 +16,7 @@ import {
   useFieldArray
 } from 'react-hook-form';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import _ from 'lodash';
 
 const TabItemContainer = styled.div`
   position: relative;
@@ -39,8 +40,10 @@ const TabItemContainer = styled.div`
 `;
 
 type Tag = {
-  id: number;
+  id: number | string;
   name: string;
+  icon?: string;
+  default?: boolean;
 };
 
 const ChartTags: Tag[] = [
@@ -75,6 +78,64 @@ const ChartTags: Tag[] = [
   {
     id: 6,
     name: 'No Twirls'
+  }
+];
+
+const RhythmTags: Tag[] = [
+  {
+    id: 2,
+    name: 'Triplet'
+  },
+  {
+    id: 19,
+    name: 'Quintuplet'
+  },
+  {
+    id: 9,
+    name: 'Sqptuplet'
+  },
+  {
+    id: 18,
+    name: 'Polyrhythm'
+  },
+  {
+    id: 16,
+    name: 'Swing'
+  },
+  {
+    id: 21,
+    name: 'Tresillo'
+  },
+  {
+    id: 12,
+    name: 'Funky Beat'
+  },
+  {
+    id: 10,
+    name: '64+ Beat'
+  },
+  {
+    id: 7,
+    name: 'Acceleration / Deceleration'
+  },
+  {
+    id: 17,
+    name: 'Slow'
+  }
+];
+
+const LengthTags: Tag[] = [
+  {
+    id: 'length-short',
+    name: 'Short'
+  },
+  {
+    id: 'length-medium',
+    name: 'Medium'
+  },
+  {
+    id: 'length-long',
+    name: 'Long'
   }
 ];
 
@@ -163,7 +224,7 @@ const TabContentGroup: React.FC<{ title: React.ReactNode }> = ({
 const TabCheckboxContent = styled.div`
   display: flex;
   gap: 6px;
-  opacity: 0.8;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
 `;
 
@@ -179,7 +240,21 @@ const TabCheckboxContainer = styled.label`
   }
 `;
 
-const TabCheckbox: React.FC<{ form: FormType; tag: Tag }> = ({ form, tag }) => {
+const TagCheckbox: React.FC<{
+  form: FormType;
+  tag: Tag;
+  radio?: boolean;
+  inputName?: string;
+  formKey?: 'tags' | 'length';
+  uncheckable?: boolean;
+}> = ({
+  form,
+  tag,
+  radio,
+  inputName = 'tags',
+  formKey = 'tags',
+  uncheckable
+}) => {
   const getTagIcon = (id: string) => {
     try {
       return (
@@ -196,11 +271,24 @@ const TabCheckbox: React.FC<{ form: FormType; tag: Tag }> = ({ form, tag }) => {
     }
   };
 
+  const register = form.register(formKey);
+
   return (
     <TabCheckboxContainer>
-      <input {...form.register('tags')} type='checkbox' value={tag.id} />
+      <input
+        {...register}
+        onClick={() => {
+          if (uncheckable && tag.id === form.getValues('length')) {
+            form.setValue('length', '');
+          }
+        }}
+        type={radio ? 'radio' : 'checkbox'}
+        name={inputName || register.name}
+        value={tag.id || ''}
+        defaultChecked={tag.default}
+      />
       <TabCheckboxContent>
-        {getTagIcon(`${tag.id}`)} {tag.name}
+        {getTagIcon(`${tag.id || tag.icon}`)} {tag.name}
       </TabCheckboxContent>
     </TabCheckboxContainer>
   );
@@ -212,12 +300,32 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
       <TabContentGroup title='Chart Related'>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {ChartTags.map((x, i) => (
-            <TabCheckbox form={form} key={i} tag={x} />
+            <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title='Rhythm Related'>Sans</TabContentGroup>
-      <TabContentGroup title='Length'>Sans</TabContentGroup>
+      <TabContentGroup title='Rhythm Related'>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {RhythmTags.map((x, i) => (
+            <TagCheckbox form={form} key={i} tag={x} />
+          ))}
+        </div>
+      </TabContentGroup>
+      <TabContentGroup title='Length'>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {LengthTags.map((x, i) => (
+            <TagCheckbox
+              radio
+              uncheckable
+              formKey='length'
+              inputName='length'
+              form={form}
+              key={i}
+              tag={x}
+            />
+          ))}
+        </div>
+      </TabContentGroup>
     </TabContentContainer>
   );
 };
@@ -230,7 +338,7 @@ const SortTab: React.FC = () => {
   return <div>sort</div>;
 };
 
-type FormProps = { tags: number[]; query: string };
+type FormProps = { tags: string[]; query: string; length: string };
 
 type FormType = UseFormReturn<FormProps>;
 
@@ -275,6 +383,29 @@ const Levels: NextPage = () => {
         return null;
     }
   };
+
+  React.useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      e.preventDefault();
+      if (e.key === 'Tab') {
+        switch (tab) {
+          case SearchSettingTabType.TAGS:
+            setTab(() => SearchSettingTabType.META);
+            break;
+          case SearchSettingTabType.META:
+            setTab(() => SearchSettingTabType.SORT);
+            break;
+          case SearchSettingTabType.SORT:
+            setTab(() => SearchSettingTabType.TAGS);
+            break;
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handler);
+
+    return () => window.removeEventListener('keydown', handler);
+  }, [tab, setTab]);
 
   return (
     <div>
