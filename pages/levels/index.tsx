@@ -39,8 +39,10 @@ const TabItemContainer = styled.div`
 `;
 
 type Tag = {
-  id: number;
+  id?: number;
   name: string;
+  icon?: string;
+  default?: boolean;
 };
 
 const ChartTags: Tag[] = [
@@ -75,6 +77,65 @@ const ChartTags: Tag[] = [
   {
     id: 6,
     name: 'No Twirls'
+  }
+];
+
+const RhythmTags: Tag[] = [
+  {
+    id: 2,
+    name: 'Triplet'
+  },
+  {
+    id: 19,
+    name: 'Quintuplet'
+  },
+  {
+    id: 9,
+    name: 'Sqptuplet'
+  },
+  {
+    id: 18,
+    name: 'Polyrhythm'
+  },
+  {
+    id: 16,
+    name: 'Swing'
+  },
+  {
+    id: 21,
+    name: 'Tresillo'
+  },
+  {
+    id: 12,
+    name: 'Funky Beat'
+  },
+  {
+    id: 10,
+    name: '64+ Beat'
+  },
+  {
+    id: 7,
+    name: 'Acceleration / Deceleration'
+  },
+  {
+    id: 17,
+    name: 'Slow'
+  }
+];
+
+const LengthTags: Tag[] = [
+  {
+    id: 1,
+    name: 'Short'
+  },
+  {
+    name: 'Medium',
+    icon: 'length-medium',
+    default: true
+  },
+  {
+    id: 11,
+    name: 'Long'
   }
 ];
 
@@ -163,7 +224,7 @@ const TabContentGroup: React.FC<{ title: React.ReactNode }> = ({
 const TabCheckboxContent = styled.div`
   display: flex;
   gap: 6px;
-  opacity: 0.8;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
 `;
 
@@ -179,7 +240,12 @@ const TabCheckboxContainer = styled.label`
   }
 `;
 
-const TabCheckbox: React.FC<{ form: FormType; tag: Tag }> = ({ form, tag }) => {
+const TabCheckbox: React.FC<{
+  form: FormType;
+  tag: Tag;
+  radio?: boolean;
+  inputName?: string;
+}> = ({ form, tag, radio, inputName }) => {
   const getTagIcon = (id: string) => {
     try {
       return (
@@ -198,9 +264,15 @@ const TabCheckbox: React.FC<{ form: FormType; tag: Tag }> = ({ form, tag }) => {
 
   return (
     <TabCheckboxContainer>
-      <input {...form.register('tags')} type='checkbox' value={tag.id} />
+      <input
+        {...form.register('tags')}
+        type={radio ? 'radio' : 'checkbox'}
+        value={tag.id || ''}
+        defaultChecked={tag.default}
+        name={inputName}
+      />
       <TabCheckboxContent>
-        {getTagIcon(`${tag.id}`)} {tag.name}
+        {getTagIcon(`${tag.id || tag.icon}`)} {tag.name}
       </TabCheckboxContent>
     </TabCheckboxContainer>
   );
@@ -216,8 +288,26 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title='Rhythm Related'>Sans</TabContentGroup>
-      <TabContentGroup title='Length'>Sans</TabContentGroup>
+      <TabContentGroup title='Rhythm Related'>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {RhythmTags.map((x, i) => (
+            <TabCheckbox form={form} key={i} tag={x} />
+          ))}
+        </div>
+      </TabContentGroup>
+      <TabContentGroup title='Length'>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {LengthTags.map((x, i) => (
+            <TabCheckbox
+              inputName='tags-length'
+              radio
+              form={form}
+              key={i}
+              tag={x}
+            />
+          ))}
+        </div>
+      </TabContentGroup>
     </TabContentContainer>
   );
 };
