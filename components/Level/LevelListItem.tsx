@@ -38,6 +38,7 @@ const DetailItemLabel = styled.div`
   font-size: 16px;
   font-weight: 300;
   opacity: 0.6;
+  overflow: hidden;
 `;
 
 const DetailItemValue = styled.div`
@@ -46,9 +47,9 @@ const DetailItemValue = styled.div`
   width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow-x: hidden;
   margin-bottom: -10px;
   padding-bottom: 10px;
+  overflow: hidden;
 `;
 
 const Container = styled.a`

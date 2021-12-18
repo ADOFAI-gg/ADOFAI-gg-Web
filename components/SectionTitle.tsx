@@ -24,10 +24,21 @@ const ShowMoreLink = styled.a`
   font-weight: 300;
   transition: font-weight 0.2s ease;
 
+  &::after {
+    content: '›';
+    margin-left: 5px;
+    transition: margin-left 0.2s ease;
+  }
+
   &:hover,
   &:focus {
     text-decoration: none;
     font-weight: 600;
+  }
+
+  :is(&:hover, &:focus)::after {
+    content: '›';
+    margin-left: 7px;
   }
 `;
 
@@ -45,7 +56,7 @@ const SectionTitle: React.FC<{ showMoreLink?: string }> = ({
 
       {showMoreLink && (
         <Link passHref href={showMoreLink}>
-          <ShowMoreLink>{t('showMore')} ▹</ShowMoreLink>
+          <ShowMoreLink>{t('showMore')}</ShowMoreLink>
         </Link>
       )}
     </Container>

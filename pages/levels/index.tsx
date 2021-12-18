@@ -18,6 +18,13 @@ import descIcon from '@assets/icons/descIcon.svg';
 import difficultyIcon from '@assets/icons/difficulty.svg';
 import dateIcon from '@assets/icons/date.svg';
 import likesIcon from '@assets/icons/like.svg';
+import { api } from '../../utils/api';
+import { ApiListResult, Level } from '../../typings';
+import { Virtuoso } from 'react-virtuoso';
+import LevelListItem from '@components/Level/LevelListItem';
+import Skeleton from 'react-loading-skeleton';
+import InfiniteLoader from 'react-window-infinite-loader';
+import { getValue } from '@virtuoso.dev/urx';
 const ReactTooltip = dynamic(() => import('react-tooltip'), { ssr: false });
 
 const TabItemContainer = styled.div`
@@ -25,7 +32,7 @@ const TabItemContainer = styled.div`
   cursor: pointer;
   padding: 6px 8px;
   min-width: 69px;
-  color: rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
   display: flex;
   gap: 6px;
   font-size: 16px;
@@ -34,10 +41,12 @@ const TabItemContainer = styled.div`
   font-weight: normal;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  transition: 0.2s ease;
+  transition-property: background-color, opacity;
 
-  img {
-    opacity: 0.8;
+  &:hover,
+  &:focus {
+    opacity: 1;
   }
 `;
 
@@ -49,96 +58,33 @@ type Tag = {
 };
 
 const ChartTags: Tag[] = [
-  {
-    id: 20,
-    name: 'Subjective'
-  },
-  {
-    id: 13,
-    name: 'Pseudo'
-  },
-  {
-    id: 15,
-    name: 'Pseudo +2'
-  },
-  {
-    id: 14,
-    name: 'Gallop'
-  },
-  {
-    id: 8,
-    name: 'Magic Shape'
-  },
-  {
-    id: 5,
-    name: 'Memorization'
-  },
-  {
-    id: 3,
-    name: 'No Speed Change'
-  },
-  {
-    id: 6,
-    name: 'No Twirls'
-  }
+  { id: 20, name: 'Subjective' },
+  { id: 13, name: 'Pseudo' },
+  { id: 15, name: 'Pseudo +2' },
+  { id: 14, name: 'Gallop' },
+  { id: 8, name: 'Magic Shape' },
+  { id: 5, name: 'Memorization' },
+  { id: 3, name: 'No Speed Change' },
+  { id: 6, name: 'No Twirls' }
 ];
 
 const RhythmTags: Tag[] = [
-  {
-    id: 2,
-    name: 'Triplet'
-  },
-  {
-    id: 19,
-    name: 'Quintuplet'
-  },
-  {
-    id: 9,
-    name: 'Sqptuplet'
-  },
-  {
-    id: 18,
-    name: 'Polyrhythm'
-  },
-  {
-    id: 16,
-    name: 'Swing'
-  },
-  {
-    id: 21,
-    name: 'Tresillo'
-  },
-  {
-    id: 12,
-    name: 'Funky Beat'
-  },
-  {
-    id: 10,
-    name: '64+ Beat'
-  },
-  {
-    id: 7,
-    name: 'Acceleration / Deceleration'
-  },
-  {
-    id: 17,
-    name: 'Slow'
-  }
+  { id: 2, name: 'Triplet' },
+  { id: 19, name: 'Quintuplet' },
+  { id: 9, name: 'Sqptuplet' },
+  { id: 18, name: 'Polyrhythm' },
+  { id: 16, name: 'Swing' },
+  { id: 21, name: 'Tresillo' },
+  { id: 12, name: 'Funky Beat' },
+  { id: 10, name: '64+ Beat' },
+  { id: 7, name: 'Acceleration / Deceleration' },
+  { id: 17, name: 'Slow' }
 ];
 
 const LengthTags: Tag[] = [
-  {
-    id: 'length-short',
-    name: 'Short'
-  },
-  {
-    id: 'length-medium',
-    name: 'Medium'
-  },
-  {
-    id: 'length-long',
-    name: 'Long'
-  }
+  { id: 'length-short', name: 'Short' },
+  { id: 'length-medium', name: 'Medium' },
+  { id: 'length-long', name: 'Long' }
 ];
 
 type TabItemProps = {
@@ -233,7 +179,7 @@ const TabContentGroup: React.FC<{
         {title}
         {help && (
           <>
-            <div data-tip={help}>
+            <div data-tip={help} style={{ opacity: 0.6 }}>
               <Image
                 alt=''
                 onDragStart={(e) => e.preventDefault()}
@@ -411,18 +357,14 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
                   <InputField
                     type='number'
                     placeholder='Min Lv.'
-                    {...form.register('minLv', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('minLv')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
                     placeholder='Max Lv.'
-                    {...form.register('maxLv', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('maxLv')}
                   />
                 }
               />
@@ -436,18 +378,14 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
                   <InputField
                     type='number'
                     placeholder='Min Tiles'
-                    {...form.register('minTiles', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('minTiles')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
                     placeholder='Max Tiles'
-                    {...form.register('maxTiles', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('maxTiles')}
                   />
                 }
               />
@@ -461,18 +399,14 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
                   <InputField
                     type='number'
                     placeholder='Min BPM'
-                    {...form.register('minTiles', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('minTiles')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
                     placeholder='Max BPM'
-                    {...form.register('maxTiles', {
-                      valueAsNumber: true
-                    })}
+                    {...form.register('maxTiles')}
                   />
                 }
               />
@@ -589,12 +523,12 @@ type FormProps = {
   length: string;
   artist: string;
   creator: string;
-  minLv: number;
-  maxLv: number;
-  minTiles: number;
-  maxTiles: number;
-  minBpm: number;
-  maxBpm: number;
+  minLv: string;
+  maxLv: string;
+  minTiles: string;
+  maxTiles: string;
+  minBpm: string;
+  maxBpm: string;
   sortOrder: string;
   sortResource: string;
 };
@@ -626,7 +560,9 @@ const TabContentAnimator: React.FC<{ identifier: string }> = ({
   );
 };
 
-const Levels: NextPage = () => {
+const Levels: NextPage<{
+  initialData: Level[];
+}> = ({ initialData }) => {
   const { t } = useTranslation('main');
   const [tab, setTab] = React.useState<SearchSettingTabType>(
     SearchSettingTabType.NONE
@@ -652,13 +588,66 @@ const Levels: NextPage = () => {
     }
   });
 
+  const getSearchSettingParams = (offset: number) => {
+    const p = new URLSearchParams();
+
+    p.set('offset', `${offset}`);
+
+    p.set('amount', '15');
+
+    p.set(
+      'sort',
+      `${form.getValues('sortResource')}_${form.getValues('sortOrder')}`
+    );
+
+    p.set('query', form.getValues('query'));
+
+    const tagsToInclude = form.getValues('tags');
+
+    const tagsToExclude: string[] = [];
+
+    switch (form.getValues('length')) {
+      case 'length-short':
+        tagsToInclude.push('1');
+        break;
+      case 'length-medium':
+        tagsToExclude.push('1', '11');
+        break;
+      case 'length-long':
+        tagsToInclude.push('11');
+        break;
+    }
+
+    p.set('includeTags', tagsToInclude.toString());
+
+    p.set('excludeTags', tagsToExclude.toString());
+
+    console.log(form.getValues());
+
+    p.set('minDifficulty', form.getValues('minLv') || '');
+
+    p.set('maxDifficulty', form.getValues('maxLv') || '');
+
+    p.set('minBpm', form.getValues('minBpm') || '');
+
+    p.set('maxBpm', form.getValues('maxBpm') || '');
+
+    p.set('minTiles', form.getValues('minTiles') || '');
+
+    p.set('maxTiles', form.getValues('maxTiles') || '');
+
+    return p.toString();
+  };
+
   React.useEffect(() => {
-    const subscription = form.watch((value) => {
-      console.log(value);
+    const subscription = form.watch(async () => {
+      const res = await fetchLevels(getSearchSettingParams(0));
+
+      setData(res.results);
     });
 
     return () => subscription.unsubscribe();
-  }, [form.watch, form]);
+  }, [form.watch, form, getSearchSettingParams]);
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -683,6 +672,22 @@ const Levels: NextPage = () => {
     return () => window.removeEventListener('keydown', handler);
   }, [tab, setTab]);
 
+  const [data, setData] = React.useState<Level[]>([]);
+
+  React.useEffect(() => {
+    setData(initialData);
+  }, [initialData]);
+
+  const fetchLevels = async (params: string): Promise<ApiListResult<Level>> => {
+    const { data } = await api.get(`/levels?${params}`);
+    return data;
+  };
+
+  const loadMore = React.useCallback(async () => {
+    const res = await fetchLevels(getSearchSettingParams(data.length + 1));
+    setData([...data, ...res.results]);
+  }, [getSearchSettingParams, setData, data]);
+
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
@@ -701,103 +706,106 @@ const Levels: NextPage = () => {
                 alt=''
                 onDragStart={(e) => e.preventDefault()}
                 src={SearchIcon}
-                width={17.5}
-                height={18.79}
+                width={14.99}
+                height={15.99}
               />
             }
             placeholder={t('searchPlaceholder')}
           />
         </div>
-        <AnimateSharedLayout>
-          <AnimatePresence>
-            <div
-              style={{
-                marginTop: 6,
-                paddingLeft: 12,
-                paddingRight: 12,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12
-              }}
-            >
-              <TabItem
-                onClick={toggleTab(SearchSettingTabType.TAGS)}
-                active={tab === SearchSettingTabType.TAGS}
-                icon={TagIcon.src}
+        <div>
+          <AnimateSharedLayout>
+            <AnimatePresence>
+              <div
+                style={{
+                  marginTop: 6,
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12
+                }}
               >
-                Tags
-              </TabItem>
-              <TabItem
-                onClick={toggleTab(SearchSettingTabType.META)}
-                active={tab === SearchSettingTabType.META}
-                icon={FilterIcon.src}
-              >
-                Meta
-              </TabItem>
-              <TabItem
-                onClick={toggleTab(SearchSettingTabType.SORT)}
-                active={tab === SearchSettingTabType.SORT}
-                icon={SortIcon.src}
-              >
-                Sort
-              </TabItem>
-              <TabItem active={false} icon={ResetIcon.src} isResetButton>
-                Reset Search Settings
-              </TabItem>
-              <AnimatePresence>
-                {tab === SearchSettingTabType.TAGS && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{
-                      type: 'tween'
-                    }}
-                    style={{ display: 'flex', gap: 12, alignItems: 'center' }}
-                  >
-                    <div
-                      style={{
-                        height: 2,
-                        width: 9,
-                        background: 'rgba(255,255,255,0.4)',
-                        borderRadius: 1.5
+                <TabItem
+                  onClick={toggleTab(SearchSettingTabType.TAGS)}
+                  active={tab === SearchSettingTabType.TAGS}
+                  icon={TagIcon.src}
+                >
+                  Tags
+                </TabItem>
+                <TabItem
+                  onClick={toggleTab(SearchSettingTabType.META)}
+                  active={tab === SearchSettingTabType.META}
+                  icon={FilterIcon.src}
+                >
+                  Meta
+                </TabItem>
+                <TabItem
+                  onClick={toggleTab(SearchSettingTabType.SORT)}
+                  active={tab === SearchSettingTabType.SORT}
+                  icon={SortIcon.src}
+                >
+                  Sort
+                </TabItem>
+                <TabItem active={false} icon={ResetIcon.src} isResetButton>
+                  Reset Search Settings
+                </TabItem>
+                <AnimatePresence>
+                  {tab === SearchSettingTabType.TAGS && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{
+                        type: 'tween'
                       }}
-                    />
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 6,
-                        opacity: 0.6
-                      }}
+                      style={{ display: 'flex', gap: 12, alignItems: 'center' }}
                     >
-                      <Image
-                        alt=''
-                        onDragStart={(e) => e.preventDefault()}
-                        src={infoIcon}
-                        width={12}
-                        height={12}
+                      <div
+                        style={{
+                          height: 2,
+                          width: 9,
+                          background: 'rgba(255,255,255,0.4)',
+                          borderRadius: 1.5
+                        }}
                       />
                       <div
                         style={{
-                          fontSize: 14,
-                          letterSpacing: '-0.011em'
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 6,
+                          opacity: 0.6
                         }}
                       >
-                        You can apply filters by clicking tags.
+                        <Image
+                          alt=''
+                          onDragStart={(e) => e.preventDefault()}
+                          src={infoIcon}
+                          width={12}
+                          height={12}
+                        />
+                        <div
+                          style={{
+                            fontSize: 14,
+                            letterSpacing: '-0.011em'
+                          }}
+                        >
+                          You can apply filters by clicking tags.
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </AnimatePresence>
-        </AnimateSharedLayout>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </AnimatePresence>
+          </AnimateSharedLayout>
+        </div>
         <div
           style={{
             marginTop: 16,
             paddingLeft: 12,
-            paddingRight: 12
+            paddingRight: 12,
+            paddingBottom: 10
           }}
         >
           <AnimatePresence exitBeforeEnter>
@@ -819,8 +827,31 @@ const Levels: NextPage = () => {
           </AnimatePresence>
         </div>
       </form>
+      <Virtuoso
+        useWindowScroll
+        data={data}
+        endReached={loadMore}
+        style={{
+          gap: 12
+        }}
+        itemContent={(i, item) => (
+          <div key={i} style={{ paddingTop: i === 0 ? 0 : 12 }}>
+            <LevelListItem level={item} />
+          </div>
+        )}
+      />
     </div>
   );
+};
+
+Levels.getInitialProps = async (ctx) => {
+  const { data } = await api.get<ApiListResult<Level>>(
+    '/levels?offset=0&sort=RECENT_DESC&amount=15'
+  );
+
+  return {
+    initialData: data.results
+  };
 };
 
 export default Levels;

@@ -22,9 +22,11 @@
     "react-i18next": "^11.14.2",
     "react-loading-skeleton": "^3.0.1",
     "react-tooltip": "^4.2.21",
+    "react-virtuoso": "^2.3.1",
+    "react-window-infinite-loader": "^1.0.7",
     "sass": "^1.43.4",
     "styled-components": "^5.3.3",
-    "swr": "^1.0.1"
+    "swr": "^1.1.2-beta.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
@@ -32,6 +34,9 @@
     "@types/lodash": "^4.14.178",
     "@types/node": "16.11.7",
     "@types/react": "17.0.34",
+    "@types/react-virtualized": "^9.21.15",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window-infinite-loader": "^1.0.5",
     "@types/styled-components": "^5.1.15",
     "eslint": "7",
     "eslint-config-next": "12.0.3",

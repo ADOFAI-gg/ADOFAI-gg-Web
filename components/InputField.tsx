@@ -8,7 +8,7 @@ const Container = styled.div<{ inputType?: InputType }>`
   display: flex;
   border-radius: 5px;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   color: white;
   gap: 5px;
   align-items: center;
@@ -18,7 +18,7 @@ const Container = styled.div<{ inputType?: InputType }>`
       case 'searchPage':
         return css`
           padding: 5px 5px 5px 10px;
-          background-color: rgba(255, 255, 255, 0.3);
+          background-color: rgba(255, 255, 255, 0.2);
         `;
 
       case 'home':

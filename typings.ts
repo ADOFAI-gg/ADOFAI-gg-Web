@@ -33,3 +33,8 @@ export type Level = {
   tags: Tag[];
   difficulty: number;
 };
+
+export interface ApiListResult<T> {
+  count: number;
+  results: T[];
+}

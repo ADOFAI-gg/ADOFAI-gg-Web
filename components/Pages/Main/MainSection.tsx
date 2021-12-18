@@ -52,8 +52,8 @@ const MainSection: React.FC = () => {
             alt=''
             onDragStart={(e) => e.preventDefault()}
             src={SearchIcon}
-            width={17.5}
-            height={18.79}
+            width={14.99}
+            height={15.99}
           />
         }
         containerProps={{
