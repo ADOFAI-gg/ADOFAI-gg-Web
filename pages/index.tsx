@@ -2,6 +2,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import { MainSection } from '@components/Pages/Main';
 import dynamic from 'next/dynamic';
+import { NextSeo } from 'next-seo';
 
 const TopPlaysSection = dynamic(
   () => import('@components/Pages/Main/TopPlaysSection'),
