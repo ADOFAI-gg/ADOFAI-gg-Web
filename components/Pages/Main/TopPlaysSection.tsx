@@ -6,9 +6,9 @@ import { api } from '../../../utils/api';
 import useSWR from 'swr';
 import { Level, Play } from '../../../typings';
 import Image from 'next/image';
-import AccuracyIcon from '@assets/otherIcons/accuracy.svg';
-import SpeedIcon from '@assets/otherIcons/speed.svg';
-import PPIcon from '@assets/otherIcons/pp.svg';
+import AccuracyIcon from '@assets/icons/accuracy.svg';
+import SpeedIcon from '@assets/icons/speed.svg';
+import PPIcon from '@assets/icons/pp.svg';
 import { useTranslation } from 'react-i18next';
 import NextLink from 'next/link';
 

@@ -9,10 +9,15 @@ import FilterIcon from '@assets/icons/filter.svg';
 import SortIcon from '@assets/icons/sort.svg';
 import TagIcon from '@assets/icons/tag.svg';
 import ResetIcon from '@assets/icons/reset.svg';
-import { Controller, useForm, UseFormReturn } from 'react-hook-form';
+import { useForm, UseFormReturn } from 'react-hook-form';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import infoIcon from '@assets/otherIcons/info.svg';
+import infoIcon from '@assets/icons/info.svg';
 import dynamic from 'next/dynamic';
+import ascIcon from '@assets/icons/ascIcon.svg';
+import descIcon from '@assets/icons/descIcon.svg';
+import difficultyIcon from '@assets/icons/difficulty.svg';
+import dateIcon from '@assets/icons/date.svg';
+import likesIcon from '@assets/icons/like.svg';
 const ReactTooltip = dynamic(() => import('react-tooltip'), { ssr: false });
 
 const TabItemContainer = styled.div`
@@ -355,7 +360,7 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
   );
 };
 
-const LengthGroup: React.FC<{ min: React.ReactNode; max: React.ReactNode }> = ({
+const RangeInput: React.FC<{ min: React.ReactNode; max: React.ReactNode }> = ({
   min,
   max
 }) => {
@@ -401,7 +406,7 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
           <MetaInput
             label='Lv.'
             input={
-              <LengthGroup
+              <RangeInput
                 min={
                   <InputField
                     type='number'
@@ -426,7 +431,7 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
           <MetaInput
             label='Tiles'
             input={
-              <LengthGroup
+              <RangeInput
                 min={
                   <InputField
                     type='number'
@@ -451,7 +456,7 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
           <MetaInput
             label='BPM'
             input={
-              <LengthGroup
+              <RangeInput
                 min={
                   <InputField
                     type='number'
@@ -479,8 +484,103 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
   );
 };
 
-const SortTab: React.FC = () => {
-  return <div>sort</div>;
+const SortRadioContent = styled.div`
+  display: flex;
+  gap: 12px;
+  padding-right: 20px;
+  min-width: 120px;
+  font-size: 16px;
+  letter-spacing: -0.011em;
+  align-items: center;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+`;
+
+const SortRadioContainer = styled.label`
+  input {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input:checked + ${SortRadioContent} {
+    opacity: 1;
+  }
+`;
+
+const SortRadio: React.FC<{
+  name: 'sortOrder' | 'sortResource';
+  icon: any;
+  value: string;
+  label: React.ReactNode;
+  form: FormType;
+}> = ({ name, form, label, value, icon }) => {
+  return (
+    <SortRadioContainer>
+      <input type='radio' {...form.register(name)} value={value} />
+      <SortRadioContent>
+        <Image src={icon} alt='' />
+        <span>{label}</span>
+      </SortRadioContent>
+    </SortRadioContainer>
+  );
+};
+
+const SortTab: React.FC<{ form: FormType }> = ({ form }) => {
+  return (
+    <TabContentContainer>
+      <TabContentGroup title='Sort By'>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <SortRadio
+            label='Asc'
+            name='sortOrder'
+            form={form}
+            icon={ascIcon}
+            value='ASC'
+          />
+          <SortRadio
+            form={form}
+            label='Desc'
+            name='sortOrder'
+            icon={descIcon}
+            value='DESC'
+          />
+          <div
+            style={{
+              height: 25,
+              width: 0,
+              opacity: 0.4,
+              border: '1px solid #fff',
+              marginRight: 10
+            }}
+          />
+          <SortRadio
+            label='Created Date'
+            name='sortResource'
+            form={form}
+            icon={dateIcon}
+            value='RECENT'
+          />
+          <SortRadio
+            label='Difficulty'
+            name='sortResource'
+            form={form}
+            icon={difficultyIcon}
+            value='DIFFICULTY'
+          />
+          <SortRadio
+            label='Likes'
+            name='sortResource'
+            form={form}
+            icon={likesIcon}
+            value='LIKE'
+          />
+        </div>
+      </TabContentGroup>
+    </TabContentContainer>
+  );
 };
 
 type FormProps = {
@@ -495,6 +595,8 @@ type FormProps = {
   maxTiles: number;
   minBpm: number;
   maxBpm: number;
+  sortOrder: string;
+  sortResource: string;
 };
 
 type FormType = UseFormReturn<FormProps>;
@@ -544,7 +646,9 @@ const Levels: NextPage = () => {
       query: '',
       length: '',
       artist: '',
-      creator: ''
+      creator: '',
+      sortOrder: 'ASC',
+      sortResource: 'RECENT'
     }
   });
 
@@ -709,7 +813,7 @@ const Levels: NextPage = () => {
             )}
             {tab === SearchSettingTabType.SORT && (
               <TabContentAnimator identifier='sort'>
-                <SortTab />
+                <SortTab form={form} />
               </TabContentAnimator>
             )}
           </AnimatePresence>
