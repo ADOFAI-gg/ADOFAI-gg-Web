@@ -337,6 +337,27 @@ type FormProps = { tags: string[]; query: string; length: string };
 
 type FormType = UseFormReturn<FormProps>;
 
+const TabContentAnimator: React.FC = ({ children }) => {
+  return (
+    <motion.div
+      initial={{
+        x: 10,
+        opacity: 0
+      }}
+      animate={{
+        x: 0,
+        opacity: 1
+      }}
+      exit={{
+        opacity: 0,
+        x: 10
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const Levels: NextPage = () => {
   const { t } = useTranslation('main');
   const [tab, setTab] = React.useState<SearchSettingTabType>(
@@ -365,19 +386,6 @@ const Levels: NextPage = () => {
 
     return () => subscription.unsubscribe();
   }, [form.watch, form]);
-
-  const getCurrentTab = () => {
-    switch (tab) {
-      case SearchSettingTabType.TAGS:
-        return <TagsTab form={form} />;
-      case SearchSettingTabType.META:
-        return <MetaTab />;
-      case SearchSettingTabType.SORT:
-        return <SortTab />;
-      case SearchSettingTabType.NONE:
-        return null;
-    }
-  };
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -463,42 +471,52 @@ const Levels: NextPage = () => {
               <TabItem active={false} icon={ResetIcon.src} isResetButton>
                 Reset Search Settings
               </TabItem>
-              {tab === SearchSettingTabType.TAGS && (
-                <>
-                  <div
-                    style={{
-                      height: 2,
-                      width: 9,
-                      background: 'rgba(255,255,255,0.4)',
-                      borderRadius: 1.5
+              <AnimatePresence>
+                {tab === SearchSettingTabType.TAGS && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      type: 'tween'
                     }}
-                  />
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 6,
-                      opacity: 0.6
-                    }}
+                    style={{ display: 'flex', gap: 12, alignItems: 'center' }}
                   >
-                    <Image
-                      alt=''
-                      onDragStart={(e) => e.preventDefault()}
-                      src={infoIcon}
-                      width={12}
-                      height={12}
+                    <div
+                      style={{
+                        height: 2,
+                        width: 9,
+                        background: 'rgba(255,255,255,0.4)',
+                        borderRadius: 1.5
+                      }}
                     />
                     <div
                       style={{
-                        fontSize: 14,
-                        letterSpacing: '-0.011em'
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
+                        opacity: 0.6
                       }}
                     >
-                      You can apply filters by clicking tags.
+                      <Image
+                        alt=''
+                        onDragStart={(e) => e.preventDefault()}
+                        src={infoIcon}
+                        width={12}
+                        height={12}
+                      />
+                      <div
+                        style={{
+                          fontSize: 14,
+                          letterSpacing: '-0.011em'
+                        }}
+                      >
+                        You can apply filters by clicking tags.
+                      </div>
                     </div>
-                  </div>
-                </>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </AnimatePresence>
         </AnimateSharedLayout>
@@ -509,7 +527,23 @@ const Levels: NextPage = () => {
             paddingRight: 12
           }}
         >
-          {getCurrentTab()}
+          <AnimatePresence exitBeforeEnter>
+            {tab === SearchSettingTabType.TAGS && (
+              <TabContentAnimator>
+                <TagsTab form={form} />
+              </TabContentAnimator>
+            )}
+            {tab === SearchSettingTabType.META && (
+              <TabContentAnimator>
+                <MetaTab />
+              </TabContentAnimator>
+            )}
+            {tab === SearchSettingTabType.SORT && (
+              <TabContentAnimator>
+                <SortTab />
+              </TabContentAnimator>
+            )}
+          </AnimatePresence>
         </div>
       </form>
     </div>
