@@ -9,9 +9,11 @@ import FilterIcon from '@assets/icons/filter.svg';
 import SortIcon from '@assets/icons/sort.svg';
 import TagIcon from '@assets/icons/tag.svg';
 import ResetIcon from '@assets/icons/reset.svg';
-import { useForm, UseFormReturn } from 'react-hook-form';
+import { Controller, useForm, UseFormReturn } from 'react-hook-form';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import infoIcon from '@assets/otherIcons/info.svg';
+import dynamic from 'next/dynamic';
+const ReactTooltip = dynamic(() => import('react-tooltip'), { ssr: false });
 
 const TabItemContainer = styled.div`
   position: relative;
@@ -195,10 +197,22 @@ const TabContentContainer = styled.div`
   gap: 20px;
 `;
 
-const TabContentGroup: React.FC<{ title: React.ReactNode }> = ({
-  title,
-  children
+const MetaInput: React.FC<{ label: string; input: React.ReactNode }> = ({
+  label,
+  input
 }) => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+      <div style={{ fontWeight: 400, opacity: 0.8 }}>{label}</div>
+      {input}
+    </div>
+  );
+};
+
+const TabContentGroup: React.FC<{
+  title: React.ReactNode;
+  help?: React.ReactNode;
+}> = ({ title, children, help }) => {
   return (
     <div style={{ width: '100%' }}>
       <div
@@ -206,10 +220,26 @@ const TabContentGroup: React.FC<{ title: React.ReactNode }> = ({
           paddingBottom: 12,
           fontSize: 16,
           borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
-          width: '100%'
+          width: '100%',
+          display: 'flex',
+          gap: 12
         }}
       >
         {title}
+        {help && (
+          <>
+            <div data-tip={help}>
+              <Image
+                alt=''
+                onDragStart={(e) => e.preventDefault()}
+                src={infoIcon}
+                width={12}
+                height={12}
+              />
+            </div>
+            <ReactTooltip />
+          </>
+        )}
       </div>
       <div style={{ marginTop: 10 }}>{children}</div>
     </div>
@@ -325,21 +355,157 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
   );
 };
 
-const MetaTab: React.FC = () => {
-  return <div>meta</div>;
+const LengthGroup: React.FC<{ min: React.ReactNode; max: React.ReactNode }> = ({
+  min,
+  max
+}) => {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      {min}
+      <div style={{ fontSize: 18 }}>~</div>
+      {max}
+    </div>
+  );
+};
+
+const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
+  return (
+    <TabContentContainer>
+      <TabContentGroup
+        title='Author'
+        help="You can use '&' to split multiple authors"
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <MetaInput
+            label='Artist'
+            input={
+              <InputField
+                {...form.register('artist')}
+                placeholder='Song Artist'
+              />
+            }
+          />
+          <MetaInput
+            label='Creator'
+            input={
+              <InputField
+                placeholder='Level Creator'
+                {...form.register('creator')}
+              />
+            }
+          />
+        </div>
+      </TabContentGroup>
+      <TabContentGroup title='Level Meta'>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <MetaInput
+            label='Lv.'
+            input={
+              <LengthGroup
+                min={
+                  <InputField
+                    type='number'
+                    placeholder='Min Lv.'
+                    {...form.register('minLv', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+                max={
+                  <InputField
+                    type='number'
+                    placeholder='Max Lv.'
+                    {...form.register('maxLv', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+              />
+            }
+          />
+          <MetaInput
+            label='Tiles'
+            input={
+              <LengthGroup
+                min={
+                  <InputField
+                    type='number'
+                    placeholder='Min Tiles'
+                    {...form.register('minTiles', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+                max={
+                  <InputField
+                    type='number'
+                    placeholder='Max Tiles'
+                    {...form.register('maxTiles', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+              />
+            }
+          />
+          <MetaInput
+            label='BPM'
+            input={
+              <LengthGroup
+                min={
+                  <InputField
+                    type='number'
+                    placeholder='Min BPM'
+                    {...form.register('minTiles', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+                max={
+                  <InputField
+                    type='number'
+                    placeholder='Max BPM'
+                    {...form.register('maxTiles', {
+                      valueAsNumber: true
+                    })}
+                  />
+                }
+              />
+            }
+          />
+        </div>
+      </TabContentGroup>
+    </TabContentContainer>
+  );
 };
 
 const SortTab: React.FC = () => {
   return <div>sort</div>;
 };
 
-type FormProps = { tags: string[]; query: string; length: string };
+type FormProps = {
+  tags: string[];
+  query: string;
+  length: string;
+  artist: string;
+  creator: string;
+  minLv: number;
+  maxLv: number;
+  minTiles: number;
+  maxTiles: number;
+  minBpm: number;
+  maxBpm: number;
+};
 
 type FormType = UseFormReturn<FormProps>;
 
-const TabContentAnimator: React.FC = ({ children }) => {
+const TabContentAnimator: React.FC<{ identifier: string }> = ({
+  children,
+  identifier
+}) => {
   return (
     <motion.div
+      key={identifier}
       initial={{
         x: 10,
         opacity: 0
@@ -375,7 +541,10 @@ const Levels: NextPage = () => {
   const form: FormType = useForm<FormProps>({
     defaultValues: {
       tags: [],
-      query: ''
+      query: '',
+      length: '',
+      artist: '',
+      creator: ''
     }
   });
 
@@ -389,8 +558,8 @@ const Levels: NextPage = () => {
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      e.preventDefault();
       if (e.key === 'Tab') {
+        e.preventDefault();
         switch (tab) {
           case SearchSettingTabType.TAGS:
             setTab(() => SearchSettingTabType.META);
@@ -529,17 +698,17 @@ const Levels: NextPage = () => {
         >
           <AnimatePresence exitBeforeEnter>
             {tab === SearchSettingTabType.TAGS && (
-              <TabContentAnimator>
+              <TabContentAnimator identifier='tags'>
                 <TagsTab form={form} />
               </TabContentAnimator>
             )}
             {tab === SearchSettingTabType.META && (
-              <TabContentAnimator>
-                <MetaTab />
+              <TabContentAnimator identifier='meta'>
+                <MetaTab form={form} />
               </TabContentAnimator>
             )}
             {tab === SearchSettingTabType.SORT && (
-              <TabContentAnimator>
+              <TabContentAnimator identifier='sort'>
                 <SortTab />
               </TabContentAnimator>
             )}

@@ -21,6 +21,7 @@
     "react-hook-form": "^7.22.1",
     "react-i18next": "^11.14.2",
     "react-loading-skeleton": "^3.0.1",
+    "react-tooltip": "^4.2.21",
     "sass": "^1.43.4",
     "styled-components": "^5.3.3",
     "swr": "^1.0.1"

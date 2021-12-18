@@ -50,6 +50,20 @@ const Input = styled.input<{ inputType?: InputType }>`
   &:focus::placeholder {
     opacity: 0.2;
   }
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  /* Firefox */
+  @supports (-moz-appearance: textfield) {
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
 `;
 
 const InputField = React.forwardRef<
