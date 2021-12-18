@@ -9,14 +9,9 @@ import FilterIcon from '@assets/icons/filter.svg';
 import SortIcon from '@assets/icons/sort.svg';
 import TagIcon from '@assets/icons/tag.svg';
 import ResetIcon from '@assets/icons/reset.svg';
-import {
-  useForm,
-  UseFormReturn,
-  Controller,
-  useFieldArray
-} from 'react-hook-form';
+import { useForm, UseFormReturn } from 'react-hook-form';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import _ from 'lodash';
+import infoIcon from '@assets/otherIcons/info.svg';
 
 const TabItemContainer = styled.div`
   position: relative;
@@ -440,6 +435,7 @@ const Levels: NextPage = () => {
                 paddingLeft: 12,
                 paddingRight: 12,
                 display: 'flex',
+                alignItems: 'center',
                 gap: 12
               }}
             >
@@ -467,6 +463,42 @@ const Levels: NextPage = () => {
               <TabItem active={false} icon={ResetIcon.src} isResetButton>
                 Reset Search Settings
               </TabItem>
+              {tab === SearchSettingTabType.TAGS && (
+                <>
+                  <div
+                    style={{
+                      height: 2,
+                      width: 9,
+                      background: 'rgba(255,255,255,0.4)',
+                      borderRadius: 1.5
+                    }}
+                  />
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      opacity: 0.6
+                    }}
+                  >
+                    <Image
+                      alt=''
+                      onDragStart={(e) => e.preventDefault()}
+                      src={infoIcon}
+                      width={12}
+                      height={12}
+                    />
+                    <div
+                      style={{
+                        fontSize: 14,
+                        letterSpacing: '-0.011em'
+                      }}
+                    >
+                      You can apply filters by clicking tags.
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </AnimatePresence>
         </AnimateSharedLayout>
