@@ -592,18 +592,14 @@ const Levels: NextPage<{
     const p = new URLSearchParams();
 
     p.set('offset', `${offset}`);
-
     p.set('amount', '15');
-
     p.set(
       'sort',
       `${form.getValues('sortResource')}_${form.getValues('sortOrder')}`
     );
-
     p.set('query', form.getValues('query'));
 
     const tagsToInclude = form.getValues('tags');
-
     const tagsToExclude: string[] = [];
 
     switch (form.getValues('length')) {
@@ -619,22 +615,23 @@ const Levels: NextPage<{
     }
 
     p.set('includeTags', tagsToInclude.toString());
-
     p.set('excludeTags', tagsToExclude.toString());
 
     console.log(form.getValues());
 
     p.set('minDifficulty', form.getValues('minLv') || '');
-
     p.set('maxDifficulty', form.getValues('maxLv') || '');
-
     p.set('minBpm', form.getValues('minBpm') || '');
-
     p.set('maxBpm', form.getValues('maxBpm') || '');
-
     p.set('minTiles', form.getValues('minTiles') || '');
-
     p.set('maxTiles', form.getValues('maxTiles') || '');
+
+    // if minLv or maxLv is 0, turn on showNotVerified param
+    /*
+     * if (form.getValues('minLv') === '0' || form.getValues('maxLv') === '0') {
+     * p.set('showNotVerified', 'true');
+     * }
+     */
 
     return p.toString();
   };
