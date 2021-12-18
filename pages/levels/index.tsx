@@ -563,7 +563,8 @@ const TabContentAnimator: React.FC<{ identifier: string }> = ({
 const Levels: NextPage<{
   initialData: Level[];
 }> = ({ initialData }) => {
-  const { t } = useTranslation('main');
+  const { t } = useTranslation(['search', 'main']);
+
   const [tab, setTab] = React.useState<SearchSettingTabType>(
     SearchSettingTabType.NONE
   );
@@ -707,7 +708,7 @@ const Levels: NextPage<{
                 height={15.99}
               />
             }
-            placeholder={t('searchPlaceholder')}
+            placeholder={t('main:searchPlaceholder')}
           />
         </div>
         <div>
@@ -728,24 +729,24 @@ const Levels: NextPage<{
                   active={tab === SearchSettingTabType.TAGS}
                   icon={TagIcon.src}
                 >
-                  Tags
+                  {t('search:tabs.tags')}
                 </TabItem>
                 <TabItem
                   onClick={toggleTab(SearchSettingTabType.META)}
                   active={tab === SearchSettingTabType.META}
                   icon={FilterIcon.src}
                 >
-                  Meta
+                  {t('search:tabs.meta')}
                 </TabItem>
                 <TabItem
                   onClick={toggleTab(SearchSettingTabType.SORT)}
                   active={tab === SearchSettingTabType.SORT}
                   icon={SortIcon.src}
                 >
-                  Sort
+                  {t('search:tabs.sort')}
                 </TabItem>
                 <TabItem active={false} icon={ResetIcon.src} isResetButton>
-                  Reset Search Settings
+                  {t('search:reset')}
                 </TabItem>
                 <AnimatePresence>
                   {tab === SearchSettingTabType.TAGS && (
