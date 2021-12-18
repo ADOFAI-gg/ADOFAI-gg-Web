@@ -39,6 +39,8 @@ const DetailItemLabel = styled.div`
   font-weight: 300;
   opacity: 0.6;
   overflow: hidden;
+  margin-bottom: -5px;
+  padding-bottom: 5px;
 `;
 
 const DetailItemValue = styled.div`
