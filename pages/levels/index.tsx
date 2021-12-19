@@ -599,6 +599,8 @@ const Levels: NextPage<{
       `${form.getValues('sortResource')}_${form.getValues('sortOrder')}`
     );
     p.set('query', form.getValues('query'));
+    p.set('queryCreator', form.getValues('creator'));
+    p.set('queryArtist', form.getValues('artist'));
 
     const tagsToInclude = form.getValues('tags');
     const tagsToExclude: string[] = [];
@@ -617,8 +619,6 @@ const Levels: NextPage<{
 
     p.set('includeTags', tagsToInclude.toString());
     p.set('excludeTags', tagsToExclude.toString());
-
-    console.log(form.getValues());
 
     p.set('minDifficulty', form.getValues('minLv') || '');
     p.set('maxDifficulty', form.getValues('maxLv') || '');
