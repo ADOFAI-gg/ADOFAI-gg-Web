@@ -66,22 +66,22 @@ const ChartTags: Tag[] = [
 ];
 
 const RhythmTags: Tag[] = [
-  { id: 2, name: 'Triplet' },
-  { id: 19, name: 'Quintuplet' },
-  { id: 9, name: 'Sqptuplet' },
-  { id: 18, name: 'Polyrhythm' },
-  { id: 16, name: 'Swing' },
-  { id: 21, name: 'Tresillo' },
-  { id: 12, name: 'Funky Beat' },
-  { id: 10, name: '64+ Beat' },
-  { id: 7, name: 'Acceleration / Deceleration' },
-  { id: 17, name: 'Slow' }
+  { id: 2, name: 'triplet' },
+  { id: 19, name: 'quintuplet' },
+  { id: 9, name: 'septuplet' },
+  { id: 18, name: 'polyrhythm' },
+  { id: 16, name: 'swing' },
+  { id: 21, name: 'tresillo' },
+  { id: 12, name: 'funkyBeat' },
+  { id: 10, name: '64Beat' },
+  { id: 7, name: 'accDec' },
+  { id: 17, name: 'slow' }
 ];
 
 const LengthTags: Tag[] = [
-  { id: 'length-short', name: 'Short' },
-  { id: 'length-medium', name: 'Medium' },
-  { id: 'length-long', name: 'Long' }
+  { id: 'length-short', name: 'short' },
+  { id: 'length-medium', name: 'medium' },
+  { id: 'length-long', name: 'long' }
 ];
 
 type TabItemProps = {
@@ -263,30 +263,32 @@ const TagCheckbox: React.FC<{
         defaultChecked={tag.default}
       />
       <TabCheckboxContent>
-        {getTagIcon(`${tag.id || tag.icon}`)} {t(tag.name as any)}
+        {getTagIcon(`${tag.id || tag.icon}`)} {t(`tags.${tag.name}` as any)}
       </TabCheckboxContent>
     </TabCheckboxContainer>
   );
 };
 
 const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
+  const { t } = useTranslation('tags');
+
   return (
     <TabContentContainer style={{ display: 'flex' }}>
-      <TabContentGroup title='Chart Related'>
+      <TabContentGroup title={t('category.chart')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {ChartTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title='Rhythm Related'>
+      <TabContentGroup title={t('category.rhythm')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {RhythmTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title='Length'>
+      <TabContentGroup title={t('category.length')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {LengthTags.map((x, i) => (
             <TagCheckbox
