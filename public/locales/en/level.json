@@ -1,5 +1,6 @@
 {
   "level": "Level",
+  "difficulty": "Lv.",
   "creator": "Creator",
   "bpm": "BPM",
   "tiles": "Tiles",

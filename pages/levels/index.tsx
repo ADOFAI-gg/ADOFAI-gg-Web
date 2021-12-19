@@ -326,48 +326,49 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
 
   return (
     <TabContentContainer>
-      <TabContentGroup
-        title={t('tabs.meta.author')}
-        help="You can use '&' to split multiple authors"
-      >
+      <TabContentGroup title={t('tabs.meta.author')} help={t('help.author')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <MetaInput
-            label='Artist'
+            label={t('level:artist' as any)}
             input={
               <InputField
                 {...form.register('artist')}
-                placeholder='Song Artist'
+                placeholder={t('tabs.meta.placeholder.artist')}
               />
             }
           />
           <MetaInput
-            label='Creator'
+            label={t('level:creator' as any)}
             input={
               <InputField
-                placeholder='Level Creator'
+                placeholder={t('tabs.meta.placeholder.creator')}
                 {...form.register('creator')}
               />
             }
           />
         </div>
       </TabContentGroup>
-      <TabContentGroup title='Level Meta'>
+      <TabContentGroup title={t('tabs.meta.meta')}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <MetaInput
-            label='Lv.'
+            label={t('level:difficulty' as any)}
             input={
               <RangeInput
                 min={
                   <InputField
                     type='number'
-                    placeholder='Min Lv.'
+                    placeholder={t('common:min' as any, {
+                      content: t('level:difficulty' as any)
+                    })}
                     {...form.register('minLv')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
-                    placeholder='Max Lv.'
+                    placeholder={t('common:max' as any, {
+                      content: t('level:difficulty' as any)
+                    })}
                     {...form.register('maxLv')}
                   />
                 }
@@ -375,20 +376,24 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
             }
           />
           <MetaInput
-            label='Tiles'
+            label={t('level:tiles' as any)}
             input={
               <RangeInput
                 min={
                   <InputField
                     type='number'
-                    placeholder='Min Tiles'
+                    placeholder={t('common:min' as any, {
+                      content: t('level:tiles' as any)
+                    })}
                     {...form.register('minTiles')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
-                    placeholder='Max Tiles'
+                    placeholder={t('common:max' as any, {
+                      content: t('level:tiles' as any)
+                    })}
                     {...form.register('maxTiles')}
                   />
                 }
@@ -396,20 +401,24 @@ const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
             }
           />
           <MetaInput
-            label='BPM'
+            label={t('level:bpm' as any)}
             input={
               <RangeInput
                 min={
                   <InputField
                     type='number'
-                    placeholder='Min BPM'
+                    placeholder={t('common:min' as any, {
+                      content: t('level:bpm' as any)
+                    })}
                     {...form.register('minTiles')}
                   />
                 }
                 max={
                   <InputField
                     type='number'
-                    placeholder='Max BPM'
+                    placeholder={t('common:max' as any, {
+                      content: t('level:bpm' as any)
+                    })}
                     {...form.register('maxTiles')}
                   />
                 }

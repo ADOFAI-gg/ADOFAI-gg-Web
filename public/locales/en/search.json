@@ -9,7 +9,11 @@
     "meta": {
       "title": "Meta",
       "author": "Author",
-      "meta": "Level Meta"
+      "meta": "Level Meta",
+      "placeholder": {
+        "artist": "Song Artist",
+        "creator": "Level Creator"
+      }
     },
     "sort": {
       "title": "Sort",
@@ -17,7 +21,8 @@
     }
   },
   "help": {
-    "tags": "You can apply filters by clicking tags."
+    "tags": "You can apply filters by clicking tags.",
+    "author": "You can use'&' to split multiple authors."
   },
   "reset": "Reset Search Setting"
 }

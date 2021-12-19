@@ -27,5 +27,7 @@
       }
     }
   },
-  "showMore": "Show More"
+  "showMore": "Show More",
+  "min": "Min {{content}}",
+  "max": "Max {{content}}"
 }

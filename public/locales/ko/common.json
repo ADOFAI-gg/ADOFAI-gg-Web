@@ -27,5 +27,7 @@
       }
     }
   },
-  "showMore": "더 보기"
+  "showMore": "더 보기",
+  "min": "최소 {{content}}",
+  "max": "최대 {{content}}"
 }

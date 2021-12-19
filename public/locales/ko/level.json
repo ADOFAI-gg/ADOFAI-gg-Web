@@ -1,8 +1,9 @@
 {
   "level": "레벨",
+  "difficulty": "난도",
   "creator": "제작자",
   "bpm": "BPM",
-  "tiles": "타일",
+  "tiles": "타일 수",
   "hearts": "하트",
   "song": "곡",
   "artist": "작곡가",
