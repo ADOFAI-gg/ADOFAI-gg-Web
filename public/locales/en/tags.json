@@ -1,8 +1,8 @@
 {
   "category": {
-    "chart": "채보 관련",
-    "rhythm": "박자 관련",
-    "length": "곡 길이"
+    "chart": "Chart Related",
+    "rhythm": "Rhythm Related",
+    "length": "Length of Song"
   },
   "tags": {
     "short": "Short",
