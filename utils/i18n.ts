@@ -8,7 +8,7 @@ export const initI18n = (lng: string) => {
     .use(initReactI18next)
     .init({
       react: {
-        useSuspense: false
+        useSuspense: true
       },
       supportedLngs: ['en', 'ko'],
       fallbackLng: 'en',

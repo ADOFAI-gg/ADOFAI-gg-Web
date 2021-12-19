@@ -812,23 +812,23 @@ const Levels: NextPage<{
             paddingBottom: 10
           }}
         >
-          <AnimatePresence exitBeforeEnter>
-            {tab === SearchSettingTabType.TAGS && (
-              <TabContentAnimator identifier='tags'>
-                <TagsTab form={form} />
-              </TabContentAnimator>
-            )}
-            {tab === SearchSettingTabType.META && (
-              <TabContentAnimator identifier='meta'>
-                <MetaTab form={form} />
-              </TabContentAnimator>
-            )}
-            {tab === SearchSettingTabType.SORT && (
-              <TabContentAnimator identifier='sort'>
-                <SortTab form={form} />
-              </TabContentAnimator>
-            )}
-          </AnimatePresence>
+          {/*<AnimatePresence exitBeforeEnter>*/}
+          {tab === SearchSettingTabType.TAGS && (
+            <TabContentAnimator identifier='tags'>
+              <TagsTab form={form} />
+            </TabContentAnimator>
+          )}
+          {tab === SearchSettingTabType.META && (
+            <TabContentAnimator identifier='meta'>
+              <MetaTab form={form} />
+            </TabContentAnimator>
+          )}
+          {tab === SearchSettingTabType.SORT && (
+            <TabContentAnimator identifier='sort'>
+              <SortTab form={form} />
+            </TabContentAnimator>
+          )}
+          {/*</AnimatePresence>*/}
         </div>
       </form>
       <Virtuoso

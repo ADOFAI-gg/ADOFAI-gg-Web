@@ -15,24 +15,26 @@ function MyApp({ Component, pageProps }: AppProps) {
   const i18n = React.useMemo(() => initI18n(locale), [locale]);
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <DefaultSeo
-        title='Adofai-GG'
-        description='Wa Sans'
-        openGraph={{
-          images: [
-            {
-              url: icon.src,
-              width: icon.width,
-              height: icon.height
-            }
-          ]
-        }}
-      />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </I18nextProvider>
+    <React.Suspense fallback={<div />}>
+      <I18nextProvider i18n={i18n}>
+        <DefaultSeo
+          title='Adofai-GG'
+          description='Wa Sans'
+          openGraph={{
+            images: [
+              {
+                url: icon.src,
+                width: icon.width,
+                height: icon.height
+              }
+            ]
+          }}
+        />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </I18nextProvider>
+    </React.Suspense>
   );
 }
 
