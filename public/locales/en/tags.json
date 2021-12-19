@@ -1,10 +1,5 @@
 {
-  "category": {
-    "chart": "Chart Related",
-    "rhythm": "Rhythm Related",
-    "length": "Length of Song"
-  },
-  "tags": {
+  "level": {
     "short": "Short",
     "medium": "Medium",
     "long": "Long",
@@ -28,5 +23,6 @@
     "tresillo": "Tresillo",
     "gimmick": "Gimmick",
     "nsfw": "NSFW"
-  }
+  },
+  "mod": {}
 }

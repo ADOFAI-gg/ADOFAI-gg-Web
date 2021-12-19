@@ -4,6 +4,14 @@
     "meta": "Meta",
     "sort": "Sort"
   },
+  "groupTitle": {
+    "chart": "Chart Related",
+    "rhythm": "Rhythm Related",
+    "length": "Length of Song",
+    "author": "Author",
+    "meta": "Level Meta",
+    "sort": "Sort By"
+  },
   "help": {
     "tags": "You can apply filters by clicking tags."
   },

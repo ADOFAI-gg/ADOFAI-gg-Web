@@ -246,7 +246,7 @@ const TagCheckbox: React.FC<{
 
   const register = form.register(formKey);
 
-  const { t } = useTranslation('tags');
+  const { t } = useTranslation(['tags', 'search']);
 
   return (
     <TabCheckboxContainer>
@@ -263,7 +263,8 @@ const TagCheckbox: React.FC<{
         defaultChecked={tag.default}
       />
       <TabCheckboxContent>
-        {getTagIcon(`${tag.id || tag.icon}`)} {t(`tags.${tag.name}` as any)}
+        {getTagIcon(`${tag.id || tag.icon}`)}{' '}
+        {t(`tags:level.${tag.name}` as any)}
       </TabCheckboxContent>
     </TabCheckboxContainer>
   );
@@ -274,21 +275,21 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
 
   return (
     <TabContentContainer style={{ display: 'flex' }}>
-      <TabContentGroup title={t('category.chart')}>
+      <TabContentGroup title={t('search:groupTitle.chart' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {ChartTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title={t('category.rhythm')}>
+      <TabContentGroup title={t('search:groupTitle.rhythm' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {RhythmTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title={t('category.length')}>
+      <TabContentGroup title={t('search:groupTitle.length' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {LengthTags.map((x, i) => (
             <TagCheckbox

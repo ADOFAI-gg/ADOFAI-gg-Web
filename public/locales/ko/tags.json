@@ -1,10 +1,5 @@
 {
-  "category": {
-    "chart": "채보 관련",
-    "rhythm": "박자 관련",
-    "length": "곡 길이"
-  },
-  "tags": {
+  "level": {
     "short": "짧음",
     "medium": "중간",
     "long": "긺",
@@ -28,5 +23,6 @@
     "tresillo": "트레실로",
     "gimmick": "기믹",
     "nsfw": "NSFW"
-  }
+  },
+  "mod": {}
 }
