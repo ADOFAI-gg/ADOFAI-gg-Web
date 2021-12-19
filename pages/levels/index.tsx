@@ -745,7 +745,14 @@ const Levels: NextPage<{
                 >
                   {t('search:tabs.sort')}
                 </TabItem>
-                <TabItem active={false} icon={ResetIcon.src} isResetButton>
+                <TabItem
+                  active={false}
+                  icon={ResetIcon.src}
+                  isResetButton
+                  onClick={() => {
+                    form.reset();
+                  }}
+                >
                   {t('search:reset')}
                 </TabItem>
                 <AnimatePresence>
