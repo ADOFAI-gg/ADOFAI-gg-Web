@@ -53,16 +53,19 @@ type Tag = {
   icon?: string;
   default?: boolean;
 };
+//이거안대요ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ
+// const { t } = useTranslation('tags');
+// wha
 
 const ChartTags: Tag[] = [
-  { id: 20, name: 'Subjective' },
-  { id: 13, name: 'Pseudo' },
-  { id: 15, name: 'Pseudo +2' },
-  { id: 14, name: 'Gallop' },
-  { id: 8, name: 'Magic Shape' },
-  { id: 5, name: 'Memorization' },
-  { id: 3, name: 'No Speed Change' },
-  { id: 6, name: 'No Twirls' }
+  { id: 20, name: 'subjective' },
+  { id: 13, name: 'pseudo' },
+  { id: 15, name: 'pseudo2' },
+  { id: 14, name: 'gallop' },
+  { id: 8, name: 'magicShape' },
+  { id: 5, name: 'memorization' },
+  { id: 3, name: 'noSpeedChange' },
+  { id: 6, name: 'noTwirls' }
 ];
 
 const RhythmTags: Tag[] = [
@@ -246,6 +249,8 @@ const TagCheckbox: React.FC<{
 
   const register = form.register(formKey);
 
+  const { t } = useTranslation('tags');
+
   return (
     <TabCheckboxContainer>
       <input
@@ -261,7 +266,7 @@ const TagCheckbox: React.FC<{
         defaultChecked={tag.default}
       />
       <TabCheckboxContent>
-        {getTagIcon(`${tag.id || tag.icon}`)} {tag.name}
+        {getTagIcon(`${tag.id || tag.icon}`)} {t(tag.name as any)}
       </TabCheckboxContent>
     </TabCheckboxContainer>
   );
@@ -596,11 +601,9 @@ const getSearchSettingParams = (offset: number, form: FormType) => {
   p.set('maxTiles', form.getValues('maxTiles') || '');
 
   // if minLv or maxLv is 0, turn on showNotVerified param
-  /*
-   * if (form.getValues('minLv') === '0' || form.getValues('maxLv') === '0') {
-   * p.set('showNotVerified', 'true');
-   * }
-   */
+  if (form.getValues('minLv') === '0' || form.getValues('maxLv') === '0') {
+    p.set('showNotVerified', 'true');
+  }
 
   return p.toString();
 };
@@ -642,7 +645,7 @@ const Levels: NextPage<{
     });
 
     return () => subscription.unsubscribe();
-  }, [form.watch, form, getSearchSettingParams]);
+  }, [form.watch, form]);
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -668,7 +671,7 @@ const Levels: NextPage<{
   }, [tab, setTab]);
 
   const [data, setData] = React.useState<Level[]>([]);
-
+  // Minecraft
   React.useEffect(() => {
     setData(initialData);
   }, [initialData]);
@@ -683,7 +686,7 @@ const Levels: NextPage<{
       getSearchSettingParams(data.length + 1, form)
     );
     setData([...data, ...res.results]);
-  }, [getSearchSettingParams, setData, data]);
+  }, [data, form]);
 
   return (
     <div>
@@ -794,7 +797,7 @@ const Levels: NextPage<{
                             letterSpacing: '-0.011em'
                           }}
                         >
-                          You can apply filters by clicking tags.
+                          {t('search:help.tags')}
                         </div>
                       </div>
                     </motion.div>
@@ -812,7 +815,6 @@ const Levels: NextPage<{
             paddingBottom: 10
           }}
         >
-          {/*<AnimatePresence exitBeforeEnter>*/}
           {tab === SearchSettingTabType.TAGS && (
             <TabContentAnimator identifier='tags'>
               <TagsTab form={form} />
@@ -828,7 +830,6 @@ const Levels: NextPage<{
               <SortTab form={form} />
             </TabContentAnimator>
           )}
-          {/*</AnimatePresence>*/}
         </div>
       </form>
       <Virtuoso
@@ -850,7 +851,7 @@ const Levels: NextPage<{
 
 Levels.getInitialProps = async () => {
   const { data } = await api.get<ApiListResult<Level>>(
-    '/levels?offset=0&sort=RECENT_DESC&amount=15'
+    '/levels?offset=0&sort=RECENT_ASC&amount=15'
   );
 
   return {

@@ -4,5 +4,8 @@
     "meta": "Meta",
     "sort": "Sort"
   },
+  "help": {
+    "tags": "You can apply filters by clicking tags."
+  },
   "reset": "Reset Search Setting"
 }

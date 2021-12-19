@@ -3,6 +3,7 @@ import Navbar from '@components/Layout/Navbar';
 import Footer from '@components/Layout/Footer';
 import styled from 'styled-components';
 import Head from 'next/head';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
   padding-top: var(--header-height);
@@ -32,6 +33,8 @@ const Content = styled.div`
 `;
 
 const Layout: React.FC = ({ children }) => {
+  useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
+
   return (
     <Container>
       <Head>
