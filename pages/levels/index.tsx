@@ -53,9 +53,6 @@ type Tag = {
   icon?: string;
   default?: boolean;
 };
-//이거안대요ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ
-// const { t } = useTranslation('tags');
-// wha
 
 const ChartTags: Tag[] = [
   { id: 20, name: 'subjective' },
