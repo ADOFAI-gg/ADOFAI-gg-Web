@@ -22,9 +22,6 @@ import { api } from '../../utils/api';
 import { ApiListResult, Level } from '../../typings';
 import { Virtuoso } from 'react-virtuoso';
 import LevelListItem from '@components/Level/LevelListItem';
-import Skeleton from 'react-loading-skeleton';
-import InfiniteLoader from 'react-window-infinite-loader';
-import { getValue } from '@virtuoso.dev/urx';
 const ReactTooltip = dynamic(() => import('react-tooltip'), { ssr: false });
 
 const TabItemContainer = styled.div`
@@ -560,6 +557,54 @@ const TabContentAnimator: React.FC<{ identifier: string }> = ({
   );
 };
 
+const getSearchSettingParams = (offset: number, form: FormType) => {
+  const p = new URLSearchParams();
+
+  p.set('offset', `${offset}`);
+  p.set('amount', '15');
+  p.set(
+    'sort',
+    `${form.getValues('sortResource')}_${form.getValues('sortOrder')}`
+  );
+  p.set('query', form.getValues('query'));
+  p.set('queryCreator', form.getValues('creator'));
+  p.set('queryArtist', form.getValues('artist'));
+
+  const tagsToInclude = form.getValues('tags');
+  const tagsToExclude: string[] = [];
+
+  switch (form.getValues('length')) {
+    case 'length-short':
+      tagsToInclude.push('1');
+      break;
+    case 'length-medium':
+      tagsToExclude.push('1', '11');
+      break;
+    case 'length-long':
+      tagsToInclude.push('11');
+      break;
+  }
+
+  p.set('includeTags', tagsToInclude.toString());
+  p.set('excludeTags', tagsToExclude.toString());
+
+  p.set('minDifficulty', form.getValues('minLv') || '');
+  p.set('maxDifficulty', form.getValues('maxLv') || '');
+  p.set('minBpm', form.getValues('minBpm') || '');
+  p.set('maxBpm', form.getValues('maxBpm') || '');
+  p.set('minTiles', form.getValues('minTiles') || '');
+  p.set('maxTiles', form.getValues('maxTiles') || '');
+
+  // if minLv or maxLv is 0, turn on showNotVerified param
+  /*
+   * if (form.getValues('minLv') === '0' || form.getValues('maxLv') === '0') {
+   * p.set('showNotVerified', 'true');
+   * }
+   */
+
+  return p.toString();
+};
+
 const Levels: NextPage<{
   initialData: Level[];
 }> = ({ initialData }) => {
@@ -589,57 +634,9 @@ const Levels: NextPage<{
     }
   });
 
-  const getSearchSettingParams = (offset: number) => {
-    const p = new URLSearchParams();
-
-    p.set('offset', `${offset}`);
-    p.set('amount', '15');
-    p.set(
-      'sort',
-      `${form.getValues('sortResource')}_${form.getValues('sortOrder')}`
-    );
-    p.set('query', form.getValues('query'));
-    p.set('queryCreator', form.getValues('creator'));
-    p.set('queryArtist', form.getValues('artist'));
-
-    const tagsToInclude = form.getValues('tags');
-    const tagsToExclude: string[] = [];
-
-    switch (form.getValues('length')) {
-      case 'length-short':
-        tagsToInclude.push('1');
-        break;
-      case 'length-medium':
-        tagsToExclude.push('1', '11');
-        break;
-      case 'length-long':
-        tagsToInclude.push('11');
-        break;
-    }
-
-    p.set('includeTags', tagsToInclude.toString());
-    p.set('excludeTags', tagsToExclude.toString());
-
-    p.set('minDifficulty', form.getValues('minLv') || '');
-    p.set('maxDifficulty', form.getValues('maxLv') || '');
-    p.set('minBpm', form.getValues('minBpm') || '');
-    p.set('maxBpm', form.getValues('maxBpm') || '');
-    p.set('minTiles', form.getValues('minTiles') || '');
-    p.set('maxTiles', form.getValues('maxTiles') || '');
-
-    // if minLv or maxLv is 0, turn on showNotVerified param
-    /*
-     * if (form.getValues('minLv') === '0' || form.getValues('maxLv') === '0') {
-     * p.set('showNotVerified', 'true');
-     * }
-     */
-
-    return p.toString();
-  };
-
   React.useEffect(() => {
     const subscription = form.watch(async () => {
-      const res = await fetchLevels(getSearchSettingParams(0));
+      const res = await fetchLevels(getSearchSettingParams(0, form));
 
       setData(res.results);
     });
@@ -682,7 +679,9 @@ const Levels: NextPage<{
   };
 
   const loadMore = React.useCallback(async () => {
-    const res = await fetchLevels(getSearchSettingParams(data.length + 1));
+    const res = await fetchLevels(
+      getSearchSettingParams(data.length + 1, form)
+    );
     setData([...data, ...res.results]);
   }, [getSearchSettingParams, setData, data]);
 
@@ -849,7 +848,7 @@ const Levels: NextPage<{
   );
 };
 
-Levels.getInitialProps = async (ctx) => {
+Levels.getInitialProps = async () => {
   const { data } = await api.get<ApiListResult<Level>>(
     '/levels?offset=0&sort=RECENT_DESC&amount=15'
   );
