@@ -1,16 +1,20 @@
 {
   "tabs": {
-    "tags": "태그",
-    "meta": "정보",
-    "sort": "정렬"
-  },
-  "groupTitle": {
-    "chart": "채보 관련",
-    "rhythm": "박자 관련",
-    "length": "곡 길이",
-    "author": "제작자",
-    "meta": "레벨 정보",
-    "sort": "정렬 기준"
+    "tags": {
+      "title": "태그",
+      "chart": "채보 관련",
+      "rhythm": "박자 관련",
+      "length": "곡 길이"
+    },
+    "meta": {
+      "title": "정보",
+      "author": "제작자",
+      "meta": "레벨 정보"
+    },
+    "sort": {
+      "title": "정렬",
+      "sortBy": "정렬 기준"
+    }
   },
   "help": {
     "tags": "태그를 클릭해 태그 필터를 적용할 수 있습니다."

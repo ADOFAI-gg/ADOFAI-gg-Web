@@ -275,21 +275,21 @@ const TagsTab: React.FC<{ form: FormType }> = ({ form }) => {
 
   return (
     <TabContentContainer style={{ display: 'flex' }}>
-      <TabContentGroup title={t('search:groupTitle.chart' as any)}>
+      <TabContentGroup title={t('search:tabs.tags.chart' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {ChartTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title={t('search:groupTitle.rhythm' as any)}>
+      <TabContentGroup title={t('search:tabs.tags.rhythm' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {RhythmTags.map((x, i) => (
             <TagCheckbox form={form} key={i} tag={x} />
           ))}
         </div>
       </TabContentGroup>
-      <TabContentGroup title={t('search:groupTitle.length' as any)}>
+      <TabContentGroup title={t('search:tabs.tags.length' as any)}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {LengthTags.map((x, i) => (
             <TagCheckbox
@@ -322,10 +322,12 @@ const RangeInput: React.FC<{ min: React.ReactNode; max: React.ReactNode }> = ({
 };
 
 const MetaTab: React.FC<{ form: FormType }> = ({ form }) => {
+  const { t } = useTranslation('search');
+
   return (
     <TabContentContainer>
       <TabContentGroup
-        title='Author'
+        title={t('tabs.meta.author')}
         help="You can use '&' to split multiple authors"
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -731,21 +733,21 @@ const Levels: NextPage<{
                   active={tab === SearchSettingTabType.TAGS}
                   icon={TagIcon.src}
                 >
-                  {t('search:tabs.tags')}
+                  {t('search:tabs.tags.title')}
                 </TabItem>
                 <TabItem
                   onClick={toggleTab(SearchSettingTabType.META)}
                   active={tab === SearchSettingTabType.META}
                   icon={FilterIcon.src}
                 >
-                  {t('search:tabs.meta')}
+                  {t('search:tabs.meta.title')}
                 </TabItem>
                 <TabItem
                   onClick={toggleTab(SearchSettingTabType.SORT)}
                   active={tab === SearchSettingTabType.SORT}
                   icon={SortIcon.src}
                 >
-                  {t('search:tabs.sort')}
+                  {t('search:tabs.sort.title')}
                 </TabItem>
                 <TabItem
                   active={false}

@@ -1,16 +1,20 @@
 {
   "tabs": {
-    "tags": "Tags",
-    "meta": "Meta",
-    "sort": "Sort"
-  },
-  "groupTitle": {
-    "chart": "Chart Related",
-    "rhythm": "Rhythm Related",
-    "length": "Length of Song",
-    "author": "Author",
-    "meta": "Level Meta",
-    "sort": "Sort By"
+    "tags": {
+      "title": "Tags",
+      "chart": "Chart Related",
+      "rhythm": "Rhythm Related",
+      "length": "Length of Song"
+    },
+    "meta": {
+      "title": "Meta",
+      "author": "Author",
+      "meta": "Level Meta"
+    },
+    "sort": {
+      "title": "Sort",
+      "sort": "Sort By"
+    }
   },
   "help": {
     "tags": "You can apply filters by clicking tags."
