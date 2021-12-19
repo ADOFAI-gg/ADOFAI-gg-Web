@@ -9,7 +9,7 @@ import Image from 'next/image';
 const Container = styled.div`
   background-color: rgba(26, 37, 51, 0.7);
   position: fixed;
-  z-index: 99999;
+  z-index: 100;
   top: 0;
   display: flex;
   align-items: center;

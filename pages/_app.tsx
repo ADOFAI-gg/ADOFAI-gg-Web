@@ -8,6 +8,7 @@ import { I18nextProvider } from 'react-i18next';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { DefaultSeo } from 'next-seo';
 import icon from '@assets/icon.png';
+import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = pageProps;
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <React.Suspense fallback={<div />}>
+      <NextNProgress />
       <I18nextProvider i18n={i18n}>
         <DefaultSeo
           title='Adofai-GG'
