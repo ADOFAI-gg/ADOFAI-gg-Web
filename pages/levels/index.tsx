@@ -41,8 +41,7 @@ const TabItemContainer = styled.div`
   transition: 0.2s ease;
   transition-property: background-color, opacity;
 
-  &:hover,
-  &:focus {
+  &:hover {
     opacity: 1;
   }
 `;
@@ -90,6 +89,21 @@ type TabItemProps = {
   isResetButton?: boolean;
 } & React.HTMLProps<any>;
 
+const TabGroup = styled.div`
+  margin-top: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 426px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+`;
+
 const TabItem: React.FC<TabItemProps> = ({
   icon,
   active,
@@ -129,7 +143,7 @@ const TabItem: React.FC<TabItemProps> = ({
       )}
     </AnimatePresence>
     <Image src={icon} width={11} height={11} alt='' />
-    <div>{children}</div>
+    <div style={{ lineHeight: 1 }}>{children}</div>
   </TabItemContainer>
 );
 
@@ -143,6 +157,10 @@ enum SearchSettingTabType {
 const TabContentContainer = styled.div`
   display: flex;
   gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const MetaInput: React.FC<{ label: string; input: React.ReactNode }> = ({
@@ -468,18 +486,41 @@ const SortRadio: React.FC<{
     <SortRadioContainer>
       <input type='radio' {...form.register(name)} value={value} />
       <SortRadioContent>
-        <Image src={icon} alt='' />
+        <Image src={icon.src} alt='' width={13} height={13} />
         <span>{label}</span>
       </SortRadioContent>
     </SortRadioContainer>
   );
 };
 
+const SortTabGroupContent = styled.div`
+  display: flex;
+  gap: 12px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const SortTabDivider = styled.div`
+  height: 25px;
+  width: 0;
+  margin-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+  @media screen and (max-width: 768px) {
+    border-right: unset;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 0;
+  }
+`;
+
 const SortTab: React.FC<{ form: FormType }> = ({ form }) => {
   return (
     <TabContentContainer>
       <TabContentGroup title='Sort By'>
-        <div style={{ display: 'flex', gap: 12 }}>
+        <SortTabGroupContent>
           <SortRadio
             label='Asc'
             name='sortOrder'
@@ -494,15 +535,7 @@ const SortTab: React.FC<{ form: FormType }> = ({ form }) => {
             icon={descIcon}
             value='DESC'
           />
-          <div
-            style={{
-              height: 25,
-              width: 0,
-              opacity: 0.4,
-              border: '1px solid #fff',
-              marginRight: 10
-            }}
-          />
+          <SortTabDivider />
           <SortRadio
             label='Created Date'
             name='sortResource'
@@ -524,7 +557,7 @@ const SortTab: React.FC<{ form: FormType }> = ({ form }) => {
             icon={likesIcon}
             value='LIKE'
           />
-        </div>
+        </SortTabGroupContent>
       </TabContentGroup>
     </TabContentContainer>
   );
@@ -682,7 +715,7 @@ const Levels: NextPage<{
   }, [tab, setTab]);
 
   const [data, setData] = React.useState<Level[]>([]);
-  // Minecraft
+
   React.useEffect(() => {
     setData(initialData);
   }, [initialData]);
@@ -727,37 +760,37 @@ const Levels: NextPage<{
         <div>
           <AnimateSharedLayout>
             <AnimatePresence>
-              <div
-                style={{
-                  marginTop: 6,
-                  paddingLeft: 12,
-                  paddingRight: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12
-                }}
-              >
-                <TabItem
-                  onClick={toggleTab(SearchSettingTabType.TAGS)}
-                  active={tab === SearchSettingTabType.TAGS}
-                  icon={TagIcon.src}
+              <TabGroup>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 12
+                  }}
                 >
-                  {t('search:tabs.tags.title')}
-                </TabItem>
-                <TabItem
-                  onClick={toggleTab(SearchSettingTabType.META)}
-                  active={tab === SearchSettingTabType.META}
-                  icon={FilterIcon.src}
-                >
-                  {t('search:tabs.meta.title')}
-                </TabItem>
-                <TabItem
-                  onClick={toggleTab(SearchSettingTabType.SORT)}
-                  active={tab === SearchSettingTabType.SORT}
-                  icon={SortIcon.src}
-                >
-                  {t('search:tabs.sort.title')}
-                </TabItem>
+                  <TabItem
+                    onClick={toggleTab(SearchSettingTabType.TAGS)}
+                    active={tab === SearchSettingTabType.TAGS}
+                    icon={TagIcon.src}
+                  >
+                    {t('search:tabs.tags.title')}
+                  </TabItem>
+                  <TabItem
+                    onClick={toggleTab(SearchSettingTabType.META)}
+                    active={tab === SearchSettingTabType.META}
+                    icon={FilterIcon.src}
+                  >
+                    {t('search:tabs.meta.title')}
+                  </TabItem>
+                  <TabItem
+                    onClick={toggleTab(SearchSettingTabType.SORT)}
+                    active={tab === SearchSettingTabType.SORT}
+                    icon={SortIcon.src}
+                  >
+                    {t('search:tabs.sort.title')}
+                  </TabItem>
+                </div>
+
                 <TabItem
                   active={false}
                   icon={ResetIcon.src}
@@ -768,16 +801,23 @@ const Levels: NextPage<{
                 >
                   {t('search:reset')}
                 </TabItem>
+
                 <AnimatePresence>
                   {tab === SearchSettingTabType.TAGS && (
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
                       transition={{
                         type: 'tween'
                       }}
-                      style={{ display: 'flex', gap: 12, alignItems: 'center' }}
+                      style={{
+                        display: 'flex',
+                        gap: 12,
+                        alignItems: 'center',
+                        width: 0,
+                        whiteSpace: 'nowrap'
+                      }}
                     >
                       <div
                         style={{
@@ -795,26 +835,19 @@ const Levels: NextPage<{
                           opacity: 0.6
                         }}
                       >
-                        <Image
-                          alt=''
-                          onDragStart={(e) => e.preventDefault()}
-                          src={infoIcon}
-                          width={12}
-                          height={12}
-                        />
                         <div
                           style={{
-                            fontSize: 14,
-                            letterSpacing: '-0.011em'
+                            width: 12,
+                            height: 12,
+                            backgroundImage: `url(${infoIcon.src})`
                           }}
-                        >
-                          {t('search:help.tags')}
-                        </div>
+                        />
+                        {t('search:help.tags')}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </TabGroup>
             </AnimatePresence>
           </AnimateSharedLayout>
         </div>

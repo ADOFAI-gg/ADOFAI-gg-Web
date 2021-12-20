@@ -32,7 +32,7 @@ a {
 }
 
 body {
-  background-image: url("../assets/background.png");
+  background-image: url('../assets/background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -40,13 +40,12 @@ body {
   user-select: none;
   min-height: 100vh;
 
-
   &::-webkit-scrollbar {
     width: 10px;
     height: 0;
   }
   &::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,.4);
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 
