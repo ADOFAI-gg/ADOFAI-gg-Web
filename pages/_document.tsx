@@ -36,7 +36,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta name='icon' content='/favicon.ico' />
+        </Head>
         <body>
           <Main />
           <NextScript />
