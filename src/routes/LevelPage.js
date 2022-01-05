@@ -27,7 +27,7 @@ const LevelPage = ({ history }) => {
           action.level && youtubeIdRegex.exec(action.level.video);
 
         const hasNSFW =
-          action.level && action.level.tags.some((tag) => tag.id === 23);
+          action.level && action.level.tags.some((tag) => tag.id === 4);
 
         return {
           ...state,
@@ -251,7 +251,7 @@ const LevelPage = ({ history }) => {
                       {state.level.tags.length !== 0
                         ? // eslint-disable-next-line array-callback-return
                           state.level.tags.map((tag, index) => {
-                            if (tag.id !== 23)
+                            if (tag.id !== 4)
                               return (
                                 <LevelTags
                                   tag={tag.id}

@@ -7,26 +7,26 @@ const tagDescription = [
   },
   {
     tagName: 'Triplet',
-    tagDescription: 'This level contains triplets.'
+    tagDescription: 'This level contains several triplets.'
   },
   {
     tagName: 'No Speed Change',
     tagDescription: 'The tile bpm remains constant throughout this level.'
   },
   {
-    tagName: 'Medium',
-    tagDescription: 'Levels that are under 4 minutes.'
+    tagName: 'NSFW',
+    tagDescription: 'This level contains NSFW content.'
   },
   {
     tagName: 'Memorization',
     tagDescription: 'This level requires memorization.'
   },
   {
-    tagName: 'No Swirls',
-    tagDescription: 'This level has no swirls.'
+    tagName: 'No Twirls',
+    tagDescription: 'This level has no twirls.'
   },
   {
-    tagName: 'Acceleration / Deceleration',
+    tagName: 'Speed Change',
     tagDescription: 'This level uses a song that changes BPM.'
   },
   {
@@ -65,7 +65,7 @@ const tagDescription = [
   },
   {
     tagName: 'Swing',
-    tagDescription: 'This level contains swing rhythms.'
+    tagDescription: 'This level contains swing rhythms of more than 20%.'
   },
   {
     tagName: 'Slow',
@@ -73,7 +73,7 @@ const tagDescription = [
   },
   {
     tagName: 'Polyrhythm',
-    tagDescription: 'This level contains polyrhythms.'
+    tagDescription: 'This level contains several polyrhythms.'
   },
   {
     tagName: 'Quintuplet',
@@ -85,15 +85,15 @@ const tagDescription = [
   },
   {
     tagName: 'Tresillo',
-    tagDescription: 'This level contains tresillos.'
+    tagDescription: 'This level contains several tresillos.'
   },
   {
     tagName: 'Gimmick',
     tagDescription: 'This level contains gimmicks.'
   },
   {
-    tagName: 'NSFW',
-    tagDescription: 'This level contains NSFW content.'
+    tagName: 'Speed Change',
+    tagDescription: 'This level uses a song that changes BPM.'
   }
 ];
 
