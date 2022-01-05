@@ -25,3 +25,6 @@ yarn-error.log*
 
 # environment
 /.vscode
+
+# long things
+package-lock.json
