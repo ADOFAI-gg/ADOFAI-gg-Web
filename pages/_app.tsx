@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const i18n = React.useMemo(() => initI18n(locale), [locale]);
 
   return (
-    <React.Suspense fallback={<div />}>
+    <React.Suspense fallback={<React.Fragment />}>
       <NextNProgress />
       <I18nextProvider i18n={i18n}>
         <DefaultSeo
