@@ -1,158 +1,29 @@
 import React from 'react';
 import { NextPage } from 'next';
-import InputField from '@components/InputField';
+import { Virtuoso } from 'react-virtuoso';
 import Image from 'next/image';
-import SearchIcon from '@assets/icons/search.svg';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import FilterIcon from '@assets/icons/filter.svg';
-import SortIcon from '@assets/icons/sort.svg';
-import TagIcon from '@assets/icons/tag.svg';
-import ResetIcon from '@assets/icons/reset.svg';
 import { useForm, UseFormReturn } from 'react-hook-form';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import infoIcon from '@assets/icons/info.svg';
+import { motion } from 'framer-motion';
+import { api } from '../../utils/api';
+import type { ApiListResult, Level, Tag } from '../../typings';
+import InputField from '@components/InputField';
+import LevelListItem from '@components/Level/LevelListItem';
+import LevelListTabArea, {
+  SearchSettingTabType
+} from '@components/Pages/Levels/List/TabArea';
 import dynamic from 'next/dynamic';
+import SearchIcon from '@assets/icons/search.svg';
+import likesIcon from '@assets/icons/like.svg';
+import infoIcon from '@assets/icons/info.svg';
 import ascIcon from '@assets/icons/ascIcon.svg';
 import descIcon from '@assets/icons/descIcon.svg';
 import difficultyIcon from '@assets/icons/difficulty.svg';
 import dateIcon from '@assets/icons/date.svg';
-import likesIcon from '@assets/icons/like.svg';
-import { api } from '../../utils/api';
-import { ApiListResult, Level } from '../../typings';
-import { Virtuoso } from 'react-virtuoso';
-import LevelListItem from '@components/Level/LevelListItem';
+import { RhythmTags, ChartTags, LengthTags } from '../../constants';
+
 const ReactTooltip = dynamic(() => import('react-tooltip'), { ssr: false });
-
-const TabItemContainer = styled.div`
-  position: relative;
-  cursor: pointer;
-  padding: 6px 8px;
-  min-width: 69px;
-  opacity: 0.8;
-  display: flex;
-  gap: 6px;
-  font-size: 16px;
-  letter-spacing: -0.031em;
-  line-height: 10px;
-  font-weight: normal;
-  align-items: center;
-  justify-content: center;
-  transition: 0.2s ease;
-  transition-property: background-color, opacity;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-type Tag = {
-  id: number | string;
-  name: string;
-  icon?: string;
-  default?: boolean;
-};
-
-const ChartTags: Tag[] = [
-  { id: 20, name: 'subjective' },
-  { id: 13, name: 'pseudo' },
-  { id: 15, name: 'pseudo2' },
-  { id: 14, name: 'gallop' },
-  { id: 8, name: 'magicShape' },
-  { id: 5, name: 'memorization' },
-  { id: 3, name: 'noSpeedChange' },
-  { id: 6, name: 'noTwirls' }
-];
-
-const RhythmTags: Tag[] = [
-  { id: 2, name: 'triplet' },
-  { id: 19, name: 'quintuplet' },
-  { id: 9, name: 'septuplet' },
-  { id: 18, name: 'polyrhythm' },
-  { id: 16, name: 'swing' },
-  { id: 21, name: 'tresillo' },
-  { id: 12, name: 'funkyBeat' },
-  { id: 10, name: '64Beat' },
-  { id: 7, name: 'accDec' },
-  { id: 17, name: 'slow' }
-];
-
-const LengthTags: Tag[] = [
-  { id: 'length-short', name: 'short' },
-  { id: 'length-medium', name: 'medium' },
-  { id: 'length-long', name: 'long' }
-];
-
-type TabItemProps = {
-  icon: string;
-  active: boolean;
-  isResetButton?: boolean;
-} & React.HTMLProps<any>;
-
-const TabGroup = styled.div`
-  margin-top: 6px;
-  padding-left: 12px;
-  padding-right: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  @media (max-width: 426px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-`;
-
-const TabItem: React.FC<TabItemProps> = ({
-  icon,
-  active,
-  isResetButton = false,
-  children,
-  onClick
-}) => (
-  <TabItemContainer onClick={onClick} onDragStart={(e) => e.preventDefault()}>
-    <AnimatePresence>
-      {(active || isResetButton) && (
-        <motion.div
-          key='tab-bg'
-          layoutId={isResetButton ? undefined : 'tab-item'}
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            background: isResetButton ? undefined : 'rgba(2565, 255, 255, 0.2)',
-            border: isResetButton
-              ? '1.5px solid rgba(255, 255, 255, 0.4)'
-              : undefined,
-            borderRadius: 5
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 500,
-            damping: 30
-          }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1 }
-          }}
-          initial='hidden'
-          animate='show'
-          exit='hidden'
-        />
-      )}
-    </AnimatePresence>
-    <Image src={icon} width={11} height={11} alt='' />
-    <div style={{ lineHeight: 1 }}>{children}</div>
-  </TabItemContainer>
-);
-
-enum SearchSettingTabType {
-  NONE,
-  TAGS,
-  META,
-  SORT
-}
 
 const TabContentContainer = styled.div`
   display: flex;
@@ -579,7 +450,7 @@ type FormProps = {
   sortResource: string;
 };
 
-type FormType = UseFormReturn<FormProps>;
+export type FormType = UseFormReturn<FormProps>;
 
 const TabContentAnimator: React.FC<{ identifier: string }> = ({
   children,
@@ -757,100 +628,7 @@ const Levels: NextPage<{
             placeholder={t('main:searchPlaceholder')}
           />
         </div>
-        <div>
-          <AnimateSharedLayout>
-            <AnimatePresence>
-              <TabGroup>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 12
-                  }}
-                >
-                  <TabItem
-                    onClick={toggleTab(SearchSettingTabType.TAGS)}
-                    active={tab === SearchSettingTabType.TAGS}
-                    icon={TagIcon.src}
-                  >
-                    {t('search:tabs.tags.title')}
-                  </TabItem>
-                  <TabItem
-                    onClick={toggleTab(SearchSettingTabType.META)}
-                    active={tab === SearchSettingTabType.META}
-                    icon={FilterIcon.src}
-                  >
-                    {t('search:tabs.meta.title')}
-                  </TabItem>
-                  <TabItem
-                    onClick={toggleTab(SearchSettingTabType.SORT)}
-                    active={tab === SearchSettingTabType.SORT}
-                    icon={SortIcon.src}
-                  >
-                    {t('search:tabs.sort.title')}
-                  </TabItem>
-                </div>
-
-                <TabItem
-                  active={false}
-                  icon={ResetIcon.src}
-                  isResetButton
-                  onClick={() => {
-                    form.reset();
-                  }}
-                >
-                  {t('search:reset')}
-                </TabItem>
-
-                <AnimatePresence>
-                  {tab === SearchSettingTabType.TAGS && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{
-                        type: 'tween'
-                      }}
-                      style={{
-                        display: 'flex',
-                        gap: 12,
-                        alignItems: 'center',
-                        width: 0,
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: 2,
-                          width: 9,
-                          background: 'rgba(255,255,255,0.4)',
-                          borderRadius: 1.5
-                        }}
-                      />
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 6,
-                          opacity: 0.6
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: 12,
-                            height: 12,
-                            backgroundImage: `url(${infoIcon.src})`
-                          }}
-                        />
-                        {t('search:help.tags')}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </TabGroup>
-            </AnimatePresence>
-          </AnimateSharedLayout>
-        </div>
+        <LevelListTabArea form={form} tab={tab} toggleTab={toggleTab} />
         <div
           style={{
             marginTop: 16,
