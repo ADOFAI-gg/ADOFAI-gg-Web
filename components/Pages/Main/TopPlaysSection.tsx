@@ -64,7 +64,6 @@ const PlayLevelInfo = styled.a`
 
 const PlayLevelDetails = styled.div`
   display: flex;
-  gap: 24px;
   opacity: 0.6;
   width: 100%;
 `;
