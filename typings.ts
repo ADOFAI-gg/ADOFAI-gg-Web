@@ -16,8 +16,10 @@ export type Play = {
 };
 
 export type Tag = {
-  id: number;
+  id: string | number;
   name: string;
+  icon?: string;
+  default?: boolean;
 };
 
 export type Level = {
