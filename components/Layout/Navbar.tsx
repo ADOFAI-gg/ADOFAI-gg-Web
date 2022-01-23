@@ -88,7 +88,9 @@ const Navbar: React.FC = () => {
       <div style={{ flexGrow: 1 }} />
 
       <Actions.Container>
-        <Actions.Item>{t('header.menu.signIn')}</Actions.Item>
+        <NextLink href='/login'>
+          <Actions.Item>{t('header.menu.signIn')}</Actions.Item>
+        </NextLink>
         {/*<Actions.Item></Actions.Item>*/}
 
         <Actions.Item>

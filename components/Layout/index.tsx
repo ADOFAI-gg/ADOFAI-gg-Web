@@ -4,6 +4,7 @@ import Footer from '@components/Layout/Footer';
 import styled from 'styled-components';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
   padding-top: var(--header-height);
@@ -32,8 +33,11 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
+const routesToHideFooter = ['/login'];
+
 const Layout: React.FC = ({ children }) => {
   useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
+  const router = useRouter();
 
   return (
     <Container>
@@ -47,7 +51,7 @@ const Layout: React.FC = ({ children }) => {
         <Content>{children}</Content>
       </Main>
 
-      <Footer />
+      {!routesToHideFooter.includes(router.pathname) && <Footer />}
     </Container>
   );
 };
