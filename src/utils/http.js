@@ -18,12 +18,8 @@ api.interceptors.response.use(
       </>,
       {
         position: 'bottom-right',
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: 0,
+        autoClose: false,
+        closeOnClick: false,
         onClick: () => window.open('https://adofaigg.statuspage.io/', '_blank'),
         toastId: 'APIError'
       }
