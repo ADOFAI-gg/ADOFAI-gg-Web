@@ -5,5 +5,8 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'ko'],
     localeDetection: false
+  },
+  experimental: {
+    styledComponents: true
   }
 };
