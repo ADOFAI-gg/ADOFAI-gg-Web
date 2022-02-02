@@ -70,7 +70,6 @@ body,
   display: flex;
   flex-direction: column;
   height: 100%;
-  scrollbar-width: thin;
 }
 
 body {
@@ -89,13 +88,6 @@ body {
   /* overflow: overlay; */
   -webkit-touch-callout: none;
   -ms-overflow-style: none;
-}
-
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  /* width: 10px;
-  height: 10px; */
 }
 
 body::-webkit-scrollbar-track {
