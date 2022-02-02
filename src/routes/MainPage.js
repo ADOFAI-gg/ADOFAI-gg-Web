@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 // Components
 // import MainAddInfo from "../components/MainAddInfo";
@@ -11,6 +12,8 @@ const MainPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   let history = useHistory();
 
+  const ReactSwal = withReactContent(Swal);
+
   const userMenu = () => {
     const sumbitPlayUrl = 'https://forms.gle/XdKNuqVrt974F7Ab6';
     const sumbitLevelUrl = 'https://forms.gle/gGtReGnJnbf4Ck387';
@@ -19,25 +22,38 @@ const MainPage = () => {
     // XXX - need short url
     const songCopyrightUrl = 'https://7thbe.at/verified-artists';
 
-    const link = (text, url) => {
-      return `<a class='main-user-menu-context' target='_blank' rel='noreferrer' href='${url}'>${text}</a>`;
+    const Link = ({ url, children }) => {
+      return (
+        <a
+          className='main-user-menu-context'
+          target={'_blank'}
+          rel='noreferrer'
+          href={url}
+        >
+          {children}
+        </a>
+      );
     };
 
-    Swal.fire({
+    ReactSwal.fire({
       title: 'Submit & Info',
-      html: `
-        ${link('Submit your play', sumbitPlayUrl)}
-        <hr>
-        ${link('Submit your custom level', sumbitLevelUrl)}
-        <hr>
-        ${link('Request for re-leveling', requestRelevelingUrl)}
-        <hr>
-        ${link('Song copyrights', songCopyrightUrl)}
-      `,
+      html: (
+        <>
+          <Link url={sumbitPlayUrl}>Submit Your Play</Link>
+          <hr />
+          <Link url={sumbitLevelUrl}>Submit Your Level</Link>
+          <hr />
+          <Link url={requestRelevelingUrl}>Request For Re-Leveling</Link>
+          <hr />
+          <Link url={songCopyrightUrl}>Song Copyright</Link>
+        </>
+      ),
       customClass: {
-        popup: 'main-user-menu'
+        popup: 'main-user-menu',
+        closeButton: 'main-user-menu-close'
       },
-      showConfirmButton: false
+      showConfirmButton: false,
+      showCloseButton: true
     });
   };
 

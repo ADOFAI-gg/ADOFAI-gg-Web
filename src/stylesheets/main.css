@@ -188,14 +188,23 @@
   width: 300px;
 }
 
+.main-user-menu-close {
+  transition-property: color, transform !important;
+}
+
+.main-user-menu-close:focus {
+  box-shadow: none !important;
+}
+
+.main-user-menu-close:active {
+  transform: scale(0.95) !important;
+}
+
 .main-user-menu-context {
   color: rgb(84, 84, 84);
+  transition: font-weight 0.2s ease-in-out;
 }
 
 .main-user-menu-context:hover {
   font-weight: 600;
-}
-
-.main-user-menu-context:hover::before {
-  content: '> ';
 }
