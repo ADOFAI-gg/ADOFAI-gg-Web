@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import axios from 'axios';
+import { get } from '../utils/http';
 // import { useLocation } from "react-router-dom";
 
 // Components
@@ -137,7 +137,7 @@ const LevelListPage = ({ history }) => {
         dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
 
         const params = fetchParams(0);
-        const response = await axios.get(
+        const response = await get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
           { params }
         );
@@ -178,7 +178,7 @@ const LevelListPage = ({ history }) => {
       dispatch({ type: 'FETCH_ERROR', error: null });
 
       const params = fetchParams(state.items.length);
-      const response = await axios.get(
+      const response = await get(
         `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
         { params }
       );
@@ -229,6 +229,7 @@ const LevelListPage = ({ history }) => {
         onSearch={(value) =>
           dispatch({ type: 'SEARCH_TERM', searchTerm: value })
         }
+        disabled={state.isError}
         filterContent={
           <>
             <div style={{ display: 'flex' }}>
@@ -376,7 +377,7 @@ const LevelListPage = ({ history }) => {
       />
       <div className='mod-list'>
         {!state.items ? null : state.isError ? (
-          <h2>{state.error}</h2>
+          <h2 style={{ margin: '10px' }}>Oops! An error occurred.</h2>
         ) : (
           <InfiniteScroll
             dataLength={state.items.length}

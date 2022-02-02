@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -54,17 +54,11 @@ const MainTopPlay = ({ topPlay }) => {
   }, []);
 
   const getAllDifficulty = () => {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${topPlay.level.id}`
-        // {
-        //   params: {},
-        // }
-      )
-      .then((response) => {
-        getDifficulty(response.data.difficulty);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
+    get(
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${topPlay.level.id}`
+    ).then((response) => {
+      getDifficulty(response.data.difficulty);
+    });
   };
 
   const videoId =

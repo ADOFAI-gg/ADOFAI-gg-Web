@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import axios from 'axios';
+import { get } from '../utils/http';
 
 // Components
 import RankingItem from '../components/ranking/RankingItem';
@@ -29,7 +29,8 @@ const RankingPage = () => {
         return {
           ...state,
           isLoading: false,
-          error: action.error
+          error: action.error,
+          isError: action.error ? true : false
         };
 
       case 'HAS_MORE_ITEMS':
@@ -51,7 +52,8 @@ const RankingPage = () => {
 
   const [state, dispatch] = useReducer(reduce, {
     isLoading: false,
-    isError: null,
+    error: null,
+    isError: false,
     hasMore: true,
     itemCount: 0,
     items: null
@@ -64,13 +66,11 @@ const RankingPage = () => {
         dispatch({ type: 'FETCH_ERROR', error: null });
         dispatch({ type: 'FETCH_REQUEST' });
 
-        const response = await axios.get(
+        const response = await get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`,
           {
-            params: {
-              offset: 0,
-              amount: 30
-            }
+            offset: 0,
+            amount: 30
           }
         );
 
@@ -93,13 +93,11 @@ const RankingPage = () => {
     try {
       dispatch({ type: 'FETCH_ERROR', error: null });
 
-      const response = await axios.get(
+      const response = await get(
         `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`,
         {
-          params: {
-            offset: state.items.length,
-            amount: 30
-          }
+          offset: state.items.length,
+          amount: 30
         }
       );
 
@@ -108,6 +106,7 @@ const RankingPage = () => {
         items: state.items.concat(response.data.results)
       });
     } catch (e) {
+      console.log('삐삐');
       dispatch({ type: 'FETCH_ERROR', error: e });
     }
   };
@@ -123,9 +122,9 @@ const RankingPage = () => {
       </div>
 
       <div className='ranking-content'>
-        {state.isLoading ? null : !state.items ? null : state.isError ? (
-          <h2>Oops! An error occurred.</h2>
-        ) : (
+        {state.isError ? (
+          <h2 style={{ margin: '6px' }}>Oops! An error occurred.</h2>
+        ) : state.isLoading ? null : !state.items ? null : (
           <InfiniteScroll
             dataLength={state.items.length}
             next={fetchMoreData}

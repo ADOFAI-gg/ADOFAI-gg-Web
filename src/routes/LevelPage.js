@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { get } from '../utils/http';
 
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -119,18 +119,16 @@ const LevelPage = ({ history }) => {
         dispatch({ type: 'FETCH_ERROR', error: null });
         dispatch({ type: 'FETCH_REQUEST' });
 
-        const levelResponse = await axios.get(
+        const levelResponse = await get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${id}`
         );
-        const leaderboardResponse = await axios.get(
+        const leaderboardResponse = await get(
           `${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`,
           {
-            params: {
-              offset: 0,
-              amount: 10,
-              levelId: id,
-              sort: 'PP_DESC'
-            }
+            offset: 0,
+            amount: 10,
+            levelId: id,
+            sort: 'PP_DESC'
           }
         );
 

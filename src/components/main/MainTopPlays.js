@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
@@ -11,18 +11,13 @@ const MainTopPlays = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await axios
-        .get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`, {
-          params: {
-            offset: 0,
-            amount: 3,
-            sort: 'PP_DESC'
-          }
-        })
-        .then((response) => {
-          setPlayData(response.data.results);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
+      await get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`, {
+        offset: 0,
+        amount: 3,
+        sort: 'PP_DESC'
+      }).then((response) => {
+        setPlayData(response.data.results);
+      });
 
       setIsLoading(false);
     };

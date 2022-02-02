@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
@@ -12,18 +12,13 @@ const MainPopularLevels = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await axios
-        .get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, {
-          params: {
-            offset: 0,
-            amount: 10,
-            sort: 'RECENT_DESC'
-          }
-        })
-        .then((response) => {
-          setLevelData(response.data.results);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
+      await get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, {
+        offset: 0,
+        amount: 10,
+        sort: 'RECENT_DESC'
+      }).then((response) => {
+        setLevelData(response.data.results);
+      });
 
       setIsLoading(false);
     };

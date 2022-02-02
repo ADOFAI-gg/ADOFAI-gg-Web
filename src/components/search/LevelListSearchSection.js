@@ -102,7 +102,8 @@ const SearchSection = ({
   value,
   onSearch,
   filterContent,
-  sortContent
+  sortContent,
+  disabled
 }) => {
   const [showFilter, setShowFilter] = React.useState(false);
   const [showSort, setShowSort] = React.useState(false);
@@ -125,48 +126,59 @@ const SearchSection = ({
           onChange={(event) => {
             onSearch(event.target.value);
           }}
+          disabled={disabled}
         />
 
-        <div
-          className='list-search-filter-button'
-          onClick={onClickFilterButton}
-          style={
-            showFilter ? { backgroundColor: 'rgb(255 255 255 / 50%)' } : null
-          }
-        >
-          <div className='tooltip-container'>
-            <span className='tooltiptext'>Filter</span>
+        {!disabled ? (
+          <>
+            <div
+              className='list-search-filter-button'
+              onClick={onClickFilterButton}
+              style={
+                showFilter
+                  ? { backgroundColor: 'rgb(255 255 255 / 50%)' }
+                  : null
+              }
+            >
+              <div className='tooltip-container'>
+                <span className='tooltiptext'>Filter</span>
 
-            <FontAwesomeIcon icon={faFilter} size='lg' />
-          </div>
-        </div>
+                <FontAwesomeIcon icon={faFilter} size='lg' />
+              </div>
+            </div>
 
-        <div
-          className='list-search-sort-button'
-          onClick={onClickSortButton}
-          style={
-            showSort ? { backgroundColor: 'rgb(255 255 255 / 50%)' } : null
-          }
-        >
-          <div className='tooltip-container'>
-            <span className='tooltiptext'>Sort</span>
+            <div
+              className='list-search-sort-button'
+              onClick={onClickSortButton}
+              style={
+                showSort ? { backgroundColor: 'rgb(255 255 255 / 50%)' } : null
+              }
+            >
+              <div className='tooltip-container'>
+                <span className='tooltiptext'>Sort</span>
 
-            <FontAwesomeIcon icon={faSortAmountDown} size='lg' />
-          </div>
-        </div>
+                <FontAwesomeIcon icon={faSortAmountDown} size='lg' />
+              </div>
+            </div>
 
-        <div className='list-search-sort-button' onClick={refreshPage}>
-          <div className='tooltip-container'>
-            <span className='tooltiptext'>Reset Filter</span>
+            <div className='list-search-sort-button' onClick={refreshPage}>
+              <div className='tooltip-container'>
+                <span className='tooltiptext'>Reset Filter</span>
 
-            <FontAwesomeIcon icon={faEraser} size='lg' />
-          </div>
-        </div>
+                <FontAwesomeIcon icon={faEraser} size='lg' />
+              </div>
+            </div>
+          </>
+        ) : null}
       </section>
 
-      <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
+      {!disabled ? (
+        <>
+          <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
 
-      <SearchSort show={showSort}>{sortContent}</SearchSort>
+          <SearchSort show={showSort}>{sortContent}</SearchSort>
+        </>
+      ) : null}
     </section>
   );
 };
