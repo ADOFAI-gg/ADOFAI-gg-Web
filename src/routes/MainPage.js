@@ -12,16 +12,27 @@ const MainPage = () => {
   let history = useHistory();
 
   const userMenu = () => {
+    const sumbitPlayUrl = 'https://forms.gle/XdKNuqVrt974F7Ab6';
+    const sumbitLevelUrl = 'https://forms.gle/gGtReGnJnbf4Ck387';
+    const requestRelevelingUrl =
+      'https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link';
+    // XXX - need short url
+    const songCopyrightUrl = 'https://7thbe.at/verified-artists';
+
+    const link = (text, url) => {
+      return `<a class='main-user-menu-context' target='_blank' rel='noreferrer' href='${url}'>${text}</a>`;
+    };
+
     Swal.fire({
       title: 'Submit & Info',
       html: `
-      <a class="main-user-menu-context" href="https://forms.gle/XdKNuqVrt974F7Ab6">Submit your play</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://forms.gle/cW9wGpEoTV4yD57b7">Submit your custom level</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link">Request for re-leveling</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://7thbe.at/verified-artists">Song copyrights</a>
+        ${link('Submit your play', sumbitPlayUrl)}
+        <hr>
+        ${link('Submit your custom level', sumbitLevelUrl)}
+        <hr>
+        ${link('Request for re-leveling', requestRelevelingUrl)}
+        <hr>
+        ${link('Song copyrights', songCopyrightUrl)}
       `,
       customClass: {
         popup: 'main-user-menu'
