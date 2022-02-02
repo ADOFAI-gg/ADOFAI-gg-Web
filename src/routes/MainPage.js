@@ -66,8 +66,9 @@ const MainPage = () => {
           href='https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468'
           target='_blank'
           rel='noreferrer'
+          className='main-yellow-highlight'
         >
-          <span className='main-yellow-highlight'>Unofficial ADOFAI Forum</span>
+          Unofficial ADOFAI Forum
         </a>
       </h2>
       <input

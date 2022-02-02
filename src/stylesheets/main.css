@@ -6,6 +6,10 @@
 
 .main-yellow-highlight {
   color: rgb(255, 231, 110);
+  text-decoration-color: rgb(255, 231, 110);
+}
+
+.main-yellow-highlight:hover {
 }
 
 .main-search-bar {
