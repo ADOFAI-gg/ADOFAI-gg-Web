@@ -61,6 +61,7 @@ input::-webkit-inner-spin-button {
     'Segoe UI Light', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial',
     sans-serif;
   --monospace-font: 'Roboto Mono', monospace;
+  color-scheme: dark;
 }
 
 html,
