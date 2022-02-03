@@ -91,6 +91,10 @@ body {
   -ms-overflow-style: none;
 }
 
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  overflow: unset !important;
+}
+
 body::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0);
 }

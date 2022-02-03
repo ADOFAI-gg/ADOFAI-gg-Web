@@ -22,7 +22,7 @@ const MainPage = () => {
     // XXX - need short url
     const songCopyrightUrl = 'https://7thbe.at/verified-artists';
 
-    const Link = ({ url, children }) => {
+    const MenuItem = ({ url, iconName, children }) => {
       return (
         <a
           className='main-user-menu-context'
@@ -30,7 +30,13 @@ const MainPage = () => {
           rel='noreferrer'
           href={url}
         >
-          {children}
+          <img
+            className='main-user-menu-context-icon'
+            src={`/usermenu_icons/${iconName}.svg`}
+            alt={iconName}
+            onDragStart={(e) => e.preventDefault()}
+          />
+          <span className='main-user-menu-context-text'>{children}</span>
         </a>
       );
     };
@@ -39,17 +45,24 @@ const MainPage = () => {
       title: 'Submit & Info',
       html: (
         <>
-          <Link url={sumbitPlayUrl}>Submit Your Play</Link>
-          <hr />
-          <Link url={sumbitLevelUrl}>Submit Your Level</Link>
-          <hr />
-          <Link url={requestRelevelingUrl}>Request For Re-Leveling</Link>
-          <hr />
-          <Link url={songCopyrightUrl}>Song Copyright</Link>
+          <MenuItem url={sumbitPlayUrl} iconName={'submit_play'}>
+            Submit Your Play
+          </MenuItem>
+          <MenuItem url={sumbitLevelUrl} iconName={'submit_level'}>
+            Submit Your Level
+          </MenuItem>
+          <MenuItem url={requestRelevelingUrl} iconName={'request_releveling'}>
+            Request <br />
+            Re-Leveling
+          </MenuItem>
+          <MenuItem url={songCopyrightUrl} iconName={'copyright'}>
+            Song Copyright
+          </MenuItem>
         </>
       ),
       customClass: {
         popup: 'main-user-menu',
+        htmlContainer: 'main-user-menu-container',
         closeButton: 'main-user-menu-close'
       },
       showConfirmButton: false,
@@ -88,7 +101,7 @@ const MainPage = () => {
       <button
         onClick={userMenu}
         className='user-menu-button'
-        style={{ background: 'url("/other_icons/message.svg")' }}
+        style={{ background: 'url("/usermenu_icons/usermenu.svg")' }}
       />
     </main>
   );
