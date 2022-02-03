@@ -10,6 +10,7 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 // Components
 import LikeButton from '../components/global/LikeButton';
 import LevelTags from '../components/level/LevelTags';
+import SectionTitle from '../components/global/SectionTitle';
 
 const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
@@ -391,11 +392,7 @@ const LevelPage = ({ history }) => {
 
             {Object.keys(state.leaderboard).length > 0 && (
               <section className='level-info-leaderboard'>
-                <div className='content-title'>
-                  <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>
-                    Leaderboard
-                  </h1>
-                </div>
+                <SectionTitle>Leaderboard</SectionTitle>
 
                 <div className='level-info-leaderboard-content'>
                   {Object.values(state.leaderboard).map((v, index) => {

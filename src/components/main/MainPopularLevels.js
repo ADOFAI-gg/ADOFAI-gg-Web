@@ -5,6 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 
 // Components
 import LevelInfo from '../level/LevelInfo';
+import SectionTitle from '../global/SectionTitle';
 
 const MainPopularLevels = () => {
   const [levelData, setLevelData] = useState([]);
@@ -28,16 +29,8 @@ const MainPopularLevels = () => {
 
   return (
     <section>
-      <div className='content-title'>
-        <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>
-          Recent Ranked Levels
-        </h1>
-        <h3
-          style={{ flexBasis: '20%', textAlign: 'right', paddingTop: '20px' }}
-        >
-          <Link to='levels'>See All ▹</Link>
-        </h3>
-      </div>
+      <SectionTitle showMoreUrl={'/levels'}>Recent Ranked Levels</SectionTitle>
+
       <div className='main-popular-levels'>
         {isLoading ? (
           <Skeleton count={10} className='level-item-info' />

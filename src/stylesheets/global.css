@@ -473,12 +473,45 @@ nav {
   float: right;
 }
 
-.content-title {
+.section-title {
   display: flex;
-  width: 1090px;
-  margin-top: 40px;
+  width: 1100px;
+  margin-top: 36px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.section-title h1 {
+  flex: 80%;
+  text-align: left;
+}
+
+.section-title-show-more {
+  flex-basis: 20%;
+  padding-top: 20px;
+  margin: 0;
+  font-size: 1.17em;
+  text-align: right;
+  transition: font-weight 0.2s ease-in-out;
+}
+
+.section-title-show-more:hover {
+  font-weight: 600;
+}
+
+.section-title-show-more::after {
+  content: '›';
+  margin-left: 4px;
+  transition: margin-left 0.2s ease-in-out;
+}
+
+.section-title-show-more a:hover {
+  text-decoration: none;
+}
+
+.section-title-show-more:hover::after {
+  content: '›';
+  margin-left: 12px;
 }
 
 .react-loading-skeleton {

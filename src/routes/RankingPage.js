@@ -5,6 +5,7 @@ import { get } from '../utils/http';
 // Components
 import RankingItem from '../components/ranking/RankingItem';
 import ScrollButton from '../components/global/ScrollButton';
+import SectionTitle from '../components/global/SectionTitle';
 
 // Stylesheets
 import '../stylesheets/ranking.css';
@@ -106,7 +107,7 @@ const RankingPage = () => {
         items: state.items.concat(response.data.results)
       });
     } catch (e) {
-      console.log('삐삐');
+      // console.log('삐삐');
       dispatch({ type: 'FETCH_ERROR', error: e });
     }
   };
@@ -114,16 +115,11 @@ const RankingPage = () => {
   return (
     <main>
       <ScrollButton />
-      <div
-        className='content-title'
-        style={{ margin: '15px', fontSize: '2em' }}
-      >
-        Ranking
-      </div>
+      <SectionTitle style={{ marginTop: 20 }}>Ranking</SectionTitle>
 
       <div className='ranking-content'>
         {state.isError ? (
-          <h2 style={{ margin: '6px' }}>Oops! An error occurred.</h2>
+          <h2 style={{ margin: 0, marginTop: 12 }}>Oops! An error occurred.</h2>
         ) : state.isLoading ? null : !state.items ? null : (
           <InfiniteScroll
             dataLength={state.items.length}
