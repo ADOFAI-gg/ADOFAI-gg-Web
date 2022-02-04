@@ -8,94 +8,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
 
-const tagDescription = [
-  {
-    tagName: 'Short',
-    tagDescription: 'Levels that are under a minute.'
-  },
-  {
-    tagName: 'Triplet',
-    tagDescription: 'This level contains triplets.'
-  },
-  {
-    tagName: 'No Speed Change',
-    tagDescription: 'The tile bpm remains constant throughout this level.'
-  },
-  {
-    tagName: 'Medium',
-    tagDescription: 'Levels that are under 4 minutes.'
-  },
-  {
-    tagName: 'Memorization',
-    tagDescription: 'This level requires memorization.'
-  },
-  {
-    tagName: 'No Swirls',
-    tagDescription: 'This level has no swirls.'
-  },
-  {
-    tagName: 'Acceleration / Deceleration',
-    tagDescription: 'This level uses a song that changes BPM.'
-  },
-  {
-    tagName: 'Magic Shape',
-    tagDescription: 'This level contains magic shapes.'
-  },
-  {
-    tagName: 'Septuplet',
-    tagDescription: 'This level contains septuplets.'
-  },
-  {
-    tagName: '64+ Beat',
-    tagDescription: 'This level contains beats higher than 64.'
-  },
-  {
-    tagName: 'Long',
-    tagDescription: 'Levels that are over 4 minutes.'
-  },
-  {
-    tagName: 'Funky Beat',
-    tagDescription: 'This level contains funky beats.'
-  },
-  {
-    tagName: 'Pseudo',
-    tagDescription:
-      'This level contains parts where you have to press two fingers at once.'
-  },
-  {
-    tagName: 'Gallop',
-    tagDescription: 'This level contains parts where you do fast streams.'
-  },
-  {
-    tagName: 'Pseudo +2',
-    tagDescription:
-      'This level contains parts where you have to press multiple fingers at once.'
-  },
-  {
-    tagName: 'Swing',
-    tagDescription: 'This level contains swing rhythms.'
-  },
-  {
-    tagName: 'Slow',
-    tagDescription: "This level's BPM is under 300."
-  },
-  {
-    tagName: 'Polyrhythm',
-    tagDescription: 'This level contains polyrhythms.'
-  },
-  {
-    tagName: 'Quintuplet',
-    tagDescription: 'This level contains quintuplets.'
-  },
-  {
-    tagName: 'Subjective',
-    tagDescription: "This level's difficulty can vary by person."
-  },
-  {
-    tagName: 'Tresillo',
-    tagDescription: 'This level contains tresillos.'
-  }
-];
+// Components
+import TagTooltip from '../level/TagTooltip';
 
 const SearchSection = ({
   placeholder,
@@ -223,6 +137,7 @@ const SearchContentItem = ({ title, children, isLv }) => {
               size='lg'
               style={{ height: '16px', marginTop: '7px', marginLeft: '5px' }}
             />
+
             <ReactTooltip
               id='lvDescription'
               place='bottom'
@@ -242,7 +157,6 @@ const SearchContentItem = ({ title, children, isLv }) => {
 };
 
 const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
-  // TODO Tooltiptext
   return (
     <>
       <div
@@ -267,18 +181,7 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
         </label>
       </div>
 
-      <ReactTooltip
-        id={'tag_' + tooltip}
-        place='bottom'
-        type='dark'
-        effect='solid'
-      >
-        <span style={{ whiteSpace: 'pre-line' }}>
-          {tagDescription[tooltip - 1].tagName.toString() +
-            '\n' +
-            tagDescription[tooltip - 1].tagDescription.toString()}
-        </span>
-      </ReactTooltip>
+      <TagTooltip tag={tooltip} id={'tag_' + tooltip} />
     </>
   );
 };
@@ -300,7 +203,6 @@ const SearchContentInput = ({ onInput, placeholder, isLast }) => {
 };
 
 const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
-  // TODO Tooltiptext
   return (
     <div className='list-search-content-toggle'>
       <input

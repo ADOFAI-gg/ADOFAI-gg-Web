@@ -227,8 +227,8 @@ const LevelListPage = ({ history }) => {
         filterContent={
           <>
             <div style={{ display: 'flex' }}>
-              <SearchContentItem title='Chart Related'>
-                {[20, 13, 15, 14, 8, 5, 3, 6].map((id) => {
+              <SearchContentItem title='Chart/Effect Related'>
+                {[13, 15, 14, 8, 22, 5, 3, 6].map((id) => {
                   return (
                     <SearchContentCheckbox
                       onSelect={(value) => {
@@ -243,7 +243,7 @@ const LevelListPage = ({ history }) => {
               </SearchContentItem>
 
               <SearchContentItem title='Rhythm Related'>
-                {[2, 19, 9, 18, 16, 21, 12, 10, 7, 17].map((id) => {
+                {[2, 19, 9, 18, 16, 21, 12, 10, 23, 17, 24].map((id) => {
                   return (
                     <SearchContentCheckbox
                       onSelect={(value) => {
