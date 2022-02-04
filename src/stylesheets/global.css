@@ -167,7 +167,7 @@ h5 {
 
 h1 {
   font-weight: 600;
-  font-size: 40px;
+  font-size: 36px;
 }
 
 h2 {
@@ -476,22 +476,28 @@ nav {
 .section-title {
   display: flex;
   width: 1100px;
+  padding-bottom: 6px;
   margin-top: 36px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 12px;
+  border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
 }
 
 .section-title h1 {
   flex: 80%;
   text-align: left;
+  font-size: 28px;
 }
 
 .section-title-show-more {
   flex-basis: 20%;
-  padding-top: 20px;
   margin: 0;
   font-size: 1.17em;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   transition: font-weight 0.2s ease-in-out;
 }
 
