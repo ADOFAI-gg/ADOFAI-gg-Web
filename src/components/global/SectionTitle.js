@@ -6,9 +6,9 @@ const SectionTitle = ({ showMoreUrl, children, style }) => {
       <h1>{children}</h1>
 
       {showMoreUrl ? (
-        <p className='section-title-show-more'>
-          <Link to={showMoreUrl}>Show More</Link>
-        </p>
+        <Link to={showMoreUrl} className='section-title-show-more'>
+          Show More
+        </Link>
       ) : null}
     </div>
   );
