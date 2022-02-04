@@ -56,6 +56,7 @@ input::-webkit-inner-spin-button {
 :root {
   --nav-height: 56px;
   --nav-menu-size: 100px;
+  --footer-height: 90px;
   --normal-font: 'Quicksand', '나눔스퀘어라운드', '나눔고딕', '나눔스퀘어',
     'Segoe UI', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Segoe UI WP',
     'Segoe UI Light', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial',
@@ -87,7 +88,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /* overflow: overlay; */
   -webkit-touch-callout: none;
   -ms-overflow-style: none;
 }
@@ -116,8 +116,13 @@ body::-webkit-scrollbar-thumb:hover {
 
 .container {
   position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
+}
+
+.container > div {
+  flex-grow: 1;
 }
 
 main {
@@ -180,12 +185,6 @@ h3 {
   font-weight: 600;
   font-size: 20px;
 }
-
-/* h4 {
-}
-
-h5 {
-} */
 
 input:focus {
   outline: none;
@@ -741,7 +740,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 90px;
+  height: var(--footer-height);
   margin-top: 64px;
   background-color: rgba(0, 0, 0, 0.2);
 }
