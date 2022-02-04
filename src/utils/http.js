@@ -2,15 +2,16 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const api = Axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`
+  baseURL: `${process.env.REACT_APP_API_BASE_URL}/api/v1`
 });
 
 api.interceptors.response.use(
   (response) => {
-    console.log('리스폰스');
     return response;
   },
   (error) => {
+    console.error(error);
+
     toast.error(
       <>
         There is a problem with connecting to the server. Click here to check
@@ -29,7 +30,7 @@ api.interceptors.response.use(
   }
 );
 
-export const get = (url, params) => api.get(url, params);
+export const get = (url, params) => api.get(url, { params });
 
 // export const post = (url, data) =>
 //   api.post(url, data);

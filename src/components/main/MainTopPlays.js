@@ -12,7 +12,7 @@ const MainTopPlays = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`, {
+      await get(`/playLogs`, {
         offset: 0,
         amount: 3,
         sort: 'PP_DESC'

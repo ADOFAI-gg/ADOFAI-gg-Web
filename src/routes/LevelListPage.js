@@ -137,10 +137,7 @@ const LevelListPage = ({ history }) => {
         dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
 
         const params = fetchParams(0);
-        const response = await get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
-          { params }
-        );
+        const response = await get(`/levels`, params);
 
         dispatch({ type: 'FETCH_RESULT', items: response.data.results });
         dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
@@ -178,10 +175,7 @@ const LevelListPage = ({ history }) => {
       dispatch({ type: 'FETCH_ERROR', error: null });
 
       const params = fetchParams(state.items.length);
-      const response = await get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
-        { params }
-      );
+      const response = await get(`/levels`, params);
 
       dispatch({
         type: 'FETCH_RESULT',

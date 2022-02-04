@@ -120,18 +120,13 @@ const LevelPage = ({ history }) => {
         dispatch({ type: 'FETCH_ERROR', error: null });
         dispatch({ type: 'FETCH_REQUEST' });
 
-        const levelResponse = await get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${id}`
-        );
-        const leaderboardResponse = await get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`,
-          {
-            offset: 0,
-            amount: 10,
-            levelId: id,
-            sort: 'PP_DESC'
-          }
-        );
+        const levelResponse = await get(`/levels/${id}`);
+        const leaderboardResponse = await get(`/playLogs`, {
+          offset: 0,
+          amount: 10,
+          levelId: id,
+          sort: 'PP_DESC'
+        });
 
         dispatch({
           type: 'FETCH_RESULT',

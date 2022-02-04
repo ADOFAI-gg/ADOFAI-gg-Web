@@ -1,6 +1,5 @@
 import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 
 // Components
@@ -13,7 +12,7 @@ const MainPopularLevels = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`, {
+      await get(`/levels`, {
         offset: 0,
         amount: 10,
         sort: 'RECENT_DESC'

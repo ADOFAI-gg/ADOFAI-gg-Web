@@ -54,9 +54,7 @@ const MainTopPlay = ({ topPlay }) => {
   }, []);
 
   const getAllDifficulty = () => {
-    get(
-      `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${topPlay.level.id}`
-    ).then((response) => {
+    get(`/levels/${topPlay.level.id}`).then((response) => {
       getDifficulty(response.data.difficulty);
     });
   };

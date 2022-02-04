@@ -67,13 +67,10 @@ const RankingPage = () => {
         dispatch({ type: 'FETCH_ERROR', error: null });
         dispatch({ type: 'FETCH_REQUEST' });
 
-        const response = await get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`,
-          {
-            offset: 0,
-            amount: 30
-          }
-        );
+        const response = await get(`/ranking`, {
+          offset: 0,
+          amount: 30
+        });
 
         dispatch({ type: 'FETCH_RESULT', items: response.data.results });
         dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
@@ -94,13 +91,10 @@ const RankingPage = () => {
     try {
       dispatch({ type: 'FETCH_ERROR', error: null });
 
-      const response = await get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/ranking`,
-        {
-          offset: state.items.length,
-          amount: 30
-        }
-      );
+      const response = await get(`/ranking`, {
+        offset: state.items.length,
+        amount: 30
+      });
 
       dispatch({
         type: 'FETCH_RESULT',
