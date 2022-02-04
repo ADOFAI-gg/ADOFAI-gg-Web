@@ -4,8 +4,6 @@ import { CSSTransition } from 'react-transition-group';
 
 // Components
 import LevelTags from './LevelTags';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 const LevelInfo = ({ levelData }) => {
   const [isOpned, setIsOpned] = useState(false);
@@ -21,8 +19,6 @@ const LevelInfo = ({ levelData }) => {
     minBpm,
     maxBpm,
     tiles,
-    comments,
-    likes,
     tags,
     epilepsyWarning
   } = levelData;
@@ -59,7 +55,7 @@ const LevelInfo = ({ levelData }) => {
           <div className='level-item-info-container-normal'>
             <LevelDifficulty />
 
-            <div className='level-item-info-section' style={{ width: '400px' }}>
+            <div className='level-item-info-section' style={{ width: '480px' }}>
               <div
                 className={`level-item-info-label ${
                   epilepsyWarning && 'level-item-info-label-ew'
@@ -70,7 +66,7 @@ const LevelInfo = ({ levelData }) => {
               <div className='level-item-info-value notranslate'>{title}</div>
             </div>
 
-            <div className='level-item-info-section' style={{ width: '200px' }}>
+            <div className='level-item-info-section' style={{ width: '300px' }}>
               <div className='level-item-info-label'>Creator</div>
               <div className='level-item-info-value notranslate'>
                 {creators.join(' & ')}
@@ -79,7 +75,7 @@ const LevelInfo = ({ levelData }) => {
 
             <div
               className='level-item-info-section level-item-info-section-center'
-              style={{ width: '130px' }}
+              style={{ width: '110px' }}
             >
               <div className='level-item-info-label'>BPM</div>
               <div className='level-item-info-value notranslate'>
@@ -91,52 +87,13 @@ const LevelInfo = ({ levelData }) => {
 
             <div
               className='level-item-info-section level-item-info-section-center'
-              style={{ width: '80px' }}
+              style={{ width: '110px' }}
             >
               <div className='level-item-info-label'>Tiles</div>
               <div className='level-item-info-value notranslate'>{tiles}</div>
             </div>
-
-            <div
-              className='level-item-info-section level-item-info-section-center'
-              style={{ width: '80px' }}
-            >
-              <div className='level-item-info-label'>
-                <FontAwesomeIcon
-                  icon={faCommentDots}
-                  style={{ height: '12px', weight: '12px', color: 'white' }}
-                />
-              </div>
-              <div className='level-item-info-value notranslate'>
-                {comments}
-              </div>
-            </div>
-
-            <div
-              className='level-item-info-section level-item-info-section-center'
-              style={{ width: '80px' }}
-            >
-              <div className='level-item-info-label'>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ height: '12px', weight: '12px', color: '#FF4E4E' }}
-                />
-              </div>
-              <div className='level-item-info-value notranslate'>{likes}</div>
-            </div>
           </div>
         </CSSTransition>
-
-        {/* <div className="level-item-info-background-container ">
-          <div
-            style={{
-              backgroundImage: `url(${
-                "level_backgrounds/" + levelData.levelBackground
-              })`,
-            }}
-            className="level-item-info-background"
-          ></div>
-        </div> */}
 
         <CSSTransition
           in={isOpned}
@@ -149,25 +106,20 @@ const LevelInfo = ({ levelData }) => {
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
           >
             <LevelDifficulty />
-            <div className='level-item-info-section' style={{ width: '400px' }}>
-              <div
-                className={`level-item-info-label ${
-                  epilepsyWarning ? 'level-item-info-label-ew' : ''
-                }`}
-              >
-                Song
-              </div>
+
+            <div className='level-item-info-section' style={{ width: '480px' }}>
+              <div className='level-item-info-label'>Song</div>
               <div className='level-item-info-value notranslate'>{song}</div>
             </div>
 
-            <div className='level-item-info-section' style={{ width: '250px' }}>
+            <div className='level-item-info-section' style={{ width: '300px' }}>
               <div className='level-item-info-label'>Artist</div>
               <div className='level-item-info-value notranslate'>
                 {artists.join(' & ')}
               </div>
             </div>
 
-            <div className='level-item-info-section' style={{ width: '335px' }}>
+            <div className='level-item-info-section' style={{ width: '230px' }}>
               <div className='level-item-info-label'>Tags</div>
               <div className='level-item-info-value'>
                 {tags.length !== 0

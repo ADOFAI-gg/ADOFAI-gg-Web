@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { get } from '../utils/http';
 
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +10,7 @@ import { faSteam } from '@fortawesome/free-brands-svg-icons';
 // Components
 import LikeButton from '../components/global/LikeButton';
 import LevelTags from '../components/level/LevelTags';
+import SectionTitle from '../components/global/SectionTitle';
 
 const LevelPage = ({ history }) => {
   const reduce = (state, action) => {
@@ -119,20 +120,13 @@ const LevelPage = ({ history }) => {
         dispatch({ type: 'FETCH_ERROR', error: null });
         dispatch({ type: 'FETCH_REQUEST' });
 
-        const levelResponse = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels/${id}`
-        );
-        const leaderboardResponse = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/playLogs`,
-          {
-            params: {
-              offset: 0,
-              amount: 10,
-              levelId: id,
-              sort: 'PP_DESC'
-            }
-          }
-        );
+        const levelResponse = await get(`/levels/${id}`);
+        const leaderboardResponse = await get(`/playLogs`, {
+          offset: 0,
+          amount: 10,
+          levelId: id,
+          sort: 'PP_DESC'
+        });
 
         dispatch({
           type: 'FETCH_RESULT',
@@ -393,11 +387,7 @@ const LevelPage = ({ history }) => {
 
             {Object.keys(state.leaderboard).length > 0 && (
               <section className='level-info-leaderboard'>
-                <div className='content-title'>
-                  <h1 style={{ flexBasis: '80%', textAlign: 'left' }}>
-                    Leaderboard
-                  </h1>
-                </div>
+                <SectionTitle>Leaderboard</SectionTitle>
 
                 <div className='level-info-leaderboard-content'>
                   {Object.values(state.leaderboard).map((v, index) => {

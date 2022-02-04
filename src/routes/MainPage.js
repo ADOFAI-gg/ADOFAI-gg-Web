@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 // Components
 // import MainAddInfo from "../components/MainAddInfo";
@@ -11,22 +12,61 @@ const MainPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   let history = useHistory();
 
+  const ReactSwal = withReactContent(Swal);
+
   const userMenu = () => {
-    Swal.fire({
+    const sumbitPlayUrl = 'https://forms.gle/XdKNuqVrt974F7Ab6';
+    const sumbitLevelUrl = 'https://forms.gle/gGtReGnJnbf4Ck387';
+    const requestRelevelingUrl =
+      'https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link';
+    // XXX - need short url
+    const songCopyrightUrl = 'https://7thbe.at/verified-artists';
+
+    const MenuItem = ({ url, iconName, children }) => {
+      return (
+        <a
+          className='main-user-menu-context'
+          target={'_blank'}
+          rel='noreferrer'
+          href={url}
+        >
+          <img
+            className='main-user-menu-context-icon'
+            src={`/usermenu_icons/${iconName}.svg`}
+            alt={iconName}
+            onDragStart={(e) => e.preventDefault()}
+          />
+          <span className='main-user-menu-context-text'>{children}</span>
+        </a>
+      );
+    };
+
+    ReactSwal.fire({
       title: 'Submit & Info',
-      html: `
-      <a class="main-user-menu-context" href="https://forms.gle/XdKNuqVrt974F7Ab6">Submit your play</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://forms.gle/cW9wGpEoTV4yD57b7">Submit your custom level</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link">Request for re-leveling</a>
-      <hr>
-      <a class="main-user-menu-context" href="https://7thbe.at/verified-artists">Song copyrights</a>
-      `,
+      html: (
+        <>
+          <MenuItem url={sumbitPlayUrl} iconName={'submit_play'}>
+            Submit Your Play
+          </MenuItem>
+          <MenuItem url={sumbitLevelUrl} iconName={'submit_level'}>
+            Submit Your Level
+          </MenuItem>
+          <MenuItem url={requestRelevelingUrl} iconName={'request_releveling'}>
+            Request <br />
+            Re-Leveling
+          </MenuItem>
+          <MenuItem url={songCopyrightUrl} iconName={'copyright'}>
+            Song Copyright
+          </MenuItem>
+        </>
+      ),
       customClass: {
-        popup: 'main-user-menu'
+        popup: 'main-user-menu',
+        htmlContainer: 'main-user-menu-container',
+        closeButton: 'main-user-menu-close'
       },
-      showConfirmButton: false
+      showConfirmButton: false,
+      showCloseButton: true
     });
   };
 
@@ -39,8 +79,9 @@ const MainPage = () => {
           href='https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468'
           target='_blank'
           rel='noreferrer'
+          className='main-yellow-highlight'
         >
-          <span className='main-yellow-highlight'>Unofficial ADOFAI Forum</span>
+          Unofficial ADOFAI Forum
         </a>
       </h2>
       <input
@@ -60,7 +101,7 @@ const MainPage = () => {
       <button
         onClick={userMenu}
         className='user-menu-button'
-        style={{ background: 'url("/other_icons/message.svg")' }}
+        style={{ background: 'url("/usermenu_icons/usermenu.svg")' }}
       />
     </main>
   );

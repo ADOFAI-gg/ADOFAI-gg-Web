@@ -1,10 +1,5 @@
 /* LEVEL ITEM */
 
-/* UNUSED :
- * .level-item-info-background-container
- * .level-item-info-background
- */
-
 .level-item-info {
   position: relative;
   width: 1100px;
@@ -12,34 +7,11 @@
   margin-bottom: 8px;
 }
 
-/* .level-item-info-background-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  width: 1100px;
-  height: 70px;
-  border-radius: 10px;
-}
-
-.level-item-info-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-position: center;
-  background-size: cover;
-  filter: blur(5px) brightness(0.3);
-  transition-duration: 0.3s;
-} */
-
 .level-item-info-container-normal,
 .level-item-info-container-hover {
   position: absolute;
   display: flex;
+  gap: 10px;
   align-items: center;
   width: 100%;
   height: 50px;
@@ -80,7 +52,6 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  margin-left: 10px;
 }
 
 .level-item-info-section-center * {
@@ -97,7 +68,7 @@
 
 .level-item-info-value {
   overflow: hidden;
-  max-width: 400px;
+  max-width: 480px;
   color: white;
   font-weight: 500;
   font-size: 20px;

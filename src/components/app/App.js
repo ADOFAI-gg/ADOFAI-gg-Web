@@ -20,36 +20,34 @@ const App = () => {
   return (
     <Router>
       <AppContainer>
-        <div className='container'>
-          <Navbar />
+        <Navbar />
 
-          {/* MAIN */}
-          <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
-            <PageTracking />
+        {/* MAIN */}
+        <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
+          <PageTracking />
 
-            <Suspense fallback={<div></div>}>
-              <Switch>
-                <Route exact path='/' component={MainPage} />
-                <Route exact path='/levels' component={LevelListPage} />
-                <Route exact path='/levels/:id' component={LevelPage} />
-                <Route exact path='/mods' component={ModListPage} />
-                <Route exact path='/mods/:id' component={ModPage} />
-                <Route exact path='/ranks' component={RankingPage} />
+          <Suspense fallback={<div></div>}>
+            <Switch>
+              <Route exact path='/' component={MainPage} />
+              <Route exact path='/levels' component={LevelListPage} />
+              <Route exact path='/levels/:id' component={LevelPage} />
+              <Route exact path='/mods' component={ModListPage} />
+              <Route exact path='/mods/:id' component={ModPage} />
+              <Route exact path='/ranks' component={RankingPage} />
 
-                <Route>
-                  {/* XXX to component */}
-                  <main>
-                    <br />
-                    <h2>Oops! This page does not exist.</h2>
-                  </main>
-                </Route>
-              </Switch>
-            </Suspense>
-          </SkeletonTheme>
+              <Route>
+                {/* XXX to component */}
+                <main>
+                  <br />
+                  <h2>Oops! This page does not exist.</h2>
+                </main>
+              </Route>
+            </Switch>
+          </Suspense>
+        </SkeletonTheme>
 
-          {/* FOOTER */}
-          <Footer />
-        </div>
+        {/* FOOTER */}
+        <Footer />
       </AppContainer>
     </Router>
   );

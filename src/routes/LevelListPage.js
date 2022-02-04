@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import axios from 'axios';
+import { get } from '../utils/http';
 // import { useLocation } from "react-router-dom";
 
 // Components
@@ -137,10 +137,7 @@ const LevelListPage = ({ history }) => {
         dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
 
         const params = fetchParams(0);
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
-          { params }
-        );
+        const response = await get(`/levels`, params);
 
         dispatch({ type: 'FETCH_RESULT', items: response.data.results });
         dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
@@ -178,10 +175,7 @@ const LevelListPage = ({ history }) => {
       dispatch({ type: 'FETCH_ERROR', error: null });
 
       const params = fetchParams(state.items.length);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/api/v1/levels`,
-        { params }
-      );
+      const response = await get(`/levels`, params);
 
       dispatch({
         type: 'FETCH_RESULT',
@@ -229,11 +223,12 @@ const LevelListPage = ({ history }) => {
         onSearch={(value) =>
           dispatch({ type: 'SEARCH_TERM', searchTerm: value })
         }
+        disabled={state.isError}
         filterContent={
           <>
             <div style={{ display: 'flex' }}>
-              <SearchContentItem title='Chart Related'>
-                {[20, 13, 15, 14, 8, 5, 3, 6].map((id) => {
+              <SearchContentItem title='Chart/Effect Related'>
+                {[13, 15, 14, 8, 22, 5, 3, 6].map((id) => {
                   return (
                     <SearchContentCheckbox
                       onSelect={(value) => {
@@ -248,7 +243,7 @@ const LevelListPage = ({ history }) => {
               </SearchContentItem>
 
               <SearchContentItem title='Rhythm Related'>
-                {[2, 19, 9, 18, 16, 21, 12, 10, 7, 17].map((id) => {
+                {[2, 19, 9, 18, 16, 21, 12, 10, 23, 17, 24].map((id) => {
                   return (
                     <SearchContentCheckbox
                       onSelect={(value) => {
@@ -376,7 +371,7 @@ const LevelListPage = ({ history }) => {
       />
       <div className='mod-list'>
         {!state.items ? null : state.isError ? (
-          <h2>{state.error}</h2>
+          <h2 style={{ margin: '10px' }}>Oops! An error occurred.</h2>
         ) : (
           <InfiniteScroll
             dataLength={state.items.length}
