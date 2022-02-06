@@ -7,8 +7,7 @@
   margin-bottom: 8px;
 }
 
-.level-item-info-container-normal,
-.level-item-info-container-hover {
+.level-item-info-container {
   position: absolute;
   display: flex;
   gap: 10px;
@@ -21,20 +20,12 @@
   transition-duration: 0.3s;
 }
 
-.level-item-info-animation-enter {
-  opacity: 0;
+.level-item-info-container:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.level-item-info-animation-enter-active {
-  opacity: 1;
-}
-
-.level-item-info-animation-exit {
-  opacity: 1;
-}
-
-.level-item-info-animation-exit-active {
-  opacity: 0;
+.level-item-info-container.level-item-info-ew:hover {
+  background-color: rgba(102, 22, 0, 0.4);
 }
 
 .level-item-info-difficulty {

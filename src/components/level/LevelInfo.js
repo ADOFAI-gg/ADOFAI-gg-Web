@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 
 // Components
 import LevelTags from './LevelTags';
 
 const LevelInfo = ({ levelData }) => {
-  const [isOpned, setIsOpned] = useState(false);
-
   const {
     id,
     title,
     difficulty,
     creators,
     // songId,
-    song,
     artists,
     minBpm,
     maxBpm,
-    tiles,
     tags,
     epilepsyWarning
   } = levelData;
@@ -35,113 +30,73 @@ const LevelInfo = ({ levelData }) => {
 
   return (
     <Link to={'/levels/' + id}>
-      <article
-        className='level-item-info'
-        onMouseLeave={(event) => {
-          event.preventDefault();
-          setIsOpned(false);
-        }}
-        onMouseEnter={(event) => {
-          event.preventDefault();
-          setIsOpned(true);
-        }}
-      >
-        <CSSTransition
-          in={!isOpned}
-          unmountOnExit
-          timeout={500}
-          classNames='level-item-info-animation'
+      <article className='level-item-info'>
+        <div
+          className={`level-item-info-container ${
+            epilepsyWarning ? 'level-item-info-ew' : ''
+          }`}
         >
-          <div className='level-item-info-container-normal'>
-            <LevelDifficulty />
+          <LevelDifficulty />
 
-            <div className='level-item-info-section' style={{ width: '480px' }}>
-              <div
-                className={`level-item-info-label ${
-                  epilepsyWarning && 'level-item-info-label-ew'
-                }`}
-              >
-                Level<span className='level-item-info-id'>{id}</span>
-              </div>
-              <div className='level-item-info-value notranslate'>{title}</div>
-            </div>
-
-            <div className='level-item-info-section' style={{ width: '300px' }}>
-              <div className='level-item-info-label'>Creator</div>
-              <div className='level-item-info-value notranslate'>
-                {creators.join(' & ')}
-              </div>
-            </div>
-
+          <div className='level-item-info-section' style={{ width: '360px' }}>
             <div
-              className='level-item-info-section level-item-info-section-center'
-              style={{ width: '110px' }}
+              className={`level-item-info-label ${
+                epilepsyWarning && 'level-item-info-label-ew'
+              }`}
             >
-              <div className='level-item-info-label'>BPM</div>
-              <div className='level-item-info-value notranslate'>
-                {minBpm === maxBpm
-                  ? minBpm
-                  : minBpm.toString() + '-' + maxBpm.toString()}
-              </div>
+              Level<span className='level-item-info-id'>{id}</span>
             </div>
+            <div className='level-item-info-value notranslate'>{title}</div>
+          </div>
 
-            <div
-              className='level-item-info-section level-item-info-section-center'
-              style={{ width: '110px' }}
-            >
-              <div className='level-item-info-label'>Tiles</div>
-              <div className='level-item-info-value notranslate'>{tiles}</div>
+          <div className='level-item-info-section' style={{ width: '180px' }}>
+            <div className='level-item-info-label'>Creator</div>
+            <div className='level-item-info-value notranslate'>
+              {creators.join(' & ')}
             </div>
           </div>
-        </CSSTransition>
 
-        <CSSTransition
-          in={isOpned}
-          unmountOnExit
-          timeout={500}
-          classNames='level-item-info-animation'
-        >
+          <div className='level-item-info-section' style={{ width: '180px' }}>
+            <div className='level-item-info-label'>Artist</div>
+            <div className='level-item-info-value notranslate'>
+              {artists.join(' & ')}
+            </div>
+          </div>
+
           <div
-            className='level-item-info-container-hover'
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
+            className='level-item-info-section level-item-info-section-center'
+            style={{ width: '110px' }}
           >
-            <LevelDifficulty />
-
-            <div className='level-item-info-section' style={{ width: '480px' }}>
-              <div className='level-item-info-label'>Song</div>
-              <div className='level-item-info-value notranslate'>{song}</div>
-            </div>
-
-            <div className='level-item-info-section' style={{ width: '300px' }}>
-              <div className='level-item-info-label'>Artist</div>
-              <div className='level-item-info-value notranslate'>
-                {artists.join(' & ')}
-              </div>
-            </div>
-
-            <div className='level-item-info-section' style={{ width: '230px' }}>
-              <div className='level-item-info-label'>Tags</div>
-              <div className='level-item-info-value'>
-                {tags.length !== 0
-                  ? tags.map((tag, index) => (
-                      <LevelTags
-                        tag={tag.id}
-                        id={id}
-                        key={index}
-                        styleClass='main-tag'
-                      />
-                    ))
-                  : tags.length === 0 && (
-                      <img
-                        className='main-tag'
-                        src={'/tag/empty.svg'}
-                        alt='No Tags'
-                      />
-                    )}
-              </div>
+            <div className='level-item-info-label'>BPM</div>
+            <div className='level-item-info-value notranslate'>
+              {minBpm === maxBpm
+                ? minBpm
+                : minBpm.toString() + '-' + maxBpm.toString()}
             </div>
           </div>
-        </CSSTransition>
+
+          <div className='level-item-info-section' style={{ width: '150px' }}>
+            <div className='level-item-info-label'>Tags</div>
+            <div className='level-item-info-value'>
+              {tags.length !== 0
+                ? tags.map((tag, index) => (
+                    <LevelTags
+                      tag={tag.id}
+                      id={id}
+                      key={index}
+                      styleClass='main-tag'
+                    />
+                  ))
+                : tags.length === 0 && (
+                    <img
+                      className='main-tag'
+                      src={'/tag/empty.svg'}
+                      alt='No Tags'
+                    />
+                  )}
+            </div>
+          </div>
+        </div>
       </article>
     </Link>
   );
