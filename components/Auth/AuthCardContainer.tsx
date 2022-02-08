@@ -26,7 +26,7 @@ const AuthCardContainer: React.FC = ({ children }) => {
       style={{
         height: 'fit-content',
         margin: 'auto',
-        maxWidth: 520,
+        maxWidth: 640,
         width: '100%'
       }}
     >
