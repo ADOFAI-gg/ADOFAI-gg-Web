@@ -5,7 +5,7 @@ const Container = styled.div`
   padding: 64px;
   background: rgba(0, 2, 15, 0.2);
   border-radius: 16px;
-  width: fit-content;
+  width: 100%;
 `;
 
 const StyledLink = styled.a`
@@ -23,7 +23,12 @@ const StyledLink = styled.a`
 const AuthCardContainer: React.FC = ({ children }) => {
   return (
     <div
-      style={{ width: 'fit-content', height: 'fit-content', margin: 'auto' }}
+      style={{
+        height: 'fit-content',
+        margin: 'auto',
+        maxWidth: 520,
+        width: '100%'
+      }}
     >
       <Container>{children}</Container>
       <div

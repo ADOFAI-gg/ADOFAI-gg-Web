@@ -33,7 +33,7 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const routesToHideFooter = ['/login'];
+const routesToHideFooter = ['/login', '/signup'];
 
 const Layout: React.FC = ({ children }) => {
   useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
