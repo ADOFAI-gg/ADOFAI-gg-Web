@@ -5,7 +5,6 @@ import Container from '@components/Auth/AuthCardContainer';
 import {
   AuthButton,
   AuthCheckbox,
-  AuthCheckboxContent,
   AuthInput,
   AuthLink
 } from '@components/Auth/FormFields';
@@ -28,13 +27,7 @@ const Login: NextPage = () => {
           marginTop: 11
         }}
       >
-        <AuthCheckbox style={{ display: 'flex' }}>
-          <input type='checkbox' />
-          <AuthCheckboxContent>
-            <div />
-            <span>Stay logged in</span>
-          </AuthCheckboxContent>
-        </AuthCheckbox>
+        <AuthCheckbox style={{ opacity: 0.4 }} label='Stay logged in' />
         <AuthLink>Forgot your password?</AuthLink>
       </div>
       <AuthButton style={{ marginTop: 16 }}>Sign in</AuthButton>
@@ -48,7 +41,7 @@ const Login: NextPage = () => {
         }}
       >
         New to ADOFAI.GG?{' '}
-        <Link href='/signup' passHref>
+        <Link href={'/signup'} passHref>
           <AuthLink
             style={{
               color: 'rgba(255,255,255,0.8)',
