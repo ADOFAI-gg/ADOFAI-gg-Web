@@ -157,12 +157,16 @@ const LabelledSelectContainer = styled.div`
     padding-top: 0;
     padding-bottom: 0;
   }
+  .select {
+    color: #000;
+  }
 `;
 
 export const LabelledSelect: React.FC<{
   label: string;
   error?: React.ReactNode;
-}> = ({ label, error }) => {
+  options: object[];
+}> = ({ label, error, options }) => {
   return (
     <LabelledSelectContainer>
       <div
@@ -179,8 +183,10 @@ export const LabelledSelect: React.FC<{
             marginTop: 8,
             paddingRight: 2
           }}
+          className='select'
         >
           <Select
+            options={options}
             styles={{
               control: () => ({
                 background: 'transparent',
@@ -198,6 +204,10 @@ export const LabelledSelect: React.FC<{
                 color: 'rgba(255, 255, 255, 0.6)'
               }),
               input: (styles) => ({
+                ...styles,
+                color: '#fff'
+              }),
+              singleValue: (styles) => ({
                 ...styles,
                 color: '#fff'
               })

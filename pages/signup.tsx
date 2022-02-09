@@ -7,6 +7,7 @@ import {
   LabelledInputField,
   LabelledSelect
 } from '@components/Auth/FormFields';
+import country from 'country-list-js';
 
 const Login: NextPage = () => {
   return (
@@ -41,7 +42,14 @@ const Login: NextPage = () => {
         inputProps={{ placeholder: 'Confirm your password', type: 'password' }}
         error="Password doesn't match"
       />
-      <LabelledSelect label='Country' error='Please select your country' />
+      <LabelledSelect
+        options={Object.entries(country.all).map(([k, v]) => ({
+          value: k,
+          label: v.name
+        }))}
+        label='Country'
+        error='Please select your country'
+      />
       <div style={{ marginTop: 24 }}>
         <div style={{ fontSize: 16 }}>Terms</div>
         <div
