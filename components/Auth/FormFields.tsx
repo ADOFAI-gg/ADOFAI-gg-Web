@@ -5,33 +5,45 @@ import hidePW from '@assets/icons/hidePassword.svg';
 import Select, { IndicatorsContainerProps } from 'react-select';
 
 export const AuthCheckbox: React.FC<
-  { label: React.ReactNode } & React.LabelHTMLAttributes<HTMLLabelElement>
-> = ({ label, ...props }) => {
+  {
+    label: React.ReactNode;
+    inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+    error?: string;
+  } & React.LabelHTMLAttributes<HTMLLabelElement>
+> = ({ label, inputProps, error, ...props }) => {
   return (
-    <AuthCheckboxContainer {...props}>
-      <input type='checkbox' />
-      <AuthCheckboxContent>
-        <div>
-          <span>
-            <svg
-              width='9'
-              height='8'
-              viewBox='0 0 9 8'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                d='M1 3.32943L3.43711 6L8 1'
-                stroke='white'
-                strokeWidth='1.5'
-                strokeLinecap='round'
-              />
-            </svg>
-          </span>
+    <div>
+      <AuthCheckboxContainer {...props}>
+        <input type='checkbox' {...inputProps} />
+        <AuthCheckboxContent>
+          <div>
+            <span>
+              <svg
+                width='9'
+                height='8'
+                viewBox='0 0 9 8'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M1 3.32943L3.43711 6L8 1'
+                  stroke='white'
+                  strokeWidth='1.5'
+                  strokeLinecap='round'
+                />
+              </svg>
+            </span>
+          </div>
+          <span style={{ fontSize: 14 }}>{label}</span>
+        </AuthCheckboxContent>
+      </AuthCheckboxContainer>
+      {error && (
+        <div style={{ marginTop: 8, display: 'flex', alignItems: 'center' }}>
+          <ErrorDot />
+          <span style={{ color: '#F54F51', fontSize: 14 }}>{error}</span>
         </div>
-        <span style={{ fontSize: 14 }}>{label}</span>
-      </AuthCheckboxContent>
-    </AuthCheckboxContainer>
+      )}
+    </div>
   );
 };
 
@@ -106,9 +118,15 @@ export const AuthButton = styled.div`
   height: 30px;
   cursor: pointer;
   transition: background-color ease 0.2s;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
   }
 `;
 
@@ -165,8 +183,10 @@ const LabelledSelectContainer = styled.div`
 export const LabelledSelect: React.FC<{
   label: string;
   error?: React.ReactNode;
-  options: object[];
-}> = ({ label, error, options }) => {
+  options: { label: string; value: string }[];
+  onChange?: (value: string | null) => void;
+  value?: string;
+}> = ({ label, error, options, value, onChange }) => {
   return (
     <LabelledSelectContainer>
       <div
@@ -186,6 +206,16 @@ export const LabelledSelect: React.FC<{
           className='select'
         >
           <Select
+            value={
+              value
+                ? options.find((x) => x.value === value) || undefined
+                : undefined
+            }
+            onChange={
+              ((option: { value: string } | null) => {
+                onChange?.(option?.value ?? null);
+              }) as () => void
+            }
             options={options}
             styles={{
               control: () => ({
