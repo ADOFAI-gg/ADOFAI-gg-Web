@@ -152,12 +152,19 @@ const CustomIndicatorsContainer: React.FC<IndicatorsContainerProps> = () => {
   );
 };
 
+const LabelledSelectContainer = styled.div`
+  div[data-value] {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+`;
+
 export const LabelledSelect: React.FC<{
   label: string;
   error?: React.ReactNode;
 }> = ({ label, error }) => {
   return (
-    <div>
+    <LabelledSelectContainer>
       <div
         style={{
           marginTop: 24,
@@ -201,7 +208,7 @@ export const LabelledSelect: React.FC<{
           <span style={{ color: '#F54F51', fontSize: 14 }}>{error}</span>
         </div>
       )}
-    </div>
+    </LabelledSelectContainer>
   );
 };
 
