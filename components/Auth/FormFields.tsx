@@ -196,6 +196,10 @@ export const LabelledSelect: React.FC<{
               placeholder: (styles) => ({
                 ...styles,
                 color: 'rgba(255, 255, 255, 0.6)'
+              }),
+              input: (styles) => ({
+                ...styles,
+                color: '#fff'
               })
             }}
             components={{ IndicatorsContainer: CustomIndicatorsContainer }}
