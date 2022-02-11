@@ -16,11 +16,32 @@ const Container = styled.div`
   padding-top: 40px;
 `;
 
-const PlayItemContainer = styled.div`
+const PlayItemBackgroundContainer = styled.div`
   width: 100%;
   padding-bottom: 56.25%;
   position: relative;
   transition: transform 0.2s ease;
+`;
+
+const PlayItemContainer = styled.div`
+  flex-grow: 1;
+  display: 'flex';
+  flex-direction: 'column';
+  width: 0;
+  transition: background-color 0.2s ease;
+  border-radius: 12px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  & > div {
+    transition: transform 0.2s ease;
+  }}
+
+  &:hover > div {
+    transform: scale(0.95);
+  }
 `;
 
 const PlayItemBackground = styled.a<{ background?: string }>`
@@ -97,86 +118,84 @@ const PlayItem: React.FC<{ play: Play }> = ({ play }) => {
   );
 
   return (
-    <div
-      style={{
-        flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        width: 0
-      }}
-    >
-      <PlayItemContainer>
-        <PlayItemBackground
-          rel='noreferrer'
-          target='_blank'
-          href={play.url}
-          background={youtubeId}
-        />
-      </PlayItemContainer>
-      <div
-        style={{
-          marginTop: 15,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 5,
-          alignItems: 'center'
-        }}
-      >
-        <PlayTitle>{play.player.name}</PlayTitle>
-        <NextLink href='/levels/[id]' as={`/levels/${level?.id}`} passHref>
-          <PlayLevelInfo>
-            <div>
-              <Image
-                alt=''
-                src={require(`@assets/difficultyIcons/${level?.difficulty}.svg`)}
-                width={24}
-                height={24}
-              />
-            </div>
-            <div
-              style={{
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              {level?.artists.join(' & ')} - {level?.title}
-            </div>
-          </PlayLevelInfo>
-        </NextLink>
-        <PlayLevelDetails>
-          <PlayLevelDetail>
-            <Image src={AccuracyIcon} width={16} height={16} alt='Accuracy' />
-            <PlayLevelDetailLabel>
-              {play.rawAccuracy.toFixed(2)}%
-            </PlayLevelDetailLabel>
-          </PlayLevelDetail>
-          <PlayLevelDetail>
-            <Image src={SpeedIcon} width={16} height={12.92} alt='Speed' />
-            <PlayLevelDetailLabel>
-              {(play.speed / 100).toFixed(1)}X
-            </PlayLevelDetailLabel>
-          </PlayLevelDetail>
-          <PlayLevelDetail>
-            <Image src={PPIcon} width={10.67} height={16} alt='PP' />
-            <PlayLevelDetailLabel>
-              {play.playPoint.toFixed(0)} PP
-            </PlayLevelDetailLabel>
-          </PlayLevelDetail>
-        </PlayLevelDetails>
+    <PlayItemContainer>
+      <div>
+        <PlayItemBackgroundContainer>
+          <PlayItemBackground
+            rel='noreferrer'
+            target='_blank'
+            href={play.url}
+            background={youtubeId}
+          />
+        </PlayItemBackgroundContainer>
+        <div
+          style={{
+            marginTop: 15,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 5,
+            alignItems: 'center'
+          }}
+        >
+          <PlayTitle>{play.player.name}</PlayTitle>
+          <NextLink href='/levels/[id]' as={`/levels/${level?.id}`} passHref>
+            <PlayLevelInfo>
+              <div>
+                <Image
+                  alt=''
+                  src={require(`@assets/difficultyIcons/${level?.difficulty}.svg`)}
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <div
+                style={{
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {level?.artists.join(' & ')} - {level?.title}
+              </div>
+            </PlayLevelInfo>
+          </NextLink>
+
+          <PlayLevelDetails>
+            <PlayLevelDetail>
+              <Image src={AccuracyIcon} width={16} height={16} alt='Accuracy' />
+              <PlayLevelDetailLabel>
+                {play.rawAccuracy.toFixed(2)}%
+              </PlayLevelDetailLabel>
+            </PlayLevelDetail>
+
+            <PlayLevelDetail>
+              <Image src={SpeedIcon} width={16} height={12.92} alt='Speed' />
+              <PlayLevelDetailLabel>
+                {(play.speed / 100).toFixed(1)}X
+              </PlayLevelDetailLabel>
+            </PlayLevelDetail>
+
+            <PlayLevelDetail>
+              <Image src={PPIcon} width={10.67} height={16} alt='PP' />
+              <PlayLevelDetailLabel>
+                {play.playPoint.toFixed(0)} PP
+              </PlayLevelDetailLabel>
+            </PlayLevelDetail>
+          </PlayLevelDetails>
+        </div>
       </div>
-    </div>
+    </PlayItemContainer>
   );
 };
 
 const PlaySkeleton: React.FC = () => {
   return (
     <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-      <PlayItemContainer>
+      <PlayItemBackgroundContainer>
         <PlayItemBackground>
           <Skeleton width='100%' height='100%' />
         </PlayItemBackground>
-      </PlayItemContainer>
+      </PlayItemBackgroundContainer>
       <div
         style={{
           marginTop: 15,
