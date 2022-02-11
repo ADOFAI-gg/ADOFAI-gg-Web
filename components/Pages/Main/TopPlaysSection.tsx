@@ -33,15 +33,15 @@ const PlayItemContainer = styled.div`
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.2);
+
+    & > div {
+      transform: scale(0.95);
+    }
   }
 
   & > div {
     transition: transform 0.2s ease;
   }}
-
-  &:hover > div {
-    transform: scale(0.95);
-  }
 `;
 
 const PlayItemBackground = styled.a<{ background?: string }>`
