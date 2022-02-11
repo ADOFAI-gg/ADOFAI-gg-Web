@@ -25,7 +25,27 @@ const Description = styled.div`
   }
 
   & > a {
+    position: relative;
     color: #ffe76e;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1.5px;
+      bottom: 0;
+      left: 0;
+      background-color: #ffe76e;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   }
 `;
 
