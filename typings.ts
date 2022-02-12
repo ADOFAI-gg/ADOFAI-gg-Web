@@ -34,6 +34,8 @@ export type Level = {
   likes: number;
   tags: Tag[];
   difficulty: number;
+  download: string;
+  workshop: string | null;
 };
 
 export interface ApiListResult<T> {

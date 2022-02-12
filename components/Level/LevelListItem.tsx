@@ -5,6 +5,7 @@ import { Level } from '../../typings';
 import Image from 'next/image';
 import millify from 'millify';
 import EmptyIcon from '@assets/tagIcons/empty.svg';
+import DownloadIcon from '@assets/icons/downloadLevel.svg';
 import NextLink from 'next/link';
 
 type DetailAlign = 'left' | 'center';
@@ -54,9 +55,10 @@ const DetailItemValue = styled.div`
   overflow: hidden;
 `;
 
-const Container = styled.a`
+const Container = styled.div`
   height: 72px;
   position: relative;
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 12px 16px;
@@ -175,7 +177,8 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
             />
             <LevelListItemDetail
               style={{
-                paddingLeft: 24
+                paddingLeft: 24,
+                width: 'calc(38% - 124px)'
               }}
               label={t('tags')}
               value={
@@ -202,6 +205,17 @@ const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
                 </div>
               }
             />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <a
+                href={level.download}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(level.download);
+                }}
+              >
+                <Image src={DownloadIcon} alt='' width={48} height={48} />
+              </a>
+            </div>
           </DetailsContainerHovered>
         </div>
       </Container>
