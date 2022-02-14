@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const config = {
   reactStrictMode: true,
   i18n: {
     defaultLocale: 'en',
@@ -10,3 +10,15 @@ module.exports = {
     styledComponents: true
   }
 };
+
+const withPWA = require('next-pwa');
+
+module.exports =
+  process.env.NODE_ENV === 'development'
+    ? config
+    : withPWA({
+        ...config,
+        pwa: {
+          dest: 'public'
+        }
+      });

@@ -38,6 +38,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta name='icon' content='/favicon.ico' />
+          <link rel='manifest' href='/manifest.json' />
         </Head>
         <body>
           <Main />
