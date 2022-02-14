@@ -6,7 +6,7 @@ const config = {
     locales: ['en', 'ko'],
     localeDetection: false
   },
-  experimental: {
+  compiler: {
     styledComponents: true
   }
 };
