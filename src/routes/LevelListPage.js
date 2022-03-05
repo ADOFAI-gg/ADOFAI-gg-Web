@@ -282,8 +282,8 @@ const LevelListPage = ({ history }) => {
                 })}
               </SearchContentItem>
 
-              <SearchContentItem title='Length'>
-                {[11].map((id) => {
+              <SearchContentItem title='Music Tags'>
+                {[11, 4].map((id) => {
                   return (
                     <SearchContentCheckbox
                       onSelect={(target, btnState) => {

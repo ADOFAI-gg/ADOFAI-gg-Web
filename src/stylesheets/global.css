@@ -186,6 +186,10 @@ h3 {
   font-size: 20px;
 }
 
+h4 {
+  font-weight: 500;
+}
+
 input:focus {
   outline: none;
 }
@@ -605,7 +609,7 @@ nav {
 .list-search-content-toggle label img {
   opacity: 0.5;
   transition: 0.2s ease;
-  transition-property: filter, opacity;
+  transition-property: opacity;
 }
 
 .list-search-content-toggle-button:checked + label img {
@@ -629,7 +633,7 @@ nav {
 .list-search-content-toggle-button-indicator {
   position: absolute;
   right: -4px;
-  bottom: -3px;
+  bottom: -4.5px;
   width: 12px;
   height: 12px !important;
   margin-right: 8px;
