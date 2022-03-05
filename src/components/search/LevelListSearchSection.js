@@ -50,7 +50,7 @@ const SearchSection = ({
               onClick={onClickFilterButton}
               style={
                 showFilter
-                  ? { backgroundColor: 'rgb(255 255 255 / 50%)' }
+                  ? { backgroundColor: 'rgb(255 255 255 / 40%)' }
                   : null
               }
             >

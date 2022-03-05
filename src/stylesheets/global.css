@@ -574,7 +574,7 @@ nav {
   padding-left: 10px;
   border-style: none;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   color: white;
   font-weight: 300;
   font-size: 15px;
@@ -645,7 +645,7 @@ nav {
   padding-right: 6px;
   padding-left: 6px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.2s ease;
 }
 
