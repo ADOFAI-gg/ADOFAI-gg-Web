@@ -186,7 +186,7 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
               input.indeterminate = btnState === 'exclude';
             }
           }}
-          className='list-search-content-toggle-button'
+          className='list-search-content-toggle-button level-list-filter-tag'
         />
         <label htmlFor={tooltip}>
           <img
