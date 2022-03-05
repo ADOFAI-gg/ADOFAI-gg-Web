@@ -1,14 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
-  <defs>
-    <clipPath id="clip-_12">
-      <rect width="64" height="64"/>
-    </clipPath>
-  </defs>
-  <g id="_12" data-name="12" clip-path="url(#clip-_12)">
-    <g id="타원_1" data-name="타원 1" fill="none" stroke="#fff" stroke-width="4">
-      <circle cx="32" cy="32" r="32" stroke="none"/>
-      <circle cx="32" cy="32" r="30" fill="none"/>
-    </g>
-    <path id="패스_48" data-name="패스 48" d="M22388.781,2721.217h11.588l8.613,15.622,3.793-39.466,4.719,23.844,10.357-9.637,9.953,22.161,5.324-12.524h5.332" transform="translate(-22386.973 -2688.897)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
-  </g>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1674_10117)">
+<path d="M32 62C48.5685 62 62 48.5685 62 32C62 15.4315 48.5685 2 32 2C15.4315 2 2 15.4315 2 32C2 48.5685 15.4315 62 32 62Z" stroke="white" stroke-width="4"/>
+<path d="M1.80835 32.3201H13.3962L22.0095 47.9421L25.8025 8.47607L30.5212 32.3201L40.8787 22.6831L50.8318 44.844L56.156 32.3201H61.488" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1674_10117">
+<rect width="64" height="64" fill="white"/>
+</clipPath>
+</defs>
 </svg>

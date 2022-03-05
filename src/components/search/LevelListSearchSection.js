@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFilter,
@@ -19,8 +19,8 @@ const SearchSection = ({
   sortContent,
   disabled
 }) => {
-  const [showFilter, setShowFilter] = React.useState(false);
-  const [showSort, setShowSort] = React.useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSort, setShowSort] = useState(false);
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
@@ -157,6 +157,8 @@ const SearchContentItem = ({ title, children, isLv }) => {
 };
 
 const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
+  const [btnState, setBtnState] = useState('unchecked');
+
   return (
     <>
       <div
@@ -168,7 +170,21 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
           type='checkbox'
           id={tooltip}
           onChange={(event) => {
-            onSelect(event.target.id);
+            onSelect(event.target, btnState);
+
+            if (btnState === 'unchecked') {
+              setBtnState('include');
+            } else if (btnState === 'include') {
+              setBtnState('exclude');
+            } else {
+              setBtnState('unchecked');
+            }
+          }}
+          ref={(input) => {
+            if (input) {
+              input.checked = btnState === 'include';
+              input.indeterminate = btnState === 'exclude';
+            }
           }}
           className='list-search-content-toggle-button'
         />
@@ -176,8 +192,18 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
           <img
             src={`/${img}`}
             alt={tooltip}
-            style={{ width: '28px', marginRight: '8px' }}
+            style={{
+              width: '28px',
+              marginRight: '8px'
+            }}
           />
+          {btnState !== 'unchecked' && (
+            <img
+              src={`/tag/${btnState}.svg`}
+              alt=''
+              className='list-search-content-toggle-button-indicator'
+            />
+          )}
         </label>
       </div>
 

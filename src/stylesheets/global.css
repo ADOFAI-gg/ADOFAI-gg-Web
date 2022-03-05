@@ -592,17 +592,47 @@ nav {
   cursor: pointer;
 }
 
+.list-search-content-toggle > label {
+  position: relative;
+  display: inline-block;
+  height: 28px;
+}
+
 .list-search-content-toggle-button {
   display: none;
 }
 
-.list-search-content-toggle label {
+.list-search-content-toggle label img {
   opacity: 0.5;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
+  transition-property: filter, opacity;
 }
 
-.list-search-content-toggle-button:checked + label {
+.list-search-content-toggle-button:checked + label img {
   opacity: 1;
+}
+
+.list-search-content-toggle-button:indeterminate + label img {
+  opacity: 1;
+  filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%);
+}
+
+:is(
+.list-search-content-toggle-button:checked,
+.list-search-content-toggle-button:indeterminate
+) + label > img:not(.list-search-content-toggle-button-indicator) {
+  clip-path: path(
+    'M31.4566 20.1497C31.811 18.8263 32 17.4352 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32C17.4352 32 18.8263 31.811 20.1497 31.4566C18.8161 30.0274 18 28.109 18 26C18 21.5817 21.5817 18 26 18C28.109 18 30.0274 18.8161 31.4566 20.1497Z'
+  );
+}
+
+.list-search-content-toggle-button-indicator {
+  position: absolute;
+  right: -4px;
+  bottom: -3px;
+  width: 12px;
+  height: 12px !important;
+  margin-right: 8px;
 }
 
 .list-search-filter-button,
