@@ -13,8 +13,6 @@ import './stylesheets/level.css';
 import './stylesheets/levelList.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-require('dotenv').config();
-
 toast.configure();
 
 ReactDOM.render(

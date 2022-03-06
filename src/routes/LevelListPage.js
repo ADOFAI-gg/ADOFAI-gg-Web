@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { get } from '../utils/http';
 import { Virtuoso } from 'react-virtuoso';
-// import { useLocation } from "react-router-dom";
 
 // Components
 import {

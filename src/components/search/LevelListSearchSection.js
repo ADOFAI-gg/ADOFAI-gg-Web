@@ -7,9 +7,35 @@ import {
   faEraser
 } from '@fortawesome/free-solid-svg-icons';
 import ReactTooltip from 'react-tooltip';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import TagTooltip from '../level/TagTooltip';
+
+const SearchContentAnimator = ({ children, key }) => {
+  return (
+    <motion.div
+      key={key}
+      initial={{
+        height: 0,
+        marginTop: 0,
+        opacity: 0
+      }}
+      animate={{
+        height: 'auto',
+        marginTop: 10,
+        opacity: 1
+      }}
+      exit={{
+        height: 0,
+        marginTop: 0,
+        opacity: 0
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const SearchSection = ({
   placeholder,
@@ -87,11 +113,19 @@ const SearchSection = ({
       </section>
 
       {!disabled ? (
-        <>
-          <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
+        <AnimatePresence>
+          {showFilter && (
+            <SearchContentAnimator key='filter'>
+              <SearchFilter>{filterContent}</SearchFilter>
+            </SearchContentAnimator>
+          )}
 
-          <SearchSort show={showSort}>{sortContent}</SearchSort>
-        </>
+          {showSort && (
+            <SearchContentAnimator key='sort'>
+              <SearchSort>{sortContent}</SearchSort>
+            </SearchContentAnimator>
+          )}
+        </AnimatePresence>
       ) : null}
     </section>
   );
@@ -99,11 +133,7 @@ const SearchSection = ({
 
 const SearchFilter = ({ show, children }) => {
   return (
-    <section
-      className={`list-search-filter ${
-        show ? 'list-search-content-show' : 'list-search-content-hide'
-      }`}
-    >
+    <section className='list-search-filter'>
       <div className='list-search-content-title'>Filter</div>
       {children}
     </section>
@@ -112,11 +142,7 @@ const SearchFilter = ({ show, children }) => {
 
 const SearchSort = ({ show, children }) => {
   return (
-    <section
-      className={`list-search-sort ${
-        show ? 'list-search-content-show' : 'list-search-content-hide'
-      }`}
-    >
+    <section className='list-search-sort'>
       <div className='list-search-content-title'>Sort by</div>
       {children}
     </section>
