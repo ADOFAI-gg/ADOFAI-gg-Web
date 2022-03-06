@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { get } from '../utils/http';
+import { Virtuoso } from 'react-virtuoso';
 // import { useLocation } from "react-router-dom";
 
 // Components
@@ -398,16 +398,15 @@ const LevelListPage = ({ history }) => {
         {!state.items ? null : state.isError ? (
           <h2 style={{ margin: '10px' }}>Oops! An error occurred.</h2>
         ) : (
-          <InfiniteScroll
-            dataLength={state.items.length}
-            next={fetchMoreData}
-            hasMore={state.hasMore}
-            scrollThreshold={0.8}
-          >
-            {state.items.map((i, index) => (
-              <LevelInfo levelData={i} key={index} />
-            ))}
-          </InfiniteScroll>
+          <Virtuoso
+            useWindowScroll
+            data={state.items}
+            endReached={fetchMoreData}
+            style={{
+              gap: 12
+            }}
+            itemContent={(index, i) => <LevelInfo levelData={i} key={index} />}
+          />
         )}
       </div>
     </main>
