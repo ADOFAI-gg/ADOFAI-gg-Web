@@ -106,6 +106,21 @@ const LevelListPage = ({ history }) => {
     return params;
   };
 
+  const fetchData = async () => {
+    try {
+      dispatch({ type: 'FETCH_ERROR', error: null });
+      dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
+
+      const params = fetchParams(0);
+      const response = await get(`/levels`, params);
+
+      dispatch({ type: 'FETCH_RESULT', items: response.data.results });
+      dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
+    } catch (e) {
+      dispatch({ type: 'FETCH_ERROR', error: e });
+    }
+  };
+
   useEffect(() => {
     const setParamsFromState = () => {
       const locationState = history.location.state;
@@ -136,26 +151,24 @@ const LevelListPage = ({ history }) => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        dispatch({ type: 'FETCH_ERROR', error: null });
-        dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
-
-        const params = fetchParams(0);
-        const response = await get(`/levels`, params);
-
-        dispatch({ type: 'FETCH_RESULT', items: response.data.results });
-        dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
-      } catch (e) {
-        dispatch({ type: 'FETCH_ERROR', error: e });
-      }
-    };
-
     fetchData();
 
-    // disable warning because fetchParams method is intentionally not added
+    // disable warning because fetchData method is intentionally not added
     // eslint-disable-next-line
-  }, [state.searchTerm, state.sortBy, state.tag, state.filterInput]);
+  }, [state.sortBy, state.tag, state.filterInput]);
+
+  useEffect(() => {
+    console.log('term changed');
+
+    const delayDebounceFn = setTimeout(() => {
+      console.log('debounce');
+      fetchData();
+    }, 100);
+
+    return () => clearTimeout(delayDebounceFn);
+    // disable warning because fetchData method is intentionally not added
+    // eslint-disable-next-line
+  }, [state.searchTerm]);
 
   // useEffect(() => {
   //   history.push({
@@ -313,7 +326,6 @@ const LevelListPage = ({ history }) => {
           dispatch({ type: 'SEARCH_TERM', searchTerm: value })
         }
         disabled={state.isError}
-        dissabled={false}
         filterContent={
           <>
             <div style={{ display: 'flex' }}>
