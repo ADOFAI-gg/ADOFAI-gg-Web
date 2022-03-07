@@ -3,10 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFilter,
   faSortAmountDown,
-  faQuestionCircle,
   faEraser
 } from '@fortawesome/free-solid-svg-icons';
-import ReactTooltip from 'react-tooltip';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
@@ -115,13 +113,13 @@ const SearchSection = ({
       {!disabled ? (
         <AnimatePresence>
           {showFilter && (
-            <SearchContentAnimator key='filter'>
+            <SearchContentAnimator>
               <SearchFilter>{filterContent}</SearchFilter>
             </SearchContentAnimator>
           )}
 
           {showSort && (
-            <SearchContentAnimator key='sort'>
+            <SearchContentAnimator>
               <SearchSort>{sortContent}</SearchSort>
             </SearchContentAnimator>
           )}
@@ -154,30 +152,9 @@ const SearchContentItem = ({ title, children, isLv }) => {
     <div style={{ marginRight: '20px' }}>
       <div style={{ display: 'flex' }}>
         <h4 style={{ marginBottom: '5px', marginTop: '5px' }}>{title}</h4>
-        {isLv ? (
-          <>
-            <FontAwesomeIcon
-              data-tip
-              data-for='lvDescription'
-              icon={faQuestionCircle}
-              size='lg'
-              style={{ height: '16px', marginTop: '7px', marginLeft: '5px' }}
-            />
-
-            <ReactTooltip
-              id='lvDescription'
-              place='bottom'
-              type='dark'
-              effect='solid'
-            >
-              <span style={{ whiteSpace: 'pre-line' }}>
-                {'Add 0.5 instead of +\nex) 18+ -> 18.5'}
-              </span>
-            </ReactTooltip>
-          </>
-        ) : null}
       </div>
-      <div style={{ display: 'flex' }}>{children}</div>
+
+      <div style={{ display: 'flex', gap: 8 }}>{children}</div>
     </div>
   );
 };
@@ -219,8 +196,7 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
             src={`/${img}`}
             alt={tooltip}
             style={{
-              width: '28px',
-              marginRight: '8px'
+              width: '28px'
             }}
           />
           {btnState !== 'unchecked' && (
@@ -238,7 +214,7 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
   );
 };
 
-const SearchContentInput = ({ onInput, placeholder, isLast }) => {
+const SearchContentInput = ({ onInput, placeholder }) => {
   return (
     <input
       className='list-text-input'
@@ -247,9 +223,7 @@ const SearchContentInput = ({ onInput, placeholder, isLast }) => {
       onChange={(event) => {
         onInput(event.target.value);
       }}
-      style={
-        isLast ? { width: '100px', marginLeft: '5px' } : { width: '100px' }
-      }
+      style={{ width: 100 }}
     />
   );
 };

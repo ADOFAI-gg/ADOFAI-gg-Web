@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import { get } from '../utils/http';
 import { Virtuoso } from 'react-virtuoso';
+import Select from 'react-select';
+import difficulty from '../constants/difficulty';
 
 // Components
 import {
@@ -79,7 +81,7 @@ const LevelListPage = ({ history }) => {
     searchTerm: getQuery(),
     sortBy: 'RECENT_DESC',
     tag: Array.from({ length: 20 }, () => false),
-    filterInput: ['', '', '', '', '', '']
+    filterInput: [null, null, null, null, null, null]
   });
 
   const fetchParams = (offset) => {
@@ -237,6 +239,70 @@ const LevelListPage = ({ history }) => {
     return query;
   }
 
+  const dropdownStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: 'black',
+      backgroundColor: state.isDisabled ? '#ddd' : 'white',
+      opacity: state.isDisabled ? 0.5 : 1,
+      ':hover': {
+        backgroundColor: !state.isDisabled ? '#ddd' : '#ddd'
+      }
+    }),
+    menu: (provided) => ({
+      ...provided,
+      color: 'black',
+      colorScheme: 'white'
+    }),
+    control: (provided) => ({
+      ...provided,
+      fontSize: 15,
+      padding: 6,
+      paddingLeft: 10,
+      width: 120,
+      minHeight: 0,
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      border: 'none',
+      boxShadow: 'none'
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      margin: '0 6px',
+      backgroundColor: 'rgba(255, 255, 255, 0.4)'
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: 0
+    }),
+    input: (provided) => ({
+      ...provided,
+      padding: 0,
+      margin: 0,
+      color: 'white',
+      fontWeight: 300
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: 'white',
+      opacity: 0.7,
+      fontWeight: 300
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'white'
+    })
+  };
+
+  const dropdownProps = {
+    styles: dropdownStyles,
+    options: difficulty.filter((i) => !i.isHidden),
+    isSearchable: true,
+    isClearable: true,
+    closeMenuOnSelect: false,
+
+    classNamePrefix: 'list-dropdown'
+  };
+
   return (
     <main>
       <ScrollButton />
@@ -299,15 +365,38 @@ const LevelListPage = ({ history }) => {
 
             <div style={{ display: 'flex', marginTop: '10px' }}>
               <SearchContentItem title='Lv.' isLv>
-                <SearchContentInput
-                  onInput={(value) => numberChange(0, value)}
+                <Select
+                  {...dropdownProps}
                   placeholder='Min Lv.'
+                  onChange={(i) => numberChange(0, i ? i.value : null)}
+                  isOptionDisabled={(i) =>
+                    state.filterInput[1] && i.value > state.filterInput[1]
+                  }
+                  formatOptionLabel={(i) => (
+                    <div className='list-dropdown-option'>
+                      <img
+                        src={`/difficulty_icons/${i.value}.svg`}
+                        alt={`${i.label} icon`}
+                      />
+                    </div>
+                  )}
                 />
 
-                <SearchContentInput
-                  onInput={(value) => numberChange(1, value)}
+                <Select
+                  {...dropdownProps}
                   placeholder='Max Lv.'
-                  isLast
+                  onChange={(i) => numberChange(1, i ? i.value : null)}
+                  isOptionDisabled={(i) =>
+                    state.filterInput[0] && i.value < state.filterInput[0]
+                  }
+                  formatOptionLabel={(i) => (
+                    <div className='list-dropdown-option'>
+                      <img
+                        src={`/difficulty_icons/${i.value}.svg`}
+                        alt={`${i.label} icon`}
+                      />
+                    </div>
+                  )}
                 />
               </SearchContentItem>
 
@@ -320,7 +409,6 @@ const LevelListPage = ({ history }) => {
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
                   placeholder='Max BPM'
-                  isLast
                 />
               </SearchContentItem>
 
@@ -333,7 +421,6 @@ const LevelListPage = ({ history }) => {
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
                   placeholder='Max Tiles'
-                  isLast
                 />
               </SearchContentItem>
             </div>
