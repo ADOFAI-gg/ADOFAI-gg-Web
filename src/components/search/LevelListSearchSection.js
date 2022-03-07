@@ -111,19 +111,22 @@ const SearchSection = ({
       </section>
 
       {!disabled ? (
-        <AnimatePresence>
-          {showFilter && (
-            <SearchContentAnimator>
-              <SearchFilter>{filterContent}</SearchFilter>
-            </SearchContentAnimator>
-          )}
-
-          {showSort && (
-            <SearchContentAnimator>
-              <SearchSort>{sortContent}</SearchSort>
-            </SearchContentAnimator>
-          )}
-        </AnimatePresence>
+        <>
+          <AnimatePresence>
+            {showFilter && (
+              <SearchContentAnimator>
+                <SearchFilter>{filterContent}</SearchFilter>
+              </SearchContentAnimator>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {showSort && (
+              <SearchContentAnimator>
+                <SearchSort>{sortContent}</SearchSort>
+              </SearchContentAnimator>
+            )}
+          </AnimatePresence>
+        </>
       ) : null}
     </section>
   );
