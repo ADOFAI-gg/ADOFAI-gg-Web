@@ -667,9 +667,14 @@ const Levels: NextPage<{
           gap: 12
         }}
         itemContent={(i, item) => (
-          <div key={i} style={{ paddingTop: i === 0 ? 0 : 12 }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            key={i}
+            style={{ paddingTop: i === 0 ? 0 : 12 }}
+          >
             <LevelListItem level={item} />
-          </div>
+          </motion.div>
         )}
       />
     </div>
