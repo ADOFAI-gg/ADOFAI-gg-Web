@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useForm, UseFormReturn } from 'react-hook-form';
-import { motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { api } from '../../utils/api';
 import type { ApiListResult, Level, Tag } from '../../typings';
 import InputField from '@components/InputField';
@@ -459,17 +459,20 @@ const TabContentAnimator: React.FC<{ identifier: string }> = ({
   return (
     <motion.div
       key={identifier}
+      style={{ overflow: 'hidden' }}
       initial={{
         x: 10,
-        opacity: 0
+        opacity: 0,
+        height: 0
       }}
       animate={{
         x: 0,
-        opacity: 1
+        opacity: 1,
+        height: 'fit-content'
       }}
       exit={{
         opacity: 0,
-        x: 10
+        height: 0
       }}
     >
       {children}
@@ -637,21 +640,23 @@ const Levels: NextPage<{
             paddingBottom: 10
           }}
         >
-          {tab === SearchSettingTabType.TAGS && (
-            <TabContentAnimator identifier='tags'>
-              <TagsTab form={form} />
-            </TabContentAnimator>
-          )}
-          {tab === SearchSettingTabType.META && (
-            <TabContentAnimator identifier='meta'>
-              <MetaTab form={form} />
-            </TabContentAnimator>
-          )}
-          {tab === SearchSettingTabType.SORT && (
-            <TabContentAnimator identifier='sort'>
-              <SortTab form={form} />
-            </TabContentAnimator>
-          )}
+          <AnimatePresence exitBeforeEnter>
+            {tab === SearchSettingTabType.TAGS && (
+              <TabContentAnimator identifier='tags'>
+                <TagsTab form={form} />
+              </TabContentAnimator>
+            )}
+            {tab === SearchSettingTabType.META && (
+              <TabContentAnimator identifier='meta'>
+                <MetaTab form={form} />
+              </TabContentAnimator>
+            )}
+            {tab === SearchSettingTabType.SORT && (
+              <TabContentAnimator identifier='sort'>
+                <SortTab form={form} />
+              </TabContentAnimator>
+            )}
+          </AnimatePresence>
         </div>
       </form>
       <Virtuoso
