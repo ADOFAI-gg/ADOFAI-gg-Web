@@ -559,10 +559,10 @@ nav {
 /* SEARCH SECTION */
 
 .list-search-container {
-  width: 1080px;
+  width: 1100px;
   min-height: 32px;
   margin-top: 10px;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .list-search-section {

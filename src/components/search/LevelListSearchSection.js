@@ -89,7 +89,7 @@ const SearchSection = ({
               className='list-search-sort-button'
               onClick={onClickSortButton}
               style={
-                showSort ? { backgroundColor: 'rgb(255 255 255 / 50%)' } : null
+                showSort ? { backgroundColor: 'rgb(255 255 255 / 40%)' } : null
               }
             >
               <div className='tooltip-container'>
@@ -144,7 +144,7 @@ const SearchFilter = ({ show, children }) => {
 const SearchSort = ({ show, children }) => {
   return (
     <section className='list-search-sort'>
-      <div className='list-search-content-title'>Sort by</div>
+      <div className='list-search-content-title'>Sort</div>
       {children}
     </section>
   );
