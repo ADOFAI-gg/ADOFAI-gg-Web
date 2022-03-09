@@ -22,7 +22,7 @@ const LevelInfo = ({ levelData }) => {
     return (
       <img
         className='level-item-info-difficulty'
-        src={`difficulty_icons/${difficulty}.svg`}
+        src={`/difficulty_icons/${difficulty}.svg`}
         alt={`Lv. ${difficulty}`}
       />
     );
