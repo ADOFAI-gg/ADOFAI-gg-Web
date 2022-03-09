@@ -60,6 +60,7 @@ const MainPage = () => {
           </MenuItem>
         </>
       ),
+      heightAuto: false,
       customClass: {
         popup: 'main-user-menu',
         htmlContainer: 'main-user-menu-container',

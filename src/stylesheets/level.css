@@ -188,11 +188,16 @@
 }
 
 .level-info-swal-popup {
-  width: 900px;
+  width: 700px !important;
 }
 
-@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+.level-info-nsfwswal-container {
+  background-color: rgb(0, 0, 0) !important;
+}
+
+@supports (backdrop-filter: blur()) or (-webkit-backdrop-filter: blur()) {
   .level-info-nsfwswal-container {
+    background-color: rgb(0, 0, 0, 0.4) !important;
     -webkit-backdrop-filter: blur(30px) brightness(0.5);
     backdrop-filter: blur(30px) brightness(0.5);
   }
