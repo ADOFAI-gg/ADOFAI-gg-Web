@@ -75,7 +75,8 @@ const Error404Page = ({ history }) => {
 
         <TextContainer>
           <Title>Error 404</Title>
-          Page not found. Instead, we'll show you a great picture of the planet.
+          This page does not exist. Instead, we'll show you a great picture of
+          the planet.
           <Button onClick={handleBackButton}>Go Back</Button>
         </TextContainer>
       </ContentContainer>

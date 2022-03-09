@@ -39,20 +39,6 @@
   src: url('../fonts/Quicksand-Bold.ttf');
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-}
-
-/* Firefox */
-@supports (-moz-appearance: textfield) {
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-}
-
 :root {
   --nav-height: 56px;
   --nav-menu-size: 100px;
@@ -190,13 +176,32 @@ h4 {
   font-weight: 500;
 }
 
+::placeholder {
+  color: white;
+  opacity: 0.35;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+button,
+textarea {
+  font-family: var(--normal-font);
+}
+
 input:focus {
   outline: none;
 }
 
-::placeholder {
-  color: white;
-  opacity: 0.35;
+/* Firefox */
+@supports (-moz-appearance: textfield) {
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 }
 
 /* XXX logo of the navbar */
