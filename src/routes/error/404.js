@@ -71,6 +71,9 @@ const Error404Page = ({ history }) => {
         <Image
           src='/other_image/beautiful-planets.jpg'
           alt='very nice planets'
+          onDragStart={(event) => {
+            event.preventDefault();
+          }}
         />
 
         <TextContainer>
