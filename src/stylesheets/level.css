@@ -252,12 +252,14 @@
 .level-info-detail-info-description {
   display: -webkit-box;
   overflow: hidden;
+  width: 700px;
   max-width: 600px;
   height: 5em;
   margin-top: 5px;
   font-size: 28px !important;
   line-height: 1.25em;
   text-overflow: ellipsis;
+  white-space: nowrap;
   word-wrap: break-word;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -400,6 +402,6 @@
 }
 
 .level-info-leaderboard-item:hover
-  .level-info-leaderboard-item-detail-description {
+.level-info-leaderboard-item-detail-description {
   opacity: 1;
 }
