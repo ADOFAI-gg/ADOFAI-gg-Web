@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFilter,
   faSortAmountDown,
-  faQuestionCircle,
   faEraser
 } from '@fortawesome/free-solid-svg-icons';
-import ReactTooltip from 'react-tooltip';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import TagTooltip from '../level/TagTooltip';
+
+const SearchContentAnimator = ({ children, key }) => {
+  return (
+    <motion.div
+      key={key}
+      initial={{
+        height: 0,
+        marginTop: 0,
+        opacity: 0
+      }}
+      animate={{
+        height: 'auto',
+        marginTop: 10,
+        opacity: 1
+      }}
+      exit={{
+        height: 0,
+        marginTop: 0,
+        opacity: 0
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const SearchSection = ({
   placeholder,
@@ -19,8 +43,8 @@ const SearchSection = ({
   sortContent,
   disabled
 }) => {
-  const [showFilter, setShowFilter] = React.useState(false);
-  const [showSort, setShowSort] = React.useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSort, setShowSort] = useState(false);
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
@@ -50,7 +74,7 @@ const SearchSection = ({
               onClick={onClickFilterButton}
               style={
                 showFilter
-                  ? { backgroundColor: 'rgb(255 255 255 / 50%)' }
+                  ? { backgroundColor: 'rgb(255 255 255 / 40%)' }
                   : null
               }
             >
@@ -65,7 +89,7 @@ const SearchSection = ({
               className='list-search-sort-button'
               onClick={onClickSortButton}
               style={
-                showSort ? { backgroundColor: 'rgb(255 255 255 / 50%)' } : null
+                showSort ? { backgroundColor: 'rgb(255 255 255 / 40%)' } : null
               }
             >
               <div className='tooltip-container'>
@@ -88,9 +112,20 @@ const SearchSection = ({
 
       {!disabled ? (
         <>
-          <SearchFilter show={showFilter}>{filterContent}</SearchFilter>
-
-          <SearchSort show={showSort}>{sortContent}</SearchSort>
+          <AnimatePresence>
+            {showFilter && (
+              <SearchContentAnimator>
+                <SearchFilter>{filterContent}</SearchFilter>
+              </SearchContentAnimator>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {showSort && (
+              <SearchContentAnimator>
+                <SearchSort>{sortContent}</SearchSort>
+              </SearchContentAnimator>
+            )}
+          </AnimatePresence>
         </>
       ) : null}
     </section>
@@ -99,11 +134,7 @@ const SearchSection = ({
 
 const SearchFilter = ({ show, children }) => {
   return (
-    <section
-      className={`list-search-filter ${
-        show ? 'list-search-content-show' : 'list-search-content-hide'
-      }`}
-    >
+    <section className='list-search-filter'>
       <div className='list-search-content-title'>Filter</div>
       {children}
     </section>
@@ -112,12 +143,8 @@ const SearchFilter = ({ show, children }) => {
 
 const SearchSort = ({ show, children }) => {
   return (
-    <section
-      className={`list-search-sort ${
-        show ? 'list-search-content-show' : 'list-search-content-hide'
-      }`}
-    >
-      <div className='list-search-content-title'>Sort by</div>
+    <section className='list-search-sort'>
+      <div className='list-search-content-title'>Sort</div>
       {children}
     </section>
   );
@@ -128,35 +155,16 @@ const SearchContentItem = ({ title, children, isLv }) => {
     <div style={{ marginRight: '20px' }}>
       <div style={{ display: 'flex' }}>
         <h4 style={{ marginBottom: '5px', marginTop: '5px' }}>{title}</h4>
-        {isLv ? (
-          <>
-            <FontAwesomeIcon
-              data-tip
-              data-for='lvDescription'
-              icon={faQuestionCircle}
-              size='lg'
-              style={{ height: '16px', marginTop: '7px', marginLeft: '5px' }}
-            />
-
-            <ReactTooltip
-              id='lvDescription'
-              place='bottom'
-              type='dark'
-              effect='solid'
-            >
-              <span style={{ whiteSpace: 'pre-line' }}>
-                {'Add 0.5 instead of +\nex) 18+ -> 18.5'}
-              </span>
-            </ReactTooltip>
-          </>
-        ) : null}
       </div>
-      <div style={{ display: 'flex' }}>{children}</div>
+
+      <div style={{ display: 'flex', gap: 8 }}>{children}</div>
     </div>
   );
 };
 
 const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
+  const [btnState, setBtnState] = useState('unchecked');
+
   return (
     <>
       <div
@@ -168,16 +176,39 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
           type='checkbox'
           id={tooltip}
           onChange={(event) => {
-            onSelect(event.target.id);
+            onSelect(event.target, btnState);
+
+            if (btnState === 'unchecked') {
+              setBtnState('include');
+            } else if (btnState === 'include') {
+              setBtnState('exclude');
+            } else {
+              setBtnState('unchecked');
+            }
           }}
-          className='list-search-content-toggle-button'
+          ref={(input) => {
+            if (input) {
+              input.checked = btnState === 'include';
+              input.indeterminate = btnState === 'exclude';
+            }
+          }}
+          className='list-search-content-toggle-button level-list-filter-tag'
         />
         <label htmlFor={tooltip}>
           <img
             src={`/${img}`}
             alt={tooltip}
-            style={{ width: '28px', marginRight: '8px' }}
+            style={{
+              width: '28px'
+            }}
           />
+          {btnState !== 'unchecked' && (
+            <img
+              src={`/tag/${btnState}.svg`}
+              alt=''
+              className='list-search-content-toggle-button-indicator'
+            />
+          )}
         </label>
       </div>
 
@@ -186,7 +217,7 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
   );
 };
 
-const SearchContentInput = ({ onInput, placeholder, isLast }) => {
+const SearchContentInput = ({ onInput, placeholder }) => {
   return (
     <input
       className='list-text-input'
@@ -195,9 +226,7 @@ const SearchContentInput = ({ onInput, placeholder, isLast }) => {
       onChange={(event) => {
         onInput(event.target.value);
       }}
-      style={
-        isLast ? { width: '100px', marginLeft: '5px' } : { width: '100px' }
-      }
+      style={{ width: 100 }}
     />
   );
 };

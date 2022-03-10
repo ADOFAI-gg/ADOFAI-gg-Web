@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -22,7 +22,7 @@ const LevelInfo = ({ levelData }) => {
     return (
       <img
         className='level-item-info-difficulty'
-        src={`difficulty_icons/${difficulty}.svg`}
+        src={`/difficulty_icons/${difficulty}.svg`}
         alt={`Lv. ${difficulty}`}
       />
     );

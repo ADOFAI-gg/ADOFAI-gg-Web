@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { get } from '../utils/http';
-// import { useLocation } from "react-router-dom";
+import { Virtuoso } from 'react-virtuoso';
+import Select from 'react-select';
+import difficulty from '../constants/difficulty';
 
 // Components
 import {
@@ -80,7 +81,7 @@ const LevelListPage = ({ history }) => {
     searchTerm: getQuery(),
     sortBy: 'RECENT_DESC',
     tag: Array.from({ length: 20 }, () => false),
-    filterInput: ['', '', '', '', '', '']
+    filterInput: [null, null, null, null, null, null]
   });
 
   const fetchParams = (offset) => {
@@ -88,17 +89,36 @@ const LevelListPage = ({ history }) => {
 
     params.append('offset', offset);
     params.append('amount', 15);
-    params.append('sort', state.sortBy);
-    params.append('query', state.searchTerm);
-    params.append('includeTags', tagConvert(state.tag).toString());
-    params.append('minDifficulty', state.filterInput[0]);
-    params.append('maxDifficulty', state.filterInput[1]);
-    params.append('minBpm', state.filterInput[2]);
-    params.append('maxBpm', state.filterInput[3]);
-    params.append('minTiles', state.filterInput[4]);
-    params.append('maxTiles', state.filterInput[5]);
+    state.sortBy && params.append('sort', state.sortBy);
+    state.searchTerm && params.append('query', state.searchTerm);
+    state.filterInput[0] &&
+      params.append('minDifficulty', state.filterInput[0]);
+    state.filterInput[1] &&
+      params.append('maxDifficulty', state.filterInput[1]);
+    state.filterInput[2] && params.append('minBpm', state.filterInput[2]);
+    state.filterInput[3] && params.append('maxBpm', state.filterInput[3]);
+    state.filterInput[4] && params.append('minTiles', state.filterInput[4]);
+    state.filterInput[5] && params.append('maxTiles', state.filterInput[5]);
+
+    params.append('includeTags', tagConvert(state.tag));
+    params.append('excludeTags', tagConvert(state.tag, true));
 
     return params;
+  };
+
+  const fetchData = async () => {
+    try {
+      dispatch({ type: 'FETCH_ERROR', error: null });
+      dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
+
+      const params = fetchParams(0);
+      const response = await get(`/levels`, params);
+
+      dispatch({ type: 'FETCH_RESULT', items: response.data.results });
+      dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
+    } catch (e) {
+      dispatch({ type: 'FETCH_ERROR', error: e });
+    }
   };
 
   useEffect(() => {
@@ -131,26 +151,24 @@ const LevelListPage = ({ history }) => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        dispatch({ type: 'FETCH_ERROR', error: null });
-        dispatch({ type: 'HAS_MORE_ITEMS', hasMore: true });
-
-        const params = fetchParams(0);
-        const response = await get(`/levels`, params);
-
-        dispatch({ type: 'FETCH_RESULT', items: response.data.results });
-        dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
-      } catch (e) {
-        dispatch({ type: 'FETCH_ERROR', error: e });
-      }
-    };
-
     fetchData();
 
-    // disable warning because fetchParams method is intentionally not added
+    // disable warning because fetchData method is intentionally not added
     // eslint-disable-next-line
-  }, [state.searchTerm, state.sortBy, state.tag, state.filterInput]);
+  }, [state.sortBy, state.tag, state.filterInput]);
+
+  useEffect(() => {
+    console.log('term changed');
+
+    const delayDebounceFn = setTimeout(() => {
+      console.log('debounce');
+      fetchData();
+    }, 100);
+
+    return () => clearTimeout(delayDebounceFn);
+    // disable warning because fetchData method is intentionally not added
+    // eslint-disable-next-line
+  }, [state.searchTerm]);
 
   // useEffect(() => {
   //   history.push({
@@ -186,21 +204,41 @@ const LevelListPage = ({ history }) => {
     }
   };
 
-  const tagChange = (value) => {
+  const tagChange = (value, btnState) => {
+    // What? why tf?
+    // : beacuse STATE UPATE DOES NOT SUPPORT ASYNC FUCK ;)
+    let _btnState;
+
+    if (btnState === 'unchecked') {
+      _btnState = 'include';
+    } else if (btnState === 'include') {
+      _btnState = 'exclude';
+    } else {
+      _btnState = 'unchecked';
+    }
+
     const newTag = state.tag;
 
-    newTag[value - 1] = !state.tag[value - 1];
+    newTag[value - 1] = _btnState;
     dispatch({ type: 'TAG_CHANGE', tag: [...newTag] });
   };
 
-  const tagConvert = (tags) => {
+  const tagConvert = (tags, isForExclude) => {
     let tagNumbers = [];
-    tags.forEach((bool, index) => {
-      if (bool) {
-        tagNumbers.push(index + 1);
+
+    tags.forEach((tag, index) => {
+      if (!isForExclude) {
+        if (tag === 'include') {
+          tagNumbers.push(index + 1);
+        }
+      } else {
+        if (tag === 'exclude') {
+          tagNumbers.push(index + 1);
+        }
       }
     });
-    return tagNumbers;
+
+    return tagNumbers.toString();
   };
 
   const numberChange = (index, value) => {
@@ -213,6 +251,71 @@ const LevelListPage = ({ history }) => {
     var query = decodeURI(window.location.search).substring(7);
     return query;
   }
+
+  const dropdownStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: 'black',
+      backgroundColor: state.isDisabled ? '#ddd' : 'white',
+      opacity: state.isDisabled ? 0.5 : 1,
+
+      ':hover': {
+        backgroundColor: !state.isDisabled ? '#ddd' : '#ddd'
+      }
+    }),
+    menu: (provided) => ({
+      ...provided,
+      color: 'black',
+      colorScheme: 'white'
+    }),
+    control: (provided) => ({
+      ...provided,
+      fontSize: 15,
+      padding: 6,
+      paddingLeft: 10,
+      width: 135,
+      minHeight: 0,
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      border: 'none',
+      boxShadow: 'none'
+    }),
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      margin: '0 6px',
+      backgroundColor: 'rgba(255, 255, 255, 0.4)'
+    }),
+    valueContainer: (provided) => ({
+      ...provided,
+      padding: 0
+    }),
+    input: (provided) => ({
+      ...provided,
+      padding: 0,
+      margin: 0,
+      color: 'white',
+      fontWeight: 300
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: 'white',
+      opacity: 0.7,
+      fontWeight: 300
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'white'
+    })
+  };
+
+  const dropdownProps = {
+    styles: dropdownStyles,
+    options: difficulty.filter((i) => !i.isHidden),
+    isSearchable: true,
+    isClearable: true,
+    closeMenuOnSelect: false,
+
+    classNamePrefix: 'list-dropdown'
+  };
 
   return (
     <main>
@@ -227,12 +330,12 @@ const LevelListPage = ({ history }) => {
         filterContent={
           <>
             <div style={{ display: 'flex' }}>
-              <SearchContentItem title='Chart/Effect Related'>
+              <SearchContentItem title='Chart&VFX Tags'>
                 {[13, 15, 14, 8, 22, 5, 3, 6].map((id) => {
                   return (
                     <SearchContentCheckbox
-                      onSelect={(value) => {
-                        tagChange(value);
+                      onSelect={(target, btnState) => {
+                        tagChange(target.id, btnState);
                       }}
                       tooltip={id}
                       key={`search${id}`}
@@ -242,12 +345,12 @@ const LevelListPage = ({ history }) => {
                 })}
               </SearchContentItem>
 
-              <SearchContentItem title='Rhythm Related'>
+              <SearchContentItem title='Pattern Tags'>
                 {[2, 19, 9, 18, 16, 21, 12, 10, 23, 17, 24].map((id) => {
                   return (
                     <SearchContentCheckbox
-                      onSelect={(value) => {
-                        tagChange(value);
+                      onSelect={(target, btnState) => {
+                        tagChange(target.id, btnState);
                       }}
                       tooltip={id}
                       key={`search${id}`}
@@ -257,12 +360,12 @@ const LevelListPage = ({ history }) => {
                 })}
               </SearchContentItem>
 
-              <SearchContentItem title='Length'>
-                {[1, 11].map((id) => {
+              <SearchContentItem title='Music Tags'>
+                {[11, 4].map((id) => {
                   return (
                     <SearchContentCheckbox
-                      onSelect={(value) => {
-                        tagChange(value);
+                      onSelect={(target, btnState) => {
+                        tagChange(target.id, btnState);
                       }}
                       tooltip={id}
                       key={`search${id}`}
@@ -275,15 +378,40 @@ const LevelListPage = ({ history }) => {
 
             <div style={{ display: 'flex', marginTop: '10px' }}>
               <SearchContentItem title='Lv.' isLv>
-                <SearchContentInput
-                  onInput={(value) => numberChange(0, value)}
+                <Select
+                  {...dropdownProps}
                   placeholder='Min Lv.'
+                  onChange={(i) => numberChange(0, i ? i.value : null)}
+                  isOptionDisabled={(i) =>
+                    state.filterInput[1] && i.value > state.filterInput[1]
+                  }
+                  formatOptionLabel={(i) => (
+                    <div className='list-dropdown-option'>
+                      <img
+                        src={`/difficulty_icons/${i.value}.svg`}
+                        alt={`${i.label} icon`}
+                      />
+                      <span>{i.label}</span>
+                    </div>
+                  )}
                 />
 
-                <SearchContentInput
-                  onInput={(value) => numberChange(1, value)}
+                <Select
+                  {...dropdownProps}
                   placeholder='Max Lv.'
-                  isLast
+                  onChange={(i) => numberChange(1, i ? i.value : null)}
+                  isOptionDisabled={(i) =>
+                    state.filterInput[0] && i.value < state.filterInput[0]
+                  }
+                  formatOptionLabel={(i) => (
+                    <div className='list-dropdown-option'>
+                      <img
+                        src={`/difficulty_icons/${i.value}.svg`}
+                        alt={`${i.label} icon`}
+                      />
+                      <span>{i.label}</span>
+                    </div>
+                  )}
                 />
               </SearchContentItem>
 
@@ -296,7 +424,6 @@ const LevelListPage = ({ history }) => {
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
                   placeholder='Max BPM'
-                  isLast
                 />
               </SearchContentItem>
 
@@ -309,7 +436,6 @@ const LevelListPage = ({ history }) => {
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
                   placeholder='Max Tiles'
-                  isLast
                 />
               </SearchContentItem>
             </div>
@@ -333,7 +459,7 @@ const LevelListPage = ({ history }) => {
                 img='sort_icons/difficulty_down.svg'
               />
             </SearchContentItem>
-            <SearchContentItem title='Likes'>
+            {/* <SearchContentItem title='Likes'>
               <SearchContentRadio
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
@@ -348,7 +474,7 @@ const LevelListPage = ({ history }) => {
                 tooltip='LIKE_ASC'
                 img='sort_icons/heart_down.svg'
               />
-            </SearchContentItem>
+            </SearchContentItem> */}
             <SearchContentItem title='Recent'>
               <SearchContentRadio
                 onSelect={(value) =>
@@ -373,16 +499,13 @@ const LevelListPage = ({ history }) => {
         {!state.items ? null : state.isError ? (
           <h2 style={{ margin: '10px' }}>Oops! An error occurred.</h2>
         ) : (
-          <InfiniteScroll
-            dataLength={state.items.length}
-            next={fetchMoreData}
-            hasMore={state.hasMore}
-            scrollThreshold={0.8}
-          >
-            {state.items.map((i, index) => (
-              <LevelInfo levelData={i} key={index} />
-            ))}
-          </InfiniteScroll>
+          <Virtuoso
+            useWindowScroll
+            data={state.items}
+            endReached={fetchMoreData}
+            fixedItemHeight={78}
+            itemContent={(index, i) => <LevelInfo levelData={i} key={index} />}
+          />
         )}
       </div>
     </main>

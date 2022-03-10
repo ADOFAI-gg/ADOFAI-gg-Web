@@ -15,6 +15,7 @@ const LevelPage = lazy(() => import('../../routes/LevelPage'));
 const ModListPage = lazy(() => import('../../routes/ModListPage'));
 const ModPage = lazy(() => import('../../routes/ModPage'));
 const RankingPage = lazy(() => import('../../routes/RankingPage'));
+const Error404Page = lazy(() => import('../../routes/error/404'));
 
 const App = () => {
   return (
@@ -35,13 +36,7 @@ const App = () => {
               <Route exact path='/mods/:id' component={ModPage} />
               <Route exact path='/ranks' component={RankingPage} />
 
-              <Route>
-                {/* XXX to component */}
-                <main>
-                  <br />
-                  <h2>Oops! This page does not exist.</h2>
-                </main>
-              </Route>
+              <Route component={Error404Page}></Route>
             </Switch>
           </Suspense>
         </SkeletonTheme>
