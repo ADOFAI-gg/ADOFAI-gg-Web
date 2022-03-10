@@ -207,7 +207,11 @@ const LevelPage = ({ history }) => {
             </div>
 
             <div className='level-info-leaderboard-item-detail-description'>
-              "{info.description ? info.description : <i>No description.</i>}"
+              "
+              <span>
+                {info.description ? info.description : <i>No description.</i>}
+              </span>
+              "
             </div>
 
             <div className='level-info-leaderboard-item-detail-timestamp'>

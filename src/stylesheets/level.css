@@ -257,14 +257,12 @@
 .level-info-detail-info-description {
   display: -webkit-box;
   overflow: hidden;
-  width: 700px;
   max-width: 600px;
   height: 5em;
   margin-top: 5px;
   font-size: 28px !important;
   line-height: 1.25em;
   text-overflow: ellipsis;
-  white-space: nowrap;
   word-wrap: break-word;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -399,7 +397,17 @@
 
 .level-info-leaderboard-item-detail-description {
   position: absolute;
+  display: flex;
+  gap: 6px;
   opacity: 0;
+}
+
+.level-info-leaderboard-item-detail-description > span {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 700px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-play {
