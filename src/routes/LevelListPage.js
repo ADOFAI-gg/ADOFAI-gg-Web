@@ -500,9 +500,7 @@ const LevelListPage = ({ history }) => {
             useWindowScroll
             data={state.items}
             endReached={fetchMoreData}
-            style={{
-              gap: 12
-            }}
+            fixedItemHeight={78}
             itemContent={(index, i) => <LevelInfo levelData={i} key={index} />}
           />
         )}
