@@ -456,7 +456,7 @@ const LevelListPage = ({ history }) => {
                 img='sort_icons/difficulty_down.svg'
               />
             </SearchContentItem>
-            <SearchContentItem title='Likes'>
+            {/* <SearchContentItem title='Likes'>
               <SearchContentRadio
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
@@ -471,7 +471,7 @@ const LevelListPage = ({ history }) => {
                 tooltip='LIKE_ASC'
                 img='sort_icons/heart_down.svg'
               />
-            </SearchContentItem>
+            </SearchContentItem> */}
             <SearchContentItem title='Recent'>
               <SearchContentRadio
                 onSelect={(value) =>
