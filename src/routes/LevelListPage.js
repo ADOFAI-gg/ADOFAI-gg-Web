@@ -258,6 +258,7 @@ const LevelListPage = ({ history }) => {
       color: 'black',
       backgroundColor: state.isDisabled ? '#ddd' : 'white',
       opacity: state.isDisabled ? 0.5 : 1,
+
       ':hover': {
         backgroundColor: !state.isDisabled ? '#ddd' : '#ddd'
       }
@@ -272,7 +273,7 @@ const LevelListPage = ({ history }) => {
       fontSize: 15,
       padding: 6,
       paddingLeft: 10,
-      width: 120,
+      width: 135,
       minHeight: 0,
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
       border: 'none',
@@ -390,6 +391,7 @@ const LevelListPage = ({ history }) => {
                         src={`/difficulty_icons/${i.value}.svg`}
                         alt={`${i.label} icon`}
                       />
+                      <span>{i.label}</span>
                     </div>
                   )}
                 />
@@ -407,6 +409,7 @@ const LevelListPage = ({ history }) => {
                         src={`/difficulty_icons/${i.value}.svg`}
                         alt={`${i.label} icon`}
                       />
+                      <span>{i.label}</span>
                     </div>
                   )}
                 />

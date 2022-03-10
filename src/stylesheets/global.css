@@ -604,6 +604,8 @@ nav {
 
 .list-dropdown-option {
   display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .list-dropdown-option > img {
