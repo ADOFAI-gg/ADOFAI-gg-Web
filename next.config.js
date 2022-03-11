@@ -13,12 +13,12 @@ const config = {
 
 const withPWA = require('next-pwa');
 
-module.exports =
-  process.env.NODE_ENV === 'development'
-    ? config
-    : withPWA({
-        ...config,
-        pwa: {
-          dest: 'public'
-        }
-      });
+const runtimeCaching = require('next-pwa/cache');
+
+module.exports = withPWA({
+  ...config,
+  pwa: {
+    dest: 'public',
+    runtimeCaching
+  }
+});

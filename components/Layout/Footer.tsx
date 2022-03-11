@@ -14,7 +14,17 @@ const Content = styled.div`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  flex-direction: column;
   display: flex;
+`;
+
+const Sections = styled.div`
+  display: flex;
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 const Section = styled.div`
@@ -69,42 +79,43 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <Content>
-        <Section style={{ maxWidth: 400, width: '100%' }}>
-          <BrandTitle>ADOFAI.gg</BrandTitle>
+        <Sections>
+          <Section style={{ maxWidth: 400, width: '100%' }}>
+            <BrandTitle>ADOFAI.gg</BrandTitle>
 
-          <div
-            style={{
-              maxWidth: 330,
-              marginTop: 10,
-              flexGrow: 1,
-              lineHeight: 1.5
-            }}
-          >
-            {t('footer.description')}
-          </div>
+            <div
+              style={{
+                maxWidth: 330,
+                marginTop: 10,
+                flexGrow: 1,
+                lineHeight: 1.5
+              }}
+            >
+              {t('footer.description')}
+            </div>
+          </Section>
 
-          <LegalContent>
-            <a>{t('footer.legal.notice')}</a>・<a>{t('footer.legal.terms')}</a>
-            ・<a>{t('footer.legal.privacy')}</a>
-          </LegalContent>
-        </Section>
+          <Section style={{ gap: 10, maxWidth: 250, width: '100%' }}>
+            <SectionTitle>Contact</SectionTitle>
 
-        <Section style={{ gap: 10, maxWidth: 250, width: '100%' }}>
-          <SectionTitle>Contact</SectionTitle>
+            <Link>{t('footer.links.contact.mail')}</Link>
+            <NextLink href='/discord' passHref>
+              <Link as='a'>{t('footer.links.contact.discord')}</Link>
+            </NextLink>
+          </Section>
 
-          <Link>{t('footer.links.contact.mail')}</Link>
-          <NextLink href='/discord' passHref>
-            <Link as='a'>{t('footer.links.contact.discord')}</Link>
-          </NextLink>
-        </Section>
+          <Section style={{ gap: 10, maxWidth: 250, width: '100%' }}>
+            <SectionTitle>GitHub</SectionTitle>
 
-        <Section style={{ gap: 10, maxWidth: 250, width: '100%' }}>
-          <SectionTitle>GitHub</SectionTitle>
-
-          <Link>{t('footer.links.github.org')}</Link>
-          <Link>{t('footer.links.github.frontRepo')}</Link>
-          <Link>{t('footer.links.github.backRepo')}</Link>
-        </Section>
+            <Link>{t('footer.links.github.org')}</Link>
+            <Link>{t('footer.links.github.frontRepo')}</Link>
+            <Link>{t('footer.links.github.backRepo')}</Link>
+          </Section>
+        </Sections>
+        <LegalContent>
+          <a>{t('footer.legal.notice')}</a>・<a>{t('footer.legal.terms')}</a>・
+          <a>{t('footer.legal.privacy')}</a>
+        </LegalContent>
       </Content>
     </Container>
   );
