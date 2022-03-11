@@ -22,12 +22,19 @@ export type Tag = {
   default?: boolean;
 };
 
+export type User = {
+  id: string;
+  name: string;
+  banner: string | null;
+  avatar: string | null;
+};
+
 export type Level = {
   id: number;
   title: string;
-  artists: string[];
+  artists: User[];
   song: string;
-  creators: string[];
+  creators: User[];
   minBpm: number;
   maxBpm: number;
   tiles: number;
@@ -36,6 +43,7 @@ export type Level = {
   difficulty: number;
   download: string;
   workshop: string | null;
+  video: string;
 };
 
 export interface ApiListResult<T> {

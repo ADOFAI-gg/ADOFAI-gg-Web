@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 
 const Container = styled.div`
-  padding-top: var(--header-height);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,6 @@ const Container = styled.div`
 
 const Main = styled.main`
   width: 100%;
-  padding: 24px 20px 30px;
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -27,7 +25,6 @@ const Content = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 1100px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -39,16 +36,28 @@ const Layout: React.FC = ({ children }) => {
   useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
   const router = useRouter();
 
+  const isLevelInfoPage = React.useMemo(() => {
+    return router.pathname === '/levels/[id]';
+  }, [router.pathname]);
+
   return (
-    <Container>
+    <Container
+      style={{ paddingTop: isLevelInfoPage ? 0 : 'var(--header-height)' }}
+    >
       <Head>
         <title>Adofai.gg</title>
       </Head>
 
       <Navbar />
 
-      <Main>
-        <Content>{children}</Content>
+      <Main style={{ padding: isLevelInfoPage ? 0 : '24px 20px 30px' }}>
+        <Content
+          style={{
+            maxWidth: isLevelInfoPage ? '100vw' : 1100
+          }}
+        >
+          <div>{children}</div>
+        </Content>
       </Main>
 
       {!routesToHideFooter.includes(router.pathname) && <Footer />}

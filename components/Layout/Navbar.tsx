@@ -5,9 +5,9 @@ import NextLink from 'next/link';
 import { useTranslation } from 'react-i18next';
 import Menu from '@assets/icons/menu.svg';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
-  background-color: rgba(26, 37, 51, 0.7);
   position: fixed;
   z-index: 100;
   top: 0;
@@ -15,7 +15,6 @@ const Container = styled.div`
   align-items: center;
   padding-left: 24px;
   padding-right: 24px;
-  backdrop-filter: blur(4px);
 
   width: 100%;
   height: var(--header-height);
@@ -68,8 +67,21 @@ const Actions = {
 const Navbar: React.FC = () => {
   const { t } = useTranslation();
 
+  const router = useRouter();
+
+  const isLevelInfoPage = React.useMemo(() => {
+    return router.pathname === '/levels/[id]';
+  }, [router.pathname]);
+
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundColor: isLevelInfoPage
+          ? 'rgba(0, 0, 0, 25%)'
+          : 'rgba(26, 37, 51, 0.7)',
+        backdropFilter: isLevelInfoPage ? '' : 'blur(4px)'
+      }}
+    >
       <NextLink href='/' passHref>
         <a>
           <Image alt='' height={20} width={140} src={LogoImg} />

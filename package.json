@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
     "@hookform/resolvers": "^2.8.8",
     "axios": "^0.24.0",
     "country-list-js": "^3.1.7",
@@ -45,7 +46,7 @@
     "@types/react-virtualized": "^9.21.15",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window-infinite-loader": "^1.0.5",
-    "@types/styled-components": "^5.1.15",
+    "@types/styled-components": "^5.1.23",
     "@types/yup": "^0.29.13",
     "eslint": "7",
     "eslint-config-next": "12.0.3",
