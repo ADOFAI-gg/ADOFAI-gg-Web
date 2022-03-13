@@ -8,7 +8,8 @@ const config = {
   },
   compiler: {
     styledComponents: true
-  }
+  },
+  experimental: {}
 };
 
 const withPWA = require('next-pwa');
