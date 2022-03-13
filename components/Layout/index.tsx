@@ -26,11 +26,11 @@ const Content = styled.div`
   margin-right: auto;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 `;
 
 const routesToHideFooter = ['/login', '/signup'];
+
+const authRoutes = ['/login', '/signup'];
 
 const Layout: React.FC = ({ children }) => {
   useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
@@ -53,10 +53,18 @@ const Layout: React.FC = ({ children }) => {
       <Main style={{ padding: isLevelInfoPage ? 0 : '24px 20px 30px' }}>
         <Content
           style={{
-            maxWidth: isLevelInfoPage ? '100vw' : 1100
+            maxWidth: isLevelInfoPage ? '100vw' : 1100,
+            height: '100%',
+            ...(authRoutes.includes(router.pathname)
+              ? {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center'
+                }
+              : {})
           }}
         >
-          <div>{children}</div>
+          <div style={{ height: '100%' }}>{children}</div>
         </Content>
       </Main>
 

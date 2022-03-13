@@ -110,7 +110,9 @@ const AuthCheckboxContainer = styled.label`
 `;
 
 export const AuthButton = styled.div`
-  background: rgba(255, 255, 255, 0.2);
+  --button-opacity: 0.2;
+
+  background: rgba(255, 255, 255, var(--button-opacity));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,7 +127,8 @@ export const AuthButton = styled.div`
   font-size: 16px;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.4);
+    --button-opacity: 0.4;
+
     text-decoration: none;
   }
 `;
@@ -142,7 +145,7 @@ const LabelledInputFieldInput = styled.input`
   }
 `;
 
-const ErrorDot = styled.span`
+export const ErrorDot = styled.span`
   background: #f54f51;
   width: 6px;
   height: 6px;

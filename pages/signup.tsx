@@ -1,148 +1,97 @@
 import React from 'react';
 import { NextPage } from 'next';
-import Container from '@components/Auth/AuthCardContainer';
+import AuthCardContainer from '@components/Auth/AuthCardContainer';
 import {
   AuthButton,
   AuthCheckbox,
-  LabelledInputField,
-  LabelledSelect
+  ErrorDot
 } from '@components/Auth/FormFields';
-import country from 'country-list-js';
-import { useForm, Controller } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { FaGoogle, FaDiscord } from 'react-icons/fa';
 
-interface ISignupSchema {
-  email: string;
-  username: string;
-  password: string;
-  passwordRepeat: string;
-  country: string;
-  agreeTerms: boolean;
-  agreePrivacy: boolean;
-}
-
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  username: yup.string().required(),
-  password: yup.string().required(),
-  passwordRepeat: yup
-    .string()
-    .required()
-    .test('equal', 'Passwords do not match!', function (v) {
-      const ref = yup.ref('password');
-      return v === this.resolve(ref);
-    }),
-  country: yup.string().required(),
-  agreeTerms: yup.boolean().required().oneOf([true]),
-  agreePrivacy: yup.boolean().required().oneOf([true])
-});
-
-const Signup: NextPage = () => {
-  const form = useForm<ISignupSchema>({
-    resolver: yupResolver(schema)
-  });
-
+const SignUp: NextPage = () => {
   return (
-    <Container>
-      <form
-        onSubmit={form.handleSubmit((data) => {
-          console.log(data);
-        })}
-      >
+    <AuthCardContainer>
+      <div style={{ fontWeight: 300, fontSize: 36, textAlign: 'center' }}>
+        Sign Up
+      </div>
+      <div style={{ marginTop: 64 }}>
+        <div style={{ fontSize: 16, fontWeight: 500 }}>Terms</div>
         <div
           style={{
-            fontWeight: 300,
-            fontSize: 36,
-            textAlign: 'center',
-            marginBottom: 40
+            marginTop: 12,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12
           }}
         >
-          Sign Up
-        </div>
-        <LabelledInputField
-          label='Email Address'
-          inputProps={{
-            placeholder: 'Your email address',
-            ...form.register('email')
-          }}
-          error={form.formState.errors.email?.message}
-        />
-        <LabelledInputField
-          label='Username'
-          inputProps={{
-            placeholder: 'Your username',
-            ...form.register('username')
-          }}
-          error={form.formState.errors.username?.message}
-        />
-        <LabelledInputField
-          label='Password'
-          inputProps={{
-            placeholder: 'Your password',
-            type: 'password',
-            ...form.register('password')
-          }}
-          error={form.formState.errors.password?.message}
-        />
-        <LabelledInputField
-          label='Confirm Password'
-          inputProps={{
-            placeholder: 'Confirm your password',
-            type: 'password',
-            ...form.register('passwordRepeat')
-          }}
-          error={form.formState.errors.passwordRepeat?.message}
-        />
-
-        <Controller
-          control={form.control}
-          name='country'
-          render={({ field: { onChange }, fieldState: { error } }) => (
-            <LabelledSelect
-              options={Object.entries(country.all).map(([k, v]) => ({
-                value: k,
-                label: v.name
-              }))}
-              label='Country'
-              error={error?.message}
-              onChange={onChange}
-            />
-          )}
-        />
-        <div style={{ marginTop: 24 }}>
-          <div style={{ fontSize: 16 }}>Terms</div>
-          <div
-            style={{
-              marginTop: 12,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 12,
-              opacity: 0.8
-            }}
-          >
-            <div style={{ display: 'flex' }}>
-              <AuthCheckbox
-                label='I agree to the Terms of Service'
-                inputProps={form.register('agreeTerms')}
-                error={form.formState.errors.agreeTerms?.message}
-              />
-            </div>
-            <div style={{ display: 'flex' }}>
-              <AuthCheckbox
-                label='I agree to the Privacy Policy'
-                inputProps={form.register('agreePrivacy')}
-                error={form.formState.errors.agreePrivacy?.message}
-              />
-            </div>
+          <div style={{ display: 'flex', opacity: 0.8 }}>
+            <AuthCheckbox label='I agree to the Terms of Service' />
+            <div style={{ flexGrow: 1 }} />
+            <a style={{ fontSize: 14, textDecoration: 'underline' }}>
+              See full terms of Service
+            </a>
+          </div>
+          <div style={{ display: 'flex', opacity: 0.8 }}>
+            <AuthCheckbox label='I agree to the Privacy Policy' />
+            <div style={{ flexGrow: 1 }} />
+            <a style={{ fontSize: 14, textDecoration: 'underline' }}>
+              See full Privacy Policy
+            </a>
           </div>
         </div>
-        <AuthButton as='button' type='submit' style={{ marginTop: 32 }}>
-          Sign Up
+        <div style={{ display: 'flex', marginTop: 8, alignItems: 'center' }}>
+          <ErrorDot />
+          <span style={{ color: '#F54F51', fontSize: 14 }}>
+            You must agree to all conditions
+          </span>
+        </div>
+        <AuthButton
+          style={{
+            height: 42,
+            marginTop: 24,
+            background: 'rgba(77, 147, 252, var(--button-opacity))'
+          }}
+        >
+          Sign Up with Email
         </AuthButton>
-      </form>
-    </Container>
+        <div
+          style={{
+            marginTop: 32,
+            height: 26,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6
+          }}
+        >
+          <div
+            style={{
+              flexGrow: 1,
+              height: 1,
+              background: 'rgba(255, 255, 255, 0.4)'
+            }}
+          />
+          <span style={{ fontSize: 14, fontWeight: 400, opacity: 0.8 }}>
+            Or sign up with
+          </span>
+          <div
+            style={{
+              flexGrow: 1,
+              height: 1,
+              background: 'rgba(255, 255, 255, 0.4)'
+            }}
+          />
+        </div>
+        <div style={{ display: 'flex', marginTop: 12, gap: 12 }}>
+          <AuthButton style={{ height: 42, flexGrow: 1, width: 0 }}>
+            <FaGoogle size={22} />
+          </AuthButton>
+          <AuthButton style={{ height: 42, flexGrow: 1, width: 0 }}>
+            <FaDiscord size={22} />
+          </AuthButton>
+        </div>
+      </div>
+    </AuthCardContainer>
   );
 };
 
-export default Signup;
+export default SignUp;
