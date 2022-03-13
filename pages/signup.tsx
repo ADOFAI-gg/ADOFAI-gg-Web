@@ -35,8 +35,6 @@ const SignUp: NextPage = () => {
     [agreeTos, agreePrivacy]
   );
 
-  console.log(oauth2Provider && providerNames[oauth2Provider], oauth2Provider);
-
   return (
     <AuthCardContainer>
       <div style={{ fontWeight: 300, fontSize: 36, textAlign: 'center' }}>
@@ -98,7 +96,8 @@ const SignUp: NextPage = () => {
               style={{
                 height: 42,
                 marginTop: 24,
-                background: 'rgba(77, 147, 252, var(--button-opacity))'
+                background: 'rgba(77, 147, 252, var(--button-opacity))',
+                color: 'rgba(255, 255, 255, 0.8)'
               }}
               onClick={() => {
                 if (shouldAgree) return setTouched(true);
