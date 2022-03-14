@@ -6,6 +6,7 @@ import { AuthButton, LabelledInputField } from '@components/Auth/FormFields';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 export enum OAuth2Provider {
   GOOGLE = 'google',
@@ -24,6 +25,8 @@ const OAuth2SignUpForm: React.FC<{
   const popup = React.useRef<Window | null>();
   const [initialData, setInitialData] =
     React.useState<OAuth2CallbackData | null>(null);
+
+  const { t } = useTranslation('auth');
 
   React.useEffect(() => {
     if (initialData) return;
@@ -83,15 +86,15 @@ const OAuth2SignUpForm: React.FC<{
           })}
         >
           <LabelledInputField
-            label='Username'
+            label={t('methods.oauth2.username.label')}
             inputProps={{
-              placeholder: 'Your username',
+              placeholder: t('methods.oauth2.username.placeholder'),
               ...register('username')
             }}
             error={errors.username?.message}
           />
           <AuthButton as='button' type='submit' style={{ marginTop: 24 }}>
-            Sign Up
+            {t('signUpButton')}
           </AuthButton>
         </form>
       ) : (

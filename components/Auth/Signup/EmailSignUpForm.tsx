@@ -7,6 +7,7 @@ import {
   AuthInput,
   LabelledInputField
 } from '@components/Auth/FormFields';
+import { useTranslation } from 'react-i18next';
 
 interface FormValues {
   email: string;
@@ -16,13 +17,17 @@ interface FormValues {
 }
 
 const validation = yup.object().shape({
-  email: yup.string().email().required(),
-  username: yup.string().required(),
-  password: yup.string().min(6).max(32).required(),
+  email: yup.string().email().required('errors:form.required'),
+  username: yup.string().required('errors:form.required'),
+  password: yup
+    .string()
+    .min(6, 'auth:errors.password')
+    .max(32, 'auth:errors.password')
+    .required('auth:errors:form.required'),
   passwordConfirm: yup
     .string()
-    .required()
-    .oneOf([yup.ref('password'), null], "Password doesn't match")
+    .required('errors:form.required')
+    .oneOf([yup.ref('password'), null], 'auth:errors.passwordNotMatch')
 });
 
 const EmailSignUpForm: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
@@ -34,6 +39,8 @@ const EmailSignUpForm: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     resolver: yupResolver(validation)
   });
 
+  const { t } = useTranslation('auth');
+
   return (
     <form
       onSubmit={handleSubmit((data) => {
@@ -43,28 +50,34 @@ const EmailSignUpForm: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
       style={{ marginTop: 64 }}
     >
       <LabelledInputField
-        label='Email Address'
-        inputProps={{ placeholder: 'Your email address', ...register('email') }}
+        label={t('methods.email.email.label')}
+        inputProps={{
+          placeholder: t('methods.email.email.placeholder'),
+          ...register('email')
+        }}
         error={errors.email?.message}
       />
       <LabelledInputField
-        label='Username'
-        inputProps={{ placeholder: 'Your username', ...register('username') }}
+        label={t('methods.email.username.label')}
+        inputProps={{
+          placeholder: t('methods.email.username.placeholder'),
+          ...register('username')
+        }}
         error={errors.username?.message}
       />
       <LabelledInputField
-        label='Password'
+        label={t('methods.email.password.label')}
         inputProps={{
-          placeholder: 'Your password',
+          placeholder: t('methods.email.password.placeholder'),
           type: 'password',
           ...register('password')
         }}
         error={errors.password?.message}
       />
       <LabelledInputField
-        label='Confirm Password'
+        label={t('methods.email.passwordConfirm.label')}
         inputProps={{
-          placeholder: 'Confirm your password',
+          placeholder: t('methods.email.passwordConfirm.placeholder'),
           type: 'password',
           ...register('passwordConfirm')
         }}
@@ -80,7 +93,7 @@ const EmailSignUpForm: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
           color: 'rgba(255, 255, 255, 0.8)'
         }}
       >
-        Sign Up
+        {t('signUpButton')}
       </AuthButton>
     </form>
   );

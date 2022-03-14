@@ -12,6 +12,7 @@ import OAuth2SignUpForm, {
   OAuth2Provider
 } from '@components/Auth/Signup/OAuth2SignUpForm';
 import Router from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 enum SignUpType {
   EMAIL = 'email',
@@ -31,6 +32,7 @@ const SignUp: NextPage = () => {
   const [agreePrivacy, setAgreePrivacy] = React.useState(false);
   const [touched, setTouched] = React.useState(false);
   const [finished, setFinished] = React.useState(false);
+  const { t } = useTranslation('auth');
 
   const shouldAgree = React.useMemo(
     () => !(agreeTos && agreePrivacy),
@@ -56,12 +58,24 @@ const SignUp: NextPage = () => {
       ) : (
         <>
           <div style={{ fontWeight: 300, fontSize: 36, textAlign: 'center' }}>
-            Sign Up{' '}
-            {signUpType === SignUpType.EMAIL
-              ? 'With Email'
-              : signUpType === SignUpType.OAUTH2 && oauth2Provider
-              ? `With ${providerNames[oauth2Provider]}`
-              : ''}
+            {(() => {
+              if (signUpType === SignUpType.EMAIL) {
+                return t('title.withMethod', {
+                  method: t('title.methods.email')
+                });
+              } else if (signUpType === SignUpType.OAUTH2) {
+                return t('title.withMethod', {
+                  method: t(`title.methods.${oauth2Provider}` as any)
+                });
+              }
+              return t('title.select');
+            })()}
+            {/*Sign Up{' '}*/}
+            {/*{signUpType === SignUpType.EMAIL*/}
+            {/*  ? 'With Email'*/}
+            {/*  : signUpType === SignUpType.OAUTH2 && oauth2Provider*/}
+            {/*  ? `With ${providerNames[oauth2Provider]}`*/}
+            {/*  : ''}*/}
           </div>
           {signUpType === null && (
             <>
@@ -80,11 +94,11 @@ const SignUp: NextPage = () => {
                       inputProps={{
                         onChange: (e) => setAgreeTos(e.target.checked)
                       }}
-                      label='I agree to the Terms of Service'
+                      label={t('agreements.tos.label')}
                     />
                     <div style={{ flexGrow: 1 }} />
                     <a style={{ fontSize: 14, textDecoration: 'underline' }}>
-                      See full terms of Service
+                      {t('agreements.tos.full')}
                     </a>
                   </div>
                   <div style={{ display: 'flex', opacity: 0.8 }}>
@@ -92,11 +106,11 @@ const SignUp: NextPage = () => {
                       inputProps={{
                         onChange: (e) => setAgreePrivacy(e.target.checked)
                       }}
-                      label='I agree to the Privacy Policy'
+                      label={t('agreements.privacy.label')}
                     />
                     <div style={{ flexGrow: 1 }} />
                     <a style={{ fontSize: 14, textDecoration: 'underline' }}>
-                      See full Privacy Policy
+                      {t('agreements.privacy.full')}
                     </a>
                   </div>
                 </div>
@@ -110,7 +124,7 @@ const SignUp: NextPage = () => {
                   >
                     <ErrorDot />
                     <span style={{ color: '#F54F51', fontSize: 14 }}>
-                      You must agree to all conditions
+                      {t('errors.agree')}
                     </span>
                   </div>
                 )}
@@ -126,7 +140,7 @@ const SignUp: NextPage = () => {
                     setSignUpType(SignUpType.EMAIL);
                   }}
                 >
-                  Sign Up with Email
+                  {t('methodSelect.email')}
                 </AuthButton>
                 <div
                   style={{
@@ -145,7 +159,7 @@ const SignUp: NextPage = () => {
                     }}
                   />
                   <span style={{ fontSize: 14, fontWeight: 400, opacity: 0.8 }}>
-                    Or sign up with
+                    {t('methodSelect.other')}
                   </span>
                   <div
                     style={{

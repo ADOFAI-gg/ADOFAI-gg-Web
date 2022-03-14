@@ -3,6 +3,7 @@ import React from 'react';
 import showPW from '@assets/icons/showPassword.svg';
 import hidePW from '@assets/icons/hidePassword.svg';
 import Select, { IndicatorsContainerProps } from 'react-select';
+import { useTranslation } from 'react-i18next';
 
 export const AuthCheckbox: React.FC<
   {
@@ -265,6 +266,7 @@ export const LabelledInputField: React.FC<{
   error?: React.ReactNode;
 }> = ({ label, inputProps, error }) => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const { t } = useTranslation('errors');
 
   return (
     <div style={{ width: '100%' }}>
@@ -308,7 +310,9 @@ export const LabelledInputField: React.FC<{
       {error && (
         <div style={{ marginTop: 8, display: 'flex', alignItems: 'center' }}>
           <ErrorDot />
-          <span style={{ color: '#F54F51', fontSize: 14 }}>{error}</span>
+          <span style={{ color: '#F54F51', fontSize: 14 }}>
+            {t(error as any)}
+          </span>
         </div>
       )}
     </div>
