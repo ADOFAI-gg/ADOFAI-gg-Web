@@ -9,6 +9,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { DefaultSeo } from 'next-seo';
 import icon from '@assets/icon.png';
 import NextNProgress from 'nextjs-progressbar';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = pageProps;
@@ -17,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <React.Suspense fallback={<React.Fragment />}>
+      <ToastContainer />
       <NextNProgress />
       <I18nextProvider i18n={i18n}>
         <DefaultSeo

@@ -25,7 +25,7 @@ const validation = yup.object().shape({
     .oneOf([yup.ref('password'), null], "Password doesn't match")
 });
 
-const EmailSignUpForm: React.FC = () => {
+const EmailSignUpForm: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -38,6 +38,7 @@ const EmailSignUpForm: React.FC = () => {
     <form
       onSubmit={handleSubmit((data) => {
         console.log(data);
+        onFinish();
       })}
       style={{ marginTop: 64 }}
     >

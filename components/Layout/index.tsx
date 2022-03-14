@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
+import { OAuth2Provider } from '@components/Auth/Signup/OAuth2SignUpForm';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -32,6 +33,8 @@ const routesToHideFooter = ['/login', '/signup'];
 
 const authRoutes = ['/login', '/signup'];
 
+const popupUrls = ['/auth/oauth2/[provider]'];
+
 const Layout: React.FC = ({ children }) => {
   useTranslation(['level', 'tags', 'main', 'common', 'errors', 'search']);
   const router = useRouter();
@@ -40,35 +43,47 @@ const Layout: React.FC = ({ children }) => {
     return router.pathname === '/levels/[id]';
   }, [router.pathname]);
 
+  const isPopup = React.useMemo(() => {
+    return popupUrls.includes(router.pathname);
+  }, [router.pathname]);
+
   return (
     <Container
-      style={{ paddingTop: isLevelInfoPage ? 0 : 'var(--header-height)' }}
+      style={{
+        paddingTop: isPopup || isLevelInfoPage ? 0 : 'var(--header-height)'
+      }}
     >
       <Head>
         <title>Adofai.gg</title>
       </Head>
 
-      <Navbar />
+      {!isPopup ? (
+        <>
+          <Navbar />
 
-      <Main style={{ padding: isLevelInfoPage ? 0 : '24px 20px 30px' }}>
-        <Content
-          style={{
-            maxWidth: isLevelInfoPage ? '100vw' : 1100,
-            height: '100%',
-            ...(authRoutes.includes(router.pathname)
-              ? {
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center'
-                }
-              : {})
-          }}
-        >
-          <div style={{ height: '100%' }}>{children}</div>
-        </Content>
-      </Main>
+          <Main style={{ padding: isLevelInfoPage ? 0 : '24px 20px 30px' }}>
+            <Content
+              style={{
+                maxWidth: isLevelInfoPage ? '100vw' : 1100,
+                height: '100%',
+                ...(authRoutes.includes(router.pathname)
+                  ? {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }
+                  : {})
+              }}
+            >
+              <div style={{ height: '100%' }}>{children}</div>
+            </Content>
+          </Main>
 
-      {!routesToHideFooter.includes(router.pathname) && <Footer />}
+          {!routesToHideFooter.includes(router.pathname) && <Footer />}
+        </>
+      ) : (
+        <>{children}</>
+      )}
     </Container>
   );
 };

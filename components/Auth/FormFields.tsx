@@ -117,7 +117,7 @@ export const AuthButton = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  height: 30px;
+  height: 42px;
   cursor: pointer;
   transition: background-color ease 0.2s;
   width: 100%;
@@ -267,7 +267,7 @@ export const LabelledInputField: React.FC<{
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <div>
+    <div style={{ width: '100%' }}>
       <div
         style={{
           marginTop: 24,
