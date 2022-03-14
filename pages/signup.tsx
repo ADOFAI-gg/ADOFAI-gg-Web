@@ -44,7 +44,7 @@ const SignUp: NextPage = () => {
       {finished ? (
         <>
           <div style={{ fontWeight: 300, fontSize: 36, textAlign: 'center' }}>
-            Welcome to ADOFAI.gg
+            {t('welcome.title')}
           </div>
           <AuthButton
             style={{ marginTop: 64 }}
@@ -52,7 +52,7 @@ const SignUp: NextPage = () => {
               await Router.push('/');
             }}
           >
-            Return to previous page
+            {t('welcome.back')}
           </AuthButton>
         </>
       ) : (
