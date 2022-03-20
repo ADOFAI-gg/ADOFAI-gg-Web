@@ -96,15 +96,18 @@ const LevelListItemDetail: React.FC<
 const LevelListItem: React.FC<{ level: Level }> = ({ level }) => {
   const { t } = useTranslation('level');
 
+  const icon = React.useMemo(() => {
+    try {
+      return require(`@assets/difficultyIcons/${level.difficulty}.svg`);
+    } catch {
+      return require('@assets/difficultyIcons/0.svg');
+    }
+  }, [level.difficulty]);
+
   return (
     <NextLink href='/levels/[id]' as={`/levels/${level.id}`} passHref>
       <Container>
-        <Image
-          width={42}
-          height={42}
-          alt=''
-          src={require(`@assets/difficultyIcons/${level.difficulty}.svg`)}
-        />
+        <Image width={42} height={42} alt='' src={icon} />
         <div style={{ flexGrow: 1, height: '100%', width: 0 }}>
           <DetailsContainer>
             <LevelListItemDetail
