@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
       }}
     >
       <NextLink href='/' passHref>
-        <a>
+        <a style={{ height: 20 }}>
           <Image alt='' height={20} width={140} src={LogoImg} />
         </a>
       </NextLink>
