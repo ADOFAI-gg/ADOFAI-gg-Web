@@ -76,9 +76,7 @@ const Navbar: React.FC = () => {
   return (
     <Container
       style={{
-        backgroundColor: isLevelInfoPage
-          ? 'rgba(0, 0, 0, 25%)'
-          : 'rgba(26, 37, 51, 0.7)',
+        backgroundColor: 'rgba(0, 0, 0, 25%)',
         backdropFilter: isLevelInfoPage ? '' : 'blur(4px)'
       }}
     >

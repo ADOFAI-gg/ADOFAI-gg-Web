@@ -2,7 +2,7 @@ import '../styles/globals.scss';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Layout from '@components/Layout';
-import App from 'next/app';
+import App, { AppLayoutProps } from 'next/app';
 import { initI18n } from '../utils/i18n';
 import { I18nextProvider } from 'react-i18next';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -11,11 +11,44 @@ import icon from '@assets/icon.png';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import AdminLayout from '@components/AdminLayout';
+import {
+  NextComponentType,
+  NextLayoutComponentType,
+  NextPageContext
+} from 'next';
 
-function MyApp({ Component, pageProps }: AppProps) {
+declare module 'next' {
+  type NextLayoutComponentType<P = {}> = NextComponentType<
+    NextPageContext,
+    any,
+    P
+  > & {
+    layoutType?: 'user' | 'admin';
+  };
+}
+
+declare module 'next/app' {
+  type AppLayoutProps<P = {}> = AppProps & {
+    Component: NextLayoutComponentType;
+  };
+}
+
+function MyApp({ Component, pageProps }: AppLayoutProps) {
   const { locale } = pageProps;
 
   const i18n = React.useMemo(() => initI18n(locale), [locale]);
+
+  const LayoutComponent =
+    React.useMemo(() => {
+      switch (Component.layoutType) {
+        case 'admin':
+          return AdminLayout;
+        case 'user':
+        default:
+          return Layout;
+      }
+    }, [Component.layoutType]) ?? Layout;
 
   return (
     <React.Suspense fallback={<React.Fragment />}>
@@ -35,9 +68,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             ]
           }}
         />
-        <Layout>
+        <LayoutComponent>
           <Component {...pageProps} />
-        </Layout>
+        </LayoutComponent>
       </I18nextProvider>
     </React.Suspense>
   );
