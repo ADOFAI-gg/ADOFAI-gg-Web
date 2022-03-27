@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { get } from '../utils/http';
 import { Virtuoso } from 'react-virtuoso';
 import Select from 'react-select';
@@ -14,75 +14,10 @@ import {
 } from '../components/search/LevelListSearchSection';
 import LevelInfo from '../components/level/LevelInfo';
 import ScrollButton from '../components/global/ScrollButton';
+import { SearchSettingContext } from '../utils/context/SearchSettingContextProvider';
 
 const LevelListPage = ({ history }) => {
-  const recude = (state, action) => {
-    switch (action.type) {
-      case 'FETCH_RESULT':
-        return {
-          ...state,
-          items: action.items
-        };
-
-      case 'FETCH_ERROR':
-        return {
-          ...state,
-          error: action.error,
-          isError: action.error ? true : false
-        };
-
-      case 'HAS_MORE_ITEMS':
-        return {
-          ...state,
-          hasMoreItems: action.hasMore
-        };
-
-      case 'ITEM_COUNT':
-        return {
-          ...state,
-          itemCount: action.itemCount
-        };
-
-      case 'SEARCH_TERM':
-        return {
-          ...state,
-          searchTerm: action.searchTerm
-        };
-
-      case 'SORT_BY':
-        return {
-          ...state,
-          sortBy: action.sortBy
-        };
-
-      case 'TAG_CHANGE':
-        return {
-          ...state,
-          tag: action.tag
-        };
-
-      case 'FILTER_INPUT':
-        return {
-          ...state,
-          filterInput: action.filterInput
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(recude, {
-    items: [],
-    error: null,
-    isError: false,
-    hasMore: true,
-    itemCount: 0,
-    searchTerm: getQuery(),
-    sortBy: 'RECENT_DESC',
-    tag: Array.from({ length: 20 }, () => false),
-    filterInput: [null, null, null, null, null, null]
-  });
+  const { state, dispatch } = React.useContext(SearchSettingContext);
 
   const fetchParams = (offset) => {
     const params = new URLSearchParams();
@@ -247,11 +182,6 @@ const LevelListPage = ({ history }) => {
     dispatch({ type: 'FILTER_INPUT', filterInput: [...newNumbers] });
   };
 
-  function getQuery() {
-    var query = decodeURI(window.location.search).substring(7);
-    return query;
-  }
-
   const dropdownStyles = {
     option: (provided, state) => ({
       ...provided,
@@ -340,6 +270,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
@@ -355,6 +286,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
@@ -370,6 +302,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
