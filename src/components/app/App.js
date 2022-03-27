@@ -27,7 +27,7 @@ const App = () => {
         <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
           <PageTracking />
 
-          <Suspense fallback={<div></div>}>
+          <Suspense fallback={<div />}>
             <Switch>
               <Route exact path='/' component={MainPage} />
               <Route exact path='/levels' component={LevelListPage} />
@@ -36,7 +36,7 @@ const App = () => {
               <Route exact path='/mods/:id' component={ModPage} />
               <Route exact path='/ranks' component={RankingPage} />
 
-              <Route component={Error404Page}></Route>
+              <Route component={Error404Page} />
             </Switch>
           </Suspense>
         </SkeletonTheme>

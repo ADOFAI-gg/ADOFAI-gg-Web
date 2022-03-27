@@ -16,9 +16,7 @@
   object-fit: cover;
   width: 1100px;
   height: 190px;
-  border-radius: 20px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 20px 20px 0 0;
   filter: brightness(0.7);
   object-position: 0 50%;
 }
@@ -30,9 +28,7 @@
   justify-content: space-between;
   width: 1060px;
   height: 160px;
-  padding: 23px;
-  padding-top: 18px;
-  padding-bottom: 15px;
+  padding: 18px 23px 15px;
   text-shadow: black 0 0 8px;
 }
 
@@ -78,8 +74,7 @@
 .level-info-author {
   overflow: hidden;
   width: 800px;
-  margin: -7px;
-  margin-top: 25px;
+  margin: 25px -7px -7px;
   padding: 7px;
   color: white;
   font-size: 20px;
@@ -108,9 +103,7 @@
 
 .level-info-tag {
   margin-right: 10px;
-  padding: 3px;
-  padding-right: 8px;
-  padding-left: 5px;
+  padding: 3px 8px 3px 5px;
   border-radius: 100em;
   background-color: rgb(242, 242, 242);
   text-shadow: 0 0 0;
@@ -222,12 +215,8 @@
 
 .level-info-details {
   height: 270px;
-  padding: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  padding: 15px 20px;
+  border-radius: 0 0 20px 20px;
   background-color: rgba(15, 23, 33, 0.39);
 }
 
@@ -414,7 +403,6 @@
   opacity: 0;
 }
 
-.level-info-leaderboard-item:hover
-.level-info-leaderboard-item-detail-description {
+.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
   opacity: 1;
 }
