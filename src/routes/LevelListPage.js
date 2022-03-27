@@ -15,9 +15,12 @@ import {
 import LevelInfo from '../components/level/LevelInfo';
 import ScrollButton from '../components/global/ScrollButton';
 import { SearchSettingContext } from '../utils/context/SearchSettingContextProvider';
+import { useHistory, useLocation } from 'react-router-dom';
 
-const LevelListPage = ({ history }) => {
+const LevelListPage = () => {
   const { state, dispatch } = React.useContext(SearchSettingContext);
+  const location = useLocation();
+  const history = useHistory();
 
   const fetchParams = (offset) => {
     const params = new URLSearchParams();
@@ -84,6 +87,16 @@ const LevelListPage = ({ history }) => {
     setParamsFromState();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (location.search) {
+      dispatch({
+        type: 'SEARCH_TERM',
+        searchTerm: new URLSearchParams(location.search).get('query')
+      });
+      history.replace('/levels');
+    }
+  }, [location.search, dispatch, history]);
 
   useEffect(() => {
     fetchData();
