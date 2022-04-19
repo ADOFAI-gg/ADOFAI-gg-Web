@@ -33,11 +33,12 @@
     "styled-components": "^5.3.3",
     "sweetalert2": "^11.0.18",
     "sweetalert2-react-content": "^4.2.0",
+    "vite": "^2.9.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite",
+    "build": "vite build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "csslint": "npx stylelint --fix ./src/stylesheets/"

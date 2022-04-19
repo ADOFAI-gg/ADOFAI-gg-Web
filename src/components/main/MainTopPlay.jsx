@@ -1,5 +1,5 @@
-import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
+import { get } from '../../utils/http';
 import { Link } from 'react-router-dom';
 
 const MainTopPlay = ({ topPlay }) => {

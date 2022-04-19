@@ -7,7 +7,7 @@ const usePageTracking = () => {
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    ReactGA.initialize(`${process.env.REACT_APP_UA_NUMBER}`);
+    ReactGA.initialize(`${import.meta.env.VITE_UA_NUMBER}`);
     setInitialized(true);
   }, []);
 

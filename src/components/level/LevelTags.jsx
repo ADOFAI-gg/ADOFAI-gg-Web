@@ -1,3 +1,4 @@
+import React from 'react';
 import tagDescription from '../../constants/tagDescription';
 
 // Components
