@@ -42,7 +42,7 @@
 :root {
   --nav-height: 56px;
   --nav-menu-size: 100px;
-  --footer-height: 90px;
+  --footer-height: 120px;
   --normal-font: 'Quicksand', '나눔스퀘어라운드', '나눔고딕', '나눔스퀘어',
     'Segoe UI', 'Segoe UI Symbol', 'Segoe UI Emoji', 'Segoe UI WP',
     'Segoe UI Light', 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial',
@@ -593,11 +593,13 @@ nav {
   opacity: 0.7;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .list-dropdown__indicator {
   padding: 0 !important;
   color: rgba(255, 255, 255, 0.4) !important;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .list-dropdown__indicator:hover {
   color: rgba(255, 255, 255, 0.6) !important;
 }
@@ -789,12 +791,43 @@ footer {
 
 .footer-content {
   bottom: 0;
-  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
   width: 1060px;
-  height: 100%;
+  height: var(--footer-height);
   margin-right: auto;
   margin-left: auto;
   font-weight: 400;
-  line-height: 90px;
   text-align: center;
+}
+
+.footler-content-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  font-weight: 600;
+  font-size: 21px;
+}
+
+.footler-content-disclaimer {
+  font-weight: 400;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.footer-content-links {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+}
+
+.footer-content-links div:not(:first-child)::before {
+  content: '·';
+  margin-right: 6px;
+  color: rgba(255, 255, 255, 0.4);
 }
