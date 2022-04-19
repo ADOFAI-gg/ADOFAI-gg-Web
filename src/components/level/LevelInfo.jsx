@@ -77,19 +77,19 @@ const LevelInfo = ({ levelData }) => {
 
           <div className='level-item-info-section' style={{ width: '150px' }}>
             <div className='level-item-info-label'>Tags</div>
-            <div className='level-item-info-value'>
+            <div className='level-item-info-value level-item-info-tags'>
               {tags.length !== 0
                 ? tags.map((tag, index) => (
                     <LevelTags
                       tag={tag.id}
                       id={id}
                       key={index}
-                      styleClass='main-tag'
+                      styleClass='level-item-info-tag'
                     />
                   ))
                 : tags.length === 0 && (
                     <img
-                      className='main-tag'
+                      className='level-item-info-tag'
                       src={'/tag/empty.svg'}
                       alt='No Tags'
                     />

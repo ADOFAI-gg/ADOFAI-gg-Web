@@ -181,12 +181,6 @@
   margin-left: auto;
 }
 
-.main-tag {
-  height: 24px;
-  margin-top: 4px;
-  margin-right: 5px;
-}
-
 .main-user-menu-close {
   transition-property: color, transform !important;
 }
