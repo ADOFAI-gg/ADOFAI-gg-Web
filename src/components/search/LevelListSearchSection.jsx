@@ -162,8 +162,8 @@ const SearchContentItem = ({ title, children, isLv }) => {
   );
 };
 
-const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
-  const [btnState, setBtnState] = useState('unchecked');
+const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState }) => {
+  const [btnState, setBtnState] = useState(defaultState);
 
   return (
     <>
