@@ -100,14 +100,14 @@ body::-webkit-scrollbar-thumb:hover {
   background: rgba(202, 202, 202, 0.66);
 }
 
-.container {
+#root {
   position: relative;
   display: flex;
   width: 100%;
   height: 100%;
 }
 
-.container > div {
+#root > div {
   flex-grow: 1;
 }
 

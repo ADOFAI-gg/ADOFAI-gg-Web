@@ -6,7 +6,6 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import PageTracking from '../global/PageTracking';
 import Navbar from '../global/Navbar';
 import Footer from '../global/Footer';
-import AppContainer from './AppContainer';
 import SearchSettingContextProvider from '../../utils/context/SearchSettingContextProvider';
 
 // Pages
@@ -22,30 +21,28 @@ const App = () => {
   return (
     <Router>
       <SearchSettingContextProvider>
-        <AppContainer>
-          <Navbar />
+        <Navbar />
 
-          {/* MAIN */}
-          <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
-            <PageTracking />
+        {/* MAIN */}
+        <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
+          <PageTracking />
 
-            <Suspense fallback={<div />}>
-              <Switch>
-                <Route exact path='/' component={MainPage} />
-                <Route exact path='/levels' component={LevelListPage} />
-                <Route exact path='/levels/:id' component={LevelPage} />
-                <Route exact path='/mods' component={ModListPage} />
-                <Route exact path='/mods/:id' component={ModPage} />
-                <Route exact path='/ranks' component={RankingPage} />
+          <Suspense fallback={<div />}>
+            <Switch>
+              <Route exact path='/' component={MainPage} />
+              <Route exact path='/levels' component={LevelListPage} />
+              <Route exact path='/levels/:id' component={LevelPage} />
+              <Route exact path='/mods' component={ModListPage} />
+              <Route exact path='/mods/:id' component={ModPage} />
+              <Route exact path='/ranks' component={RankingPage} />
 
-                <Route component={Error404Page} />
-              </Switch>
-            </Suspense>
-          </SkeletonTheme>
+              <Route component={Error404Page} />
+            </Switch>
+          </Suspense>
+        </SkeletonTheme>
 
-          {/* FOOTER */}
-          <Footer />
-        </AppContainer>
+        {/* FOOTER */}
+        <Footer />
       </SearchSettingContextProvider>
     </Router>
   );
