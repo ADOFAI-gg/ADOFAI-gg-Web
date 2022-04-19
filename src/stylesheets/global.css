@@ -220,6 +220,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 100vw;
+  min-width: 1120px;
   height: var(--nav-height);
   background-color: rgba(26, 37, 51, 0.7);
 }
@@ -251,6 +252,7 @@ nav {
   align-items: center;
   justify-content: center;
   width: 100vw;
+  min-width: 1120px;
 }
 
 .nav-menu {
