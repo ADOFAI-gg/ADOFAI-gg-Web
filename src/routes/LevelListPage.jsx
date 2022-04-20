@@ -328,6 +328,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Min Lv.'
                   onChange={(i) => numberChange(0, i ? i.value : null)}
+                  value={difficulty.find(x=>x.value === state.filterInput[0])}
                   isOptionDisabled={(i) =>
                     state.filterInput[1] && i.value > state.filterInput[1]
                   }
@@ -346,6 +347,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Max Lv.'
                   onChange={(i) => numberChange(1, i ? i.value : null)}
+                  value={difficulty.find(x=>x.value === state.filterInput[1])}
                   isOptionDisabled={(i) =>
                     state.filterInput[0] && i.value < state.filterInput[0]
                   }
@@ -364,11 +366,13 @@ const LevelListPage = () => {
               <SearchContentItem title='BPM'>
                 <SearchContentInput
                   onInput={(value) => numberChange(2, value)}
+                  value={state.filterInput[2]}
                   placeholder='Min BPM'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
+                  value={state.filterInput[3]}
                   placeholder='Max BPM'
                 />
               </SearchContentItem>
@@ -376,11 +380,13 @@ const LevelListPage = () => {
               <SearchContentItem title='Tiles'>
                 <SearchContentInput
                   onInput={(value) => numberChange(4, value)}
+                  value={state.filterInput[4]}
                   placeholder='Min Tiles'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
+                  value={state.filterInput[5]}
                   placeholder='Max Tiles'
                 />
               </SearchContentItem>

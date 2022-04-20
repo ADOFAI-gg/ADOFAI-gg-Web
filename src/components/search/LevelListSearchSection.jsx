@@ -228,11 +228,12 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState }) => {
   );
 };
 
-const SearchContentInput = ({ onInput, placeholder }) => {
+const SearchContentInput = ({ onInput, placeholder, value }) => {
   return (
     <input
       className='list-text-input'
       type='number'
+      value={value ?? ''}
       placeholder={placeholder}
       onChange={(event) => {
         onInput(event.target.value);
