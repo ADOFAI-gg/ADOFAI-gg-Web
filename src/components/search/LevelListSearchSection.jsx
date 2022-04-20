@@ -44,7 +44,7 @@ const SearchSection = ({
   sortContent,
   disabled
 }) => {
-  const {state} = React.useContext(SearchSettingContext)
+  const {state, dispatch} = React.useContext(SearchSettingContext)
 
   const firstShowFilter = React.useMemo(() => {
     return !!state.tag.find(x=>x) || !!state.filterInput.find(x=>x)
@@ -59,10 +59,6 @@ const SearchSection = ({
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
-
-  const refreshPage = () => {
-    window.location.reload();
-  };
 
   return (
     <section className='list-search-container'>
@@ -110,7 +106,7 @@ const SearchSection = ({
               </div>
             </div>
 
-            <div className='list-search-sort-button' onClick={refreshPage}>
+            <div className='list-search-sort-button' onClick={() => dispatch({type: 'RESET'})}>
               <div className='tooltip-container'>
                 <span className='tooltiptext'>Reset Filter</span>
 

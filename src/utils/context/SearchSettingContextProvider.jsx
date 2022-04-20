@@ -52,6 +52,8 @@ const reduce = (state, action) => {
         ...state,
         filterInput: action.filterInput
       };
+    case 'RESET':
+      return initialState
 
     default:
       return state;
