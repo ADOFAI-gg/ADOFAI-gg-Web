@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import TagTooltip from '../level/TagTooltip';
+import { SearchSettingContext } from '../../utils/context/SearchSettingContextProvider';
 
 const SearchContentAnimator = ({ children, key }) => {
   return (
@@ -43,8 +44,18 @@ const SearchSection = ({
   sortContent,
   disabled
 }) => {
-  const [showFilter, setShowFilter] = useState(false);
-  const [showSort, setShowSort] = useState(false);
+  const {state} = React.useContext(SearchSettingContext)
+
+  const firstShowFilter = React.useMemo(() => {
+    return !!state.tag.find(x=>x) || !!state.filterInput.find(x=>x)
+  }, [state])
+
+  const firstShowSort = React.useMemo(() => {
+    return state.sortBy !== 'RECENT_DESC'
+  }, [state])
+
+  const [showFilter, setShowFilter] = useState(firstShowFilter);
+  const [showSort, setShowSort] = useState(firstShowSort);
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
