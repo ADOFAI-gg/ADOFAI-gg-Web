@@ -9,7 +9,7 @@
     }
   },
   "footer": {
-    "description": "ADOFAI.gg is based on the Unofficial ADOFAI Forum and has not been produced or approved by 7th Beat Games. This website is provided with the support of Hanmesoft.",
+    "description": "ADOFAI.gg is based on the Unofficial ADOFAI Forum and is not made or approved by 7th Beat Games. This website is provided with the support of Hanmesoft.",
     "legal": {
       "notice": "Legal Notice",
       "terms": "Terms of Service",
@@ -17,7 +17,7 @@
     },
     "links": {
       "contact": {
-        "mail": "Send an Email to ADOFAI.gg Dev",
+        "mail": "Contact ADOFAI.gg Developers",
         "discord": "Join Our Discord Server"
       },
       "github": {
