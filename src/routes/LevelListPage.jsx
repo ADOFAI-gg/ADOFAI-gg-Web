@@ -316,7 +316,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Min Lv.'
                   onChange={(i) => numberChange(0, i ? i.value : null)}
-                  value={difficulty.find(x=>x.value === state.filterInput[0])}
+                  value={state.filterInput[0] ? difficulty.find(x=>x.value === state.filterInput[0]) : null}
                   isOptionDisabled={(i) =>
                     state.filterInput[1] && i.value > state.filterInput[1]
                   }
@@ -335,7 +335,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Max Lv.'
                   onChange={(i) => numberChange(1, i ? i.value : null)}
-                  value={difficulty.find(x=>x.value === state.filterInput[1])}
+                  value={state.filterInput[1] ? difficulty.find(x=>x.value === state.filterInput[1]) : null}
                   isOptionDisabled={(i) =>
                     state.filterInput[0] && i.value < state.filterInput[0]
                   }
@@ -422,7 +422,6 @@ const LevelListPage = () => {
                 }
                 tooltip='RECENT_DESC'
                 img='sort_icons/created_at_up.svg'
-                isDefault
               />
               <SearchContentRadio
                 onSelect={(value) =>

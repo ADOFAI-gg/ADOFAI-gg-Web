@@ -246,6 +246,8 @@ const SearchContentInput = ({ onInput, placeholder, value }) => {
 };
 
 const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
+  const { state } = React.useContext(SearchSettingContext);
+
   return (
     <div className='list-search-content-toggle'>
       <input
@@ -256,7 +258,7 @@ const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
         }}
         name='radio'
         className='list-search-content-toggle-button'
-        defaultChecked={isDefault}
+        checked={state.sortBy === tooltip}
       />
       <label htmlFor={tooltip}>
         <img src={`/${img}`} alt={tooltip} />
