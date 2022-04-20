@@ -4,12 +4,12 @@
       "title": "Tags",
       "chart": "Chart Related",
       "rhythm": "Rhythm Related",
-      "length": "Length of Song"
+      "length": "Song Length"
     },
     "meta": {
-      "title": "Meta",
-      "author": "Author",
-      "meta": "Level Meta",
+      "title": "Metadata",
+      "author": "Creator",
+      "meta": "Level Metadata",
       "placeholder": {
         "artist": "Song Artist",
         "creator": "Level Creator"
@@ -22,7 +22,7 @@
   },
   "help": {
     "tags": "You can apply filters by clicking tags.",
-    "author": "You can use'&' to split multiple authors."
+    "author": "You can use '&' to split multiple creators."
   },
   "reset": "Reset Search Setting"
 }
