@@ -52,13 +52,15 @@ const reduce = (state, action) => {
         ...state,
         filterInput: action.filterInput
       };
+    case 'RESET':
+      return createInitialState()
 
     default:
       return state;
   }
 };
 
-const initialState = {
+const createInitialState = () => ({
   items: [],
   error: null,
   isError: false,
@@ -68,7 +70,9 @@ const initialState = {
   sortBy: 'RECENT_DESC',
   tag: Array.from({ length: 20 }, () => false),
   filterInput: [null, null, null, null, null, null]
-};
+})
+
+const initialState = createInitialState()
 
 /**
  * @type {React.FC}

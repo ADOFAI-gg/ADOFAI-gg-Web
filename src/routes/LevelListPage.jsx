@@ -153,21 +153,9 @@ const LevelListPage = () => {
   };
 
   const tagChange = (value, btnState) => {
-    // What? why tf?
-    // : beacuse STATE UPATE DOES NOT SUPPORT ASYNC FUCK ;)
-    let _btnState;
-
-    if (btnState === 'unchecked') {
-      _btnState = 'include';
-    } else if (btnState === 'include') {
-      _btnState = 'exclude';
-    } else {
-      _btnState = 'unchecked';
-    }
-
     const newTag = state.tag;
 
-    newTag[value - 1] = _btnState;
+    newTag[value - 1] = btnState;
     dispatch({ type: 'TAG_CHANGE', tag: [...newTag] });
   };
 
@@ -328,6 +316,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Min Lv.'
                   onChange={(i) => numberChange(0, i ? i.value : null)}
+                  value={state.filterInput[0] ? difficulty.find(x=>x.value === state.filterInput[0]) : null}
                   isOptionDisabled={(i) =>
                     state.filterInput[1] && i.value > state.filterInput[1]
                   }
@@ -346,6 +335,7 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Max Lv.'
                   onChange={(i) => numberChange(1, i ? i.value : null)}
+                  value={state.filterInput[1] ? difficulty.find(x=>x.value === state.filterInput[1]) : null}
                   isOptionDisabled={(i) =>
                     state.filterInput[0] && i.value < state.filterInput[0]
                   }
@@ -364,11 +354,13 @@ const LevelListPage = () => {
               <SearchContentItem title='BPM'>
                 <SearchContentInput
                   onInput={(value) => numberChange(2, value)}
+                  value={state.filterInput[2]}
                   placeholder='Min BPM'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
+                  value={state.filterInput[3]}
                   placeholder='Max BPM'
                 />
               </SearchContentItem>
@@ -376,11 +368,13 @@ const LevelListPage = () => {
               <SearchContentItem title='Tiles'>
                 <SearchContentInput
                   onInput={(value) => numberChange(4, value)}
+                  value={state.filterInput[4]}
                   placeholder='Min Tiles'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
+                  value={state.filterInput[5]}
                   placeholder='Max Tiles'
                 />
               </SearchContentItem>
@@ -394,6 +388,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='DIFFICULTY_DESC'
                 img='sort_icons/difficulty_up.svg'
               />
@@ -401,6 +396,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='DIFFICULTY_ASC'
                 img='sort_icons/difficulty_down.svg'
               />
@@ -426,14 +422,15 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='RECENT_DESC'
                 img='sort_icons/created_at_up.svg'
-                isDefault
               />
               <SearchContentRadio
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='RECENT_ASC'
                 img='sort_icons/created_at_down.svg'
               />
