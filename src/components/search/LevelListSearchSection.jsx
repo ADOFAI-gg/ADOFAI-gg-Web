@@ -42,7 +42,7 @@ const SearchSection = ({
   onSearch,
   filterContent,
   sortContent,
-  disabled
+  disabled,
 }) => {
   const {state, dispatch} = React.useContext(SearchSettingContext)
 
@@ -245,7 +245,7 @@ const SearchContentInput = ({ onInput, placeholder, value }) => {
   );
 };
 
-const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
+const SearchContentRadio = ({ onSelect, tooltip, img, objKey }) => {
   const { state } = React.useContext(SearchSettingContext);
 
   return (
@@ -258,7 +258,7 @@ const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
         }}
         name='radio'
         className='list-search-content-toggle-button'
-        checked={state.sortBy === tooltip}
+        checked={state[objKey] === tooltip}
       />
       <label htmlFor={tooltip}>
         <img src={`/${img}`} alt={tooltip} />

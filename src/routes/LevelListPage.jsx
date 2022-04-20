@@ -388,6 +388,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='DIFFICULTY_DESC'
                 img='sort_icons/difficulty_up.svg'
               />
@@ -395,6 +396,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='DIFFICULTY_ASC'
                 img='sort_icons/difficulty_down.svg'
               />
@@ -420,6 +422,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='RECENT_DESC'
                 img='sort_icons/created_at_up.svg'
               />
@@ -427,6 +430,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey="sortBy"
                 tooltip='RECENT_ASC'
                 img='sort_icons/created_at_down.svg'
               />
