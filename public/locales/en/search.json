@@ -7,8 +7,8 @@
       "length": "Song Length"
     },
     "meta": {
-      "title": "Metadata",
-      "author": "Creator",
+      "title": "Meta",
+      "author": "Author",
       "meta": "Level Metadata",
       "placeholder": {
         "artist": "Song Artist",
@@ -22,7 +22,7 @@
   },
   "help": {
     "tags": "You can apply filters by clicking tags.",
-    "author": "You can use '&' to split multiple creators."
+    "author": "You can use '&' to split multiple authors."
   },
-  "reset": "Reset Search Setting"
+  "reset": "Reset Search Settings"
 }
