@@ -153,21 +153,9 @@ const LevelListPage = () => {
   };
 
   const tagChange = (value, btnState) => {
-    // What? why tf?
-    // : beacuse STATE UPATE DOES NOT SUPPORT ASYNC FUCK ;)
-    let _btnState;
-
-    if (btnState === 'unchecked') {
-      _btnState = 'include';
-    } else if (btnState === 'include') {
-      _btnState = 'exclude';
-    } else {
-      _btnState = 'unchecked';
-    }
-
     const newTag = state.tag;
 
-    newTag[value - 1] = _btnState;
+    newTag[value - 1] = btnState;
     dispatch({ type: 'TAG_CHANGE', tag: [...newTag] });
   };
 

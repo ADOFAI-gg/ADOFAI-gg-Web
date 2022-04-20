@@ -169,8 +169,17 @@ const SearchContentItem = ({ title, children, isLv }) => {
   );
 };
 
-const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState }) => {
-  const [btnState, setBtnState] = useState(defaultState);
+const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState: btnState }) => {
+  // const [btnState, setBtnState] = useState(defaultState);
+  const inputRef = React.useRef()
+
+  React.useEffect(() => {
+    const input = inputRef.current
+    if (input) {
+      input.checked = btnState === 'include';
+      input.indeterminate = btnState === 'exclude';
+    }
+  }, [btnState, inputRef])
 
   return (
     <>
@@ -183,21 +192,18 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState }) => {
           type='checkbox'
           id={tooltip}
           onChange={(event) => {
-            onSelect(event.target, btnState);
+            // onSelect(event.target, btnState);
 
             if (btnState === 'unchecked') {
-              setBtnState('include');
+              onSelect(event.target, 'include');
             } else if (btnState === 'include') {
-              setBtnState('exclude');
+              onSelect(event.target, 'exclude');
             } else {
-              setBtnState('unchecked');
+              onSelect(event.target, 'unchecked');
             }
           }}
           ref={(input) => {
-            if (input) {
-              input.checked = btnState === 'include';
-              input.indeterminate = btnState === 'exclude';
-            }
+            inputRef.current = input
           }}
           className='list-search-content-toggle-button level-list-filter-tag'
         />
