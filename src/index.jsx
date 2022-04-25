@@ -12,6 +12,7 @@ import './stylesheets/modList.css';
 import './stylesheets/level.css';
 import './stylesheets/levelList.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import 'sweetalert2/src/sweetalert2.scss'
 
 toast.configure();
 

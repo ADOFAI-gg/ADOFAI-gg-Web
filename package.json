@@ -39,8 +39,6 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "csslint": "npx stylelint --fix ./src/stylesheets/"
   },
   "eslintConfig": {
@@ -63,6 +61,7 @@
   },
   "devDependencies": {
     "prettier": "^2.6.1",
+    "sass": "^1.50.1",
     "stylelint": "^14.0.1",
     "stylelint-config-standard": "^23.0.0",
     "stylelint-order": "^5.0.0"
