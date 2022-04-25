@@ -371,17 +371,14 @@ const LevelPage = ({ history }) => {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    width: '600px'
+                    width: '600px',
+                    gap: 8,
+                    alignItems: 'flex-start'
                   }}
                 >
-                  <div style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', gap: 4 }}>
                     <div className='level-info-detail-info-section'>
-                      <div
-                        className='level-info-label'
-                        style={{ textAlign: 'center' }}
-                      >
-                        Lv.
-                      </div>
+                      <div className='level-info-label'>Lv.</div>
                       <div className='level-info-value'>
                         <img
                           style={{
@@ -423,27 +420,24 @@ const LevelPage = ({ history }) => {
                       </div>
                     </div>
                   </div>
+
                   <div
+                    className='level-info-detail-info-section'
                     style={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start'
+                      flexGrow: 1
                     }}
                   >
-                    <div className='level-info-detail-info-section'>
-                      <div className='level-info-label'>Description</div>
-                      <div className='level-info-value level-info-detail-info-description '>
-                        {!state.level.description
-                          ? `There's no description for this level.`
-                          : state.level.description}
-                      </div>
+                    <div className='level-info-label'>Description</div>
+                    <div className='level-info-value level-info-detail-info-description '>
+                      {!state.level.description
+                        ? `There's no description for this level.`
+                        : state.level.description}
                     </div>
-                    <LikeButton likes={state.level.likes} />
                   </div>
+                  <LikeButton likes={state.level.likes} />
                 </div>
                 <div className='level-info-detail-info-video'>
-                  <div>Wait a moment please!</div>
+                  <div>Loading the video…</div>
                   <iframe
                     src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
                     title='YouTube video player'

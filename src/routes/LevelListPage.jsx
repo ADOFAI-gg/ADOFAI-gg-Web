@@ -316,7 +316,11 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Min Lv.'
                   onChange={(i) => numberChange(0, i ? i.value : null)}
-                  value={state.filterInput[0] ? difficulty.find(x=>x.value === state.filterInput[0]) : null}
+                  value={
+                    state.filterInput[0]
+                      ? difficulty.find((x) => x.value === state.filterInput[0])
+                      : null
+                  }
                   isOptionDisabled={(i) =>
                     state.filterInput[1] && i.value > state.filterInput[1]
                   }
@@ -335,7 +339,11 @@ const LevelListPage = () => {
                   {...dropdownProps}
                   placeholder='Max Lv.'
                   onChange={(i) => numberChange(1, i ? i.value : null)}
-                  value={state.filterInput[1] ? difficulty.find(x=>x.value === state.filterInput[1]) : null}
+                  value={
+                    state.filterInput[1]
+                      ? difficulty.find((x) => x.value === state.filterInput[1])
+                      : null
+                  }
                   isOptionDisabled={(i) =>
                     state.filterInput[0] && i.value < state.filterInput[0]
                   }
@@ -388,7 +396,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
-                objKey="sortBy"
+                objKey='sortBy'
                 tooltip='DIFFICULTY_DESC'
                 img='sort_icons/difficulty_up.svg'
               />
@@ -396,7 +404,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
-                objKey="sortBy"
+                objKey='sortBy'
                 tooltip='DIFFICULTY_ASC'
                 img='sort_icons/difficulty_down.svg'
               />
@@ -422,7 +430,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
-                objKey="sortBy"
+                objKey='sortBy'
                 tooltip='RECENT_DESC'
                 img='sort_icons/created_at_up.svg'
               />
@@ -430,7 +438,7 @@ const LevelListPage = () => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
-                objKey="sortBy"
+                objKey='sortBy'
                 tooltip='RECENT_ASC'
                 img='sort_icons/created_at_down.svg'
               />

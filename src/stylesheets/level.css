@@ -227,7 +227,7 @@
 .level-info-label {
   height: 20px;
   color: rgb(179, 179, 179);
-  font-weight: 600;
+  font-weight: 400;
   font-size: 18px;
 }
 
@@ -247,7 +247,6 @@
   display: -webkit-box;
   overflow: hidden;
   max-width: 600px;
-  height: 5em;
   margin-top: 5px;
   font-size: 28px !important;
   line-height: 1.25em;
