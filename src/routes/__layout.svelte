@@ -1,7 +1,7 @@
 <script lang="ts">
   import '../stylesheets/main.scss';
-  import Header from '../components/organisms/Header.svelte';
+  import Nav from '../components/organisms/Nav.svelte';
 </script>
 
-<Header />
+<Nav />
 <slot />
