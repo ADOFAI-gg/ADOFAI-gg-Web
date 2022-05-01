@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-	@apply text-white bg-center bg-cover bg-no-repeat min-h-screen;
-	background-image: url('/background.png');
+  @apply text-white bg-center bg-cover bg-no-repeat min-h-screen;
+  background-image: url('/background.png');
 }
