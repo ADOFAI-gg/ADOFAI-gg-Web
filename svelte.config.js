@@ -1,5 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
+import * as path from 'path';
+import * as url from 'url';
+import svg from '@poppanator/sveltekit-svg';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,7 +11,15 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter()
+    adapter: adapter(),
+    vite: {
+      resolve: {
+        alias: {
+          '@': path.resolve('./src')
+        }
+      },
+      plugins: [svg()]
+    }
   }
 };
 
