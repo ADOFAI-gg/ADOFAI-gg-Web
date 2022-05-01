@@ -1,0 +1,17 @@
+<script lang="ts">
+  export let href = '';
+  export let type = 'default';
+
+  $: className = (() => {
+    switch (type) {
+      case 'nav':
+        return 'opacity-60 font-medium hover:opacity-100 transition-opacity px-[20px] border-[1px] py-[8px] text-md rounded-full';
+      default:
+        return 'bg-white bg-opacity-20 h-[42px] px-8 rounded-[5px] text-lg hover:bg-opacity-30 transition-colors';
+    }
+  })();
+</script>
+
+<svelte:element this={href ? 'a' : 'button'} {href} class={className}>
+  <slot />
+</svelte:element>
