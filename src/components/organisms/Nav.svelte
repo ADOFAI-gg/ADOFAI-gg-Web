@@ -1,9 +1,16 @@
 <script lang="ts">
-  import Logo from '@atoms/NavLogo.svelte';
-  import NavLinks from '@molecules/NavLinks.svelte';
-  import NavSignArea from '@molecules/NavSignArea.svelte';
-  import Icon from '@atoms/Icon.svelte';
+  import Logo from '../atoms/NavLogo.svelte';
+  import NavLinks from '../molecules/NavLinks.svelte';
+  import NavSignArea from '../molecules/NavSignArea.svelte';
+  import Icon from '../atoms/Icon.svelte';
   import Expand from '@/assets/icons/expand.svg?url';
+  import NavMenuOverlay from './NavMenuOverlay.svelte';
+
+  let menuOpen = false;
+
+  const toggleMenu = () => {
+    menuOpen = !menuOpen;
+  };
 </script>
 
 <nav class="h-[56px] bg-black bg-opacity-25 flex items-center px-[24px] relative gap-[16px]">
@@ -16,7 +23,11 @@
     <NavSignArea />
   </div>
   <div class="bg-white opacity-40 w-[1px] h-[18px] hidden md:block" />
-  <span class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+  <span
+    class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+    on:click={toggleMenu}
+  >
     <Icon icon={Expand} size="16" />
   </span>
+  <NavMenuOverlay open={menuOpen} on:close={toggleMenu} />
 </nav>

@@ -47,6 +47,7 @@
   },
   "type": "module",
   "dependencies": {
+    "clsx": "^1.1.1",
     "svelte-icons": "^2.1.0"
   },
   "lint-staged": {

@@ -5,13 +5,18 @@
   $: className = (() => {
     switch (type) {
       case 'nav':
-        return 'opacity-60 font-medium hover:opacity-100 transition-opacity px-[20px] border-[1px] py-[8px] text-md rounded-full';
+        return 'opacity-60 font-medium hover:opacity-100 transition-opacity px-[20px] border-[1px] py-[8px] text-md rounded-full text-center';
       default:
-        return 'bg-white bg-opacity-20 h-[42px] px-8 rounded-[5px] text-lg hover:bg-opacity-30 transition-colors';
+        return 'bg-white bg-opacity-20 h-[42px] px-8 rounded-[5px] text-lg hover:bg-opacity-30 transition-colors text-center';
     }
   })();
 </script>
 
-<svelte:element this={href ? 'a' : 'button'} {href} class={className}>
+<svelte:element
+  this={href ? 'a' : 'button'}
+  {href}
+  {...$$props}
+  class={$$props.class ? className + ' ' + $$props.class : className}
+>
   <slot />
 </svelte:element>
