@@ -1,8 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 import * as path from 'path';
-import * as url from 'url';
 import svg from '@poppanator/sveltekit-svg';
+import glob from 'vite-plugin-glob';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,10 +15,14 @@ const config = {
     vite: {
       resolve: {
         alias: {
-          '@': path.resolve('./src')
+          '@': path.resolve('./src'),
+          '@atoms': path.resolve('./src/components/atoms'),
+          '@molecules': path.resolve('./src/components/molecules'),
+          '@organisms': path.resolve('./src/components/organisms'),
+          '@templates': path.resolve('./src/components/templates')
         }
       },
-      plugins: [svg()]
+      plugins: [svg(), glob()]
     }
   }
 };

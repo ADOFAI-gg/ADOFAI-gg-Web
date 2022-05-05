@@ -34,6 +34,17 @@ module.exports = {
     },
     letterSpacing: {
       normal: '-0.011em'
+    },
+    extend: {
+      keyframes: (theme) => ({
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 }
+        }
+      }),
+      animation: {
+        'fade-in': 'fadeIn 0.2s linear'
+      }
     }
   },
   plugins: [],

@@ -1,8 +1,8 @@
 <script>
-  import Button from '../atoms/Button.svelte';
+  import Button from '@atoms/Button.svelte';
 </script>
 
-<div class="flex gap-[16px] items-center">
+<div class="flex gap-[16px] items-center flex-col md:flex-row">
   <a href="/signup" class="font-regular text-md opacity-60 hover:opacity-100 transition-opacity"
     >Sign Up</a
   >
