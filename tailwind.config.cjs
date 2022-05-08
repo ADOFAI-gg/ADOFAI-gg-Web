@@ -44,6 +44,9 @@ module.exports = {
       },
       letterSpacing: {
         normal: '-0.011em'
+      },
+      height: {
+        nav: '56px'
       }
     }
   },

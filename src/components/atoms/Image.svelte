@@ -22,5 +22,5 @@
 {:then src}
   <img {src} {alt} {width} {height} draggable="false" class="animate-fade-in" />
 {:catch _}
-  <div />
+  <div class={`w-[${width}px] h-[${height}px]`} />
 {/await}
