@@ -1,6 +1,6 @@
 <script lang="ts">
-  import HomeLogo from '../molecules/HomeLogo.svelte';
-  import SearchInput from '../molecules/SearchInput.svelte';
+  import HomeLogo from '../../molecules/HomeLogo.svelte';
+  import SearchInput from '../../molecules/SearchInput.svelte';
   import { goto } from '$app/navigation';
 
   let searchQuery: string;
