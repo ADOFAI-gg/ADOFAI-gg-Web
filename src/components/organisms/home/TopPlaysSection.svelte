@@ -8,7 +8,7 @@
 
 <MainSectionTitle title="Top Plays" moreLink="/ranking" />
 
-<div class="grid grid-cols-3 w-full gap-[50px] mt-[32px]">
+<div class="grid grid-cols-3 w-full gap-[50px]">
   {#if plays.length}
     hello
   {:else}

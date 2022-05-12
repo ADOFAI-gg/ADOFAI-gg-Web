@@ -13,8 +13,9 @@
   };
 </script>
 
-<div class="px-4 max-w-[700px] mt-[60px] mx-auto flex flex-col items-center gap-[50px]">
+<div class="px-4 max-w-[700px] mt-[60px] mx-auto flex flex-col items-center gap-[32px]">
   <HomeLogo />
+
   <form on:submit={onSubmitSearch} class="w-full">
     <SearchInput bind:value={searchQuery} />
   </form>
