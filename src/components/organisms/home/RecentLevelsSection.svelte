@@ -6,3 +6,5 @@
 </script>
 
 <MainSectionTitle title="Recent Ranked Levels" moreLink="/levels" />
+
+<pre>{JSON.stringify(levels, null, 2)}</pre>
