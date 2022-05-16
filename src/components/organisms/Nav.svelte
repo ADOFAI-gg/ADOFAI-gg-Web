@@ -28,7 +28,7 @@
       class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
       on:click={toggleMenu}
     >
-      <Icon icon={Expand} size="16" />
+      <Icon icon={Expand} size={16} />
     </span>
     <NavMenuOverlay open={menuOpen} on:close={toggleMenu} />
   </div>
