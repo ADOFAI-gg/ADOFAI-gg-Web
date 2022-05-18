@@ -106,10 +106,7 @@ const LevelListPage = () => {
   }, [state.sortBy, state.tag, state.filterInput]);
 
   useEffect(() => {
-    console.log('term changed');
-
     const delayDebounceFn = setTimeout(() => {
-      console.log('debounce');
       fetchData();
     }, 100);
 

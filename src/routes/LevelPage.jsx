@@ -222,7 +222,6 @@ const LevelPage = ({ history }) => {
   };
 
   const LevelInfo = () => {
-    console.log(state);
     if (state.isLoading || !state.level || !state.leaderboard) {
       return null;
     } else if (!state.isLoading && !state.level.title) {
