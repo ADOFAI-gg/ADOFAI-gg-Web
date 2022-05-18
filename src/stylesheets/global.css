@@ -62,6 +62,7 @@ body,
 }
 
 body {
+  overflow: overlay;
   min-width: 1120px;
   margin: 0;
   padding-right: 0 !important; /* swal changes body stlye */
