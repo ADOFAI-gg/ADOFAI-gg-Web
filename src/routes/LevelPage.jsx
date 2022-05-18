@@ -199,9 +199,7 @@ const LevelPage = ({ history }) => {
                       height: '0.9em'
                     }}
                   />
-                  {info.rawAccuracy
-                    ? `${info.rawAccuracy.toFixed(1)}%`
-                    : 'UNKNOWN'}
+                  {info.accuracy ? `${info.accuracy.toFixed(1)}%` : 'UNKNOWN'}
                 </div>
               </div>
             </div>
