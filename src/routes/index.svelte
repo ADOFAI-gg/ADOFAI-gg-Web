@@ -43,7 +43,7 @@
 
 <div class="h-nav" />
 
-<div class="px-4">
+<div class="px-8">
   <div class="max-w-[1300px] mx-auto">
     <Home {data} />
   </div>
