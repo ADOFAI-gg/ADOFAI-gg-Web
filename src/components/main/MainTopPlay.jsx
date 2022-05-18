@@ -7,8 +7,9 @@ const MainTopPlay = ({ topPlay }) => {
 
   const difficultyColorDict = {
     0: { borderColor: '#A4A4A4' },
+    0.1: { borderColor: '#FF6FFF' },
     1: { borderColor: '#0099FF' },
-    2: { borderColor: '#AEAFAD' },
+    2: { borderColor: '#00BBFF' },
     3: { borderColor: '#00DDFF' },
     4: { borderColor: '#00FFFF' },
     5: { borderColor: '#00FFAA' },
@@ -43,7 +44,8 @@ const MainTopPlay = ({ topPlay }) => {
         'linear-gradient(45deg, rgb(104, 57, 224) 0%, rgb(39, 1, 132) 100%)',
       backgroundColor: '#351C75',
       backgroundOrigin: 'border-box'
-    }
+    },
+    101: { borderColor: '#4C1130' }
   };
 
   useEffect(() => {
