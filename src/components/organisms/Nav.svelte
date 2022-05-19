@@ -3,7 +3,6 @@
   import NavLinks from '../molecules/NavLinks.svelte';
   import NavSignArea from '../molecules/NavSignArea.svelte';
   import Icon from '../atoms/Icon.svelte';
-  import Expand from '@/assets/icons/expand.svg?url';
   import NavMenuOverlay from './NavMenuOverlay.svelte';
 
   let menuOpen = false;
@@ -28,7 +27,7 @@
       class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
       on:click={toggleMenu}
     >
-      <Icon icon={Expand} size={16} />
+      <Icon icon="expand" size={16} />
     </span>
     <NavMenuOverlay open={menuOpen} on:close={toggleMenu} />
   </div>

@@ -1,12 +1,11 @@
 <script lang="ts">
   import LevelHeaderLinksArea from '@/components/molecules/levels/LevelHeaderLinksArea.svelte';
   import type { Level } from '@/types';
+  import { getYoutubeVideoId } from '@/utils/youtube';
 
   export let level: Level;
 
-  const youtubeIdRegex = /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#&?]*).*/;
-
-  $: youtubeId = youtubeIdRegex.exec(level.video)?.[1] ?? '';
+  $: youtubeId = getYoutubeVideoId(level.video);
 </script>
 
 <div class="w-full px-8 relative">

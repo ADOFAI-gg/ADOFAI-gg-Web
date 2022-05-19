@@ -1,8 +1,9 @@
 <script lang="ts">
-  import Logo from '../../assets/images/logo.svg?url';
+  import { Asset } from '@/utils/assets';
+
   import Image from './Image.svelte';
 </script>
 
 <a href="/">
-  <Image src={Logo} alt="" width="139" height="20" />
+  <Image src={Asset.url('images/logo.svg')} alt="" width="139" height="20" />
 </a>

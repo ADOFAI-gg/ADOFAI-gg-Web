@@ -2,8 +2,11 @@
   import { Asset } from '@/utils/assets';
   import Image from './Image.svelte';
 
-  export let icon: string;
+  export let difficulty: number;
+
   export let size = 24;
+
+  $: url = Asset.difficultyIcon(difficulty);
 </script>
 
-<Image src={Asset.icon(icon)} alt="icon" width={size} height={size} />
+<Image src={url} width={size} height={size} />

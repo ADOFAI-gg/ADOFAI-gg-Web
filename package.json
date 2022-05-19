@@ -19,7 +19,6 @@
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@playwright/test": "^1.21.0",
-    "@poppanator/sveltekit-svg": "^0.3.2",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^5.10.1",

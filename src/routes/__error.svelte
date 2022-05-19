@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
+  import { Asset } from '@/utils/assets';
+
   import type { Load } from '@sveltejs/kit';
-  import NotFound from '../assets/images/404.svg?url';
 
   export const load: Load = ({ error, status }) => {
     switch (status) {
@@ -9,7 +10,7 @@
           props: {
             title: 'Error 404',
             description: 'This page does not exist or expired.',
-            image: NotFound
+            image: Asset.url('images/404.svg')
           }
         };
     }

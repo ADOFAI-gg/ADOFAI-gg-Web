@@ -14,13 +14,19 @@
     return src;
   };
 
+  const format = (str: string | number | null) => {
+    const num = Number(str);
+    if (isNaN(num)) return str;
+    return `${str}px`;
+  };
+
   $: promise = load();
 </script>
 
 {#await promise}
-  <div class={`w-[${width}px] h-[${height}px]`} />
+  <div style="width:{format(width)};height:{format(height)}" />
 {:then src}
   <img {src} {alt} {width} {height} draggable="false" class="animate-fade-in" />
 {:catch _}
-  <div class={`w-[${width}px] h-[${height}px]`} />
+  <div style="width:{format(width)};height:{format(height)}" />
 {/await}

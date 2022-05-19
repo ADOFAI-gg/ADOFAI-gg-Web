@@ -1,6 +1,16 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-
-export interface PlayLog {}
+export interface PlayLog {
+  accept: boolean;
+  accuracy: number;
+  description: string;
+  id: number;
+  level: { id: number; name: string };
+  playPoint: number;
+  player: { id: number; name: string };
+  rawAccuracy: number;
+  speed: number;
+  timestamp: string;
+  url: string;
+}
 
 export interface Level {
   id: number;
