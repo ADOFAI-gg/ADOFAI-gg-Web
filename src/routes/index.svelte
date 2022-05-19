@@ -45,6 +45,10 @@
 
 <div class="h-nav" />
 
+<svelte:head>
+  <title>Adofai.gg</title>
+</svelte:head>
+
 <div class="px-8">
   <div class="max-w-[1300px] mx-auto">
     <Home {data} />

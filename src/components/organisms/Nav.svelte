@@ -12,8 +12,8 @@
   };
 </script>
 
-<nav class="fixed w-full z-[100] left-0 top-0">
-  <div class="h-nav bg-black bg-opacity-25 flex items-center px-[24px] relative gap-[16px]">
+<nav class="fixed w-full z-[100] left-0 top-0 bg-opacity-25 bg-black backdrop-blur-sm">
+  <div class="h-nav  flex items-center px-[24px] relative gap-[16px]">
     <Logo />
     <div class="absolute left-1/2 -translate-x-1/2 hidden md:block">
       <NavLinks />

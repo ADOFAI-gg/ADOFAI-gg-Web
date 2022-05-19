@@ -31,6 +31,10 @@
   export let image: string;
 </script>
 
+<svelte:head>
+  <title>{title} - {description}</title>
+</svelte:head>
+
 <div class="flex flex-col h-screen max-w-[1300px] p-4 mx-auto">
   <div class="h-nav" />
 
