@@ -6,3 +6,11 @@ body {
   @apply text-white bg-center bg-cover bg-no-repeat min-h-screen select-none;
   background-image: url('/background.png');
 }
+
+.text-shadow-6 {
+  text-shadow: 0 0 6px #000000;
+}
+
+.text-shadow-5 {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+}

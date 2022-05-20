@@ -3,6 +3,7 @@
   export let width: number | string | null = null;
   export let height: number | string | null = null;
   export let alt = 'Image';
+  export let fallback: string | null = null;
 
   const load = async () => {
     await new Promise((resolve, reject) => {
@@ -28,5 +29,9 @@
 {:then src}
   <img {src} {alt} {width} {height} draggable="false" class="animate-fade-in" />
 {:catch _}
-  <div style="width:{format(width)};height:{format(height)}" />
+  {#if fallback}
+    <img src={fallback} {alt} {width} {height} draggable="false" class="animate-fade-in" />
+  {:else}
+    <div style="width:{format(width)};height:{format(height)}" />
+  {/if}
 {/await}

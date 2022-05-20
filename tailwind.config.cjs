@@ -47,6 +47,10 @@ module.exports = {
       },
       height: {
         nav: '56px'
+      },
+      dropShadow: {
+        6: '0px 0px 6px #000000',
+        5: '0px 0px 5px 0px rgba(0, 0, 0, 0.75)'
       }
     }
   },
