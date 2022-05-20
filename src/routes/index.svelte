@@ -39,8 +39,6 @@
   import Home from '../components/templates/Home.svelte';
 
   export let data: Data;
-
-  $: console.log(data);
 </script>
 
 <div class="h-nav" />
