@@ -1,12 +1,13 @@
 <script lang="ts">
   import type { User } from '@/types';
+  import Icon from '../atoms/Icon.svelte';
   import UserListItem from '../molecules/UserListItem.svelte';
 
   export let users: User[] | string[];
 
   export let label: string;
 
-  export let moreTitle: string | null = null;
+  // export let allTitle: string = label;
 
   $: resolvedUsers = (async () => {
     if (typeof users[0] === 'string') {
@@ -20,15 +21,54 @@
     }
     return users;
   })() as Promise<User[]>;
+
+  let containerWidth = 0;
+
+  let moreButton: HTMLElement | null = null;
+
+  let items: HTMLElement[] = [];
+
+  $: {
+    if (containerWidth && moreButton) {
+      let hidden = false;
+      moreButton.style.display = 'flex';
+      let w = moreButton.clientWidth + 12;
+      for (const item of items) {
+        item.style.display = 'block';
+        w += item.clientWidth;
+        if (w > containerWidth) {
+          hidden = true;
+        }
+        if (hidden) {
+          item.style.display = 'none';
+        } else {
+          w += 12;
+        }
+      }
+      if (!hidden) {
+        moreButton.style.display = 'none';
+      }
+    }
+  }
 </script>
 
 {#await resolvedUsers then data}
   <div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
     <span class="text-2xl font-regular whitespace-nowrap">{label}</span>
-    <div class="flex-grow flex items-center gap-[12px] overflow-hidden">
-      {#each data as user (user.id)}
-        <UserListItem {user} />
+    <div
+      class="flex-grow flex items-center gap-[12px] overflow-hidden"
+      bind:clientWidth={containerWidth}
+    >
+      {#each [...data, ...data, ...data, ...data, ...data, ...data] as user, i (i)}
+        <div bind:this={items[i]}><UserListItem {user} /></div>
       {/each}
+      <div
+        class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+        bind:this={moreButton}
+      >
+        <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
+        <div>Show All</div>
+      </div>
     </div>
   </div>
 {/await}
