@@ -6,4 +6,6 @@
   export let size = 24;
 </script>
 
-<Image src={Asset.icon(icon)} alt="icon" width={size} height={size} />
+<span style="width: {size}px;height: {size}px;"
+  ><Image src={Asset.icon(icon)} alt="icon" width={size} height={size} /></span
+>
