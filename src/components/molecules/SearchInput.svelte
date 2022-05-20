@@ -11,7 +11,7 @@
   <input
     bind:value
     type="text"
-    class="bg-transparent outline-none flex-grow text-lg"
+    class="bg-transparent outline-none flex-grow text-lg w-0"
     placeholder="Search Level, Song, Artist, or Creator"
   />
 </div>

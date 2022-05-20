@@ -3,9 +3,13 @@
   import Avatar from '../atoms/Avatar.svelte';
 
   export let user: User;
+
+  export let small = false;
 </script>
 
-<div class="flex gap-[6px] items-center text-2xl font-medium whitespace-nowrap">
-  <span class="drop-shadow-6 w-[24px] h-[24px]"><Avatar url={user.avatar} /></span>
+<div
+  class="flex gap-[6px] items-center {small ? 'text-lg' : 'text-2xl'} font-medium whitespace-nowrap"
+>
+  <Avatar size={small ? 20 : 24} url={user.avatar} />
   {user.name}
 </div>

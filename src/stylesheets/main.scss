@@ -1,3 +1,5 @@
+@import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,7 @@
 body {
   @apply text-white bg-center bg-cover bg-no-repeat min-h-screen select-none;
   background-image: url('/background.png');
+  overflow-x: hidden;
 }
 
 .text-shadow-6 {
@@ -13,4 +16,27 @@ body {
 
 .text-shadow-5 {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background-image: url('/background.png');
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 0;
 }

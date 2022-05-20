@@ -8,14 +8,13 @@
   import Nav from '../components/organisms/Nav.svelte';
   import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
   export let url: string;
-  import { fade } from 'svelte/transition';
 </script>
 
 <LoadingIndiciator />
 
 <Nav />
 {#key url}
-  <div in:fade={{ duration: 250, delay: 300 }} out:fade={{ duration: 250 }}>
+  <div>
     <slot />
   </div>
 {/key}
