@@ -55,10 +55,7 @@
 {#await resolvedUsers then data}
   <div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
     <span class="text-2xl font-regular whitespace-nowrap">{label}</span>
-    <div
-      class="flex-grow flex items-center gap-[12px] overflow-hidden"
-      bind:clientWidth={containerWidth}
-    >
+    <div class="flex-grow flex items-center gap-[12px] w-0" bind:clientWidth={containerWidth}>
       {#each [...data, ...data, ...data, ...data, ...data, ...data] as user, i (i)}
         <div bind:this={items[i]}><UserListItem {user} /></div>
       {/each}
