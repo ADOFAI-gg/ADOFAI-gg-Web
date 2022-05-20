@@ -1,3 +1,10 @@
+export interface User {
+  id: string;
+  name: string;
+  avatar?: string;
+  banner?: string;
+}
+
 export interface PlayLog {
   accept: boolean;
   accuracy: number;
