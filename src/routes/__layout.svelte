@@ -9,8 +9,6 @@
   import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
   export let url: string;
   import { fade } from 'svelte/transition';
-
-  $: console.log(url);
 </script>
 
 <LoadingIndiciator />
