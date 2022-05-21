@@ -48,7 +48,8 @@
   "type": "module",
   "dependencies": {
     "clsx": "^1.1.1",
-    "svelte-icons": "^2.1.0"
+    "svelte-icons": "^2.1.0",
+    "tippy.js": "^6.3.7"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,svelte}": "eslint --cache --fix",

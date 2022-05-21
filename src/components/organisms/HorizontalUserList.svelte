@@ -53,34 +53,36 @@
   }
 </script>
 
-{#await resolvedUsers then data}
-  <div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
-    <span class="text-2xl font-regular whitespace-nowrap">{label}</span>
+<div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
+  <span class="text-2xl font-regular whitespace-nowrap">{label}</span>
+  {#await resolvedUsers then data}
     <div
       class="flex-grow flex items-center gap-[12px] overflow-hidden"
       bind:clientWidth={containerWidth}
     >
       {#each data as user, i (i)}
-        <div bind:this={items[i]}><UserListItem {user} /></div>
+        <div bind:this={items[i]} class="flex-shrink-0"><UserListItem {user} /></div>
       {/each}
-      <Popover>
-        <div
-          slot="button"
-          class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
-          bind:this={moreButton}
-        >
-          <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
-          <div>Show All</div>
-        </div>
-        <div class="p-[14px] min-w-[240px]">
-          <div class="text-md font-bold">{allTitle}</div>
-          <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
-            {#each data as user, i (i)}
-              <UserListItem small {user} />
-            {/each}
+      <div class="flex-shrink-0">
+        <Popover>
+          <div
+            slot="button"
+            class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+            bind:this={moreButton}
+          >
+            <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
+            <div>Show All</div>
           </div>
-        </div>
-      </Popover>
+          <div class="p-[14px] min-w-[240px]">
+            <div class="text-md font-bold">{allTitle}</div>
+            <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
+              {#each data as user, i (i)}
+                <UserListItem small {user} />
+              {/each}
+            </div>
+          </div>
+        </Popover>
+      </div>
     </div>
-  </div>
-{/await}
+  {/await}
+</div>
