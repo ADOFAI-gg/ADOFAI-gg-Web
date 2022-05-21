@@ -6,23 +6,23 @@
 
   export let user: User;
 
-  export let small = false;
+  export let popup = false;
 </script>
 
 <Popover
-  placement={small ? 'right' : 'bottom'}
+  placement={popup ? 'right' : 'bottom'}
   options={{
-    offset: small ? [0, 20] : [0, 10],
-    arrow: !small
+    offset: popup ? [0, 20] : [0, 10],
+    arrow: !popup
   }}
 >
   <div
     slot="button"
-    class="flex gap-[6px] items-center {small
+    class="flex gap-[6px] items-center {popup
       ? 'text-lg'
       : 'text-2xl'} font-medium whitespace-nowrap"
   >
-    <Avatar size={small ? 20 : 24} url={user.avatar} />
+    <Avatar size={popup ? 20 : 24} url={user.avatar} />
     {user.name}
   </div>
   <UserOverlay {user} />

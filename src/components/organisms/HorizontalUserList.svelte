@@ -77,7 +77,7 @@
             <div class="text-md font-bold">{allTitle}</div>
             <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
               {#each data as user, i (i)}
-                <UserListItem small {user} />
+                <UserListItem popup {user} />
               {/each}
             </div>
           </div>
