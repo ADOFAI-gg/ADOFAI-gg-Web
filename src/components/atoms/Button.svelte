@@ -8,6 +8,8 @@
         return 'opacity-60 font-medium hover:opacity-100 transition-opacity px-[20px] border-[1px] py-[8px] text-md rounded-full text-center';
       case 'bordered':
         return 'opacity-60 hover:opacity-100 transition-opacity px-[10px] border-[1px] py-[8px] rounded-[6px] text-center';
+      case 'levelAction':
+        return 'bg-darkblue bg-opacity-40 hover:bg-opacity-60 transition-all p-[6px] rounded-[3px]';
       default:
         return 'bg-white bg-opacity-20 h-[42px] px-8 rounded-[5px] text-lg hover:bg-opacity-30 transition-colors text-center';
     }

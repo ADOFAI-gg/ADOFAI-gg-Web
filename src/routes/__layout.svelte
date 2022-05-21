@@ -7,14 +7,40 @@
   import '../stylesheets/main.scss';
   import Nav from '../components/organisms/Nav.svelte';
   import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
+  import { setupI18n } from '@/utils/i18n';
+  import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
   export let url: string;
+  import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
+  import { browser } from '$app/env';
+
+  let loaded = false;
+
+  $: isServer = !browser;
+
+  onMount(() => {
+    (async () => {
+      await setupI18n();
+      loaded = true;
+    })();
+  });
 </script>
 
-<LoadingIndiciator />
-
-<Nav />
-{#key url}
-  <div>
-    <slot />
+{#if !loaded}
+  <div
+    out:fade={{ duration: 250, delay: 0 }}
+    class="flex justify-center items-center fixed w-full h-full left-0 top-0"
+  >
+    <LoadingSpinner />
   </div>
-{/key}
+{/if}
+<div class={loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}>
+  <LoadingIndiciator />
+
+  <Nav />
+  {#key url}
+    <div>
+      <slot />
+    </div>
+  {/key}
+</div>

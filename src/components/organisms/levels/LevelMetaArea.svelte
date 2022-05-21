@@ -1,5 +1,7 @@
 <script lang="ts">
+  import Button from '@/components/atoms/Button.svelte';
   import DifficultyIcon from '@/components/atoms/DifficultyIcon.svelte';
+  import Icon from '@/components/atoms/Icon.svelte';
   import LevelMetaLabelValuePair from '@/components/molecules/levels/LevelMetaLabelValuePair.svelte';
   import type { Level } from '@/types';
 
@@ -26,5 +28,15 @@
   <LevelMetaLabelValuePair label="Tags">TODO</LevelMetaLabelValuePair>
 
   <div class="flex-grow" />
-  bottom(TODO)
+  <div class="flex gap-[12px]">
+    <Button type="levelAction">
+      <div class="flex gap-[6px] items-center">
+        <Icon class="bg-red" icon="favorite" size={20} />
+        <div class="font-regular text-lg">1.4K</div>
+      </div>
+    </Button>
+    <Button type="levelAction">
+      <Icon icon="share" size={20} />
+    </Button>
+  </div>
 </div>
