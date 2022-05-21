@@ -21,8 +21,16 @@
       class="px-[26px] py-[20px] rounded-t-[26px] bg-darkblue40 flex gap-4 mt-[24px] flex-col md:flex-row"
     >
       <div class="md:w-0 flex-grow">
-        <LabeledHorizontalUserList allTitle="Creator" label="Level by" users={level.creators} />
-        <LabeledHorizontalUserList allTitle="Artist" label="Music by" users={level.artists} />
+        <LabeledHorizontalUserList
+          allTitle="Creator"
+          label="LEVEL_DETAIL_LEVEL_BY"
+          users={level.creators}
+        />
+        <LabeledHorizontalUserList
+          allTitle="Artist"
+          label="LEVEL_DETAIL_MUSIC_BY"
+          users={level.artists}
+        />
       </div>
       <LevelHeaderLinksArea {level} />
     </div>

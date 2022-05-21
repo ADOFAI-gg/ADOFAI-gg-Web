@@ -3,6 +3,7 @@
   import Icon from '../atoms/Icon.svelte';
   import Popover from '../atoms/Popover.svelte';
   import UserListItem from '../molecules/UserListItem.svelte';
+  import Translation from '../utils/Translation.svelte';
 
   export let users: User[] | string[];
 
@@ -54,7 +55,9 @@
 </script>
 
 <div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
-  <span class="text-2xl font-regular whitespace-nowrap">{label}</span>
+  {#if label}
+    <span class="text-2xl font-regular whitespace-nowrap"><Translation key={label} /></span>
+  {/if}
   {#await resolvedUsers then data}
     <div
       class="flex-grow flex items-center gap-[12px] overflow-hidden"

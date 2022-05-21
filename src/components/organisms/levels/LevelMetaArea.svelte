@@ -10,22 +10,22 @@
 
 <div class="flex flex-col gap-[26px] h-full">
   <div class="flex gap-[24px]">
-    <LevelMetaLabelValuePair label="Lv.">
+    <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
       <DifficultyIcon difficulty={level.difficulty} size={32} />
     </LevelMetaLabelValuePair>
-    <LevelMetaLabelValuePair label="Song Length">Unknown</LevelMetaLabelValuePair>
+    <LevelMetaLabelValuePair label="LEVEL_DETAIL_SONG_LENGTH">Unknown</LevelMetaLabelValuePair>
   </div>
   <div class="flex gap-[24px]">
-    <LevelMetaLabelValuePair label="BPM">
+    <LevelMetaLabelValuePair label="LEVEL_DETAIL_BPM">
       {#if level.minBpm === level.maxBpm}
         {level.minBpm}
       {:else}
         {level.minBpm} - {level.maxBpm}
       {/if}
     </LevelMetaLabelValuePair>
-    <LevelMetaLabelValuePair label="Tiles">{level.tiles}</LevelMetaLabelValuePair>
+    <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">{level.tiles}</LevelMetaLabelValuePair>
   </div>
-  <LevelMetaLabelValuePair label="Tags">TODO</LevelMetaLabelValuePair>
+  <LevelMetaLabelValuePair label="LEVEL_DETAIL_TAGS">TODO</LevelMetaLabelValuePair>
 
   <div class="flex-grow" />
   <div class="flex gap-[12px]">
