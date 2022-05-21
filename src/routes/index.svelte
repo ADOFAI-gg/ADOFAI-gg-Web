@@ -50,7 +50,7 @@
 </svelte:head>
 
 <div class="px-8">
-  <div class="max-w-[1300px] mx-auto">
+  <div class="max-w-[1100px] mx-auto">
     <Home {data} />
   </div>
 </div>

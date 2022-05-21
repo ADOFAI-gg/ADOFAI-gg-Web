@@ -28,9 +28,11 @@ export interface Level {
   music: string;
   minBpm: number;
   maxBpm: number;
+  tiles: number;
   video: string;
 
   download: string;
   workshop: string | null;
+
   // and more(not added)
 }
