@@ -48,9 +48,11 @@
     const result: TranslationChunk[] = [];
     let lastIndex = 0;
     let matched = false;
+    let lastLength = 0;
     for (const match of matches) {
+      lastLength = match[0].length;
       matched = true;
-      if (match.input) {
+      if (match.input && lastIndex !== match.index) {
         result.push({
           type: 'text',
           value: match.input.slice(lastIndex, match.index)
@@ -61,6 +63,7 @@
         lastIndex = match.index;
       }
     }
+    result.push({ type: 'text', value: k.slice(lastIndex + lastLength) });
     if (!matched) {
       result.push({ type: 'text', value: k });
     }
