@@ -47,7 +47,9 @@
     const matches = k.matchAll(tagRegex);
     const result: TranslationChunk[] = [];
     let lastIndex = 0;
+    let matched = false;
     for (const match of matches) {
+      matched = true;
       if (match.input) {
         result.push({
           type: 'text',
@@ -58,6 +60,9 @@
       if (match.index) {
         lastIndex = match.index;
       }
+    }
+    if (!matched) {
+      result.push({ type: 'text', value: k });
     }
     return result;
   })();
