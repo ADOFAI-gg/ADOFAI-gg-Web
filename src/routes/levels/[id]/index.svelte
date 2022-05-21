@@ -23,6 +23,7 @@
 </script>
 
 <svelte:head>
+  <title>{level.artists.join(' & ')} - {level.title}</title>
   <meta property="og:title" content="{level.artists.join(' & ')} - {level.title}" />
   <meta property="og:site_name" content="Adofai.gg" />
   <meta property="og:url" content="https://adofai.gg" />

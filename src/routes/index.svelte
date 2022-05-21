@@ -43,11 +43,19 @@
   $: console.log(data);
 </script>
 
-<div class="h-nav" />
-
 <svelte:head>
   <title>Adofai.gg</title>
+  <meta name="description" content="A website for viewing and downloading ADOFAI custom levels." />
+  <meta name="og:title" content="Adofai.gg" />
+  <meta name="og:type" content="website" />
+  <meta name="og:image" content="/favicon.png" />
+  <meta
+    name="og:description"
+    content="A website for viewing and downloading ADOFAI custom levels."
+  />
 </svelte:head>
+
+<div class="h-nav" />
 
 <div class="px-8">
   <div class="max-w-[1100px] mx-auto">
