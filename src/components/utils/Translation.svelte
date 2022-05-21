@@ -63,9 +63,10 @@
         lastIndex = match.index;
       }
     }
-    result.push({ type: 'text', value: k.slice(lastIndex + lastLength) });
     if (!matched) {
       result.push({ type: 'text', value: k });
+    } else {
+      result.push({ type: 'text', value: k.slice(lastIndex + lastLength) });
     }
     return result;
   })();
