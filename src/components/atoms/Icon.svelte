@@ -23,7 +23,15 @@
   <div style="width: {size}px;height: {size}px;" />
 {:then url}
   <div
-    class="animate-fade-in {$$props.class || 'bg-white'}"
-    style="width: {size}px;height: {size}px;-webkit-mask: url({url}) no-repeat center; mask: url({url}) no-repeat center;"
+    class="animate-fade-in {$$props.class || 'bg-white'} icon"
+    style="width: {size}px;height: {size}px;--url:url({url});"
   />
 {/await}
+
+<style lang="scss">
+  .icon {
+    mask-size: cover;
+    mask-position: center;
+    mask-image: var(--url);
+  }
+</style>
