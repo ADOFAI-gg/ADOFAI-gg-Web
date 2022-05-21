@@ -16,7 +16,7 @@
   onMount(() => {
     instance = tippy(button, {
       content,
-      trigger: 'click',
+      trigger: 'hover',
       placement,
       popperOptions: {
         strategy: 'fixed',
@@ -30,17 +30,12 @@
           }
         ]
       },
-      hideOnClick: false,
-      onClickOutside: () => {
-        instance.hide();
-      },
-      interactive: true,
       ...options
     });
   });
 
   onDestroy(() => {
-    instance?.destroy();
+    instance.destroy();
   });
 </script>
 

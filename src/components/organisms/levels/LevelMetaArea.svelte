@@ -4,6 +4,7 @@
   import Icon from '@/components/atoms/Icon.svelte';
   import LevelMetaLabelValuePair from '@/components/molecules/levels/LevelMetaLabelValuePair.svelte';
   import type { Level } from '@/types';
+  import LevelShareMenu from './LevelShareMenu.svelte';
 
   export let level: Level;
 </script>
@@ -35,8 +36,6 @@
         <div class="font-regular text-lg">1.4K</div>
       </div>
     </Button>
-    <Button type="levelAction">
-      <Icon icon="share" size={20} />
-    </Button>
+    <LevelShareMenu {level} />
   </div>
 </div>

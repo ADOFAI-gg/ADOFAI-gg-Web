@@ -1,0 +1,42 @@
+<script lang="ts">
+  import Copy from 'svelte-icons/fa/FaCopy.svelte';
+  import Check from 'svelte-icons/fa/FaCheck.svelte';
+
+  export let value: string;
+
+  let currentTimeout: any = null;
+
+  let copied = false;
+
+  const copy = async () => {
+    if (currentTimeout) {
+      clearTimeout(currentTimeout);
+      currentTimeout = null;
+    }
+
+    if (window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+    }
+
+    copied = true;
+
+    currentTimeout = setTimeout(() => {
+      copied = false;
+    }, 1000);
+  };
+</script>
+
+<div class="bg-darkblue40 p-2 rounded-md w-full flex gap-[6px]">
+  <input type="text" readonly class="outline-none bg-transparent flex-grow w-0" {value} />
+  <div
+    class="w-[16px] h-[16px] flex-shrink-0 cursor-pointer"
+    class:text-green-400={copied}
+    on:click={copy}
+  >
+    {#if copied}
+      <Check />
+    {:else}
+      <Copy />
+    {/if}
+  </div>
+</div>

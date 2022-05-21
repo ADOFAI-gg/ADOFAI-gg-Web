@@ -2,7 +2,7 @@
   import LevelHeaderLinksArea from '@/components/molecules/levels/LevelHeaderLinksArea.svelte';
   import type { Level } from '@/types';
   import { getYoutubeVideoId } from '@/utils/youtube';
-  import LabeledHorizontalUserList from '../HorizontalUserList.svelte';
+  import HorizontalUserList from '../HorizontalUserList.svelte';
 
   export let level: Level;
 
@@ -21,16 +21,12 @@
       class="px-[26px] py-[20px] rounded-t-[26px] bg-darkblue40 flex gap-4 mt-[24px] flex-col md:flex-row"
     >
       <div class="md:w-0 flex-grow">
-        <LabeledHorizontalUserList
+        <HorizontalUserList
           allTitle="Creator"
           label="LEVEL_DETAIL_LEVEL_BY"
           users={level.creators}
         />
-        <LabeledHorizontalUserList
-          allTitle="Artist"
-          label="LEVEL_DETAIL_MUSIC_BY"
-          users={level.artists}
-        />
+        <HorizontalUserList allTitle="Artist" label="LEVEL_DETAIL_MUSIC_BY" users={level.artists} />
       </div>
       <LevelHeaderLinksArea {level} />
     </div>
