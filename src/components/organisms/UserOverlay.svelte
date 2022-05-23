@@ -4,6 +4,7 @@
   import Button from '../atoms/Button.svelte';
   import Image from '../atoms/Image.svelte';
   import UserOverlayDetail from '../molecules/UserOverlayDetail.svelte';
+  import Translation from '../utils/Translation.svelte';
 
   export let user: User;
 </script>
@@ -15,16 +16,16 @@
   <div class="flex flex-col items-center">
     <Avatar url={user.avatar || null} size={88} />
     <div class="mt-[12px] text-xl font-bold">{user.name}</div>
-    <!-- <div class="text-center text-md opacity-60 font-medium">
+    <div class="text-center text-md opacity-60 font-medium">
       :NekoD: :NekoD: :NekoD: :NekoD: :NekoD: :NekoD: :NekoD: :NekoD:
     </div>
     <div class="w-[110px] border-b opacity-40 my-[16px]" />
     <div class="flex w-full px-[32px]">
-      <UserOverlayDetail label="Ranking" value="#66,236" />
-      <UserOverlayDetail label="Total" value="20,854.81" />
-    </div> -->
-    <Button href="/users/{user.id}" type="bordered" class="mt-[24px] text-md border-blue text-blue"
-      >유저 정보 페이지로 이동</Button
-    >
+      <UserOverlayDetail label="USER_POPUP_RANKING" value="#66,236" />
+      <UserOverlayDetail label="USER_POPUP_TOTAL_PP" value="20,854.81" />
+    </div>
+    <Button href="/users/{user.id}" type="bordered" class="mt-[24px] text-md border-blue text-blue">
+      <Translation key="USER_POPUP_SHOW_MORE_LINK" />
+    </Button>
   </div>
 </div>
