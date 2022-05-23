@@ -31,7 +31,11 @@
 </script>
 
 <Popover placement="top-end">
-  <Button type="levelAction" slot="button">
+  <Button
+    type="levelAction"
+    slot="button"
+    class="w-[36px] h-[36px] flex justify-center items-center"
+  >
     <Icon icon="share" size={20} />
   </Button>
   <div class="p-4 flex flex-col gap-2 max-w-[320px] w-screen">

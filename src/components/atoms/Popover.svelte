@@ -30,7 +30,7 @@
           }
         ]
       },
-      hideOnClick: false,
+      hideOnClick: 'toggle',
       onClickOutside: () => {
         instance.hide();
       },

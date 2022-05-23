@@ -26,7 +26,7 @@
   };
 </script>
 
-<div class="bg-darkblue40 p-2 rounded-md w-full flex gap-[6px]">
+<div class="bg-black bg-opacity-40 p-2 rounded-md w-full flex gap-[6px]">
   <input type="text" readonly class="outline-none bg-transparent flex-grow w-0" {value} />
   <div
     class="w-[16px] h-[16px] flex-shrink-0 cursor-pointer"
