@@ -224,9 +224,9 @@ const LevelPage = ({ history }) => {
   const LevelInfo = () => {
     if (state.isLoading || !state.level || !state.leaderboard) {
       return null;
-    } else if (!state.isLoading && !state.level.title) {
+    } else if (state.error && state.error.response.status === 404) {
       return <Redirect to='/error/unknownlevel' />;
-    } else if (state.error || !state.level.title) {
+    } else if (state.error) {
       return <h2 style={{ margin: '30px' }}>Oops! An error occurred.</h2>;
     } else {
       return (
