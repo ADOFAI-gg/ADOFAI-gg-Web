@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
   export const load: Load = async ({ url }) => ({ props: { url } });
+
+  const loaded = writable<boolean>(false);
 </script>
 
 <script lang="ts">
@@ -12,21 +14,18 @@
   export let url: string;
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import { browser } from '$app/env';
-
-  let loaded = false;
-
-  $: isServer = !browser;
+  import { writable } from 'svelte/store';
 
   onMount(() => {
     (async () => {
+      if ($loaded) return;
       await setupI18n();
-      loaded = true;
+      loaded.set(true);
     })();
   });
 </script>
 
-{#if !loaded}
+{#if !$loaded}
   <div
     out:fade={{ duration: 250, delay: 0 }}
     class="flex justify-center items-center fixed w-full h-full left-0 top-0"
@@ -34,7 +33,7 @@
     <LoadingSpinner />
   </div>
 {/if}
-<div class={loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}>
+<div class={$loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}>
   <LoadingIndiciator />
 
   <Nav />
