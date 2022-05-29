@@ -5,14 +5,22 @@
   import { getYoutubeVideoId } from '@/utils/youtube';
 
   import type { Load } from '@sveltejs/kit';
+  import type { AxiosError } from 'axios';
 
   export const load: Load = async ({ params }) => {
-    const { data } = await api.get(`/api/v1/levels/${params.id}`);
-    return {
-      props: {
-        level: data
-      }
-    };
+    try {
+      const { data } = await api.get(`/api/v1/levels/${params.id}`);
+      return {
+        props: {
+          level: data
+        }
+      };
+    } catch (e) {
+      return {
+        status: 404,
+        error: e as Error
+      };
+    }
   };
 </script>
 

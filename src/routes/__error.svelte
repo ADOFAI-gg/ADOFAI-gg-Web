@@ -16,7 +16,11 @@
     }
 
     return {
-      props: { title: 'Unknown Error', description: 'An unknown error occurred.', image: null }
+      props: {
+        title: error?.message || 'Unknown Error',
+        description: error?.message || 'An unknown error occurred.',
+        image: null
+      }
     };
   };
 </script>
@@ -41,7 +45,7 @@
   <div
     class="flex-grow bg-white rounded-xl flex flex-col justify-center gap-[15px] items-center text-black"
   >
-    <Image src={image} width="228.35" height="255" />
+    <Image src={image} />
     <div class="text-4xl font-bold">{title}</div>
     <div class="text-3xl">{description}</div>
   </div>
