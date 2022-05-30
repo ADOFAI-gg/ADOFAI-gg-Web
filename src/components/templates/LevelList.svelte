@@ -5,7 +5,7 @@
 
 <div>
   <SearchInput />
-  <div class="mt-[3px] px-[12px]">
+  <div class="mt-2 px-[12px]">
     <LevelSearchSettingsArea />
   </div>
 </div>

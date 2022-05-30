@@ -8,12 +8,21 @@
   export let value: any;
   export let icon: string | null = null;
 
-  const { update, value: currentValue } =
-    getContext<{ value: Writable<any>; update: (newValue: any) => void }>(searchTabContextSymbol) ??
-    {};
+  const {
+    update,
+    value: currentValue,
+    deselectable
+  } = getContext<{ value: Writable<any>; update: (newValue: any) => void; deselectable: boolean }>(
+    searchTabContextSymbol
+  ) ?? {};
 
   const onClick = () => {
-    if (value === $currentValue) return;
+    if (value === $currentValue) {
+      if (deselectable) {
+        update(null);
+      }
+      return;
+    }
     update(value);
   };
 </script>
