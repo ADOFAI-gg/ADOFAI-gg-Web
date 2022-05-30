@@ -36,6 +36,7 @@
 </script>
 
 <script lang="ts">
+  import PageContainer from '@/components/atoms/PageContainer.svelte';
   import Home from '../components/templates/Home.svelte';
 
   export let data: Data;
@@ -57,8 +58,6 @@
 
 <div class="h-nav" />
 
-<div class="px-8">
-  <div class="max-w-[1100px] mx-auto">
-    <Home {data} />
-  </div>
-</div>
+<PageContainer>
+  <Home {data} />
+</PageContainer>
