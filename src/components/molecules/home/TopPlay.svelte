@@ -15,13 +15,19 @@
 </script>
 
 <div
-  class="lg:first:mx-0 lg:last:ml-auto md:last:mr-0 last:md:col-span-2 max-w-[360px] md:max-w-none lg:max-w-[360px] mx-auto last:lg:col-span-1 last:md:px-[25%] last:lg:p-0"
+  class="
+    group
+    lg:first:mx-0 lg:last:ml-auto md:last:mr-0 last:md:col-span-2
+    max-w-[360px] md:max-w-none lg:max-w-[360px] mx-auto
+    last:lg:col-span-1 last:md:px-[25%] last:lg:p-0
+    hover:bg-darkblue hover:bg-opacity-20 ease transition-all rounded-md
+  "
 >
   <a
     href={play.url}
     rel="noreferrer"
     target="_blank"
-    class="flex  flex-col gap-[15px] items-center"
+    class="flex flex-col gap-[15px] items-center group-hover:scale-95 ease transition-all"
   >
     <div class="w-full aspect-video bg-repeat-round rounded-[5px] overflow-hidden">
       <Image

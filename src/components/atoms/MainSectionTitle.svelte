@@ -11,7 +11,10 @@
   <div class="flex-grow" />
 
   {#if moreLink}
-    <a href={moreLink} class="transition text-xl flex gap-[8px] hover:font-medium hover:gap-[10px]">
+    <a
+      href={moreLink}
+      class="text-xl flex gap-[8px] hover:font-medium hover:gap-[10px] ease transition-all"
+    >
       <Translation key="SHOW_MORE" /> <span> ›</span>
     </a>
   {/if}
