@@ -16,7 +16,6 @@
   onMount(() => {
     instance = tippy(button, {
       content,
-      trigger: 'hover',
       placement,
       popperOptions: {
         strategy: 'fixed',

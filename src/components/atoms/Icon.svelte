@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Asset } from '@/utils/assets';
-  import { compute_rest_props } from 'svelte/internal';
 
   export let icon: string;
+  export let namespace = 'icons';
   export let size = 24;
 
   const load = async (id: string) => {
-    const src = await Asset.icon(id);
+    const src = await Asset.icon(id, namespace);
     await new Promise((resolve, reject) => {
       const image = new window.Image();
       image.onload = resolve;

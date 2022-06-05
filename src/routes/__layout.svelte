@@ -15,11 +15,13 @@
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
+  import { loadTags } from '@/utils/tags';
 
   onMount(() => {
     (async () => {
       if ($loaded) return;
       await setupI18n();
+      await loadTags();
       loaded.set(true);
     })();
   });

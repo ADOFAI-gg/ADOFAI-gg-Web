@@ -2,10 +2,6 @@ import axios from 'axios';
 import { writable } from 'svelte/store';
 import { Asset } from './assets';
 
-const loadJSON = async <T = Record<string, string>>(key: string) => {
-  return (await axios.get<T>(Asset.url(key))).data;
-};
-
 export const availableLanguages: LangResponse[] = [];
 
 export const fallbackLang = 'en';
@@ -26,12 +22,12 @@ type LangResponse = {
 };
 
 export const setupI18n = async () => {
-  const langs = await loadJSON<LangResponse[]>('langs.json');
+  const langs = await Asset.loadJSON<LangResponse[]>('langs.json');
   availableLanguages.push(...langs);
   const langCode = localStorage.getItem('lang');
   currentLang.set(processLang(langCode || window.navigator.language));
   for (const lang of langs) {
-    const json = await loadJSON(`translations/${lang.code}.json`);
+    const json = await Asset.loadJSON(`translations/${lang.code}.json`);
     langData.update((v) => ({ ...v, [lang.code]: json }));
   }
 };
