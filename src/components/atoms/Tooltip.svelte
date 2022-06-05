@@ -34,7 +34,7 @@
   });
 
   onDestroy(() => {
-    instance.destroy();
+    instance?.destroy();
   });
 </script>
 

@@ -5,9 +5,10 @@ type Filters = {
     include: number[];
     exclude: number[];
   };
+  musicLength: 'short' | 'medium' | 'long' | null;
 };
 
-type SearchSettings = {
+export type SearchSettings = {
   query: string;
   filter: Filters;
 };
@@ -18,6 +19,7 @@ export const searchSetingStore = writable<SearchSettings>({
     tags: {
       include: [],
       exclude: []
-    }
+    },
+    musicLength: null
   }
 });

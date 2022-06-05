@@ -4,6 +4,7 @@
   import Translation from '../utils/Translation.svelte';
 
   import Icon from './Icon.svelte';
+  import TagCheckboxBase from './TagCheckboxBase.svelte';
 
   import Tooltip from './Tooltip.svelte';
 
@@ -49,29 +50,12 @@
   };
 </script>
 
-<Tooltip placement="bottom-start" options={{ arrow: false }}>
-  <div
-    slot="button"
-    class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 cursor-pointer"
-    class:exclude={$searchSetingStore.filter.tags.exclude.includes(tag)}
-    class:include={$searchSetingStore.filter.tags.include.includes(tag)}
-    on:click={update}
-  >
-    <Icon size={22} namespace="tagIcons" icon={`${tag}`} />
-    <div><Translation key="TAG_{tag}_NAME" /></div>
-  </div>
-  <div class="p-4">
-    <div class="text-lg font-extrabold"><Translation key="TAG_{tag}_NAME" /></div>
-    <div class="text-md mt-1"><Translation key="TAG_{tag}_DESCRIPTION" /></div>
-  </div>
-</Tooltip>
-
-<style lang="scss">
-  .exclude {
-    @apply opacity-100;
-    filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%);
-  }
-  .include {
-    @apply opacity-100;
-  }
-</style>
+<TagCheckboxBase
+  include={$searchSetingStore.filter.tags.include.includes(tag)}
+  exclude={$searchSetingStore.filter.tags.exclude.includes(tag)}
+  on:click={update}
+>
+  <Icon size={22} namespace="tagIcons" icon={`${tag}`} slot="icon" />
+  <Translation key="TAG_{tag}_NAME" slot="name" />
+  <Translation key="TAG_{tag}_DESCRIPTION" slot="description" />
+</TagCheckboxBase>
