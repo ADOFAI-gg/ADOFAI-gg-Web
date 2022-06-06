@@ -5,12 +5,12 @@
   export let alt = 'Image';
   export let fallback: string | null = null;
 
-  const load = async () => {
+  const load = async (url: string | null) => {
     await new Promise((resolve, reject) => {
       const image = new Image();
       image.onload = resolve;
       image.onerror = reject;
-      image.src = src ?? '';
+      image.src = url ?? '';
     });
     return src;
   };
@@ -21,7 +21,7 @@
     return `${str}px`;
   };
 
-  $: promise = load();
+  $: promise = load(src);
 </script>
 
 {#await promise}

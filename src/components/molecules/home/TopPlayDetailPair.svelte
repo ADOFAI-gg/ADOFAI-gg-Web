@@ -5,7 +5,7 @@
   export let value: string;
 </script>
 
-<div class="flex gap-[6px] opacity-60">
+<div class="flex gap-[6px] opacity-60 items-center">
   <Icon {icon} size={16} />
   <span class="text-md">{value}</span>
 </div>

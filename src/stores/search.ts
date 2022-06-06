@@ -6,6 +6,10 @@ type Filters = {
     exclude: number[];
   };
   musicLength: 'short' | 'medium' | 'long' | null;
+  difficulty: {
+    min: number | null;
+    max: number | null;
+  };
 };
 
 export type SearchSettings = {
@@ -24,7 +28,11 @@ export const searchSetingStore = writable<SearchSettings>({
       include: [],
       exclude: []
     },
-    musicLength: null
+    musicLength: null,
+    difficulty: {
+      min: null,
+      max: null
+    }
   },
   sort: {
     order: 'asc',

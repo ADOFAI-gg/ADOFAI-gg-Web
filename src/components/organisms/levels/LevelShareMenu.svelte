@@ -43,7 +43,7 @@
     <CopyableInput value={url} />
     <div class="flex gap-2">
       <ShareButton on:click={copy}>
-        <Copy />
+        <Icon size={16} icon="copy" />
       </ShareButton>
       <ShareButton on:click={twitter} class="bg-blue">
         <Twitter />

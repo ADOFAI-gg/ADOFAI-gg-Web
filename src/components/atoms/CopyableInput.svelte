@@ -1,6 +1,7 @@
 <script lang="ts">
   import Copy from 'svelte-icons/fa/FaCopy.svelte';
   import Check from 'svelte-icons/fa/FaCheck.svelte';
+  import Icon from './Icon.svelte';
 
   export let value: string;
 
@@ -36,7 +37,7 @@
     {#if copied}
       <Check />
     {:else}
-      <Copy />
+      <Icon size={16} icon="copy" />
     {/if}
   </div>
 </div>

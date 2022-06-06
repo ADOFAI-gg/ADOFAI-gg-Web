@@ -10,6 +10,7 @@
   import { browser } from '$app/env';
   import Translation from '@/components/utils/Translation.svelte';
   import SearchHelpArea from '@/components/molecules/levels/SearchHelpArea.svelte';
+  import LevelSearchMetaTab from './LevelSearchMetaTab.svelte';
 
   type TabType = 'tags' | 'meta' | 'sort' | null;
 
@@ -23,6 +24,7 @@
   let tagTab: number;
 
   let sortTab: number;
+  let metaTab: number;
 
   $: {
     if (browser) {
@@ -30,6 +32,8 @@
         height = tagTab;
       } else if ($currentTab === 'sort' && sortTab) {
         height = sortTab;
+      } else if ($currentTab === 'meta' && metaTab) {
+        height = metaTab;
       } else {
         height = 0;
       }
@@ -76,6 +80,10 @@
     {#if $currentTab === 'tags'}
       <div transition:fade bind:clientHeight={tagTab} class="absolute w-full h-fit top-0 left-0">
         <TagSearchTab />
+      </div>
+    {:else if $currentTab === 'meta'}
+      <div transition:fade bind:clientHeight={metaTab} class="absolute w-full h-fit top-0 left-0">
+        <LevelSearchMetaTab />
       </div>
     {:else if $currentTab === 'sort'}
       <div transition:fade bind:clientHeight={sortTab}>
