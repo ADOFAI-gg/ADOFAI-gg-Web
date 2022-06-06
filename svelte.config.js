@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-node';
+import nodeAdapter from '@sveltejs/adapter-node';
+import vercelAdapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import * as path from 'path';
 import glob from 'vite-plugin-glob';
@@ -10,7 +11,7 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter(),
+    adapter: process.env.VERCEL ? vercelAdapter() : nodeAdapter(),
     vite: {
       resolve: {
         alias: {

@@ -7,4 +7,4 @@
 
 <MainSectionTitle title="HOME_RECENT_LEVELS" moreLink="/levels" />
 
-<pre>{JSON.stringify(levels, null, 2)}</pre>
+<!-- <pre>{JSON.stringify(levels, null, 2)}</pre> -->

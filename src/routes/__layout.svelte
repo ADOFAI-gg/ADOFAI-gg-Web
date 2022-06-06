@@ -3,6 +3,17 @@
   export const load: Load = async ({ url }) => ({ props: { url } });
 
   const loaded = writable<boolean>(false);
+
+  const defaultMeta = [
+    {
+      name: 'description',
+      content: 'A website for viewing and downloading ADOFAI custom levels.'
+    },
+    {
+      name: 'og:image',
+      content: '/favicon.png'
+    }
+  ];
 </script>
 
 <script lang="ts">
@@ -17,6 +28,7 @@
   import { writable } from 'svelte/store';
   import { loadTags } from '@/utils/tags';
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
+  import { page } from '$app/stores';
 
   onMount(() => {
     (async () => {
@@ -27,6 +39,13 @@
     })();
   });
 </script>
+
+<svelte:head>
+  <title>{$page.stuff.title || 'Adofai.gg'}</title>
+  {#each $page.stuff.metaTags ?? defaultMeta as meta}
+    <meta {...meta} />
+  {/each}
+</svelte:head>
 
 {#if !$loaded}
   <div

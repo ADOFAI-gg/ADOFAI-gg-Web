@@ -5,14 +5,43 @@
   import { getYoutubeVideoId } from '@/utils/youtube';
 
   import type { Load } from '@sveltejs/kit';
-  import type { AxiosError } from 'axios';
 
   export const load: Load = async ({ params }) => {
     try {
-      const { data } = await api.get(`/api/v1/levels/${params.id}`);
+      const { data } = await api.get<Level>(`/api/v1/levels/${params.id}`);
+      const youtubeId = getYoutubeVideoId(data.video);
       return {
         props: {
           level: data
+        },
+        stuff: {
+          title: `${data.artists.join(' & ')} - ${data.title}`,
+          metaTags: [
+            {
+              property: 'og:site_name',
+              content: 'Adofai.gg'
+            },
+            {
+              property: 'og:title',
+              content: `${data.artists.join(' & ')} - ${data.title}`
+            },
+            {
+              property: 'og:description',
+              content: `Map by ${data.creators.join(' & ')}`
+            },
+            {
+              name: 'twitter:card',
+              content: 'summary_large_image'
+            },
+            {
+              property: 'og:image',
+              content: `https://i.ytimg.com/vi/${youtubeId}/original.jpg`
+            },
+            {
+              name: 'twitter:image',
+              content: `https://i.ytimg.com/vi/${youtubeId}/original.jpg`
+            }
+          ]
         }
       };
     } catch (e) {
@@ -26,18 +55,6 @@
 
 <script lang="ts">
   export let level: Level;
-
-  $: youtubeId = getYoutubeVideoId(level.video);
 </script>
-
-<svelte:head>
-  <title>{level.artists.join(' & ')} - {level.title}</title>
-  <meta property="og:title" content="{level.artists.join(' & ')} - {level.title}" />
-  <meta property="og:site_name" content="Adofai.gg" />
-  <meta property="og:url" content="https://adofai.gg" />
-  <meta property="og:description" content="Map by {level.creators.join(' & ')}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://i.ytimg.com/vi/{youtubeId}/original.jpg" />
-</svelte:head>
 
 <LevelDetails {level} />
