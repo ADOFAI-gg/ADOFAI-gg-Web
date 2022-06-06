@@ -2,8 +2,6 @@
 
 import { build, files, version } from '$service-worker';
 
-console.log(version);
-
 const worker = self as unknown as ServiceWorkerGlobalScope;
 
 const FILES = `CACHE${version}`;
