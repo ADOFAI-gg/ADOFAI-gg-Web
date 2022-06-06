@@ -16,6 +16,7 @@
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import { loadTags } from '@/utils/tags';
+  import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
 
   onMount(() => {
     (async () => {
@@ -45,3 +46,7 @@
     </div>
   {/key}
 </div>
+
+{#if $loaded}
+  <UpdateNotification />
+{/if}
