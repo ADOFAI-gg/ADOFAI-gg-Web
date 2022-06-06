@@ -2,6 +2,7 @@
   import { browser, dev } from '$app/env';
   import { fly } from 'svelte/transition';
   import Icon from '../atoms/Icon.svelte';
+  import Translation from './Translation.svelte';
 
   let hasUpdate = false;
 
@@ -21,13 +22,15 @@
 
 {#if hasUpdate}
   <div
-    in:fly={{
+    transition:fly={{
       duration: 1000,
-      y: 200
+      y: 60
     }}
     class="fixed gap-2 flex bottom-4 left-1/2 -translate-x-1/2 bg-blue p-2 rounded-full"
   >
-    <div class="pl-2">Update available. Please reload to activate.</div>
+    <div class="pl-2">
+      <Translation key="UPDATE_AVAILABLE" />
+    </div>
     <div
       on:click={browser ? () => window.location.reload() : () => null}
       class="w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40"
