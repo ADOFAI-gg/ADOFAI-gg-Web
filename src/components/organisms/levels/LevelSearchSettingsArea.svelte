@@ -8,6 +8,7 @@
   import { fade } from 'svelte/transition';
   import LevelSearchSortTab from './LevelSearchSortTab.svelte';
   import { browser } from '$app/env';
+  import Translation from '@/components/utils/Translation.svelte';
 
   type TabType = 'tags' | 'meta' | 'sort' | null;
 
@@ -38,19 +39,31 @@
 <div>
   <div class="flex flex-col md:flex-row gap-1">
     <SearchTabs value={currentTab} deselectable>
-      <SearchTabItem value="tags" icon="tag">Tags</SearchTabItem>
-      <SearchTabItem value="meta" icon="filter">Meta</SearchTabItem>
-      <SearchTabItem value="sort" icon="sort">Sort</SearchTabItem>
+      <SearchTabItem value="tags" icon="tag">
+        <Translation key="SEARCH_TAB_TAGS" />
+      </SearchTabItem>
+      <SearchTabItem value="meta" icon="filter">
+        <Translation key="SEARCH_TAB_META" />
+      </SearchTabItem>
+      <SearchTabItem value="sort" icon="sort">
+        <Translation key="SEARCH_TAB_SORT" />
+      </SearchTabItem>
       <div class="flex-grow md:hidden" />
       <Button type="search">
         <Icon icon="refresh" size={11} />
-        <span class="hidden md:block">Reset Search Setting</span>
+        <span class="hidden md:block">
+          <Translation key="SEARCH_SETTINGS_RESET" />
+        </span>
       </Button>
     </SearchTabs>
     <div class="flex-grow" />
     <SearchTabs value={currentView} label="View">
-      <SearchTabItem value="list" icon="list">List</SearchTabItem>
-      <SearchTabItem value="table" icon="sheet">Table</SearchTabItem>
+      <SearchTabItem value="list" icon="list">
+        <Translation key="SEARCH_VIEW_LIST" />
+      </SearchTabItem>
+      <SearchTabItem value="table" icon="sheet">
+        <Translation key="SEARCH_VIEW_TABLE" />
+      </SearchTabItem>
     </SearchTabs>
   </div>
   <div class="mt-[16px] transition-all relative overflow-hidden" style="height: {height}px;">
