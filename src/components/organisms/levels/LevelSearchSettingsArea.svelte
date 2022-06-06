@@ -15,7 +15,7 @@
 
   type ViewType = 'list' | 'table';
 
-  const currentTab = writable<TabType>('tags');
+  const currentTab = writable<TabType>(null);
   const currentView = writable<ViewType>('list');
 
   let height = 0;
@@ -57,7 +57,7 @@
           </span>
         </Button>
         {#if $currentTab === 'tags'}
-          <div class="flex-grow">
+          <div transition:fade={{ duration: 200 }} class="flex-grow">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}
