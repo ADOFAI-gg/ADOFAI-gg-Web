@@ -1,37 +1,44 @@
 <script lang="ts">
   import { Asset } from '@/utils/assets';
+  import axios from 'axios';
 
   export let icon: string;
   export let namespace = 'icons';
   export let size = 24;
+  let className = 'text-white';
+
+  export { className as class };
 
   const load = async (id: string) => {
     const src = await Asset.icon(id, namespace);
-    await new Promise((resolve, reject) => {
-      const image = new window.Image();
-      image.onload = resolve;
-      image.onerror = reject;
-      image.src = src ?? '';
-    });
-    return src;
+
+    const { data } = await axios.get(src);
+
+    return data;
   };
 
+  let container: HTMLDivElement;
+
   $: promise = load(icon);
+
+  $: {
+    if (container) {
+      const svg = container.querySelector('svg');
+      svg?.setAttribute('width', `${size}`);
+      svg?.setAttribute('height', `${size}`);
+      svg?.querySelectorAll('*')?.forEach((i) => {
+        if (i.hasAttribute('fill')) i.setAttribute('fill', 'currentColor');
+
+        if (i.hasAttribute('stroke')) i.setAttribute('stroke', 'currentColor');
+      });
+    }
+  }
 </script>
 
 {#await promise}
   <div style="width: {size}px;height: {size}px;" />
-{:then url}
-  <div
-    class="animate-fade-in {$$props.class || 'bg-white'} icon"
-    style="width: {size}px;height: {size}px;--url:url({url});"
-  />
+{:then data}
+  <div bind:this={container} style="width: {size}px; height: {size}px;" class={className}>
+    {@html data}
+  </div>
 {/await}
-
-<style lang="scss">
-  .icon {
-    mask-size: cover;
-    mask-position: center;
-    mask-image: var(--url);
-  }
-</style>

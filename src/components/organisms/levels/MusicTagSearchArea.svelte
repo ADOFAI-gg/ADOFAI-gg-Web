@@ -2,7 +2,7 @@
   import MusicLengthSelectItem from '@/components/atoms/MusicLengthSelectItem.svelte';
   import TagCheckbox from '@/components/atoms/TagCheckbox.svelte';
 
-  import SearchTagGroupBase from '@/components/molecules/levels/SearchTagGroupBase.svelte';
+  import SearchTagGroupBase from '@/components/molecules/levels/SearchGroup.svelte';
 </script>
 
 <SearchTagGroupBase title="TAG_GROUP_MUSIC">

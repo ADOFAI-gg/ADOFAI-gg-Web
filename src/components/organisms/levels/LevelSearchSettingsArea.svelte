@@ -6,6 +6,8 @@
   import { writable } from 'svelte/store';
   import TagSearchTab from './TagSearchTab.svelte';
   import { fade } from 'svelte/transition';
+  import LevelSearchSortTab from './LevelSearchSortTab.svelte';
+  import { browser } from '$app/env';
 
   type TabType = 'tags' | 'meta' | 'sort' | null;
 
@@ -13,6 +15,24 @@
 
   const currentTab = writable<TabType>('tags');
   const currentView = writable<ViewType>('list');
+
+  let height = 0;
+
+  let tagTab: HTMLDivElement;
+
+  let sortTab: HTMLDivElement;
+
+  $: {
+    if (browser) {
+      if ($currentTab === 'tags' && tagTab) {
+        height = tagTab.clientHeight;
+      } else if ($currentTab === 'sort' && sortTab) {
+        height = sortTab.clientHeight;
+      } else {
+        height = 0;
+      }
+    }
+  }
 </script>
 
 <div>
@@ -33,10 +53,14 @@
       <SearchTabItem value="table" icon="sheet">Table</SearchTabItem>
     </SearchTabs>
   </div>
-  <div class="mt-[16px]">
+  <div class="mt-[16px] transition-all relative overflow-hidden" style="height: {height}px;">
     {#if $currentTab === 'tags'}
-      <div transition:fade>
+      <div transition:fade bind:this={tagTab} class="absolute w-full h-fit top-0 left-0">
         <TagSearchTab />
+      </div>
+    {:else if $currentTab === 'sort'}
+      <div transition:fade bind:this={sortTab}>
+        <LevelSearchSortTab />
       </div>
     {/if}
   </div>

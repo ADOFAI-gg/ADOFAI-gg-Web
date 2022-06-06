@@ -1,10 +1,6 @@
 <script lang="ts">
-  import Icon from '@/components/atoms/Icon.svelte';
   import TagCheckbox from '@/components/atoms/TagCheckbox.svelte';
-  import Tooltip from '@/components/atoms/Tooltip.svelte';
-
-  import Translation from '@/components/utils/Translation.svelte';
-  import SearchTagGroupBase from './SearchTagGroupBase.svelte';
+  import SearchTagGroupBase from './SearchGroup.svelte';
 
   export let tags: number[];
   export let title: string;

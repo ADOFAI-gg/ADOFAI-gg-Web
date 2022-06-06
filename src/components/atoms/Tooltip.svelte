@@ -9,33 +9,40 @@
   let content: HTMLElement;
   let button: HTMLElement;
 
-  let instance: Instance;
-
   export let options: Partial<Props> = {};
 
-  onMount(() => {
-    instance = tippy(button, {
-      content,
-      placement,
-      popperOptions: {
-        strategy: 'fixed',
-        modifiers: [
-          {
-            name: 'preventOverflow',
-            options: {
-              altAxis: true,
-              tether: false
-            }
-          }
-        ]
-      },
-      ...options
-    });
-  });
+  $: subscriber = {
+    subscribe: () => {
+      if (typeof window === 'undefined') {
+        return () => null;
+      }
 
-  onDestroy(() => {
-    instance?.destroy();
-  });
+      if (!content || !button) return () => null;
+
+      const instance = tippy(button, {
+        content,
+        placement,
+        popperOptions: {
+          strategy: 'fixed',
+          modifiers: [
+            {
+              name: 'preventOverflow',
+              options: {
+                altAxis: true,
+                tether: false
+              }
+            }
+          ]
+        },
+        ...options
+      });
+      return () => {
+        instance?.destroy?.();
+      };
+    }
+  };
+
+  $subscriber;
 </script>
 
 <div>

@@ -32,7 +32,7 @@
   <div class="flex gap-[12px]">
     <Button type="levelAction">
       <div class="flex gap-[6px] items-center">
-        <Icon class="bg-red" icon="favorite" size={20} />
+        <Icon class="text-red" icon="favorite" size={20} />
         <div class="font-regular text-lg">1.4K</div>
       </div>
     </Button>
