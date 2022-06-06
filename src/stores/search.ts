@@ -11,6 +11,10 @@ type Filters = {
 export type SearchSettings = {
   query: string;
   filter: Filters;
+  sort: {
+    order: 'asc' | 'desc' | 'shuffle';
+    type: 'created' | 'difficulty' | 'likes';
+  };
 };
 
 export const searchSetingStore = writable<SearchSettings>({
@@ -21,5 +25,9 @@ export const searchSetingStore = writable<SearchSettings>({
       exclude: []
     },
     musicLength: null
+  },
+  sort: {
+    order: 'asc',
+    type: 'created'
   }
 });

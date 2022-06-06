@@ -18,16 +18,16 @@
 
   let height = 0;
 
-  let tagTab: HTMLDivElement;
+  let tagTab: number;
 
-  let sortTab: HTMLDivElement;
+  let sortTab: number;
 
   $: {
     if (browser) {
       if ($currentTab === 'tags' && tagTab) {
-        height = tagTab.clientHeight;
+        height = tagTab;
       } else if ($currentTab === 'sort' && sortTab) {
-        height = sortTab.clientHeight;
+        height = sortTab;
       } else {
         height = 0;
       }
@@ -55,11 +55,11 @@
   </div>
   <div class="mt-[16px] transition-all relative overflow-hidden" style="height: {height}px;">
     {#if $currentTab === 'tags'}
-      <div transition:fade bind:this={tagTab} class="absolute w-full h-fit top-0 left-0">
+      <div transition:fade bind:clientHeight={tagTab} class="absolute w-full h-fit top-0 left-0">
         <TagSearchTab />
       </div>
     {:else if $currentTab === 'sort'}
-      <div transition:fade bind:this={sortTab}>
+      <div transition:fade bind:clientHeight={sortTab}>
         <LevelSearchSortTab />
       </div>
     {/if}
