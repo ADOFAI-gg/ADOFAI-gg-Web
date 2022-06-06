@@ -13,7 +13,7 @@
 
   type ViewType = 'list' | 'table';
 
-  const currentTab = writable<TabType>('tags');
+  const currentTab = writable<TabType>(null);
   const currentView = writable<ViewType>('list');
 
   let height = 0;

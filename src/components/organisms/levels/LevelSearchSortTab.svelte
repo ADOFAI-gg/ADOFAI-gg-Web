@@ -36,7 +36,7 @@
         on:click={updateOrder('asc')}
       />
       <SortOrderRadio
-        icon="topLeft"
+        icon="bottomRight"
         key="SORT_DESC"
         checked={$searchSetingStore.sort.order === 'desc'}
         on:click={updateOrder('desc')}
@@ -49,7 +49,7 @@
       />
     </div>
     {#if $searchSetingStore.sort.order !== 'shuffle'}
-      <div class="flex flex-col md:flex-row" transition:fade>
+      <div class="flex flex-col md:flex-row" transition:fade={{ duration: 200 }}>
         <div class="border-r hidden md:block border-white mr-[24px] border-opacity-40" />
         <div class="flex sm:gap-[24px] gap-[12px] flex-col sm:flex-row">
           <SortOrderRadio
