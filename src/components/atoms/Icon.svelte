@@ -38,7 +38,11 @@
 {#await promise}
   <div style="width: {size}px;height: {size}px;" />
 {:then data}
-  <div bind:this={container} style="width: {size}px; height: {size}px;" class={className}>
+  <div
+    bind:this={container}
+    style="width: {size}px; height: {size}px;"
+    class="{className} animate-fade-in"
+  >
     {@html data}
   </div>
 {/await}
