@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+  const cache = new Map<string, string>();
+</script>
+
 <script lang="ts">
   import { Asset } from '@/utils/assets';
   import axios from 'axios';
@@ -12,7 +16,11 @@
   const load = async (id: string) => {
     const src = await Asset.icon(id, namespace);
 
+    if (cache.has(src)) return cache.get(src);
+
     const { data } = await axios.get(src);
+
+    cache.set(src, data);
 
     return data;
   };

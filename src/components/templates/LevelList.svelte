@@ -27,10 +27,7 @@
 
 <svelte:window bind:innerHeight={height} />
 
-<PageContainer>
-  <div class="h-nav mt-[24px]" />
-  <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-  <div class="mt-2">
-    <LevelSearchSettingsArea />
-  </div>
-</PageContainer>
+<SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+<div class="mt-2">
+  <LevelSearchSettingsArea />
+</div>

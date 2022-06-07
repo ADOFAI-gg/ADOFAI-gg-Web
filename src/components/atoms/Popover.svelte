@@ -13,35 +13,38 @@
 
   export let options: Partial<Props> = {};
 
-  onMount(() => {
-    instance = tippy(button, {
-      content,
-      trigger: 'click',
-      placement,
-      popperOptions: {
-        strategy: 'fixed',
-        modifiers: [
-          {
-            name: 'preventOverflow',
-            options: {
-              altAxis: true,
-              tether: false
-            }
-          }
-        ]
-      },
-      hideOnClick: 'toggle',
-      onClickOutside: () => {
-        instance.hide();
-      },
-      interactive: true,
-      ...options
-    });
-  });
+  $: subscriber = {
+    subscribe: () => {
+      if (typeof window === 'undefined') {
+        return () => null;
+      }
 
-  onDestroy(() => {
-    instance?.destroy();
-  });
+      if (!content || !button) return () => null;
+
+      const instance = tippy(button, {
+        content,
+        placement,
+        popperOptions: {
+          strategy: 'fixed',
+          modifiers: [
+            {
+              name: 'preventOverflow',
+              options: {
+                altAxis: true,
+                tether: false
+              }
+            }
+          ]
+        },
+        ...options
+      });
+      return () => {
+        instance?.destroy?.();
+      };
+    }
+  };
+
+  $subscriber;
 </script>
 
 <div>
