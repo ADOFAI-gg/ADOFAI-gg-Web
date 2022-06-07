@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Translation from '../utils/Translation.svelte';
   import Avatar from './Avatar.svelte';
 
   export let placeholder: string | null = null;
@@ -24,7 +25,7 @@
       class:opacity-0={!!value}
       class:opacity-40={!value}
     >
-      {placeholder}
+      <Translation key={placeholder} />
     </div>
   {/if}
   <input

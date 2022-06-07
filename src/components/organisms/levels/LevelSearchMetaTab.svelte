@@ -9,31 +9,31 @@
 </script>
 
 <div class="grid md:grid-cols-2 gap-[12px]">
-  <SearchGroup title="Author">
+  <SearchGroup title="SEARCH_META_AUTHOR">
     <div class="flex flex-col gap-[16px]">
-      <LabeledInputContainer label="Artist">
-        <SearchMetaInput placeholder="Song Artist" />
+      <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
+        <SearchMetaInput placeholder="SEARCH_META_ARTIST_PLACEHOLDER" />
       </LabeledInputContainer>
-      <LabeledInputContainer label="Creator">
-        <SearchMetaInput placeholder="Song Artist" />
+      <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
+        <SearchMetaInput placeholder="SEARCH_META_CREATOR_PLACEHOLDER" />
       </LabeledInputContainer>
     </div>
   </SearchGroup>
-  <SearchGroup title="Level Meta">
+  <SearchGroup title="SEARCH_META_LEVEL">
     <div class="flex flex-col gap-[16px]">
-      <LabeledInputContainer label="Lv.">
+      <LabeledInputContainer label="SEARCH_META_LV_LABEL">
         <DifficultyRangeSelector />
       </LabeledInputContainer>
-      <LabeledInputContainer label="Tiles">
+      <LabeledInputContainer label="SEARCH_META_TILES_LABEL">
         <RangeInputPair>
-          <SearchMetaInput slot="min" placeholder="Min Tiles" />
-          <SearchMetaInput slot="max" placeholder="Max Tiles" />
+          <SearchMetaInput slot="min" type="number" placeholder="SEARCH_META_TILES_MIN" />
+          <SearchMetaInput slot="max" type="number" placeholder="SEARCH_META_TILES_MAX" />
         </RangeInputPair>
       </LabeledInputContainer>
-      <LabeledInputContainer label="BPM">
+      <LabeledInputContainer label="SEARCH_META_BPM_LABEL">
         <RangeInputPair>
-          <SearchMetaInput slot="min" placeholder="Min BPM" />
-          <SearchMetaInput slot="max" placeholder="Max BPM" />
+          <SearchMetaInput slot="min" type="number" placeholder="SEARCH_META_BPM_MIN" />
+          <SearchMetaInput slot="max" type="number" placeholder="SEARCH_META_BPM_MAX" />
         </RangeInputPair>
       </LabeledInputContainer>
     </div>

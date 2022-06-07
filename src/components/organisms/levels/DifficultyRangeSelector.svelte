@@ -38,6 +38,6 @@
 </script>
 
 <RangeInputPair>
-  <DifficultySelectorInput bind:value={min} placeholder="Min Lv." slot="min" />
-  <DifficultySelectorInput bind:value={max} placeholder="Max Lv." slot="max" />
+  <DifficultySelectorInput bind:value={min} placeholder="SEARCH_META_LV_MIN" slot="min" />
+  <DifficultySelectorInput bind:value={max} placeholder="SEARCH_META_LV_MAX" slot="max" />
 </RangeInputPair>

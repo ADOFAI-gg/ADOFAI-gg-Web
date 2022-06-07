@@ -11,6 +11,7 @@
   import Popover from './Popover.svelte';
   import type { Instance } from 'tippy.js';
   import Icon from './Icon.svelte';
+  import Translation from '../utils/Translation.svelte';
 
   export let placeholder: string;
 
@@ -69,7 +70,7 @@
       </div>
     {:else}
       <div class="opacity-40 absolute" transition:fade={{ duration: 200 }}>
-        {placeholder}
+        <Translation key={placeholder} />
       </div>
     {/if}
   </div>
