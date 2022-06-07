@@ -5,6 +5,14 @@
   import type { Data } from '../components/templates/Home.svelte';
 
   export const load: Load = async () => {
+    if (!browser) {
+      return {
+        props: {
+          data: { recentLevels: [], topPlays: [] } as Data
+        }
+      };
+    }
+
     const {
       data: { results: topPlays }
     } = await api.get('/api/v1/playLogs', {
@@ -38,6 +46,7 @@
 <script lang="ts">
   import PageContainer from '@/components/atoms/PageContainer.svelte';
   import Home from '../components/templates/Home.svelte';
+  import { browser } from '$app/env';
 
   export let data: Data;
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import Translation from '../utils/Translation.svelte';
-  import Avatar from './Avatar.svelte';
+  import { i18nReady, translate } from '@/utils/i18n';
 
   export let placeholder: string | null = null;
 
@@ -15,25 +14,32 @@
     value = inputType.match(/^(number|range)$/) ? +e.target.value : e.target.value;
   };
 
+  $: placeholderContent = (() => {
+    if ($i18nReady) {
+      return translate(placeholder || '');
+    }
+  })();
+
   export { inputType as type };
 </script>
 
 <div class="bg-white bg-opacity-20 rounded-[5px] h-[30px] w-full relative">
-  {#if placeholder}
+  <label>
     <div
       class="absolute placeholder flex items-center transition-opacity pointer-events-none h-full w-full px-2 leading-[0] z-[2]"
       class:opacity-0={!!value}
       class:opacity-40={!value}
     >
-      <Translation key={placeholder} />
+      {placeholderContent || ''}
     </div>
-  {/if}
-  <input
-    type={inputType}
-    {value}
-    on:input={handleInput}
-    {min}
-    {max}
-    class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
-  />
+    <input
+      type={inputType}
+      {value}
+      on:input={handleInput}
+      {min}
+      {max}
+      class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
+      aria-label={placeholderContent}
+    />
+  </label>
 </div>

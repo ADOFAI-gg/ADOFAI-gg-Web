@@ -9,7 +9,20 @@ export const fallbackLang = 'en';
 
 export const currentLang = writable<string>();
 
+let _currentLang = '';
+
+currentLang.subscribe((v) => {
+  _currentLang = v;
+});
+
 export const langData = writable<Record<string, Record<string, string>>>({});
+
+let _langData: Record<string, Record<string, string>> = {};
+
+langData.subscribe((v) => {
+  console.log(v);
+  _langData = v;
+});
 
 const processLang = (code: string) => {
   const lang = availableLanguages.find((x) => x.code === code || x.aliases.includes(code));
@@ -26,10 +39,20 @@ export const setupI18n = async () => {
   const langs = await Asset.loadJSON<LangResponse[]>('langs.json');
   availableLanguages.push(...langs);
   const langCode = localStorage.getItem('lang');
-  currentLang.set(processLang(langCode || window.navigator.language));
   for (const lang of langs) {
     const json = await Asset.loadJSON(`translations/${lang.code}.json`);
     langData.update((v) => ({ ...v, [lang.code]: json }));
   }
+  currentLang.set(processLang(langCode || window.navigator.language));
   i18nReady.set(true);
+};
+
+export const translate = (key: string) => {
+  const l = _currentLang;
+  if (!l) return key;
+  const lang = _langData[l];
+  if (!lang) return key;
+  const k = lang[key] ?? _langData[fallbackLang][key];
+  if (!k) return key;
+  return k;
 };

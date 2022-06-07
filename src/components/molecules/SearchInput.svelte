@@ -1,11 +1,17 @@
 <script lang="ts">
   import Icon from '../atoms/Icon.svelte';
   import { fade } from 'svelte/transition';
-  import Translation from '../utils/Translation.svelte';
+  import { i18nReady, translate } from '@/utils/i18n';
 
   export let value = '';
 
   export let placeholder = 'SEARCH_INPUT_PLACEHOLDER_HOME';
+
+  $: placeholderContent = (() => {
+    if ($i18nReady) {
+      return translate(placeholder || '');
+    }
+  })();
 </script>
 
 <div
@@ -16,6 +22,7 @@
     <input
       bind:value
       type="text"
+      aria-label={placeholderContent}
       class="absolute w-full h-full left-0 top-0 bg-transparent outline-none text-lg"
     />
     {#if !value}
@@ -23,7 +30,7 @@
         transition:fade={{ duration: 200 }}
         class="w-full h-full absolute items-center flex opacity-40 pointer-events-none"
       >
-        <Translation key={placeholder} />
+        {placeholderContent}
       </div>
     {/if}
   </div>

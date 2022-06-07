@@ -1,7 +1,10 @@
+import { dev } from '$app/env';
 import axios from 'axios';
 
 const asset = (path: string) =>
-  `https://raw.githubusercontent.com/ADOFAI-gg/Adofai-gg-assets/main/${path}`;
+  dev
+    ? `https://raw.githubusercontent.com/ADOFAI-gg/Adofai-gg-assets/main/${path}`
+    : `/assets/${path}`;
 
 export class Asset {
   static icon(id: string, namespace = 'icons') {

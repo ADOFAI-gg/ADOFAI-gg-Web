@@ -13,7 +13,7 @@ body {
   &::after {
     @apply fixed z-[-1] left-0 top-0 w-full h-full bg-center bg-cover bg-no-repeat;
     content: '';
-    background-image: url('/background.png');
+    background-image: url('/background.webp');
   }
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 body::-webkit-scrollbar-track {
-  background-image: url('/background.png');
+  background-image: url('/background.webp');
 }
 
 body::-webkit-scrollbar-track {
