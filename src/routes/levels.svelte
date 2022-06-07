@@ -4,8 +4,4 @@
   import LevelList from '@/components/templates/LevelList.svelte';
 </script>
 
-<div class="h-nav mt-[24px]" />
-
-<PageContainer>
-  <LevelList />
-</PageContainer>
+<LevelList />

@@ -2,7 +2,11 @@
   import { searchSetingStore } from '@/stores/search';
 
   import SearchInput from '../molecules/SearchInput.svelte';
-  import LevelSearchSettingsArea from '../organisms/levels/LevelSearchSettingsArea.svelte';
+  import LevelSearchSettingsArea, {
+    currentView
+  } from '../organisms/levels/LevelSearchSettingsArea.svelte';
+  import type { Level } from '@/types';
+  import PageContainer from '../atoms/PageContainer.svelte';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -15,11 +19,18 @@
       }
     }));
   }
+
+  let data: Level[] = [];
+
+  let height = 0;
 </script>
 
-<div>
+<svelte:window bind:innerHeight={height} />
+
+<PageContainer>
+  <div class="h-nav mt-[24px]" />
   <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-  <div class="mt-2 px-[12px]">
+  <div class="mt-2">
     <LevelSearchSettingsArea />
   </div>
-</div>
+</PageContainer>

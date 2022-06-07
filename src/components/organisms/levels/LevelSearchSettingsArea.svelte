@@ -1,3 +1,12 @@
+<script lang="ts" context="module">
+  type TabType = 'tags' | 'meta' | 'sort' | null;
+
+  type ViewType = 'list' | 'table';
+
+  const currentTab = writable<TabType>(null);
+  export const currentView = writable<ViewType>('list');
+</script>
+
 <script lang="ts">
   import Button from '@/components/atoms/Button.svelte';
   import Icon from '@/components/atoms/Icon.svelte';
@@ -13,16 +22,9 @@
   import LevelSearchMetaTab from './LevelSearchMetaTab.svelte';
   import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
 
-  type TabType = 'tags' | 'meta' | 'sort' | null;
-
-  type ViewType = 'list' | 'table';
-
   $: {
     console.log($searchSetingStore);
   }
-
-  const currentTab = writable<TabType>(null);
-  const currentView = writable<ViewType>('list');
 
   let height = 0;
 
@@ -87,7 +89,10 @@
       </SearchTabItem>
     </SearchTabs>
   </div>
-  <div class="mt-[16px] transition-all relative overflow-hidden" style="height: {height}px;">
+  <div
+    class="transition-all relative overflow-hidden mt-[16px] {$currentTab ? 'mb-[16px]' : ''}"
+    style="height: {height}px;"
+  >
     {#if $currentTab === 'tags'}
       <div transition:fade bind:clientHeight={tagTab} class="absolute w-full h-fit top-0 left-0">
         <TagSearchTab />
