@@ -23,6 +23,7 @@
 
       const instance = tippy(button, {
         content,
+        trigger: 'click',
         placement,
         popperOptions: {
           strategy: 'fixed',
@@ -36,8 +37,14 @@
             }
           ]
         },
+        hideOnClick: 'toggle',
+        onClickOutside: () => {
+          instance.hide();
+        },
+        interactive: true,
         ...options
       });
+
       return () => {
         instance?.destroy?.();
       };

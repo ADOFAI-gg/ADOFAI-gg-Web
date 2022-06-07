@@ -9,7 +9,7 @@
   import DifficultyIcon from './DifficultyIcon.svelte';
   import { fade } from 'svelte/transition';
   import Popover from './Popover.svelte';
-  import type { Instance } from 'tippy.js';
+  import type { Instance, Props } from 'tippy.js';
   import Icon from './Icon.svelte';
   import Translation from '../utils/Translation.svelte';
 
@@ -45,16 +45,15 @@
         return value;
     }
   })();
-</script>
 
-<Popover
-  placement="bottom"
-  options={{
+  const options: Partial<Props> = {
     onShow: (i) => {
       instance = i;
     }
-  }}
->
+  };
+</script>
+
+<Popover placement="bottom" {options}>
   <div
     class="bg-white cursor-pointer bg-opacity-20 relative rounded-[5px] gap-[8px] h-[30px] w-full flex items-center px-2"
     slot="button"

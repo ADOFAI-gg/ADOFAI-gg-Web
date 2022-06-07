@@ -4,12 +4,7 @@
   import NavSignArea from '../molecules/NavSignArea.svelte';
   import Icon from '../atoms/Icon.svelte';
   import NavMenuOverlay from './NavMenuOverlay.svelte';
-
-  let menuOpen = false;
-
-  const toggleMenu = () => {
-    menuOpen = !menuOpen;
-  };
+  import Popover from '../atoms/Popover.svelte';
 </script>
 
 <nav class="fixed w-full z-[100] left-0 top-0 bg-opacity-25 bg-black backdrop-blur-sm">
@@ -23,12 +18,11 @@
       <NavSignArea />
     </div>
     <div class="bg-white opacity-40 w-[1px] h-[18px] hidden md:block" />
-    <span
-      class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
-      on:click={toggleMenu}
-    >
-      <Icon icon="expand" size={16} />
-    </span>
-    <NavMenuOverlay open={menuOpen} on:close={toggleMenu} />
+    <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
+      <span slot="button" class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+        <Icon icon="expand" size={16} />
+      </span>
+      <NavMenuOverlay />
+    </Popover>
   </div>
 </nav>
