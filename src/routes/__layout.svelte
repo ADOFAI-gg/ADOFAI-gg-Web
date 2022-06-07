@@ -20,7 +20,7 @@
   import '../stylesheets/main.scss';
   import Nav from '../components/organisms/Nav.svelte';
   import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
-  import { setupI18n } from '@/utils/i18n';
+  import { i18nReady, setupI18n } from '@/utils/i18n';
   import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
   export let url: string;
   import { fade } from 'svelte/transition';
@@ -58,7 +58,9 @@
 <div class={$loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}>
   <LoadingIndiciator />
 
-  <Nav />
+  {#if $i18nReady}
+    <Nav />
+  {/if}
   {#key url}
     <div>
       <slot />

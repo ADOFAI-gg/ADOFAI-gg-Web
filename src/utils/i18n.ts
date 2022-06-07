@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { writable } from 'svelte/store';
 import { Asset } from './assets';
+
+export const i18nReady = writable(false);
 
 export const availableLanguages: LangResponse[] = [];
 
@@ -30,4 +31,5 @@ export const setupI18n = async () => {
     const json = await Asset.loadJSON(`translations/${lang.code}.json`);
     langData.update((v) => ({ ...v, [lang.code]: json }));
   }
+  i18nReady.set(true);
 };

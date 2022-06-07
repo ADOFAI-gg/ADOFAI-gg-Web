@@ -6,7 +6,6 @@
     currentView
   } from '../organisms/levels/LevelSearchSettingsArea.svelte';
   import type { Level } from '@/types';
-  import PageContainer from '../atoms/PageContainer.svelte';
 
   let query: string = $searchSetingStore.query.title;
 
