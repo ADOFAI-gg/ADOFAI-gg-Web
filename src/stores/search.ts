@@ -13,7 +13,11 @@ type Filters = {
 };
 
 export type SearchSettings = {
-  query: string;
+  query: {
+    artist: string;
+    creator: string;
+    title: string;
+  };
   filter: Filters;
   sort: {
     order: 'asc' | 'desc' | 'shuffle';
@@ -22,7 +26,11 @@ export type SearchSettings = {
 };
 
 export const searchSetingStore = writable<SearchSettings>({
-  query: '',
+  query: {
+    artist: '',
+    creator: '',
+    title: ''
+  },
   filter: {
     tags: {
       include: [],

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Button from '../atoms/Button.svelte';
   import Translation from '../utils/Translation.svelte';
 </script>

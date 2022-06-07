@@ -1,21 +1,35 @@
-<script>
-  import DifficultySelectorInput from '@/components/atoms/DifficultySelectorInput.svelte';
-
+<script lang="ts">
   import LabeledInputContainer from '@/components/atoms/LabeledInputContainer.svelte';
   import RangeInputPair from '@/components/atoms/RangeInputPair.svelte';
   import SearchMetaInput from '@/components/atoms/SearchMetaInput.svelte';
   import SearchGroup from '@/components/molecules/levels/SearchGroup.svelte';
+  import { searchSetingStore } from '@/stores/search';
   import DifficultyRangeSelector from './DifficultyRangeSelector.svelte';
+
+  let artist: string = $searchSetingStore.query.artist;
+
+  let creator: string = $searchSetingStore.query.creator;
+
+  $: {
+    searchSetingStore.update((x) => ({
+      ...x,
+      query: {
+        title: x.query.title,
+        artist,
+        creator
+      }
+    }));
+  }
 </script>
 
 <div class="grid md:grid-cols-2 gap-[12px]">
   <SearchGroup title="SEARCH_META_AUTHOR">
     <div class="flex flex-col gap-[16px]">
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
-        <SearchMetaInput placeholder="SEARCH_META_ARTIST_PLACEHOLDER" />
+        <SearchMetaInput bind:value={artist} placeholder="SEARCH_META_ARTIST_PLACEHOLDER" />
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
-        <SearchMetaInput placeholder="SEARCH_META_CREATOR_PLACEHOLDER" />
+        <SearchMetaInput bind:value={creator} placeholder="SEARCH_META_CREATOR_PLACEHOLDER" />
       </LabeledInputContainer>
     </div>
   </SearchGroup>

@@ -11,10 +11,15 @@
   import Translation from '@/components/utils/Translation.svelte';
   import SearchHelpArea from '@/components/molecules/levels/SearchHelpArea.svelte';
   import LevelSearchMetaTab from './LevelSearchMetaTab.svelte';
+  import { searchSetingStore } from '@/stores/search';
 
   type TabType = 'tags' | 'meta' | 'sort' | null;
 
   type ViewType = 'list' | 'table';
+
+  $: {
+    console.log($searchSetingStore);
+  }
 
   const currentTab = writable<TabType>(null);
   const currentView = writable<ViewType>('list');
