@@ -11,7 +11,7 @@
   import Translation from '@/components/utils/Translation.svelte';
   import SearchHelpArea from '@/components/molecules/levels/SearchHelpArea.svelte';
   import LevelSearchMetaTab from './LevelSearchMetaTab.svelte';
-  import { searchSetingStore } from '@/stores/search';
+  import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
 
   type TabType = 'tags' | 'meta' | 'sort' | null;
 
@@ -30,6 +30,12 @@
 
   let sortTab: number;
   let metaTab: number;
+
+  const reset = () => {
+    searchSetingStore.set(defaultSearchSettings);
+    $currentTab = null;
+    $currentView = 'list';
+  };
 
   $: {
     if (browser) {
@@ -59,7 +65,7 @@
         <Translation key="SEARCH_TAB_SORT" />
       </SearchTabItem>
       <div class="flex gap-[12px] flex-row-reverse md:flex-row flex-grow">
-        <Button type="search">
+        <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} />
           <span class="hidden md:block">
             <Translation key="SEARCH_SETTINGS_RESET" />

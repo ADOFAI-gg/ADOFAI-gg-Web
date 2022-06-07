@@ -25,7 +25,7 @@ export type SearchSettings = {
   };
 };
 
-export const searchSetingStore = writable<SearchSettings>({
+export const defaultSearchSettings: SearchSettings = {
   query: {
     artist: '',
     creator: '',
@@ -46,4 +46,6 @@ export const searchSetingStore = writable<SearchSettings>({
     order: 'asc',
     type: 'created'
   }
-});
+};
+
+export const searchSetingStore = writable<SearchSettings>(defaultSearchSettings);

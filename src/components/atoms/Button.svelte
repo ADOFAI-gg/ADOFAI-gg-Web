@@ -20,6 +20,7 @@
 
 <svelte:element
   this={href ? 'a' : 'button'}
+  on:click
   {href}
   {...$$props}
   class={$$props.class ? className + ' ' + $$props.class : className}
