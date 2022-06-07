@@ -4,7 +4,7 @@ const Axios = require('axios');
 const unzipper = require('unzipper');
 const rimraf = require('rimraf');
 
-const assetsDir = path.join(__dirname, 'build', 'static', 'assets');
+const assetsDir = path.join(__dirname, 'static', 'assets');
 
 rimraf.sync(assetsDir);
 

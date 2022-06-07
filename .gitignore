@@ -13,3 +13,4 @@ pnpm-lock.yaml
 .eslintcache
 .vercel
 .cache
+static/assets

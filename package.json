@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
-    "build": "svelte-kit build && node postbuild.cjs",
+    "build": "node prebuild.cjs && svelte-kit build",
     "package": "svelte-kit package",
-    "preview": "node build",
+    "preview": "svelte-kit preview",
     "prepare": "svelte-kit sync && husky install",
     "test": "playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
