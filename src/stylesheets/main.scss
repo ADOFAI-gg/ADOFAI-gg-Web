@@ -6,10 +6,15 @@
 @tailwind utilities;
 
 body {
-  @apply text-white bg-center bg-cover bg-no-repeat min-h-screen select-none;
-  background-image: url('/background.png');
+  @apply text-white select-none;
   overflow-x: hidden;
   letter-spacing: -0.011rem;
+
+  &::after {
+    @apply fixed z-[-1] left-0 top-0 w-full h-full bg-center bg-cover bg-no-repeat;
+    content: '';
+    background-image: url('/background.png');
+  }
 }
 
 .text-shadow-6 {
