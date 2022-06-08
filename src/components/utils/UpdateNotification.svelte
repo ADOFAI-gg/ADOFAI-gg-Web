@@ -10,10 +10,6 @@
     navigator.serviceWorker.getRegistration('/service-worker.js').then((registration) => {
       registration?.addEventListener('updatefound', () => {
         hasUpdate = true;
-
-        setTimeout(() => {
-          hasUpdate = false;
-        }, 1000 * 10);
       });
       registration?.update();
     });
@@ -26,7 +22,7 @@
       duration: 1000,
       y: 60
     }}
-    class="fixed gap-2 flex bottom-4 left-1/2 -translate-x-1/2 bg-blue p-2 rounded-full"
+    class="fixed gap-2 flex bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-blue p-2 rounded-full"
   >
     <div class="pl-2">
       <Translation key="UPDATE_AVAILABLE" />
