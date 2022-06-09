@@ -11,7 +11,7 @@ body {
   letter-spacing: -0.011rem;
 
   &::after {
-    @apply fixed z-[-1] left-0 top-0 w-full h-full bg-center bg-cover bg-no-repeat;
+    @apply fixed z-[-100] left-0 top-0 w-full h-full bg-center bg-cover bg-no-repeat;
     content: '';
     background-image: url('/background.webp');
   }
