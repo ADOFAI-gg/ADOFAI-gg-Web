@@ -8,7 +8,7 @@
     width="100%"
     height="100%"
     title="Video"
-    src="http://www.youtube.com/embed/{videoId}"
+    src="https://www.youtube.com/embed/{videoId}"
     frameborder="0"
   />
 </div>
