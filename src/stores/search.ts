@@ -10,6 +10,14 @@ type Filters = {
     min: number | null;
     max: number | null;
   };
+  tiles: {
+    min: number | null;
+    max: number | null;
+  };
+  bpm: {
+    min: number | null;
+    max: number | null;
+  };
 };
 
 export type SearchSettings = {
@@ -38,6 +46,14 @@ export const defaultSearchSettings: SearchSettings = {
     },
     musicLength: null,
     difficulty: {
+      min: null,
+      max: null
+    },
+    tiles: {
+      min: null,
+      max: null
+    },
+    bpm: {
       min: null,
       max: null
     }

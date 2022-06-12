@@ -22,10 +22,6 @@
   import LevelSearchMetaTab from './LevelSearchMetaTab.svelte';
   import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
 
-  $: {
-    console.log($searchSetingStore);
-  }
-
   let height = 0;
 
   let tagTab: number;

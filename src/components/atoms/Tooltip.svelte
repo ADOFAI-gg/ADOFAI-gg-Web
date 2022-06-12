@@ -1,8 +1,7 @@
 <script lang="ts">
   import 'tippy.js/dist/tippy.css';
-  import { onDestroy, onMount } from 'svelte';
 
-  import tippy, { type Instance, type Placement, type Props } from 'tippy.js';
+  import tippy, { type Placement, type Props } from 'tippy.js';
 
   export let placement: Placement = 'auto';
 

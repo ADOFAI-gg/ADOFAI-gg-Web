@@ -20,7 +20,6 @@ export const langData = writable<Record<string, Record<string, string>>>({});
 let _langData: Record<string, Record<string, string>> = {};
 
 langData.subscribe((v) => {
-  console.log(v);
   _langData = v;
 });
 
@@ -35,7 +34,11 @@ type LangResponse = {
   aliases: string[];
 };
 
+let init = false;
+
 export const setupI18n = async () => {
+  if (init) return;
+  init = true;
   const langs = await Asset.loadJSON<LangResponse[]>('langs.json');
   availableLanguages.push(...langs);
   const langCode = localStorage.getItem('lang');

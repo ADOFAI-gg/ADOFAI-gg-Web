@@ -36,3 +36,8 @@ export interface Level {
 
   // and more(not added)
 }
+
+export interface ListResponse<T> {
+  results: T[];
+  count: number;
+}

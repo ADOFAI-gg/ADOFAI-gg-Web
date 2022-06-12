@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Level } from '@/types';
-  import { api } from '@/api';
   import LevelHeader from '../organisms/levels/LevelHeader.svelte';
   import Video from '../atoms/Video.svelte';
   import { getYoutubeVideoId } from '@/utils/youtube';

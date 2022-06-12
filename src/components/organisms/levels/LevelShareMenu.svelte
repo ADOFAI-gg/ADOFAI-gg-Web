@@ -7,7 +7,6 @@
   import type { Level } from '@/types';
   import CopyableInput from '@/components/atoms/CopyableInput.svelte';
   import ShareButton from '@/components/molecules/ShareButton.svelte';
-  import Copy from 'svelte-icons/fa/FaCopy.svelte';
   import Twitter from 'svelte-icons/fa/FaTwitter.svelte';
 
   export let level: Level;

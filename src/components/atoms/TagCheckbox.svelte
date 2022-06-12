@@ -6,8 +6,6 @@
   import Icon from './Icon.svelte';
   import TagCheckboxBase from './TagCheckboxBase.svelte';
 
-  import Tooltip from './Tooltip.svelte';
-
   export let tag: number;
 
   const update = () => {
