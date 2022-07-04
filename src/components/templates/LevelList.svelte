@@ -8,6 +8,7 @@
   import { browser } from '$app/env';
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
+  import Error from '@/routes/__error.svelte';
 
   let query: string = $searchSetingStore.query.title;
 

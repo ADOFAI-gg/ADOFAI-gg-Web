@@ -29,12 +29,14 @@
   import { loadTags } from '@/utils/tags';
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
+  import { setupSentry } from '@/utils/sentry';
 
   onMount(() => {
     (async () => {
       if ($loaded) return;
       await setupI18n();
       await loadTags();
+      setupSentry();
       loaded.set(true);
     })();
   });
