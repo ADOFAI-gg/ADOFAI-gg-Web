@@ -8,7 +8,8 @@
   import { browser } from '$app/env';
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
-  import Error from '@/routes/__error.svelte';
+  import LevelListItem from '../organisms/levels/LevelListItem.svelte';
+  import { fade } from 'svelte/transition';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -150,8 +151,8 @@
 
 {#if browser}
   <VirtualScroll on:bottom={() => addItems()} data={$items} key="id" let:data pageMode={true}>
-    <div>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div in:fade class="mb-[12px]">
+      <LevelListItem level={data} />
     </div>
   </VirtualScroll>
 {/if}
