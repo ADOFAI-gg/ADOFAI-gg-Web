@@ -25,7 +25,7 @@
             <div>Music By</div>
             <div>Level By</div>
           </div>
-          <div class="flex flex-grow w-0 flex-col gap-[4px]">
+          <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
             <div class="overflow-hidden text-ellipsis">
               {level.artists.join(' & ')}
             </div>
