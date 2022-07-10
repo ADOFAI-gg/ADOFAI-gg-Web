@@ -18,6 +18,7 @@
 
 <script lang="ts">
   import '../stylesheets/main.scss';
+  import '../stylesheets/font.scss';
   import Nav from '../components/organisms/Nav.svelte';
   import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
   import { i18nReady, setupI18n } from '@/utils/i18n';

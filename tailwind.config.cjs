@@ -34,7 +34,7 @@ module.exports = {
         '4xl': '36px'
       },
       fontFamily: {
-        sans: ['"Quicksand", "NanumSquareRound", sans-serif']
+        sans: ['"Quicksand", "M PLUS Rounded 1c", "NanumSquareRound", sans-serif']
       },
       fontWeight: {
         light: '300',
