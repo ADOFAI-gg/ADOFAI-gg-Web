@@ -12,7 +12,7 @@
   class="px-[16px] py-[12px] bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row"
   href="/levels/{level.id}"
 >
-  <div class="flex gap-[16px] flex-grow items-center">
+  <div class="flex gap-[6px] flex-grow items-center">
     <div class="w-[60px] flex flex-col items-center gap-[6px]">
       <DifficultyIcon size={42} difficulty={level.difficulty} />
       <div class="text-lg opacity-80">ID {level.id}</div>
