@@ -65,12 +65,12 @@
       <div class="flex gap-[12px] flex-row-reverse md:flex-row flex-grow">
         <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} />
-          <span class="hidden md:block">
+          <span class="hidden md:block text-md">
             <Translation key="SEARCH_SETTINGS_RESET" />
           </span>
         </Button>
         {#if $currentTab === 'tags'}
-          <div transition:fade={{ duration: 200 }} class="flex-grow">
+          <div transition:fade={{ duration: 200 }} class="flex-grow text-md">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}
