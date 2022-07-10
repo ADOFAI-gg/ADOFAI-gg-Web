@@ -2,7 +2,7 @@
   "name": "adofai-gg",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "vite dev",
     "build": "node prebuild.cjs && svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
