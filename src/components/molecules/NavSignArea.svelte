@@ -10,7 +10,7 @@
   >
     <Translation key="NAV_SIGNUP" /></a
   >
-  <Button type="nav" href="/login" class="w-full md:w-fit">
+  <Button type="nav" href="/login" class="w-full md:w-fit leading-[16px]">
     <Translation key="NAV_LOGIN" />
   </Button>
 </div>
