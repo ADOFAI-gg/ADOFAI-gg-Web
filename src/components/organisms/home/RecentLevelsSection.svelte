@@ -11,5 +11,3 @@
 {#each levels as level}
   <LevelListItem {level} />
 {/each}
-
-<pre>{JSON.stringify(levels, null, 2)}</pre>
