@@ -16,9 +16,7 @@
   object-fit: cover;
   width: 1100px;
   height: 190px;
-  border-radius: 20px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 20px 20px 0 0;
   filter: brightness(0.7);
   object-position: 0 50%;
 }
@@ -29,10 +27,8 @@
   display: flex;
   justify-content: space-between;
   width: 1060px;
-  height: 160px;
-  padding: 23px;
-  padding-top: 18px;
-  padding-bottom: 15px;
+  height: 150px;
+  padding: 20px 22px;
   text-shadow: black 0 0 8px;
 }
 
@@ -56,15 +52,6 @@
   white-space: nowrap;
 }
 
-.level-info-song-name {
-  overflow: hidden;
-  width: 800px;
-  margin: -7px;
-  padding: 7px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
-}
-
 .tooltip-container .level-info-tooltiptext {
   top: 105% !important;
   left: 0 !important;
@@ -79,7 +66,7 @@
   overflow: hidden;
   width: 800px;
   margin: -7px;
-  margin-top: 25px;
+  margin-top: -4px;
   padding: 7px;
   color: white;
   font-size: 20px;
@@ -108,9 +95,7 @@
 
 .level-info-tag {
   margin-right: 10px;
-  padding: 3px;
-  padding-right: 8px;
-  padding-left: 5px;
+  padding: 3px 8px 3px 5px;
   border-radius: 100em;
   background-color: rgb(242, 242, 242);
   text-shadow: 0 0 0;
@@ -222,12 +207,8 @@
 
 .level-info-details {
   height: 270px;
-  padding: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-radius: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  padding: 20px 22px;
+  border-radius: 0 0 20px 20px;
   background-color: rgba(15, 23, 33, 0.39);
 }
 
@@ -238,7 +219,7 @@
 .level-info-label {
   height: 20px;
   color: rgb(179, 179, 179);
-  font-weight: 600;
+  font-weight: 400;
   font-size: 18px;
 }
 
@@ -258,7 +239,6 @@
   display: -webkit-box;
   overflow: hidden;
   max-width: 600px;
-  height: 5em;
   margin-top: 5px;
   font-size: 28px !important;
   line-height: 1.25em;
@@ -295,15 +275,22 @@
 }
 
 .level-info-leaderboard-item {
+  position: relative;
   display: flex;
   align-items: center;
   height: 80px;
-  margin-bottom: 7.5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-radius: 10px;
-  background-color: rgba(250, 251, 255, 0.13);
+  padding: 12px 0;
+  border-radius: 6px;
   transition: all 0.2s ease;
+}
+
+.level-info-leaderboard-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .level-info-leaderboard-item * {
@@ -324,8 +311,6 @@
   margin-right: 20px;
   padding-right: 17.5px;
   padding-left: 17.5px;
-  border-radius: 10px;
-  background-color: rgba(178, 193, 255, 0.14);
   font-weight: 700;
   font-size: 1.75em;
   font-family: var(--monospace-font);
@@ -414,7 +399,6 @@
   opacity: 0;
 }
 
-.level-info-leaderboard-item:hover
-.level-info-leaderboard-item-detail-description {
+.level-info-leaderboard-item:hover .level-info-leaderboard-item-detail-description {
   opacity: 1;
 }

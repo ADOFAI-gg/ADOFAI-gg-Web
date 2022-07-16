@@ -103,7 +103,7 @@
   max-width: 340px;
   color: white;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
   transform: translate(-50%, 0);
@@ -116,20 +116,22 @@
   display: flex;
   overflow: hidden;
   color: white;
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 400;
+  font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
+  opacity: 0.8;
   transform: translate(-50%, 0);
 }
 
 .main-top-plays-spac div {
   display: flex;
+  align-items: center;
 }
 
 .main-top-plays-spac img {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin-right: 5px;
 }
 
@@ -177,12 +179,6 @@
   margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
-}
-
-.main-tag {
-  height: 24px;
-  margin-top: 4px;
-  margin-right: 5px;
 }
 
 .main-user-menu-close {

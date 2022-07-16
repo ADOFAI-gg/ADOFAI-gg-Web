@@ -199,9 +199,7 @@ const LevelPage = ({ history }) => {
                       height: '0.9em'
                     }}
                   />
-                  {info.rawAccuracy
-                    ? `${info.rawAccuracy.toFixed(1)}%`
-                    : 'UNKNOWN'}
+                  {info.accuracy ? `${info.accuracy.toFixed(1)}%` : 'UNKNOWN'}
                 </div>
               </div>
             </div>
@@ -224,12 +222,11 @@ const LevelPage = ({ history }) => {
   };
 
   const LevelInfo = () => {
-    console.log(state);
     if (state.isLoading || !state.level || !state.leaderboard) {
       return null;
-    } else if (!state.isLoading && !state.level.title) {
+    } else if (state.error && state.error.response.status === 404) {
       return <Redirect to='/error/unknownlevel' />;
-    } else if (state.error || !state.level.title) {
+    } else if (state.error) {
       return <h2 style={{ margin: '30px' }}>Oops! An error occurred.</h2>;
     } else {
       return (
@@ -266,9 +263,6 @@ const LevelPage = ({ history }) => {
                       <div className='level-info-name notranslate'>
                         {state.level.title}
                       </div>
-                    </div>
-                    <div className='level-info-song-name notranslate'>
-                      {state.level.song}
                     </div>
                     <div className='level-info-author notranslate'>
                       <strong>
@@ -371,17 +365,14 @@ const LevelPage = ({ history }) => {
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    width: '600px'
+                    width: '600px',
+                    gap: 8,
+                    alignItems: 'flex-start'
                   }}
                 >
-                  <div style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', gap: 4 }}>
                     <div className='level-info-detail-info-section'>
-                      <div
-                        className='level-info-label'
-                        style={{ textAlign: 'center' }}
-                      >
-                        Lv.
-                      </div>
+                      <div className='level-info-label'>Lv.</div>
                       <div className='level-info-value'>
                         <img
                           style={{
@@ -423,27 +414,24 @@ const LevelPage = ({ history }) => {
                       </div>
                     </div>
                   </div>
+
                   <div
+                    className='level-info-detail-info-section'
                     style={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start'
+                      flexGrow: 1
                     }}
                   >
-                    <div className='level-info-detail-info-section'>
-                      <div className='level-info-label'>Description</div>
-                      <div className='level-info-value level-info-detail-info-description '>
-                        {!state.level.description
-                          ? `There's no description for this level.`
-                          : state.level.description}
-                      </div>
+                    <div className='level-info-label'>Description</div>
+                    <div className='level-info-value level-info-detail-info-description '>
+                      {!state.level.description
+                        ? `There's no description for this level.`
+                        : state.level.description}
                     </div>
-                    <LikeButton likes={state.level.likes} />
                   </div>
+                  <LikeButton likes={state.level.likes} />
                 </div>
                 <div className='level-info-detail-info-video'>
-                  <div>Wait a moment please!</div>
+                  <div>Loading the video…</div>
                   <iframe
                     src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
                     title='YouTube video player'

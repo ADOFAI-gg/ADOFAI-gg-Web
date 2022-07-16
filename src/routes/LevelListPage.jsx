@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { get } from '../utils/http';
 import { Virtuoso } from 'react-virtuoso';
 import Select from 'react-select';
@@ -14,75 +14,13 @@ import {
 } from '../components/search/LevelListSearchSection';
 import LevelInfo from '../components/level/LevelInfo';
 import ScrollButton from '../components/global/ScrollButton';
+import { SearchSettingContext } from '../utils/context/SearchSettingContextProvider';
+import { useHistory, useLocation } from 'react-router-dom';
 
-const LevelListPage = ({ history }) => {
-  const recude = (state, action) => {
-    switch (action.type) {
-      case 'FETCH_RESULT':
-        return {
-          ...state,
-          items: action.items
-        };
-
-      case 'FETCH_ERROR':
-        return {
-          ...state,
-          error: action.error,
-          isError: action.error ? true : false
-        };
-
-      case 'HAS_MORE_ITEMS':
-        return {
-          ...state,
-          hasMoreItems: action.hasMore
-        };
-
-      case 'ITEM_COUNT':
-        return {
-          ...state,
-          itemCount: action.itemCount
-        };
-
-      case 'SEARCH_TERM':
-        return {
-          ...state,
-          searchTerm: action.searchTerm
-        };
-
-      case 'SORT_BY':
-        return {
-          ...state,
-          sortBy: action.sortBy
-        };
-
-      case 'TAG_CHANGE':
-        return {
-          ...state,
-          tag: action.tag
-        };
-
-      case 'FILTER_INPUT':
-        return {
-          ...state,
-          filterInput: action.filterInput
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(recude, {
-    items: [],
-    error: null,
-    isError: false,
-    hasMore: true,
-    itemCount: 0,
-    searchTerm: getQuery(),
-    sortBy: 'RECENT_DESC',
-    tag: Array.from({ length: 20 }, () => false),
-    filterInput: [null, null, null, null, null, null]
-  });
+const LevelListPage = () => {
+  const { state, dispatch } = React.useContext(SearchSettingContext);
+  const location = useLocation();
+  const history = useHistory();
 
   const fetchParams = (offset) => {
     const params = new URLSearchParams();
@@ -151,6 +89,16 @@ const LevelListPage = ({ history }) => {
   }, []);
 
   useEffect(() => {
+    if (location.search) {
+      dispatch({
+        type: 'SEARCH_TERM',
+        searchTerm: new URLSearchParams(location.search).get('query')
+      });
+      history.replace('/levels');
+    }
+  }, [location.search, dispatch, history]);
+
+  useEffect(() => {
     fetchData();
 
     // disable warning because fetchData method is intentionally not added
@@ -158,10 +106,7 @@ const LevelListPage = ({ history }) => {
   }, [state.sortBy, state.tag, state.filterInput]);
 
   useEffect(() => {
-    console.log('term changed');
-
     const delayDebounceFn = setTimeout(() => {
-      console.log('debounce');
       fetchData();
     }, 100);
 
@@ -205,21 +150,9 @@ const LevelListPage = ({ history }) => {
   };
 
   const tagChange = (value, btnState) => {
-    // What? why tf?
-    // : beacuse STATE UPATE DOES NOT SUPPORT ASYNC FUCK ;)
-    let _btnState;
-
-    if (btnState === 'unchecked') {
-      _btnState = 'include';
-    } else if (btnState === 'include') {
-      _btnState = 'exclude';
-    } else {
-      _btnState = 'unchecked';
-    }
-
     const newTag = state.tag;
 
-    newTag[value - 1] = _btnState;
+    newTag[value - 1] = btnState;
     dispatch({ type: 'TAG_CHANGE', tag: [...newTag] });
   };
 
@@ -246,11 +179,6 @@ const LevelListPage = ({ history }) => {
     newNumbers[index] = value;
     dispatch({ type: 'FILTER_INPUT', filterInput: [...newNumbers] });
   };
-
-  function getQuery() {
-    var query = decodeURI(window.location.search).substring(7);
-    return query;
-  }
 
   const dropdownStyles = {
     option: (provided, state) => ({
@@ -340,6 +268,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
@@ -355,6 +284,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
@@ -370,6 +300,7 @@ const LevelListPage = ({ history }) => {
                       tooltip={id}
                       key={`search${id}`}
                       img={`tag/${id}.svg`}
+                      defaultState={state.tag[id - 1] || 'unchecked'}
                     />
                   );
                 })}
@@ -382,6 +313,11 @@ const LevelListPage = ({ history }) => {
                   {...dropdownProps}
                   placeholder='Min Lv.'
                   onChange={(i) => numberChange(0, i ? i.value : null)}
+                  value={
+                    state.filterInput[0]
+                      ? difficulty.find((x) => x.value === state.filterInput[0])
+                      : null
+                  }
                   isOptionDisabled={(i) =>
                     state.filterInput[1] && i.value > state.filterInput[1]
                   }
@@ -400,6 +336,11 @@ const LevelListPage = ({ history }) => {
                   {...dropdownProps}
                   placeholder='Max Lv.'
                   onChange={(i) => numberChange(1, i ? i.value : null)}
+                  value={
+                    state.filterInput[1]
+                      ? difficulty.find((x) => x.value === state.filterInput[1])
+                      : null
+                  }
                   isOptionDisabled={(i) =>
                     state.filterInput[0] && i.value < state.filterInput[0]
                   }
@@ -418,11 +359,13 @@ const LevelListPage = ({ history }) => {
               <SearchContentItem title='BPM'>
                 <SearchContentInput
                   onInput={(value) => numberChange(2, value)}
+                  value={state.filterInput[2]}
                   placeholder='Min BPM'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(3, value)}
+                  value={state.filterInput[3]}
                   placeholder='Max BPM'
                 />
               </SearchContentItem>
@@ -430,11 +373,13 @@ const LevelListPage = ({ history }) => {
               <SearchContentItem title='Tiles'>
                 <SearchContentInput
                   onInput={(value) => numberChange(4, value)}
+                  value={state.filterInput[4]}
                   placeholder='Min Tiles'
                 />
 
                 <SearchContentInput
                   onInput={(value) => numberChange(5, value)}
+                  value={state.filterInput[5]}
                   placeholder='Max Tiles'
                 />
               </SearchContentItem>
@@ -448,6 +393,7 @@ const LevelListPage = ({ history }) => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey='sortBy'
                 tooltip='DIFFICULTY_DESC'
                 img='sort_icons/difficulty_up.svg'
               />
@@ -455,6 +401,7 @@ const LevelListPage = ({ history }) => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey='sortBy'
                 tooltip='DIFFICULTY_ASC'
                 img='sort_icons/difficulty_down.svg'
               />
@@ -480,14 +427,15 @@ const LevelListPage = ({ history }) => {
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey='sortBy'
                 tooltip='RECENT_DESC'
                 img='sort_icons/created_at_up.svg'
-                isDefault
               />
               <SearchContentRadio
                 onSelect={(value) =>
                   dispatch({ type: 'SORT_BY', sortBy: value })
                 }
+                objKey='sortBy'
                 tooltip='RECENT_ASC'
                 img='sort_icons/created_at_down.svg'
               />

@@ -1,5 +1,5 @@
-import { get } from '../../utils/http';
 import React, { useEffect, useState } from 'react';
+import { get } from '../../utils/http';
 import { Link } from 'react-router-dom';
 
 const MainTopPlay = ({ topPlay }) => {
@@ -7,8 +7,9 @@ const MainTopPlay = ({ topPlay }) => {
 
   const difficultyColorDict = {
     0: { borderColor: '#A4A4A4' },
+    0.1: { borderColor: '#FF6FFF' },
     1: { borderColor: '#0099FF' },
-    2: { borderColor: '#AEAFAD' },
+    2: { borderColor: '#00BBFF' },
     3: { borderColor: '#00DDFF' },
     4: { borderColor: '#00FFFF' },
     5: { borderColor: '#00FFAA' },
@@ -43,7 +44,8 @@ const MainTopPlay = ({ topPlay }) => {
         'linear-gradient(45deg, rgb(104, 57, 224) 0%, rgb(39, 1, 132) 100%)',
       backgroundColor: '#351C75',
       backgroundOrigin: 'border-box'
-    }
+    },
+    101: { borderColor: '#4C1130' }
   };
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const MainTopPlay = ({ topPlay }) => {
       topPlay.url
     )[1];
 
-  const { id, url, playPoint, level, player, speed, rawAccuracy } = topPlay;
+  const { id, url, playPoint, level, player, speed, accuracy } = topPlay;
 
   return (
     <a key={id} href={url} target='_blank' rel='noreferrer'>
@@ -97,9 +99,7 @@ const MainTopPlay = ({ topPlay }) => {
 
           <div style={{ marginLeft: '40px' }}>
             <img src={'other_icons/accuracy.svg'} alt='Accurancy: ' />
-            <span>
-              {rawAccuracy ? `${rawAccuracy.toFixed(2)}%` : 'UNKNOWN'}
-            </span>
+            <span>{accuracy ? `${accuracy.toFixed(2)}%` : 'UNKNOWN'}</span>
           </div>
 
           <div style={{ marginLeft: '40px' }}>

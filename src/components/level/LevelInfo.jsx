@@ -69,27 +69,31 @@ const LevelInfo = ({ levelData }) => {
           >
             <div className='level-item-info-label'>BPM</div>
             <div className='level-item-info-value notranslate'>
-              {minBpm === maxBpm
-                ? minBpm
-                : minBpm.toString() + '-' + maxBpm.toString()}
+              {
+                minBpm === maxBpm // 레벨 bpm이 일정할 때
+                  ? minBpm === 0 // bpm이 0이라면
+                    ? '?' // ? 표시
+                    : minBpm // 아니면 최소 bpm 표시(어차피 최소랑 최대랑 같음)
+                  : `${minBpm} - ${maxBpm}` // 아니라면 bpm 범위 표시
+              }
             </div>
           </div>
 
           <div className='level-item-info-section' style={{ width: '150px' }}>
             <div className='level-item-info-label'>Tags</div>
-            <div className='level-item-info-value'>
+            <div className='level-item-info-value level-item-info-tags'>
               {tags.length !== 0
                 ? tags.map((tag, index) => (
                     <LevelTags
                       tag={tag.id}
                       id={id}
                       key={index}
-                      styleClass='main-tag'
+                      styleClass='level-item-info-tag'
                     />
                   ))
                 : tags.length === 0 && (
                     <img
-                      className='main-tag'
+                      className='level-item-info-tag'
                       src={'/tag/empty.svg'}
                       alt='No Tags'
                     />

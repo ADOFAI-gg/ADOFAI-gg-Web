@@ -48,8 +48,8 @@ const RankingItem = ({ rank, index }) => {
                     marginRight: '3px'
                   }}
                 />
-                {bestPlay.rawAccuracy
-                  ? `${bestPlay.rawAccuracy.toFixed(1)}%`
+                {bestPlay.accuracy
+                  ? `${bestPlay.accuracy.toFixed(1)}%`
                   : `///./%`}
               </div>
 

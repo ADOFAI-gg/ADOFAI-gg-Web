@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import TagTooltip from '../level/TagTooltip';
+import { SearchSettingContext } from '../../utils/context/SearchSettingContextProvider';
 
 const SearchContentAnimator = ({ children, key }) => {
   return (
@@ -41,17 +42,23 @@ const SearchSection = ({
   onSearch,
   filterContent,
   sortContent,
-  disabled
+  disabled,
 }) => {
-  const [showFilter, setShowFilter] = useState(false);
-  const [showSort, setShowSort] = useState(false);
+  const {state, dispatch} = React.useContext(SearchSettingContext)
+
+  const firstShowFilter = React.useMemo(() => {
+    return !!state.tag.find(x=>x) || !!state.filterInput.find(x=>x)
+  }, [state])
+
+  const firstShowSort = React.useMemo(() => {
+    return state.sortBy !== 'RECENT_DESC'
+  }, [state])
+
+  const [showFilter, setShowFilter] = useState(firstShowFilter);
+  const [showSort, setShowSort] = useState(firstShowSort);
 
   const onClickFilterButton = () => setShowFilter(!showFilter);
   const onClickSortButton = () => setShowSort(!showSort);
-
-  const refreshPage = () => {
-    window.location.reload();
-  };
 
   return (
     <section className='list-search-container'>
@@ -99,7 +106,7 @@ const SearchSection = ({
               </div>
             </div>
 
-            <div className='list-search-sort-button' onClick={refreshPage}>
+            <div className='list-search-sort-button' onClick={() => dispatch({type: 'RESET'})}>
               <div className='tooltip-container'>
                 <span className='tooltiptext'>Reset Filter</span>
 
@@ -162,8 +169,17 @@ const SearchContentItem = ({ title, children, isLv }) => {
   );
 };
 
-const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
-  const [btnState, setBtnState] = useState('unchecked');
+const SearchContentCheckbox = ({ onSelect, tooltip, img, defaultState: btnState }) => {
+  // const [btnState, setBtnState] = useState(defaultState);
+  const inputRef = React.useRef()
+
+  React.useEffect(() => {
+    const input = inputRef.current
+    if (input) {
+      input.checked = btnState === 'include';
+      input.indeterminate = btnState === 'exclude';
+    }
+  }, [btnState, inputRef])
 
   return (
     <>
@@ -176,21 +192,18 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
           type='checkbox'
           id={tooltip}
           onChange={(event) => {
-            onSelect(event.target, btnState);
+            // onSelect(event.target, btnState);
 
             if (btnState === 'unchecked') {
-              setBtnState('include');
+              onSelect(event.target, 'include');
             } else if (btnState === 'include') {
-              setBtnState('exclude');
+              onSelect(event.target, 'exclude');
             } else {
-              setBtnState('unchecked');
+              onSelect(event.target, 'unchecked');
             }
           }}
           ref={(input) => {
-            if (input) {
-              input.checked = btnState === 'include';
-              input.indeterminate = btnState === 'exclude';
-            }
+            inputRef.current = input
           }}
           className='list-search-content-toggle-button level-list-filter-tag'
         />
@@ -217,11 +230,12 @@ const SearchContentCheckbox = ({ onSelect, tooltip, img }) => {
   );
 };
 
-const SearchContentInput = ({ onInput, placeholder }) => {
+const SearchContentInput = ({ onInput, placeholder, value }) => {
   return (
     <input
       className='list-text-input'
       type='number'
+      value={value ?? ''}
       placeholder={placeholder}
       onChange={(event) => {
         onInput(event.target.value);
@@ -231,7 +245,9 @@ const SearchContentInput = ({ onInput, placeholder }) => {
   );
 };
 
-const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
+const SearchContentRadio = ({ onSelect, tooltip, img, objKey }) => {
+  const { state } = React.useContext(SearchSettingContext);
+
   return (
     <div className='list-search-content-toggle'>
       <input
@@ -242,7 +258,7 @@ const SearchContentRadio = ({ onSelect, tooltip, img, isDefault }) => {
         }}
         name='radio'
         className='list-search-content-toggle-button'
-        defaultChecked={isDefault}
+        checked={state[objKey] === tooltip}
       />
       <label htmlFor={tooltip}>
         <img src={`/${img}`} alt={tooltip} />

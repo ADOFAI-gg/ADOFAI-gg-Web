@@ -1,8 +1,9 @@
+import React from 'react';
 import Axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const api = Axios.create({
-  baseURL: `${process.env.REACT_APP_API_BASE_URL}/api/v1`
+  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api/v1`
 });
 
 api.interceptors.response.use(

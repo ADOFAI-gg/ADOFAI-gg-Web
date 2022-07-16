@@ -6,7 +6,7 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 import PageTracking from '../global/PageTracking';
 import Navbar from '../global/Navbar';
 import Footer from '../global/Footer';
-import AppContainer from './AppContainer';
+import SearchSettingContextProvider from '../../utils/context/SearchSettingContextProvider';
 
 // Pages
 const MainPage = lazy(() => import('../../routes/MainPage'));
@@ -20,14 +20,14 @@ const Error404Page = lazy(() => import('../../routes/error/404'));
 const App = () => {
   return (
     <Router>
-      <AppContainer>
+      <SearchSettingContextProvider>
         <Navbar />
 
         {/* MAIN */}
         <SkeletonTheme color='#ffffff59' highlightColor='#ffffff00'>
           <PageTracking />
 
-          <Suspense fallback={<div></div>}>
+          <Suspense fallback={<div />}>
             <Switch>
               <Route exact path='/' component={MainPage} />
               <Route exact path='/levels' component={LevelListPage} />
@@ -36,14 +36,14 @@ const App = () => {
               <Route exact path='/mods/:id' component={ModPage} />
               <Route exact path='/ranks' component={RankingPage} />
 
-              <Route component={Error404Page}></Route>
+              <Route component={Error404Page} />
             </Switch>
           </Suspense>
         </SkeletonTheme>
 
         {/* FOOTER */}
         <Footer />
-      </AppContainer>
+      </SearchSettingContextProvider>
     </Router>
   );
 };
