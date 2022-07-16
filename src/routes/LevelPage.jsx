@@ -264,9 +264,6 @@ const LevelPage = ({ history }) => {
                         {state.level.title}
                       </div>
                     </div>
-                    <div className='level-info-song-name notranslate'>
-                      {state.level.song}
-                    </div>
                     <div className='level-info-author notranslate'>
                       <strong>
                         {state.level.artists.map((artist, index) => {

@@ -27,8 +27,8 @@
   display: flex;
   justify-content: space-between;
   width: 1060px;
-  height: 160px;
-  padding: 18px 23px 15px;
+  height: 150px;
+  padding: 20px 22px;
   text-shadow: black 0 0 8px;
 }
 
@@ -52,15 +52,6 @@
   white-space: nowrap;
 }
 
-.level-info-song-name {
-  overflow: hidden;
-  width: 800px;
-  margin: -7px;
-  padding: 7px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
-}
-
 .tooltip-container .level-info-tooltiptext {
   top: 105% !important;
   left: 0 !important;
@@ -74,7 +65,8 @@
 .level-info-author {
   overflow: hidden;
   width: 800px;
-  margin: 25px -7px -7px;
+  margin: -7px;
+  margin-top: -4px;
   padding: 7px;
   color: white;
   font-size: 20px;
@@ -215,7 +207,7 @@
 
 .level-info-details {
   height: 270px;
-  padding: 15px 20px;
+  padding: 20px 22px;
   border-radius: 0 0 20px 20px;
   background-color: rgba(15, 23, 33, 0.39);
 }
@@ -283,15 +275,22 @@
 }
 
 .level-info-leaderboard-item {
+  position: relative;
   display: flex;
   align-items: center;
   height: 80px;
-  margin-bottom: 7.5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-radius: 10px;
-  background-color: rgba(250, 251, 255, 0.13);
+  padding: 12px 0;
+  border-radius: 6px;
   transition: all 0.2s ease;
+}
+
+.level-info-leaderboard-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .level-info-leaderboard-item * {
@@ -312,8 +311,6 @@
   margin-right: 20px;
   padding-right: 17.5px;
   padding-left: 17.5px;
-  border-radius: 10px;
-  background-color: rgba(178, 193, 255, 0.14);
   font-weight: 700;
   font-size: 1.75em;
   font-family: var(--monospace-font);
