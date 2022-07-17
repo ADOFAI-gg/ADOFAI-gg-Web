@@ -5,7 +5,7 @@
 </script>
 
 <div class="overflow-hidden" style="width: {size}px; height: {size}px;">
-  <div class="animate-spin" style="animation-duration: 500ms;">
+  <div class="animate-spin" style="animation-duration: 1000ms;">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
