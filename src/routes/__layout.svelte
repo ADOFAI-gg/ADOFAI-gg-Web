@@ -77,8 +77,8 @@
     <div
       bind:clientHeight={contentHeight}
       class="absolute w-full top-0 left-0"
-      in:fly={{ x: 300, duration: 600, easing: quadOut }}
-      out:fly={{ x: -100, duration: 600, easing: quadOut }}
+      in:fade={{ duration: 300, easing: quadOut }}
+      out:fade={{ duration: 300, easing: quadOut }}
     >
       <slot />
     </div>
