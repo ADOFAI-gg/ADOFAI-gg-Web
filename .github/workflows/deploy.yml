@@ -27,11 +27,13 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
+      - name: Zip output
+        run: zip -r dist.zip dist
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: dist
-          path: dist
+          path: dist.zip
   deploy:
     name: Deploy
     needs: build
