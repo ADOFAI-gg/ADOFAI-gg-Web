@@ -41,4 +41,5 @@
     </div>
     <div class="h-full flex-grow lg:w-0 bg-red bg-opacity-40 self-end w-full" />
   </div>
+  <div class="flex-grow" bind:clientWidth={contentWidth} />
 </a>
