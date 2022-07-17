@@ -159,7 +159,7 @@
         <LevelSearchSettingsArea />
       </div>
     </div>
-    <div class="mb-[12px]">
+    <div class="mb-[12px]" in:fade>
       <LevelListItem level={data} />
     </div>
   </VirtualScroll>
