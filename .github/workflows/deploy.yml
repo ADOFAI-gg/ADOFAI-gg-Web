@@ -38,7 +38,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web' && github.ref == 'refs/heads/develop'
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web' && github.ref == 'refs/heads/master'
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
