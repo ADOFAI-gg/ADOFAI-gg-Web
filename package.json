@@ -49,7 +49,7 @@
     "tslib": "^2.3.1",
     "typescript": "~4.6.2",
     "unzipper": "^0.10.11",
-    "vite": "^2.9.14",
+    "vite": "^3.0.0",
     "vite-plugin-glob": "^0.2.7"
   },
   "type": "module",
