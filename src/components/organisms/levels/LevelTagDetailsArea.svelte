@@ -36,7 +36,7 @@
     <div class="flex flex-col gap-[6px]">
       {#each highlighted as tag (tag)}
         <Tooltip placement="bottom-start">
-          <div slot="button" class="flex text-md font-medium gap-[6px] text-red items-center">
+          <div slot="button" class="flex text-lg font-medium gap-[6px] text-red items-center">
             <Icon namespace="tagIcons" icon={`${tag}`} class="text-red" />
             <div>
               <Translation key="TAG_{tag}_NAME" />
