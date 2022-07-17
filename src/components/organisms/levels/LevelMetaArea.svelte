@@ -12,7 +12,7 @@
 <div class="flex flex-col gap-[26px] h-full">
   <div class="flex gap-[24px]">
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
-      <DifficultyIcon difficulty={level.difficulty} size={32} />
+      <DifficultyIcon difficulty={level.difficulty} size={28} />
     </LevelMetaLabelValuePair>
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_SONG_LENGTH">Unknown</LevelMetaLabelValuePair>
   </div>
