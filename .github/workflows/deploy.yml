@@ -1,9 +1,12 @@
 name: Deploy
 on:
-  - push
+  release:
+    types:
+      - published
 jobs:
   build:
     name: Build
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,7 +41,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web' && github.ref == 'refs/heads/master'
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web'
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
