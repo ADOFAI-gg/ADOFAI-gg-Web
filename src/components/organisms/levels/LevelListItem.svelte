@@ -3,26 +3,14 @@
   import type { Level } from '@/types';
 
   export let level: Level;
-
-  let contentHeight = 94;
   let contentWidth = 0;
-
-  let boundHeight = 94;
-
-  // $: {
-  //   if (boundHeight && boundHeight != contentHeight) {
-  //     contentHeight = boundHeight;
-  //   }
-  // }
 </script>
 
 <a
-  class="px-[16px] py-[12px] relative bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex"
+  class="px-[16px] py-[12px] relative bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex h-[94px]"
   href="/levels/{level.id}"
 >
-  <div style="height: {contentHeight}px;" class="flex-grow" bind:clientWidth={contentWidth} />
   <div
-    bind:clientHeight={boundHeight}
     class="absolute flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row"
     style="width: {contentWidth}px;"
   >
