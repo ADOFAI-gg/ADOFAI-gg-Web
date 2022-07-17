@@ -42,6 +42,8 @@
       loaded.set(true);
     })();
   });
+
+  let contentHeight = 0;
 </script>
 
 <svelte:head>
@@ -61,7 +63,11 @@
     <LoadingSpinner />
   </div>
 {/if}
-<div class={$loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}>
+
+<div
+  class={$loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}
+  style="height: {contentHeight}px"
+>
   <LoadingIndiciator />
 
   {#if $i18nReady}
@@ -69,6 +75,7 @@
   {/if}
   {#key url}
     <div
+      bind:clientHeight={contentHeight}
       class="absolute w-full top-0 left-0"
       in:fly={{ x: 300, duration: 600, easing: quadOut }}
       out:fly={{ x: -300, duration: 600, easing: quadOut }}
