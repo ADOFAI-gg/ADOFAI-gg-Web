@@ -3,7 +3,7 @@
 
   import SearchInput from '../molecules/SearchInput.svelte';
   import LevelSearchSettingsArea from '../organisms/levels/LevelSearchSettingsArea.svelte';
-  import VirtualScroll from '@/external/svelte-virtual-scroll-list/VirtualScroll.svelte';
+  import VirtualScroll from '../utils/VirtualizedInfiniteScroll.svelte';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/env';
   import { writable, type Writable } from 'svelte/store';
@@ -25,22 +25,25 @@
 
   let items: Writable<Level[]> = writable([]);
 
+  let itemCount = 0;
+
   let loading = false;
 
   let randomSeed: Writable<number | null> = writable(null);
 
-  $: addItems = async (reset = false) => {
+  $: addItems = async (start = 0) => {
     if (loading) return;
     loading = true;
     const { data } = await api.get<ListResponse<Level>>('/api/v1/levels', {
-      params: params(reset)
+      params: params(start)
     });
-    if (reset) items.set(data.results);
+    if (start === 0) items.set(data.results);
     else items.update((x) => [...x, ...data.results]);
+    itemCount = data.count;
     loading = false;
   };
 
-  const params = (reset = false) => {
+  const params = (start: number) => {
     const settings = $searchSetingStore;
 
     const result: Record<string, string | number | null> = {
@@ -48,8 +51,8 @@
       queryArtist: settings.query.artist,
       queryCreator: settings.query.creator,
 
-      offset: reset ? 0 : $items.length,
-      limit: '25',
+      offset: start,
+      amount: '25',
 
       minDifficulty: settings.filter.difficulty.min,
       maxDifficulty: settings.filter.difficulty.max,
@@ -124,7 +127,7 @@
 
   $: reset = async () => {
     $randomSeed = null;
-    await addItems(true);
+    await addItems(0);
   };
 
   let lastSettings = $searchSetingStore;
@@ -142,25 +145,34 @@
       }, 100) as unknown as number;
     }
   }
+
+  // TODO change height by window width
+
+  let windowWidth = 0;
+
+  let itemHeight = 94;
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
+
+<div>
+  <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+  <div class="mt-2">
+    <LevelSearchSettingsArea />
+  </div>
+</div>
 
 {#if browser}
   <VirtualScroll
-    on:bottom={() => addItems()}
+    total={itemCount}
+    gap={12}
+    {itemHeight}
+    on:more={(e) => addItems(e.detail.offset)}
     data={$items}
-    key="id"
-    let:data
-    pageMode={true}
-    bottomThreshold={1200}
+    let:item
   >
-    <div slot="header">
-      <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-      <div class="mt-2">
-        <LevelSearchSettingsArea />
-      </div>
-    </div>
-    <div class="mb-[12px]" in:fade>
-      <LevelListItem level={data} />
+    <div in:fade>
+      <LevelListItem level={item} />
     </div>
   </VirtualScroll>
 {/if}

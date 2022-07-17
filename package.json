@@ -60,7 +60,6 @@
     "clsx": "^1.1.1",
     "simplebar": "^5.3.8",
     "svelte-icons": "^2.1.0",
-    "svelte-virtual-scroll-list": "^1.0.8",
     "tippy.js": "^6.3.7"
   },
   "lint-staged": {
