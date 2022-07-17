@@ -27,7 +27,7 @@
             },
             {
               property: 'og:description',
-              content: `Map by ${data.creators.join(' & ')}`
+              content: `Level by ${data.creators.join(' & ')}`
             },
             {
               name: 'twitter:card',
