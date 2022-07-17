@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
-  export const load: Load = async ({ url }) => ({ props: { url } });
+  export const load: Load = async ({ url }) => ({ props: { url: url.href } });
 
   const loaded = writable<boolean>(false);
 
