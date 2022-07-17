@@ -1,17 +1,13 @@
 <script lang="ts">
   import Icon from '../atoms/Icon.svelte';
   import { fade } from 'svelte/transition';
-  import { i18nReady, translate } from '@/utils/i18n';
+  import { i18nReady, translate, currentLang } from '@/utils/i18n';
 
   export let value = '';
 
   export let placeholder = 'SEARCH_INPUT_PLACEHOLDER_HOME';
 
-  $: placeholderContent = (() => {
-    if ($i18nReady) {
-      return translate(placeholder || '');
-    }
-  })();
+  $: placeholderContent = $i18nReady ? translate(placeholder || '', $currentLang) : null;
 </script>
 
 <div

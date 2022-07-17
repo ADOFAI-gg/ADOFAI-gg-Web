@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { i18nReady, translate } from '@/utils/i18n';
+  import { i18nReady, translate, currentLang } from '@/utils/i18n';
 
   export let placeholder: string | null = null;
 
@@ -14,11 +14,7 @@
     value = inputType.match(/^(number|range)$/) ? +e.target.value : e.target.value;
   };
 
-  $: placeholderContent = (() => {
-    if ($i18nReady) {
-      return translate(placeholder || '');
-    }
-  })();
+  $: placeholderContent = $i18nReady ? translate(placeholder || '', $currentLang) : null;
 
   export { inputType as type };
 </script>

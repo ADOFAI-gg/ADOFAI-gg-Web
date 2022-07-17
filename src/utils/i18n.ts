@@ -50,8 +50,7 @@ export const setupI18n = async () => {
   i18nReady.set(true);
 };
 
-export const translate = (key: string) => {
-  const l = _currentLang;
+export const translate = (key: string, l: string = _currentLang) => {
   if (!l) return key;
   const lang = _langData[l];
   if (!lang) return key;
