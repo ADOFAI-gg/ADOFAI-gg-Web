@@ -3,17 +3,13 @@
   import type { Level } from '@/types';
 
   export let level: Level;
-  let contentWidth = 0;
 </script>
 
 <a
   class="px-[16px] py-[12px] relative bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex h-[94px]"
   href="/levels/{level.id}"
 >
-  <div
-    class="absolute flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row"
-    style="width: {contentWidth}px;"
-  >
+  <div class="flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row flex-grow">
     <div class="flex gap-[8px] flex-grow items-center">
       <div class="w-[60px] flex flex-col items-center gap-[2px]">
         <DifficultyIcon size={42} difficulty={level.difficulty} />
@@ -41,5 +37,4 @@
     </div>
     <div class="h-full flex-grow lg:w-0 bg-red bg-opacity-40 self-end w-full" />
   </div>
-  <div class="flex-grow" bind:clientWidth={contentWidth} />
 </a>
