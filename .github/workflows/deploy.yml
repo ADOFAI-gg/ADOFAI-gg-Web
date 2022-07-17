@@ -31,3 +31,14 @@ jobs:
         with:
           name: dist
           path: dist
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Upload build to server
+        run: curl -F 'file=@dist.zip' -F 'token=${{ secrets.BUILD_UPLOAD_TOKEN }}' ${{ secrets.BUILD_UPLOAD_URL }}
