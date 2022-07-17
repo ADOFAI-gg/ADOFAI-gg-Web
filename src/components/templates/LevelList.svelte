@@ -3,7 +3,7 @@
 
   import SearchInput from '../molecules/SearchInput.svelte';
   import LevelSearchSettingsArea from '../organisms/levels/LevelSearchSettingsArea.svelte';
-  import VirtualScroll from 'svelte-virtual-scroll-list';
+  import VirtualScroll from '@/external/svelte-virtual-scroll-list/VirtualScroll.svelte';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/env';
   import { writable, type Writable } from 'svelte/store';
@@ -144,14 +144,22 @@
   }
 </script>
 
-<SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-<div class="mt-2">
-  <LevelSearchSettingsArea />
-</div>
-
 {#if browser}
-  <VirtualScroll on:bottom={() => addItems()} data={$items} key="id" let:data pageMode={true}>
-    <div in:fade class="mb-[12px]">
+  <VirtualScroll
+    on:bottom={() => addItems()}
+    data={$items}
+    key="id"
+    let:data
+    pageMode={true}
+    bottomThreshold={1200}
+  >
+    <div slot="header">
+      <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+      <div class="mt-2">
+        <LevelSearchSettingsArea />
+      </div>
+    </div>
+    <div class="mb-[12px]">
       <LevelListItem level={data} />
     </div>
   </VirtualScroll>
