@@ -16,7 +16,9 @@
   />
   <div class="h-nav" />
   <div class="max-w-[1100px] w-full mx-auto">
-    <div class="mt-[40px] text-4xl font-bold text-shadow-5">{level.title}</div>
+    <div class="mt-[40px] text-4xl font-bold text-shadow-5 min-h-[140px] flex items-end">
+      {level.title}
+    </div>
     <div
       class="px-[26px] py-[20px] rounded-t-[26px] bg-darkblue40 flex gap-4 mt-[24px] flex-col md:flex-row"
     >
