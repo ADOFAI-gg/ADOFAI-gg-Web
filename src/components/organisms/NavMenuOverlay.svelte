@@ -39,8 +39,10 @@
     </div>
     <div class="md:hidden flex flex-col gap-4">
       <NavLinks />
-      <div class="bg-white bg-opacity-20 w-full h-[1px]" />
-      <NavSignArea />
+      {#if import.meta.env.VITE_USE_ACCOUNT}
+        <div class="bg-white bg-opacity-20 w-full h-[1px]" />
+        <NavSignArea />
+      {/if}
     </div>
   {/if}
 </div>
