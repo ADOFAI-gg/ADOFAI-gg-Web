@@ -13,7 +13,8 @@
   placement={popup ? 'right' : 'bottom'}
   options={{
     offset: popup ? [0, 20] : [0, 10],
-    arrow: !popup
+    arrow: !popup,
+    trigger: import.meta.env.VITE_USE_ACCOUNT ? 'click' : 'none'
   }}
 >
   <div
