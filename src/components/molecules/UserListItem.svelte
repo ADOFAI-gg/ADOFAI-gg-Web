@@ -7,24 +7,31 @@
   export let user: User;
 
   export let popup = false;
+
+  const useAccount = !!import.meta.env.VITE_USE_ACCOUNT;
+
+  $: itemClasses = `flex gap-[6px] cursor-pointer items-center font-medium whitespace-nowrap ${
+    popup ? 'text-lg' : 'text-2xl'
+  }`;
 </script>
 
-<Popover
-  placement={popup ? 'right' : 'bottom'}
-  options={{
-    offset: popup ? [0, 20] : [0, 10],
-    arrow: !popup,
-    trigger: import.meta.env.VITE_USE_ACCOUNT ? 'click' : 'none'
-  }}
->
-  <div
-    slot="button"
-    class="flex gap-[6px] items-center {popup
-      ? 'text-lg'
-      : 'text-2xl'} font-medium whitespace-nowrap"
+{#if useAccount}
+  <Popover
+    placement={popup ? 'right' : 'bottom'}
+    options={{
+      offset: popup ? [0, 20] : [0, 10],
+      arrow: !popup
+    }}
   >
+    <div slot="button" class={itemClasses}>
+      <Avatar size={popup ? 20 : 24} url={user.avatar} />
+      {user.name}
+    </div>
+    <UserOverlay {user} />
+  </Popover>
+{:else}
+  <a href="/users/{user.id}" class={itemClasses}>
     <Avatar size={popup ? 20 : 24} url={user.avatar} />
     {user.name}
-  </div>
-  <UserOverlay {user} />
-</Popover>
+  </a>
+{/if}
