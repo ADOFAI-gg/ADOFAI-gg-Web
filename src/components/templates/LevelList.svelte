@@ -3,13 +3,14 @@
 
   import SearchInput from '../molecules/SearchInput.svelte';
   import LevelSearchSettingsArea from '../organisms/levels/LevelSearchSettingsArea.svelte';
-  import VirtualScroll from '../utils/VirtualizedInfiniteScroll.svelte';
+  import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/env';
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
   import LevelListItem from '../organisms/levels/LevelListItem.svelte';
   import { fade } from 'svelte/transition';
+  import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -162,17 +163,19 @@
   </div>
 </div>
 
-{#if browser}
-  <VirtualScroll
-    total={itemCount}
-    gap={12}
-    {itemHeight}
-    on:more={(e) => addItems(e.detail.offset)}
-    data={$items}
-    let:item
-  >
-    <div in:fade>
-      <LevelListItem level={item} />
-    </div>
-  </VirtualScroll>
-{/if}
+<VirtualScroll
+  scrollContainer=".simplebar-content-wrapper"
+  total={itemCount}
+  gap={12}
+  {itemHeight}
+  on:more={(e) => addItems(e.detail.offset)}
+  data={$items}
+  let:item
+>
+  <div in:fade>
+    <LevelListItem level={item} />
+  </div>
+  <div slot="loading" class="w-full my-4 flex justify-center">
+    <LoadingSpinner size={48} />
+  </div>
+</VirtualScroll>
