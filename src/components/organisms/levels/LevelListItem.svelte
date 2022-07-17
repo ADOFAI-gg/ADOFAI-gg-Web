@@ -4,38 +4,53 @@
 
   export let level: Level;
 
-  let levelByWidth = 0;
-  let creatorWidth = 0;
+  let contentHeight = 94;
+  let contentWidth = 0;
+
+  let boundHeight = 94;
+
+  // $: {
+  //   if (boundHeight && boundHeight != contentHeight) {
+  //     contentHeight = boundHeight;
+  //   }
+  // }
 </script>
 
 <a
-  class="px-[16px] py-[12px] bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row"
+  class="px-[16px] py-[12px] relative bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex"
   href="/levels/{level.id}"
 >
-  <div class="flex gap-[8px] flex-grow items-center">
-    <div class="w-[60px] flex flex-col items-center gap-[2px]">
-      <DifficultyIcon size={42} difficulty={level.difficulty} />
-      <div class="text-md opacity-80">ID {level.id}</div>
-    </div>
-    <div class="flex-grow w-0 flex flex-col justify-between">
-      <div class="text-2xl font-medium h-[24px] leading-[24px]">{level.title}</div>
-      <div class="flex-grow w-full flex">
-        <div class="flex h-[46px] items-center leading-[16px] gap-[4px] flex-grow w-0">
-          <div class="flex flex-col gap-[4px] opacity-60 font-light">
-            <div>Music By</div>
-            <div>Level By</div>
-          </div>
-          <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
-            <div class="overflow-hidden text-ellipsis">
-              {level.artists.join(' & ')}
+  <div style="height: {contentHeight}px;" class="flex-grow" bind:clientWidth={contentWidth} />
+  <div
+    bind:clientHeight={boundHeight}
+    class="absolute flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row"
+    style="width: {contentWidth}px;"
+  >
+    <div class="flex gap-[8px] flex-grow items-center">
+      <div class="w-[60px] flex flex-col items-center gap-[2px]">
+        <DifficultyIcon size={42} difficulty={level.difficulty} />
+        <div class="text-md opacity-80">ID {level.id}</div>
+      </div>
+      <div class="flex-grow w-0 flex flex-col justify-between">
+        <div class="text-2xl font-medium h-[24px] leading-[24px]">{level.title}</div>
+        <div class="flex-grow w-full flex">
+          <div class="flex h-[46px] items-center leading-[16px] gap-[4px] flex-grow w-0">
+            <div class="flex flex-col gap-[4px] opacity-60 font-light">
+              <div>Music By</div>
+              <div>Level By</div>
             </div>
-            <div class="overflow-hidden text-ellipsis">
-              {level.creators.join(' & ')}
+            <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
+              <div class="overflow-hidden text-ellipsis">
+                {level.artists.join(' & ')}
+              </div>
+              <div class="overflow-hidden text-ellipsis">
+                {level.creators.join(' & ')}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="h-full flex-grow lg:w-0 bg-red bg-opacity-40 self-end w-full" />
   </div>
-  <div class="h-full flex-grow lg:w-0 bg-red bg-opacity-40 self-end w-full" />
 </a>
