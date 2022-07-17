@@ -14,10 +14,12 @@
       <NavLinks />
     </div>
     <div class="flex-grow" />
-    <div class="hidden md:block">
-      <NavSignArea />
-    </div>
-    <div class="bg-white opacity-40 w-[1px] h-[18px] hidden md:block" />
+    {#if import.meta.env.VITE_USE_ACCOUNT}
+      <div class="hidden md:block">
+        <NavSignArea />
+      </div>
+      <div class="bg-white opacity-40 w-[1px] h-[18px] hidden md:block" />
+    {/if}
     <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
       <span slot="button" class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
         <Icon icon="expand" size={16} />

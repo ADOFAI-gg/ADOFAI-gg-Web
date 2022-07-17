@@ -30,12 +30,14 @@
 
   <div class="flex-grow" />
   <div class="flex gap-[12px]">
-    <Button type="levelAction">
-      <div class="flex gap-[6px] items-center">
-        <Icon class="text-red" icon="favorite" size={20} />
-        <div class="font-regular text-lg">1.4K</div>
-      </div>
-    </Button>
+    {#if import.meta.env.VITE_USE_ACCOUNT}
+      <Button type="levelAction">
+        <div class="flex gap-[6px] items-center">
+          <Icon class="text-red" icon="favorite" size={20} />
+          <div class="font-regular text-lg">1.4K</div>
+        </div>
+      </Button>
+    {/if}
     <LevelShareMenu {level} />
   </div>
 </div>
