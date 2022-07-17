@@ -34,7 +34,16 @@ export interface Level {
   download: string;
   workshop: string | null;
 
+  tags: Tag[];
+
+  epilepsyWarning: boolean;
+
   // and more(not added)
+}
+
+export interface Tag {
+  id: number;
+  name: string;
 }
 
 export interface ListResponse<T> {

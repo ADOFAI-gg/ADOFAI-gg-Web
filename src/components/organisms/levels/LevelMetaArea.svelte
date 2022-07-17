@@ -3,8 +3,10 @@
   import DifficultyIcon from '@/components/atoms/DifficultyIcon.svelte';
   import Icon from '@/components/atoms/Icon.svelte';
   import LevelMetaLabelValuePair from '@/components/molecules/levels/LevelMetaLabelValuePair.svelte';
+  import TooltippedTagIcon from '@/components/molecules/TooltippedTagIcon.svelte';
   import type { Level } from '@/types';
   import LevelShareMenu from './LevelShareMenu.svelte';
+  import LevelTagDetailsArea from './LevelTagDetailsArea.svelte';
 
   export let level: Level;
 </script>
@@ -26,7 +28,9 @@
     </LevelMetaLabelValuePair>
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">{level.tiles}</LevelMetaLabelValuePair>
   </div>
-  <LevelMetaLabelValuePair label="LEVEL_DETAIL_TAGS">TODO</LevelMetaLabelValuePair>
+  <LevelMetaLabelValuePair label="LEVEL_DETAIL_TAGS">
+    <LevelTagDetailsArea {level} />
+  </LevelMetaLabelValuePair>
 
   <div class="flex-grow" />
   <div class="flex gap-[12px]">
