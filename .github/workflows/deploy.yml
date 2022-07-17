@@ -3,6 +3,7 @@ on:
   - push
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,6 +34,7 @@ jobs:
           path: dist
   deploy:
     name: Deploy
+    needs: build
     runs-on: ubuntu-latest
     if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web' && github.ref == 'refs/heads/develop'
     steps:
