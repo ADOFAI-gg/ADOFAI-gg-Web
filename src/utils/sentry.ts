@@ -7,6 +7,9 @@ export const setupSentry = () => {
     integrations: [new ExtraErrorData()],
     beforeSend(event) {
       if (event.exception) {
+        if (event.exception.values?.[0].type === 'EvalError') {
+          return null;
+        }
         Sentry.showReportDialog({ eventId: event.event_id });
       }
 
