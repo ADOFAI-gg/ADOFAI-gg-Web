@@ -1,22 +1,28 @@
 <script lang="ts">
   import DifficultyIcon from '@/components/atoms/DifficultyIcon.svelte';
+  import Icon from '@/components/atoms/Icon.svelte';
   import type { Level } from '@/types';
+  import LevelListItemTagList from './LevelListItemTagList.svelte';
 
   export let level: Level;
 </script>
 
 <a
-  class="px-[16px] py-[12px] relative bg-darkblue gap-[12px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex h-[94px]"
+  class="px-[16px] group py-[12px] relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:h-[94px] h-[126px]"
   href="/levels/{level.id}"
 >
-  <div class="flex lg:items-center justify-center lg:justify-start flex-col lg:flex-row flex-grow">
+  <div
+    class="flex lg:items-center justify-center lg:justify-start w-0 flex-col lg:flex-row flex-grow"
+  >
     <div class="flex gap-[8px] flex-grow items-center">
       <div class="w-[60px] flex flex-col items-center gap-[2px]">
         <DifficultyIcon size={42} difficulty={level.difficulty} />
         <div class="text-md opacity-80">ID {level.id}</div>
       </div>
       <div class="flex-grow w-0 flex flex-col justify-between">
-        <div class="text-2xl font-medium h-[24px] leading-[24px]">{level.title}</div>
+        <div class="text-2xl font-medium h-[24px] leading-[24px] overflow-x-clip text-ellipsis">
+          {level.title}
+        </div>
         <div class="flex-grow w-full flex">
           <div class="flex h-[46px] items-center leading-[16px] gap-[4px] flex-grow w-0">
             <div class="flex flex-col gap-[4px] opacity-60 font-light">
@@ -35,6 +41,25 @@
         </div>
       </div>
     </div>
-    <div class="h-full flex-grow lg:w-0 bg-red bg-opacity-40 self-end w-full" />
+    <div class="self-end w-full lg:w-2/5 flex lg:justify-end justify-start mt-2 lg:mt-0 py-[11px] ">
+      <LevelListItemTagList {level} />
+
+      {#if import.meta.env.VITE_USE_ACCOUNT}
+        <div class="ml-[12px] flex gap-[12px]">
+          <div class="w-[2px] rounded-full h-full bg-[#E8E8E8] bg-opacity-40" />
+          <div class="flex gap-[6px] items-center">
+            <Icon icon="favoriteOutlined" size={20} />
+            <div class="font-medium text-lg">1.4K</div>
+          </div>
+        </div>
+      {/if}
+    </div>
+  </div>
+  <div
+    class="self-center w-0 opacity-0 group-hover:opacity-100 transition-all group-hover:w-[48px] relative duration-1000"
+  >
+    <a href={level.download} class="absolute right-0 top-0 -translate-y-1/2">
+      <Icon icon="downloadFile" size={48} />
+    </a>
   </div>
 </a>
