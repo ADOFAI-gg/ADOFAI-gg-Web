@@ -24,7 +24,8 @@
   import { i18nReady, setupI18n } from '@/utils/i18n';
   import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
   export let url: string;
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
+  import { quadOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import { loadTags } from '@/utils/tags';
@@ -67,7 +68,11 @@
     <Nav />
   {/if}
   {#key url}
-    <div>
+    <div
+      class="absolute w-full top-0 left-0"
+      in:fly={{ x: 300, duration: 600, easing: quadOut }}
+      out:fly={{ x: -300, duration: 600, easing: quadOut }}
+    >
       <slot />
     </div>
   {/key}
