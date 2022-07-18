@@ -94,6 +94,10 @@ const tagDescription = {
   24: {
     tagName: 'Sudden Acceleration',
     tagDescription: 'This level includes a sharp increase in BPM.'
+  },
+  25: {
+    tagName: 'DLC',
+    tagDescription: 'This level requires the Neo Cosmos DLC to play.'
   }
 };
 
