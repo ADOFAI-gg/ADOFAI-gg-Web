@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build
-        run: echo "VITE_API_BASE_URL=https://adofai.gg:9200" > .env && yarn build
+        run: VITE_API_BASE_URL=https://adofai.gg:9200 VITE_UA_NUMBER='UA-181311513-1' yarn build
       - name: Zip output
         run: cd dist && zip -r ../dist.zip . && cd ..
       - name: Upload artifact
