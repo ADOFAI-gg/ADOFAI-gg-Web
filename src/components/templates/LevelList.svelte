@@ -151,7 +151,7 @@
 
   let windowWidth = 0;
 
-  $: itemHeight = windowWidth > 1024 ? 94 : 126;
+  $: itemHeight = windowWidth > 1024 ? 94 : 150;
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />

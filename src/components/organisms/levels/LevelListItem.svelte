@@ -8,7 +8,7 @@
 </script>
 
 <a
-  class="px-[16px] group py-[12px] relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:h-[94px] h-[126px]"
+  class="px-[16px] group relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:h-[94px] h-[150px]"
   href="/levels/{level.id}"
 >
   <div
