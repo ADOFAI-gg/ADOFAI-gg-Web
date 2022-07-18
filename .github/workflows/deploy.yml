@@ -1,0 +1,51 @@
+name: Deploy
+on:
+  release:
+    types:
+      - published
+jobs:
+  build:
+    name: Build
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache node_modules
+        uses: actions/cache@v2.1.4
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Zip output
+        run: cd dist && zip -r ../dist.zip . && cd ..
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist.zip
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository == 'ADOFAI-gg/ADOFAI-gg-Web'
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Upload build to server
+        run: curl -F 'file=@dist.zip' -F 'token=${{ secrets.BUILD_UPLOAD_TOKEN }}' ${{ secrets.BUILD_UPLOAD_URL }}

@@ -11,7 +11,7 @@ const idConvert = (id) => {
 };
 
 const LevelTags = ({ tag, id, styleClass }) => {
-  if (tagDescription[tag] === undefined) return;
+  if (!tagDescription[tag]) return null;
 
   return (
     <>
