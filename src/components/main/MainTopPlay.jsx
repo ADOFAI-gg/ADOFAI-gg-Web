@@ -66,7 +66,7 @@ const MainTopPlay = ({ topPlay }) => {
       topPlay.url
     )[1];
 
-  const { id, url, playPoint, level, player, speed, accuracy } = topPlay;
+  const { id, url, playPoint, level, player, speed, xAccuracy } = topPlay;
 
   return (
     <a key={id} href={url} target='_blank' rel='noreferrer'>
@@ -98,8 +98,8 @@ const MainTopPlay = ({ topPlay }) => {
           </div>
 
           <div style={{ marginLeft: '40px' }}>
-            <img src={'other_icons/accuracy.svg'} alt='Accurancy: ' />
-            <span>{accuracy ? `${accuracy.toFixed(2)}%` : 'UNKNOWN'}</span>
+            <img src={'other_icons/xaccuracy.svg'} alt='Accurancy: ' />
+            <span>{xAccuracy ? `${xAccuracy.toFixed(2)}%` : 'UNKNOWN'}</span>
           </div>
 
           <div style={{ marginLeft: '40px' }}>
