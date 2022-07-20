@@ -16,7 +16,7 @@ const RankingItem = ({ rank, index }) => {
 
           <div className='ranking-item-detail-highest notranslate'>
             <Link
-              to={`/levels/${bestPlay.levelId}`}
+              to={`/levels/${bestPlay.level.id}`}
               className='ranking-item-detail-highest-title'
             >
               {bestPlay.level.music.artists[1]
