@@ -1,17 +1,16 @@
 <script lang="ts">
   import 'tippy.js/dist/tippy.css';
-  import { onDestroy, onMount } from 'svelte';
 
-  import tippy, { type Instance, type Placement, type Props } from 'tippy.js';
+  import tippy, { type Placement, type Props } from 'tippy.js';
 
   export let placement: Placement = 'auto';
 
   let content: HTMLElement;
   let button: HTMLElement;
 
-  let instance: Instance;
-
   export let options: Partial<Props> = {};
+
+  let show = false;
 
   $: subscriber = {
     subscribe: () => {
@@ -42,6 +41,12 @@
           instance.hide();
         },
         interactive: true,
+        onShow: () => {
+          show = true;
+        },
+        onHidden: () => {
+          show = false;
+        },
         ...options
       });
 
@@ -59,6 +64,8 @@
     <slot name="button" />
   </div>
   <div bind:this={content}>
-    <slot />
+    {#if show}
+      <slot />
+    {/if}
   </div>
 </div>
