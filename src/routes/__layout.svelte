@@ -32,6 +32,7 @@
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
   import { setupSentry } from '@/utils/sentry';
+  import Footer from '@/components/organisms/Footer.svelte';
 
   onMount(() => {
     (async () => {
@@ -81,6 +82,10 @@
       out:fade={{ duration: 300, easing: quadOut }}
     >
       <slot />
+
+      <div class="mt-[64px]" />
+
+      <Footer />
     </div>
   {/key}
 </div>
