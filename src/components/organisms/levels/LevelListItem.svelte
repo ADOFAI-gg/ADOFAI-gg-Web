@@ -8,7 +8,7 @@
 </script>
 
 <a
-  class="px-[16px] group relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex lg:h-[94px] h-[150px]"
+  class="px-[16px] py-[12px] group relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 transition-colors rounded-[8px] whitespace-nowrap flex"
   href="/levels/{level.id}"
 >
   <div
@@ -41,19 +41,23 @@
         </div>
       </div>
     </div>
-    <div class="self-end w-full lg:w-2/5 flex lg:justify-end justify-start mt-2 lg:mt-0 py-[11px] ">
-      <LevelListItemTagList {level} />
+    {#if import.meta.env.VITE_USE_ACCOUNT || level.tags.length}
+      <div
+        class="self-end w-full lg:w-2/5 flex lg:justify-end justify-start mt-2 lg:mt-0 lg:py-[11px]"
+      >
+        <LevelListItemTagList {level} />
 
-      {#if import.meta.env.VITE_USE_ACCOUNT}
-        <div class="ml-[12px] flex gap-[12px]">
-          <div class="w-[2px] rounded-full h-full bg-[#E8E8E8] bg-opacity-40" />
-          <div class="flex gap-[6px] items-center">
-            <Icon icon="favoriteOutlined" size={20} />
-            <div class="font-medium text-lg">1.4K</div>
+        {#if import.meta.env.VITE_USE_ACCOUNT}
+          <div class="ml-[12px] flex gap-[12px]">
+            <div class="w-[2px] rounded-full h-full bg-[#E8E8E8] bg-opacity-40" />
+            <div class="flex gap-[6px] items-center">
+              <Icon icon="favoriteOutlined" size={20} />
+              <div class="font-medium text-lg">1.4K</div>
+            </div>
           </div>
-        </div>
-      {/if}
-    </div>
+        {/if}
+      </div>
+    {/if}
   </div>
   <div
     class="self-center w-0 opacity-0 group-hover:opacity-100 transition-all group-hover:w-[48px] relative duration-1000"

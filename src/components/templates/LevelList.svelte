@@ -146,15 +146,7 @@
       }, 100) as unknown as number;
     }
   }
-
-  // TODO change height by window width
-
-  let windowWidth = 0;
-
-  $: itemHeight = windowWidth > 1024 ? 94 : 150;
 </script>
-
-<svelte:window bind:innerWidth={windowWidth} />
 
 <div>
   <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
@@ -166,13 +158,11 @@
 <VirtualScroll
   scrollContainer=".simplebar-content-wrapper"
   total={itemCount}
-  gap={12}
-  {itemHeight}
   on:more={(e) => addItems(e.detail.offset)}
   data={$items}
   let:item
 >
-  <div in:fade>
+  <div in:fade class="mb-[12px]">
     <LevelListItem level={item} />
   </div>
   <div slot="loading" class="w-full my-4 flex justify-center">
