@@ -270,7 +270,7 @@ const LevelPage = ({ history }) => {
                           return (
                             <span key={`art${index}`}>
                               {index > 0 && <span>{' & '}</span>}
-                              <Link to={`/levels?query=${artist}`}>
+                              <Link to={`/levels?query=${artist.name}`}>
                                 {artist.name}
                               </Link>
                             </span>
@@ -283,7 +283,7 @@ const LevelPage = ({ history }) => {
                           return (
                             <span key={`creator${index}`}>
                               {index > 0 && <span>{' & '}</span>}
-                              <Link to={`/levels?query=${creator}`}>
+                              <Link to={`/levels?query=${creator.name}`}>
                                 {creator.name}
                               </Link>
                             </span>
@@ -390,18 +390,23 @@ const LevelPage = ({ history }) => {
                     <div className='level-info-detail-info-section'>
                       <div className='level-info-label'>BPM</div>
                       <div className='level-info-value'>
-                        {String(state.level.minBpm).split('.')[0]}
+                        {String(state.level.music.minBpm).split('.')[0]}
                         <span className='level-info-value-decimal'>
-                          {String(state.level.minBpm).split('.')[1] &&
-                            `.${String(state.level.minBpm).split('.')[1]}`}
+                          {String(state.level.music.minBpm).split('.')[1] &&
+                            `.${
+                              String(state.level.music.minBpm).split('.')[1]
+                            }`}
                         </span>
 
-                        {state.level.minBpm === state.level.maxBpm ? null : (
+                        {state.level.music.minBpm ===
+                        state.level.music.maxBpm ? null : (
                           <>
-                            -{String(state.level.maxBpm).split('.')[0]}
+                            -{String(state.level.music.maxBpm).split('.')[0]}
                             <span className='level-info-value-decimal'>
-                              {String(state.level.maxBpm).split('.')[1] &&
-                                `.${String(state.level.minBpm).split('.')[1]}`}
+                              {String(state.level.music.maxBpm).split('.')[1] &&
+                                `.${
+                                  String(state.level.music.minBpm).split('.')[1]
+                                }`}
                             </span>
                           </>
                         )}

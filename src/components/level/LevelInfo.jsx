@@ -12,11 +12,11 @@ const LevelInfo = ({ levelData }) => {
     creators,
     // songId,
     music,
-    minBpm,
-    maxBpm,
     tags,
     epilepsyWarning
   } = levelData;
+
+  const { minBpm, maxBpm } = music;
 
   const LevelDifficulty = () => {
     return (
