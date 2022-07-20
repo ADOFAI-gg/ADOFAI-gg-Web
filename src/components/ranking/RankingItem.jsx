@@ -19,9 +19,9 @@ const RankingItem = ({ rank, index }) => {
               to={`/levels/${bestPlay.levelId}`}
               className='ranking-item-detail-highest-title'
             >
-              {bestPlay.artists[1]
-                ? `${bestPlay.artists[0]}…`
-                : bestPlay.artists[0]}
+              {bestPlay.level.music.artists[1]
+                ? `${bestPlay.level.music.artists[0].name}…`
+                : bestPlay.level.music.artists[0].name}
               {' - '}
               {bestPlay.title}
             </Link>

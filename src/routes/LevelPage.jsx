@@ -266,12 +266,12 @@ const LevelPage = ({ history }) => {
                     </div>
                     <div className='level-info-author notranslate'>
                       <strong>
-                        {state.level.artists.map((artist, index) => {
+                        {state.level.music.artists.map((artist, index) => {
                           return (
                             <span key={`art${index}`}>
                               {index > 0 && <span>{' & '}</span>}
                               <Link to={`/levels?query=${artist}`}>
-                                {artist}
+                                {artist.name}
                               </Link>
                             </span>
                           );
@@ -284,7 +284,7 @@ const LevelPage = ({ history }) => {
                             <span key={`creator${index}`}>
                               {index > 0 && <span>{' & '}</span>}
                               <Link to={`/levels?query=${creator}`}>
-                                {creator}
+                                {creator.name}
                               </Link>
                             </span>
                           );

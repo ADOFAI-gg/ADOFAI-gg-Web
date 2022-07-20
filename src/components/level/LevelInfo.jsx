@@ -11,7 +11,7 @@ const LevelInfo = ({ levelData }) => {
     difficulty,
     creators,
     // songId,
-    artists,
+    music,
     minBpm,
     maxBpm,
     tags,
@@ -52,14 +52,14 @@ const LevelInfo = ({ levelData }) => {
           <div className='level-item-info-section' style={{ width: '180px' }}>
             <div className='level-item-info-label'>Creator</div>
             <div className='level-item-info-value notranslate'>
-              {creators.join(' & ')}
+              {creators.map((x) => x.name).join(' & ')}
             </div>
           </div>
 
           <div className='level-item-info-section' style={{ width: '180px' }}>
             <div className='level-item-info-label'>Artist</div>
             <div className='level-item-info-value notranslate'>
-              {artists.join(' & ')}
+              {music.artists.map((x) => x.name).join(' & ')}
             </div>
           </div>
 
