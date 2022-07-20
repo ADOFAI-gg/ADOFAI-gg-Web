@@ -31,10 +31,10 @@
             </div>
             <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
               <div class="overflow-hidden text-ellipsis">
-                {level.artists.join(' & ')}
+                {level.music.artists.map((x) => x.name).join(' & ')}
               </div>
               <div class="overflow-hidden text-ellipsis">
-                {level.creators.join(' & ')}
+                {level.creators.map((x) => x.name).join(' & ')}
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@
           level: data
         },
         stuff: {
-          title: `${data.artists.join(' & ')} - ${data.title}`,
+          title: `${data.music.artists.map((x) => x.name).join(' & ')} - ${data.title}`,
           metaTags: [
             {
               property: 'og:site_name',
@@ -23,11 +23,11 @@
             },
             {
               property: 'og:title',
-              content: `${data.artists.join(' & ')} - ${data.title}`
+              content: `${data.music.artists.map((x) => x.name).join(' & ')} - ${data.title}`
             },
             {
               property: 'og:description',
-              content: `Level by ${data.creators.join(' & ')}`
+              content: `Level by ${data.creators.map((x) => x.name).join(' & ')}`
             },
             {
               name: 'twitter:card',

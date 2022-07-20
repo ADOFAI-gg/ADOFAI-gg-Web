@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-  <title>{level.artists.join(' & ')} - {level.title}</title>
+  <title>{level.music.artists.map((x) => x.name).join(' & ')} - {level.title}</title>
 </svelte:head>
 
 <LevelHeader {level} />

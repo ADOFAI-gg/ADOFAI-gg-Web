@@ -28,7 +28,11 @@
           label="LEVEL_DETAIL_LEVEL_BY"
           users={level.creators}
         />
-        <HorizontalUserList allTitle="Artist" label="LEVEL_DETAIL_MUSIC_BY" users={level.artists} />
+        <HorizontalUserList
+          allTitle="Artist"
+          label="LEVEL_DETAIL_MUSIC_BY"
+          users={level.music.artists}
+        />
       </div>
       <LevelHeaderLinksArea {level} />
     </div>

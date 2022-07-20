@@ -1,10 +1,3 @@
-export interface User {
-  id: string;
-  name: string;
-  avatar?: string;
-  banner?: string;
-}
-
 export interface PlayLog {
   accept: boolean;
   accuracy: number;
@@ -19,13 +12,35 @@ export interface PlayLog {
   url: string;
 }
 
+export interface PartialMember {
+  id: number;
+  name: string;
+}
+
+export interface Member extends PartialMember {
+  totalPp: number;
+}
+
+export interface PartialMusic {
+  id: number;
+  name: string;
+
+  minBpm: number;
+  maxBpm: number;
+
+  artists: PartialMember[];
+}
+
+export interface Music extends PartialMusic {
+  createdLevelAmount: number;
+}
+
 export interface Level {
   id: number;
   title: string;
   difficulty: number;
-  creators: string[];
-  artists: string[];
-  music: string;
+  creators: PartialMember[];
+  music: PartialMusic;
   minBpm: number;
   maxBpm: number;
   tiles: number;
