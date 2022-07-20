@@ -9,6 +9,17 @@
   text-decoration-color: rgb(255, 231, 110);
 }
 
+.main-sync-status {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+  opacity: 0.6;
+}
+
+.main-sync-status-text {
+  font-weight: 600;
+}
+
 .main-search-bar {
   width: 680px;
   margin-top: 40px;

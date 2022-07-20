@@ -16,8 +16,6 @@ const LevelInfo = ({ levelData }) => {
     epilepsyWarning
   } = levelData;
 
-  const { minBpm, maxBpm } = music;
-
   const LevelDifficulty = () => {
     return (
       <img
