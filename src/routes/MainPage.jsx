@@ -75,13 +75,9 @@ const MainPage = () => {
 
   useEffect(() => {
     const fetchSyncStatus = async () => {
-      // const syncStatus = await get(`/status/sync`);
+      const syncStatus = await get(`/status/sync`);
 
-      setSyncStatus({
-        status: 'ok',
-        lastSucceedAt: '2022-07-20T19:09:11.02812',
-        exception: null
-      });
+      setSyncStatus(syncStatus);
     };
 
     fetchSyncStatus();
