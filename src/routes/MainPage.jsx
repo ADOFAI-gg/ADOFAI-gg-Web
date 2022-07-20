@@ -75,9 +75,8 @@ const MainPage = () => {
 
   useEffect(() => {
     const fetchSyncStatus = async () => {
-      const syncStatus = await get(`/status/sync`);
-
-      setSyncStatus(syncStatus);
+      const response = await get(`/status/sync`);
+      setSyncStatus(response.data);
     };
 
     fetchSyncStatus();
