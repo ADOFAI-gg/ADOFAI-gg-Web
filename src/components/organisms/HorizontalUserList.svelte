@@ -1,28 +1,15 @@
 <script lang="ts">
-  import type { User } from '@/types';
+  import type { PartialMember } from '@/types';
   import Icon from '../atoms/Icon.svelte';
   import Popover from '../atoms/Popover.svelte';
   import UserListItem from '../molecules/UserListItem.svelte';
   import Translation from '../utils/Translation.svelte';
 
-  export let users: User[] | string[];
+  export let users: PartialMember[];
 
   export let label: string;
 
   export let allTitle: string = label;
-
-  $: resolvedUsers = (async () => {
-    if (typeof users[0] === 'string') {
-      return users.map(
-        (x) =>
-          ({
-            id: x,
-            name: x
-          } as User)
-      );
-    }
-    return users;
-  })() as Promise<User[]>;
 
   let containerWidth = 0;
 
@@ -58,34 +45,32 @@
   {#if label}
     <span class="text-2xl font-regular whitespace-nowrap"><Translation key={label} /></span>
   {/if}
-  {#await resolvedUsers then data}
-    <div
-      class="flex-grow flex items-center gap-[12px] overflow-hidden"
-      bind:clientWidth={containerWidth}
-    >
-      {#each data as user, i (i)}
-        <div bind:this={items[i]} class="flex-shrink-0"><UserListItem {user} /></div>
-      {/each}
-      <div class="flex-shrink-0">
-        <Popover>
-          <div
-            slot="button"
-            class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
-            bind:this={moreButton}
-          >
-            <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
-            <div>Show All</div>
+  <div
+    class="flex-grow flex items-center gap-[12px] overflow-hidden"
+    bind:clientWidth={containerWidth}
+  >
+    {#each users as user, i (i)}
+      <div bind:this={items[i]} class="flex-shrink-0"><UserListItem {user} /></div>
+    {/each}
+    <div class="flex-shrink-0">
+      <Popover>
+        <div
+          slot="button"
+          class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+          bind:this={moreButton}
+        >
+          <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
+          <div>Show All</div>
+        </div>
+        <div class="p-[14px] min-w-[240px]">
+          <div class="text-md font-bold">{allTitle}</div>
+          <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
+            {#each users as user, i (i)}
+              <UserListItem popup {user} />
+            {/each}
           </div>
-          <div class="p-[14px] min-w-[240px]">
-            <div class="text-md font-bold">{allTitle}</div>
-            <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
-              {#each data as user, i (i)}
-                <UserListItem popup {user} />
-              {/each}
-            </div>
-          </div>
-        </Popover>
-      </div>
+        </div>
+      </Popover>
     </div>
-  {/await}
+  </div>
 </div>
