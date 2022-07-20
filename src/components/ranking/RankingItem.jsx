@@ -42,7 +42,7 @@ const RankingItem = ({ rank, index }) => {
               <div className='ranking-item-detail-highest-info-accuracy'>
                 <img
                   src={'other_icons/xaccuracy.svg'}
-                  alt='Accurancy: '
+                  alt='X Accurancy: '
                   style={{
                     height: '0.9em',
                     marginRight: '3px'

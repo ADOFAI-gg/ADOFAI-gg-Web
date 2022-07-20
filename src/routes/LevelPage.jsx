@@ -193,13 +193,13 @@ const LevelPage = ({ history }) => {
                 </div>
                 <div>
                   <img
-                    src={'/other_icons/accuracy.svg'}
-                    alt='Accurancy: '
+                    src={'/other_icons/xaccuracy.svg'}
+                    alt='X Accurancy: '
                     style={{
                       height: '0.9em'
                     }}
                   />
-                  {info.accuracy ? `${info.accuracy.toFixed(1)}%` : 'UNKNOWN'}
+                  {info.xAccuracy ? `${info.xAccuracy.toFixed(1)}%` : 'UNKNOWN'}
                 </div>
               </div>
             </div>
