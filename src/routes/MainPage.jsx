@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { get } from '../utils/http';
 
 // Components
 // import MainAddInfo from "../components/MainAddInfo";
@@ -8,72 +9,88 @@ import MainTopPlays from '../components/main/MainTopPlays';
 import MainPopularLevels from '../components/main/MainPopularLevels';
 import { useHistory } from 'react-router-dom';
 
-const MainPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  let history = useHistory();
-
+const userMenu = () => {
   const ReactSwal = withReactContent(Swal);
 
-  const userMenu = () => {
-    const sumbitPlayUrl = 'https://forms.gle/XdKNuqVrt974F7Ab6';
-    const sumbitLevelUrl = 'https://forms.gle/gGtReGnJnbf4Ck387';
-    const requestRelevelingUrl =
-      'https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link';
-    // XXX - need short url
-    const songCopyrightUrl = 'https://7thbe.at/verified-artists';
+  const sumbitPlayUrl = 'https://forms.gle/XdKNuqVrt974F7Ab6';
+  const sumbitLevelUrl = 'https://forms.gle/gGtReGnJnbf4Ck387';
+  const requestRelevelingUrl =
+    'https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link';
+  // XXX - need short url
+  const songCopyrightUrl = 'https://7thbe.at/verified-artists';
 
-    const MenuItem = ({ url, iconName, children }) => {
-      return (
-        <a
-          className='main-user-menu-context'
-          target={'_blank'}
-          rel='noreferrer'
-          href={url}
-        >
-          <img
-            className='main-user-menu-context-icon'
-            src={`/usermenu_icons/${iconName}.svg`}
-            alt={iconName}
-            onDragStart={(e) => e.preventDefault()}
-          />
-          <span className='main-user-menu-context-text'>{children}</span>
-        </a>
-      );
+  const MenuItem = ({ url, iconName, children }) => {
+    return (
+      <a
+        className='main-user-menu-context'
+        target={'_blank'}
+        rel='noreferrer'
+        href={url}
+      >
+        <img
+          className='main-user-menu-context-icon'
+          src={`/usermenu_icons/${iconName}.svg`}
+          alt={iconName}
+          onDragStart={(e) => e.preventDefault()}
+        />
+        <span className='main-user-menu-context-text'>{children}</span>
+      </a>
+    );
+  };
+
+  ReactSwal.fire({
+    title: 'Submit & Info',
+    html: (
+      <>
+        <MenuItem url={sumbitPlayUrl} iconName={'submit_play'}>
+          Submit Your Play
+        </MenuItem>
+        <MenuItem url={sumbitLevelUrl} iconName={'submit_level'}>
+          Submit Your Level
+        </MenuItem>
+        <MenuItem url={requestRelevelingUrl} iconName={'request_releveling'}>
+          Request <br />
+          Re-Leveling
+        </MenuItem>
+        <MenuItem url={songCopyrightUrl} iconName={'copyright'}>
+          Song Copyright
+        </MenuItem>
+      </>
+    ),
+    heightAuto: false,
+    customClass: {
+      popup: 'main-user-menu',
+      htmlContainer: 'main-user-menu-container',
+      closeButton: 'main-user-menu-close'
+    },
+    showConfirmButton: false,
+    showCloseButton: true
+  });
+};
+
+const MainPage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [syncStatus, setSyncStatus] = useState(null);
+  let history = useHistory();
+
+  useEffect(() => {
+    const fetchSyncStatus = async () => {
+      // const syncStatus = await get(`/status/sync`);
+
+      setSyncStatus({
+        status: 'ok',
+        lastSucceedAt: '2022-07-20T19:09:11.02812',
+        exception: null
+      });
     };
 
-    ReactSwal.fire({
-      title: 'Submit & Info',
-      html: (
-        <>
-          <MenuItem url={sumbitPlayUrl} iconName={'submit_play'}>
-            Submit Your Play
-          </MenuItem>
-          <MenuItem url={sumbitLevelUrl} iconName={'submit_level'}>
-            Submit Your Level
-          </MenuItem>
-          <MenuItem url={requestRelevelingUrl} iconName={'request_releveling'}>
-            Request <br />
-            Re-Leveling
-          </MenuItem>
-          <MenuItem url={songCopyrightUrl} iconName={'copyright'}>
-            Song Copyright
-          </MenuItem>
-        </>
-      ),
-      heightAuto: false,
-      customClass: {
-        popup: 'main-user-menu',
-        htmlContainer: 'main-user-menu-container',
-        closeButton: 'main-user-menu-close'
-      },
-      showConfirmButton: false,
-      showCloseButton: true
-    });
-  };
+    fetchSyncStatus();
+  }, []);
 
   return (
     <main>
       <img className='main-logo' src='/logo.svg' alt='' />
+
       <h2 style={{ marginTop: '10px' }}>
         Based On The{' '}
         <a
@@ -85,6 +102,22 @@ const MainPage = () => {
           Unofficial ADOFAI Forum
         </a>
       </h2>
+
+      {syncStatus && (
+        <div className='main-sync-status'>
+          <div className='main-sync-status-text'>
+            {syncStatus.status === 'ok'
+              ? 'Data synchronization succeeded.'
+              : 'Data synchronization failed.'}
+          </div>
+
+          <div className='main-sync-status-time'>
+            Last synced on{' '}
+            {new Date(syncStatus.lastSucceedAt).toLocaleTimeString()}
+          </div>
+        </div>
+      )}
+
       <input
         className='main-search-bar'
         type='text'
@@ -99,6 +132,7 @@ const MainPage = () => {
       {/* <MainAddInfo playersOnline='999999' rankedPlayers='999999' rankedLevels='999999' unclearedLevels='999999'/> */}
       <MainTopPlays />
       <MainPopularLevels />
+
       <button
         onClick={userMenu}
         className='user-menu-button'

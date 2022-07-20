@@ -11,9 +11,7 @@ const LevelInfo = ({ levelData }) => {
     difficulty,
     creators,
     // songId,
-    artists,
-    minBpm,
-    maxBpm,
+    music,
     tags,
     epilepsyWarning
   } = levelData;
@@ -52,14 +50,14 @@ const LevelInfo = ({ levelData }) => {
           <div className='level-item-info-section' style={{ width: '180px' }}>
             <div className='level-item-info-label'>Creator</div>
             <div className='level-item-info-value notranslate'>
-              {creators.join(' & ')}
+              {creators.map((x) => x.name).join(' & ')}
             </div>
           </div>
 
           <div className='level-item-info-section' style={{ width: '180px' }}>
             <div className='level-item-info-label'>Artist</div>
             <div className='level-item-info-value notranslate'>
-              {artists.join(' & ')}
+              {music.artists.map((x) => x.name).join(' & ')}
             </div>
           </div>
 
@@ -70,11 +68,11 @@ const LevelInfo = ({ levelData }) => {
             <div className='level-item-info-label'>BPM</div>
             <div className='level-item-info-value notranslate'>
               {
-                minBpm === maxBpm // 레벨 bpm이 일정할 때
-                  ? minBpm === 0 // bpm이 0이라면
+                music.minBpm === music.maxBpm // 레벨 bpm이 일정할 때
+                  ? music.minBpm === 0 // bpm이 0이라면
                     ? '?' // ? 표시
-                    : minBpm // 아니면 최소 bpm 표시(어차피 최소랑 최대랑 같음)
-                  : `${minBpm} - ${maxBpm}` // 아니라면 bpm 범위 표시
+                    : music.minBpm // 아니면 최소 bpm 표시(어차피 최소랑 최대랑 같음)
+                  : `${music.minBpm} - ${music.maxBpm}` // 아니라면 bpm 범위 표시
               }
             </div>
           </div>

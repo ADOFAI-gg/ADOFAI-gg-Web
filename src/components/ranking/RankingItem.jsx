@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RankingItem = ({ rank, index }) => {
-  const { name, totalBpm, bestPlay } = rank;
+  const { name, totalPp, bestPlay } = rank;
   const speedFormat = String(bestPlay.speed / 100);
 
   return (
@@ -12,18 +12,18 @@ const RankingItem = ({ rank, index }) => {
         <div className='ranking-item-name notranslate'>{name}</div>
 
         <div className='ranking-item-detail'>
-          <div className='ranking-item-detail-pp'>{totalBpm.toFixed(0)}</div>
+          <div className='ranking-item-detail-pp'>{totalPp.toFixed(0)}</div>
 
           <div className='ranking-item-detail-highest notranslate'>
             <Link
-              to={`/levels/${bestPlay.levelId}`}
+              to={`/levels/${bestPlay.level.id}`}
               className='ranking-item-detail-highest-title'
             >
-              {bestPlay.artists[1]
-                ? `${bestPlay.artists[0]}…`
-                : bestPlay.artists[0]}
+              {bestPlay.level.music.artists[1]
+                ? `${bestPlay.level.music.artists[0].name}…`
+                : bestPlay.level.music.artists[0].name}
               {' - '}
-              {bestPlay.title}
+              {bestPlay.level.name}
             </Link>
 
             <span className='ranking-item-detail-highest-info'>
@@ -41,23 +41,23 @@ const RankingItem = ({ rank, index }) => {
 
               <div className='ranking-item-detail-highest-info-accuracy'>
                 <img
-                  src={'other_icons/accuracy.svg'}
-                  alt='Accurancy: '
+                  src={'other_icons/xaccuracy.svg'}
+                  alt='X Accurancy: '
                   style={{
                     height: '0.9em',
                     marginRight: '3px'
                   }}
                 />
-                {bestPlay.accuracy
-                  ? `${bestPlay.accuracy.toFixed(1)}%`
+                {bestPlay.xAccuracy
+                  ? `${bestPlay.xAccuracy.toFixed(1)}%`
                   : `///./%`}
               </div>
 
               <div className='ranking-item-detail-highest-info-difficulty'>
                 Lv.
-                {bestPlay.difficulty < 20
-                  ? String(bestPlay.difficulty).replace('.5', '+')
-                  : bestPlay.difficulty}
+                {bestPlay.level.difficulty < 20
+                  ? String(bestPlay.level.difficulty).replace('.5', '+')
+                  : bestPlay.level.difficulty}
               </div>
             </span>
           </div>

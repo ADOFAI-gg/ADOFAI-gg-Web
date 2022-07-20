@@ -193,13 +193,13 @@ const LevelPage = ({ history }) => {
                 </div>
                 <div>
                   <img
-                    src={'/other_icons/accuracy.svg'}
-                    alt='Accurancy: '
+                    src={'/other_icons/xaccuracy.svg'}
+                    alt='X Accurancy: '
                     style={{
                       height: '0.9em'
                     }}
                   />
-                  {info.accuracy ? `${info.accuracy.toFixed(1)}%` : 'UNKNOWN'}
+                  {info.xAccuracy ? `${info.xAccuracy.toFixed(1)}%` : 'UNKNOWN'}
                 </div>
               </div>
             </div>
@@ -266,12 +266,12 @@ const LevelPage = ({ history }) => {
                     </div>
                     <div className='level-info-author notranslate'>
                       <strong>
-                        {state.level.artists.map((artist, index) => {
+                        {state.level.music.artists.map((artist, index) => {
                           return (
                             <span key={`art${index}`}>
                               {index > 0 && <span>{' & '}</span>}
-                              <Link to={`/levels?query=${artist}`}>
-                                {artist}
+                              <Link to={`/levels?query=${artist.name}`}>
+                                {artist.name}
                               </Link>
                             </span>
                           );
@@ -283,8 +283,8 @@ const LevelPage = ({ history }) => {
                           return (
                             <span key={`creator${index}`}>
                               {index > 0 && <span>{' & '}</span>}
-                              <Link to={`/levels?query=${creator}`}>
-                                {creator}
+                              <Link to={`/levels?query=${creator.name}`}>
+                                {creator.name}
                               </Link>
                             </span>
                           );
@@ -390,18 +390,23 @@ const LevelPage = ({ history }) => {
                     <div className='level-info-detail-info-section'>
                       <div className='level-info-label'>BPM</div>
                       <div className='level-info-value'>
-                        {String(state.level.minBpm).split('.')[0]}
+                        {String(state.level.music.minBpm).split('.')[0]}
                         <span className='level-info-value-decimal'>
-                          {String(state.level.minBpm).split('.')[1] &&
-                            `.${String(state.level.minBpm).split('.')[1]}`}
+                          {String(state.level.music.minBpm).split('.')[1] &&
+                            `.${
+                              String(state.level.music.minBpm).split('.')[1]
+                            }`}
                         </span>
 
-                        {state.level.minBpm === state.level.maxBpm ? null : (
+                        {state.level.music.minBpm ===
+                        state.level.music.maxBpm ? null : (
                           <>
-                            -{String(state.level.maxBpm).split('.')[0]}
+                            -{String(state.level.music.maxBpm).split('.')[0]}
                             <span className='level-info-value-decimal'>
-                              {String(state.level.maxBpm).split('.')[1] &&
-                                `.${String(state.level.minBpm).split('.')[1]}`}
+                              {String(state.level.music.maxBpm).split('.')[1] &&
+                                `.${
+                                  String(state.level.music.minBpm).split('.')[1]
+                                }`}
                             </span>
                           </>
                         )}
