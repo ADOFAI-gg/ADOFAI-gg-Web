@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
+  import MainSectionTitle from '@/components/atoms/SectionTitle.svelte';
   import type { Level } from '@/types';
   import LevelListItem from '../../organisms/levels/LevelListItem.svelte';
 

@@ -66,7 +66,7 @@
 {/if}
 
 <div
-  class={$loaded ? 'opacity-100 transition-all duration-1000' : 'invisible opacity-0'}
+  class={$loaded ? 'opacity-100 transition-opacity duration-1000' : 'invisible opacity-0'}
   style="height: {contentHeight}px"
 >
   <LoadingIndiciator />

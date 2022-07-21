@@ -1,8 +1,10 @@
 <script lang="ts" context="module">
-  const cache = new Map<string, string>();
+  const cache = new Map<string, Promise<string>>();
 </script>
 
 <script lang="ts">
+  import { browser } from '$app/env';
+
   import { Asset } from '@/utils/assets';
   import axios from 'axios';
 
@@ -14,15 +16,17 @@
   export { className as class };
 
   const load = async (id: string) => {
-    const src = await Asset.icon(id, namespace);
+    if (!browser) return;
+
+    const src = Asset.icon(id, namespace);
 
     if (cache.has(src)) return cache.get(src);
 
-    const { data } = await axios.get(src);
+    const promise = axios.get(src).then((x) => x.data);
 
-    cache.set(src, data);
+    cache.set(src, promise);
 
-    return data;
+    return promise;
   };
 
   let container: HTMLDivElement;
@@ -53,4 +57,6 @@
   >
     {@html data}
   </div>
+{:catch}
+  <div style="width: {size}px; height: {size}px;" />
 {/await}

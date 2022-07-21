@@ -47,7 +47,7 @@
         <div class="font-medium">{play.level.name}</div>
       </div>
       <div class="flex gap-[24px]">
-        <TopPlayDetailPair icon="accuracy" value="{play.accuracy}%" />
+        <TopPlayDetailPair icon="accuracy" value="{play.xAccuracy}%" />
         <TopPlayDetailPair
           icon="speed"
           value="{(play.speed / 100).toLocaleString('en', { minimumFractionDigits: 1 })}X"
