@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MainSectionTitle from '@/components/atoms/SectionTitle.svelte';
+  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
   import TopPlay from '@/components/molecules/home/TopPlay.svelte';
   import TopPlaySkeleton from '@/components/molecules/home/TopPlaySkeleton.svelte';
   import type { PlayLog } from '@/types';
