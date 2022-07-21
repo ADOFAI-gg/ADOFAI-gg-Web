@@ -9,6 +9,8 @@
   import LevelTagDetailsArea from './LevelTagDetailsArea.svelte';
 
   export let level: Level;
+
+  $: music = level.music;
 </script>
 
 <div class="flex flex-col gap-[26px] h-full">
@@ -20,10 +22,10 @@
   </div>
   <div class="flex gap-[24px]">
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_BPM">
-      {#if level.minBpm === level.maxBpm}
-        {level.minBpm}
+      {#if music.minBpm === music.maxBpm}
+        {music.minBpm}
       {:else}
-        {level.minBpm} - {level.maxBpm}
+        {music.minBpm} - {music.maxBpm}
       {/if}
     </LevelMetaLabelValuePair>
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">{level.tiles}</LevelMetaLabelValuePair>

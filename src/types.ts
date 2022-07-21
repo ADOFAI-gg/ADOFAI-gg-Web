@@ -41,8 +41,6 @@ export interface Level {
   difficulty: number;
   creators: PartialMember[];
   music: PartialMusic;
-  minBpm: number;
-  maxBpm: number;
   tiles: number;
   video: string;
 
