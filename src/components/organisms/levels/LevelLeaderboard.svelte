@@ -24,18 +24,20 @@
 </script>
 
 {#if promise}
-  <div>
-    <SectionTitle title="Leaderboard" />
-    <div class="mt-[11px] flex flex-col gap-[10px]">
-      {#await promise}
-        <div class="flex justify-center">
-          <LoadingSpinner />
-        </div>
-      {:then data}
-        {#each Object.entries(data) as [index, item]}
-          <LevelLeaderboardItem index={Number(index)} play={item} />
-        {/each}
-      {/await}
+  {#await promise}
+    <div class="flex justify-center">
+      <LoadingSpinner />
     </div>
-  </div>
+  {:then data}
+    {#if data.length}
+      <div>
+        <SectionTitle title="Leaderboard" />
+        <div class="mt-[11px] flex flex-col gap-[10px]">
+          {#each Object.entries(data) as [index, item]}
+            <LevelLeaderboardItem index={Number(index)} play={item} />
+          {/each}
+        </div>
+      </div>
+    {/if}
+  {/await}
 {/if}
