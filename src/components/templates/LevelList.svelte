@@ -150,7 +150,7 @@
 
 <div>
   <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-  <div class="mt-2">
+  <div class="mt-2 px-[12px]">
     <LevelSearchSettingsArea />
   </div>
 </div>
