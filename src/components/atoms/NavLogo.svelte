@@ -4,6 +4,6 @@
   import Image from './Image.svelte';
 </script>
 
-<a aria-label="Adofai.gg" href="/">
+<a aria-label="ADOFAI.gg" href="/">
   <Image src={Asset.url('images/logo.svg')} alt="" width="139" height="20" />
 </a>

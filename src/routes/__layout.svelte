@@ -48,7 +48,7 @@
 </script>
 
 <svelte:head>
-  <title>{$page.stuff.title || 'Adofai.gg'}</title>
+  <title>{$page.stuff.title || 'ADOFAI.gg'}</title>
   <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png" />
   <meta name="theme-color" content="#ffffff" />
   {#each $page.stuff.metaTags ?? defaultMeta as meta}

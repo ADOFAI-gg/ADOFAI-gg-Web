@@ -19,7 +19,7 @@
           metaTags: [
             {
               property: 'og:site_name',
-              content: 'Adofai.gg'
+              content: 'ADOFAI.gg'
             },
             {
               property: 'og:title',
