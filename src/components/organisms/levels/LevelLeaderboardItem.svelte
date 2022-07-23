@@ -35,7 +35,7 @@
     </div>
     <div class="w-[1px] opacity-40 h-[16px] bg-white" />
     <a href={play.url} target="_blank" class="flex items-center gap-[6px]">
-      <Icon icon="play" size={16} />
+      <Icon icon="playOutlined" size={16} />
       <span>Clear Video</span>
     </a>
   </div>

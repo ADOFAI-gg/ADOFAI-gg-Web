@@ -59,7 +59,9 @@
           class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
           bind:this={moreButton}
         >
-          <div class="drop-shadow-6 w-[14px] h-[14px]"><Icon size={14} icon="showMore" /></div>
+          <div class="drop-shadow-6 w-[14px] h-[14px]">
+            <Icon size={14} icon="bottomArrowCircleOutlined" />
+          </div>
           <div>Show All</div>
         </div>
         <div class="p-[14px] min-w-[240px]">

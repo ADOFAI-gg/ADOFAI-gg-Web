@@ -10,7 +10,7 @@
 <div class="flex gap-[18px]">
   <Tooltip placement="bottom-end">
     <a slot="button" href="adofaigg://level/{level.id}">
-      <Icon icon="play" size={36} />
+      <Icon icon="playFilled" size={36} />
     </a>
     <div class="p-2 text-lg font-medium">
       <Translation key="LEVEL_OPEN_IN_ADOFAI" />
