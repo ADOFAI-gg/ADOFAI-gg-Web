@@ -22,7 +22,7 @@
             <FooterLink href="mailto:adofai.gg@gmail.com">
               <Translation key="FOOTER_CONTACT_EMAIL" />
             </FooterLink>
-            <FooterLink href="/tos">
+            <FooterLink target="_blank" href="https://discord.gg/TKdpbUUfUa">
               <Translation key="FOOTER_CONTACT_DISCORD" />
             </FooterLink>
           </FooterSection>

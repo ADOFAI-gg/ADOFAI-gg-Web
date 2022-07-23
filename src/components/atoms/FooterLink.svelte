@@ -1,7 +1,9 @@
 <script lang="ts">
   export let href: string;
+
+  export let target = '';
 </script>
 
-<a {href} class="hover:font-bold hover:text-lg transition-all">
+<a {href} class="opacity-80 hover:opacity-100 transition-all" {target}>
   › <slot />
 </a>
