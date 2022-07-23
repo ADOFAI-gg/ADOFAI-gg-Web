@@ -8,18 +8,24 @@
       case 404:
         return {
           props: {
-            title: 'Error 404',
             description: 'This page does not exist or expired.',
             image: Asset.url('images/404.svg')
+          },
+          stuff: {
+            title: 'Error 404 - This page does not exist or expired.'
           }
         };
     }
 
     return {
       props: {
-        title: error?.message || 'Unknown Error',
         description: error?.message || 'An unknown error occurred.',
         image: null
+      },
+      stuff: {
+        title: `${error?.message || 'Unknown Error'} - ${
+          error?.message || 'An unknown error occurred.'
+        }`
       }
     };
   };
@@ -34,10 +40,6 @@
 
   export let image: string;
 </script>
-
-<svelte:head>
-  <title>{title} - {description}</title>
-</svelte:head>
 
 <div class="flex flex-col h-screen max-w-[1100px] p-4 mx-auto">
   <div class="h-nav" />
