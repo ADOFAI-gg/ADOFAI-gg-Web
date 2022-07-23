@@ -30,11 +30,15 @@
               <div>Level By</div>
             </div>
             <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
-              <div class="overflow-hidden text-ellipsis">
-                {level.music.artists.map((x) => x.name).join(' & ')}
+              <div class="relative h-[16px]">
+                <div class="absolute overflow-x-hidden h-[24px] text-ellipsis w-full">
+                  {level.music.artists.map((x) => x.name).join(' & ')}
+                </div>
               </div>
-              <div class="overflow-hidden text-ellipsis">
-                {level.creators.map((x) => x.name).join(' & ')}
+              <div class="relative h-[16px]">
+                <div class="absolute overflow-x-hidden h-[24px] text-ellipsis w-full">
+                  {level.creators.map((x) => x.name).join(' & ')}
+                </div>
               </div>
             </div>
           </div>
