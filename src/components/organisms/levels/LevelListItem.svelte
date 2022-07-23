@@ -60,7 +60,7 @@
     {/if}
   </div>
   <div
-    class="self-center w-0 opacity-0 group-hover:opacity-100 transition-all group-hover:w-[48px] relative duration-1000"
+    class="self-center w-0 opacity-0 group-hover:opacity-100 transition-all group-hover:w-[48px] relative duration-500"
   >
     <a href={level.download} class="absolute right-0 top-0 -translate-y-1/2">
       <Icon icon="downloadFile" size={48} />
