@@ -6,6 +6,4 @@
 
 <div class="h-nav mt-[24px]" />
 
-<PageContainer>
-  <LevelList />
-</PageContainer>
+<LevelList />

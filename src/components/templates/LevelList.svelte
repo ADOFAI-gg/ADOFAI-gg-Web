@@ -2,7 +2,9 @@
   import { searchSetingStore } from '@/stores/search';
 
   import SearchInput from '../molecules/SearchInput.svelte';
-  import LevelSearchSettingsArea from '../organisms/levels/LevelSearchSettingsArea.svelte';
+  import LevelSearchSettingsArea, {
+    currentView
+  } from '../organisms/levels/LevelSearchSettingsArea.svelte';
   import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/env';
@@ -11,6 +13,7 @@
   import LevelListItem from '../organisms/levels/LevelListItem.svelte';
   import { fade } from 'svelte/transition';
   import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
+  import PageContainer from '../atoms/PageContainer.svelte';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -148,24 +151,42 @@
   }
 </script>
 
-<div>
-  <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-  <div class="mt-2 px-[12px]">
-    <LevelSearchSettingsArea />
+<div class={$currentView === 'list' ? 'px-4' : 'px-[120px]'}>
+  <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
+    <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+    <div class="mt-2 px-[12px]">
+      <LevelSearchSettingsArea />
+    </div>
   </div>
 </div>
 
-<VirtualScroll
-  scrollContainer=".simplebar-content-wrapper"
-  total={itemCount}
-  on:more={(e) => addItems(e.detail.offset)}
-  data={$items}
-  let:item
->
-  <div in:fade class="mb-[12px]">
-    <LevelListItem level={item} />
-  </div>
-  <div slot="loading" class="w-full my-4 flex justify-center">
-    <LoadingSpinner size={48} />
-  </div>
-</VirtualScroll>
+{#if $currentView === 'list'}
+  <PageContainer>
+    <VirtualScroll
+      scrollContainer=".simplebar-content-wrapper"
+      total={itemCount}
+      on:more={(e) => addItems(e.detail.offset)}
+      data={$items}
+      let:item
+    >
+      <div in:fade class="mb-[12px]">
+        <LevelListItem level={item} />
+      </div>
+      <div slot="loading" class="w-full my-4 flex justify-center">
+        <LoadingSpinner size={48} />
+      </div>
+    </VirtualScroll>
+  </PageContainer>
+{:else if $currentView === 'table'}
+  <div class="px-[120px] overflow-x-auto table-view-container">wow this is table</div>
+{/if}
+
+<style lang="scss">
+  .table-view-container {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>
