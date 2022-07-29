@@ -6,30 +6,25 @@
   import { searchSetingStore } from '@/stores/search';
   import DifficultyRangeSelector from './DifficultyRangeSelector.svelte';
 
-  let artist: string = $searchSetingStore.query.artist;
+  $: artist = $searchSetingStore.query.artist;
 
-  let creator: string = $searchSetingStore.query.creator;
-
-  $: {
-    searchSetingStore.update((x) => ({
-      ...x,
-      query: {
-        title: x.query.title,
-        artist,
-        creator
-      }
-    }));
-  }
+  $: creator = $searchSetingStore.query.creator;
 </script>
 
 <div class="grid md:grid-cols-2 gap-[12px]">
   <SearchGroup title="SEARCH_META_AUTHOR">
     <div class="flex flex-col gap-[16px]">
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
-        <SearchMetaInput bind:value={artist} placeholder="SEARCH_META_ARTIST_PLACEHOLDER" />
+        <SearchMetaInput
+          bind:value={$searchSetingStore.query.artist}
+          placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
+        />
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
-        <SearchMetaInput bind:value={creator} placeholder="SEARCH_META_CREATOR_PLACEHOLDER" />
+        <SearchMetaInput
+          bind:value={$searchSetingStore.query.creator}
+          placeholder="SEARCH_META_CREATOR_PLACEHOLDER"
+        />
       </LabeledInputContainer>
     </div>
   </SearchGroup>
@@ -40,14 +35,34 @@
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_TILES_LABEL">
         <RangeInputPair>
-          <SearchMetaInput slot="min" type="number" placeholder="SEARCH_META_TILES_MIN" />
-          <SearchMetaInput slot="max" type="number" placeholder="SEARCH_META_TILES_MAX" />
+          <SearchMetaInput
+            bind:value={$searchSetingStore.filter.tiles.min}
+            slot="min"
+            type="number"
+            placeholder="SEARCH_META_TILES_MIN"
+          />
+          <SearchMetaInput
+            bind:value={$searchSetingStore.filter.tiles.max}
+            slot="max"
+            type="number"
+            placeholder="SEARCH_META_TILES_MAX"
+          />
         </RangeInputPair>
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_BPM_LABEL">
         <RangeInputPair>
-          <SearchMetaInput slot="min" type="number" placeholder="SEARCH_META_BPM_MIN" />
-          <SearchMetaInput slot="max" type="number" placeholder="SEARCH_META_BPM_MAX" />
+          <SearchMetaInput
+            bind:value={$searchSetingStore.filter.bpm.min}
+            slot="min"
+            type="number"
+            placeholder="SEARCH_META_BPM_MIN"
+          />
+          <SearchMetaInput
+            bind:value={$searchSetingStore.filter.bpm.max}
+            slot="max"
+            type="number"
+            placeholder="SEARCH_META_BPM_MAX"
+          />
         </RangeInputPair>
       </LabeledInputContainer>
     </div>

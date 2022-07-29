@@ -3,7 +3,7 @@
 
   export let placeholder: string | null = null;
 
-  export let value = '';
+  export let value: string | number | null = '';
 
   let inputType = 'text';
 
