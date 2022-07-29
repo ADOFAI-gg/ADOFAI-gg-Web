@@ -77,11 +77,13 @@
   {#key url}
     <div
       bind:clientHeight={contentHeight}
-      class="absolute w-full top-0 left-0"
+      class="absolute w-full top-0 left-0 min-h-screen flex flex-col"
       in:fade={{ duration: 300, easing: quadOut }}
       out:fade={{ duration: 300, easing: quadOut }}
     >
-      <slot />
+      <div class="flex-grow">
+        <slot />
+      </div>
 
       <div class="mt-[64px]" />
 
