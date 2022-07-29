@@ -2,6 +2,7 @@
   import 'tippy.js/dist/tippy.css';
 
   import tippy, { type Placement, type Props } from 'tippy.js';
+  import LoadingSpinner from './LoadingSpinner.svelte';
 
   export let placement: Placement = 'auto';
 
@@ -19,6 +20,8 @@
       }
 
       if (!content || !button) return () => null;
+
+      console.log(content);
 
       const instance = tippy(button, {
         content,
@@ -41,13 +44,16 @@
           instance.hide();
         },
         interactive: true,
-        onShow: () => {
+        ...options,
+        onShow: (i) => {
           show = true;
+          if (options.onShow) options.onShow(i);
         },
-        onHidden: () => {
+        onHidden: (i) => {
           show = false;
-        },
-        ...options
+
+          if (options.onHidden) options.onHidden(i);
+        }
       });
 
       return () => {
