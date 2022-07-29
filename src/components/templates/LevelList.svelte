@@ -14,6 +14,8 @@
   import { fade } from 'svelte/transition';
   import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
   import PageContainer from '../atoms/PageContainer.svelte';
+  import LevelTableView from '../organisms/LevelTableView.svelte';
+  import { onMount } from 'svelte';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -149,6 +151,12 @@
       }, 100) as unknown as number;
     }
   }
+
+  onMount(() => {
+    if (localStorage.viewMode && ['table', 'list'].includes(localStorage.viewMode)) {
+      currentView.set(localStorage.viewMode);
+    }
+  });
 </script>
 
 <div class={$currentView === 'list' ? 'px-4' : 'px-[120px]'}>
@@ -178,7 +186,9 @@
     </VirtualScroll>
   </PageContainer>
 {:else if $currentView === 'table'}
-  <div class="px-[120px] overflow-x-auto table-view-container">wow this is table</div>
+  <div class="px-[120px] overflow-x-auto table-view-container">
+    <LevelTableView levels={$items} total={itemCount} on:more={(e) => addItems(e.detail.offset)} />
+  </div>
 {/if}
 
 <style lang="scss">
