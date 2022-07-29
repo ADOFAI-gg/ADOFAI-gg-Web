@@ -10,7 +10,10 @@
   export let min: number | undefined = undefined;
   export let max: number | undefined = undefined;
 
+  let textValue = '';
+
   const handleInput = (e: any) => {
+    textValue = e.target.value;
     value = inputType.match(/^(number|range)$/) ? +e.target.value : e.target.value;
   };
 
@@ -23,14 +26,13 @@
   <label>
     <div
       class="absolute placeholder flex items-center transition-opacity pointer-events-none h-full w-full px-2 leading-[0] z-[2]"
-      class:opacity-0={!!value}
-      class:opacity-40={!value}
+      class:opacity-0={!!textValue}
+      class:opacity-40={!textValue}
     >
       {placeholderContent || ''}
     </div>
     <input
       type={inputType}
-      {value}
       on:input={handleInput}
       {min}
       {max}

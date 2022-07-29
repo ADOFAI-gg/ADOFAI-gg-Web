@@ -21,8 +21,6 @@
 
       if (!content || !button) return () => null;
 
-      console.log(content);
-
       const instance = tippy(button, {
         content,
         trigger: 'click',
