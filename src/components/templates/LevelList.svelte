@@ -15,7 +15,7 @@
   import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
   import PageContainer from '../atoms/PageContainer.svelte';
   import LevelTableView from '../organisms/LevelTableView.svelte';
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   let query: string = $searchSetingStore.query.title;
 
@@ -92,6 +92,7 @@
 
       switch (settings.sort.order) {
         case 'asc':
+          //youtu.be/2j41-QOAwBI
           res += 'ASC';
           break;
         case 'desc':
@@ -152,10 +153,25 @@
     }
   }
 
+  let mounted = false;
+
+  $: {
+    if (browser && mounted) {
+      localStorage.setItem('viewMode', $currentView);
+    }
+  }
+
   onMount(() => {
     if (localStorage.viewMode && ['table', 'list'].includes(localStorage.viewMode)) {
+      console.log(localStorage.viewMode);
       currentView.set(localStorage.viewMode);
     }
+
+    mounted = true;
+  });
+
+  onDestroy(() => {
+    mounted = false;
   });
 </script>
 

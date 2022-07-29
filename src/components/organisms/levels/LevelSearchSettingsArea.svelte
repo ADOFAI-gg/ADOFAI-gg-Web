@@ -48,12 +48,6 @@
       }
     }
   }
-
-  $: {
-    if (browser) {
-      localStorage.viewMode = $currentView;
-    }
-  }
 </script>
 
 <div>
