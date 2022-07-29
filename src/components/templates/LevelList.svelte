@@ -48,9 +48,9 @@
     const settings = $searchSetingStore;
 
     const result: Record<string, string | number | null> = {
-      queryTitle: settings.query.title,
-      queryArtist: settings.query.artist,
-      queryCreator: settings.query.creator,
+      queryTitle: encodeURIComponent(settings.query.title),
+      queryArtist: encodeURIComponent(settings.query.artist),
+      queryCreator: encodeURIComponent(settings.query.creator),
 
       offset: start,
       amount: '25',
