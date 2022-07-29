@@ -9,7 +9,6 @@
 
 body {
   @apply text-white;
-  overflow-x: hidden;
   letter-spacing: -0.011rem;
 
   &::after {
@@ -36,4 +35,8 @@ body > .simplebar-wrapper {
   background: rgba(255, 255, 255, 0.4);
   width: 10px;
   border-radius: 5px;
+}
+
+.simplebar-scrollbar::before {
+  width: 100%;
 }

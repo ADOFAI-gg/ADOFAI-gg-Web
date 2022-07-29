@@ -9,7 +9,7 @@
   export let total: number;
 </script>
 
-<table class="table-fixed w-[2500px]">
+<table class="table-fixed w-fit">
   <colgroup>
     <col width="56" />
     <col width="40" />

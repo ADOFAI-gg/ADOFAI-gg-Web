@@ -9,5 +9,6 @@ declare namespace App {
   interface Stuff {
     title: string;
     metaTags: object[];
+    hideFooter: boolean;
   }
 }

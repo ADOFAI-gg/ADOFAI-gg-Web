@@ -1,9 +1,16 @@
-<script lang="ts">
-  import PageContainer from '@/components/atoms/PageContainer.svelte';
-
-  import LevelList from '@/components/templates/LevelList.svelte';
+<script context="module" lang="ts">
+  export const load: Load = () => {
+    return {
+      stuff: {
+        hideFooter: true
+      }
+    };
+  };
 </script>
 
-<div class="h-nav mt-[24px]" />
+<script lang="ts">
+  import LevelList from '@/components/templates/LevelList.svelte';
+  import type { Load } from '@sveltejs/kit';
+</script>
 
 <LevelList />

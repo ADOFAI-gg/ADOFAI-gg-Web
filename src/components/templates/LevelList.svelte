@@ -159,44 +159,50 @@
   });
 </script>
 
-<div class={$currentView === 'list' ? 'px-4' : 'px-[120px]'}>
-  <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
-    <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
-    <div class="mt-2 px-[12px]">
-      <LevelSearchSettingsArea />
+<div class="flex flex-col min-h-screen">
+  <div class="h-nav mt-[24px]" />
+
+  <div class={$currentView === 'list' ? 'px-4' : 'table-view-search-area'}>
+    <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
+      <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+      <div class="mt-2 px-[12px]">
+        <LevelSearchSettingsArea />
+      </div>
     </div>
   </div>
+
+  {#if $currentView === 'list'}
+    <PageContainer>
+      <VirtualScroll
+        scrollContainer=".simplebar-content-wrapper"
+        total={itemCount}
+        on:more={(e) => addItems(e.detail.offset)}
+        data={$items}
+        let:item
+      >
+        <div in:fade class="mb-[12px]">
+          <LevelListItem level={item} />
+        </div>
+        <div slot="loading" class="w-full my-4 flex justify-center">
+          <LoadingSpinner size={48} />
+        </div>
+      </VirtualScroll>
+    </PageContainer>
+  {:else if $currentView === 'table'}
+    <div class="px-[120px]">
+      <LevelTableView
+        levels={$items}
+        total={itemCount}
+        on:more={(e) => addItems(e.detail.offset)}
+      />
+    </div>
+  {/if}
 </div>
 
-{#if $currentView === 'list'}
-  <PageContainer>
-    <VirtualScroll
-      scrollContainer=".simplebar-content-wrapper"
-      total={itemCount}
-      on:more={(e) => addItems(e.detail.offset)}
-      data={$items}
-      let:item
-    >
-      <div in:fade class="mb-[12px]">
-        <LevelListItem level={item} />
-      </div>
-      <div slot="loading" class="w-full my-4 flex justify-center">
-        <LoadingSpinner size={48} />
-      </div>
-    </VirtualScroll>
-  </PageContainer>
-{:else if $currentView === 'table'}
-  <div class="px-[120px] overflow-x-auto table-view-container">
-    <LevelTableView levels={$items} total={itemCount} on:more={(e) => addItems(e.detail.offset)} />
-  </div>
-{/if}
-
 <style lang="scss">
-  .table-view-container {
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  .table-view-search-area {
+    width: calc(100vw - 240px);
+    position: sticky;
+    left: 120px;
   }
 </style>
