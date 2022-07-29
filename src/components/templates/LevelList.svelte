@@ -205,7 +205,7 @@
       </VirtualScroll>
     </PageContainer>
   {:else if $currentView === 'table'}
-    <div class="px-[120px]">
+    <div class="table-view-container">
       <LevelTableView
         levels={$items}
         total={itemCount}
@@ -220,5 +220,17 @@
     width: calc(100vw - 240px);
     position: sticky;
     left: 120px;
+    @media screen and (max-width: 768px) {
+      width: calc(100vw - 48px);
+      left: 24px;
+    }
+  }
+  .table-view-container {
+    padding-left: 120px;
+    padding-right: 120px;
+    @media screen and (max-width: 768px) {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
   }
 </style>
