@@ -93,10 +93,10 @@
     </td>
     <td>
       <div class="flex gap-[16px]">
-        <a href={item.download}>
+        <a href={item.download} target="_blank">
           <Icon icon="download" size={16} />
         </a>
-        <a href={item.workshop}>
+        <a href={item.workshop} target="_blank">
           <Icon icon="steam" class={item.workshop ? 'text-white' : 'text-white/40'} size={16} />
         </a>
         <a href="adofaigg://level/{item.id}">
