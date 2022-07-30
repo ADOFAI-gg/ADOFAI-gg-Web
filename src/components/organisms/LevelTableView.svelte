@@ -3,6 +3,7 @@
   import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import DifficultyIcon from '../atoms/DifficultyIcon.svelte';
   import Icon from '../atoms/Icon.svelte';
+  import Translation from '../utils/Translation.svelte';
 
   export let levels: Level[];
 
@@ -25,17 +26,39 @@
   </colgroup>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Lv.</th>
-      <th>Level Name</th>
-      <th>Music Name</th>
-      <th>Artist</th>
-      <th>Creator</th>
-      <th>BPM</th>
-      <th>Tiles</th>
-      <th>Tags</th>
-      <th>EW/NSFW</th>
-      <th>Links</th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_ID" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_DIFFICULTY" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_LEVEL_NAME" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_MUSIC_NAME" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_ARTIST" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_CREATOR" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_BPM" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_TILES" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_TAGS" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_WARNINGS" />
+      </th>
+      <th>
+        <Translation key="SEARCH_TABLE_COL_LINKS" />
+      </th>
     </tr>
   </thead>
   <VirtualizedInfiniteScroll
