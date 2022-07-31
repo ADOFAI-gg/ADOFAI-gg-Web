@@ -5,7 +5,7 @@
   import Translation from '../utils/Translation.svelte';
 </script>
 
-<footer class="bg-black bg-opacity-20">
+<footer class="bg-black bg-opacity-20 w-[100vw] sticky left-0">
   <PageContainer>
     <div class="py-[24px]">
       <div class="text-xl font-bold">
