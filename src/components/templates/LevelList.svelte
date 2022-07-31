@@ -14,7 +14,7 @@
   import { fade } from 'svelte/transition';
   import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
   import PageContainer from '../atoms/PageContainer.svelte';
-  import LevelTableView from '../organisms/LevelTableView.svelte';
+  import LevelTableView from '../organisms/levels/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
 
   let query: string = $searchSetingStore.query.title;

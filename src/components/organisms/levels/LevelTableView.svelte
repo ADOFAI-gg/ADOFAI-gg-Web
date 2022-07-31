@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Level } from '@/types';
   import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
-  import DifficultyIcon from '../atoms/DifficultyIcon.svelte';
-  import Icon from '../atoms/Icon.svelte';
-  import Translation from '../utils/Translation.svelte';
+  import DifficultyIcon from '../../atoms/DifficultyIcon.svelte';
+  import Icon from '../../atoms/Icon.svelte';
+  import Translation from '../../utils/Translation.svelte';
 
   export let levels: Level[];
 
