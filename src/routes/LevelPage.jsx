@@ -68,14 +68,14 @@ const LevelPage = ({ history }) => {
 
   const PSSwal = () => {
     ReactSwal.fire({
-      title: 'Include Photosensitive Sections',
+      title: 'Photosensitive Content Included',
       html: (
         <>
-          This level features sections that include flashing imagery and could
+          This level includes flashing imagery and this might
           trigger photosensitive epilepsy.
           <br />
           <br />
-          To prevent this, play the level in a well-lit room, and don't play
+          To prevent this, play this level in a well-lit room, and don't play
           this level if you're tired.
         </>
       ),
@@ -89,16 +89,16 @@ const LevelPage = ({ history }) => {
 
   const NSFWWarningSwal = () => {
     ReactSwal.fire({
-      title: 'Include NSFW Content',
+      title: 'NSFW Content Included',
       html: (
         <>
-          This level include{' '}
-          <strong>NSFW(sensational or bloody) Content</strong>.
+          This level includes{' '}
+          <strong>NSFW (sexual or gore) content</strong>.
           <br />
           <br />
-          If you don't want to see a level with NSFW content,
+          If you don't want to see NSFW content included in this level,
           <br />
-          please <strong>press Cancel and do NOT play this level</strong>.
+          please <strong>press Cancel, and do NOT play this level</strong>.
         </>
       ),
       icon: 'warning',
