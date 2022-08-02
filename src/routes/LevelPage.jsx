@@ -92,7 +92,7 @@ const LevelPage = ({ history }) => {
       title: 'NSFW Content Included',
       html: (
         <>
-          This level includes {' '}
+          This level includes{' '}
           <strong>NSFW (sexual or gore) content</strong>.
           <br />
           <br />
