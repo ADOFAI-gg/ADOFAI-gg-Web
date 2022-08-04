@@ -105,12 +105,14 @@
     <td class="col-border">
       <div class="flex gap-[24px]">
         <div
-          class="w-[16px] h-[16px] rounded-full {item.epilepsyWarning ? 'bg-red' : 'bg-white'}"
+          class="w-[16px] h-[16px] rounded-full {item.epilepsyWarning
+            ? 'bg-red'
+            : 'border-white/40 border-[2px]'}"
         />
         <div
           class="w-[16px] h-[16px] rounded-full {item.tags.find((x) => x.id === 4)
             ? 'bg-red'
-            : 'bg-white'}"
+            : 'border-white/40 border-[2px]'}"
         />
       </div>
     </td>
