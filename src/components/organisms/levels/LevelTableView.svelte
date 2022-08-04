@@ -120,7 +120,7 @@
           <Icon icon="download" size={16} />
         </a>
         <a href={item.workshop} target="_blank">
-          <Icon icon="steam" class={item.workshop ? 'text-white' : 'text-white/40'} size={16} />
+          <Icon icon="steam" class={item.workshop ? 'text-white' : 'text-white/20'} size={16} />
         </a>
         <a href="adofaigg://level/{item.id}">
           <Icon icon="playFilled" size={16} />
