@@ -17,7 +17,7 @@
     <col width="56" />
     <col width="40" />
     <col width="450" />
-    <col width="450" />
+    <!-- <col width="450" /> -->
     <col width="250" />
     <col width="250" />
     <col width="144" />
@@ -37,9 +37,9 @@
       <th>
         <Translation key="SEARCH_TABLE_COL_LEVEL_NAME" />
       </th>
-      <th>
+      <!-- <th>
         <Translation key="SEARCH_TABLE_COL_MUSIC_NAME" />
-      </th>
+      </th> -->
       <th>
         <Translation key="SEARCH_TABLE_COL_ARTIST" />
       </th>
@@ -80,7 +80,7 @@
     <td class="col-border">
       <a href="/levels/{item.id}">{item.title}</a>
     </td>
-    <td class="col-border">{item.music.name}</td>
+    <!-- <td class="col-border">{item.music.name}</td> -->
     <td class="col-border">{item.music.artists.map((x) => x.name).join(' & ')}</td>
     <td class="col-border">{item.creators.map((x) => x.name).join(' & ')}</td>
     <td class="col-border">
