@@ -8,6 +8,8 @@
   export let levels: Level[];
 
   export let total: number;
+
+  let swWidth = 0;
 </script>
 
 <table class="table-fixed w-fit">
@@ -21,7 +23,7 @@
     <col width="144" />
     <col width="120" />
     <col width="154" />
-    <col width="92" />
+    <col style="min-width: {swWidth + 12}px" />
     <col width="92" />
   </colgroup>
   <thead>
@@ -53,8 +55,10 @@
       <th>
         <Translation key="SEARCH_TABLE_COL_TAGS" />
       </th>
-      <th>
-        <Translation key="SEARCH_TABLE_COL_WARNINGS" />
+      <th class="relative">
+        <div bind:clientWidth={swWidth} class="absolute w-fit left-0 top-0">
+          <Translation key="SEARCH_TABLE_COL_WARNINGS" />
+        </div>
       </th>
       <th>
         <Translation key="SEARCH_TABLE_COL_LINKS" />
@@ -137,7 +141,7 @@
     th {
       text-align: left;
 
-      @apply font-regular text-white/60 text-md pb-[8px];
+      @apply font-regular text-white/60 text-md pb-[8px] whitespace-nowrap;
     }
 
     :global(tbody) {
