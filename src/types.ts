@@ -11,6 +11,13 @@ export interface PlayLog {
   xAccuracy: number;
 }
 
+export interface Ranking {
+  id: number;
+  name: string;
+  totalPp: number;
+  bestPlay: PlayLog;
+}
+
 export interface PartialMember {
   id: number;
   name: string;

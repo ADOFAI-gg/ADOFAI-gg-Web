@@ -23,7 +23,7 @@
     <col width="144" />
     <col width="120" />
     <col width="154" />
-    <col style="min-width: {swWidth + 12}px" />
+    <col style="min-width: {swWidth + 24}px" />
     <col width="92" />
   </colgroup>
   <thead>
