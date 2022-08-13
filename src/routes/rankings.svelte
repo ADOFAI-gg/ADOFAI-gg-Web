@@ -54,7 +54,7 @@
   });
 
   $: onMore = (e: CustomEvent<{ offset: number }>) => {
-    loadMore(e.detail.offset + 3);
+    loadMore(e.detail.offset ? e.detail.offset + 3 : 0);
   };
 
   $: topItems = $items.slice(0, 3);
