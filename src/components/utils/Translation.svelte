@@ -8,6 +8,8 @@
 
   export let key: string;
 
+  export let params: Record<string, string> = {};
+
   let componentsContainer: HTMLDivElement;
 
   $: components = (() => {
@@ -67,6 +69,13 @@
       result.push({ type: 'text', value: k });
     } else {
       result.push({ type: 'text', value: k.slice(lastIndex + lastLength) });
+    }
+    for (const chunk of result) {
+      if (chunk.type === 'text') {
+        for (const key in params) {
+          chunk.value = chunk.value.split(`{${key}}`).join(params[key]);
+        }
+      }
     }
     return result;
   })();

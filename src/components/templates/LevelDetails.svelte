@@ -9,6 +9,9 @@
 
   export let level: Level;
 
+  // eslint-disable-next-line no-undef
+  let player: YT.Player | null = null;
+
   $: videoId = getYoutubeVideoId(level.video);
 </script>
 
@@ -22,9 +25,9 @@
 
 <PageContainer>
   <div class="flex gap-[24px] flex-col md:flex-row">
-    <Video {videoId} />
+    <Video {videoId} bind:player />
     <div class="md:min-w-[360px]">
-      <LevelMetaArea {level} />
+      <LevelMetaArea video={player} {level} />
     </div>
   </div>
 
