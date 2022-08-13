@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adofai-gg/svelte-virtualized-infinite-scroll@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@adofai-gg/svelte-virtualized-infinite-scroll/-/svelte-virtualized-infinite-scroll-1.0.10.tgz#5979d37fe623529837f80e47c70ef80ddfeb6bec"
-  integrity sha512-v/3ZEiMUZBfy/FkeSufgxo1YqiQDn45Fl6hvdVsUbmnESIKRX4ulqRNdyzLaGdFefC7T/9wXRLhCxbVRWvEQ1w==
+"@adofai-gg/svelte-virtualized-infinite-scroll@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@adofai-gg/svelte-virtualized-infinite-scroll/-/svelte-virtualized-infinite-scroll-1.0.12.tgz#8cb475d5a454af929ab532fd62872190573d097d"
+  integrity sha512-yk09IqT2aBxU90avBDVI5qUVsenQhUNJMjznp9B8nuXZT+GwrwQq/Jhq33U8K8nSPKNCQKD3RJlsR/zAHfel9g==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
@@ -694,6 +694,11 @@
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz#d3357479a0fdfdd5907fe67e17e0a85c906e1301"
   integrity sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==
+
+"@types/nprogress@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/nprogress/-/nprogress-0.2.0.tgz#86c593682d4199212a0509cc3c4d562bbbd6e45f"
+  integrity sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -3204,6 +3209,11 @@ npmlog@^5.0.1:
     console-control-strings "^1.1.0"
     gauge "^3.0.0"
     set-blocking "^2.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 oauth-sign@~0.9.0:
   version "0.9.0"

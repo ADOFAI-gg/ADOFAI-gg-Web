@@ -22,6 +22,7 @@
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@types/fs-extra": "^9.0.13",
+    "@types/nprogress": "^0.2.0",
     "@types/unzipper": "^0.10.5",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
@@ -54,11 +55,12 @@
   },
   "type": "module",
   "dependencies": {
-    "@adofai-gg/svelte-virtualized-infinite-scroll": "^1.0.10",
+    "@adofai-gg/svelte-virtualized-infinite-scroll": "^1.0.12",
     "@sentry/browser": "^7.5.0",
     "@sentry/integrations": "^7.7.0",
     "@sveltejs/adapter-node": "^1.0.0-next.73",
     "clsx": "^1.1.1",
+    "nprogress": "^0.2.0",
     "simplebar": "^5.3.8",
     "svelte-icons": "^2.1.0",
     "tippy.js": "^6.3.7"
