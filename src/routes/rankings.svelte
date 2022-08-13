@@ -1,5 +1,13 @@
 <script context="module" lang="ts">
   export type RankingResult = Ranking & { rank: number };
+
+  export const load: Load = async () => {
+    return {
+      stuff: {
+        title: 'Ranking - ADOFAI.gg'
+      }
+    };
+  };
 </script>
 
 <script lang="ts">
@@ -12,8 +20,9 @@
   import RankingTopItem from '@/components/organisms/rankings/RankingTopItem.svelte';
   import type { ListResponse, Ranking } from '@/types';
   import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll/dist/ts/VirtualizedInfiniteScroll.svelte';
+  import type { Load } from '@sveltejs/kit';
   import { onMount } from 'svelte';
-  import { writable, type Writable } from 'svelte/store';
+  import { writable } from 'svelte/store';
 
   let items = writable<RankingResult[]>([]);
 
