@@ -40,9 +40,9 @@
   $: addItems = async (start = 0) => {
     if (loading) return;
     loading = true;
-    const { data } = await api.get<ListResponse<Level>>('/api/v1/levels', {
-      params: params(start)
-    });
+    const { data } = await api.get<ListResponse<Level>>(
+      '/api/v1/levels?' + new URLSearchParams(params(start) as Record<string, string>).toString()
+    );
     if (start === 0) items.set(data.results);
     else items.update((x) => [...x, ...data.results]);
     itemCount = data.count;
@@ -53,25 +53,27 @@
     const settings = $searchSetingStore;
 
     const result: Record<string, string | number | null> = {
-      queryTitle: encodeURIComponent(settings.query.title),
-      queryArtist: encodeURIComponent(settings.query.artist),
-      queryCreator: encodeURIComponent(settings.query.creator),
+      queryTitle: settings.query.title,
+      queryArtist: settings.query.artist,
+      queryCreator: settings.query.creator,
 
       offset: start,
       amount: '25',
 
-      minDifficulty: settings.filter.difficulty.min,
-      maxDifficulty: settings.filter.difficulty.max,
-
-      minBpm: settings.filter.bpm.min,
-      maxBpm: settings.filter.bpm.max,
-
-      minTiles: settings.filter.tiles.min,
-      maxTiles: settings.filter.tiles.max,
-
       includeTags: settings.filter.tags.include.join(','),
       excludeTags: settings.filter.tags.exclude.join(',')
     };
+
+    if (settings.filter.bpm.min !== null) result.minBpm = settings.filter.bpm.min;
+    if (settings.filter.bpm.max !== null) result.maxBpm = settings.filter.bpm.max;
+
+    if (settings.filter.difficulty.min !== null)
+      result.minDifficulty = settings.filter.difficulty.min;
+    if (settings.filter.difficulty.max !== null)
+      result.maxDifficulty = settings.filter.difficulty.max;
+
+    if (settings.filter.tiles.min !== null) result.minTiles = settings.filter.tiles.min;
+    if (settings.filter.tiles.max !== null) result.maxTiles = settings.filter.tiles.max;
 
     if (settings.sort.order !== 'shuffle') {
       let res: string;
