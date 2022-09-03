@@ -198,7 +198,7 @@
         data={$items}
         let:item
       >
-        <div in:fade class="mb-[12px]">
+        <div in:fade>
           <LevelListItem level={item} />
         </div>
         <div slot="loading" class="w-full my-4 flex justify-center">
