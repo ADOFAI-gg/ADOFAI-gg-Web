@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { api } from '@/api';
 
   import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';

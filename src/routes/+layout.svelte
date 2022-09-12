@@ -1,7 +1,4 @@
 <script context="module" lang="ts">
-  import type { Load } from '@sveltejs/kit';
-  export const load: Load = async ({ url }) => ({ props: { url: url.href } });
-
   const loaded = writable<boolean>(false);
 
   const defaultMeta = [
@@ -49,10 +46,10 @@
 </script>
 
 <svelte:head>
-  <title>{$page.stuff.title || 'ADOFAI.gg'}</title>
+  <title>{$page.data.meta?.title || 'ADOFAI.gg'}</title>
   <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png" />
   <meta name="theme-color" content="#ffffff" />
-  {#each $page.stuff.metaTags ?? defaultMeta as meta}
+  {#each $page.data.meta?.metaTags ?? defaultMeta as meta}
     <meta {...meta} />
   {/each}
 </svelte:head>
@@ -87,7 +84,7 @@
         <slot />
       </div>
 
-      {#if !$page.stuff.hideFooter}
+      {#if !$page.data.meta?.hideFooter}
         <div class="mt-[64px]" />
 
         <Footer />

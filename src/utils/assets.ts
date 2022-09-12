@@ -1,4 +1,4 @@
-import { dev } from '$app/env';
+import { dev } from '$app/environment';
 import axios from 'axios';
 
 const asset = (path: string) =>

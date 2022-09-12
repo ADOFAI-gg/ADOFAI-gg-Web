@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser, dev } from '$app/env';
+  import { browser, dev } from '$app/environment';
   import { fly } from 'svelte/transition';
   import Icon from '../atoms/Icon.svelte';
   import Translation from './Translation.svelte';

@@ -7,7 +7,7 @@
   } from '../organisms/levels/LevelSearchSettingsArea.svelte';
   import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
   import LevelListItem from '../organisms/levels/LevelListItem.svelte';

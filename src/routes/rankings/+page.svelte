@@ -1,17 +1,5 @@
-<script context="module" lang="ts">
-  export type RankingResult = Ranking & { rank: number };
-
-  export const load: Load = async () => {
-    return {
-      stuff: {
-        title: 'Ranking - ADOFAI.gg'
-      }
-    };
-  };
-</script>
-
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { api } from '@/api';
 
   import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
@@ -24,6 +12,7 @@
   import type { Load } from '@sveltejs/kit';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
+  import type { RankingResult } from './+page';
 
   let items = writable<RankingResult[]>([]);
 

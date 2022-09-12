@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
 
   import { Asset } from '@/utils/assets';
   import axios from 'axios';
