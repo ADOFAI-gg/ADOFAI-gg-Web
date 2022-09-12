@@ -52,7 +52,7 @@
     "tslib": "^2.3.1",
     "typescript": "~4.6.2",
     "unzipper": "^0.10.11",
-    "vite": "^3.0.0",
+    "vite": "^3.1.0-beta.2",
     "vite-plugin-glob": "^0.2.7"
   },
   "type": "module",
@@ -60,7 +60,7 @@
     "@adofai-gg/svelte-virtualized-infinite-scroll": "^1.0.12",
     "@sentry/browser": "^7.5.0",
     "@sentry/integrations": "^7.7.0",
-    "@sveltejs/adapter-node": "^1.0.0-next.73",
+    "@sveltejs/adapter-node": "^1.0.0-next.89",
     "clsx": "^1.1.1",
     "nprogress": "^0.2.0",
     "simplebar": "^5.3.8",
