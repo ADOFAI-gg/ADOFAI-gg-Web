@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from '@/components/atoms/Icon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
   import type { Ranking } from '@/types';
 
   export let item: Ranking & { rank: number };
@@ -28,7 +29,9 @@
           class="flex items-center gap-[6px] opacity-80 hover:opacity-100 transition-opacity"
         >
           <Icon icon="playOutlined" size={16} />
-          <div>Highest Play</div>
+          <div>
+            <Translation key="RANKING_HIGHEST_PLAY" />
+          </div>
         </a>
       </div>
     </div>
