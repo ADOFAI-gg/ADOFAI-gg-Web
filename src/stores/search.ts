@@ -60,7 +60,7 @@ export const defaultSearchSettings: SearchSettings = {
     }
   },
   sort: {
-    order: 'asc',
+    order: 'desc',
     type: 'created'
   }
 };
