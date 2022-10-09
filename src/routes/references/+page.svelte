@@ -25,5 +25,8 @@
     <TabItem icon="question" title="DIFFICULTY_INDICATION" value={ReferenceTab.Indication} />
   </TabGroup>
 
-  {$currentTab}
+  <div class="mt-[16px]">
+    <!-- Content -->
+    {$currentTab}
+  </div>
 </PageContainer>
