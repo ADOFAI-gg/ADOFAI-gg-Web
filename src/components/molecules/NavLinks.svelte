@@ -7,7 +7,12 @@
   <NavLink to="/levels">
     <Translation key="NAV_LEVELS" />
   </NavLink>
+
   <NavLink to="/rankings">
     <Translation key="NAV_RANKINGS" />
+  </NavLink>
+
+  <NavLink to="/references">
+    <Translation key="NAV_REFERENCES" />
   </NavLink>
 </div>
