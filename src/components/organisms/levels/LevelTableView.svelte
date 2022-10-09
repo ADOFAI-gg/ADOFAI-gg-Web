@@ -156,6 +156,14 @@
           @apply text-ellipsis whitespace-nowrap overflow-hidden;
         }
 
+        :global(a) {
+          @apply transition-all;
+
+          &:hover {
+            @apply underline;
+          }
+        }
+
         :global(td.col-border) {
           @apply border-l border-white/20 px-[12px];
         }
