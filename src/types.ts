@@ -69,3 +69,37 @@ export interface ListResponse<T> {
   results: T[];
   count: number;
 }
+
+export interface DifficultyReference {
+  difficulty: number;
+  ppRating: number;
+  levels: (DifficultyReferenceLevel | null)[];
+}
+
+export type DifficultyReferenceLevel =
+  | DifficultyReferenceLevelForum
+  | DifficultyReferenceLevelOfficial;
+
+export interface DifficultyReferenceLevelForum {
+  levelId: number;
+  name: string;
+  url: null;
+}
+
+export interface DifficultyReferenceLevelOfficial {
+  levelId: null;
+  name: string;
+  url: string;
+}
+
+export interface RawDifficultyReference {
+  difficulty: number;
+  easiestLevel: boolean;
+  position: number;
+  level: DifficultyReferenceLevel;
+}
+
+export interface RawPPRatings {
+  difficulty: number;
+  rating: number;
+}
