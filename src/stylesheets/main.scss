@@ -37,6 +37,10 @@ body > .simplebar-wrapper {
   border-radius: 5px;
 }
 
+.simplebar-track {
+  pointer-events: all;
+}
+
 .simplebar-vertical .simplebar-scrollbar::before {
   width: 10px;
 }
