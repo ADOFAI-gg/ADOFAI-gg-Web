@@ -12,7 +12,7 @@
   let swWidth = 0;
 </script>
 
-<table class="table-fixed w-fit">
+<table class="table-fixed" style="width: {1582 + swWidth + 24}px;">
   <colgroup>
     <col width="56" />
     <col width="40" />
