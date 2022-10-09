@@ -22,7 +22,7 @@
   <tbody>
     <tr>
       <td>
-        <DifficultyIcon difficulty={1} size={28} />
+        <DifficultyIcon difficulty={-999} size={28} />
       </td>
       <td class="col-border">
         <Translation key="REFERENCE_INDICATION_RATED" />
