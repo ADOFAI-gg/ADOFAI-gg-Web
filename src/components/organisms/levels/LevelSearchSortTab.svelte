@@ -65,7 +65,7 @@
             on:click={updateType('difficulty')}
           />
           <SortOrderRadio
-            icon="favorite"
+            icon="heart"
             key="SORT_LIKES"
             checked={$searchSetingStore.sort.type === 'likes'}
             on:click={updateType('likes')}

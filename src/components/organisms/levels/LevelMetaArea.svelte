@@ -97,7 +97,7 @@
     {#if import.meta.env.VITE_USE_ACCOUNT}
       <Button type="levelAction">
         <div class="flex gap-[6px] items-center">
-          <Icon class="text-red" icon="favorite" size={20} />
+          <Icon class="text-red" icon="heart" size={20} />
           <div class="font-regular text-lg">1.4K</div>
         </div>
       </Button>
