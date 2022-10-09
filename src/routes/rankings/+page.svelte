@@ -55,7 +55,7 @@
 
 <PageContainer>
   <div class="mt-[24px]">
-    <MainSectionTitle title="RANKINGS_TITLE" />
+    <MainSectionTitle title="RANKING_TITLE" />
   </div>
   {#if browser}
     <div class="md:grid flex flex-col mb-[16px] md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
