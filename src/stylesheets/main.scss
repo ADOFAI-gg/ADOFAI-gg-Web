@@ -34,10 +34,13 @@ body > .simplebar-wrapper {
 
 .simplebar-scrollbar::before {
   background: rgba(255, 255, 255, 0.4);
-  width: 10px;
   border-radius: 5px;
 }
 
-.simplebar-scrollbar::before {
-  width: 100%;
+.simplebar-vertical .simplebar-scrollbar::before {
+  width: 10px;
+}
+
+.simplebar-horizontal .simplebar-scrollbar::before {
+  height: 10px;
 }
