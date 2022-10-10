@@ -38,7 +38,11 @@
 <style lang="scss">
   .exclude {
     @apply opacity-100;
-    filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%);
+    /* filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%); */
+    color: #d65a46;
+  }
+  .exclude-color {
+    color: #d65a46;
   }
   .include {
     @apply opacity-100;
