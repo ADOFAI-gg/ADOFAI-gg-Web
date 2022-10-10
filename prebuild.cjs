@@ -20,7 +20,7 @@ console.log('Downloading assets...');
 
 const writer = fs.createWriteStream(zip);
 
-return Axios({
+Axios({
   method: 'get',
   url: 'https://github.com/ADOFAI-gg/Adofai-gg-assets/archive/refs/heads/main.zip',
   responseType: 'stream'
@@ -46,5 +46,13 @@ return Axios({
     await directory.extract({
       path: cacheDir
     });
+
+    const assetDir = path.join(cacheDir, 'Adofai-gg-assets-main');
+
+    const deleteAsset = (name) => rimraf.sync(path.join(assetDir, name));
+
+    deleteAsset('scripts');
+    deleteAsset('README.md');
+
     require('fs-extra').move(path.join(cacheDir, 'Adofai-gg-assets-main'), assetsDir);
   });
