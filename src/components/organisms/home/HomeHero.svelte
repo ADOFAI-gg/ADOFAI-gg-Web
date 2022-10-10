@@ -2,14 +2,21 @@
   import HomeLogo from '../../molecules/HomeLogo.svelte';
   import SearchInput from '../../molecules/SearchInput.svelte';
   import { goto } from '$app/navigation';
+  import { searchSetingStore } from '@/stores/search';
 
   let searchQuery: string;
 
   const onSubmitSearch = (e: Event) => {
     e.preventDefault();
-    const params = new URLSearchParams();
-    params.append('query', searchQuery);
-    goto(`/levels?${params}`);
+    searchSetingStore.update((v) => ({
+      ...v,
+      query: {
+        ...v.query,
+        full: true,
+        title: searchQuery
+      }
+    }));
+    goto('/levels');
   };
 </script>
 

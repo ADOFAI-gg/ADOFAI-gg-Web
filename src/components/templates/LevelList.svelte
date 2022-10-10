@@ -17,18 +17,6 @@
   import LevelTableView from '../organisms/levels/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
 
-  let query: string = $searchSetingStore.query.title;
-
-  $: {
-    searchSetingStore.update((x) => ({
-      ...x,
-      query: {
-        ...x.query,
-        title: query
-      }
-    }));
-  }
-
   let items: Writable<Level[]> = writable([]);
 
   let itemCount = 0;
@@ -53,9 +41,10 @@
     const settings = $searchSetingStore;
 
     const result: Record<string, string | number | null> = {
-      queryTitle: settings.query.title,
-      queryArtist: settings.query.artist,
-      queryCreator: settings.query.creator,
+      queryTitle: settings.query.full ? null : settings.query.title || null,
+      queryArtist: settings.query.artist || null,
+      queryCreator: settings.query.creator || null,
+      query: settings.query.full ? settings.query.title || null : null,
 
       offset: start,
       amount: '25',
@@ -131,7 +120,7 @@
       }
     }
 
-    return result;
+    return Object.fromEntries(Object.entries(result).filter(([, v]) => v !== null));
   };
 
   $: reset = async () => {
@@ -139,21 +128,18 @@
     await addItems(0);
   };
 
-  let lastSettings = $searchSetingStore;
-
   let timeout: number | null = null;
 
-  $: {
-    if (browser && lastSettings !== $searchSetingStore) {
+  searchSetingStore.subscribe((v) => {
+    if (browser) {
       if (timeout) {
         clearTimeout(timeout);
       }
-      lastSettings = $searchSetingStore;
       timeout = setTimeout(() => {
         reset();
       }, 100) as unknown as number;
     }
-  }
+  });
 
   let mounted = false;
 
@@ -165,7 +151,6 @@
 
   onMount(() => {
     if (localStorage.viewMode && ['table', 'list'].includes(localStorage.viewMode)) {
-      console.log(localStorage.viewMode);
       currentView.set(localStorage.viewMode);
     }
 
@@ -182,7 +167,12 @@
 
   <div class={$currentView === 'list' ? 'px-4' : 'table-view-search-area'}>
     <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
-      <SearchInput placeholder="SEARCH_INPUT_PLACEHOLDER_LEVELS" bind:value={query} />
+      <SearchInput
+        placeholder={$searchSetingStore.query.full
+          ? 'SEARCH_INPUT_PLACEHOLDER_HOME'
+          : 'SEARCH_INPUT_PLACEHOLDER_LEVELS'}
+        bind:value={$searchSetingStore.query.title}
+      />
       <div class="mt-2 px-[12px]">
         <LevelSearchSettingsArea />
       </div>

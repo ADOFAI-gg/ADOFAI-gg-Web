@@ -5,10 +5,6 @@
   import SearchGroup from '@/components/molecules/levels/SearchGroup.svelte';
   import { searchSetingStore } from '@/stores/search';
   import DifficultyRangeSelector from './DifficultyRangeSelector.svelte';
-
-  $: artist = $searchSetingStore.query.artist;
-
-  $: creator = $searchSetingStore.query.creator;
 </script>
 
 <div class="grid md:grid-cols-2 gap-[12px]">

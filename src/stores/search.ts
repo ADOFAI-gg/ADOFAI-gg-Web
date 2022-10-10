@@ -22,7 +22,7 @@ type Filters = {
 
 export type SearchSettings = {
   query: {
-    full?: string;
+    full?: boolean;
     artist: string;
     creator: string;
     title: string;

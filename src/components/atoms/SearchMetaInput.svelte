@@ -10,14 +10,9 @@
   export let min: number | undefined = undefined;
   export let max: number | undefined = undefined;
 
-  let textValue = '';
-
-  const handleInput = (e: any) => {
-    textValue = e.target.value;
-    value = inputType.match(/^(number|range)$/) ? +e.target.value : e.target.value;
-  };
-
   $: placeholderContent = $i18nReady ? translate(placeholder || '', $currentLang) : null;
+
+  $: textValue = `${value ?? ''}`;
 
   export { inputType as type };
 </script>
@@ -31,13 +26,24 @@
     >
       {placeholderContent || ''}
     </div>
-    <input
-      type={inputType}
-      on:input={handleInput}
-      {min}
-      {max}
-      class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
-      aria-label={placeholderContent}
-    />
+    {#if inputType === 'number'}
+      <input
+        type="number"
+        bind:value
+        {min}
+        {max}
+        class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
+        aria-label={placeholderContent}
+      />
+    {:else if inputType === 'text'}
+      <input
+        type="text"
+        bind:value
+        {min}
+        {max}
+        class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
+        aria-label={placeholderContent}
+      />
+    {/if}
   </label>
 </div>
