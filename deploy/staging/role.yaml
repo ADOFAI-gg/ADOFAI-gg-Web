@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: deploy-role
+  namespace: adofai-gg
+rules:
+  - apiGroups:
+      - 'apps'
+      - 'extensions'
+    verbs:
+      - 'patch'
+      - 'get'
+    resources:
+      - 'deployments'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: deploy-rolebinding
+  namespace: adofai-gg
+subjects:
+  - kind: ServiceAccount
+    name: sa-adofaigg-deploy
+    namespace: adofai-gg
+roleRef:
+  kind: Role
+  name: deploy-role
+  apiGroup: rbac.authorization.k8s.io

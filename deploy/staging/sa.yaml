@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-adofaigg-deploy
+  namespace: adofai-gg
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: deploy-sa-secret
+  namespace: adofai-gg
+  annotations:
+    kubernetes.io/service-account.name: sa-adofaigg-deploy
+type: kubernetes.io/service-account-token
