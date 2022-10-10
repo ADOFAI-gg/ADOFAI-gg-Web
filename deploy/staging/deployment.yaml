@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: adofai-gg
+  name: frontend-staging
+  labels:
+    app: frontend-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-staging
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: frontend-staging
+    spec:
+      containers:
+        - name: frontend-staging
+          image: ghcr.io/adofai-gg/frontend:staging
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: '1Gi'
+              cpu: '500m'
+      imagePullSecrets:
+        - name: registry-credentials
