@@ -25,9 +25,9 @@
         {#if !hideSelectedIcon}
           <div class="selected-icon">
             {#if include}
-              <Icon class="" disableFade icon="plusFilled" size={12} />
+              <Icon class="" disableFade icon="plusFilled" size={10} />
             {:else if exclude}
-              <Icon class="" disableFade icon="minusFilled" size={12} />
+              <Icon class="" disableFade icon="minusFilled" size={10} />
             {/if}
           </div>
         {/if}
@@ -54,9 +54,9 @@
       {#if !hideSelectedIcon}
         <div class="selected-icon">
           {#if include}
-            <Icon class="" disableFade icon="plusFilled" size={12} />
+            <Icon class="" disableFade icon="plusFilled" size={10} />
           {:else if exclude}
-            <Icon class="" disableFade icon="minusFilled" size={12} />
+            <Icon class="" disableFade icon="minusFilled" size={10} />
           {/if}
         </div>
       {/if}
@@ -89,8 +89,8 @@
 
     .selected-icon {
       position: absolute;
-      right: -4px;
-      bottom: -4px;
+      right: -2px;
+      bottom: -2px;
     }
   }
 </style>
