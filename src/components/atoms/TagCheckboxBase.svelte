@@ -1,9 +1,12 @@
 <script lang="ts">
+  import Icon from './Icon.svelte';
   import Tooltip from './Tooltip.svelte';
 
   export let include = false;
   export let exclude = false;
   export let tooltip = true;
+
+  export let hideSelectedIcon = false;
 </script>
 
 {#if tooltip}
@@ -15,7 +18,21 @@
       class:include
       on:click
     >
-      <slot name="icon" />
+      <div class="icon-container">
+        <div class="icon" class:disable-select-icon={hideSelectedIcon}>
+          <slot name="icon" />
+        </div>
+        {#if !hideSelectedIcon}
+          <div class="selected-icon">
+            {#if include}
+              <Icon class="" disableFade icon="plusFilled" size={12} />
+            {:else if exclude}
+              <Icon class="" disableFade icon="minusFilled" size={12} />
+            {/if}
+          </div>
+        {/if}
+      </div>
+
       <div><slot name="name" /></div>
     </div>
     <div class="p-4">
@@ -30,7 +47,20 @@
     class:include
     on:click
   >
-    <slot name="icon" />
+    <div class="icon-container">
+      <div class="icon" class:disable-select-icon={hideSelectedIcon}>
+        <slot name="icon" />
+      </div>
+      {#if !hideSelectedIcon}
+        <div class="selected-icon">
+          {#if include}
+            <Icon class="" disableFade icon="plusFilled" size={12} />
+          {:else if exclude}
+            <Icon class="" disableFade icon="minusFilled" size={12} />
+          {/if}
+        </div>
+      {/if}
+    </div>
     <div><slot name="name" /></div>
   </div>
 {/if}
@@ -44,5 +74,23 @@
   }
   .include {
     @apply opacity-100;
+  }
+
+  .include,
+  .exclude {
+    .icon:not(.disable-select-icon) {
+      clip-path: path(
+        'M21.6264 13.8529C21.8701 12.9431 22 11.9867 22 11C22 4.92487 17.0751 0 11 0C4.92487 0 0 4.92487 0 11C0 17.0751 4.92487 22 11 22C11.9867 22 12.9431 21.8701 13.8529 21.6264C12.9361 20.6438 12.375 19.3249 12.375 17.875C12.375 14.8374 14.8374 12.375 17.875 12.375C19.3249 12.375 20.6438 12.9361 21.6264 13.8529Z'
+      );
+    }
+    .icon-container {
+      position: relative;
+    }
+
+    .selected-icon {
+      position: absolute;
+      right: -4px;
+      bottom: -4px;
+    }
   }
 </style>
