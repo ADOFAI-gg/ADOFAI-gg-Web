@@ -31,6 +31,8 @@
 
   let container: HTMLDivElement;
 
+  export let disableFade = false;
+
   $: promise = load(icon);
 
   $: {
@@ -53,7 +55,8 @@
   <div
     bind:this={container}
     style="width: {size}px; height: {size}px;"
-    class="{className} animate-fade-in"
+    class={className}
+    class:animate-fade-in={!disableFade}
   >
     {@html data}
   </div>
