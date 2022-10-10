@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: frontend-staging
+  revisionHistoryLimit: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
