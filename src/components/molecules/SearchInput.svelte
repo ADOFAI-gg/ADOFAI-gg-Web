@@ -14,6 +14,7 @@
   class="w-full rounded-full bg-white bg-opacity-20 h-[34px] flex items-center px-[13px] gap-[9px]"
 >
   <Icon icon="search" size={16} />
+
   <div class="flex-grow w-0 h-full relative">
     <input
       bind:value

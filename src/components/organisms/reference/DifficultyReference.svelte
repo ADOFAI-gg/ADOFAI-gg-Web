@@ -50,6 +50,12 @@
   };
 
   const loadPromise = loadData();
+
+  const onCopy = (e: ClipboardEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText((<HTMLElement>e.target).innerText);
+  };
 </script>
 
 {#await loadPromise}
@@ -89,17 +95,21 @@
     <tbody>
       {#each data as reference}
         <tr>
-          <td>
+          <td tabindex="0" on:copy={onCopy}>
             <DifficultyIcon difficulty={reference.difficulty} size={28} />
           </td>
 
-          <td class="col-border font-mono tracking-[-.1em] font-light">
+          <td
+            tabindex="0"
+            on:copy={onCopy}
+            class="col-border font-mono tracking-[-.1em] font-light"
+          >
             {reference.ppRating}
           </td>
 
           {#each reference.levels as level}
             {#if level}
-              <td class="col-border">
+              <td tabindex="0" on:copy={onCopy} class="col-border">
                 <div class="flex items-center gap-[12px]">
                   {#if level.levelId}
                     <div class="font-mono tracking-[-.1em] font-light opacity-40">

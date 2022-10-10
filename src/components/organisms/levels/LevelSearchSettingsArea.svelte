@@ -56,12 +56,15 @@
       <SearchTabItem value="tags" icon="tag">
         <Translation key="SEARCH_TAB_TAGS" />
       </SearchTabItem>
+
       <SearchTabItem value="meta" icon="filter">
         <Translation key="SEARCH_TAB_META" />
       </SearchTabItem>
+
       <SearchTabItem value="sort" icon="sort">
         <Translation key="SEARCH_TAB_SORT" />
       </SearchTabItem>
+
       <div class="flex gap-[12px] flex-row-reverse md:flex-row flex-grow">
         <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} />
@@ -69,6 +72,7 @@
             <Translation key="SEARCH_SETTINGS_RESET" />
           </span>
         </Button>
+
         {#if $currentTab === 'tags'}
           <div transition:fade={{ duration: 200 }} class="flex-grow text-md">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
@@ -76,6 +80,7 @@
         {/if}
       </div>
     </SearchTabs>
+
     <SearchTabs value={currentView} label="View">
       <SearchTabItem value="list" icon="list">
         <Translation key="SEARCH_VIEW_LIST" />

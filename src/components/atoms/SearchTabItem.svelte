@@ -30,8 +30,12 @@
 {#if currentValue}
   <div
     class="px-[8px] bg-white py-[6px] rounded-[5px] cursor-pointer text-md h-[23px] leading-[10px] transition-all
-  {$currentValue === value ? 'bg-opacity-20' : 'bg-opacity-0 hover:bg-opacity-10'}"
+  {$currentValue === value
+      ? 'bg-opacity-20'
+      : 'bg-opacity-0 focus:bg-opacity-10 hover:bg-opacity-10'}"
+    tabindex="0"
     on:click={onClick}
+    on:keydown={(e) => e.key === 'Enter' && onClick()}
   >
     <div class="flex gap-[6px] items-center h-full opacity-80">
       {#if icon}

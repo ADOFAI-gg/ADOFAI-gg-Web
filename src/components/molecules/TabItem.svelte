@@ -21,10 +21,10 @@
   };
 </script>
 
-<div
+<button
   class="flex-grow cursor-pointer select-none flex-shrink-0 relative overflow-hidden {active
     ? 'bg-darkblue/40'
-    : 'bg-darkblue/20 hover:bg-darkblue/30'} transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
+    : 'bg-darkblue/20 hover:bg-darkblue/30 focus:bg-darkblue/30'} transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
   on:click={activate}
 >
   {#if icon}
@@ -38,4 +38,4 @@
       ? 'opacity-100'
       : 'opacity-0'}"
   />
-</div>
+</button>

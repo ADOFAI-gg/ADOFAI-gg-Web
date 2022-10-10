@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
   import Icon from './Icon.svelte';
   import Tooltip from './Tooltip.svelte';
 
@@ -7,6 +8,8 @@
   export let tooltip = true;
 
   export let hideSelectedIcon = false;
+
+  const dispatch = createEventDispatcher();
 </script>
 
 {#if tooltip}
@@ -16,7 +19,9 @@
       class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 cursor-pointer items-center"
       class:exclude
       class:include
+      tabindex="0"
       on:click
+      on:keydown={(e) => e.key === 'Enter' && dispatch('click')}
     >
       <div class="icon-container">
         <div class="icon" class:disable-select-icon={hideSelectedIcon}>
@@ -42,10 +47,12 @@
   </Tooltip>
 {:else}
   <div
-    class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 cursor-pointer items-center"
+    class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 focus:opacity-80 cursor-pointer items-center"
     class:exclude
     class:include
+    tabindex="0"
     on:click
+    on:keydown={(e) => e.key === 'Enter' && dispatch('click')}
   >
     <div class="icon-container">
       <div class="icon" class:disable-select-icon={hideSelectedIcon}>

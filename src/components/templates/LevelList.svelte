@@ -53,16 +53,20 @@
       excludeTags: settings.filter.tags.exclude.join(',')
     };
 
-    if (settings.filter.bpm.min !== null) result.minBpm = settings.filter.bpm.min;
-    if (settings.filter.bpm.max !== null) result.maxBpm = settings.filter.bpm.max;
+    if (settings.filter.bpm.min !== null && settings.filter.bpm.min >= 0)
+      result.minBpm = settings.filter.bpm.min;
+    if (settings.filter.bpm.max !== null && settings.filter.bpm.max >= 0)
+      result.maxBpm = settings.filter.bpm.max;
 
     if (settings.filter.difficulty.min !== null)
       result.minDifficulty = settings.filter.difficulty.min;
     if (settings.filter.difficulty.max !== null)
       result.maxDifficulty = settings.filter.difficulty.max;
 
-    if (settings.filter.tiles.min !== null) result.minTiles = settings.filter.tiles.min;
-    if (settings.filter.tiles.max !== null) result.maxTiles = settings.filter.tiles.max;
+    if (settings.filter.tiles.min !== null && settings.filter.tiles.min >= 0)
+      result.minTiles = settings.filter.tiles.min;
+    if (settings.filter.tiles.max !== null && settings.filter.tiles.max >= 0)
+      result.maxTiles = settings.filter.tiles.max;
 
     if (settings.sort.order !== 'shuffle') {
       let res: string;

@@ -10,6 +10,12 @@
   export let total: number;
 
   let swWidth = 0;
+
+  const onCopy = (e: ClipboardEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText((<HTMLElement>e.currentTarget).innerText);
+  };
 </script>
 
 <table class="table-fixed" style="width: {1582 + swWidth + 24}px;">
@@ -73,34 +79,40 @@
     {total}
     scrollContainer=".simplebar-content-wrapper"
   >
-    <td class="font-mono text-lg font-light text-white/80">{item.id}</td>
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="font-mono text-lg font-light text-white/80"
+      >{item.id}</td
+    >
 
-    <td>
+    <td tabindex="0" on:copy={(e) => onCopy(e)}>
       <DifficultyIcon difficulty={item.difficulty} size={28} />
     </td>
 
-    <td class="col-border">
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       <a href="/levels/{item.id}">{item.title}</a>
     </td>
 
-    <!-- <td class="col-border">{item.music.name}</td> -->
+    <!-- <td tabindex="0" on:copy={e=>onCopy(e)} class="col-border">{item.music.name}</td> -->
 
-    <td class="col-border">{item.music.artists.map((x) => x.name).join(' & ')}</td>
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border"
+      >{item.music.artists.map((x) => x.name).join(' & ')}</td
+    >
 
-    <td class="col-border">{item.creators.map((x) => x.name).join(' & ')}</td>
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border"
+      >{item.creators.map((x) => x.name).join(' & ')}</td
+    >
 
-    <td class="col-border">
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       {item.music.minBpm}
       {#if item.music.minBpm !== item.music.maxBpm}
         - {item.music.maxBpm}
       {/if}
     </td>
 
-    <td class="col-border">
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       {item.tiles.toLocaleString('en-US')}
     </td>
 
-    <td class="col-border">
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       <div class="flex gap-[4px] items-center">
         {#each item.tags.slice(0, 5) as tag (tag.id)}
           <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} />
@@ -115,7 +127,7 @@
       </div>
     </td>
 
-    <td class="col-border">
+    <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       <div class="flex gap-[24px]">
         <div
           class="w-[16px] h-[16px] rounded-full {item.epilepsyWarning
@@ -130,7 +142,7 @@
       </div>
     </td>
 
-    <td>
+    <td tabindex="0" on:copy={(e) => onCopy(e)}>
       <div class="flex gap-[16px]">
         <a href={item.download} target="_blank">
           <Icon icon="download" size={16} />

@@ -34,12 +34,14 @@
           <SearchMetaInput
             bind:value={$searchSetingStore.filter.tiles.min}
             slot="min"
+            min={0}
             type="number"
             placeholder="SEARCH_META_TILES_MIN"
           />
           <SearchMetaInput
             bind:value={$searchSetingStore.filter.tiles.max}
             slot="max"
+            min={0}
             type="number"
             placeholder="SEARCH_META_TILES_MAX"
           />
@@ -50,12 +52,14 @@
           <SearchMetaInput
             bind:value={$searchSetingStore.filter.bpm.min}
             slot="min"
+            min={0}
             type="number"
             placeholder="SEARCH_META_BPM_MIN"
           />
           <SearchMetaInput
             bind:value={$searchSetingStore.filter.bpm.max}
             slot="max"
+            min={0}
             type="number"
             placeholder="SEARCH_META_BPM_MAX"
           />
