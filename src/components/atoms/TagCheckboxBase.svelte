@@ -61,16 +61,21 @@
         </div>
       {/if}
     </div>
+
     <div><slot name="name" /></div>
   </div>
 {/if}
 
 <style lang="scss">
+  .icon-container:has(.selected-icon div) + div {
+    @apply font-bold;
+  }
+
   .exclude {
     @apply opacity-100 text-red;
 
     /* filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%); */
-    color: #d65a46;
+    /* color: #d65a46; */
   }
   .include {
     @apply opacity-100;
