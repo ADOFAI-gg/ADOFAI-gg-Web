@@ -11,7 +11,7 @@
 </script>
 
 <div class="min-w-[90px]">
-  <TagCheckboxBase tooltip={false} on:click include={checked}>
+  <TagCheckboxBase hideSelectedIcon tooltip={false} on:click include={checked}>
     <Icon class="" {icon} size={13} slot="icon" />
     <Translation {key} slot="name" />
   </TagCheckboxBase>
