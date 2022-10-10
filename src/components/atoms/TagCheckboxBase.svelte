@@ -10,7 +10,7 @@
   <Tooltip placement="bottom-start" options={{ arrow: false }}>
     <div
       slot="button"
-      class="flex gap-[6px] transition-all text-white/60 hover:text-white/80 cursor-pointer items-center"
+      class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 cursor-pointer items-center"
       class:exclude
       class:include
       on:click
@@ -25,7 +25,7 @@
   </Tooltip>
 {:else}
   <div
-    class="flex gap-[6px] transition-all text-white/60 hover:text-white/80 cursor-pointer items-center"
+    class="flex gap-[6px] transition-all opacity-60 hover:opacity-80 cursor-pointer items-center"
     class:exclude
     class:include
     on:click
@@ -44,6 +44,6 @@
     color: #d65a46;
   }
   .include {
-    @apply text-white;
+    @apply opacity-100;
   }
 </style>
