@@ -1,0 +1,28 @@
+name: Push Docker Image
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: adofai-gg/frontend
+
+on:
+  push:
+    branches:
+      - "new-rewrite"
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Login to container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
+          push: true
