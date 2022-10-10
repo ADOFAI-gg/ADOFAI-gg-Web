@@ -67,7 +67,7 @@
 
 <style lang="scss">
   .exclude {
-    @apply opacity-100;
+    @apply opacity-100 text-red;
 
     /* filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%); */
     color: #d65a46;
