@@ -36,11 +36,7 @@
   };
 </script>
 
-<TagCheckboxBase
-  hideSelectedIcon
-  on:click={click}
-  include={value === $searchSetingStore.filter.musicLength}
->
+<TagCheckboxBase on:click={click} include={value === $searchSetingStore.filter.musicLength}>
   <Icon class="" size={22} namespace="tagIcons" {icon} slot="icon" />
   <Translation key="{namespace}_{tag}_NAME" slot="name" />
   <Translation key="{namespace}_{tag}_DESCRIPTION" slot="description" />
