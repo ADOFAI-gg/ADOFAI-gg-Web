@@ -30,5 +30,9 @@ spec:
             limits:
               memory: '1Gi'
               cpu: '500m'
+          livenessProbe:
+            httpGet:
+              port: 3000
+              path: /
       imagePullSecrets:
         - name: registry-credentials
