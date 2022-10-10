@@ -7,12 +7,14 @@
   let hasUpdate = false;
 
   if (browser && !dev) {
-    navigator.serviceWorker.getRegistration('/service-worker.js').then((registration) => {
-      registration?.addEventListener('updatefound', () => {
-        hasUpdate = true;
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistration('/service-worker.js').then((registration) => {
+        registration?.addEventListener('updatefound', () => {
+          hasUpdate = true;
+        });
+        registration?.update();
       });
-      registration?.update();
-    });
+    }
   }
 </script>
 
