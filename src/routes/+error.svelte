@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Image from '../components/atoms/Image.svelte';
+  import Image from '@atoms/asset/Image.svelte';
   import { page } from '$app/stores';
   import { Asset } from '@/utils/assets';
 

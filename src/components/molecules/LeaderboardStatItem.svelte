@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from '../atoms/Icon.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
 
   export let icon: string;
 
@@ -8,7 +8,7 @@
 
 <div class="flex gap-[4px] items-center">
   <div class="opacity-60">
-    <Icon {icon} size={16} />
+    <Icon {icon} size={16} alt="{icon} icon" />
   </div>
   <div class="opacity-60 text-lg font-medium">
     <slot />

@@ -1,20 +1,20 @@
 <script lang="ts">
   import { searchSetingStore } from '@/stores/search';
 
-  import SearchInput from '../molecules/SearchInput.svelte';
+  import SearchInput from '@molecules/search/SearchInput.svelte';
   import LevelSearchSettingsArea, {
     currentView
-  } from '../organisms/levels/LevelSearchSettingsArea.svelte';
+  } from '@organisms/levels/LevelSearchSettingsArea.svelte';
   import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/environment';
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
-  import LevelListItem from '../organisms/levels/LevelListItem.svelte';
+  import LevelListItem from '@organisms/levels/list/LevelListItem.svelte';
   import { fade } from 'svelte/transition';
-  import LoadingSpinner from '../atoms/LoadingSpinner.svelte';
-  import PageContainer from '../atoms/PageContainer.svelte';
-  import LevelTableView from '../organisms/levels/LevelTableView.svelte';
+  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
+  import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
 
   let items: Writable<Level[]> = writable([]);

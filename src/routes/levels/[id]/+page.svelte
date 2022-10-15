@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import LevelDetails from '@/components/templates/LevelDetails.svelte';
+  import LevelDetails from '@templates/LevelDetails.svelte';
   import type { Level } from '@/types';
 </script>
 

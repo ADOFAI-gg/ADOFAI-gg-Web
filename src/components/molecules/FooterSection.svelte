@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Translation from '../utils/Translation.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
 
   export let title: string;
 </script>

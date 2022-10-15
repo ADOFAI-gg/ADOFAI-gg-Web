@@ -1,7 +1,7 @@
 <script lang="ts">
-  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
-  import TopPlay from '@/components/molecules/home/TopPlay.svelte';
-  import TopPlaySkeleton from '@/components/molecules/home/TopPlaySkeleton.svelte';
+  import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
+  import TopPlay from '@molecules/home/TopPlay.svelte';
+  import TopPlaySkeleton from '@molecules/home/TopPlaySkeleton.svelte';
   import type { PlayLog } from '@/types';
 
   export let plays: PlayLog[] = [];

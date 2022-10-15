@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LevelList from '@/components/templates/LevelList.svelte';
+  import LevelList from '@templates/LevelList.svelte';
 </script>
 
 <LevelList />

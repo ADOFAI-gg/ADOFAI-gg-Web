@@ -8,9 +8,9 @@
 </script>
 
 <script lang="ts">
-  import HomeHero from '../organisms/home/HomeHero.svelte';
-  import RecentLevelsSection from '../organisms/home/RecentLevelsSection.svelte';
-  import TopPlaysSection from '../organisms/home/TopPlaysSection.svelte';
+  import HomeHero from '@organisms/home/HomeHero.svelte';
+  import RecentLevelsSection from '@organisms/home/RecentLevelsSection.svelte';
+  import TopPlaysSection from '@organisms/home/TopPlaysSection.svelte';
 
   export let data: Data;
 </script>

@@ -1,11 +1,11 @@
 <script lang="ts">
   import { api } from '@/api';
 
-  import DifficultyIcon from '@/components/atoms/DifficultyIcon.svelte';
-  import Image from '@/components/atoms/Image.svelte';
+  import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
+  import Image from '@atoms/asset/Image.svelte';
   import type { PlayLog } from '@/types';
   import { getYoutubeVideoId } from '@/utils/youtube';
-  import TopPlayDetailPair from './TopPlayDetailPair.svelte';
+  import TopPlayDetailPair from '@molecules/home/TopPlayDetailPair.svelte';
 
   export let play: PlayLog;
 

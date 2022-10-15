@@ -1,6 +1,6 @@
 <script lang="ts">
-  import PageContainer from '@/components/atoms/PageContainer.svelte';
-  import Home, { type Data } from '../components/templates/Home.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
+  import Home, { type Data } from '@templates/Home.svelte';
 
   export let data: Data;
 </script>

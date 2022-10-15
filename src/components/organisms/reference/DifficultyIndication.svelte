@@ -1,6 +1,6 @@
 <script lang="ts">
-  import DifficultyIcon from '../../atoms/DifficultyIcon.svelte';
-  import Translation from '../../utils/Translation.svelte';
+  import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
 
   const onCopy = (e: ClipboardEvent) => {
     e.preventDefault();

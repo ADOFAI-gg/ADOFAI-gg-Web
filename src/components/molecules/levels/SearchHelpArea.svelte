@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from '@/components/atoms/Icon.svelte';
-  import Tooltip from '@/components/atoms/Tooltip.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
+  import Tooltip from '@atoms/common/Tooltip.svelte';
   import Translation from '@/components/utils/Translation.svelte';
 
   export let key: string;

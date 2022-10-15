@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
+  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import type {
     DifficultyReference,
     DifficultyReferenceLevel,
@@ -8,8 +8,8 @@
     RawPPRatings
   } from '@/types';
   import { Asset } from '@/utils/assets';
-  import DifficultyIcon from '../../atoms/DifficultyIcon.svelte';
-  import Translation from '../../utils/Translation.svelte';
+  import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
 
   const loadData = async (): Promise<DifficultyReference[]> => {
     if (!browser) return [];

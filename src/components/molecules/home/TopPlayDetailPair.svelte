@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from '@/components/atoms/Icon.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
 
   export let icon: string;
   export let value: string;

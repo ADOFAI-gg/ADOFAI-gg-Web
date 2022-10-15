@@ -2,11 +2,11 @@
   import { browser } from '$app/environment';
   import { api } from '@/api';
 
-  import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
-  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
-  import PageContainer from '@/components/atoms/PageContainer.svelte';
-  import RankingListItem from '@/components/organisms/rankings/RankingListItem.svelte';
-  import RankingTopItem from '@/components/organisms/rankings/RankingTopItem.svelte';
+  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
+  import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
+  import RankingListItem from '@organisms/rankings/RankingListItem.svelte';
+  import RankingTopItem from '@organisms/rankings/RankingTopItem.svelte';
   import type { ListResponse, Ranking } from '@/types';
   import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Load } from '@sveltejs/kit';

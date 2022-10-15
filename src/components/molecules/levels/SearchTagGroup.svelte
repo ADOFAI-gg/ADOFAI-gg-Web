@@ -1,6 +1,6 @@
 <script lang="ts">
-  import TagCheckbox from '@/components/atoms/TagCheckbox.svelte';
-  import SearchTagGroupBase from './SearchGroup.svelte';
+  import TagCheckbox from '@atoms/search/TagCheckbox.svelte';
+  import SearchTagGroupBase from '@molecules/levels/SearchGroup.svelte';
 
   export let tags: number[];
   export let title: string;

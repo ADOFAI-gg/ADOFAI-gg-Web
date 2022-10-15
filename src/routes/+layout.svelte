@@ -14,12 +14,12 @@
 </script>
 
 <script lang="ts">
-  import '../stylesheets/main.scss';
-  import '../stylesheets/font.scss';
-  import Nav from '../components/organisms/Nav.svelte';
-  import LoadingIndiciator from '@/components/atoms/LoadingIndiciator.svelte';
+  import '@/stylesheets/main.scss';
+  import '@/stylesheets/font.scss';
+  import Nav from '@organisms/layout/Nav.svelte';
+  import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { i18nReady, setupI18n } from '@/utils/i18n';
-  import LoadingSpinner from '@/components/atoms/LoadingSpinner.svelte';
+  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   export let url: string;
   import { fade, fly } from 'svelte/transition';
   import { quadOut } from 'svelte/easing';
@@ -29,7 +29,7 @@
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
   import { setupSentry } from '@/utils/sentry';
-  import Footer from '@/components/organisms/Footer.svelte';
+  import Footer from '@organisms/layout/Footer.svelte';
 
   onMount(() => {
     (async () => {

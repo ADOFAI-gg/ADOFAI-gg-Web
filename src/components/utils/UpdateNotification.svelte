@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser, dev } from '$app/environment';
   import { fly } from 'svelte/transition';
-  import Icon from '../atoms/Icon.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
   import Translation from './Translation.svelte';
 
   let hasUpdate = false;

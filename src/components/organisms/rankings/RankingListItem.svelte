@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from '@/components/atoms/Icon.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import type { Ranking } from '@/types';
 

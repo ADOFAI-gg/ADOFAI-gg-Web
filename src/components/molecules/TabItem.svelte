@@ -1,8 +1,8 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
-  import Icon from '../atoms/Icon.svelte';
-  import Translation from '../utils/Translation.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
 
   type T = $$Generic;
 

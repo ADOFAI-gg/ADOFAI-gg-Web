@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { api } from '@/api';
 
 import type { Load } from '@sveltejs/kit';
-import type { Data } from '../components/templates/Home.svelte';
+import type { Data } from '@templates/Home.svelte';
 
 export const load: Load = async () => {
   if (!browser) {

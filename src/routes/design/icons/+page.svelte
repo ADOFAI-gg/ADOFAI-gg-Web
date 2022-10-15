@@ -1,10 +1,10 @@
 <script lang="ts">
   import _ from 'lodash';
-  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
-  import PageContainer from '@/components/atoms/PageContainer.svelte';
+  import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
   import axios from 'axios';
-  import Icon from '@/components/atoms/Icon.svelte';
-  import Tooltip from '@/components/atoms/Tooltip.svelte';
+  import Icon from '@atoms/asset/Icon.svelte';
+  import Tooltip from '@atoms/common/Tooltip.svelte';
 
   const load = async () => {
     const {

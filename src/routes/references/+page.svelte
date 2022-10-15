@@ -6,12 +6,12 @@
 </script>
 
 <script lang="ts">
-  import MainSectionTitle from '@/components/atoms/MainSectionTitle.svelte';
-  import PageContainer from '@/components/atoms/PageContainer.svelte';
-  import TabGroup from '@/components/atoms/TabGroup.svelte';
-  import TabItem from '@/components/molecules/TabItem.svelte';
-  import DifficultyIndication from '@/components/organisms/reference/DifficultyIndication.svelte';
-  import DifficultyReference from '@/components/organisms/reference/DifficultyReference.svelte';
+  import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
+  import TabGroup from '@atoms/interaction/TabGroup.svelte';
+  import TabItem from '@molecules/TabItem.svelte';
+  import DifficultyIndication from '@organisms/reference/DifficultyIndication.svelte';
+  import DifficultyReference from '@organisms/reference/DifficultyReference.svelte';
   import { writable } from 'svelte/store';
 
   const currentTab = writable(ReferenceTab.Reference);

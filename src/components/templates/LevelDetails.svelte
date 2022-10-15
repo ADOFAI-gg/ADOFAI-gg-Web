@@ -1,11 +1,11 @@
 <script lang="ts">
   import type { Level } from '@/types';
-  import LevelHeader from '../organisms/levels/LevelHeader.svelte';
-  import Video from '../atoms/Video.svelte';
+  import LevelHeader from '@organisms/levels/info/LevelHeader.svelte';
+  import Video from '@atoms/asset/Video.svelte';
   import { getYoutubeVideoId } from '@/utils/youtube';
-  import LevelMetaArea from '../organisms/levels/LevelMetaArea.svelte';
-  import PageContainer from '../atoms/PageContainer.svelte';
-  import LevelLeaderboard from '../organisms/levels/LevelLeaderboard.svelte';
+  import LevelMetaArea from '@organisms/levels/info/LevelMetaArea.svelte';
+  import PageContainer from '@atoms/common/PageContainer.svelte';
+  import LevelLeaderboard from '@organisms/levels/leaderboard/LevelLeaderboard.svelte';
 
   export let level: Level;
 
