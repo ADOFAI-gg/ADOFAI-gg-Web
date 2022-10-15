@@ -28,7 +28,7 @@
   on:click={activate}
 >
   {#if icon}
-    <Icon size={18} {icon} alt={`${icon} icon`} />
+    <Icon size={18} {icon} alt="{icon} icon" />
   {/if}
   <div>
     <Translation key={title} />
