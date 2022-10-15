@@ -8,15 +8,14 @@
 </script>
 
 <div class="flex gap-[18px]">
-  <!-- XXX Will be remove -->
-  <Tooltip placement="bottom-end">
+  <!-- <Tooltip placement="bottom-end">
     <a slot="button" href="adofaigg://level/{level.id}">
       <Icon icon="playFilled" size={36} alt="Play button icon" />
     </a>
     <div class="p-2 text-lg font-medium">
       <Translation key="LEVEL_OPEN_IN_ADOFAI" />
     </div>
-  </Tooltip>
+  </Tooltip> -->
 
   {#if level.workshop}
     <a href={level.workshop} target="_blank" rel="noreferer"

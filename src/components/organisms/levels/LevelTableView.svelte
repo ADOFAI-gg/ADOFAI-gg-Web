@@ -155,9 +155,13 @@
             alt="Steam Workshop Icon"
           />
         </a>
-        <!-- XXX Will be removed -->
-        <a href="adofaigg://level/{item.id}">
+
+        <!-- <a href="adofaigg://level/{item.id}">
           <Icon icon="playFilled" size={16} alt="Play On ADOFAI Icon" />
+        </a> -->
+
+        <a href={item.video}>
+          <Icon icon="playFilled" size={16} alt="Video Icon" />
         </a>
       </div>
     </td>
