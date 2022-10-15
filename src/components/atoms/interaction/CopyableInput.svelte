@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Copy from 'svelte-icons/fa/FaCopy.svelte';
   import Check from 'svelte-icons/fa/FaCheck.svelte';
   import Icon from '@atoms/asset/Icon.svelte';
 
@@ -35,7 +34,7 @@
     on:click={copy}
   >
     {#if copied}
-      <Check />
+      <Icon size={16} icon="check" alt="Copy Success" />
     {:else}
       <Icon size={16} icon="copy" alt="Copy icon" />
     {/if}
