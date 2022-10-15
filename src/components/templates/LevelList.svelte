@@ -4,7 +4,7 @@
   import SearchInput from '@molecules/search/SearchInput.svelte';
   import LevelSearchSettingsArea, {
     currentView
-  } from '@organisms/levels/LevelSearchSettingsArea.svelte';
+  } from '@organisms/levels/search/LevelSearchSettingsArea.svelte';
   import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/environment';

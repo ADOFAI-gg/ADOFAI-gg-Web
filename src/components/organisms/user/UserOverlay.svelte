@@ -8,7 +8,7 @@
   // import Avatar from '../atoms/Avatar.svelte';
   // import Button from '../atoms/Button.svelte';
   // import Image from '../atoms/Image.svelte';
-  import UserOverlayDetail from '@molecules/UserOverlayDetail.svelte';
+  import UserOverlayDetail from '@molecules/user/UserOverlayDetail.svelte';
   // import Translation from '../utils/Translation.svelte';
 
   export let user: PartialMember;
