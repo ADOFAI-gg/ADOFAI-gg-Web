@@ -25,7 +25,7 @@
   const twitter = () => {
     window.open(
       `https://twitter.com/intent/tweet?${new URLSearchParams({
-        text: `${level.artists.join(' & ')} - ${level.title}\n`,
+        text: `${level.music.artists.map((x) => x.name).join(' & ')} - ${level.title}\n`,
         url
       })}`
     );
