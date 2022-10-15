@@ -46,6 +46,7 @@ export interface Level {
   title: string;
   difficulty: number;
   creators: PartialMember[];
+  artists: PartialMember[];
   music: PartialMusic;
   tiles: number;
   video: string;
