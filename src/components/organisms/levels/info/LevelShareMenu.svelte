@@ -7,16 +7,19 @@
   import type { Level } from '@/types';
   import CopyableInput from '@atoms/interaction/CopyableInput.svelte';
   import ShareButton from '@molecules/ShareButton.svelte';
+  import Facebook from 'svelte-icons/fa/FaFacebook.svelte';
   import Twitter from 'svelte-icons/fa/FaTwitter.svelte';
 
   export let level: Level;
 
   $: url = `${$page.url.protocol}//${$page.url.host}/levels/${level.id}`;
 
-  const copy = () => {
-    if (window.isSecureContext) {
-      navigator.clipboard.writeText(url);
-    }
+  const facebook = () => {
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      'facebook-share-dialog',
+      'width=800,height=600'
+    );
   };
 
   const twitter = () => {
@@ -42,10 +45,11 @@
     <div class="text-xl font-bold">Share</div>
     <CopyableInput value={url} />
     <div class="flex gap-2">
-      <ShareButton on:click={copy}>
-        <Icon size={16} icon="copy" alt="Copy Icon" />
+      <ShareButton on:click={facebook} class="bg-[#1877F2]">
+        <Facebook />
       </ShareButton>
-      <ShareButton on:click={twitter} class="bg-blue">
+
+      <ShareButton on:click={twitter} class="bg-[#1D9BF0]">
         <Twitter />
       </ShareButton>
     </div>
