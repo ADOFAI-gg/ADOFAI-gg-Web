@@ -115,7 +115,7 @@
     <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       <div class="flex gap-[4px] items-center">
         {#each item.tags.slice(0, 5) as tag (tag.id)}
-          <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} />
+          <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt={`${tag.name} tag icon`} />
         {/each}
         {#if item.tags.length > 5}
           <div
@@ -145,13 +145,19 @@
     <td tabindex="0" on:copy={(e) => onCopy(e)}>
       <div class="flex gap-[16px]">
         <a href={item.download} target="_blank">
-          <Icon icon="download" size={16} />
+          <Icon icon="download" size={16} alt="Download Icon" />
         </a>
         <a href={item.workshop} target="_blank">
-          <Icon icon="steam" class={item.workshop ? 'text-white' : 'text-white/20'} size={16} />
+          <Icon
+            icon="steam"
+            class={item.workshop ? 'text-white' : 'text-white/20'}
+            size={16}
+            alt="Steam Workshop Icon"
+          />
         </a>
+        <!-- XXX Will be removed -->
         <a href="adofaigg://level/{item.id}">
-          <Icon icon="playFilled" size={16} />
+          <Icon icon="playFilled" size={16} alt="Play On ADOFAI Icon" />
         </a>
       </div>
     </td>

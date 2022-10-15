@@ -49,7 +49,7 @@
         <div class="flex flex-wrap gap-4">
           {#each group.files as file}
             <div class="flex flex-col items-center">
-              <Icon namespace={group.directory} icon={file?.file ?? ''} size={32} />
+              <Icon namespace={group.directory} icon={file?.file ?? ''} size={32} alt="." />
               <div class="mt-2">{file?.file}</div>
             </div>
           {/each}

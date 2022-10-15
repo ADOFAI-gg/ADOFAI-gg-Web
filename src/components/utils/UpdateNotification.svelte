@@ -33,7 +33,7 @@
       on:click={browser ? () => window.location.reload() : () => null}
       class="w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40"
     >
-      <Icon icon="refresh" size={12} />
+      <Icon icon="refresh" size={12} alt="Refresh Icon" />
     </div>
   </div>
 {/if}

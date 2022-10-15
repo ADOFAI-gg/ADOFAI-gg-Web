@@ -28,7 +28,7 @@
           rel="noreferrer"
           class="flex items-center gap-[6px] opacity-80 hover:opacity-100 transition-opacity"
         >
-          <Icon icon="playOutlined" size={16} />
+          <Icon icon="playOutlined" size={16} alt="Video Icon" />
           <div>
             <Translation key="RANKING_HIGHEST_PLAY" />
           </div>
