@@ -9,4 +9,4 @@
   $: url = Asset.difficultyIcon(difficulty);
 </script>
 
-<Image src={url} width={size} height={size} />
+<Image src={url} width={size} alt={`${difficulty} Difficulty Icon`} height={size} />

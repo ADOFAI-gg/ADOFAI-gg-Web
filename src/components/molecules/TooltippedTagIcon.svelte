@@ -7,7 +7,7 @@
 </script>
 
 <Tooltip placement="bottom-start">
-  <Icon slot="button" icon={`${tag}`} namespace="tagIcons" size={24} />
+  <Icon slot="button" icon={`${tag}`} namespace="tagIcons" size={24} alt={`tag icon`} />
   <div class="p-[12px] text-md">
     <div class="font-bold">
       <Translation key="TAG_{tag}_NAME" />

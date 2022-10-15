@@ -55,7 +55,7 @@
           <div class="ml-[12px] flex gap-[12px]">
             <div class="w-[2px] rounded-full h-full bg-[#E8E8E8] bg-opacity-40" />
             <div class="flex gap-[6px] items-center">
-              <Icon icon="heartOutlined" size={20} />
+              <Icon icon="heartOutlined" size={20} alt="Heart Icon" />
               <div class="font-medium text-lg">1.4K</div>
             </div>
           </div>
@@ -72,7 +72,7 @@
       rel="noreferrer"
       target="_blank"
     >
-      <Icon icon="downloadFile" size={48} />
+      <Icon icon="downloadFile" size={48} alt="Download Icon" />
     </a>
   </div>
 </a>

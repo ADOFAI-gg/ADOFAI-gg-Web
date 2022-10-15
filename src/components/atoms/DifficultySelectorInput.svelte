@@ -65,7 +65,7 @@
         on:mouseup|preventDefault={update(null)}
         class="opacity-60 hover:opacity-80 transition-opacity"
       >
-        <Icon icon="close" size={14} />
+        <Icon icon="close" size={14} alt="Reset Value Icon" />
       </div>
     {:else}
       <div class="opacity-40 absolute" transition:fade={{ duration: 200 }}>

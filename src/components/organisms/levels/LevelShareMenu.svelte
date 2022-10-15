@@ -35,14 +35,15 @@
     slot="button"
     class="w-[36px] h-[36px] flex justify-center items-center"
   >
-    <Icon icon="share" size={20} />
+    <Icon icon="share" size={20} alt="Share Icon" />
   </Button>
+
   <div class="p-4 flex flex-col gap-2 max-w-[320px] w-screen">
     <div class="text-xl font-bold">Share</div>
     <CopyableInput value={url} />
     <div class="flex gap-2">
       <ShareButton on:click={copy}>
-        <Icon size={16} icon="copy" />
+        <Icon size={16} icon="copy" alt="Copy Icon" />
       </ShareButton>
       <ShareButton on:click={twitter} class="bg-blue">
         <Twitter />

@@ -35,7 +35,7 @@
   <div class="flex gap-[4px] justify-end">
     {#each tags.slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
-        <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" />
+        <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
         <div class="p-[12px] text-md">
           <div class="font-bold">
             <Translation key="TAG_{tag}_NAME" />

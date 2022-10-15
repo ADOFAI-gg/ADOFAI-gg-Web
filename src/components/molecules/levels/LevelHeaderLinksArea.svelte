@@ -8,18 +8,23 @@
 </script>
 
 <div class="flex gap-[18px]">
-  <Tooltip placement="bottom-end">
+  <!-- <Tooltip placement="bottom-end">
     <a slot="button" href="adofaigg://level/{level.id}">
-      <Icon icon="playFilled" size={36} />
+      <Icon icon="playFilled" size={36} alt="Play button icon" />
     </a>
     <div class="p-2 text-lg font-medium">
       <Translation key="LEVEL_OPEN_IN_ADOFAI" />
     </div>
-  </Tooltip>
+  </Tooltip> -->
+
   {#if level.workshop}
-    <a href={level.workshop} target="_blank" rel="noreferer"><Icon icon="steam" size={36} /></a>
+    <a href={level.workshop} target="_blank" rel="noreferer"
+      ><Icon icon="steam" size={36} alt="Steam Workshop icon" /></a
+    >
   {/if}
   {#if level.download}
-    <a href={level.download} target="_blank" rel="noreferer"><Icon icon="download" size={36} /></a>
+    <a href={level.download} target="_blank" rel="noreferer"
+      ><Icon icon="download" size={36} alt="Download icon" /></a
+    >
   {/if}
 </div>

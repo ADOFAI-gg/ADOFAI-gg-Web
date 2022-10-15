@@ -21,21 +21,20 @@
   };
 </script>
 
-<div
-  class="flex-grow cursor-pointer select-none flex-shrink-0 relative overflow-hidden {active
-    ? 'bg-darkblue/40'
-    : 'bg-darkblue/20 hover:bg-darkblue/30'} transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
+<button
+  class="flex-grow cursor-pointer select-none flex-shrink-0 relative overflow-hidden
+    {active ? 'bg-darkblue/40' : 'bg-darkblue/20 hover:bg-darkblue/30 focus:bg-darkblue/30'}
+    transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
   on:click={activate}
 >
   {#if icon}
-    <Icon size={18} {icon} />
+    <Icon size={18} {icon} alt={`${icon} icon`} />
   {/if}
   <div>
     <Translation key={title} />
   </div>
   <div
-    class="absolute bottom-0 h-[2px] w-full left-0 bg-blue transition-opacity {active
-      ? 'opacity-100'
-      : 'opacity-0'}"
+    class="absolute bottom-0 h-[2px] w-full left-0 bg-blue transition-opacity
+      {active ? 'opacity-100' : 'opacity-0'}"
   />
-</div>
+</button>

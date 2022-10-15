@@ -37,7 +37,7 @@
     {#if copied}
       <Check />
     {:else}
-      <Icon size={16} icon="copy" />
+      <Icon size={16} icon="copy" alt="Copy icon" />
     {/if}
   </div>
 </div>
