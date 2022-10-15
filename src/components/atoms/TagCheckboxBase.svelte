@@ -30,9 +30,15 @@
         {#if !hideSelectedIcon}
           <div class="selected-icon">
             {#if include}
-              <Icon class="" disableFade icon="plusFilled" size={10} />
+              <Icon class="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
             {:else if exclude}
-              <Icon class="" disableFade icon="minusFilled" size={10} />
+              <Icon
+                class=""
+                disableFade
+                icon="minusFilled"
+                size={10}
+                alt="Tag Excluded Indicator"
+              />
             {/if}
           </div>
         {/if}
@@ -61,9 +67,9 @@
       {#if !hideSelectedIcon}
         <div class="selected-icon">
           {#if include}
-            <Icon class="" disableFade icon="plusFilled" size={10} />
+            <Icon class="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
           {:else if exclude}
-            <Icon class="" disableFade icon="minusFilled" size={10} />
+            <Icon class="" disableFade icon="minusFilled" size={10} alt="Tag Excluded Indicator" />
           {/if}
         </div>
       {/if}

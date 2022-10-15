@@ -39,7 +39,7 @@
   >
     <div class="flex gap-[6px] items-center h-full opacity-80">
       {#if icon}
-        <Icon {icon} size={11} />
+        <Icon {icon} size={11} alt={`${icon} icon`} />
       {/if}
       <slot />
     </div>

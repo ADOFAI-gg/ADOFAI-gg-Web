@@ -8,7 +8,7 @@
 </script>
 
 <nav class="fixed w-full z-[100] left-0 top-0 bg-opacity-25 bg-black backdrop-blur-sm">
-  <div class="h-nav  flex items-center px-[24px] relative gap-[16px]">
+  <div class="h-nav flex items-center px-[24px] relative gap-[16px]">
     <Logo />
     <div class="absolute left-1/2 -translate-x-1/2 hidden md:block">
       <NavLinks />
@@ -24,7 +24,7 @@
 
     <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
       <span slot="button" class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
-        <Icon icon="expand" size={16} />
+        <Icon icon="expand" size={16} alt="Expand icon" />
       </span>
       <NavMenuOverlay />
     </Popover>

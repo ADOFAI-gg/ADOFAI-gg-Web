@@ -67,7 +67,7 @@
 
       <div class="flex gap-[12px] flex-row-reverse md:flex-row flex-grow">
         <Button type="search" on:click={reset}>
-          <Icon icon="refresh" size={11} />
+          <Icon icon="refresh" size={11} alt="Reset icon" />
           <span class="hidden md:block text-md">
             <Translation key="SEARCH_SETTINGS_RESET" />
           </span>

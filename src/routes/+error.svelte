@@ -8,8 +8,11 @@
       case 404:
         return {
           description: 'This page does not exist or expired.',
-          image: Asset.url('images/404.svg'),
-          title: 'Error 404 - This page does not exist or expired.'
+          image: {
+            url: Asset.url('images/404.svg'),
+            alt: '404 Image'
+          },
+          title: 'Error 404'
         };
     }
 
@@ -30,8 +33,9 @@
     class="flex-grow bg-white rounded-xl flex flex-col justify-center gap-[15px] items-center text-black"
   >
     {#if data.image}
-      <Image src={data.image} />
+      <Image src={data.image.url} alt={data.image.alt} />
     {/if}
+
     <div class="text-4xl font-bold">{data.title}</div>
     <div class="text-3xl">{data.description}</div>
   </div>

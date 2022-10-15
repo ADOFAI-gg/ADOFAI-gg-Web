@@ -5,5 +5,5 @@
 </script>
 
 <a aria-label="ADOFAI.gg" class="select-none" href="/">
-  <Image src={Asset.url('images/logo.svg')} alt="" width="139" height="20" />
+  <Image src={Asset.url('images/logo.svg')} alt="ADOFAI.gg Logo" width="139" height="20" />
 </a>

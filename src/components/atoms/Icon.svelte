@@ -32,7 +32,7 @@
   let container: HTMLDivElement;
 
   export let disableFade = false;
-  // export let alt: string;
+  export let alt: string;
 
   $: promise = load(icon);
 
@@ -46,7 +46,7 @@
 
         if (i.hasAttribute('stroke')) i.setAttribute('stroke', 'currentColor');
       });
-      // svg?.setAttribute('aria-label', alt);
+      svg?.setAttribute('aria-label', alt);
     }
   }
 </script>

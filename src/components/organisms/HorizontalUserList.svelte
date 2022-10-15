@@ -60,7 +60,7 @@
           bind:this={moreButton}
         >
           <div class="drop-shadow-6 w-[14px] h-[14px]">
-            <Icon size={14} icon="bottomArrowCircleOutlined" />
+            <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
           </div>
           <div>Show All</div>
         </div>
