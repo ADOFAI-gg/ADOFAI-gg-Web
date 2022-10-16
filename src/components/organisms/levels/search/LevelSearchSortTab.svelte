@@ -64,12 +64,14 @@
             checked={$searchSetingStore.sort.type === 'difficulty'}
             on:click={updateType('difficulty')}
           />
-          <SortOrderRadio
-            icon="heart"
-            key="SORT_LIKES"
-            checked={$searchSetingStore.sort.type === 'likes'}
-            on:click={updateType('likes')}
-          />
+          {#if import.meta.env.VITE_USE_ACCOUNT}
+            <SortOrderRadio
+              icon="heart"
+              key="SORT_LIKES"
+              checked={$searchSetingStore.sort.type === 'likes'}
+              on:click={updateType('likes')}
+            />
+          {/if}
         </div>
       </div>
     {/if}
