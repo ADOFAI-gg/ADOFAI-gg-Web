@@ -4,6 +4,8 @@
   export let href = '';
   export let type = 'default';
 
+  let className = '';
+
   const dispatch = createEventDispatcher();
 
   const onKeydown = (e: KeyboardEvent) => {
@@ -11,6 +13,8 @@
       dispatch('click');
     }
   };
+
+  export { className as class };
 </script>
 
 <svelte:element
@@ -19,7 +23,7 @@
   on:keydown={onKeydown}
   {href}
   {...$$props}
-  class={'button ' + $$props.class}
+  class={'button ' + className}
   data-type={type}
 >
   <slot />
@@ -65,18 +69,14 @@
     }
 
     &[data-type='levelAction'] {
-      --color-opacity: 0.4;
-
       padding: 6px;
       border-radius: 4px;
-      background-color: var(--color-darkblue);
+      background-color: rgba(0, 2, 15, 0.4);
       transition: background-color 0.2s ease;
 
       &:hover,
       &:focus {
-        --color-opacity: 0.6;
-
-        background-color: var(--color-darkblue);
+        background-color: rgba(0, 2, 15, 0.6);
       }
     }
 
