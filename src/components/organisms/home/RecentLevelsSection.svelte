@@ -8,6 +8,8 @@
 
 <MainSectionTitle title="HOME_RECENT_LEVELS" moreLink="/levels" />
 
-{#each levels as level}
-  <LevelListItem {level} />
-{/each}
+<div class="mt-[-18px]">
+  {#each levels as level}
+    <LevelListItem {level} />
+  {/each}
+</div>
