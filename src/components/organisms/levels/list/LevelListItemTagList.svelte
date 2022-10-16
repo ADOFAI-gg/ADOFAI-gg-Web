@@ -27,13 +27,12 @@
   export let level: Level;
 
   $: tags = level.tags.map((x) => x.id);
-
   $: remaining = Math.max(0, tags.length - $maxCount);
 </script>
 
 <div class="w-fit">
   <div class="flex gap-[4px] justify-end">
-    {#each tags.slice(0, $maxCount) as tag (tag)}
+    {#each tags.filter((x) => x !== 4).slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
         <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
         <div class="p-[12px] text-md">
@@ -46,6 +45,49 @@
         </div>
       </Tooltip>
     {/each}
+
+    {#if tags.includes(4)}
+      <Tooltip placement="bottom-end">
+        <Icon
+          icon="4"
+          namespace="tagIcons"
+          class="text-red"
+          size={24}
+          slot="button"
+          alt="Tag Icon"
+        />
+        <div class="p-[12px] text-md">
+          <div class="font-bold">
+            <Translation key="TAG_4_NAME" />
+          </div>
+          <div class="font-regular">
+            <Translation key="TAG_4_DESCRIPTION" />
+          </div>
+        </div>
+      </Tooltip>
+    {/if}
+
+    {#if level.epilepsyWarning}
+      <Tooltip placement="bottom-end">
+        <Icon
+          icon="SW"
+          namespace="tagIcons"
+          class="text-red"
+          size={24}
+          slot="button"
+          alt="Tag Icon"
+        />
+        <div class="p-[12px] text-md">
+          <div class="font-bold">
+            <Translation key="TAG_SW_NAME" />
+          </div>
+          <div class="font-regular">
+            <Translation key="TAG_SW_DESCRIPTION" />
+          </div>
+        </div>
+      </Tooltip>
+    {/if}
+
     {#if remaining}
       <div class="text-lg bg-white bg-opacity-20 rounded-full px-[8px] py-[4px] leading-[16px]">
         +{remaining}
