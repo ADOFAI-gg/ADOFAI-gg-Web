@@ -67,10 +67,21 @@
   const sizeStyle = `width: ${size}px; height: ${size}px;`;
 </script>
 
-<div bind:this={container} class={className} style="width: {size}px; height: {size}px;" />
+{#await promise}
+  <div style={sizeStyle} />
+{:then data}
+  <div
+    bind:this={container}
+    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein)'} {style}"
+  >
+    {@html data}
+  </div>
+{:catch}
+  <div style={sizeStyle} />
+{/await}
 
 <style lang="scss">
   .loaded {
-    @apply animate-fade-in;
+    animation: var(--animation-fadein);
   }
 </style>
