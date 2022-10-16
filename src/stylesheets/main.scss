@@ -10,13 +10,12 @@
 /* stylelint-enable */
 
 :root {
-  --color-opacity: 1;
-  --color-yellow: rgba(255, 231, 110, var(--color-opacity));
-  --color-red: rgba(245, 79, 81, var(--color-opacity));
-  --color-blue: rgba(77, 147, 252, var(--color-opacity));
-  --color-cyan: rgba(47, 186, 175, var(--color-opacity));
-  --color-darkblue: rgba(0, 2, 15, var(--color-opacity));
-  --color-dropdown: rgba(11, 24, 35, var(--color-opacity));
+  --color-yellow: rgb(255, 231, 110);
+  --color-red: rgb(245, 79, 81);
+  --color-blue: rgb(77, 147, 252);
+  --color-cyan: rgb(47, 186, 175);
+  --color-darkblue: rgb(0, 2, 15);
+  --color-dropdown: rgb(11, 24, 35);
   --font-normal: 'Quicksand', 'M PLUS Rounded 1c', 'NanumSquareRound', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   --animation-fadein: fade-in 0.2s linear;
