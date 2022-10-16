@@ -64,7 +64,7 @@
     {/if}
   </div>
   <div
-    class="self-center w-0 opacity-0 group-hover:opacity-100 transition-all group-hover:w-[48px] relative duration-500"
+    class="self-center w-0 opacity-0 group-focus:opacity-100 group-hover:opacity-100 transition-all group-focus:w-[48px] group-hover:w-[48px] relative duration-200"
   >
     <a
       href={level.download}
