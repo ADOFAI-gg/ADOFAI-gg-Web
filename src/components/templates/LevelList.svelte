@@ -11,7 +11,6 @@
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
   import LevelListItem from '@organisms/levels/list/LevelListItem.svelte';
-  import { fade } from 'svelte/transition';
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';

@@ -1,6 +1,7 @@
 <script lang="ts">
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Icon from '@atoms/asset/Icon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
   import type { Level } from '@/types';
   import LevelListItemTagList from '@organisms/levels/list/LevelListItemTagList.svelte';
 
@@ -24,10 +25,10 @@
           {level.title}
         </div>
         <div class="flex-grow w-full flex">
-          <div class="flex h-[46px] items-center leading-[16px] gap-[4px] flex-grow w-0">
+          <div class="flex h-[46px] items-center leading-[16px] gap-[8px] flex-grow w-0">
             <div class="flex flex-col gap-[4px] opacity-60 font-light">
-              <div>Music By</div>
-              <div>Level By</div>
+              <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
+              <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
             </div>
             <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
               <div class="relative h-[16px]">

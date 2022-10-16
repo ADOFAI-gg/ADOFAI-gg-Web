@@ -7,7 +7,6 @@
   import TranslationComponentPortal from './TranslationComponentPortal.svelte';
 
   export let key: string;
-
   export let params: Record<string, string> = {};
 
   let componentsContainer: HTMLDivElement;
