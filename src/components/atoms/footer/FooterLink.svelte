@@ -4,6 +4,18 @@
   export let target = '';
 </script>
 
-<a {href} class="opacity-80 hover:opacity-100 transition-all" {target}>
+<a {href} {target}>
   › <slot />
 </a>
+
+<style lang="scss">
+  a {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+</style>
