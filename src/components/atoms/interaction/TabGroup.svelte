@@ -18,6 +18,14 @@
   }
 </script>
 
-<div class="flex gap-[12px] w-full">
+<div class="slot">
   <slot />
 </div>
+
+<style lang="scss">
+  .slot {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+</style>
