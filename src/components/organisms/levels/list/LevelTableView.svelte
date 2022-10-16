@@ -115,7 +115,9 @@
     <td tabindex="0" on:copy={(e) => onCopy(e)} class="col-border">
       <div class="flex gap-[4px] items-center">
         {#each item.tags.slice(0, 5) as tag (tag.id)}
-          <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt="{tag.name} tag icon" />
+          {#if tag.id !== 4}
+            <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt="{tag.name} tag icon" />
+          {/if}
         {/each}
         {#if item.tags.length > 5}
           <div
