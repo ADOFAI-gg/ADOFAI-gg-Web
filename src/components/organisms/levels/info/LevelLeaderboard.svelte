@@ -32,7 +32,7 @@
     {#if data.length}
       <div>
         <SectionTitle title="Leaderboard" />
-        <div class="mt-[11px] flex flex-col gap-[10px]">
+        <div class="mt-[-24px] flex flex-col">
           {#each Object.entries(data) as [index, item]}
             <LevelLeaderboardItem index={Number(index)} play={item} />
           {/each}

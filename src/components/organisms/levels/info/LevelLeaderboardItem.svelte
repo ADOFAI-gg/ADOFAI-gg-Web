@@ -9,7 +9,9 @@
   export let index: number;
 </script>
 
-<div class="px-[16px] py-[6px] flex items-center justify-between">
+<div
+  class="px-[16px] py-[12px] flex items-center justify-between transition-colors bg-darkblue bg-opacity-0 hover:bg-opacity-20 focus:bg-opacity-20 border-b-[1px] border-b-white/20"
+>
   <div class="flex gap-[14px] items-center">
     <div class="w-[56px] font-mono text-2xl text-center">#{index + 1}</div>
     <div class="flex gap-[8px] items-center">
