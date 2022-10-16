@@ -26,10 +26,10 @@
   };
 </script>
 
-<div class="copyableinput-container">
+<div class="copyable-input">
   <input type="text" {value} />
 
-  <div class="copyicon-wrapper" class:copied on:click={copy}>
+  <div class="copy-icon" class:copied on:click={copy}>
     {#if copied}
       <Icon size={16} icon="check" alt="Copy Success" />
     {:else}
@@ -39,7 +39,7 @@
 </div>
 
 <style lang="scss">
-  .copyableinput-container {
+  .copyable-input {
     display: flex;
     gap: 6px;
     align-items: center;
@@ -56,7 +56,7 @@
     }
   }
 
-  .copyicon-wrapper {
+  .copy-icon {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
