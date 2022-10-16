@@ -51,7 +51,11 @@
   >
     {#each users as user, i (i)}
       <div bind:this={items[i]} class="flex-shrink-0"><UserListItem {user} /></div>
+      {#if i < users.length - 1}
+        <span class="text-2xl font-regular opacity-40">&</span>
+      {/if}
     {/each}
+
     <div class="flex-shrink-0">
       <Popover>
         <div
