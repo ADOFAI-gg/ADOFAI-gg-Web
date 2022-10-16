@@ -11,9 +11,9 @@
   export let icon: string;
   export let namespace = 'icons';
   export let size = 24;
-  let className = 'text-white';
+  let style = 'text-white';
 
-  export { className as class };
+  export { style };
 
   const load = async (id: string) => {
     if (!browser) return;
@@ -49,19 +49,19 @@
       svg?.setAttribute('aria-label', alt);
     }
   }
+
+  const sizeStyle = `width: ${size}px; height: ${size}px;`;
 </script>
 
 {#await promise}
-  <div style="width: {size}px;height: {size}px;" />
+  <div style={sizeStyle} />
 {:then data}
   <div
     bind:this={container}
-    style="width: {size}px; height: {size}px;"
-    class={className}
-    class:animate-fade-in={!disableFade}
+    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein)'} {style}"
   >
     {@html data}
   </div>
 {:catch}
-  <div style="width: {size}px; height: {size}px;" />
+  <div style={sizeStyle} />
 {/await}

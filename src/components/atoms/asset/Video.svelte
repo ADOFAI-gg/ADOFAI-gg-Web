@@ -27,7 +27,7 @@
   });
 </script>
 
-<div class="w-full aspect-video rounded-[16px] overflow-hidden">
+<div class="video">
   <iframe
     bind:this={iframe}
     type="text/html"
@@ -38,3 +38,12 @@
     frameborder="0"
   />
 </div>
+
+<style lang="scss">
+  .video {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 16px;
+    aspect-ratio: 16 / 9;
+  }
+</style>
