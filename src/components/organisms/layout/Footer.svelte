@@ -17,6 +17,7 @@
             <Translation key="FOOTER_DESCRIPTION" />
           </div>
         </div>
+
         <div class="flex-grow w-0 flex justify-center">
           <FooterSection title="FOOTER_SECTION_CONTACT">
             <FooterLink href="mailto:adofai.gg@gmail.com">
@@ -27,17 +28,18 @@
             </FooterLink>
           </FooterSection>
         </div>
+
         <div class="flex-grow w-0 flex justify-center">
           <FooterSection title="FOOTER_SECTION_LEGAL">
             <FooterLink href="/legal">
               <Translation key="FOOTER_LEGAL_NOTICE" />
             </FooterLink>
-            <FooterLink href="/tos">
+            <!-- <FooterLink href="/tos">
               <Translation key="FOOTER_LEGAL_TERMS" />
             </FooterLink>
             <FooterLink href="/privacy">
               <Translation key="FOOTER_LEGAL_PRIVACY_POLICY" />
-            </FooterLink>
+            </FooterLink> -->
           </FooterSection>
         </div>
       </div>
