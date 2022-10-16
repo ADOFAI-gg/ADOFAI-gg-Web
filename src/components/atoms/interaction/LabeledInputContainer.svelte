@@ -5,10 +5,20 @@
 </script>
 
 <div>
-  <div class="opacity-80">
+  <div class="translation">
     <Translation key={label} />
   </div>
-  <div class="mt-[4px]">
+  <div class="slot">
     <slot />
   </div>
 </div>
+
+<style lang="scss">
+  .translation {
+    opacity: 0.8;
+  }
+
+  .slot {
+    margin-top: 4px;
+  }
+</style>
