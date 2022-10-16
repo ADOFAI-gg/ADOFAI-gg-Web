@@ -10,7 +10,7 @@
           description: 'This page does not exist or expired.',
           image: {
             url: Asset.url('images/404.svg'),
-            alt: '404 Image'
+            alt: 'A very perplexed person, scratching their head'
           },
           title: 'Error 404'
         };
