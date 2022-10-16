@@ -3,11 +3,9 @@
   import { writable } from 'svelte/store';
 
   type T = $$Generic;
-
   export let value: T;
 
   let current = writable(value);
-
   setContext('tabValue', current);
 
   $: {
