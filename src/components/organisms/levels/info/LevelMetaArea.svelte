@@ -67,6 +67,7 @@
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
       <DifficultyIcon difficulty={level.difficulty} size={28} />
     </LevelMetaLabelValuePair>
+
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_SONG_LENGTH">
       <Translation
         params={typeof length === 'number'

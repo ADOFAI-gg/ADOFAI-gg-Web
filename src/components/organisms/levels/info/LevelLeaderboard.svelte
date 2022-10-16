@@ -5,7 +5,7 @@
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import SectionTitle from '@atoms/common/MainSectionTitle.svelte';
   import type { ListResponse, PlayLog } from '@/types';
-  import LevelLeaderboardItem from '@organisms/levels/leaderboard/LevelLeaderboardItem.svelte';
+  import LevelLeaderboardItem from '@organisms/levels/info/LevelLeaderboardItem.svelte';
 
   export let levelId: number;
 

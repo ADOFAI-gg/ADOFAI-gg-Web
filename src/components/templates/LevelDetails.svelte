@@ -5,7 +5,7 @@
   import { getYoutubeVideoId } from '@/utils/youtube';
   import LevelMetaArea from '@organisms/levels/info/LevelMetaArea.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
-  import LevelLeaderboard from '@organisms/levels/leaderboard/LevelLeaderboard.svelte';
+  import LevelLeaderboard from '@organisms/levels/info/LevelLeaderboard.svelte';
 
   export let level: Level;
 
