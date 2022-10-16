@@ -33,7 +33,7 @@
 
 <div class="flex flex-col gap-[12px]">
   {#if highlighted.length}
-    <div class="flex flex-col gap-[6px]">
+    <div class="flex flex-col gap-[6px] items-start">
       {#each highlighted as tag (tag)}
         <Tooltip placement="bottom-start">
           <div slot="button" class="flex text-lg font-medium gap-[6px] text-red items-center">
@@ -42,6 +42,7 @@
               <Translation key="TAG_{tag}_NAME" />
             </div>
           </div>
+
           <div class="p-[12px] text-md">
             <div class="font-bold">
               <Translation key="TAG_{tag}_NAME" />
