@@ -40,6 +40,15 @@
         params: { amount: 1, offset: 0 }
       })
     ).data.count;
+
+    const contentWrapper = document.querySelector('.simplebar-content-wrapper');
+
+    setTimeout(() => {
+      contentWrapper?.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
   });
 
   $: onMore = (e: CustomEvent<{ offset: number }>) => {
