@@ -34,7 +34,14 @@
   <div class="flex gap-[4px] justify-end">
     {#each tags.filter((x) => x !== 4).slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
-        <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
+        <Icon
+          icon={`${tag}`}
+          disableFade
+          namespace="tagIcons"
+          size={24}
+          slot="button"
+          alt="Tag Icon"
+        />
         <div class="p-[12px] text-md">
           <div class="font-bold">
             <Translation key="TAG_{tag}_NAME" />
@@ -49,6 +56,7 @@
     {#if tags.includes(4)}
       <Tooltip placement="bottom-end">
         <Icon
+          disableFade
           icon="4"
           namespace="tagIcons"
           class="text-red"
@@ -70,6 +78,7 @@
     {#if level.epilepsyWarning}
       <Tooltip placement="bottom-end">
         <Icon
+          disableFade
           icon="SW"
           namespace="tagIcons"
           class="text-red"

@@ -191,9 +191,7 @@
         data={$items}
         let:item
       >
-        <div>
-          <LevelListItem level={item} />
-        </div>
+        <LevelListItem level={item} />
         <div slot="loading" class="w-full my-4 flex justify-center">
           <LoadingSpinner size={48} />
         </div>

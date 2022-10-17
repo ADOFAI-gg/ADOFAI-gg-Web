@@ -71,7 +71,7 @@
       rel="noreferrer"
       target="_blank"
     >
-      <Icon icon="downloadFile" size={48} alt="Download Icon" />
+      <Icon disableFade icon="downloadFile" size={48} alt="Download Icon" />
     </a>
   </div>
 </a>
