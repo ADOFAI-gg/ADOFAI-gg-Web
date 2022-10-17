@@ -62,7 +62,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@adofai-gg/svelte-virtualized-infinite-scroll": "^1.0.12",
+    "@adofai-gg/svelte-virtualized-infinite-scroll": "^1.0.17",
     "@sentry/browser": "^7.14.2",
     "@sentry/integrations": "^7.14.2",
     "@sentry/tracing": "^7.14.2",

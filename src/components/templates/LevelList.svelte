@@ -165,48 +165,52 @@
   });
 </script>
 
-<div class="flex flex-col min-h-screen">
-  <div class="h-nav mt-[24px]" />
+{#if browser}
+  <div class="flex flex-col min-h-screen">
+    <div class="h-nav mt-[24px]" />
 
-  <div class={$currentView === 'list' ? 'px-4' : 'table-view-search-area'}>
-    <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
-      <SearchInput
-        placeholder={$searchSetingStore.query.full
-          ? 'SEARCH_INPUT_PLACEHOLDER_HOME'
-          : 'SEARCH_INPUT_PLACEHOLDER_LEVELS'}
-        bind:value={$searchSetingStore.query.title}
-      />
-      <div class="mt-2 px-[12px]">
-        <LevelSearchSettingsArea />
+    <div class={$currentView === 'list' ? 'px-4' : 'table-view-search-area'}>
+      <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
+        <SearchInput
+          placeholder={$searchSetingStore.query.full
+            ? 'SEARCH_INPUT_PLACEHOLDER_HOME'
+            : 'SEARCH_INPUT_PLACEHOLDER_LEVELS'}
+          bind:value={$searchSetingStore.query.title}
+        />
+        <div class="mt-2 px-[12px]">
+          <LevelSearchSettingsArea />
+        </div>
       </div>
     </div>
-  </div>
 
-  {#if $currentView === 'list'}
-    <PageContainer>
-      <VirtualScroll
-        scrollContainer=".simplebar-content-wrapper"
-        total={itemCount}
-        on:more={(e) => addItems(e.detail.offset)}
-        data={$items}
-        let:item
-      >
-        <LevelListItem level={item} />
-        <div slot="loading" class="w-full my-4 flex justify-center">
-          <LoadingSpinner size={48} />
-        </div>
-      </VirtualScroll>
-    </PageContainer>
-  {:else if $currentView === 'table'}
-    <div class="table-view-container">
-      <LevelTableView
-        levels={$items}
-        total={itemCount}
-        on:more={(e) => addItems(e.detail.offset)}
-      />
-    </div>
-  {/if}
-</div>
+    {#if $currentView === 'list'}
+      <PageContainer>
+        <VirtualScroll
+          scrollContainer={window}
+          total={itemCount}
+          on:more={(e) => addItems(e.detail.offset)}
+          data={$items}
+          let:item
+        >
+          <div>
+            <LevelListItem level={item} />
+          </div>
+          <div slot="loading" class="w-full my-4 flex justify-center">
+            <LoadingSpinner size={48} />
+          </div>
+        </VirtualScroll>
+      </PageContainer>
+    {:else if $currentView === 'table'}
+      <div class="table-view-container">
+        <LevelTableView
+          levels={$items}
+          total={itemCount}
+          on:more={(e) => addItems(e.detail.offset)}
+        />
+      </div>
+    {/if}
+  </div>
+{/if}
 
 <style lang="scss">
   .table-view-search-area {
