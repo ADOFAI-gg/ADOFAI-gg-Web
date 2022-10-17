@@ -48,6 +48,7 @@
     {#if tags.includes(4)}
       <Tooltip placement="bottom-end">
         <Icon
+          disableFade
           icon="4"
           namespace="tagIcons"
           style="color: rgba(var(--color-red), 100);"
@@ -68,6 +69,7 @@
     {#if level.epilepsyWarning}
       <Tooltip placement="bottom-end">
         <Icon
+          disableFade
           icon="SW"
           namespace="tagIcons"
           style="color: rgba(var(--color-red), 100);"
