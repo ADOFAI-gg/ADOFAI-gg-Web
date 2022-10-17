@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adofai-gg/svelte-virtualized-infinite-scroll@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@adofai-gg/svelte-virtualized-infinite-scroll/-/svelte-virtualized-infinite-scroll-1.0.12.tgz#8cb475d5a454af929ab532fd62872190573d097d"
-  integrity sha512-yk09IqT2aBxU90avBDVI5qUVsenQhUNJMjznp9B8nuXZT+GwrwQq/Jhq33U8K8nSPKNCQKD3RJlsR/zAHfel9g==
+"@adofai-gg/svelte-virtualized-infinite-scroll@^1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@adofai-gg/svelte-virtualized-infinite-scroll/-/svelte-virtualized-infinite-scroll-1.0.17.tgz#97a26d03029bad82192afd9eece3fa0a90847582"
+  integrity sha512-J4bAo3YIUPGNfZ/mHG1LAeuDS5CA+eqAn11uDQNlE5Rw6iRM5LvvtN2qBgD0tO9htnPrDqsQiWjo53TkMJZ5CQ==
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
