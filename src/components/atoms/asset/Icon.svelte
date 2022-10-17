@@ -1,5 +1,7 @@
 <script lang="ts" context="module">
-  const cache = new Map<string, Promise<string>>();
+  const cache = new Map<string, Promise<SVGElement>>();
+
+  const parser = browser ? new DOMParser() : null!;
 </script>
 
 <script lang="ts">
@@ -16,13 +18,25 @@
   export { style };
 
   const load = async (id: string) => {
-    if (!browser) return;
+    if (!browser) return null!;
 
     const src = Asset.icon(id, namespace);
 
-    if (cache.has(src)) return cache.get(src);
+    if (cache.has(src)) return cache.get(src)!;
 
-    const promise = axios.get(src).then((x) => x.data);
+    const promise = axios.get(src).then((x) => {
+      const svg: SVGElement = parser.parseFromString(x.data, 'image/svg+xml').querySelector('svg')!;
+      svg.setAttribute('width', `${size}`);
+      svg.setAttribute('height', `${size}`);
+      svg.querySelectorAll('*')?.forEach((i) => {
+        if (i.hasAttribute('fill')) i.setAttribute('fill', 'currentColor');
+
+        if (i.hasAttribute('stroke')) i.setAttribute('stroke', 'currentColor');
+      });
+      svg.setAttribute('aria-label', alt);
+
+      return svg;
+    });
 
     cache.set(src, promise);
 
@@ -37,31 +51,24 @@
   $: promise = load(icon);
 
   $: {
-    if (container) {
-      const svg = container.querySelector('svg');
-      svg?.setAttribute('width', `${size}`);
-      svg?.setAttribute('height', `${size}`);
-      svg?.querySelectorAll('*')?.forEach((i) => {
-        if (i.hasAttribute('fill')) i.setAttribute('fill', 'currentColor');
-
-        if (i.hasAttribute('stroke')) i.setAttribute('stroke', 'currentColor');
+    if (promise && container) {
+      promise.then((data) => {
+        if (!container) return;
+        if (!disableFade) {
+          container.classList.add('loaded');
+        }
+        container.appendChild(data.cloneNode(true));
       });
-      svg?.setAttribute('aria-label', alt);
     }
   }
 
   const sizeStyle = `width: ${size}px; height: ${size}px;`;
 </script>
 
-{#await promise}
-  <div style={sizeStyle} />
-{:then data}
-  <div
-    bind:this={container}
-    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein);'} {style}"
-  >
-    {@html data}
-  </div>
-{:catch}
-  <div style={sizeStyle} />
-{/await}
+<div bind:this={container} class={className} style="width: {size}px; height: {size}px;" />
+
+<style lang="scss">
+  .loaded {
+    @apply animate-fade-in;
+  }
+</style>
