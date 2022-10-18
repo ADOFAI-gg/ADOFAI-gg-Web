@@ -54,34 +54,92 @@
 </script>
 
 <Popover placement="bottom" {options}>
-  <div
-    class="bg-white cursor-pointer bg-opacity-20 relative rounded-[5px] gap-[8px] h-[30px] w-full flex items-center px-2"
-    slot="button"
-  >
+  <div class="input" slot="button">
     {#if value}
       <DifficultyIcon size={18} difficulty={value} />
-      <div class="flex-grow">{str}</div>
-      <div
-        on:mouseup|preventDefault={update(null)}
-        class="opacity-60 hover:opacity-80 transition-opacity"
-      >
+      <div class="input-text">{str}</div>
+
+      <div on:mouseup|preventDefault={update(null)} tabindex="0" class="input-reset ">
         <Icon icon="close" size={14} alt="Reset Value Icon" />
       </div>
     {:else}
-      <div class="opacity-40 absolute" transition:fade={{ duration: 200 }}>
+      <div class="input-placeholder" transition:fade={{ duration: 200 }}>
         <Translation key={placeholder} />
       </div>
     {/if}
   </div>
-  <div class="p-4 flex flex-wrap gap-[8px] justify-center" on:click={hide}>
+
+  <div class="popover" on:click={hide}>
     {#each difficulties as difficulty}
       <div
-        class="p-1 bg-opacity-80 hover:bg-white/40 ohnomybrainhurts rounded-full transition-all cursor-pointer"
+        class="popover-icon"
+        class:selected={value === difficulty}
         on:click|nonpassive={update(difficulty)}
-        class:bg-white={value === difficulty}
+        tabindex="0"
       >
         <DifficultyIcon {difficulty} size={24} />
       </div>
     {/each}
   </div>
 </Popover>
+
+<style lang="scss">
+  .input {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+
+    &-text {
+      flex: 1;
+    }
+
+    &-reset {
+      opacity: 0.6;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+      }
+    }
+
+    &-placeholder {
+      position: absolute;
+      opacity: 0.4;
+    }
+  }
+
+  .popover {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 16px;
+
+    &-icon {
+      padding: 4px;
+      border-radius: 99999em;
+      background-color: rgba(255, 255, 255, 0);
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+      transition-property: background-color, transform;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      &.selected {
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.15);
+      }
+    }
+  }
+</style>
