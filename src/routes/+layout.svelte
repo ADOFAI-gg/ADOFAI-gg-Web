@@ -20,9 +20,7 @@
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { i18nReady, setupI18n } from '@/utils/i18n';
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
-  export let url: string;
-  import { fade, fly } from 'svelte/transition';
-  import { quadOut } from 'svelte/easing';
+  import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import { loadTags } from '@/utils/tags';
@@ -40,9 +38,6 @@
       loaded.set(true);
     })();
   });
-
-  let contentHeight = 0;
-  let contentWidth = 0;
 </script>
 
 <svelte:head>
@@ -63,34 +58,23 @@
   </div>
 {/if}
 
-<div
-  class={$loaded ? 'opacity-100 transition-opacity duration-1000' : 'invisible opacity-0'}
-  style="height: {contentHeight}px; width: {contentWidth}px"
->
+<div class={$loaded ? 'opacity-100 transition-opacity duration-1000' : 'invisible opacity-0'}>
   <LoadingIndiciator />
 
   {#if $i18nReady}
     <Nav />
   {/if}
-  {#key url}
-    <div
-      bind:clientHeight={contentHeight}
-      bind:clientWidth={contentWidth}
-      class="absolute min-w-[100vw] top-0 left-0 min-h-screen flex flex-col"
-      in:fade={{ duration: 300, easing: quadOut }}
-      out:fade={{ duration: 300, easing: quadOut }}
-    >
-      <div class="flex-grow">
-        <slot />
-      </div>
-
-      {#if !$page.data.meta?.hideFooter}
-        <div class="mt-[64px]" />
-
-        <Footer />
-      {/if}
+  <div class="flex flex-col">
+    <div class="flex-grow">
+      <slot />
     </div>
-  {/key}
+
+    {#if !$page.data.meta?.hideFooter}
+      <div class="mt-[64px]" />
+
+      <Footer />
+    {/if}
+  </div>
 </div>
 
 {#if $loaded}

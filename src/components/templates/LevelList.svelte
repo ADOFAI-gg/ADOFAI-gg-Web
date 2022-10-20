@@ -186,7 +186,7 @@
     {#if $currentView === 'list'}
       <PageContainer>
         <VirtualScroll
-          scrollContainer={window}
+          scrollContainer="#root"
           total={itemCount}
           on:more={(e) => addItems(e.detail.offset)}
           data={$items}

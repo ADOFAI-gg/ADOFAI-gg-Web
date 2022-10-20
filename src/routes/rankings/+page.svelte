@@ -73,7 +73,7 @@
       {/each}
     </div>
     <VirtualizedInfiniteScroll
-      scrollContainer=".simplebar-content-wrapper"
+      scrollContainer="#root"
       data={listItems}
       on:more={onMore}
       let:item
