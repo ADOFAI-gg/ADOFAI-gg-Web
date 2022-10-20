@@ -1,5 +1,6 @@
 import { api } from '@/api';
 import type { Level } from '@/types';
+import { levelOpenGraphUrl } from '@/utils/og';
 import { getYoutubeVideoId } from '@/utils/youtube';
 import type { Load } from '@sveltejs/kit';
 
@@ -30,11 +31,11 @@ export const load: Load = async ({ params }) => {
           },
           {
             property: 'og:image',
-            content: `https://i.ytimg.com/vi/${youtubeId}/original.jpg`
+            content: levelOpenGraphUrl(data.id)
           },
           {
             name: 'twitter:image',
-            content: `https://i.ytimg.com/vi/${youtubeId}/original.jpg`
+            content: levelOpenGraphUrl(data.id)
           }
         ]
       }
