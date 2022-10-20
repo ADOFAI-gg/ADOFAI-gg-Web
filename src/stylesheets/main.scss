@@ -12,11 +12,21 @@ body {
   @apply text-white;
   letter-spacing: -0.011rem;
 
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
   &::after {
     @apply fixed z-[-100] left-0 top-0 w-full h-full bg-center bg-cover bg-no-repeat;
     content: '';
     background-image: url('/background.webp');
   }
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
 }
 
 .text-shadow-6 {
@@ -27,24 +37,8 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 }
 
-body > .simplebar-wrapper {
-  width: 100vw;
-  height: 100vh;
-}
-
-.simplebar-scrollbar::before {
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 5px;
-}
-
-.simplebar-track {
-  pointer-events: all;
-}
-
-.simplebar-vertical .simplebar-scrollbar::before {
-  width: 10px;
-}
-
-.simplebar-horizontal .simplebar-scrollbar::before {
-  height: 10px;
-}
+// #root {
+//   width: 100vw;
+//   height: 100vh;
+//   overflow-y: scroll;
+// }

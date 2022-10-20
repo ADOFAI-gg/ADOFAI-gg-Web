@@ -73,14 +73,7 @@
         </th>
       </tr>
     </thead>
-    <VirtualizedInfiniteScroll
-      on:more
-      table
-      data={levels}
-      let:item
-      {total}
-      scrollContainer={window}
-    >
+    <VirtualizedInfiniteScroll on:more table data={levels} let:item {total} scrollContainer="#root">
       <td tabindex="0" on:copy={(e) => onCopy(e)} class="font-mono text-lg font-light text-white/80"
         >{item.id}</td
       >
@@ -118,7 +111,13 @@
         <div class="flex gap-[4px] items-center">
           {#each item.tags.slice(0, 5) as tag (tag.id)}
             {#if tag.id !== 4}
-              <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt="{tag.name} tag icon" />
+              <Icon
+                icon={`${tag.id}`}
+                disableFade
+                namespace="tagIcons"
+                size={20}
+                alt="{tag.name} tag icon"
+              />
             {/if}
           {/each}
           {#if item.tags.length > 5}
@@ -149,10 +148,11 @@
       <td tabindex="0" on:copy={(e) => onCopy(e)}>
         <div class="flex gap-[16px]">
           <a href={item.download} target="_blank">
-            <Icon icon="download" size={16} alt="Download Icon" />
+            <Icon disableFade icon="download" size={16} alt="Download Icon" />
           </a>
           <a href={item.workshop} target="_blank">
             <Icon
+              disableFade
               icon="steam"
               class={item.workshop ? 'text-white' : 'text-white/20'}
               size={16}
@@ -165,7 +165,7 @@
         </a> -->
 
           <a href={item.video}>
-            <Icon icon="playFilled" size={16} alt="Video Icon" />
+            <Icon disableFade icon="playFilled" size={16} alt="Video Icon" />
           </a>
         </div>
       </td>
