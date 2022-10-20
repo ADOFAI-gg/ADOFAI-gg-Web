@@ -21,33 +21,44 @@
   import SearchHelpArea from '@molecules/levels/SearchHelpArea.svelte';
   import LevelSearchMetaTab from '@organisms/levels/search/LevelSearchMetaTab.svelte';
   import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
+  import { tick } from 'svelte';
 
   let height = 0;
 
-  let tagTab: number;
+  let tagSearchTab: HTMLDivElement;
+  let filterTab: HTMLDivElement;
+  let sortTab: HTMLDivElement;
 
-  let sortTab: number;
-  let metaTab: number;
+  $: {
+    if ($currentTab === null) {
+      height = 0;
+    } else {
+      let el: HTMLDivElement | null = null;
+
+      switch ($currentTab) {
+        case 'meta':
+          el = filterTab;
+          break;
+        case 'sort':
+          el = sortTab;
+          break;
+        case 'tags':
+          el = tagSearchTab;
+          break;
+      }
+
+      tick().then(() => {
+        if (!el) return;
+        height = el.clientHeight;
+      });
+    }
+  }
 
   const reset = () => {
     searchSetingStore.set(defaultSearchSettings);
     $currentTab = null;
     $currentView = 'list';
   };
-
-  $: {
-    if (browser) {
-      if ($currentTab === 'tags' && tagTab) {
-        height = tagTab;
-      } else if ($currentTab === 'sort' && sortTab) {
-        height = sortTab;
-      } else if ($currentTab === 'meta' && metaTab) {
-        height = metaTab;
-      } else {
-        height = 0;
-      }
-    }
-  }
 </script>
 
 <div>
@@ -95,15 +106,15 @@
     style="height: {height}px;"
   >
     {#if $currentTab === 'tags'}
-      <div transition:fade bind:clientHeight={tagTab} class="absolute w-full h-fit top-0 left-0">
+      <div transition:fade bind:this={tagSearchTab} class="absolute w-full h-fit top-0 left-0">
         <TagSearchTab />
       </div>
     {:else if $currentTab === 'meta'}
-      <div transition:fade bind:clientHeight={metaTab} class="absolute w-full h-fit top-0 left-0">
+      <div transition:fade bind:this={filterTab} class="absolute w-full h-fit top-0 left-0">
         <LevelSearchMetaTab />
       </div>
     {:else if $currentTab === 'sort'}
-      <div transition:fade bind:clientHeight={sortTab}>
+      <div transition:fade bind:this={sortTab}>
         <LevelSearchSortTab />
       </div>
     {/if}
