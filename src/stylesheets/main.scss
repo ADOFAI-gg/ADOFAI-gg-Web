@@ -10,12 +10,12 @@
 /* stylelint-enable */
 
 :root {
-  --color-yellow: rgb(255, 231, 110);
-  --color-red: rgb(245, 79, 81);
-  --color-blue: rgb(77, 147, 252);
-  --color-cyan: rgb(47, 186, 175);
-  --color-darkblue: rgb(0, 2, 15);
-  --color-dropdown: rgb(11, 24, 35);
+  --color-yellow: 255, 231, 110;
+  --color-red: 245, 79, 81;
+  --color-blue: 77, 147, 252;
+  --color-cyan: 47, 186, 175;
+  --color-darkblue: 0, 2, 15;
+  --color-dropdown: 11, 24, 35;
   --font-normal: 'Quicksand', 'M PLUS Rounded 1c', 'NanumSquareRound', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   --animation-fadein: fade-in 0.2s linear;
