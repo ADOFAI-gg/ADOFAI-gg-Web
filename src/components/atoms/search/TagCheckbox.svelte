@@ -53,7 +53,7 @@
   exclude={$searchSetingStore.filter.tags.exclude.includes(tag)}
   on:click={update}
 >
-  <Icon class="" size={22} namespace="tagIcons" icon={`${tag}`} slot="icon" alt="tag icon" />
+  <Icon style="" size={22} namespace="tagIcons" icon={`${tag}`} slot="icon" alt="tag icon" />
   <Translation key="TAG_{tag}_NAME" slot="name" />
   <Translation key="TAG_{tag}_DESCRIPTION" slot="description" />
 </TagCheckboxBase>
