@@ -7,6 +7,7 @@
     "comment-no-empty": true,
     "comment-empty-line-before": null,
     "comment-whitespace-inside": "always",
+    "no-empty-source": null,
     "number-max-precision": 2,
     "color-no-hex": true,
     "block-opening-brace-newline-before": null,
