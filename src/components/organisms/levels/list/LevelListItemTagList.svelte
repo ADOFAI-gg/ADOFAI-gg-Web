@@ -51,7 +51,7 @@
         <Icon
           icon="4"
           namespace="tagIcons"
-          class="text-red"
+          style="color: var(--color-red);"
           size={24}
           slot="button"
           alt="Tag Icon"
@@ -72,7 +72,7 @@
         <Icon
           icon="SW"
           namespace="tagIcons"
-          class="text-red"
+          style="color: var(--color-red);"
           size={24}
           slot="button"
           alt="Tag Icon"

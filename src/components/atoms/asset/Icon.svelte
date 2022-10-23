@@ -11,7 +11,7 @@
   export let icon: string;
   export let namespace = 'icons';
   export let size = 24;
-  let style = 'text-white';
+  let style = 'color: white;';
 
   export { style };
 
@@ -58,7 +58,7 @@
 {:then data}
   <div
     bind:this={container}
-    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein)'} {style}"
+    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein);'} {style}"
   >
     {@html data}
   </div>
