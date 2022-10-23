@@ -51,7 +51,7 @@
         <Icon
           icon="4"
           namespace="tagIcons"
-          style="color: var(--color-red);"
+          style="color: rgba(var(--color-red), 100);"
           size={24}
           slot="button"
           alt="Tag Icon"
@@ -72,7 +72,7 @@
         <Icon
           icon="SW"
           namespace="tagIcons"
-          style="color: var(--color-red);"
+          style="color: rgba(var(--color-red), 100);"
           size={24}
           slot="button"
           alt="Tag Icon"

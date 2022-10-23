@@ -1,8 +1,8 @@
 .tippy-box {
-  background-color: var(--color-dropdown) !important;
+  background-color: rgba(var(--color-dropdown), 100) !important;
 
   .tippy-arrow {
-    color: var(--color-dropdown) !important;
+    color: rgba(var(--color-dropdown), 100) !important;
   }
 
   .tippy-content {

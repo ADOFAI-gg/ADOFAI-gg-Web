@@ -63,7 +63,7 @@
     cursor: pointer;
 
     &.copied {
-      color: rgb(74, 222, 128);
+      color: rgba(var(--color-cyan), 100);
     }
   }
 </style>

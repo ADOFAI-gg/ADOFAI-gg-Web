@@ -37,7 +37,7 @@
 </script>
 
 <TagCheckboxBase on:click={click} include={value === $searchSetingStore.filter.musicLength}>
-  <Icon class="" size={22} namespace="tagIcons" {icon} slot="icon" alt="Tag Icon" />
+  <Icon style="" size={22} namespace="tagIcons" {icon} slot="icon" alt="Tag Icon" />
   <Translation key="{namespace}_{tag}_NAME" slot="name" />
   <Translation key="{namespace}_{tag}_DESCRIPTION" slot="description" />
 </TagCheckboxBase>
