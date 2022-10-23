@@ -72,7 +72,7 @@
 {:then data}
   <div
     bind:this={container}
-    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein)'} {style}"
+    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein);'} {style}"
   >
     {@html data}
   </div>
