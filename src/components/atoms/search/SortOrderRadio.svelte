@@ -10,9 +10,9 @@
   export let checked: boolean;
 </script>
 
-<div class="min-w-[90px]">
+<div style="min-width: 90px;">
   <TagCheckboxBase hideSelectedIcon tooltip={false} on:click include={checked}>
-    <Icon class="" {icon} size={13} slot="icon" alt={`${icon} icon`} />
+    <Icon style="" {icon} size={13} slot="icon" alt={`${icon} icon`} />
     <Translation {key} slot="name" />
   </TagCheckboxBase>
 </div>
