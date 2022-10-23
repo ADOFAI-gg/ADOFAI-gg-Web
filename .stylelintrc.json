@@ -1,6 +1,15 @@
 {
   "extends": ["stylelint-config-standard-scss", "stylelint-config-html/svelte"],
-  "customSyntax": "postcss-html",
+  "overrides": [
+    {
+      "files": ["*.svelte", "*.scss"],
+      "customSyntax": "postcss-scss"
+    },
+    {
+      "files": ["*.html"],
+      "customSyntax": "postcss-html"
+    }
+  ],
   "rules": {
     "alpha-value-notation": "number",
     "color-function-notation": "legacy",
