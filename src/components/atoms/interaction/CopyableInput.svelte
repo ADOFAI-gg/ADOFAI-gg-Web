@@ -1,10 +1,9 @@
 <script lang="ts">
-  import Check from 'svelte-icons/fa/FaCheck.svelte';
   import Icon from '@atoms/asset/Icon.svelte';
 
   export let value: string;
 
-  let currentTimeout: any = null;
+  let currentTimeout: number | null = null;
 
   let copied = false;
 
@@ -22,7 +21,7 @@
 
     currentTimeout = setTimeout(() => {
       copied = false;
-    }, 1000);
+    }, 1000) as unknown as number;
   };
 </script>
 

@@ -1,13 +1,11 @@
 import { api } from '@/api';
 import type { Level } from '@/types';
 import { levelOpenGraphUrl } from '@/utils/og';
-import { getYoutubeVideoId } from '@/utils/youtube';
 import type { Load } from '@sveltejs/kit';
 
 export const load: Load = async ({ params }) => {
   try {
     const { data } = await api.get<Level>(`/api/v1/levels/${params.id}`);
-    const youtubeId = getYoutubeVideoId(data.video);
     return {
       ...data,
       meta: {

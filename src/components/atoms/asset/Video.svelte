@@ -16,8 +16,9 @@
   })();
 
   onMount(() => {
+    if (!iframe) return;
     // eslint-disable-next-line no-undef
-    const p = new YT.Player(iframe!, {
+    const p = new YT.Player(iframe, {
       events: {
         onReady: () => {
           player = p;

@@ -5,16 +5,18 @@
   import { searchTabContextSymbol } from '@molecules/search/SearchTabs.svelte';
   import type { Writable } from 'svelte/store';
 
-  export let value: any;
+  export let value: unknown;
   export let icon: string | null = null;
 
   const {
     update,
     value: currentValue,
     deselectable
-  } = getContext<{ value: Writable<any>; update: (newValue: any) => void; deselectable: boolean }>(
-    searchTabContextSymbol
-  ) ?? {};
+  } = getContext<{
+    value: Writable<unknown>;
+    update: (newValue: unknown) => void;
+    deselectable: boolean;
+  }>(searchTabContextSymbol) ?? {};
 
   const onClick = () => {
     if (value === $currentValue) {

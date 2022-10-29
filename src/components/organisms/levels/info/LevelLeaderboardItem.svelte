@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from '@atoms/asset/Icon.svelte';
+
   import LeaderboardStatItem from '@molecules/LeaderboardStatItem.svelte';
   import type { PlayLog } from '@/types';
 

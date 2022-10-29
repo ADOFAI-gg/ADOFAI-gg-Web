@@ -7,9 +7,8 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import RankingListItem from '@organisms/rankings/RankingListItem.svelte';
   import RankingTopItem from '@organisms/rankings/RankingTopItem.svelte';
-  import type { ListResponse, Ranking } from '@/types';
+  import type { ListResponse } from '@/types';
   import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
-  import type { Load } from '@sveltejs/kit';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import type { RankingResult } from './+page';

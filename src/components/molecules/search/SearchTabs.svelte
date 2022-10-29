@@ -6,7 +6,7 @@
   import { setContext } from 'svelte';
   import type { Writable } from 'svelte/store';
 
-  export let value: Writable<any>;
+  export let value: Writable<unknown>;
 
   export let label: string | null = null;
 
@@ -14,7 +14,7 @@
 
   setContext(searchTabContextSymbol, {
     value,
-    update: (newValue: any) => {
+    update: (newValue: unknown) => {
       $value = newValue;
     },
     deselectable

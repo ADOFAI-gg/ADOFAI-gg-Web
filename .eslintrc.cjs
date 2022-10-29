@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
-  plugins: ['svelte3', '@typescript-eslint'],
+  plugins: ['svelte3', '@typescript-eslint', 'prettier'],
   ignorePatterns: ['*.cjs'],
   overrides: [
     {
@@ -21,5 +21,8 @@ module.exports = {
     browser: true,
     es2017: true,
     node: true
+  },
+  rules: {
+    'prettier/prettier': 'error'
   }
 };

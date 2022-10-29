@@ -133,7 +133,7 @@
 
   let timeout: number | null = null;
 
-  searchSetingStore.subscribe((v) => {
+  searchSetingStore.subscribe(() => {
     if (browser) {
       if (timeout) {
         clearTimeout(timeout);

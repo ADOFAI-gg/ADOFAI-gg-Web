@@ -16,7 +16,6 @@
   import TagSearchTab from '@organisms/levels/search/TagSearchTab.svelte';
   import { fade } from 'svelte/transition';
   import LevelSearchSortTab from './LevelSearchSortTab.svelte';
-  import { browser } from '$app/environment';
   import Translation from '@/components/utils/Translation.svelte';
   import SearchHelpArea from '@molecules/levels/SearchHelpArea.svelte';
   import LevelSearchMetaTab from '@organisms/levels/search/LevelSearchMetaTab.svelte';
