@@ -18,6 +18,8 @@ app.use((req, res, next) => {
     res.header('cache-control', 'max-age=2592000');
   } else if (req.path === '/background.webp' || req.path === '/assets/images/logo.svg') {
     res.header('cache-control', 'max-age=31536000');
+  } else if (req.path.startsWith('/fonts/')) {
+    res.header('cache-control', 'max-age=31536000');
   }
 
   next();
