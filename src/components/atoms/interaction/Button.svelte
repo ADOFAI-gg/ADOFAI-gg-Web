@@ -97,7 +97,7 @@
     &[data-type='nav'] {
       padding: 8px 20px;
       border-width: 1px;
-      border-radius: 100%;
+      border-radius: 100em;
       font-weight: bold;
       font-size: 14px;
       text-align: center;
