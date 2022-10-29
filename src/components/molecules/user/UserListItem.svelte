@@ -9,10 +9,6 @@
   export let popup = false;
 
   // const useAccount = !!import.meta.env.VITE_USE_ACCOUNT;
-
-  $: itemClasses = `flex gap-[6px] cursor-pointer items-center font-medium whitespace-nowrap ${
-    popup ? 'text-lg' : 'text-2xl'
-  }`;
 </script>
 
 <Popover
@@ -22,10 +18,11 @@
     arrow: !popup
   }}
 >
-  <div slot="button" class={itemClasses}>
+  <div slot="button" class="user" style="font-size: {popup ? '16px' : '24px'};">
     <!-- <Avatar size={popup ? 20 : 24} url={user.avatar} /> -->
     {user.name}
   </div>
+
   <UserOverlay {user} />
 </Popover>
 
@@ -49,3 +46,13 @@
     {user.name}
   </a>
 {/if} -->
+<style lang="scss">
+  .user {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+</style>
