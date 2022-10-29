@@ -81,15 +81,16 @@
 
 <style lang="scss">
   .icon-container:has(.selected-icon div) + div {
-    @apply font-bold;
+    font-weight: 700;
   }
 
   .exclude {
-    @apply opacity-100 text-red;
+    color: rgba(var(--text-red), 1);
+    opacity: 1;
   }
 
   .include {
-    @apply opacity-100;
+    opacity: 1;
   }
 
   .include,
