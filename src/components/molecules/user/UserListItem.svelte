@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { PartialMember } from '@/types';
-  import Avatar from '@atoms/asset/Avatar.svelte';
   import Popover from '@atoms/common/Popover.svelte';
   import UserOverlay from '@organisms/user/UserOverlay.svelte';
 

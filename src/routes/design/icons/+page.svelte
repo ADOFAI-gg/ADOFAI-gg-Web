@@ -4,7 +4,6 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import axios from 'axios';
   import Icon from '@atoms/asset/Icon.svelte';
-  import Tooltip from '@atoms/common/Tooltip.svelte';
 
   const load = async () => {
     const {

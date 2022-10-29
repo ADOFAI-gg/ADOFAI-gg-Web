@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   const cache = new Map<string, Promise<SVGElement>>();
 
-  const parser = browser ? new DOMParser() : null!;
+  const parser = browser ? new DOMParser() : (null as unknown as DOMParser);
 </script>
 
 <script lang="ts">
@@ -18,14 +18,16 @@
   export { className as class };
 
   const load = async (id: string) => {
-    if (!browser) return null!;
+    if (!browser) return null as unknown as SVGElement;
 
     const src = Asset.icon(id, namespace);
 
-    if (cache.has(src)) return cache.get(src)!;
+    if (cache.has(src)) return cache.get(src) as Promise<SVGElement>;
 
     const promise = axios.get(src).then((x) => {
-      const svg: SVGElement = parser.parseFromString(x.data, 'image/svg+xml').querySelector('svg')!;
+      const svg: SVGElement = parser
+        .parseFromString(x.data, 'image/svg+xml')
+        .querySelector('svg') as SVGElement;
       svg.setAttribute('width', `${size}`);
       svg.setAttribute('height', `${size}`);
       svg.querySelectorAll('*')?.forEach((i) => {
