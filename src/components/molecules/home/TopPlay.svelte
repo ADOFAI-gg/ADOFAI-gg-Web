@@ -18,7 +18,6 @@
   <a href={play.url} rel="noreferrer" target="_blank" class="top-play">
     <div class="thumbnail-wrapper">
       <Image
-        lazy
         width="100%"
         height="100%"
         alt="Youtube Video Thumbnail"
