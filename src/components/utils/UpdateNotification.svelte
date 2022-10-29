@@ -8,12 +8,17 @@
 
   if (browser && !dev) {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistration('/service-worker.js').then((registration) => {
-        registration?.addEventListener('updatefound', () => {
-          hasUpdate = true;
+      navigator.serviceWorker
+        .getRegistration('/service-worker.js')
+        .then((registration) => {
+          registration?.addEventListener('updatefound', () => {
+            hasUpdate = true;
+          });
+          registration?.update();
+        })
+        .catch(() => {
+          console.warn('Cannot retrieve update');
         });
-        registration?.update();
-      });
     }
   }
 </script>
