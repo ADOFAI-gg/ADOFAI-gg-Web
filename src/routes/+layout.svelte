@@ -32,8 +32,7 @@
   onMount(() => {
     (async () => {
       if ($loaded) return;
-      await setupI18n();
-      await loadTags();
+      await Promise.all([setupI18n(), loadTags()]);
       setupSentry();
       loaded.set(true);
     })();
