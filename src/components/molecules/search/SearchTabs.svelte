@@ -10,11 +10,7 @@
 
   export let label: string | null = null;
 
-  let className = '';
-
   export let deselectable = false;
-
-  export { className as class };
 
   setContext(searchTabContextSymbol, {
     value,
@@ -25,7 +21,7 @@
   });
 </script>
 
-<div class="tabs-container {className}">
+<div class="tabs-container" style={$$props.style}>
   {#if label}
     <div class="label-container">
       <span class="label">{label}</span>

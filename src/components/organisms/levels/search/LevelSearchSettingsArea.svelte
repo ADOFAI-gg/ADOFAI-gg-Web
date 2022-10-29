@@ -52,7 +52,7 @@
 
 <div>
   <div class="flex flex-col md:flex-row gap-1">
-    <SearchTabs class="flex-grow" value={currentTab} deselectable>
+    <SearchTabs style="flex-grow: 1;" value={currentTab} deselectable>
       <SearchTabItem value="tags" icon="tag">
         <Translation key="SEARCH_TAB_TAGS" />
       </SearchTabItem>
