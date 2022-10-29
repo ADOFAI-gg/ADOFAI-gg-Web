@@ -45,11 +45,11 @@
     <div class="text-xl font-bold">Share</div>
     <CopyableInput value={url} />
     <div class="flex gap-2">
-      <ShareButton on:click={facebook} class="bg-[#1877F2]">
+      <ShareButton on:click={facebook} style="background-color: rgb(24, 119, 242);">
         <Facebook />
       </ShareButton>
 
-      <ShareButton on:click={twitter} class="bg-[#1D9BF0]">
+      <ShareButton on:click={twitter} style="background-color: rgb(29, 155, 240);">
         <Twitter />
       </ShareButton>
     </div>
