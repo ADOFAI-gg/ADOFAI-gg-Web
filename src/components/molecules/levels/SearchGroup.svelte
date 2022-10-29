@@ -5,9 +5,29 @@
 </script>
 
 <div>
-  <div class="text-lg"><Translation key={title} /></div>
-  <div class="border-t mt-[4px] mb-[10px] border-opacity-20 border-white" />
-  <div class="flex flex-col gap-[10px]">
+  <div class="title"><Translation key={title} /></div>
+
+  <hr />
+
+  <div class="content">
     <slot />
   </div>
 </div>
+
+<style lang="scss">
+  .title {
+    font-size: 16px;
+  }
+
+  hr {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    opacity: 0.2;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+</style>
