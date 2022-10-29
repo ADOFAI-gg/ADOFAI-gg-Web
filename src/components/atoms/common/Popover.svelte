@@ -63,7 +63,7 @@
 </script>
 
 <div>
-  <div bind:this={button} aria-expanded={show} tabindex="0">
+  <div bind:this={button} aria-expanded={show} role="button" tabindex="0">
     <slot name="button" />
   </div>
 
