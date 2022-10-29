@@ -59,7 +59,7 @@
       <DifficultyIcon size={18} difficulty={value} />
       <div class="input-text">{str}</div>
 
-      <div on:mouseup|preventDefault={update(null)} tabindex="0" class="input-reset ">
+      <div on:mouseup|preventDefault={update(null)} tabindex="0" class="input-reset">
         <Icon icon="close" size={14} alt="Reset Value Icon" />
       </div>
     {:else}

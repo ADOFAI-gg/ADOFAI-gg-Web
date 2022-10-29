@@ -22,9 +22,9 @@
 </script>
 
 <button
-  class="flex-grow cursor-pointer select-none flex-shrink-0 relative overflow-hidden
-    {active ? 'bg-darkblue/40' : 'bg-darkblue/20 hover:bg-darkblue/30 focus:bg-darkblue/30'}
+  class="
     transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
+  class:active
   on:click={activate}
 >
   {#if icon}
@@ -38,3 +38,27 @@
       {active ? 'opacity-100' : 'opacity-0'}"
   />
 </button>
+
+<style lang="scss">
+  button {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+
+    &.active {
+      background-color: rgba(var(--color-darkblue), 0.4);
+    }
+
+    &:not(.active) {
+      background-color: rgba(var(--color-darkblue), 0.2);
+
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--color-darkblue), 0.3);
+      }
+    }
+  }
+</style>
