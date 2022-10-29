@@ -5,7 +5,7 @@ import compression from 'compression';
 
 const app = express();
 
-app.get('/healthcheck', (req, res) => {
+app.get('/healthcheck', (_req, res) => {
   res.send('ok');
 });
 

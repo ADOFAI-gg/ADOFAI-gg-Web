@@ -34,6 +34,6 @@ spec:
           livenessProbe:
             httpGet:
               port: 3000
-              path: /
+              path: /healthcheck
       imagePullSecrets:
         - name: registry-credentials
