@@ -8,11 +8,13 @@
 
 <Tooltip placement="bottom-start">
   <Icon slot="button" icon={`${tag}`} namespace="tagIcons" size={24} alt="tag icon" />
-  <div class="p-[12px] text-md">
-    <div class="font-bold">
+
+  <div style="padding: 12px; font-size: 14px;">
+    <div style="font-weight: 700;">
       <Translation key="TAG_{tag}_NAME" />
     </div>
-    <div class="font-regular">
+
+    <div style="font-weight: 400;">
       <Translation key="TAG_{tag}_DESCRIPTION" />
     </div>
   </div>
