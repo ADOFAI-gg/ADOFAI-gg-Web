@@ -10,25 +10,57 @@
   $: placeholderContent = $i18nReady ? translate(placeholder || '', $currentLang) : null;
 </script>
 
-<div
-  class="w-full rounded-full bg-white bg-opacity-20 h-[34px] flex items-center px-[13px] gap-[9px]"
->
+<div class="search-input-container">
   <Icon icon="search" size={16} alt="Search Icon" />
 
-  <div class="flex-grow w-0 h-full relative">
-    <input
-      bind:value
-      type="text"
-      aria-label={placeholderContent}
-      class="absolute w-full h-full left-0 top-0 bg-transparent outline-none text-lg"
-    />
+  <div class="input-wrapper">
+    <input bind:value type="text" aria-label={placeholderContent} />
+
     {#if !value}
-      <div
-        transition:fade={{ duration: 200 }}
-        class="w-full h-full absolute items-center flex opacity-40 pointer-events-none"
-      >
+      <div transition:fade={{ duration: 200 }} class="placeholder">
         {placeholderContent}
       </div>
     {/if}
   </div>
 </div>
+
+<style lang="scss">
+  .search-input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 100em;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    .input-wrapper {
+      position: relative;
+      flex-grow: 1;
+      width: 0;
+      height: 100%;
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        outline: none;
+        font-size: 16px;
+      }
+
+      .placeholder {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+  }
+</style>
