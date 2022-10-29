@@ -41,6 +41,7 @@
     "string-quotes": "single",
     "indentation": null,
     "selector-descendant-combinator-no-non-space": null,
+    "string-no-newline": null,
     "order/order": [
       [
         "dollar-variables",

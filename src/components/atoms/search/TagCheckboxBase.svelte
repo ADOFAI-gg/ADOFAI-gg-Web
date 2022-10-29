@@ -30,10 +30,10 @@
         {#if !hideSelectedIcon}
           <div class="selected-icon">
             {#if include}
-              <Icon class="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
+              <Icon style="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
             {:else if exclude}
               <Icon
-                class=""
+                style=""
                 disableFade
                 icon="minusFilled"
                 size={10}
@@ -67,9 +67,9 @@
       {#if !hideSelectedIcon}
         <div class="selected-icon">
           {#if include}
-            <Icon class="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
+            <Icon style="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
           {:else if exclude}
-            <Icon class="" disableFade icon="minusFilled" size={10} alt="Tag Excluded Indicator" />
+            <Icon style="" disableFade icon="minusFilled" size={10} alt="Tag Excluded Indicator" />
           {/if}
         </div>
       {/if}
@@ -86,10 +86,8 @@
 
   .exclude {
     @apply opacity-100 text-red;
-
-    /* filter: invert(30%) sepia(57%) saturate(6528%) hue-rotate(333deg) brightness(99%) contrast(94%); */
-    /* color: #d65a46; */
   }
+
   .include {
     @apply opacity-100;
   }
@@ -98,9 +96,12 @@
   .exclude {
     .icon:not(.disable-select-icon) {
       clip-path: path(
-        'M22 0H0V22H12.6736C12.2417 21.0907 12 20.0736 12 19C12 15.134 15.134 12 19 12C20.0736 12 21.0907 12.2417 22 12.6736V0Z'
+        'M22 0H0V22H12.6736C12.2417 21.0907 12 20.0736 12 \
+        19C12 15.134 15.134 12 19 \
+        12C20.0736 12 21.0907 12.2417 22 12.6736V0Z'
       );
     }
+
     .icon-container {
       position: relative;
     }
