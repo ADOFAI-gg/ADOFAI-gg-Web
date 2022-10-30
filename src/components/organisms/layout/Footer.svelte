@@ -5,47 +5,85 @@
   import Translation from '@/components/utils/Translation.svelte';
 </script>
 
-<footer class="bg-black bg-opacity-20 w-[100vw] sticky left-0">
+<footer>
   <PageContainer>
-    <div class="py-[24px]">
-      <div class="text-xl font-bold">
-        <Translation key="FOOTER_TITLE" />
+    <div class="title">
+      <Translation key="FOOTER_TITLE" />
+    </div>
+
+    <div class="content-container" style="letter-spacing: -0.04em;">
+      <div>
+        <Translation key="FOOTER_DESCRIPTION" />
       </div>
-      <div class="flex flex-wrap mt-[12px]">
-        <div class="inline-block flex-grow w-0">
-          <div>
-            <Translation key="FOOTER_DESCRIPTION" />
-          </div>
-        </div>
 
-        <div class="flex-grow w-0 flex justify-center">
-          <FooterSection title="FOOTER_SECTION_CONTACT">
-            <FooterLink href="mailto:adofai.gg@gmail.com">
-              <Translation key="FOOTER_CONTACT_EMAIL" />
-            </FooterLink>
-            <FooterLink target="_blank" href={import.meta.env.VITE_DISCORD_INVITE}>
-              <Translation key="FOOTER_CONTACT_DISCORD" />
-            </FooterLink>
-          </FooterSection>
-        </div>
+      <div class="list">
+        <FooterSection title="FOOTER_SECTION_CONTACT">
+          <FooterLink href="mailto:adofai.gg@gmail.com">
+            <Translation key="FOOTER_CONTACT_EMAIL" />
+          </FooterLink>
 
-        <div class="flex-grow w-0 flex justify-center">
-          <FooterSection title="FOOTER_SECTION_LEGAL">
-            <FooterLink href="/legal">
-              <Translation key="FOOTER_LEGAL_NOTICE" />
-            </FooterLink>
-            <!-- <FooterLink href="/tos">
+          <FooterLink target="_blank" href={import.meta.env.VITE_DISCORD_INVITE}>
+            <Translation key="FOOTER_CONTACT_DISCORD" />
+          </FooterLink>
+        </FooterSection>
+      </div>
+
+      <div class="list">
+        <FooterSection title="FOOTER_SECTION_LEGAL">
+          <FooterLink href="/legal">
+            <Translation key="FOOTER_LEGAL_NOTICE" />
+          </FooterLink>
+
+          <!-- <FooterLink href="/tos">
               <Translation key="FOOTER_LEGAL_TERMS" />
             </FooterLink>
+
             <FooterLink href="/privacy">
               <Translation key="FOOTER_LEGAL_PRIVACY_POLICY" />
             </FooterLink> -->
-          </FooterSection>
-        </div>
+        </FooterSection>
       </div>
-      <div class="mt-[14px] opacity-60">
-        <Translation key="FOOTER_COPYRIGHT" />
-      </div>
+    </div>
+
+    <div class="copyright">
+      <Translation key="FOOTER_COPYRIGHT" />
     </div>
   </PageContainer>
 </footer>
+
+<style lang="scss">
+  footer {
+    position: sticky;
+    left: 0;
+    width: 100vw;
+    padding: 24px 0;
+    background-color: rgba(var(--color-darkblue), 0.2);
+
+    .title {
+      font-weight: 700;
+      font-size: 21px;
+    }
+
+    .content-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 12px;
+
+      & > div {
+        flex-grow: 1;
+        width: 0;
+      }
+
+      & > div.list {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .copyright {
+      margin-top: 14px;
+      letter-spacing: -0.04em;
+      opacity: 0.6;
+    }
+  }
+</style>
