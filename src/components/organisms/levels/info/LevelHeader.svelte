@@ -9,34 +9,106 @@
   $: youtubeId = getYoutubeVideoId(level.video);
 </script>
 
-<div class="w-full px-8 relative">
+<header>
   <div
-    class="absolute left-0 bg-center bg-no-repeat bg-cover brightness-[60%] -z-10 top-0 w-full h-full"
-    style="background-image: url(https://i.ytimg.com/vi/{youtubeId}/original.jpg)"
+    class="bg-image"
+    style="background-image: url(https://i.ytimg.com/vi/{youtubeId}/original.jpg);"
   />
-  <div class="absolute left-0 backdrop-blur -z-10 top-0 w-full h-full" />
+  <div class="bg-image-backdrop" />
 
-  <div class="h-nav" />
-  <div class="max-w-[1100px] w-full mx-auto">
-    <div class="mt-[40px] text-4xl font-bold text-shadow-5 min-h-[140px] flex items-end">
-      {level.title}
-    </div>
-    <div
-      class="px-[26px] py-[20px] rounded-t-[26px] bg-darkblue40 flex gap-4 mt-[24px] flex-col md:flex-row"
-    >
-      <div class="md:w-0 flex-grow">
+  <div class="blank" />
+
+  <div class="info">
+    <div class="title">{level.title}</div>
+
+    <div class="asdasdasdasd">
+      <div class="authors">
         <HorizontalUserList
           allTitle="Creator"
           label="LEVEL_DETAIL_LEVEL_BY"
           users={level.creators}
         />
+
         <HorizontalUserList
           allTitle="Artist"
           label="LEVEL_DETAIL_MUSIC_BY"
           users={level.music.artists}
         />
       </div>
+
       <LevelHeaderLinksArea {level} />
     </div>
   </div>
-</div>
+</header>
+
+<style lang="scss">
+  header {
+    position: relative;
+    width: 100%;
+    padding: 0 32px;
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: brightness(60%);
+    }
+
+    .bg-image-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+    }
+
+    .blank {
+      height: var(--nav-height);
+    }
+
+    .info {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+
+      .title {
+        display: flex;
+        align-items: flex-end;
+        min-height: 140px;
+        margin-top: 40px;
+        font-weight: 700;
+        font-size: 36px;
+        text-shadow: 0 0 6px black;
+      }
+
+      .asdasdasdasd {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+        padding: 20px 26px;
+        border-radius: 24px 24px 0 0;
+        background-color: rgba(var(--color-darkblue), 0.4);
+
+        .authors {
+          flex-grow: 1;
+
+          @media (min-width: 768px) {
+            width: 0;
+          }
+        }
+
+        @media (min-width: 768px) {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+</style>
