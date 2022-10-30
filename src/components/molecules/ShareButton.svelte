@@ -1,4 +1,4 @@
-<div on:click style={$$props.style}>
+<div tabindex="0" on:click style={$$props.style}>
   <slot />
 </div>
 

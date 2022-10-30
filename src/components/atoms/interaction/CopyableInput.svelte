@@ -29,7 +29,7 @@
 <div class="copyable-input">
   <input type="text" {value} />
 
-  <div class="copy-icon" class:copied on:click={copy}>
+  <div class="copy-icon" tabindex="0" class:copied on:click={copy}>
     {#if copied}
       <Icon size={16} icon="check" alt="Copy Success" />
     {:else}
