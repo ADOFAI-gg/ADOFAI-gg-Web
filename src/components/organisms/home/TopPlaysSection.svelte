@@ -9,7 +9,7 @@
 
 <MainSectionTitle title="HOME_TOP_PLAYS" moreLink="/rankings" />
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-[50px]">
+<div class="top-play">
   {#if plays.length}
     {#each plays.slice(0, 3) as play (play.id)}
       <TopPlay {play} />
@@ -20,3 +20,20 @@
     {/each}
   {/if}
 </div>
+
+<style lang="scss">
+  .top-play {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 50px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
