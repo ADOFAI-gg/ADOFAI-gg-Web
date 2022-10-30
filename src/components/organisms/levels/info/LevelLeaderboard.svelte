@@ -25,14 +25,15 @@
 
 {#if promise}
   {#await promise}
-    <div class="flex justify-center">
+    <div class="loading">
       <LoadingSpinner />
     </div>
   {:then data}
     {#if data.length}
       <div>
         <SectionTitle title="Leaderboard" />
-        <div class="mt-[-24px] flex flex-col">
+
+        <div class="list">
           {#each Object.entries(data) as [index, item]}
             <LevelLeaderboardItem index={Number(index)} play={item} />
           {/each}
@@ -41,3 +42,16 @@
     {/if}
   {/await}
 {/if}
+
+<style lang="scss">
+  .loading {
+    display: flex;
+    justify-content: center;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin-top: -24px;
+  }
+</style>
