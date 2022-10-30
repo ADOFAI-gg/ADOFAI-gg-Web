@@ -20,10 +20,28 @@
   };
 </script>
 
-<div class="px-4 max-w-[700px] mt-[60px] mx-auto flex flex-col items-center gap-[32px]">
+<div class="hero">
   <HomeLogo />
 
-  <form on:submit={onSubmitSearch} class="w-full">
+  <form on:submit={onSubmitSearch}>
     <SearchInput bind:value={searchQuery} />
   </form>
 </div>
+
+<style lang="scss">
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    max-width: 700px;
+    margin-top: 60px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 16px;
+
+    form {
+      width: 100%;
+    }
+  }
+</style>
