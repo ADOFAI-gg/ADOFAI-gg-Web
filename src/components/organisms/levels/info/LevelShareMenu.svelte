@@ -36,15 +36,22 @@
   <Button
     type="levelAction"
     slot="button"
-    class="w-[36px] h-[36px] flex justify-center items-center"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;"
   >
     <Icon icon="share" size={20} alt="Share Icon" />
   </Button>
 
-  <div class="p-4 flex flex-col gap-2 max-w-[320px] w-screen">
-    <div class="text-xl font-bold">Share</div>
+  <div class="popover">
+    <div class="title">Share</div>
+
     <CopyableInput value={url} />
-    <div class="flex gap-2">
+
+    <div class="buttons">
       <ShareButton on:click={facebook} style="background-color: rgb(24, 119, 242);">
         <Facebook />
       </ShareButton>
@@ -55,3 +62,24 @@
     </div>
   </div>
 </Popover>
+
+<style lang="scss">
+  .popover {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100vw;
+    max-width: 320px;
+    padding: 16px;
+
+    .title {
+      font-weight: 700;
+      font-size: 21px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 8px;
+    }
+  }
+</style>

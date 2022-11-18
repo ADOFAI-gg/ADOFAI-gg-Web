@@ -5,6 +5,7 @@
   export let type = 'default';
 
   let className = '';
+  let style = '';
 
   const dispatch = createEventDispatcher();
 
@@ -14,7 +15,7 @@
     }
   };
 
-  export { className as class };
+  export { className as class, style };
 </script>
 
 <svelte:element
@@ -24,6 +25,7 @@
   {href}
   {...$$props}
   class={'button ' + className}
+  {style}
   data-type={type}
 >
   <slot />
