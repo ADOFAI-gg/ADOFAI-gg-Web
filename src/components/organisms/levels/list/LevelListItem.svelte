@@ -8,70 +8,223 @@
   export let level: Level;
 </script>
 
-<a
-  class="px-[16px] py-[18px] group relative bg-darkblue gap-[16px] bg-opacity-0 hover:bg-opacity-20 focus:bg-opacity-20 transition-colors border-b-white/20 border-b-[1px] whitespace-nowrap flex"
-  href="/levels/{level.id}"
->
-  <div
-    class="flex lg:items-center justify-center lg:justify-start w-0 flex-col lg:flex-row flex-grow"
-  >
-    <div class="flex gap-[8px] flex-grow items-center">
-      <div class="w-[60px] flex flex-col items-center gap-[2px]">
+<a class="level-list-item" href="/levels/{level.id}">
+  <div class="info-container">
+    <div class="basic-info">
+      <div class="difficulty">
         <DifficultyIcon size={42} difficulty={level.difficulty} />
-        <div class="text-md opacity-80">ID {level.id}</div>
+
+        <div class="id">ID {level.id}</div>
       </div>
-      <div class="flex-grow w-0 flex flex-col justify-between">
-        <div class="text-2xl font-medium h-[24px] leading-[24px] overflow-x-clip text-ellipsis">
+
+      <div class="title-and-authors">
+        <div class="title">
           {level.title}
         </div>
-        <div class="flex-grow w-full flex">
-          <div class="flex h-[46px] items-center leading-[16px] gap-[8px] flex-grow w-0">
-            <div class="flex flex-col gap-[4px] opacity-60 font-light">
-              <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
-              <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
-            </div>
-            <div class="flex flex-grow w-0 flex-col gap-[4px] opacity-80">
-              <div class="relative h-[16px]">
-                <div class="absolute overflow-x-hidden h-[24px] text-ellipsis w-full">
-                  {level.music.artists.map((x) => x.name).join(' & ')}
-                </div>
+
+        <div class="authors">
+          <div class="labels">
+            <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
+            <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
+          </div>
+
+          <div class="values">
+            <div class="value-wrapper">
+              <div class="value">
+                {level.music.artists.map((x) => x.name).join(' & ')}
               </div>
-              <div class="relative h-[16px]">
-                <div class="absolute overflow-x-hidden h-[24px] text-ellipsis w-full">
-                  {level.creators.map((x) => x.name).join(' & ')}
-                </div>
+            </div>
+
+            <div class="value-wrapper">
+              <div class="value">
+                {level.creators.map((x) => x.name).join(' & ')}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     {#if import.meta.env.VITE_USE_ACCOUNT || level.tags.length}
-      <div
-        class="self-end w-full lg:w-2/5 flex lg:justify-end justify-start mt-2 lg:mt-0 lg:py-[11px]"
-      >
+      <div class="additional-info">
         <LevelListItemTagList {level} />
 
         {#if import.meta.env.VITE_USE_ACCOUNT}
-          <div class="ml-[12px] flex gap-[12px]">
-            <div class="w-[2px] rounded-full h-full bg-[#E8E8E8] bg-opacity-40" />
-            <div class="flex gap-[6px] items-center">
+          <div class="hearts">
+            {#if level.tags.length}
+              <div class="divider" />
+            {/if}
+
+            <div class="content">
               <Icon icon="heartOutlined" size={20} alt="Heart Icon" />
-              <div class="font-medium text-lg">1.4K</div>
+              1.4K
             </div>
           </div>
         {/if}
       </div>
     {/if}
   </div>
-  <div class="self-center opacity-100 transition-all w-[48px] relative duration-200">
-    <a
-      href={level.download}
-      class="absolute right-0 top-0 -translate-y-1/2"
-      rel="noreferrer"
-      target="_blank"
-    >
+
+  <div class="download">
+    <a href={level.download} rel="noreferrer" target="_blank">
       <Icon icon="downloadFile" size={48} alt="Download Icon" />
     </a>
   </div>
 </a>
+
+<style lang="scss">
+  .level-list-item {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    padding: 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(var(--color-darkblue), 0.2);
+    }
+
+    .info-container {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: center;
+      width: 0;
+
+      @media (min-width: 1024px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+
+    .basic-info {
+      display: flex;
+      flex-grow: 1;
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+
+      .difficulty {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        align-items: center;
+        width: 60px;
+
+        .id {
+          font-size: 14px;
+          opacity: 0.8;
+        }
+      }
+
+      .title-and-authors {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 0;
+
+        .title {
+          overflow-x: clip;
+          height: 28px;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 28px;
+          text-overflow: ellipsis;
+        }
+
+        .authors {
+          display: flex;
+          flex-grow: 1;
+          gap: 8px;
+          align-items: center;
+          height: 46px;
+          line-height: 16px;
+
+          .labels {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-weight: 300;
+            opacity: 0.6;
+          }
+
+          .values {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            gap: 4px;
+            width: 0;
+            opacity: 0.8;
+
+            .value-wrapper {
+              position: relative;
+              height: 16px;
+
+              .value {
+                position: absolute;
+                overflow-x: hidden;
+                width: 100%;
+                height: 24px;
+                text-overflow: ellipsis;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .additional-info {
+      display: flex;
+      align-self: flex-end;
+      justify-content: start;
+      width: 100%;
+      margin-top: 8px;
+
+      .hearts {
+        display: flex;
+        gap: 12px;
+        margin-left: 12px;
+
+        .divider {
+          width: 2px;
+          height: 100%;
+          border-radius: 100em;
+          background-color: rgba(232, 232, 232, 0.4);
+        }
+
+        .content {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+          font-weight: 500;
+          font-size: 16px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        justify-content: flex-end;
+        margin-top: 0;
+        padding: 11px 0;
+      }
+    }
+
+    .download {
+      position: relative;
+      align-self: center;
+      width: 48px;
+      opacity: 1;
+
+      a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+</style>
