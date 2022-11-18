@@ -31,34 +31,85 @@
   })();
 </script>
 
-<div class="flex flex-col gap-[12px]">
+<div class="tags-container">
   {#if highlighted.length}
-    <div class="flex flex-col gap-[6px] items-start">
+    <div class="highlighted">
       {#each highlighted as tag (tag)}
         <Tooltip placement="bottom-start">
-          <div slot="button" class="flex text-lg font-medium gap-[6px] text-red items-center">
-            <Icon namespace="tagIcons" icon={`${tag}`} class="text-red" alt="Tag Icon" />
+          <div slot="button" class="tag">
+            <Icon
+              namespace="tagIcons"
+              icon={`${tag}`}
+              style="color: rgba(var(--color-red), 1);"
+              alt="Tag Icon"
+            />
+
             <div>
               <Translation key="TAG_{tag}_NAME" />
             </div>
           </div>
 
-          <div class="p-[12px] text-md">
-            <div class="font-bold">
+          <div class="tooltip">
+            <div style="font-weight: 700;">
               <Translation key="TAG_{tag}_NAME" />
             </div>
-            <div class="font-regular">
+
+            <div>
               <Translation key="TAG_{tag}_DESCRIPTION" />
             </div>
           </div>
         </Tooltip>
       {/each}
     </div>
-    <div class="h-[1px] w-[120px] bg-white bg-opacity-40" />
+
+    <div class="divider" />
   {/if}
-  <div class="flex gap-[6px] flex-wrap">
+
+  <div class="tags">
     {#each normalTags as tag (tag.id)}
       <TooltippedTagIcon tag={tag.id} />
     {/each}
   </div>
 </div>
+
+<style lang="scss">
+  .tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .highlighted {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+
+      .tag {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        color: rgba(var(--color-red), 1);
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  .tooltip {
+    padding: 12px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+</style>
