@@ -51,7 +51,7 @@
 
         {#if import.meta.env.VITE_USE_ACCOUNT}
           <div class="hearts">
-            {#if level.tags.length}
+            {#if level.tags.length || level.epilepsyWarning}
               <div class="divider" />
             {/if}
 
@@ -184,15 +184,15 @@
       justify-content: start;
       width: 100%;
       margin-top: 8px;
+      padding-left: 70px;
 
       .hearts {
         display: flex;
-        gap: 12px;
-        margin-left: 12px;
 
         .divider {
           width: 2px;
           height: 100%;
+          margin: 0 12px;
           border-radius: 100em;
           background-color: rgba(232, 232, 232, 0.4);
         }
