@@ -13,9 +13,7 @@
   export let icon: string;
   export let namespace = 'icons';
   export let size = 24;
-  let style = 'color: white;';
-
-  export { style };
+  export let style = 'color: white;';
 
   const load = async (id: string) => {
     if (!browser) return null as unknown as SVGElement;
@@ -67,18 +65,7 @@
   const sizeStyle = `width: ${size}px; height: ${size}px;`;
 </script>
 
-{#await promise}
-  <div style={sizeStyle} />
-{:then data}
-  <div
-    bind:this={container}
-    style="{sizeStyle} {!disableFade && 'animation: var(--animation-fadein);'} {style}"
-  >
-    {@html data}
-  </div>
-{:catch}
-  <div style={sizeStyle} />
-{/await}
+<div bind:this={container} style="width: {size}px; height: {size}px; {style}" />
 
 <style lang="scss">
   .loaded {
