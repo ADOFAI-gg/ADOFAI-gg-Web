@@ -61,14 +61,6 @@
       });
     }
   }
-
-  const sizeStyle = `width: ${size}px; height: ${size}px;`;
 </script>
 
-<div bind:this={container} style="width: {size}px; height: {size}px; {style}" />
-
-<style lang="scss">
-  .loaded {
-    animation: var(--animation-fadein);
-  }
-</style>
+<div bind:this={container} class="icon" style="width: {size}px; height: {size}px; {style}" />

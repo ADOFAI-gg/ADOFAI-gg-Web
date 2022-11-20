@@ -16,8 +16,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.validate": [
-    "typescript",
-    "svelte"
-  ],
+  "eslint.validate": ["typescript", "svelte"]
 }

@@ -20,9 +20,6 @@
       "@organisms/*": ["./src/components/organisms/*"],
       "@templates/*": ["./src/components/templates/*"]
     },
-    "types": [
-      "vite-plugin-glob/client",
-      "@types/youtube"
-    ]
+    "types": ["vite-plugin-glob/client", "@types/youtube"]
   }
 }

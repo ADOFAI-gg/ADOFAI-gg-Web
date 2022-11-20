@@ -67,7 +67,7 @@
 
   <div class="download">
     <a href={level.download} rel="noreferrer" target="_blank">
-      <Icon icon="downloadFile" size={48} alt="Download Icon" />
+      <Icon icon="downloadFile" size={48} alt="Download Icon" disableFade />
     </a>
   </div>
 </a>

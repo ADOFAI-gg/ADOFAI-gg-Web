@@ -97,3 +97,7 @@ body {
 .simplebar-horizontal .simplebar-scrollbar::before {
   height: 10px;
 }
+
+.icon.loaded {
+  animation: var(--animation-fadein);
+}

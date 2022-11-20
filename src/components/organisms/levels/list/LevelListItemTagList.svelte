@@ -34,7 +34,14 @@
   <div class="tag-list">
     {#each tags.filter((x) => x !== 4).slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
-        <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
+        <Icon
+          icon={`${tag}`}
+          disableFade
+          namespace="tagIcons"
+          size={24}
+          slot="button"
+          alt="Tag Icon"
+        />
 
         <div class="tooltip">
           <div class="title">
