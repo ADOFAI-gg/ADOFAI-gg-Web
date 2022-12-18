@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const apiEndpoint = '';
+const apiEndpoint = 'https://api.awc.enak.kr/players';
 
 const RankingItemBox = styled.div`
   display: flex;
