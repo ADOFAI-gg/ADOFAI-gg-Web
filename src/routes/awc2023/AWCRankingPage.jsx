@@ -1,9 +1,9 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import SectionTitle from '../../components/global/SectionTitle';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const apiEndpoint = '';
 
@@ -38,7 +38,7 @@ const ItemPlayerName = styled.div`
   line-height: 120%;
   flex-grow: 1;
   letter-spacing: -0.011em;
-  user-select: initial;
+  user-select: text;
 `;
 
 const ItemHitMargins = styled.div`
@@ -118,21 +118,21 @@ const RankingItem = ({ rank, playerName, hitMargins, xAccuracy }) => {
         <ItemHitMargin color='#3BF892' content={hitMargins[3]} />
         <ItemHitMargin color='#C8FF6E' content={hitMargins[4]} />
         <ItemHitMargin color='#FFE76E' content={hitMargins[5]} />
-        <ItemHitMargin color='#ED6769' content={hitMargins[0]} />
+        <ItemHitMargin color='#ED6769' content={hitMargins[6]} />
 
         <ItemDivider />
 
         <ItemHitMargin
           color='#20D8E3'
           label='Multipress'
-          content={hitMargins[6]}
+          content={hitMargins[7]}
         />
         <ItemHitMargin
           color='#C983E2'
           label='Overload'
-          content={hitMargins[7]}
+          content={hitMargins[8]}
         />
-        <ItemHitMargin color='#C983E2' label='Miss' content={hitMargins[8]} />
+        <ItemHitMargin color='#C983E2' label='Miss' content={hitMargins[9]} />
       </ItemHitMargins>
 
       <ItemDivider />
@@ -143,7 +143,16 @@ const RankingItem = ({ rank, playerName, hitMargins, xAccuracy }) => {
 };
 
 const AWCRankingPage = () => {
-  const { showAsId } = useParams();
+  const [showAsId, setShowAsId] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    if (params.get('showAsId') === 'true') {
+      setShowAsId(true);
+    }
+  }, [location.search]);
 
   const reduce = (state, action) => {
     switch (action.type) {
@@ -209,7 +218,10 @@ const AWCRankingPage = () => {
         });
 
         dispatch({ type: 'FETCH_RESULT', items: response.data.data.content });
-        dispatch({ type: 'ITEM_COUNT', itemCount: response.data.count });
+        dispatch({
+          type: 'ITEM_COUNT',
+          itemCount: response.data.data.totalElements
+        });
       } catch (e) {
         dispatch({ type: 'FETCH_ERROR', error: e });
       }
