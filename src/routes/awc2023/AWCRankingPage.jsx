@@ -95,7 +95,7 @@ const ItemXAccuracy = ({ xAccuracy }) => {
         src={'https://adofai.gg/other_icons/xaccuracy.svg'}
         alt='X Accurancy: '
       />
-      {xAccuracy.toFixed(2)}%
+      {(xAccuracy * 100).toFixed(2)}%
     </ItemXAccuracyWrapper>
   );
 };
