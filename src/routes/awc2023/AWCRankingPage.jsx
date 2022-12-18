@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import SectionTitle from '../../components/global/SectionTitle';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const apiEndpoint = '';
 
@@ -37,6 +38,7 @@ const ItemPlayerName = styled.div`
   line-height: 120%;
   flex-grow: 1;
   letter-spacing: -0.011em;
+  user-select: initial;
 `;
 
 const ItemHitMargins = styled.div`
@@ -141,6 +143,8 @@ const RankingItem = ({ rank, playerName, hitMargins, xAccuracy }) => {
 };
 
 const AWCRankingPage = () => {
+  const { showAsId } = useParams();
+
   const reduce = (state, action) => {
     switch (action.type) {
       case 'FETCH_REQUEST':
@@ -255,7 +259,7 @@ const AWCRankingPage = () => {
             return (
               <RankingItem
                 rank={index}
-                playerName={i.playerName}
+                playerName={showAsId ? i.playerId : i.playerName}
                 hitMargins={i.hitMargins}
                 xAccuracy={i.xacc}
                 key={index}
