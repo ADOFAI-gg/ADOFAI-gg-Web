@@ -1,11 +1,10 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import SectionTitle from '../../components/global/SectionTitle';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const apiEndpoint = 'https://api.awc.enak.kr/players';
+const apiEndpoint = 'https://api.awc.enak.kr/measure/rank';
 
 const RankingItemBox = styled.div`
   display: flex;
@@ -127,11 +126,7 @@ const RankingItem = ({ rank, playerName, hitMargins, xAccuracy }) => {
           label='Multipress'
           content={hitMargins[7]}
         />
-        <ItemHitMargin
-          color='#C983E2'
-          label='Miss'
-          content={hitMargins[8]}
-        />
+        <ItemHitMargin color='#C983E2' label='Miss' content={hitMargins[8]} />
         <ItemHitMargin
           color='#C983E2'
           label='Overload'
@@ -181,18 +176,6 @@ const AWCRankingPage = () => {
           isError: action.error ? true : false
         };
 
-      case 'HAS_MORE_ITEMS':
-        return {
-          ...state,
-          hasMore: action.hasMore
-        };
-
-      case 'ITEM_COUNT':
-        return {
-          ...state,
-          itemCount: action.itemCount
-        };
-
       default:
         return state;
     }
@@ -202,8 +185,6 @@ const AWCRankingPage = () => {
     isLoading: false,
     error: null,
     isError: false,
-    hasMore: true,
-    itemCount: 0,
     items: null
   });
 
@@ -216,16 +197,11 @@ const AWCRankingPage = () => {
 
         const response = await axios.get(apiEndpoint, {
           params: {
-            page: 0,
-            size: 30
+            limit: 800
           }
         });
 
-        dispatch({ type: 'FETCH_RESULT', items: response.data.data.content });
-        dispatch({
-          type: 'ITEM_COUNT',
-          itemCount: response.data.data.totalElements
-        });
+        dispatch({ type: 'FETCH_RESULT', items: response.data.data });
       } catch (e) {
         dispatch({ type: 'FETCH_ERROR', error: e });
       }
@@ -234,31 +210,6 @@ const AWCRankingPage = () => {
     fetchData();
   }, []);
 
-  const fetchMoreData = async () => {
-    if (state.items.length >= state.itemCount) {
-      dispatch({ type: 'HAS_MORE_RANKING', hasMore: false });
-      return;
-    }
-
-    try {
-      dispatch({ type: 'FETCH_ERROR', error: null });
-
-      const response = await axios.get(apiEndpoint, {
-        params: {
-          offset: state.items.length,
-          amount: 30
-        }
-      });
-
-      dispatch({
-        type: 'FETCH_RESULT',
-        items: state.items.concat(response.data.data.content)
-      });
-    } catch (e) {
-      dispatch({ type: 'FETCH_ERROR', error: e });
-    }
-  };
-
   return (
     <main>
       <SectionTitle>AWC 2023 Qualifiers Leaderboard</SectionTitle>
@@ -266,23 +217,17 @@ const AWCRankingPage = () => {
       {state.isError ? (
         <h2 style={{ margin: 0, marginTop: 12 }}>Oops! An error occurred.</h2>
       ) : state.isLoading ? null : !state.items ? null : (
-        <InfiniteScroll
-          dataLength={state.items.length}
-          next={fetchMoreData}
-          hasMore={state.hasMore}
-        >
-          {state.items.map((i, index) => {
-            return (
-              <RankingItem
-                rank={index}
-                playerName={showAsId ? i.playerId : i.playerName}
-                hitMargins={i.hitMargins}
-                xAccuracy={i.xacc}
-                key={index}
-              />
-            );
-          })}
-        </InfiniteScroll>
+        state.items.map((i, index) => {
+          return (
+            <RankingItem
+              rank={index}
+              playerName={showAsId ? i.playerId : i.playerName}
+              hitMargins={i.hitMargins}
+              xAccuracy={i.xacc}
+              key={index}
+            />
+          );
+        })
       )}
     </main>
   );
