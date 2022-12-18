@@ -129,10 +129,14 @@ const RankingItem = ({ rank, playerName, hitMargins, xAccuracy }) => {
         />
         <ItemHitMargin
           color='#C983E2'
-          label='Overload'
+          label='Miss'
           content={hitMargins[8]}
         />
-        <ItemHitMargin color='#C983E2' label='Miss' content={hitMargins[9]} />
+        <ItemHitMargin
+          color='#C983E2'
+          label='Overload'
+          content={hitMargins[9]}
+        />
       </ItemHitMargins>
 
       <ItemDivider />
