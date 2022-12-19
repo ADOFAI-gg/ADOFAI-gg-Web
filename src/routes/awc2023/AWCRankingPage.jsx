@@ -221,7 +221,7 @@ const AWCRankingPage = () => {
           return (
             <RankingItem
               rank={index}
-              playerName={showAsId ? i.playerId : i.playerName}
+              playerName={showAsId ? i.playerId : i.discordUsername ?? i.playerName}
               hitMargins={i.hitMargins}
               xAccuracy={i.xacc}
               key={index}
