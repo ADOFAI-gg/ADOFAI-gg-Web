@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const apiEndpoint =
-  'https://cors-anywhere.herokuapp.com/https://api.awc.enak.kr/measure/rank';
+const apiEndpoint = 'https://api.awc.enak.kr/measure/rank';
 
 const RankingItemBox = styled.div`
   display: flex;
