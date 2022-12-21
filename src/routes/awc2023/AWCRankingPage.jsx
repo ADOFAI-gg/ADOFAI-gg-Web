@@ -205,7 +205,14 @@ const AWCRankingPage = () => {
           }
         });
 
-        dispatch({ type: 'FETCH_RESULT', items: response.data.data });
+        // 랭킹 테러 대응을 위한 임시 변경사항
+        dispatch({ type: 'FETCH_RESULT', items: response.data.data.filter(a =>
+                  !a.isTimingScaleChanged)
+              && !a.playerName.includes('⛧')
+              && !a.playerName.includes('⚝')
+              && !/.*#\d{4}$/g.test(a.discordUsername)
+              && !a.hitMargins[3] <= 1657
+        });
       } catch (e) {
         dispatch({ type: 'FETCH_ERROR', error: e });
       }
