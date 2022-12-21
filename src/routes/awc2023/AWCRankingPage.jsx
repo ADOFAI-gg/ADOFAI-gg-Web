@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const apiEndpoint = 'https://api.awc.enak.kr/measure/rank';
+const apiEndpoint =
+  'https://cors-anywhere.herokuapp.com/https://api.awc.enak.kr/measure/rank';
 
 const RankingItemBox = styled.div`
   display: flex;
@@ -77,6 +78,7 @@ const ItemHitMargin = ({ color, label, content }) => {
 };
 
 const ItemXAccuracyWrapper = styled.div`
+  font-family: var(--monospace-font);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -88,13 +90,16 @@ const ItemXAccuracyWrapper = styled.div`
  * @param {Number} props.xAccuracy
  */
 const ItemXAccuracy = ({ xAccuracy }) => {
+  const formattedXAccuracy =
+    xAccuracy >= 1 ? '100.0000' : (xAccuracy * 100).toFixed(5);
+
   return (
     <ItemXAccuracyWrapper>
       <img
         src={'https://adofai.gg/other_icons/xaccuracy.svg'}
         alt='X Accurancy: '
       />
-      {(xAccuracy * 100).toFixed(2)}%
+      {formattedXAccuracy}%
     </ItemXAccuracyWrapper>
   );
 };
@@ -221,7 +226,9 @@ const AWCRankingPage = () => {
           return (
             <RankingItem
               rank={index}
-              playerName={showAsId ? i.playerId : i.discordUsername ?? i.playerName}
+              playerName={
+                showAsId ? i.playerId : i.discordUsername ?? i.playerName
+              }
               hitMargins={i.hitMargins}
               xAccuracy={i.xacc}
               key={index}
