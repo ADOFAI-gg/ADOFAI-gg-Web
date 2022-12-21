@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
-const apiEndpoint = 'https://api.awc.enak.kr/measure/rank';
+const apiEndpoint = 'https://cors-anywhere.herokuapp.com/https://api.awc.enak.kr/measure/rank';
 
 const RankingItemBox = styled.div`
   display: flex;
@@ -207,12 +207,12 @@ const AWCRankingPage = () => {
 
         // 랭킹 테러 대응을 위한 임시 변경사항
         dispatch({ type: 'FETCH_RESULT', items: response.data.data.filter(a =>
-                  !a.isTimingScaleChanged)
+                  !a.isTimingScaleChanged
               && !a.playerName.includes('⛧')
               && !a.playerName.includes('⚝')
-              && !/.*#\d{4}$/g.test(a.discordUsername)
+              && /.*#\d{4}$/g.test(a.discordUsername)
               && !a.hitMargins[3] <= 1657
-        });
+          )});
       } catch (e) {
         dispatch({ type: 'FETCH_ERROR', error: e });
       }
