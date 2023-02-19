@@ -71,8 +71,8 @@ const LevelPage = ({ history }) => {
       title: 'Photosensitive Content Included',
       html: (
         <>
-          This level includes flashing imagery and this might
-          trigger photosensitive epilepsy.
+          This level includes flashing imagery and this might trigger
+          photosensitive epilepsy.
           <br />
           <br />
           To prevent this, play this level in a well-lit room, and don't play
@@ -92,8 +92,7 @@ const LevelPage = ({ history }) => {
       title: 'NSFW Content Included',
       html: (
         <>
-          This level includes{' '}
-          <strong>NSFW (sexual or gore) content</strong>.
+          This level includes <strong>NSFW (sexual or gore) content</strong>.
           <br />
           <br />
           If you don't want to see NSFW content included in this level,
@@ -441,7 +440,7 @@ const LevelPage = ({ history }) => {
                     src={`https://www.youtube.com/embed/${state.level.youtubeId}`}
                     title='YouTube video player'
                     frameBorder='0'
-                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen;'
                   />
                 </div>
               </div>
