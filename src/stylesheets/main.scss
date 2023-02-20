@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap';
 @import 'tippy';
 @import '../../node_modules/nprogress/nprogress.css';
 
@@ -29,12 +29,11 @@
 }
 
 body {
-  color: white;
-  letter-spacing: -0.01rem;
-
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  color: white;
+  letter-spacing: -0.01rem;
 
   &::after {
     content: '';
@@ -62,9 +61,9 @@ body {
 }
 
 #root {
+  overflow: auto;
   width: 100vw;
   height: 100vh;
-  overflow: auto;
 }
 
 .text-shadow-6 {
@@ -81,6 +80,13 @@ body {
 //   overflow-y: scroll;
 // }
 
+// Scrollbar --------------------------------------------------
+
+body > .simplebar-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
 .simplebar-scrollbar::before {
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.4);
@@ -96,8 +102,4 @@ body {
 
 .simplebar-horizontal .simplebar-scrollbar::before {
   height: 10px;
-}
-
-.icon.loaded {
-  animation: var(--animation-fadein);
 }

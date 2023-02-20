@@ -84,7 +84,8 @@
         </Button>
 
         {#if $currentTab === 'tags'}
-          <div transition:fade={{ duration: 200 }} class="flex-grow text-md">
+          <!-- ↓ 얘한테 align-items: center;를 넣어야 정상적으로 보여요 -->
+          <div transition:fade={{ duration: 200 }} class="flex-grow text-md ">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}

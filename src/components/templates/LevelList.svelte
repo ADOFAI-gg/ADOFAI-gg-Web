@@ -214,20 +214,23 @@
 
 <style lang="scss">
   .table-view-search-area {
-    width: calc(100vw - 240px);
     position: sticky;
     left: 120px;
+    width: calc(100vw - 240px);
+
     @media screen and (max-width: 768px) {
-      width: calc(100vw - 48px);
       left: 24px;
+      width: calc(100vw - 48px);
     }
   }
+
   .table-view-container {
-    padding-left: 120px;
     padding-right: 120px;
+    padding-left: 120px;
+
     @media screen and (max-width: 768px) {
-      padding-left: 24px;
       padding-right: 24px;
+      padding-left: 24px;
     }
   }
 </style>

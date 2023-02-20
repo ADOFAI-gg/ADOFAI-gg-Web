@@ -1,15 +1,11 @@
 <script lang="ts">
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-
-  const onCopy = (e: ClipboardEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText((<HTMLElement>e.target).innerText);
-  };
+  import Table from '@atoms/table/Table.svelte';
+  import { default as Cell } from '@atoms/table/TableCell.svelte';
 </script>
 
-<table class="table-fixed w-full">
+<Table style="width: 100%;">
   <colgroup>
     <col width="40" />
   </colgroup>
@@ -19,6 +15,7 @@
       <th>
         <Translation key="REFERENCE_DIFFICULTY" />
       </th>
+
       <th>
         <Translation key="REFERENCE_DESCRIPTION" />
       </th>
@@ -27,76 +24,53 @@
 
   <tbody>
     <tr>
-      <td tabindex="0" on:copy={onCopy}>
+      <Cell>
         <DifficultyIcon difficulty={-999} size={28} />
-      </td>
-      <td tabindex="0" on:copy={onCopy} class="col-border">
+      </Cell>
+
+      <Cell leftSideBorder>
         <Translation key="REFERENCE_INDICATION_RATED" />
-      </td>
+      </Cell>
     </tr>
 
     <tr>
-      <td tabindex="0" on:copy={onCopy}>
+      <Cell>
         <DifficultyIcon difficulty={0.1} size={28} />
-      </td>
-      <td tabindex="0" on:copy={onCopy} class="col-border">
+      </Cell>
+
+      <Cell leftSideBorder>
         <Translation key="REFERENCE_INDICATION_TINY" />
-      </td>
+      </Cell>
     </tr>
 
     <tr>
-      <td tabindex="0" on:copy={onCopy}>
+      <Cell>
         <DifficultyIcon difficulty={0} size={28} />
-      </td>
-      <td tabindex="0" on:copy={onCopy} class="col-border">
+      </Cell>
+
+      <Cell leftSideBorder>
         <Translation key="REFERENCE_INDICATION_NOT_RATED" />
-      </td>
+      </Cell>
     </tr>
 
     <tr>
-      <td tabindex="0" on:copy={onCopy}>
+      <Cell>
         <DifficultyIcon difficulty={101} size={28} />
-      </td>
-      <td tabindex="0" on:copy={onCopy} class="col-border">
+      </Cell>
+
+      <Cell leftSideBorder>
         <Translation key="REFERENCE_INDICATION_UNCLEARABLE" />
-      </td>
+      </Cell>
     </tr>
 
     <tr>
-      <td tabindex="0" on:copy={onCopy}>
+      <Cell>
         <DifficultyIcon difficulty={-2} size={28} />
-      </td>
-      <td tabindex="0" on:copy={onCopy} class="col-border">
+      </Cell>
+
+      <Cell leftSideBorder>
         <Translation key="REFERENCE_INDICATION_CENSORED" />
-      </td>
+      </Cell>
     </tr>
   </tbody>
-</table>
-
-<style lang="scss">
-  table {
-    th {
-      text-align: left;
-
-      @apply font-regular text-white/60 text-md pb-[8px] whitespace-nowrap;
-    }
-
-    tbody {
-      tr {
-        @apply border-t border-white/20;
-
-        height: 52px;
-
-        vertical-align: middle;
-
-        td {
-          @apply py-2;
-        }
-
-        td.col-border {
-          @apply border-l border-white/20 px-[12px];
-        }
-      }
-    }
-  }
-</style>
+</Table>

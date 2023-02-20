@@ -10,6 +10,8 @@
   import { Asset } from '@/utils/assets';
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import Table from '@atoms/table/Table.svelte';
+  import { default as Cell } from '@atoms/table/TableCell.svelte';
 
   const loadData = async (): Promise<DifficultyReference[]> => {
     if (!browser) return [];
@@ -50,12 +52,6 @@
   };
 
   const loadPromise = loadData();
-
-  const onCopy = (e: ClipboardEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText((<HTMLElement>e.target).innerText);
-  };
 </script>
 
 {#await loadPromise}
@@ -63,7 +59,7 @@
     <LoadingSpinner />
   </div>
 {:then data}
-  <table class="w-full min-w-[1680px] table-fixed">
+  <Table class="w-full min-w-[1680px] table-fixed">
     <colgroup>
       <col width="40" />
       <col width="100" />
@@ -95,21 +91,17 @@
     <tbody>
       {#each data as reference}
         <tr>
-          <td tabindex="0" on:copy={onCopy}>
+          <Cell>
             <DifficultyIcon difficulty={reference.difficulty} size={28} />
-          </td>
+          </Cell>
 
-          <td
-            tabindex="0"
-            on:copy={onCopy}
-            class="col-border font-mono tracking-[-.1em] font-light"
-          >
+          <Cell class="col-border font-mono tracking-[-.1em] font-light">
             {reference.ppRating}
-          </td>
+          </Cell>
 
           {#each reference.levels as level}
             {#if level}
-              <td tabindex="0" on:copy={onCopy} class="col-border">
+              <Cell leftSideBorder>
                 <div class="flex items-center gap-[12px]">
                   {#if level.levelId}
                     <div class="font-mono tracking-[-.1em] font-light opacity-40">
@@ -125,49 +117,13 @@
                     {level.name}
                   </a>
                 </div>
-              </td>
+              </Cell>
             {:else}
-              <td class="col-border" />
+              <Cell leftSideBorder />
             {/if}
           {/each}
         </tr>
       {/each}
     </tbody>
-  </table>
+  </Table>
 {/await}
-
-<style lang="scss">
-  table {
-    th {
-      text-align: left;
-
-      @apply font-regular text-white/60 text-md pb-[8px] whitespace-nowrap;
-    }
-
-    tbody {
-      tr {
-        @apply border-t border-white/20;
-
-        height: 52px;
-
-        vertical-align: middle;
-
-        td {
-          @apply py-2;
-        }
-
-        a {
-          @apply transition-all;
-
-          &:hover {
-            @apply underline;
-          }
-        }
-
-        td.col-border {
-          @apply border-l border-white/20 px-[12px];
-        }
-      }
-    }
-  }
-</style>
