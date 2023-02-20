@@ -46,7 +46,7 @@
     </div>
 
     <div class="copyright">
-      <Translation key="FOOTER_COPYRIGHT" />
+      © 2023 ADOFAI.gg Development Team. <Translation key="FOOTER_COPYRIGHT" />
     </div>
   </PageContainer>
 </footer>
