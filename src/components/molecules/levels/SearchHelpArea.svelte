@@ -43,7 +43,7 @@
     display: flex;
     flex-grow: 1;
     gap: 6px;
-    align-self: center;
+    align-items: center;
     height: 100%;
     opacity: 0.6;
 
