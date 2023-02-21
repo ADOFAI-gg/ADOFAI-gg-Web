@@ -4,6 +4,10 @@
   import Popover from '@atoms/common/Popover.svelte';
   import UserListItem from '@molecules/user/UserListItem.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import HorizontalUserListPopoverContent from './HorizontalUserListPopoverContent.svelte';
+  import HorizontalUserListMorebutton from '../../molecules/user/HorizontalUserListMorebutton.svelte';
+
+  let moreButton: HTMLButtonElement;
 
   export let users: PartialMember[];
 
@@ -13,8 +17,6 @@
 
   let containerWidth = 0;
 
-  let moreButton: HTMLElement | null = null;
-
   let items: HTMLElement[] = [];
 
   $: {
@@ -22,8 +24,9 @@
       let hidden = false;
       moreButton.style.display = 'flex';
       let w = moreButton.clientWidth + 12;
+      let last: HTMLElement | null = null;
       for (const item of items) {
-        item.style.display = 'block';
+        item.style.display = 'flex';
         w += item.clientWidth;
         if (w > containerWidth) {
           hidden = true;
@@ -33,6 +36,12 @@
         } else {
           w += 12;
         }
+
+        const andText = last?.querySelector('.and-text') as HTMLElement;
+
+        if (andText) andText.style.display = hidden ? 'none' : 'block';
+
+        last = item;
       }
       if (!hidden) {
         moreButton.style.display = 'none';
@@ -41,42 +50,73 @@
   }
 </script>
 
-<div class="flex md:gap-[24px] md:items-center text-shadow-6 flex-col md:flex-row">
+<div class="user-list-container">
   {#if label}
-    <span class="text-2xl font-regular whitespace-nowrap"><Translation key={label} /></span>
+    <span class="user-list-label"><Translation key={label} /></span>
   {/if}
-  <div
-    class="flex-grow flex items-center gap-[12px] overflow-hidden"
-    bind:clientWidth={containerWidth}
-  >
+  <div class="user-list" bind:clientWidth={containerWidth}>
     {#each users as user, i (i)}
-      <div bind:this={items[i]} class="flex-shrink-0"><UserListItem {user} /></div>
-      {#if i < users.length - 1}
-        <span class="text-2xl font-regular opacity-40">&</span>
-      {/if}
+      <div bind:this={items[i]} class="user-list-item-container">
+        <div class="user-list-item"><UserListItem {user} /></div>
+        {#if i < users.length - 1}
+          <span class="and-text">&</span>
+        {/if}
+      </div>
     {/each}
 
-    <div class="flex-shrink-0">
+    <div class="popover-container">
       <Popover>
-        <div
-          slot="button"
-          class="flex items-center gap-[6px] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
-          bind:this={moreButton}
-        >
-          <div class="drop-shadow-6 w-[14px] h-[14px]">
-            <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
-          </div>
-          <div>Show All</div>
-        </div>
-        <div class="p-[14px] min-w-[240px]">
-          <div class="text-md font-bold">{allTitle}</div>
-          <div class="mt-[12px] max-h-[320px] overflow-y-auto flex flex-col gap-[16px]">
-            {#each users as user, i (i)}
-              <UserListItem popup {user} />
-            {/each}
-          </div>
-        </div>
+        <HorizontalUserListMorebutton slot="button" bind:button={moreButton} />
+        <HorizontalUserListPopoverContent {allTitle} {users} />
       </Popover>
     </div>
   </div>
 </div>
+
+<style lang="scss">
+  .user-list-container {
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 6px rgb(0, 0, 0);
+
+    @media (min-width: 768px) {
+      gap: 24px;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .user-list-label {
+      font-size: 24px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .user-list {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+
+      > .user-list-item-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .user-list-item {
+          flex-shrink: 0;
+        }
+
+        > .and-text {
+          font-size: 24px;
+          font-weight: 400;
+          opacity: 0.4;
+        }
+      }
+
+      > .popover-container {
+        flex-shrink: 0;
+      }
+    }
+  }
+</style>
