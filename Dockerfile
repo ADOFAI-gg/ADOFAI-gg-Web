@@ -4,9 +4,11 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json .yarnrc.yml yarn.lock ./
 
-RUN yarn --frozen-lockfile
+COPY .yarn .yarn
+
+RUN corepack enable && yarn --frozen-lockfile
 
 COPY . .
 
