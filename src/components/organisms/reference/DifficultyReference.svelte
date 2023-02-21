@@ -133,21 +133,31 @@
 <style lang="scss">
   .reference-table-root {
     .loading-container {
-      @apply flex justify-center;
+      display: flex;
+      justify-content: cetner;
     }
 
     :global(.reference-table) {
-      @apply w-full min-w-[1680px] table-fixed;
+      width: 100%;
+      min-width: 1680px;
+      table-layout: fixed;
 
       :global(.pp-rating-cell) {
-        @apply font-mono tracking-[-.1em] font-light;
+        font-family: 'Roboto Mono', monospace;
+        letter-spacing: -0.1em;
+        font-weight: 300;
       }
 
       :global(.level-cell-content) {
-        @apply flex items-center gap-[12px];
+        display: flex;
+        align-items: center;
+        gap: 12px;
 
         :global(.level-id-text) {
-          @apply font-mono tracking-[-.1em] font-light opacity-40;
+          font-family: 'Roboto Mono', monospace;
+          letter-spacing: -0.1em;
+          font-weight: 300;
+          opacity: 0.4;
         }
       }
     }
