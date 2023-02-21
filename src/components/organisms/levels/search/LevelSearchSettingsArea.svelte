@@ -61,7 +61,7 @@
 </script>
 
 <div>
-  <div class="flex flex-col md:flex-row gap-1">
+  <div class="tabs-container">
     <SearchTabs style="flex-grow: 1;" value={currentTab} deselectable>
       <SearchTabItem value="tags" icon="tag">
         <Translation key="SEARCH_TAB_TAGS" />
@@ -75,17 +75,16 @@
         <Translation key="SEARCH_TAB_SORT" />
       </SearchTabItem>
 
-      <div class="flex gap-[12px] flex-row-reverse md:flex-row flex-grow">
+      <div class="tabs-last">
         <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} alt="Reset icon" />
-          <span class="hidden md:block text-md">
+          <span class="reset-text">
             <Translation key="SEARCH_SETTINGS_RESET" />
           </span>
         </Button>
 
         {#if $currentTab === 'tags'}
-          <!-- ↓ 얘한테 align-items: center;를 넣어야 정상적으로 보여요 -->
-          <div transition:fade={{ duration: 200 }} class="flex-grow text-md ">
+          <div transition:fade={{ duration: 200 }} class="help-area">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}
@@ -101,16 +100,13 @@
       </SearchTabItem>
     </SearchTabs>
   </div>
-  <div
-    class="transition-all relative overflow-hidden mt-[16px] {$currentTab ? 'mb-[16px]' : ''}"
-    style="height: {height}px;"
-  >
+  <div class="settings-container" class:settings-open={!!$currentTab} style="height: {height}px;">
     {#if $currentTab === 'tags'}
-      <div transition:fade bind:this={tagSearchTab} class="absolute w-full h-fit top-0 left-0">
+      <div transition:fade bind:this={tagSearchTab}>
         <TagSearchTab />
       </div>
     {:else if $currentTab === 'meta'}
-      <div transition:fade bind:this={filterTab} class="absolute w-full h-fit top-0 left-0">
+      <div transition:fade bind:this={filterTab}>
         <LevelSearchMetaTab />
       </div>
     {:else if $currentTab === 'sort'}
@@ -120,3 +116,59 @@
     {/if}
   </div>
 </div>
+
+<style lang="scss">
+  .tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    .tabs-last {
+      display: flex;
+      gap: 12px;
+      flex-direction: row-reverse;
+      flex-grow: 1;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      > .help-area {
+        flex-grow: 1;
+        font-size: 14px;
+      }
+
+      .reset-text {
+        display: none;
+        font-size: 14px;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .settings-container {
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+    position: relative;
+    overflow: hidden;
+    margin-top: 16px;
+
+    &.settings-open {
+      margin-bottom: 16px;
+    }
+
+    > div {
+      position: absolute;
+      width: 100%;
+      height: fit-content;
+      top: 0;
+      left: 0;
+    }
+  }
+</style>
