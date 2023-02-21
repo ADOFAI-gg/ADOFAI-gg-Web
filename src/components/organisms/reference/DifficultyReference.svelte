@@ -54,76 +54,102 @@
   const loadPromise = loadData();
 </script>
 
-{#await loadPromise}
-  <div class="flex justify-center">
-    <LoadingSpinner />
-  </div>
-{:then data}
-  <Table class="w-full min-w-[1680px] table-fixed">
-    <colgroup>
-      <col width="40" />
-      <col width="100" />
-    </colgroup>
+<div class="reference-table-root">
+  {#await loadPromise}
+    <div class="loading-container">
+      <LoadingSpinner />
+    </div>
+  {:then data}
+    <Table class="reference-table">
+      <colgroup>
+        <col width="40" />
+        <col width="100" />
+      </colgroup>
 
-    <thead>
-      <tr>
-        <th>
-          <Translation key="REFERENCE_DIFFICULTY" />
-        </th>
-        <th>
-          <Translation key="REFERENCE_PP_RATING" />
-        </th>
-        <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_FIRST" />
-        </th>
-        <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_SECOND" />
-        </th>
-        <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_THIRD" />
-        </th>
-        <th>
-          <Translation key="REFERENCE_EASIEST_LEVEL" />
-        </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {#each data as reference}
+      <thead>
         <tr>
-          <Cell>
-            <DifficultyIcon difficulty={reference.difficulty} size={28} />
-          </Cell>
-
-          <Cell class="col-border font-mono tracking-[-.1em] font-light">
-            {reference.ppRating}
-          </Cell>
-
-          {#each reference.levels as level}
-            {#if level}
-              <Cell leftSideBorder>
-                <div class="flex items-center gap-[12px]">
-                  {#if level.levelId}
-                    <div class="font-mono tracking-[-.1em] font-light opacity-40">
-                      #{level.levelId}
-                    </div>
-                  {/if}
-
-                  <a
-                    href={level.url ?? `/levels/${level.levelId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {level.name}
-                  </a>
-                </div>
-              </Cell>
-            {:else}
-              <Cell leftSideBorder />
-            {/if}
-          {/each}
+          <th>
+            <Translation key="REFERENCE_DIFFICULTY" />
+          </th>
+          <th>
+            <Translation key="REFERENCE_PP_RATING" />
+          </th>
+          <th>
+            <Translation key="REFERENCE_STANDARD_LEVEL_FIRST" />
+          </th>
+          <th>
+            <Translation key="REFERENCE_STANDARD_LEVEL_SECOND" />
+          </th>
+          <th>
+            <Translation key="REFERENCE_STANDARD_LEVEL_THIRD" />
+          </th>
+          <th>
+            <Translation key="REFERENCE_EASIEST_LEVEL" />
+          </th>
         </tr>
-      {/each}
-    </tbody>
-  </Table>
-{/await}
+      </thead>
+
+      <tbody>
+        {#each data as reference}
+          <tr>
+            <Cell>
+              <DifficultyIcon difficulty={reference.difficulty} size={28} />
+            </Cell>
+
+            <Cell class="pp-rating-cell" border>
+              {reference.ppRating}
+            </Cell>
+
+            {#each reference.levels as level}
+              {#if level}
+                <Cell leftSideBorder>
+                  <div class="level-cell-content">
+                    {#if level.levelId}
+                      <div class="level-id-text">
+                        #{level.levelId}
+                      </div>
+                    {/if}
+
+                    <a
+                      href={level.url ?? `/levels/${level.levelId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {level.name}
+                    </a>
+                  </div>
+                </Cell>
+              {:else}
+                <Cell leftSideBorder />
+              {/if}
+            {/each}
+          </tr>
+        {/each}
+      </tbody>
+    </Table>
+  {/await}
+</div>
+
+<style lang="scss">
+  .reference-table-root {
+    .loading-container {
+      @apply flex justify-center;
+    }
+
+    :global(.reference-table) {
+      @apply w-full min-w-[1680px] table-fixed;
+
+      :global(.pp-rating-cell) {
+        @apply font-mono tracking-[-.1em] font-light;
+      }
+
+      :global(.level-cell-content) {
+        @apply flex items-center gap-[12px];
+
+        :global(.level-id-text) {
+          @apply font-mono tracking-[-.1em] font-light opacity-40;
+        }
+      }
+    }
+  }
+</style>
