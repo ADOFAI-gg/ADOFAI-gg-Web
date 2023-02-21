@@ -1,6 +1,6 @@
 <script lang="ts">
   export let leftSideBorder = false;
-  export let className = '';
+  export let border = false;
 
   const onCopy = (e: ClipboardEvent | KeyboardEvent) => {
     console.log(e);
@@ -14,7 +14,8 @@
   tabindex="0"
   on:copy={(e) => onCopy(e)}
   on:keydown={(e) => e.ctrlKey && e.key === 'c' && onCopy(e)}
-  class="{leftSideBorder ? 'left-border' : ''} {className}"
+  class:col-border={border}
+  class:left-border={leftSideBorder}
   {...$$restProps}
 >
   <slot />
