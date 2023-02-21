@@ -27,8 +27,8 @@
 </script>
 
 <SearchGroup title="SORT_BY">
-  <div class="flex flex-col md:flex-row gap-[12px] md:gap-0">
-    <div class="flex sm:gap-[24px] gap-[12px] flex-col sm:flex-row">
+  <div class="sort-container">
+    <div class="sort-unit-container">
       <SortOrderRadio
         icon="topLeft"
         key="SORT_ASC"
@@ -49,9 +49,9 @@
       />
     </div>
     {#if $searchSetingStore.sort.order !== 'shuffle'}
-      <div class="flex flex-col md:flex-row" transition:fade={{ duration: 200 }}>
-        <div class="border-r hidden md:block border-white mr-[24px] border-opacity-40" />
-        <div class="flex sm:gap-[24px] gap-[12px] flex-col sm:flex-row">
+      <div class="sort-order-area" transition:fade={{ duration: 200 }}>
+        <div class="sort-divider" />
+        <div class="sort-order-container">
           <SortOrderRadio
             icon="calendar"
             key="SORT_CREATED"
@@ -77,3 +77,57 @@
     {/if}
   </div>
 </SearchGroup>
+
+<style lang="scss">
+  .sort-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    .sort-unit-container {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+
+      @media (min-width: 640px) {
+        gap: 24px;
+        flex-direction: row;
+      }
+    }
+
+    .sort-order-area {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      .sort-divider {
+        border-right: 1px solid rgba(255, 255, 255, 0.4);
+        display: none;
+        margin-right: 24px;
+
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+
+      .sort-order-container {
+        display: flex;
+        gap: 12px;
+        flex-direction: column;
+
+        @media (min-width: 640px) {
+          gap: 24px;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+</style>
