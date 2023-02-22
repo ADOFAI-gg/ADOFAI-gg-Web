@@ -64,8 +64,8 @@
     {/each}
 
     <div class="popover-container">
-      <Popover>
-        <HorizontalUserListMorebutton slot="button" bind:button={moreButton} />
+      <Popover bind:button={moreButton}>
+        <HorizontalUserListMorebutton slot="button" />
         <HorizontalUserListPopoverContent {allTitle} {users} />
       </Popover>
     </div>

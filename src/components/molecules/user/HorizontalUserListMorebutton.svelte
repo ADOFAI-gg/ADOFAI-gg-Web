@@ -1,10 +1,8 @@
 <script lang="ts">
   import Icon from '@/components/atoms/asset/Icon.svelte';
-
-  export let button: HTMLButtonElement;
 </script>
 
-<button class="more-button" bind:this={button}>
+<button class="more-button">
   <div class="more-button-icon">
     <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
   </div>
