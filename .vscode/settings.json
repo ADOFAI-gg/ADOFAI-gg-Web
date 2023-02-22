@@ -25,5 +25,4 @@
     "scss",
     "svelte"
   ],
-  "stylelint.configFile": ".stylelintrc.json",
 }

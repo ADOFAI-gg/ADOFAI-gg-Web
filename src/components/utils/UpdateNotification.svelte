@@ -49,7 +49,7 @@
     gap: 8px;
     padding: 8px;
     border-radius: 999px;
-    background-color: rgb(var(--color-blue));
+    background-color: rgba(var(--color-blue), 1);
     white-space: nowrap;
     transform: translateX(-50%);
 
