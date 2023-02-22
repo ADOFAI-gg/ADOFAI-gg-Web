@@ -29,16 +29,46 @@
       duration: 1000,
       y: 60
     }}
-    class="fixed gap-2 flex bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-blue p-2 rounded-full"
+    class="update-notification"
   >
-    <div class="pl-2">
+    <div class="update-available-text">
       <Translation key="UPDATE_AVAILABLE" />
     </div>
-    <div
-      on:click={browser ? () => window.location.reload() : () => null}
-      class="w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40"
-    >
+    <div on:click={browser ? () => window.location.reload() : () => null} class="refresh-button">
       <Icon icon="refresh" size={12} alt="Refresh Icon" />
     </div>
   </div>
 {/if}
+
+<style lang="scss">
+  .update-notification {
+    position: fixed;
+    gap: 8px;
+    display: flex;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background-color: rgb(var(--color-blue));
+    padding: 8px;
+    border-radius: 999px;
+
+    .update-available-text {
+      padding-left: 8px;
+    }
+
+    .refresh-button {
+      @apply w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40;
+
+      width: 24px;
+      cursor: pointer;
+      height: 24px;
+      border-radius: 999px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(var(--color-darkblue), 0.4);
+    }
+  }
+</style>
