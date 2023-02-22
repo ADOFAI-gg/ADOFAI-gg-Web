@@ -1,10 +1,9 @@
 <script lang="ts">
   import type { PartialMember } from '@/types';
-  import Icon from '@atoms/asset/Icon.svelte';
   import Popover from '@atoms/common/Popover.svelte';
   import UserListItem from '@molecules/user/UserListItem.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-  import HorizontalUserListPopoverContent from './HorizontalUserListPopoverContent.svelte';
+  import HorizontalUserListPopoverContent from '../../molecules/user/HorizontalUserListPopoverContent.svelte';
   import HorizontalUserListMorebutton from '../../molecules/user/HorizontalUserListMorebutton.svelte';
 
   let moreButton: HTMLButtonElement;
