@@ -42,14 +42,22 @@
   }
 
   .meta-container {
-    @apply flex gap-[24px] flex-col md:flex-row;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
 
     > .meta-area {
-      @apply md:min-w-[360px];
+      @media (min-width: 768px) {
+        min-width: 360px;
+      }
     }
   }
 
   .leaderboard-padder {
-    @apply mt-[48px];
+    margin-top: 48px;
   }
 </style>
