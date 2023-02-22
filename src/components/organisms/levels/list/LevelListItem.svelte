@@ -22,47 +22,48 @@
           {level.title}
         </div>
 
-        <div class="authors">
-          <div class="labels">
-            <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
-            <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
-          </div>
-
-          <div class="values">
-            <div class="value-wrapper">
-              <div class="value">
-                {level.music.artists.map((x) => x.name).join(' & ')}
-              </div>
+        <div class="details-area">
+          <div class="authors">
+            <div class="labels">
+              <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
+              <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
             </div>
 
-            <div class="value-wrapper">
-              <div class="value">
-                {level.creators.map((x) => x.name).join(' & ')}
+            <div class="values">
+              <div class="value-wrapper">
+                <div class="value">
+                  {level.music.artists.map((x) => x.name).join(' & ')}
+                </div>
+              </div>
+
+              <div class="value-wrapper">
+                <div class="value">
+                  {level.creators.map((x) => x.name).join(' & ')}
+                </div>
               </div>
             </div>
           </div>
+          {#if import.meta.env.VITE_USE_ACCOUNT || level.tags.length}
+            <div class="additional-info">
+              <LevelListItemTagList {level} />
+
+              {#if import.meta.env.VITE_USE_ACCOUNT}
+                <div class="hearts">
+                  {#if level.tags.length || level.epilepsyWarning}
+                    <div class="divider" />
+                  {/if}
+
+                  <div class="content">
+                    <Icon icon="heartOutlined" size={20} alt="Heart Icon" />
+                    1.4K
+                  </div>
+                </div>
+              {/if}
+            </div>
+          {/if}
         </div>
       </div>
     </div>
-
-    {#if import.meta.env.VITE_USE_ACCOUNT || level.tags.length}
-      <div class="additional-info">
-        <LevelListItemTagList {level} />
-
-        {#if import.meta.env.VITE_USE_ACCOUNT}
-          <div class="hearts">
-            {#if level.tags.length || level.epilepsyWarning}
-              <div class="divider" />
-            {/if}
-
-            <div class="content">
-              <Icon icon="heartOutlined" size={20} alt="Heart Icon" />
-              1.4K
-            </div>
-          </div>
-        {/if}
-      </div>
-    {/if}
   </div>
 
   <div class="download">
@@ -178,11 +179,14 @@
       }
     }
 
+    .details-area {
+      display: flex;
+    }
+
     .additional-info {
       display: flex;
       align-self: flex-end;
       justify-content: flex-start;
-      width: 100%;
       margin-top: 8px;
       padding-left: 70px;
 
