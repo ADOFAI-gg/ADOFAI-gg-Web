@@ -26,8 +26,6 @@
       const svg: SVGElement = parser
         .parseFromString(x.data, 'image/svg+xml')
         .querySelector('svg') as SVGElement;
-      svg.setAttribute('width', `${size}`);
-      svg.setAttribute('height', `${size}`);
       svg.querySelectorAll('*')?.forEach((i) => {
         if (i.hasAttribute('fill')) i.setAttribute('fill', 'currentColor');
 
@@ -57,7 +55,13 @@
         if (!disableFade) {
           container.classList.add('loaded');
         }
-        container.appendChild(data.cloneNode(true));
+
+        const svg = data.cloneNode(true) as SVGElement;
+
+        svg.setAttribute('width', `${size}`);
+        svg.setAttribute('height', `${size}`);
+
+        container.replaceChildren(svg);
       });
     }
   }
