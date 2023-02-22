@@ -166,18 +166,18 @@
 </script>
 
 {#if browser}
-  <div class="flex flex-col min-h-screen">
-    <div class="h-nav mt-[24px]" />
+  <div class="level-list-container">
+    <div class="top-spacer" />
 
-    <div class={$currentView === 'list' ? 'px-4' : 'table-view-search-area'}>
-      <div class={$currentView === 'list' ? 'max-w-[1100px] mx-auto' : ''}>
+    <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
+      <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
         <SearchInput
           placeholder={$searchSetingStore.query.full
             ? 'SEARCH_INPUT_PLACEHOLDER_HOME'
             : 'SEARCH_INPUT_PLACEHOLDER_LEVELS'}
           bind:value={$searchSetingStore.query.title}
         />
-        <div class="mt-2 px-[12px]">
+        <div class="search-settings-area">
           <LevelSearchSettingsArea />
         </div>
       </div>
@@ -195,7 +195,7 @@
           <div>
             <LevelListItem level={item} />
           </div>
-          <div slot="loading" class="w-full my-4 flex justify-center">
+          <div slot="loading" class="list-loader">
             <LoadingSpinner size={48} />
           </div>
         </VirtualScroll>
@@ -213,6 +213,36 @@
 {/if}
 
 <style lang="scss">
+  .level-list-container {
+    @apply flex flex-col min-h-screen;
+
+    > .top-spacer {
+      height: var(--nav-height);
+      margin-top: 24px;
+    }
+
+    > .list-view-search-area {
+      padding: 0 16px;
+
+      > .list-view-search-area-content {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+    }
+
+    .search-settings-area {
+      margin-top: 8px;
+      padding: 0 12px;
+    }
+
+    .list-loader {
+      width: 100%;
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
   .table-view-search-area {
     position: sticky;
     left: 120px;
