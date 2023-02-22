@@ -56,32 +56,43 @@
 </div>
 
 <style lang="scss">
-
   .user-overlay {
-    @apply relative w-screen max-w-[256px];
+    position: relative;
+    width: 100vw;
+    max-width: 256px;
 
     > .user-overlay-loader {
-      @apply flex justify-center py-[12px];
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
     }
 
     > .user-overlay-padder {
-      @apply py-[24px];
+      padding: 24px 0;
 
       > .user-overlay-content {
-        @apply flex flex-col items-center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         > .name-text {
-          @apply text-xl font-bold;
+          font-size: 21px;
+          font-weight: 700;
 
-          text-align: center
+          text-align: center;
         }
 
         > .divider {
-          @apply w-[110px] border-b opacity-40 my-[16px];
+          width: 110px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+          margin: 16px 0;
         }
 
         > .details-container {
-          @apply flex w-full px-[32px];
+          display: flex;
+          width: 100%;
+          padding: 0 32px;
         }
       }
     }
