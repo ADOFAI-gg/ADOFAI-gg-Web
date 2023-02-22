@@ -30,11 +30,6 @@
 
         :global(td) {
           padding: 8px;
-
-          :global(.col-border) {
-            padding: 0 12px;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
-          }
         }
 
         :global(a) {
