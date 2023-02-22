@@ -74,14 +74,14 @@
     display: grid;
     gap: 12px;
 
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .meta-group {
       display: flex;
       flex-direction: column;
       gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>

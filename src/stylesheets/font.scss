@@ -1,70 +1,73 @@
 /* 나눔스퀘어라운드 */
 @font-face {
-  font-family: 'NanumSquareRound';
-  font-style: normal;
   font-weight: 300;
-  font-display: swap;
+  font-style: normal;
+  font-family: 'NanumSquareRound';
   src: url('/fonts/NanumSquareRound/Light.woff2') format('woff2');
+  font-display: swap;
 }
+
 @font-face {
-  font-family: 'NanumSquareRound';
-  font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-style: normal;
+  font-family: 'NanumSquareRound';
   src: url('/fonts/NanumSquareRound/Regular.woff2') format('woff2');
+  font-display: swap;
 }
+
 @font-face {
-  font-family: 'NanumSquareRound';
-  font-style: normal;
   font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/NanumSquareRound/Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'NanumSquareRound';
   font-style: normal;
-  font-weight: 800;
+  font-family: 'NanumSquareRound';
+  src: url('/fonts/NanumSquareRound/Bold.woff2') format('woff2');
   font-display: swap;
+}
+
+@font-face {
+  font-weight: 800;
+  font-style: normal;
+  font-family: 'NanumSquareRound';
   src: url('/fonts/NanumSquareRound/ExtraBold.woff2') format('woff2');
+  font-display: swap;
 }
 
 /* M Plus Rounded 1c */
 
 @font-face {
   font-weight: 300;
-  font-display: swap;
   src: url('/fonts/MPLUSRounded1c/Light.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'M PLUS Rounded 1c';
-  font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-style: normal;
+  font-family: 'M PLUS Rounded 1c';
   src: url('/fonts/MPLUSRounded1c/Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'M PLUS Rounded 1c';
-  font-style: normal;
   font-weight: 500;
-  font-display: swap;
+  font-style: normal;
+  font-family: 'M PLUS Rounded 1c';
   src: url('/fonts/MPLUSRounded1c/Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'M PLUS Rounded 1c';
-  font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-style: normal;
+  font-family: 'M PLUS Rounded 1c';
   src: url('/fonts/MPLUSRounded1c/Medium.woff2') format('woff2');
+  font-display: swap;
 }
 
 /* Quicksand */
 
 @font-face {
-  font-family: 'Quicksand';
   font-style: normal;
-  font-display: swap;
+  font-family: 'Quicksand';
   src: url('/fonts/Quicksand.woff2') format('woff2');
+  font-display: swap;
 }

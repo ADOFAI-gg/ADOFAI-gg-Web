@@ -76,17 +76,15 @@
         align-items: center;
 
         > .name-text {
-          font-size: 21px;
           font-weight: 700;
-
+          font-size: 21px;
           text-align: center;
         }
 
         > .divider {
           width: 110px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-
           margin: 16px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         > .details-container {

@@ -18,21 +18,21 @@
 
 <style lang="scss">
   .list-popover-content {
-    padding: 14px;
     min-width: 240px;
+    padding: 14px;
 
     > .popover-title {
-      font-size: 14px;
       font-weight: 700px;
+      font-size: 14px;
     }
 
     > .popover-user-list {
-      margin-top: 12px;
-      max-height: 320px;
-      overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 16px;
+      overflow-y: auto;
+      max-height: 320px;
+      margin-top: 12px;
     }
   }
 </style>

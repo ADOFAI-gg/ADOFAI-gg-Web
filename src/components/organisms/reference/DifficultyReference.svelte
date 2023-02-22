@@ -143,20 +143,20 @@
       table-layout: fixed;
 
       :global(.pp-rating-cell) {
+        font-weight: 300;
         font-family: 'Roboto Mono', monospace;
         letter-spacing: -0.1em;
-        font-weight: 300;
       }
 
       :global(.level-cell-content) {
         display: flex;
-        align-items: center;
         gap: 12px;
+        align-items: center;
 
         :global(.level-id-text) {
+          font-weight: 300;
           font-family: 'Roboto Mono', monospace;
           letter-spacing: -0.1em;
-          font-weight: 300;
           opacity: 0.4;
         }
       }

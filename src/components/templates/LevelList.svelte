@@ -236,10 +236,10 @@
     }
 
     .list-loader {
-      width: 100%;
-      margin-top: 16px;
       display: flex;
       justify-content: center;
+      width: 100%;
+      margin-top: 16px;
     }
   }
 

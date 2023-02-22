@@ -42,6 +42,12 @@
     "indentation": null,
     "selector-descendant-combinator-no-non-space": null,
     "string-no-newline": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
     "order/order": [
       [
         "dollar-variables",

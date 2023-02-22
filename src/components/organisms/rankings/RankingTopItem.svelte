@@ -35,62 +35,58 @@
 
 <style lang="scss">
   .item-container {
-    width: 100%;
     display: flex;
+    width: 100%;
 
     .content {
-      background-color: rgba(var(--color-darkblue), 0.4);
-      border-radius: 27px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       padding-top: 16px;
       padding-bottom: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      @media (min-width: 1024px) {
-        max-width: 330px;
-      }
+      border-radius: 27px;
+      background-color: rgba(var(--color-darkblue), 0.4);
 
       > .rank-text {
-        font-family: 'Roboto Mono', monospace;
         font-weight: 500;
         font-size: 26px;
+        font-family: 'Roboto Mono', monospace;
       }
 
       > .details-container {
         display: flex;
         flex-direction: column;
-        width: 100%;
         align-items: center;
+        width: 100%;
 
         > .details-name {
-          font-size: 30px;
           font-weight: 500;
+          font-size: 30px;
         }
 
         > .details-list {
           display: flex;
-          width: 100%;
           justify-content: center;
+          width: 100%;
           font-size: 16px;
 
           > .details-labels {
+            display: flex;
             flex-grow: 1;
             flex-shrink: 0;
-            display: flex;
-            align-items: flex-end;
             flex-direction: column;
-            opacity: 60%;
             gap: 8px;
+            align-items: flex-end;
+            opacity: 0.6;
           }
 
           > .details-values {
-            padding-left: 24px;
             flex-grow: 1;
             flex-shrink: 0;
             gap: 8px;
+            padding-left: 24px;
 
             > div {
               font-weight: 500;
@@ -105,13 +101,12 @@
 
           > .details-best-play-link {
             display: flex;
-            align-items: center;
             gap: 6px;
+            align-items: center;
             opacity: 0.8;
-
-            transition-property: opacity;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 150ms;
+            transition-property: opacity;
 
             &:hover {
               opacity: 1;
@@ -119,13 +114,18 @@
           }
         }
       }
+
+      @media (min-width: 1024px) {
+        max-width: 330px;
+      }
     }
+
     &:nth-child(1) {
       justify-content: center;
 
       @media (min-width: 768px) {
-        justify-content: flex-start;
         grid-column: span 2 / span 2;
+        justify-content: flex-start;
       }
 
       @media (min-width: 1024px) {

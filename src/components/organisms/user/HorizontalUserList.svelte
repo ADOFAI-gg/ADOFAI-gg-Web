@@ -78,37 +78,31 @@
     flex-direction: column;
     text-shadow: 0 0 6px rgb(0, 0, 0);
 
-    @media (min-width: 768px) {
-      gap: 24px;
-      align-items: center;
-      flex-direction: row;
-    }
-
     .user-list-label {
-      font-size: 24px;
       font-weight: 400;
+      font-size: 24px;
       white-space: nowrap;
     }
 
     .user-list {
-      flex-grow: 1;
       display: flex;
-      align-items: center;
+      flex-grow: 1;
       gap: 12px;
+      align-items: center;
       overflow: hidden;
 
       > .user-list-item-container {
         display: flex;
-        align-items: center;
         gap: 12px;
+        align-items: center;
 
         .user-list-item {
           flex-shrink: 0;
         }
 
         > .and-text {
-          font-size: 24px;
           font-weight: 400;
+          font-size: 24px;
           opacity: 0.4;
         }
       }
@@ -116,6 +110,12 @@
       > .popover-container {
         flex-shrink: 0;
       }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 24px;
+      align-items: center;
     }
   }
 </style>

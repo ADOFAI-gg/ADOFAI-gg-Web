@@ -47,17 +47,18 @@
 
 <style lang="scss">
   .table-view-header-area {
-    width: 100vw;
     position: sticky;
     left: 0;
+    width: 100vw;
   }
 
   .table-view-container {
-    padding-left: 24px;
     padding-right: 24px;
+    padding-left: 24px;
+
     @media screen and (min-width: 1280px) {
-      padding-left: 120px;
       padding-right: 120px;
+      padding-left: 120px;
     }
   }
 </style>

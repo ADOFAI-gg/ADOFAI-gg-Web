@@ -16,5 +16,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.validate": ["typescript", "svelte"]
+  "eslint.validate": ["typescript", "svelte"],
+  "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "scss",
+    "svelte"
+  ],
+  "stylelint.configFile": ".stylelintrc.json",
 }

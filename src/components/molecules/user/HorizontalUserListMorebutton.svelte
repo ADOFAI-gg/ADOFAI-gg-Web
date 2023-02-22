@@ -12,24 +12,23 @@
 <style lang="scss">
   .more-button {
     display: flex;
-    align-items: center;
     gap: 6px;
+    align-items: center;
     white-space: nowrap;
     opacity: 0.6;
     cursor: pointer;
-
-    transition-property: opacity;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
+    transition-property: opacity;
 
     &:hover {
       opacity: 1;
     }
 
     .more-button-icon {
-      filter: drop-shadow(0px 0px 6px #000000);
       width: 14px;
       height: 14px;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 1));
     }
   }
 </style>

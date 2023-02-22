@@ -123,19 +123,11 @@
     flex-direction: column;
     gap: 4px;
 
-    @media (min-width: 768px) {
-      flex-direction: row;
-    }
-
     .tabs-last {
       display: flex;
-      gap: 12px;
-      flex-direction: row-reverse;
       flex-grow: 1;
-
-      @media (min-width: 768px) {
-        flex-direction: row;
-      }
+      flex-direction: row-reverse;
+      gap: 12px;
 
       > .help-area {
         flex-grow: 1;
@@ -150,14 +142,22 @@
           display: block;
         }
       }
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
     }
   }
 
   .settings-container {
-    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
     position: relative;
     overflow: hidden;
     margin-top: 16px;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
 
     &.settings-open {
       margin-bottom: 16px;
@@ -165,10 +165,10 @@
 
     > div {
       position: absolute;
-      width: 100%;
-      height: fit-content;
       top: 0;
       left: 0;
+      width: 100%;
+      height: fit-content;
     }
   }
 </style>

@@ -29,23 +29,16 @@
 
 <style lang="scss">
   .item-container {
-    transition-property: background-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 14px 16px;
-
     display: flex;
     flex-direction: column;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-property: background-color;
 
     &:hover {
       background-color: rgba(var(--color-darkblue), 0.2);
-    }
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      align-items: center;
     }
 
     .item-start {
@@ -53,12 +46,11 @@
       gap: 12px;
 
       > .rank-text {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 24px;
         width: 56px;
-
+        font-weight: 500;
+        font-size: 24px;
         font-family: 'Roboto Mono', monospace;
+        line-height: 24px;
       }
 
       > .name-text {
@@ -78,10 +70,6 @@
       align-items: center;
       margin-top: 8px;
 
-      @media (min-width: 768px) {
-        margin-top: 0;
-      }
-
       > .pp-section {
         display: flex;
         gap: 6px;
@@ -92,8 +80,8 @@
       }
 
       > .divider {
-        height: 16px;
         flex-grow: 1;
+        height: 16px;
 
         @media (min-width: 768px) {
           flex-grow: 0;
@@ -102,19 +90,27 @@
       }
 
       > .best-play-container {
-        transition-property: opacity;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        opacity: 0.8;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 150ms;
-
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        opacity: 0.8;
+        transition-property: opacity;
 
         &:hover {
           opacity: 1;
         }
       }
+
+      @media (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
     }
   }
 </style>

@@ -85,7 +85,7 @@
   }
 
   .exclude {
-    color: rgb(var(--color-red));
+    color: rgba(var(--color-red), 1);
     opacity: 1;
   }
 

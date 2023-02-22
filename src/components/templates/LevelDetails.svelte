@@ -43,17 +43,17 @@
 
   .meta-container {
     display: flex;
-    gap: 24px;
     flex-direction: column;
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-    }
+    gap: 24px;
 
     > .meta-area {
       @media (min-width: 768px) {
         min-width: 360px;
       }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
     }
   }
 
