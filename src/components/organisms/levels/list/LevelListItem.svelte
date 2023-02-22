@@ -181,7 +181,7 @@
     .additional-info {
       display: flex;
       align-self: flex-end;
-      justify-content: start;
+      justify-content: flex-start;
       width: 100%;
       margin-top: 8px;
       padding-left: 70px;
