@@ -30,7 +30,6 @@
       <col style="min-width: {swwidth + 24}px;" />
       <col width="92" />
     </colgroup>
-
     <thead>
       <tr>
         <th>

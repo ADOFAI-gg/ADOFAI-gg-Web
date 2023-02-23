@@ -55,7 +55,6 @@
         if (!disableFade) {
           container.classList.add('loaded');
         }
-
         const svg = data.cloneNode(true) as SVGElement;
 
         svg.setAttribute('width', `${size}`);
