@@ -214,7 +214,9 @@
 
 <style lang="scss">
   .level-list-container {
-    @apply flex flex-col min-h-screen;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
     > .top-spacer {
       height: var(--nav-height);

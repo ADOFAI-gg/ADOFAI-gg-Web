@@ -64,11 +64,12 @@
       color: black;
 
       > .error-title {
-        @apply text-4xl font-bold;
+        font-weight: 700;
+        font-size: 36px;
       }
 
       > .error-description {
-        @apply text-3xl;
+        font-size: 28px;
       }
     }
   }
