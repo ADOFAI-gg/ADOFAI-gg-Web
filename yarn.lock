@@ -1210,6 +1210,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-cookie@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@types/js-cookie@npm:3.0.3"
+  checksum: 927254ec37ce4fbe4d9d54f53a446b4351259799d9933db5808ddb7c430396aa2496bdd0a4e47e1b56048ffbec98645cbd4daa9e3ed9a6fff55e25eb640fcb15
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -1734,6 +1741,7 @@ __metadata:
     "@types/compression": ^1.7.2
     "@types/express": ^4.17.14
     "@types/fs-extra": ^9.0.13
+    "@types/js-cookie": ^3.0.3
     "@types/lodash": ^4.14.186
     "@types/nprogress": ^0.2.0
     "@types/sharp": ^0.31.0
@@ -1753,6 +1761,7 @@ __metadata:
     express: ^4.18.2
     fs-extra: ^10.1.0
     husky: ^7.0.4
+    js-cookie: ^3.0.1
     lint-staged: ">=10"
     lodash: ^4.17.21
     nprogress: ^0.2.0
@@ -4822,6 +4831,13 @@ __metadata:
     merge-stream: ^2.0.0
     supports-color: ^8.0.0
   checksum: 98cd68b696781caed61c983a3ee30bf880b5bd021c01d98f47b143d4362b85d0737f8523761e2713d45e18b4f9a2b98af1eaee77afade4111bb65c77d6f7c980
+  languageName: node
+  linkType: hard
+
+"js-cookie@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "js-cookie@npm:3.0.1"
+  checksum: bb48de67e2a6bd1ae3dfd6b2d5a167c33dd0c5a37e909206161eb0358c98f17cb55acd55827a58e9eea3630d89444e7479f7938ef4420dda443218b8c434a4c3
   languageName: node
   linkType: hard
 
