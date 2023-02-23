@@ -102,6 +102,7 @@
     > .page-layout {
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
 
       > .page-content {
         flex-grow: 1;
