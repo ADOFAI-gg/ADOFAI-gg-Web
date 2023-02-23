@@ -106,7 +106,10 @@
   .tag-list {
     display: flex;
     gap: 6px;
-    justify-content: flex-end;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
   }
 
   .remaining {

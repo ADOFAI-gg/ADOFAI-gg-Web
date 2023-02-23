@@ -181,14 +181,15 @@
 
     .details-area {
       display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
     }
 
     .additional-info {
       display: flex;
-      align-self: flex-end;
-      justify-content: flex-start;
-      margin-top: 8px;
-      padding-left: 70px;
 
       .hearts {
         display: flex;
@@ -208,6 +209,14 @@
           font-weight: 500;
           font-size: 16px;
         }
+      }
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        align-self: flex-end;
+        justify-content: flex-start;
+        margin-top: 8px;
+        padding-left: 70px;
       }
 
       @media (min-width: 1024px) {
