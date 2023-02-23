@@ -12,11 +12,7 @@ app.get('/healthcheck', (_req, res) => {
 app.use(compression());
 
 app.use((req, res, next) => {
-  if (req.path.startsWith('/assets/difficultyIcons')) {
-    res.header('cache-control', 'max-age=1209600');
-  } else if (req.path.startsWith('/assets/icons') || req.path.startsWith('/assets/tagIcons')) {
-    res.header('cache-control', 'max-age=2592000');
-  } else if (req.path === '/background.webp' || req.path === '/assets/images/logo.svg') {
+  if (req.path.startsWith('/_app/immutable/') || req.path === '/background.webp') {
     res.header('cache-control', 'max-age=31536000');
   } else if (req.path.startsWith('/fonts/')) {
     res.header('cache-control', 'max-age=31536000');
