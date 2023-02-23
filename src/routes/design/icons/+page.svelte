@@ -38,18 +38,18 @@
   const loadPromise = load();
 </script>
 
-<div class="h-nav" />
+<div class="nav-spacer" />
 
 <PageContainer>
   {#await loadPromise then data}
     {#each data as group}
-      <div class="mt-[16px]">
+      <div class="icon-group">
         <MainSectionTitle title={group.directory} />
-        <div class="flex flex-wrap gap-4">
+        <div class="icon-list">
           {#each group.files as file}
-            <div class="flex flex-col items-center">
+            <div class="icon-list-item">
               <Icon namespace={group.directory} icon={file?.file ?? ''} size={32} alt="." />
-              <div class="mt-2">{file?.file}</div>
+              <div class="icon-filename">{file?.file}</div>
             </div>
           {/each}
         </div>
@@ -57,3 +57,29 @@
     {/each}
   {/await}
 </PageContainer>
+
+<style lang="scss">
+  .nav-spacer {
+    height: var(--nav-height);
+  }
+
+  .icon-group {
+    margin-top: 16px;
+
+    .icon-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .icon-list-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .icon-filename {
+        margin-top: 8px;
+      }
+    }
+  }
+</style>
