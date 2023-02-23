@@ -92,15 +92,20 @@
       .detail-info {
         display: flex;
         flex-direction: column;
+        gap: 14px;
         margin-top: 6px;
         padding: 20px 26px;
         border-radius: 24px 24px 0 0;
         background-color: rgba(var(--color-darkblue), 0.4);
 
         .authors {
+          display: flex;
           flex-grow: 1;
+          flex-direction: column;
+          gap: 8px;
 
           @media (min-width: 768px) {
+            display: block;
             width: 0;
           }
         }
