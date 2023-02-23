@@ -72,11 +72,21 @@
       & > div {
         flex-grow: 1;
         width: 0;
+
+        @media (max-width: 768px) {
+          width: auto;
+        }
       }
 
       & > div.list {
         display: flex;
         justify-content: center;
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
       }
     }
 
