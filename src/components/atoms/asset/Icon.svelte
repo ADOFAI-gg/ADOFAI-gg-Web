@@ -6,19 +6,8 @@
   const getIconString = (id: string, namespace: string) => {
     return svgIcons[`../assets/${namespace}/${id}.svg`];
   };
-</script>
 
-<script lang="ts">
-  import { browser } from '$app/environment';
-
-  import { svgIcons } from '@/utils/assets';
-
-  export let icon: string;
-  export let namespace = 'icons';
-  export let size = 24;
-  export let style = 'color: white;';
-
-  const load = (id: string) => {
+  const load = (id: string, namespace: string) => {
     if (!browser) return null as unknown as SVGElement;
 
     const cacheKey = `${namespace}:${id}`;
@@ -36,18 +25,28 @@
 
       if (i.hasAttribute('stroke')) i.setAttribute('stroke', 'currentColor');
     });
-    svg.setAttribute('aria-label', alt);
 
     cache.set(cacheKey, svg);
 
     return svg;
   };
+</script>
+
+<script lang="ts">
+  import { browser } from '$app/environment';
+
+  import { svgIcons } from '@/utils/assets';
+
+  export let icon: string;
+  export let namespace = 'icons';
+  export let size = 24;
+  export let style = 'color: white;';
 
   let container: HTMLDivElement;
 
   export let alt: string;
 
-  $: instance = load(icon);
+  $: instance = load(icon, namespace);
 
   $: {
     if (instance && container) {
@@ -55,6 +54,7 @@
 
       svg.setAttribute('width', `${size}`);
       svg.setAttribute('height', `${size}`);
+      svg.setAttribute('aria-label', alt);
 
       container.replaceChildren(svg);
     }
