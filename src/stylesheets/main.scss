@@ -2,12 +2,7 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap';
 @import 'tippy';
 @import '../../node_modules/nprogress/nprogress.css';
-
-/* stylelint-disable at-rule-no-unknown, scss/at-rule-no-unknown */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-/* stylelint-enable */
+@import 'base';
 
 :root {
   --color-yellow: 255, 231, 110;
