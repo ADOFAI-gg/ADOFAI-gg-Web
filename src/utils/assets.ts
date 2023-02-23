@@ -16,10 +16,6 @@ export class Asset {
     return asset(`${namespace}/${id}.svg`);
   }
 
-  static difficultyIcon(difficulty: number) {
-    return asset(`difficultyIcons/${difficulty}.svg`);
-  }
-
   static url(id: string) {
     return asset(id);
   }
