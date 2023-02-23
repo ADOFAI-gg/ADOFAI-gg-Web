@@ -23,22 +23,28 @@
 
 <div class="page-padder" />
 
-<PageContainer>
-  <div class="meta-container">
-    <Video {videoId} bind:player />
-    <div class="meta-area">
-      <LevelMetaArea video={player} {level} />
+<div class="details-container">
+  <PageContainer>
+    <div class="meta-container">
+      <Video {videoId} bind:player />
+      <div class="meta-area">
+        <LevelMetaArea video={player} {level} />
+      </div>
     </div>
-  </div>
 
-  <div class="leaderboard-padder">
-    <LevelLeaderboard levelId={level.id} />
-  </div>
-</PageContainer>
+    <div class="leaderboard-padder">
+      <LevelLeaderboard levelId={level.id} />
+    </div>
+  </PageContainer>
+</div>
 
 <style lang="scss">
   .page-padder {
     margin-top: 24px;
+  }
+
+  .details-container {
+    padding: 0 32px;
   }
 
   .meta-container {
