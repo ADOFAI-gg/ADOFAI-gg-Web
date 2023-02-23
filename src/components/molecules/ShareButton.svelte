@@ -1,9 +1,9 @@
-<div tabindex="0" on:click style={$$props.style}>
+<button tabindex="0" on:click style={$$props.style}>
   <slot />
-</div>
+</button>
 
 <style lang="scss">
-  div {
+  button {
     display: flex;
     flex-grow: 1;
     align-items: center;

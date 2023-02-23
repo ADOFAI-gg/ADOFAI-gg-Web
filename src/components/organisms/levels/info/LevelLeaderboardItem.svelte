@@ -37,7 +37,7 @@
 
     <div class="division-line" />
 
-    <a href={play.url} target="_blank" class="video-link">
+    <a href={play.url} target="_blank" class="video-link" rel="noreferrer">
       <Icon icon="playOutlined" size={16} alt="Video Icon" />
       <span>Clear Video</span>
     </a>

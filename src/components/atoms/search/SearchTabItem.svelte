@@ -30,7 +30,7 @@
 </script>
 
 {#if currentValue}
-  <div
+  <button
     class="tab-item"
     class:selected={$currentValue === value}
     tabindex="0"
@@ -43,7 +43,7 @@
       {/if}
       <slot />
     </div>
-  </div>
+  </button>
 {/if}
 
 <style lang="scss">

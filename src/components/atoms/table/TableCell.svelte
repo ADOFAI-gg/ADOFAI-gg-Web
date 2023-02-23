@@ -11,7 +11,6 @@
 </script>
 
 <td
-  tabindex="0"
   on:copy={(e) => onCopy(e)}
   on:keydown={(e) => e.ctrlKey && e.key === 'c' && onCopy(e)}
   class:col-border={border}

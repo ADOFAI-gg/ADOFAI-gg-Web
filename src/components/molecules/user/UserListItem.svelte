@@ -47,11 +47,33 @@
 {/if} -->
 <style lang="scss">
   .user {
+    position: relative;
     display: flex;
     gap: 6px;
     align-items: center;
     font-weight: 500;
     white-space: nowrap;
     cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 100em;
+      background-color: white;
+      opacity: 0.4;
+      transition: width 0.2s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        display: block;
+        width: 100%;
+      }
+    }
   }
 </style>

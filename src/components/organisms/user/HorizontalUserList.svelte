@@ -56,7 +56,10 @@
   <div class="user-list" bind:clientWidth={containerWidth}>
     {#each users as user, i (i)}
       <div bind:this={items[i]} class="user-list-item-container">
-        <div class="user-list-item"><UserListItem {user} /></div>
+        <div class="user-list-item">
+          <UserListItem {user} />
+        </div>
+
         {#if i < users.length - 1}
           <span class="and-text">&</span>
         {/if}
