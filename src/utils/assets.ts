@@ -1,6 +1,8 @@
 import { dev } from '$app/environment';
 import axios from 'axios';
 
+export const svg = import.meta.glob('../assets/{icons,tagIcons}/*.svg', { eager: true, as: 'raw' });
+
 const asset = (path: string) =>
   dev
     ? `https://raw.githubusercontent.com/ADOFAI-gg/Adofai-gg-assets/main/${path}`
