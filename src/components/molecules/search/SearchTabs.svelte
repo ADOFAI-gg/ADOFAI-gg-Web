@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+  import Translation from '@/components/utils/Translation.svelte';
   import { setContext } from 'svelte';
   import type { Writable } from 'svelte/store';
 
@@ -24,7 +25,9 @@
 <div class="tabs-container" style={$$props.style}>
   {#if label}
     <div class="label-container">
-      <span class="label">{label}</span>
+      <span class="label">
+        <Translation key={label} />
+      </span>
       <hr />
     </div>
   {/if}
