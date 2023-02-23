@@ -91,7 +91,7 @@
       </div>
     </SearchTabs>
 
-    <SearchTabs value={currentView} label="View">
+    <SearchTabs value={currentView} label="SEARCH_VIEW_LABEL">
       <SearchTabItem value="list" icon="list">
         <Translation key="SEARCH_VIEW_LIST" />
       </SearchTabItem>
