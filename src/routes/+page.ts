@@ -1,14 +1,8 @@
-import { browser } from '$app/environment';
 import { api } from '@/api';
 
 import type { Load } from '@sveltejs/kit';
-import type { Data } from '@templates/Home.svelte';
 
 export const load: Load = async () => {
-  if (!browser) {
-    return { recentLevels: [], topPlays: [] } as Data;
-  }
-
   const {
     data: { results: topPlays }
   } = await api.get('/api/v1/playLogs', {
