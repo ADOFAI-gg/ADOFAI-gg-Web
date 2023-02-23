@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 import langs from '@/assets/langs.json';
 import { browser } from '$app/environment';
+import Cookies from 'js-cookie';
 
 export const availableLanguages: LangResponse[] = langs;
 
@@ -23,10 +24,11 @@ export const getLangCode = (code: string) => {
 };
 
 export const currentLang = writable<string>(
-  getLangCode(browser ? localStorage.lang || window.navigator.language : 'en')
+  getLangCode(browser ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
 );
 
 currentLang.subscribe((v) => {
+  Cookies.set('_adofaigg-lang', v, { expires: 365 * 10 });
   _currentLang = v;
 });
 
