@@ -58,8 +58,6 @@
     }
 
     .refresh-button {
-      @apply w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40;
-
       position: relative;
       display: flex;
       align-items: center;

@@ -12,7 +12,6 @@
     <div class="rank">#{index + 1}</div>
 
     <div class="player">
-      <!-- <div class="w-[24px] h-[24px] bg-white rounded-full" /> -->
       <div class="player-name">{play.player.name}</div>
     </div>
   </div>
