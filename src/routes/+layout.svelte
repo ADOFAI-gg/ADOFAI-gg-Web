@@ -49,27 +49,24 @@
 </svelte:head>
 
 {#if !$loaded}
-  <div
-    out:fade={{ duration: 250, delay: 0 }}
-    class="flex justify-center items-center fixed w-full h-full left-0 top-0"
-  >
+  <div out:fade={{ duration: 250, delay: 0 }} class="root-loader">
     <LoadingSpinner />
   </div>
 {/if}
 
-<div class={$loaded ? 'opacity-100 transition-opacity duration-1000' : 'invisible opacity-0'}>
+<div class="page-container" class:active={!!$loaded}>
   <LoadingIndiciator />
 
   {#if $i18nReady}
     <Nav />
   {/if}
-  <div class="flex flex-col">
-    <div class="flex-grow">
+  <div class="page-layout">
+    <div class="page-content">
       <slot />
     </div>
 
     {#if !$page.data.meta?.hideFooter}
-      <div class="mt-[64px]" />
+      <div class="footer-spacer" />
 
       <Footer />
     {/if}
@@ -79,3 +76,40 @@
 {#if $loaded}
   <UpdateNotification />
 {/if}
+
+<style lang="scss">
+  .root-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .page-container {
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 1s;
+    }
+
+    > .page-layout {
+      display: flex;
+      flex-direction: column;
+
+      > .page-content {
+        flex-grow: 1;
+      }
+
+      > .footer-spacer {
+        margin-top: 64px;
+      }
+    }
+  }
+</style>
