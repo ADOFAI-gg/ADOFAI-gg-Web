@@ -18,10 +18,10 @@
 
   <div class="blank" />
 
-  <div class="info">
+  <div class="content">
     <div class="title">{level.title}</div>
 
-    <div class="asdasdasdasd">
+    <div class="detail-info">
       <div class="authors">
         <HorizontalUserList
           allTitle="Creator"
@@ -74,7 +74,7 @@
       height: var(--nav-height);
     }
 
-    .info {
+    .content {
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
@@ -89,7 +89,7 @@
         text-shadow: 0 0 6px black;
       }
 
-      .asdasdasdasd {
+      .detail-info {
         display: flex;
         flex-direction: column;
         margin-top: 24px;
