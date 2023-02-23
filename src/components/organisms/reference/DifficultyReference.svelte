@@ -1,13 +1,7 @@
 <script lang="ts">
   import { browser } from '$app/environment';
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
-  import type {
-    DifficultyReference,
-    DifficultyReferenceLevel,
-    RawDifficultyReference,
-    RawPPRatings
-  } from '@/types';
-  import { Asset } from '@/utils/assets';
+  import type { DifficultyReference, DifficultyReferenceLevel, RawPPRatings } from '@/types';
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import Table from '@atoms/table/Table.svelte';
@@ -16,8 +10,8 @@
   const loadData = async (): Promise<DifficultyReference[]> => {
     if (!browser) return [];
 
-    const levels = await Asset.loadJSON<RawDifficultyReference[]>('data/difficultyReferences.json');
-    const ratings = await Asset.loadJSON<RawPPRatings[]>('data/ppRatings.json');
+    const levels = (await import('@/assets/data/difficultyReferences.json')).default;
+    const ratings = (await import('@/assets/data/ppRatings.json')).default as RawPPRatings[];
 
     const referenceMap = new Map<number, DifficultyReference>();
 
