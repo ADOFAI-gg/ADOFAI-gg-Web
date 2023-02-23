@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite dev",
-    "build": "node prebuild.cjs && vite build",
+    "build": "vite build",
     "package": "vite package",
     "preview": "vite preview",
     "prepare": "husky install",
