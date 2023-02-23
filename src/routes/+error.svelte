@@ -26,17 +26,50 @@
   })();
 </script>
 
-<div class="flex flex-col h-screen max-w-[1100px] p-4 mx-auto">
-  <div class="h-nav" />
+<div class="error-container">
+  <div class="nav-spacer" />
 
-  <div
-    class="flex-grow bg-white rounded-xl flex flex-col justify-center gap-[15px] items-center text-black"
-  >
+  <div class="error-content">
     {#if data.image}
       <Image src={data.image.url} alt={data.image.alt} />
     {/if}
 
-    <div class="text-4xl font-bold">{data.title}</div>
-    <div class="text-3xl">{data.description}</div>
+    <div class="error-title">{data.title}</div>
+    <div class="error-description">{data.description}</div>
   </div>
 </div>
+
+<style lang="scss">
+  .error-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 16px;
+
+    > .nav-spacer {
+      height: var(--nav-height);
+    }
+
+    > .error-content {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background-color: white;
+      color: black;
+
+      > .error-title {
+        @apply text-4xl font-bold;
+      }
+
+      > .error-description {
+        @apply text-3xl;
+      }
+    }
+  }
+</style>
