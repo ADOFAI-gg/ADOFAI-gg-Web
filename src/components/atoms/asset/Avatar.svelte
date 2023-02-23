@@ -1,11 +1,15 @@
 <script lang="ts">
-  import { Asset } from '@/utils/assets';
   import Image from '@atoms/asset/Image.svelte';
+  import defaultAvatar from '@/assets/images/defaultAvatar.svg';
 
   export let url: string | null = null;
   export let size = 24;
-
-  const defaultUrl = Asset.url('images/defaultAvatar.svg');
 </script>
 
-<Image fallback={defaultUrl} src={url || defaultUrl} alt="Avatar" width={size} height={size} />
+<Image
+  fallback={defaultAvatar}
+  src={url || defaultAvatar}
+  alt="Avatar"
+  width={size}
+  height={size}
+/>
