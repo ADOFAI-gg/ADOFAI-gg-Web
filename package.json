@@ -21,7 +21,7 @@
     "@playwright/test": "^1.21.0",
     "@sveltejs/adapter-auto": "^1.0.0-next.72",
     "@sveltejs/adapter-vercel": "^1.0.0-next.81",
-    "@sveltejs/kit": "^1.0.0-next.480",
+    "@sveltejs/kit": "1.0.0-next.480",
     "@types/compression": "^1.7.2",
     "@types/express": "^4.17.14",
     "@types/fs-extra": "^9.0.13",
