@@ -19,7 +19,7 @@
   $: isReferenceTab = $currentTab === ReferenceTab.Reference;
 </script>
 
-<div class="h-nav mt-[24px]" />
+<div class="nav-spacer" />
 
 <div class="table-view-header-area">
   <PageContainer wide={isReferenceTab}>
@@ -33,23 +33,32 @@
 </div>
 
 {#if $currentTab === ReferenceTab.Reference}
-  <div class="mt-[16px] table-view-container">
+  <div class="top-spacer table-view-container">
     <!-- Content -->
     <DifficultyReference />
   </div>
 {/if}
 {#if $currentTab === ReferenceTab.Indication}
-  <div class="mt-[16px]" />
+  <div class="top-spacer" />
   <PageContainer>
     <DifficultyIndication />
   </PageContainer>
 {/if}
 
 <style lang="scss">
+  .nav-spacer {
+    height: var(--nav-height);
+    margin-top: 24px;
+  }
+
   .table-view-header-area {
     position: sticky;
     left: 0;
     width: 100vw;
+  }
+
+  .top-spacer {
+    margin-top: 16px;
   }
 
   .table-view-container {
