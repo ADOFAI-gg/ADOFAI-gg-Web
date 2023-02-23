@@ -31,11 +31,11 @@
 <div class="video">
   <iframe
     bind:this={iframe}
-    type="text/html"
     width="100%"
     height="100%"
     title="Video"
     src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}"
+    allow="fullscreen"
     frameborder="0"
   />
 </div>
