@@ -41,9 +41,9 @@
     const keyResult: TranslationChunk[] = [{ type: 'text', value: key }];
     const l = $currentLang;
     if (!l) return keyResult;
-    const lang = $langData[l];
+    const lang = langData[l];
     if (!lang) return keyResult;
-    let k = lang[key] ?? $langData[fallbackLang][key];
+    let k = lang[key] ?? langData[fallbackLang][key];
     if (!k) return keyResult;
     const matches = k.matchAll(tagRegex);
     const result: TranslationChunk[] = [];
@@ -92,6 +92,6 @@
   {/if}
 {/each}
 
-<div class="hidden" bind:this={componentsContainer}>
+<div style="display: none;" bind:this={componentsContainer}>
   <slot />
 </div>

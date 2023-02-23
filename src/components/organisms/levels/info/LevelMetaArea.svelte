@@ -10,8 +10,6 @@
   import LevelTagDetailsArea from '@organisms/levels/info/LevelTagDetailsArea.svelte';
 
   const convertLength = (length: number) => {
-    const lang = $langData;
-
     const current = $currentLang;
 
     const fallback = fallbackLang;
@@ -23,7 +21,9 @@
         key += 'S';
       }
 
-      return (lang[current]?.[key] || lang[fallback]?.[key] || key).split('{value}').join(`${v}`);
+      return (langData[current]?.[key] || langData[fallback]?.[key] || key)
+        .split('{value}')
+        .join(`${v}`);
     };
 
     const seconds = Math.floor(length % 60);
