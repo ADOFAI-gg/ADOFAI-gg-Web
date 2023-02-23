@@ -18,7 +18,7 @@
 
       <div class="list">
         <FooterSection title="FOOTER_SECTION_CONTACT">
-          <FooterLink href="mailto:adofai.gg@gmail.com">
+          <FooterLink href="mailto:{import.meta.env.VITE_SUPPORT_MAIL}">
             <Translation key="FOOTER_CONTACT_EMAIL" />
           </FooterLink>
 

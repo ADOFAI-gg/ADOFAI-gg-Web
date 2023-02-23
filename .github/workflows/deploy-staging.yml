@@ -29,6 +29,8 @@ jobs:
           build-args: |
             API_ENDPOINT=${{ secrets.STAGING_API_ENDPOINT }}
             OPENGRAPH_ENDPOINT=${{ secrets.STAGING_OPENGRAPH_ENDPOINT }}
+            DISCORD_INVITE=https://discord.gg/adofaigg
+            SUPPORT_MAIL=support@adofai.gg
       - name: Send update signal to kubernetes
         run: bash ./deploy/staging/deploy.sh
         env:
