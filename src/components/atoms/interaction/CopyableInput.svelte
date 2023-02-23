@@ -28,13 +28,13 @@
 <div class="copyable-input">
   <input type="text" {value} />
 
-  <div class="copy-icon" tabindex="0" class:copied on:click={copy}>
+  <button class="copy-icon" tabindex="0" class:copied on:click={copy}>
     {#if copied}
       <Icon size={16} icon="check" alt="Copy Success" />
     {:else}
       <Icon size={16} icon="copy" alt="Copy icon" />
     {/if}
-  </div>
+  </button>
 </div>
 
 <style lang="scss">

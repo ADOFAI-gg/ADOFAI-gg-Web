@@ -34,9 +34,9 @@
     <div class="update-available-text">
       <Translation key="UPDATE_AVAILABLE" />
     </div>
-    <div on:click={browser ? () => window.location.reload() : () => null} class="refresh-button">
+    <button on:click={browser ? () => window.location.reload() : () => null} class="refresh-button">
       <Icon icon="refresh" size={12} alt="Refresh Icon" />
-    </div>
+    </button>
   </div>
 {/if}
 

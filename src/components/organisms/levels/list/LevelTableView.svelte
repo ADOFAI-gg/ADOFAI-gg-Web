@@ -138,11 +138,11 @@
 
       <Cell>
         <div class="links">
-          <a href={item.download} target="_blank">
+          <a href={item.download} target="_blank" rel="noreferrer">
             <Icon icon="download" size={16} alt="Download Icon" />
           </a>
 
-          <a href={item.workshop} target="_blank">
+          <a href={item.workshop} target="_blank" rel="noreferrer">
             <Icon
               icon="steam"
               style={item.workshop ? 'color: white;' : 'color: rgba(255, 255, 255, 0.2)'}
