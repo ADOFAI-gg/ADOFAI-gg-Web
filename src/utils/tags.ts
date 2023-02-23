@@ -1,12 +1,5 @@
-import { writable } from 'svelte/store';
-import { Asset } from './assets';
+import tags from '@/assets/tags.json';
 
 type TagGroup = { key: string; tags: number[] };
 
-export const tagGroups = writable<TagGroup[]>([]);
-
-export const loadTags = async () => {
-  const { groups } = await Asset.loadJSON<{ groups: TagGroup[] }>('tags.json');
-
-  tagGroups.set(groups);
-};
+export const tagGroups = tags.groups as TagGroup[];
