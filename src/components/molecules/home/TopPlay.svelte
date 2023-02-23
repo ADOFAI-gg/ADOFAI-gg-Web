@@ -14,22 +14,9 @@
   })();
 </script>
 
-<div
-  class="
-    group
-    lg:first:mx-0 lg:last:ml-auto md:last:mr-0 last:md:col-span-2
-    max-w-[360px] md:max-w-none lg:max-w-[360px] mx-auto
-    last:lg:col-span-1 last:md:px-[25%] last:lg:p-0
-    hover:bg-darkblue hover:bg-opacity-20 ease transition-all rounded-md
-  "
->
-  <a
-    href={play.url}
-    rel="noreferrer"
-    target="_blank"
-    class="flex flex-col gap-[15px] items-center group-hover:scale-95 ease transition-all"
-  >
-    <div class="w-full aspect-video bg-repeat-round rounded-[5px] overflow-hidden">
+<div class="top-play-wrapper">
+  <a href={play.url} rel="noreferrer" target="_blank" class="top-play">
+    <div class="thumbnail-wrapper">
       <Image
         width="100%"
         height="100%"
@@ -37,17 +24,21 @@
         src="https://i.ytimg.com/vi/{getYoutubeVideoId(play.url)}/original.jpg"
       />
     </div>
-    <div class="flex flex-col gap-[4px] w-full items-center">
-      <div class="text-2xl font-bold">
+
+    <div class="info-container">
+      <div class="player-name">
         {play.player.name}
       </div>
-      <div class="flex gap-[8px] items-center">
+
+      <div class="level">
         {#await difficulty then difficulty}
           <DifficultyIcon {difficulty} />
         {/await}
-        <div class="font-medium">{play.level.name}</div>
+
+        <div>{play.level.name}</div>
       </div>
-      <div class="flex gap-[24px]">
+
+      <div class="detail">
         <TopPlayDetailPair icon="accuracy" value="{play.xAccuracy}%" />
         <TopPlayDetailPair
           icon="speed"
@@ -58,3 +49,89 @@
     </div>
   </a>
 </div>
+
+<style lang="scss">
+  .top-play-wrapper {
+    max-width: 360px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.1s ease;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(var(--color-darkblue), 0.2);
+    }
+
+    @media (min-width: 768px) {
+      max-width: none;
+
+      &:last-child {
+        grid-column: span 2 / span 2;
+        margin: 0 25%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      max-width: 360px;
+
+      &:first-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      &:last-child {
+        grid-column: span 1 / span 1;
+        margin: auto;
+        padding: 0;
+      }
+    }
+  }
+
+  a.top-play {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.1s ease;
+
+    &:hover,
+    &:focus {
+      transform: scale(0.95);
+    }
+
+    .thumbnail-wrapper {
+      overflow: hidden;
+      width: 100%;
+      border-radius: 6px;
+      background-repeat: round;
+      aspect-ratio: 16 / 9;
+    }
+
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+      width: 100%;
+
+      .player-name {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+      }
+
+      .level {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-weight: 500;
+      }
+
+      .detail {
+        display: flex;
+        gap: 24px;
+      }
+    }
+  }
+</style>

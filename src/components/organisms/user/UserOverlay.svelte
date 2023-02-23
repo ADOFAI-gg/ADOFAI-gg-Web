@@ -18,16 +18,16 @@
     : null;
 </script>
 
-<div class="relative w-screen max-w-[256px]">
+<div class="user-overlay">
   {#if fullUserPromise}
     {#await fullUserPromise}
-      <div class="flex justify-center py-[12px]"><LoadingSpinner size={36} /></div>
+      <div class="user-overlay-loader"><LoadingSpinner size={36} /></div>
     {:then member}
-      <div class="py-[24px]">
-        <div class="flex flex-col items-center">
-          <div class="text-xl font-bold">{member.name}</div>
-          <div class="w-[110px] border-b opacity-40 my-[16px]" />
-          <div class="flex w-full px-[32px]">
+      <div class="user-overlay-padder">
+        <div class="user-overlay-content">
+          <div class="name-text">{member.name}</div>
+          <div class="divider" />
+          <div class="details-container">
             <!-- <UserOverlayDetail label="USER_POPUP_RANKING" value="#66,236" /> -->
             <UserOverlayDetail label="USER_POPUP_TOTAL_PP" value={`${member.totalPp.toFixed(3)}`} />
           </div>
@@ -54,3 +54,45 @@
     </Button>
   </div> -->
 </div>
+
+<style lang="scss">
+  .user-overlay {
+    position: relative;
+    width: 100vw;
+    max-width: 256px;
+
+    > .user-overlay-loader {
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
+    }
+
+    > .user-overlay-padder {
+      padding: 24px 0;
+
+      > .user-overlay-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > .name-text {
+          font-weight: 700;
+          font-size: 21px;
+          text-align: center;
+        }
+
+        > .divider {
+          width: 110px;
+          margin: 16px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        > .details-container {
+          display: flex;
+          width: 100%;
+          padding: 0 32px;
+        }
+      }
+    }
+  }
+</style>

@@ -13,9 +13,7 @@
   export let icon: string;
   export let namespace = 'icons';
   export let size = 24;
-  let className = 'text-white';
-
-  export { className as class };
+  export let style = 'color: white;';
 
   const load = async (id: string) => {
     if (!browser) return null as unknown as SVGElement;
@@ -28,8 +26,6 @@
       const svg: SVGElement = parser
         .parseFromString(x.data, 'image/svg+xml')
         .querySelector('svg') as SVGElement;
-      svg.setAttribute('width', `${size}`);
-      svg.setAttribute('height', `${size}`);
       svg.querySelectorAll('*')?.forEach((i) => {
         if (i.hasAttribute('fill')) i.setAttribute('fill', 'currentColor');
 
@@ -59,16 +55,15 @@
         if (!disableFade) {
           container.classList.add('loaded');
         }
-        container.appendChild(data.cloneNode(true));
+        const svg = data.cloneNode(true) as SVGElement;
+
+        svg.setAttribute('width', `${size}`);
+        svg.setAttribute('height', `${size}`);
+
+        container.replaceChildren(svg);
       });
     }
   }
 </script>
 
-<div bind:this={container} class={className} style="width: {size}px; height: {size}px;" />
-
-<style lang="scss">
-  .loaded {
-    @apply animate-fade-in;
-  }
-</style>
+<div bind:this={container} class="icon" style="width: {size}px; height: {size}px; {style}" />

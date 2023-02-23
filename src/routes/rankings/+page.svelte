@@ -59,14 +59,14 @@
   $: listItems = $items.slice(3);
 </script>
 
-<div class="h-nav" />
+<div class="nav-spacer" />
 
 <PageContainer>
-  <div class="mt-[24px]">
+  <div class="top-spacer">
     <MainSectionTitle title="RANKING_TITLE" />
   </div>
   {#if browser}
-    <div class="md:grid flex flex-col mb-[16px] md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
+    <div class="top-rankings">
       {#each topItems as item}
         <RankingTopItem {item} />
       {/each}
@@ -79,9 +79,41 @@
       total={Math.max(0, total - 3)}
     >
       <RankingListItem {item} />
-      <div slot="loading" class="w-full flex justify-center">
+      <div slot="loading" class="loader">
         <LoadingSpinner size={48} />
       </div>
     </VirtualizedInfiniteScroll>
   {/if}
 </PageContainer>
+
+<style lang="scss">
+  .nav-spacer {
+    height: var(--nav-height);
+  }
+
+  .top-spacer {
+    margin-top: 24px;
+  }
+
+  .top-rankings {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 16px;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+</style>

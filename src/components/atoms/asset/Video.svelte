@@ -28,14 +28,23 @@
   });
 </script>
 
-<div class="w-full aspect-video rounded-[16px] overflow-hidden">
+<div class="video">
   <iframe
     bind:this={iframe}
-    type="text/html"
     width="100%"
     height="100%"
     title="Video"
     src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}"
+    allow="fullscreen"
     frameborder="0"
   />
 </div>
+
+<style lang="scss">
+  .video {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 16px;
+    aspect-ratio: 16 / 9;
+  }
+</style>

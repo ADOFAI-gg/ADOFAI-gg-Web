@@ -4,20 +4,8 @@
   export let href = '';
   export let type = 'default';
 
-  $: className = (() => {
-    switch (type) {
-      case 'nav':
-        return 'opacity-60 font-medium hover:opacity-100 focus:opacity-100 transition-opacity px-[20px] border-[1px] py-[8px] text-md rounded-full text-center';
-      case 'bordered':
-        return 'opacity-60 hover:opacity-100 focus:opacity-100 transition-opacity px-[10px] border-[1px] py-[8px] rounded-[6px] text-center';
-      case 'levelAction':
-        return 'bg-darkblue bg-opacity-40 hover:bg-opacity-60 focus:bg-opacity-60 transition-all p-[6px] rounded-[3px]';
-      case 'search':
-        return 'border opacity-80 border-opacity-40 border-white flex items-center justify-center w-[23px] md:w-fit h-[23px] md:px-2 rounded-[5px] gap-[6px] hover:opacity-100 transition-all';
-      default:
-        return 'bg-white bg-opacity-20 h-[42px] px-8 rounded-[5px] text-lg hover:bg-opacity-30 focus:bg-opacity-30 transition-colors text-center';
-    }
-  })();
+  let className = '';
+  let style = '';
 
   const dispatch = createEventDispatcher();
 
@@ -26,6 +14,8 @@
       dispatch('click');
     }
   };
+
+  export { className as class, style };
 </script>
 
 <svelte:element
@@ -34,7 +24,92 @@
   on:keydown={onKeydown}
   {href}
   {...$$props}
-  class={$$props.class ? className + ' ' + $$props.class : className}
+  class={'button ' + className}
+  {style}
+  data-type={type}
 >
   <slot />
 </svelte:element>
+
+<style lang="scss">
+  .button {
+    &[data-type='default'] {
+      height: 42px;
+      padding: 0 8px;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.2);
+      font-size: 16px;
+      text-align: center;
+      transition: background-color 0.2s ease;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    &[data-type='search'] {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      width: 23px;
+      height: 23px;
+      border: rgba(255, 255, 255, 0.4) 1px solid;
+      border-radius: 6px;
+      transition: opacity 0.2s ease;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+
+      @media (min-width: 768px) {
+        width: fit-content;
+        padding: 0 8px;
+      }
+    }
+
+    &[data-type='levelAction'] {
+      padding: 6px;
+      border-radius: 4px;
+      background-color: rgba(0, 2, 15, 0.4);
+      transition: background-color 0.2s ease;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(0, 2, 15, 0.6);
+      }
+    }
+
+    &[data-type='bordered'] {
+      padding: 8px 10px;
+      border: 1px solid white;
+      border-radius: 6px;
+      text-align: center;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    &[data-type='nav'] {
+      padding: 8px 20px;
+      border-width: 1px;
+      border-radius: 100em;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
+</style>

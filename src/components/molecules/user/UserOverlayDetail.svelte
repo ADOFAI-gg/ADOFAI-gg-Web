@@ -5,11 +5,33 @@
   export let value: string;
 </script>
 
-<div class="flex text-center flex-col items-center flex-grow w-0">
-  <div class="text-md font-light">
+<div class="fair">
+  <div class="label">
     <Translation key={label} />
   </div>
-  <div class="text-lg font-medium">
+
+  <div class="value">
     <Translation key={value} />
   </div>
 </div>
+
+<style lang="scss">
+  .fair {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    width: 0;
+    text-align: center;
+
+    .label {
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .value {
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+</style>

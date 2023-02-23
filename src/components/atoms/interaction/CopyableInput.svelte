@@ -25,13 +25,10 @@
   };
 </script>
 
-<div class="bg-black bg-opacity-40 p-2 rounded-md w-full flex gap-[6px]">
-  <input type="text" readonly class="outline-none bg-transparent flex-grow w-0" {value} />
-  <div
-    class="w-[16px] h-[16px] flex-shrink-0 cursor-pointer"
-    class:text-green-400={copied}
-    on:click={copy}
-  >
+<div class="copyable-input">
+  <input type="text" {value} />
+
+  <div class="copy-icon" tabindex="0" class:copied on:click={copy}>
     {#if copied}
       <Icon size={16} icon="check" alt="Copy Success" />
     {:else}
@@ -39,3 +36,33 @@
     {/if}
   </div>
 </div>
+
+<style lang="scss">
+  .copyable-input {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    & > input {
+      flex-grow: 1;
+      width: 0;
+      background-color: transparent;
+      outline: 2px solid transparent;
+    }
+  }
+
+  .copy-icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    &.copied {
+      color: rgba(var(--color-cyan), 100);
+    }
+  }
+</style>

@@ -2,7 +2,7 @@
   "editor.formatOnSave": false,
   "[svelte]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "svelte.svelte-vscode"
   },
   "svelte.enable-ts-plugin": true,
   "[javascript]": {
@@ -16,8 +16,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.validate": [
-    "typescript",
-    "svelte"
-  ],
+  "eslint.validate": ["typescript", "svelte"],
+  "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
+  "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"]
 }

@@ -7,26 +7,78 @@
   import Popover from '@atoms/common/Popover.svelte';
 </script>
 
-<nav class="fixed w-full z-[100] left-0 top-0 bg-opacity-25 bg-black backdrop-blur-sm">
-  <div class="h-nav flex items-center px-[24px] relative gap-[16px]">
-    <Logo />
-    <div class="absolute left-1/2 -translate-x-1/2 hidden md:block">
-      <NavLinks />
-    </div>
-    <div class="flex-grow" />
+<nav>
+  <Logo />
 
-    {#if import.meta.env.VITE_USE_ACCOUNT}
-      <div class="hidden md:block">
-        <NavSignArea />
-      </div>
-      <div class="bg-white opacity-40 w-[1px] h-[18px] hidden md:block" />
-    {/if}
-
-    <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
-      <span slot="button" class="opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
-        <Icon icon="expand" size={16} alt="Expand icon" />
-      </span>
-      <NavMenuOverlay />
-    </Popover>
+  <div class="links">
+    <NavLinks />
   </div>
+
+  <div style="flex-grow: 1;" />
+
+  {#if import.meta.env.VITE_USE_ACCOUNT}
+    <div class=" sign-area">
+      <NavSignArea />
+    </div>
+
+    <div class="division-line" />
+  {/if}
+
+  <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
+    <span slot="button" class="expand-icon">
+      <Icon icon="expand" size={16} alt="Expand icon" />
+    </span>
+
+    <NavMenuOverlay />
+  </Popover>
 </nav>
+
+<style lang="scss">
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    height: var(--nav-height);
+    padding: 0 24px;
+    background-color: rgba(var(--color-darkblue), 0.5);
+    backdrop-filter: blur(4px);
+
+    .links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .division-line {
+      width: 1px;
+      height: 18px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .expand-icon {
+      opacity: 0.8;
+      cursor: pointer;
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    .links,
+    .sign-area,
+    .division-line {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+  }
+</style>

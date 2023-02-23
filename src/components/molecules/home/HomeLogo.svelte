@@ -3,19 +3,43 @@
   import Translation from '@/components/utils/Translation.svelte';
 </script>
 
-<div class="flex items-center flex-col gap-[12px] text-center w-full">
+<div class="home-logo">
   <HomeLogoImage />
-  <span class="text-2xl font-medium">
+
+  <span class="description">
     <Translation key="HOME_HERO_DESCRIPTION">
       <a
         data-key="forumLink"
         href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468"
         rel="noreferrer"
         target="_blank"
-        class="text-yellow hover:underline focus:underline"
       >
         Unofficial ADOFAI Forum?
       </a>
     </Translation>
   </span>
 </div>
+
+<style lang="scss">
+  .home-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+
+    .description {
+      font-weight: 500;
+      font-size: 24px;
+
+      a {
+        color: rgba(var(--color-yellow), 1);
+
+        &:hover,
+        &:focus {
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
+</style>

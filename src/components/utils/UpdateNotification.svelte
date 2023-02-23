@@ -8,12 +8,17 @@
 
   if (browser && !dev) {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistration('/service-worker.js').then((registration) => {
-        registration?.addEventListener('updatefound', () => {
-          hasUpdate = true;
+      navigator.serviceWorker
+        .getRegistration('/service-worker.js')
+        .then((registration) => {
+          registration?.addEventListener('updatefound', () => {
+            hasUpdate = true;
+          });
+          registration?.update();
+        })
+        .catch(() => {
+          console.warn('Cannot retrieve update');
         });
-        registration?.update();
-      });
     }
   }
 </script>
@@ -24,16 +29,44 @@
       duration: 1000,
       y: 60
     }}
-    class="fixed gap-2 flex bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-blue p-2 rounded-full"
+    class="update-notification"
   >
-    <div class="pl-2">
+    <div class="update-available-text">
       <Translation key="UPDATE_AVAILABLE" />
     </div>
-    <div
-      on:click={browser ? () => window.location.reload() : () => null}
-      class="w-[24px] cursor-pointer h-[24px] rounded-full relative flex justify-center items-center bg-darkblue40"
-    >
+    <div on:click={browser ? () => window.location.reload() : () => null} class="refresh-button">
       <Icon icon="refresh" size={12} alt="Refresh Icon" />
     </div>
   </div>
 {/if}
+
+<style lang="scss">
+  .update-notification {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 999px;
+    background-color: rgba(var(--color-blue), 1);
+    white-space: nowrap;
+    transform: translateX(-50%);
+
+    .update-available-text {
+      padding-left: 8px;
+    }
+
+    .refresh-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background-color: rgba(var(--color-darkblue), 0.4);
+      cursor: pointer;
+    }
+  }
+</style>

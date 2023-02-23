@@ -3,11 +3,9 @@
   import { writable } from 'svelte/store';
 
   type T = $$Generic;
-
   export let value: T;
 
   let current = writable(value);
-
   setContext('tabValue', current);
 
   $: {
@@ -18,6 +16,14 @@
   }
 </script>
 
-<div class="flex gap-[12px] w-full">
+<div class="slot">
   <slot />
 </div>
+
+<style lang="scss">
+  .slot {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+  }
+</style>

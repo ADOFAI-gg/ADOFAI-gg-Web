@@ -10,11 +10,7 @@
 
   export let label: string | null = null;
 
-  let className = '';
-
   export let deselectable = false;
-
-  export { className as class };
 
   setContext(searchTabContextSymbol, {
     value,
@@ -25,13 +21,40 @@
   });
 </script>
 
-<div class="flex gap-[12px] {className}">
+<div class="tabs-container" style={$$props.style}>
   {#if label}
-    <div class="flex items-center md:hidden flex-grow gap-[12px]">
-      <span class="opacity-60">{label}</span>
-      <span class="flex-grow border-b border-opacity-20 border-white" />
+    <div class="label-container">
+      <span class="label">{label}</span>
+      <hr />
     </div>
   {/if}
 
   <slot />
 </div>
+
+<style lang="scss">
+  .tabs-container {
+    display: flex;
+    gap: 12px;
+
+    .label-container {
+      display: flex;
+      flex-grow: 1;
+      gap: 12px;
+      align-items: center;
+
+      .label {
+        opacity: 0.6;
+      }
+
+      hr {
+        flex-grow: 1;
+        opacity: 0.2;
+      }
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+</style>

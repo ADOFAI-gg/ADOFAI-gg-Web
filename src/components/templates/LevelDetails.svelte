@@ -21,17 +21,49 @@
 
 <LevelHeader {level} />
 
-<div class="mt-[24px]" />
+<div class="page-padder" />
 
-<PageContainer>
-  <div class="flex gap-[24px] flex-col md:flex-row">
-    <Video {videoId} bind:player />
-    <div class="md:min-w-[360px]">
-      <LevelMetaArea video={player} {level} />
+<div class="details-container">
+  <PageContainer>
+    <div class="meta-container">
+      <Video {videoId} bind:player />
+      <div class="meta-area">
+        <LevelMetaArea video={player} {level} />
+      </div>
     </div>
-  </div>
 
-  <div class="mt-[48px]">
-    <LevelLeaderboard levelId={level.id} />
-  </div>
-</PageContainer>
+    <div class="leaderboard-padder">
+      <LevelLeaderboard levelId={level.id} />
+    </div>
+  </PageContainer>
+</div>
+
+<style lang="scss">
+  .page-padder {
+    margin-top: 24px;
+  }
+
+  .details-container {
+    padding: 0 32px;
+  }
+
+  .meta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    > .meta-area {
+      @media (min-width: 768px) {
+        min-width: 360px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  .leaderboard-padder {
+    margin-top: 48px;
+  }
+</style>

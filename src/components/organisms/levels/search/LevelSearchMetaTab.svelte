@@ -7,9 +7,9 @@
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
 </script>
 
-<div class="grid md:grid-cols-2 gap-[12px]">
+<div class="meta-container">
   <SearchGroup title="SEARCH_META_AUTHOR">
-    <div class="flex flex-col gap-[16px]">
+    <div class="meta-group">
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
         <SearchMetaInput
           bind:value={$searchSetingStore.query.artist}
@@ -25,7 +25,7 @@
     </div>
   </SearchGroup>
   <SearchGroup title="SEARCH_META_LEVEL">
-    <div class="flex flex-col gap-[16px]">
+    <div class="meta-group">
       <LabeledInputContainer label="SEARCH_META_LV_LABEL">
         <DifficultyRangeSelector />
       </LabeledInputContainer>
@@ -68,3 +68,20 @@
     </div>
   </SearchGroup>
 </div>
+
+<style lang="scss">
+  .meta-container {
+    display: grid;
+    gap: 12px;
+
+    .meta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

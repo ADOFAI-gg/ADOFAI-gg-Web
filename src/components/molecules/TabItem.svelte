@@ -21,20 +21,59 @@
   };
 </script>
 
-<button
-  class="flex-grow cursor-pointer select-none flex-shrink-0 relative overflow-hidden
-    {active ? 'bg-darkblue/40' : 'bg-darkblue/20 hover:bg-darkblue/30 focus:bg-darkblue/30'}
-    transition-all h-[42px] flex justify-center items-center gap-[10px] rounded-[8px] font-medium"
-  on:click={activate}
->
+<button class:active on:click={activate}>
   {#if icon}
     <Icon size={18} {icon} alt="{icon} icon" />
   {/if}
   <div>
     <Translation key={title} />
   </div>
-  <div
-    class="absolute bottom-0 h-[2px] w-full left-0 bg-blue transition-opacity
-      {active ? 'opacity-100' : 'opacity-0'}"
-  />
+  <div class="indicator" class:selected={active} />
 </button>
+
+<style lang="scss">
+  button {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 42px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+
+    .indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: rgba(var(--color-blue), 1);
+      opacity: 0;
+      transition: opacity cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+
+      &.selected {
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      background-color: rgba(var(--color-darkblue), 0.4);
+    }
+
+    &:not(.active) {
+      background-color: rgba(var(--color-darkblue), 0.2);
+
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--color-darkblue), 0.3);
+      }
+    }
+  }
+</style>

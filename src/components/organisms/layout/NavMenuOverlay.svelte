@@ -14,14 +14,14 @@
   };
 </script>
 
-<div class="w-[240px] p-4 flex flex-col gap-[8px]">
+<div class="menu">
   {#if currentTab === 'lang'}
     <div
-      class="p-2 rounded-md cursor-pointer hover:bg-white hover:bg-opacity-20 transition-all"
-      role="menuitem"
-      tabindex="0"
       on:click={updateTab(null)}
       on:keydown={(e) => e.key === 'Enter' && updateTab(null)()}
+      class="menuitem"
+      tabindex="0"
+      role="menuitem"
     >
       Back
     </div>
@@ -32,7 +32,7 @@
         on:keydown={(e) => e.key === 'Enter' && updateLang(lang.code)()}
         role="menuitem"
         tabindex="0"
-        class="p-2 rounded-md cursor-pointer hover:bg-white hover:bg-opacity-20 transition-all"
+        class="menuitem"
       >
         {lang.name}
       </div>
@@ -43,18 +43,57 @@
       on:keydown={(e) => e.key === 'Enter' && updateTab('lang')()}
       role="menuitem"
       tabindex="0"
-      class="p-2 rounded-md cursor-pointer hover:bg-white hover:bg-opacity-20 transition-all"
+      class="menuitem"
     >
       Lang(Debug)
     </div>
 
-    <div class="md:hidden flex flex-col gap-4">
+    <div class="for-mobile">
       <NavLinks />
 
       {#if import.meta.env.VITE_USE_ACCOUNT}
-        <div class="bg-white bg-opacity-20 w-full h-[1px]" />
+        <div class="division-line" />
+
         <NavSignArea />
       {/if}
     </div>
   {/if}
 </div>
+
+<style lang="scss">
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 240px;
+    padding: 16px;
+
+    .menuitem {
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .division-line {
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .for-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+</style>

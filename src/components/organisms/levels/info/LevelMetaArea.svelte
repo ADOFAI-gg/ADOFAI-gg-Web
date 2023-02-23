@@ -62,8 +62,8 @@
   })();
 </script>
 
-<div class="flex flex-col gap-[26px] h-full">
-  <div class="flex gap-[24px]">
+<section>
+  <div class="horizontal">
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
       <DifficultyIcon difficulty={level.difficulty} size={28} />
     </LevelMetaLabelValuePair>
@@ -79,7 +79,8 @@
       />
     </LevelMetaLabelValuePair>
   </div>
-  <div class="flex gap-[24px]">
+
+  <div class="horizontal">
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_BPM">
       {#if music.minBpm === music.maxBpm}
         {music.minBpm}
@@ -87,22 +88,63 @@
         {music.minBpm} - {music.maxBpm}
       {/if}
     </LevelMetaLabelValuePair>
-    <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">{level.tiles}</LevelMetaLabelValuePair>
+
+    <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">
+      {level.tiles}
+    </LevelMetaLabelValuePair>
   </div>
+
   <LevelMetaLabelValuePair label="LEVEL_DETAIL_TAGS">
     <LevelTagDetailsArea {level} />
   </LevelMetaLabelValuePair>
 
-  <div class="flex-grow" />
-  <div class="flex gap-[12px]">
+  <div class="blank" />
+
+  <div class="buttons">
     {#if import.meta.env.VITE_USE_ACCOUNT}
       <Button type="levelAction">
-        <div class="flex gap-[6px] items-center">
-          <Icon class="text-red" icon="heart" size={20} alt="Heart Icon" />
-          <div class="font-regular text-lg">1.4K</div>
+        <div class="like-container">
+          <Icon style="color: rgba(var(--color-red), 1);" icon="heart" size={20} alt="Heart Icon" />
+
+          <div class="text">1.4K</div>
         </div>
       </Button>
     {/if}
+
     <LevelShareMenu {level} />
   </div>
-</div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    height: 100%;
+
+    .horizontal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .blank {
+      flex-grow: 1;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+
+      .like-container {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+
+        .text {
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+</style>

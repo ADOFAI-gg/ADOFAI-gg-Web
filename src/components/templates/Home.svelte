@@ -17,10 +17,20 @@
 
 <HomeHero />
 
-<div class="h-[62px]" />
+<div class="top-plays-padder" />
 
 <TopPlaysSection plays={data.topPlays} />
 
-<div class="mt-[64px]" />
+<div class="recent-levels-padder" />
 
 <RecentLevelsSection levels={data.recentLevels} />
+
+<style lang="scss">
+  .top-plays-padder {
+    height: 62px;
+  }
+
+  .recent-levels-padder {
+    margin-top: 64px;
+  }
+</style>

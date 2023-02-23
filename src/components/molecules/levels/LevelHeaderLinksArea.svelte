@@ -7,7 +7,7 @@
   export let level: Level;
 </script>
 
-<div class="flex gap-[18px]">
+<div style="display: flex; gap: 18px;">
   <!-- <Tooltip placement="bottom-end">
     <a slot="button" href="adofaigg://level/{level.id}">
       <Icon icon="playFilled" size={36} alt="Play button icon" />
@@ -18,13 +18,14 @@
   </Tooltip> -->
 
   {#if level.workshop}
-    <a href={level.workshop} target="_blank" rel="noreferer"
-      ><Icon icon="steam" size={36} alt="Steam Workshop icon" /></a
-    >
+    <a href={level.workshop} target="_blank" rel="noreferer">
+      <Icon icon="steam" size={36} alt="Steam Workshop icon" />
+    </a>
   {/if}
+
   {#if level.download}
-    <a href={level.download} target="_blank" rel="noreferer"
-      ><Icon icon="download" size={36} alt="Download icon" /></a
-    >
+    <a href={level.download} target="_blank" rel="noreferer">
+      <Icon icon="download" size={36} alt="Download icon" />
+    </a>
   {/if}
 </div>

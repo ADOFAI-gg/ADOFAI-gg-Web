@@ -17,33 +17,56 @@
   export { inputType as type };
 </script>
 
-<div class="bg-white bg-opacity-20 rounded-[5px] h-[30px] w-full relative">
+<div class="input-container">
   <label>
-    <div
-      class="absolute placeholder flex items-center transition-opacity pointer-events-none h-full w-full px-2 leading-[0] z-[2]"
-      class:opacity-0={!!textValue}
-      class:opacity-40={!textValue}
-    >
+    <div class="placeholder" data-has-value={!!textValue}>
       {placeholderContent || ''}
     </div>
+
     {#if inputType === 'number'}
-      <input
-        type="number"
-        bind:value
-        {min}
-        {max}
-        class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
-        aria-label={placeholderContent}
-      />
+      <input type="number" bind:value {min} {max} aria-label={placeholderContent} />
     {:else if inputType === 'text'}
-      <input
-        type="text"
-        bind:value
-        {min}
-        {max}
-        class="bg-transparent px-2 w-full outline-none h-full absolute left-0 top-0 z-[1]"
-        aria-label={placeholderContent}
-      />
+      <input type="text" bind:value {min} {max} aria-label={placeholderContent} />
     {/if}
   </label>
 </div>
+
+<style lang="scss">
+  .input-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    .placeholder {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 8px;
+      line-height: 0;
+      opacity: 0.4;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+
+      &[data-has-value='true'] {
+        opacity: 0;
+      }
+    }
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 0 8px;
+      background-color: transparent;
+      outline: none;
+    }
+  }
+</style>

@@ -7,7 +7,7 @@
       const contentWidth =
         windowWidth >= 1024 ? (windowWidth - 32) * (2 / 5) * (2 / 3) : windowWidth - 32;
 
-      maxCount.set(Math.min(Math.floor(contentWidth / 28), 10));
+      maxCount.set(Math.min(Math.floor(contentWidth / 30), 10));
     };
     window.addEventListener('resize', () => {
       calc();
@@ -30,8 +30,8 @@
   $: remaining = Math.max(0, tags.length - $maxCount);
 </script>
 
-<div class="w-fit">
-  <div class="flex gap-[4px] justify-end">
+<div style="width: fit-content;">
+  <div class="tag-list">
     {#each tags.filter((x) => x !== 4).slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
         <Icon
@@ -42,13 +42,12 @@
           slot="button"
           alt="Tag Icon"
         />
-        <div class="p-[12px] text-md">
-          <div class="font-bold">
+
+        <div class="tooltip">
+          <div class="title">
             <Translation key="TAG_{tag}_NAME" />
           </div>
-          <div class="font-regular">
-            <Translation key="TAG_{tag}_DESCRIPTION" />
-          </div>
+          <Translation key="TAG_{tag}_DESCRIPTION" />
         </div>
       </Tooltip>
     {/each}
@@ -59,18 +58,17 @@
           disableFade
           icon="4"
           namespace="tagIcons"
-          class="text-red"
+          style="color: rgba(var(--color-red), 100);"
           size={24}
           slot="button"
           alt="Tag Icon"
         />
-        <div class="p-[12px] text-md">
-          <div class="font-bold">
+
+        <div class="tooltip">
+          <div class="title">
             <Translation key="TAG_4_NAME" />
           </div>
-          <div class="font-regular">
-            <Translation key="TAG_4_DESCRIPTION" />
-          </div>
+          <Translation key="TAG_4_DESCRIPTION" />
         </div>
       </Tooltip>
     {/if}
@@ -81,26 +79,54 @@
           disableFade
           icon="SW"
           namespace="tagIcons"
-          class="text-red"
+          style="color: rgba(var(--color-red), 100);"
           size={24}
           slot="button"
           alt="Tag Icon"
         />
-        <div class="p-[12px] text-md">
-          <div class="font-bold">
+
+        <div class="tooltip">
+          <div class="title">
             <Translation key="TAG_SW_NAME" />
           </div>
-          <div class="font-regular">
-            <Translation key="TAG_SW_DESCRIPTION" />
-          </div>
+          <Translation key="TAG_SW_DESCRIPTION" />
         </div>
       </Tooltip>
     {/if}
 
     {#if remaining}
-      <div class="text-lg bg-white bg-opacity-20 rounded-full px-[8px] py-[4px] leading-[16px]">
+      <div class="remaining">
         +{remaining}
       </div>
     {/if}
   </div>
 </div>
+
+<style lang="scss">
+  .tag-list {
+    display: flex;
+    gap: 6px;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+
+  .remaining {
+    padding: 4px 8px;
+    border-radius: 100em;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .tooltip {
+    padding: 12px;
+    font-weight: 400;
+    font-size: 14px;
+
+    .title {
+      font-weight: 700;
+    }
+  }
+</style>

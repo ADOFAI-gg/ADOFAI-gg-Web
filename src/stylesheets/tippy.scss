@@ -1,8 +1,10 @@
 .tippy-box {
-  background-color: #0b1823 !important;
+  background-color: rgba(var(--color-dropdown), 100) !important;
+
   .tippy-arrow {
-    color: #0b1823 !important;
+    color: rgba(var(--color-dropdown), 100) !important;
   }
+
   .tippy-content {
     padding: 0 !important;
   }

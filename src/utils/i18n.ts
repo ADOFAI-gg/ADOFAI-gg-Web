@@ -42,10 +42,12 @@ export const setupI18n = async () => {
   const langs = await Asset.loadJSON<LangResponse[]>('langs.json');
   availableLanguages.push(...langs);
   const langCode = localStorage.getItem('lang');
-  for (const lang of langs) {
-    const json = await Asset.loadJSON(`translations/${lang.code}.json`);
-    langData.update((v) => ({ ...v, [lang.code]: json }));
-  }
+  const data = await Promise.all(
+    langs.map(async (lang) => [lang.code, await Asset.loadJSON(`translations/${lang.code}.json`)])
+  );
+
+  langData.set(Object.fromEntries(data));
+
   currentLang.set(processLang(langCode || window.navigator.language));
   i18nReady.set(true);
 };

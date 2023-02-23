@@ -6,7 +6,7 @@
   export let placement: Placement = 'auto';
 
   let content: HTMLElement;
-  let button: HTMLElement;
+  export let button: HTMLElement | null = null;
 
   export let options: Partial<Props> = {};
 

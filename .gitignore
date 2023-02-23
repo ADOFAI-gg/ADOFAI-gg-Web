@@ -12,3 +12,11 @@ node_modules
 .cache
 static/assets
 yarn-error.log
+
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
