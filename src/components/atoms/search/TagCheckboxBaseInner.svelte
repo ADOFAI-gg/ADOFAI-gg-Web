@@ -17,9 +17,9 @@
     {#if !hideSelectedIcon}
       <div class="selected-icon">
         {#if include}
-          <Icon style="" disableFade icon="plusFilled" size={10} alt="Tag Included Indicator" />
+          <Icon style="" icon="plusFilled" size={10} alt="Tag Included Indicator" />
         {:else if exclude}
-          <Icon style="" disableFade icon="minusFilled" size={10} alt="Tag Excluded Indicator" />
+          <Icon style="" icon="minusFilled" size={10} alt="Tag Excluded Indicator" />
         {/if}
       </div>
     {/if}

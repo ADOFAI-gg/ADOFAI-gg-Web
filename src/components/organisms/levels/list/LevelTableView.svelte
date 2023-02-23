@@ -117,13 +117,7 @@
         <div class="tags">
           {#each item.tags.slice(0, 5) as tag (tag.id)}
             {#if tag.id !== 4}
-              <Icon
-                disableFade
-                icon={`${tag.id}`}
-                namespace="tagIcons"
-                size={20}
-                alt="{tag.name} tag icon"
-              />
+              <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt="{tag.name} tag icon" />
             {/if}
           {/each}
 
@@ -145,7 +139,7 @@
       <Cell>
         <div class="links">
           <a href={item.download} target="_blank">
-            <Icon disableFade icon="download" size={16} alt="Download Icon" />
+            <Icon icon="download" size={16} alt="Download Icon" />
           </a>
 
           <a href={item.workshop} target="_blank">
@@ -162,7 +156,7 @@
         </a> -->
 
           <a href={item.video}>
-            <Icon disableFade icon="playFilled" size={16} alt="Video Icon" />
+            <Icon icon="playFilled" size={16} alt="Video Icon" />
           </a>
         </div>
       </Cell>

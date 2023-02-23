@@ -34,14 +34,7 @@
   <div class="tag-list">
     {#each tags.filter((x) => x !== 4).slice(0, $maxCount) as tag (tag)}
       <Tooltip placement="bottom-end">
-        <Icon
-          icon={`${tag}`}
-          disableFade
-          namespace="tagIcons"
-          size={24}
-          slot="button"
-          alt="Tag Icon"
-        />
+        <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
 
         <div class="tooltip">
           <div class="title">
@@ -55,7 +48,6 @@
     {#if tags.includes(4)}
       <Tooltip placement="bottom-end">
         <Icon
-          disableFade
           icon="4"
           namespace="tagIcons"
           style="color: rgba(var(--color-red), 100);"
@@ -76,7 +68,6 @@
     {#if level.epilepsyWarning}
       <Tooltip placement="bottom-end">
         <Icon
-          disableFade
           icon="SW"
           namespace="tagIcons"
           style="color: rgba(var(--color-red), 100);"
