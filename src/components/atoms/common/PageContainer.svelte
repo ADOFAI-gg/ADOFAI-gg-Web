@@ -11,7 +11,7 @@
 <style lang="scss">
   .page-container {
     &[data-wide='false'] {
-      padding: 0 4px;
+      padding: 0 34px;
 
       & > div {
         max-width: 1100px;
