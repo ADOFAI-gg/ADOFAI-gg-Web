@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Asset } from '@/utils/assets';
+  import logo from '@/assets/images/logo.svg';
 
   import Image from '@atoms/asset/Image.svelte';
 </script>
 
 <div class="home-logo">
   <div>
-    <Image src={Asset.url('images/logo.svg')} alt="ADOFAI.gg Logo" width="100%" height="100%" />
+    <Image src={logo} alt="ADOFAI.gg Logo" width="100%" height="100%" />
   </div>
 </div>
 

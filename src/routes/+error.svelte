@@ -1,7 +1,7 @@
 <script lang="ts">
   import Image from '@atoms/asset/Image.svelte';
+  import notfoundImage from '@/assets/images/404.svg';
   import { page } from '$app/stores';
-  import { Asset } from '@/utils/assets';
 
   $: data = (() => {
     switch ($page.status) {
@@ -9,7 +9,7 @@
         return {
           description: 'This page does not exist or expired.',
           image: {
-            url: Asset.url('images/404.svg'),
+            url: notfoundImage,
             alt: 'A very perplexed person, scratching their head'
           },
           title: 'Error 404'
