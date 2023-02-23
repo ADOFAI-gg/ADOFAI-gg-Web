@@ -48,7 +48,9 @@
   <div bind:this={button}>
     <slot name="button" />
   </div>
-  <div bind:this={content}>
-    <slot />
+  <div style="display: none;">
+    <div bind:this={content}>
+      <slot />
+    </div>
   </div>
 </div>
