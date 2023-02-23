@@ -4,14 +4,14 @@
   const parser = browser ? new DOMParser() : (null as unknown as DOMParser);
 
   const getIconString = (id: string, namespace: string) => {
-    return svg[`../assets/${namespace}/${id}.svg`];
+    return svgIcons[`../assets/${namespace}/${id}.svg`];
   };
 </script>
 
 <script lang="ts">
   import { browser } from '$app/environment';
 
-  import { svg } from '@/utils/assets';
+  import { svgIcons } from '@/utils/assets';
 
   export let icon: string;
   export let namespace = 'icons';

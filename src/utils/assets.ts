@@ -1,7 +1,10 @@
 import { dev } from '$app/environment';
 import axios from 'axios';
 
-export const svg = import.meta.glob('../assets/{icons,tagIcons}/*.svg', { eager: true, as: 'raw' });
+export const svgIcons = import.meta.glob('../assets/{icons,tagIcons}/*.svg', {
+  eager: true,
+  as: 'raw'
+});
 
 const asset = (path: string) =>
   dev
