@@ -15,9 +15,9 @@
       <slot name="icon" slot="icon" />
       <slot name="name" slot="name" />
     </TagCheckboxBaseInner>
-    <div class="p-4">
-      <div class="text-lg font-extrabold"><slot name="name" /></div>
-      <div class="text-md mt-1"><slot name="description" /></div>
+    <div class="tooltip-balloon">
+      <div class="tag-name"><slot name="name" /></div>
+      <div class="tag-description"><slot name="description" /></div>
     </div>
   </Tooltip>
 {:else}
@@ -26,3 +26,19 @@
     <slot name="name" slot="name" />
   </TagCheckboxBaseInner>
 {/if}
+
+<style lang="scss">
+  .tooltip-balloon {
+    padding: 16px;
+
+    .tag-name {
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .tag-description {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+  }
+</style>
