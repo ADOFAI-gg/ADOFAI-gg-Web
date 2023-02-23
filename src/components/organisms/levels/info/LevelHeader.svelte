@@ -92,7 +92,7 @@
       .detail-info {
         display: flex;
         flex-direction: column;
-        margin-top: 24px;
+        margin-top: 6px;
         padding: 20px 26px;
         border-radius: 24px 24px 0 0;
         background-color: rgba(var(--color-darkblue), 0.4);
