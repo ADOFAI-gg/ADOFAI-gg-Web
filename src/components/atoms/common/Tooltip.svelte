@@ -44,13 +44,11 @@
   $subscriber;
 </script>
 
-<div>
-  <div bind:this={button}>
-    <slot name="button" />
-  </div>
-  <div style="display: none;">
-    <div bind:this={content}>
-      <slot />
-    </div>
+<div bind:this={button}>
+  <slot name="button" />
+</div>
+<div style="display: none;">
+  <div bind:this={content}>
+    <slot />
   </div>
 </div>

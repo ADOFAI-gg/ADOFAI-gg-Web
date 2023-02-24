@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  const maxCount = writable(0);
+  const maxCount = writable(8);
 
   if (typeof window !== 'undefined') {
     const calc = () => {
