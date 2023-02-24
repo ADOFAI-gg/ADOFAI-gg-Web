@@ -641,6 +641,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/m-plus-rounded-1c@npm:4.5.10":
+  version: 4.5.10
+  resolution: "@fontsource/m-plus-rounded-1c@npm:4.5.10"
+  checksum: 12534cffb3c1767c6e39e754580f5171b672d95cc139bb01cb1cf3bfb62d671254d52d48f9ecb2cf44d2f8d5f492b64c92d1019c911859a574de94bcde07722f
+  languageName: node
+  linkType: hard
+
+"@fontsource/m-plus-rounded-1c@patch:@fontsource/m-plus-rounded-1c@npm%3A4.5.10#./.yarn/patches/@fontsource-m-plus-rounded-1c-npm-4.5.10-3cae002275.patch::locator=adofai-gg%40workspace%3A.":
+  version: 4.5.10
+  resolution: "@fontsource/m-plus-rounded-1c@patch:@fontsource/m-plus-rounded-1c@npm%3A4.5.10#./.yarn/patches/@fontsource-m-plus-rounded-1c-npm-4.5.10-3cae002275.patch::version=4.5.10&hash=902174&locator=adofai-gg%40workspace%3A."
+  checksum: 67030f59bc1912fed3efa5521e6fdf37ddcadbd4626ef767fd81233e8658f0c4d434e68dc60a822fcc0dae82e8fc2d45fd70517bd72dbe9a7a2fe24dbf5b75e8
+  languageName: node
+  linkType: hard
+
 "@fontsource/quicksand@npm:^4.5.12":
   version: 4.5.12
   resolution: "@fontsource/quicksand@npm:4.5.12"
