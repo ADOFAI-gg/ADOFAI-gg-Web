@@ -67,9 +67,9 @@
   </div>
 
   <div class="download">
-    <a href={level.download} rel="noreferrer" target="_blank">
+    <button on:click|preventDefault={() => window.open(level.download)}>
       <Icon icon="downloadFile" size={48} alt="Download Icon" />
-    </a>
+    </button>
   </div>
 </a>
 
@@ -232,7 +232,6 @@
     align-self: center;
     width: 48px;
     height: 48px;
-    opacity: 1;
 
     /* a {
       position: absolute;
