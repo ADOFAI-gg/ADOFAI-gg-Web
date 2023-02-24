@@ -26,18 +26,18 @@
   import Footer from '@organisms/layout/Footer.svelte';
 
   // quicksand
-  import '@fontsource/quicksand/variable.css?inline';
-  import '@fontsource/quicksand/300.css?inline';
-  import '@fontsource/quicksand/400.css?inline';
-  import '@fontsource/quicksand/500.css?inline';
-  import '@fontsource/quicksand/600.css?inline';
-  import '@fontsource/quicksand/700.css?inline';
+  import '@fontsource/quicksand/variable.css';
+  import '@fontsource/quicksand/300.css';
+  import '@fontsource/quicksand/400.css';
+  import '@fontsource/quicksand/500.css';
+  import '@fontsource/quicksand/600.css';
+  import '@fontsource/quicksand/700.css';
 
   // M Plus Rounded 1c
-  import '@fontsource/m-plus-rounded-1c/300.css?inline';
-  import '@fontsource/m-plus-rounded-1c/400.css?inline';
-  import '@fontsource/m-plus-rounded-1c/500.css?inline';
-  import '@fontsource/m-plus-rounded-1c/700.css?inline';
+  import '@fontsource/m-plus-rounded-1c/300.css';
+  import '@fontsource/m-plus-rounded-1c/400.css';
+  import '@fontsource/m-plus-rounded-1c/500.css';
+  import '@fontsource/m-plus-rounded-1c/700.css';
   // Roboto Mono
   import '@fontsource/roboto-mono/300.css';
   import '@fontsource/roboto-mono/500.css';
