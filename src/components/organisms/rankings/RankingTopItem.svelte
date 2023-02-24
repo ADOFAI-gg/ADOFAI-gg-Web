@@ -6,8 +6,8 @@
   export let item: Ranking & { rank: number };
 </script>
 
-<div class="item-container">
-  <div class="content">
+<div class="item">
+  <div class="item__content">
     <div class="rank-text">
       #{item.rank}
     </div>
@@ -34,11 +34,11 @@
 </div>
 
 <style lang="scss">
-  .item-container {
+  .item {
     display: flex;
     width: 100%;
 
-    .content {
+    &__content {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,72 +48,6 @@
       padding-bottom: 24px;
       border-radius: 27px;
       background-color: rgba(var(--color-darkblue), 0.4);
-
-      > .rank-text {
-        font-weight: 500;
-        font-size: 26px;
-        font-family: 'Roboto Mono', monospace;
-      }
-
-      > .details-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-
-        > .details-name {
-          font-weight: 500;
-          font-size: 30px;
-        }
-
-        > .details-list {
-          display: flex;
-          justify-content: center;
-          width: 100%;
-          font-size: 16px;
-
-          > .details-labels {
-            display: flex;
-            flex-grow: 1;
-            flex-shrink: 0;
-            flex-direction: column;
-            gap: 8px;
-            align-items: flex-end;
-            opacity: 0.6;
-          }
-
-          > .details-values {
-            flex-grow: 1;
-            flex-shrink: 0;
-            gap: 8px;
-            padding-left: 24px;
-
-            > div {
-              font-weight: 500;
-            }
-          }
-        }
-
-        > .details-best-play-container {
-          display: flex;
-          justify-content: center;
-          margin-top: 12px;
-
-          > .details-best-play-link {
-            display: flex;
-            gap: 6px;
-            align-items: center;
-            opacity: 0.8;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
-            transition-property: opacity;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
-        }
-      }
 
       @media (min-width: 1024px) {
         max-width: 330px;
@@ -143,6 +77,72 @@
       @media (min-width: 768px) {
         justify-content: flex-end;
       }
+    }
+  }
+
+  .rank-text {
+    font-weight: 500;
+    font-size: 26px;
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .details-name {
+    font-weight: 500;
+    font-size: 30px;
+  }
+
+  .details-list {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .details-labels {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    opacity: 0.6;
+  }
+
+  .details-values {
+    flex-grow: 1;
+    flex-shrink: 0;
+    gap: 8px;
+    padding-left: 24px;
+
+    > div {
+      font-weight: 500;
+    }
+  }
+
+  .details-best-play-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .details-best-play-link {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    opacity: 0.8;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-property: opacity;
+
+    &:hover {
+      opacity: 1;
     }
   }
 </style>

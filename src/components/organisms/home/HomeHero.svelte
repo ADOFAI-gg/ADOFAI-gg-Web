@@ -23,7 +23,7 @@
 <div class="hero">
   <HomeLogo />
 
-  <form on:submit={onSubmitSearch}>
+  <form class="hero__form" on:submit={onSubmitSearch}>
     <SearchInput bind:value={searchQuery} />
   </form>
 </div>
@@ -40,7 +40,7 @@
     margin-left: auto;
     padding: 0 16px;
 
-    form {
+    &__form {
       width: 100%;
     }
   }

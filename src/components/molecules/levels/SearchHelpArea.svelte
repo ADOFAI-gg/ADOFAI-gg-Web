@@ -19,11 +19,11 @@
   }
 </script>
 
-<div class="help-area-container">
+<div class="help-area">
   {#if toolTipMode}
     <Tooltip>
       <Icon size={12} icon="help" slot="button" alt="Help icon" />
-      <div class="p-2">
+      <div class="help-area__tooltip-content">
         <Translation {key} />
       </div>
     </Tooltip>
@@ -31,15 +31,19 @@
     <Icon size={12} icon="help" alt="Help icon" />
   {/if}
 
-  <div class="text" bind:clientWidth={containerWidth}>
-    <div class:tooltip={toolTipMode} class="white-space: nowrap;" bind:clientWidth={contentWidth}>
+  <div class="help-area__text" bind:clientWidth={containerWidth}>
+    <div
+      class:help-area__tooltip={toolTipMode}
+      style="white-space: nowrap;"
+      bind:clientWidth={contentWidth}
+    >
       <Translation {key} />
     </div>
   </div>
 </div>
 
 <style lang="scss">
-  .help-area-container {
+  .help-area {
     display: flex;
     flex-grow: 1;
     gap: 6px;
@@ -47,17 +51,21 @@
     height: 100%;
     opacity: 0.6;
 
-    .text {
+    &__tooltip-content {
+      padding: 8px;
+    }
+
+    &__text {
       display: flex;
       flex-grow: 1;
       overflow: hidden;
       width: 0;
+    }
 
-      .tooltip {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
+    &__tooltip {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
     }
   }
 </style>

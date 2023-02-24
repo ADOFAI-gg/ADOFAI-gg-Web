@@ -8,7 +8,7 @@
 <div class="pair ">
   <Icon {icon} size={16} alt="{icon} icon" />
 
-  <span class="label">{value}</span>
+  <span class="pair__label">{value}</span>
 </div>
 
 <style lang="scss">
@@ -18,7 +18,7 @@
     align-items: center;
     opacity: 0.6;
 
-    .label {
+    &__label {
       font-size: 14px;
     }
   }

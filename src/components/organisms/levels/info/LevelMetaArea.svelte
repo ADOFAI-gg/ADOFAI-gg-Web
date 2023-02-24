@@ -103,10 +103,10 @@
   <div class="buttons">
     {#if import.meta.env.VITE_USE_ACCOUNT}
       <Button type="levelAction">
-        <div class="like-container">
+        <div class="buttons__like-container">
           <Icon style="color: rgba(var(--color-red), 1);" icon="heart" size={20} alt="Heart Icon" />
 
-          <div class="text">1.4K</div>
+          <div class="buttons__like-container-text">1.4K</div>
         </div>
       </Button>
     {/if}
@@ -121,29 +121,29 @@
     flex-direction: column;
     gap: 26px;
     height: 100%;
+  }
 
-    .horizontal {
+  .horizontal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .blank {
+    flex-grow: 1;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 12px;
+
+    &__like-container {
       display: flex;
-      gap: 24px;
-    }
+      gap: 6px;
+      align-items: center;
 
-    .blank {
-      flex-grow: 1;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-
-      .like-container {
-        display: flex;
-        gap: 6px;
-        align-items: center;
-
-        .text {
-          font-weight: 400;
-          font-size: 16px;
-        }
+      &-text {
+        font-weight: 400;
+        font-size: 16px;
       }
     }
   }

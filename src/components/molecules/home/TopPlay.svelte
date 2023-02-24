@@ -16,7 +16,7 @@
 
 <div class="top-play-wrapper">
   <a href={play.url} rel="noreferrer" target="_blank" class="top-play">
-    <div class="thumbnail-wrapper">
+    <div class="top-play__thumbnail-wrapper">
       <Image
         width="100%"
         height="100%"
@@ -25,12 +25,12 @@
       />
     </div>
 
-    <div class="info-container">
-      <div class="player-name">
+    <div class="top-play__info-container">
+      <div class="top-play__player-name">
         {play.player.name}
       </div>
 
-      <div class="level">
+      <div class="top-play__level">
         {#await difficulty then difficulty}
           <DifficultyIcon {difficulty} />
         {/await}
@@ -38,7 +38,7 @@
         <div>{play.level.name}</div>
       </div>
 
-      <div class="detail">
+      <div class="top-play__detail">
         <TopPlayDetailPair icon="accuracy" value="{play.xAccuracy}%" />
         <TopPlayDetailPair
           icon="speed"
@@ -89,7 +89,7 @@
     }
   }
 
-  a.top-play {
+  .top-play {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -100,7 +100,7 @@
       transform: scale(0.95);
     }
 
-    .thumbnail-wrapper {
+    &__thumbnail-wrapper {
       overflow: hidden;
       width: 100%;
       border-radius: 6px;
@@ -108,30 +108,30 @@
       aspect-ratio: 16 / 9;
     }
 
-    .info-container {
+    &__info-container {
       display: flex;
       flex-direction: column;
       gap: 4px;
       align-items: center;
       width: 100%;
+    }
 
-      .player-name {
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 30px;
-      }
+    &__player-name {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+    }
 
-      .level {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        font-weight: 500;
-      }
+    &__level {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 500;
+    }
 
-      .detail {
-        display: flex;
-        gap: 24px;
-      }
+    &__detail {
+      display: flex;
+      gap: 24px;
     }
   }
 </style>

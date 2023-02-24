@@ -19,14 +19,28 @@
 
 <div class="input-container">
   <label>
-    <div class="placeholder" data-has-value={!!textValue}>
+    <div class="input-container__placeholder" data-has-value={!!textValue}>
       {placeholderContent || ''}
     </div>
 
     {#if inputType === 'number'}
-      <input type="number" bind:value {min} {max} aria-label={placeholderContent} />
+      <input
+        type="number"
+        class="input-container__input"
+        bind:value
+        {min}
+        {max}
+        aria-label={placeholderContent}
+      />
     {:else if inputType === 'text'}
-      <input type="text" bind:value {min} {max} aria-label={placeholderContent} />
+      <input
+        type="text"
+        class="input-container__input"
+        bind:value
+        {min}
+        {max}
+        aria-label={placeholderContent}
+      />
     {/if}
   </label>
 </div>
@@ -39,7 +53,7 @@
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.2);
 
-    .placeholder {
+    &__placeholder {
       position: absolute;
       z-index: 2;
       display: flex;
@@ -57,7 +71,7 @@
       }
     }
 
-    input {
+    &__input {
       position: absolute;
       top: 0;
       left: 0;

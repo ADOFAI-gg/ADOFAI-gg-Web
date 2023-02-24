@@ -22,10 +22,10 @@
   });
 </script>
 
-<div class="tabs-container" style={$$props.style}>
+<div class="tabs" style={$$props.style}>
   {#if label}
-    <div class="label-container">
-      <span class="label">
+    <div class="tabs__label-container">
+      <span class="tabs__label">
         <Translation key={label} />
       </span>
       <hr />
@@ -36,28 +36,28 @@
 </div>
 
 <style lang="scss">
-  .tabs-container {
+  .tabs {
     display: flex;
     gap: 12px;
 
-    .label-container {
-      display: flex;
-      flex-grow: 1;
-      gap: 12px;
-      align-items: center;
+    &__label {
+      opacity: 0.6;
 
-      .label {
-        opacity: 0.6;
-      }
-
-      hr {
+      &-container {
+        display: flex;
         flex-grow: 1;
-        opacity: 0.2;
+        gap: 12px;
+        align-items: center;
       }
+    }
 
-      @media (min-width: 768px) {
-        display: none;
-      }
+    hr {
+      flex-grow: 1;
+      opacity: 0.2;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 </style>

@@ -1,7 +1,6 @@
 <script lang="ts">
   import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
   import TopPlay from '@molecules/home/TopPlay.svelte';
-  import TopPlaySkeleton from '@molecules/home/TopPlaySkeleton.svelte';
   import type { PlayLog } from '@/types';
 
   export let plays: PlayLog[] = [];
@@ -10,15 +9,9 @@
 <MainSectionTitle title="HOME_TOP_PLAYS" moreLink="/rankings" />
 
 <div class="top-play">
-  {#if plays.length}
-    {#each plays.slice(0, 3) as play (play.id)}
-      <TopPlay {play} />
-    {/each}
-  {:else}
-    {#each Array(3) as _}
-      <TopPlaySkeleton />
-    {/each}
-  {/if}
+  {#each plays.slice(0, 3) as play (play.id)}
+    <TopPlay {play} />
+  {/each}
 </div>
 
 <style lang="scss">

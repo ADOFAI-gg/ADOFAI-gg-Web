@@ -49,11 +49,11 @@
   }
 </script>
 
-<div class="user-list-container">
+<div class="user-list">
   {#if label}
     <span class="user-list-label"><Translation key={label} /></span>
   {/if}
-  <div class="user-list" bind:clientWidth={containerWidth}>
+  <div class="user-list-content" bind:clientWidth={containerWidth}>
     {#each users as user, i (i)}
       <div bind:this={items[i]} class="user-list-item-container">
         <div class="user-list-item">
@@ -76,43 +76,43 @@
 </div>
 
 <style lang="scss">
-  .user-list-container {
+  .user-list {
     display: flex;
     flex-direction: column;
     text-shadow: 0 0 6px rgb(0, 0, 0);
 
-    .user-list-label {
+    &-label {
       font-weight: 400;
       font-size: 24px;
       white-space: nowrap;
     }
 
-    .user-list {
+    &-content {
       display: flex;
       flex-grow: 1;
       gap: 12px;
       align-items: center;
       overflow: hidden;
+    }
 
-      > .user-list-item-container {
-        display: flex;
-        gap: 12px;
-        align-items: center;
+    .user-list-item-container {
+      display: flex;
+      gap: 12px;
+      align-items: center;
 
-        .user-list-item {
-          flex-shrink: 0;
-        }
-
-        > .and-text {
-          font-weight: 400;
-          font-size: 24px;
-          opacity: 0.4;
-        }
-      }
-
-      > .popover-container {
+      .user-list-item {
         flex-shrink: 0;
       }
+
+      > .and-text {
+        font-weight: 400;
+        font-size: 24px;
+        opacity: 0.4;
+      }
+    }
+
+    .popover-container {
+      flex-shrink: 0;
     }
 
     @media (min-width: 768px) {

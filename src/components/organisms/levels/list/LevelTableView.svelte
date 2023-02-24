@@ -122,7 +122,7 @@
           {/each}
 
           {#if item.tags.length > 5}
-            <div class="and-more">
+            <div class="tags__and-more">
               +{item.tags.length - 5}
             </div>
           {/if}
@@ -131,8 +131,8 @@
 
       <Cell leftSideBorder>
         <div class="warnings">
-          <div class={item.epilepsyWarning ? 'active' : ''} />
-          <div class={item.tags.find((x) => x.id === 4) ? 'active' : ''} />
+          <div class="warnings__item" class:active={item.epilepsyWarning} />
+          <div class="warnings__item" class:active={!!item.tags.find((x) => x.id === 4)} />
         </div>
       </Cell>
 
@@ -170,7 +170,7 @@
     gap: 4px;
     align-items: center;
 
-    .and-more {
+    &__and-more {
       padding: 2px 4px;
       border-radius: 100em;
       background-color: rgba(255, 255, 255, 0.2);
@@ -185,16 +185,16 @@
     display: flex;
     gap: 24px;
 
-    div {
+    &__item {
       width: 16px;
       height: 16px;
       border: 2px solid rgba(255, 255, 255, 0.4);
       border-radius: 100em;
-    }
 
-    div.active {
-      border: none;
-      background-color: rgba(var(--color-red), 1);
+      &.active {
+        border: none;
+        background-color: rgba(var(--color-red), 1);
+      }
     }
   }
 

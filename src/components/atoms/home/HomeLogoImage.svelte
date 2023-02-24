@@ -5,7 +5,7 @@
 </script>
 
 <div class="home-logo">
-  <div>
+  <div class="home-logo__content">
     <Image src={logo} alt="ADOFAI.gg Logo" width="100%" height="100%" />
   </div>
 </div>
@@ -17,7 +17,7 @@
     user-select: none;
     aspect-ratio: 7 / 1;
 
-    & > div {
+    &__content {
       position: absolute;
       top: 0;
       left: 0;

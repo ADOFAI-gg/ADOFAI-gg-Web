@@ -47,30 +47,30 @@
     height: 100vh;
     margin: 0 auto;
     padding: 16px;
+  }
 
-    > .nav-spacer {
-      height: var(--nav-height);
-    }
+  .nav-spacer {
+    height: var(--nav-height);
+  }
 
-    > .error-content {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: column;
-      gap: 15px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      background-color: white;
-      color: black;
+  .error-content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+  }
 
-      > .error-title {
-        font-weight: 700;
-        font-size: 36px;
-      }
+  .error-title {
+    font-weight: 700;
+    font-size: 36px;
+  }
 
-      > .error-description {
-        font-size: 28px;
-      }
-    }
+  .error-description {
+    font-size: 28px;
   }
 </style>

@@ -21,18 +21,18 @@
   };
 </script>
 
-<button class:active on:click={activate}>
+<button class="tab-item" class:active on:click={activate}>
   {#if icon}
     <Icon size={18} {icon} alt="{icon} icon" />
   {/if}
   <div>
     <Translation key={title} />
   </div>
-  <div class="indicator" class:selected={active} />
+  <div class="tab-item__indicator" class:selected={active} />
 </button>
 
 <style lang="scss">
-  button {
+  .tab-item {
     position: relative;
     display: flex;
     flex-grow: 1;
@@ -48,7 +48,7 @@
     user-select: none;
     transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
 
-    .indicator {
+    &__indicator {
       position: absolute;
       bottom: 0;
       left: 0;

@@ -5,13 +5,13 @@
   import Translation from '@/components/utils/Translation.svelte';
 </script>
 
-<footer>
+<footer class="footer">
   <PageContainer>
-    <div class="title">
+    <div class="footer__title">
       <Translation key="FOOTER_TITLE" />
     </div>
 
-    <div class="content-container" style="letter-spacing: -0.04em;">
+    <div class="footer__content-container" style="letter-spacing: -0.04em;">
       <div>
         <Translation key="FOOTER_DESCRIPTION" />
       </div>
@@ -45,26 +45,26 @@
       </div>
     </div>
 
-    <div class="copyright">
+    <div class="footer__copyright">
       © 2023 ADOFAI.gg Development Team. <Translation key="FOOTER_COPYRIGHT" />
     </div>
   </PageContainer>
 </footer>
 
 <style lang="scss">
-  footer {
+  .footer {
     position: sticky;
     left: 0;
     width: 100%;
     padding: 24px 0;
     background-color: rgba(var(--color-darkblue), 0.2);
 
-    .title {
+    &__title {
       font-weight: 700;
       font-size: 21px;
     }
 
-    .content-container {
+    &__content-container {
       display: flex;
       flex-wrap: wrap;
       margin-top: 12px;
@@ -90,7 +90,7 @@
       }
     }
 
-    .copyright {
+    &__copyright {
       margin-top: 14px;
       letter-spacing: -0.04em;
       opacity: 0.6;

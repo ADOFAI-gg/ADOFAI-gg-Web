@@ -52,21 +52,21 @@
     background-color: rgba(var(--color-blue), 1);
     white-space: nowrap;
     transform: translateX(-50%);
+  }
 
-    .update-available-text {
-      padding-left: 8px;
-    }
+  .update-available-text {
+    padding-left: 8px;
+  }
 
-    .refresh-button {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background-color: rgba(var(--color-darkblue), 0.4);
-      cursor: pointer;
-    }
+  .refresh-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background-color: rgba(var(--color-darkblue), 0.4);
+    cursor: pointer;
   }
 </style>

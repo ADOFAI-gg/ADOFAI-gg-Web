@@ -19,10 +19,10 @@
   <div class="blank" />
 
   <div class="content">
-    <div class="title">{level.title}</div>
+    <div class="content__title">{level.title}</div>
 
-    <div class="detail-info">
-      <div class="authors">
+    <div class="content__detail-info">
+      <div class="content__authors">
         <HorizontalUserList
           allTitle="Creator"
           label="LEVEL_DETAIL_LEVEL_BY"
@@ -46,73 +46,73 @@
     position: relative;
     width: 100%;
     padding: 0 32px;
+  }
 
-    .bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      filter: brightness(60%);
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(60%);
+  }
+
+  .bg-image-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+  }
+
+  .blank {
+    height: var(--nav-height);
+  }
+
+  .content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    &__title {
+      display: flex;
+      align-items: flex-end;
+      min-height: 140px;
+      margin-top: 40px;
+      font-weight: 700;
+      font-size: 36px;
+      text-shadow: 0 0 6px black;
     }
 
-    .bg-image-backdrop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -10;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(8px);
-    }
+    &__detail-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 6px;
+      padding: 20px 26px;
+      border-radius: 24px 24px 0 0;
+      background-color: rgba(var(--color-darkblue), 0.4);
 
-    .blank {
-      height: var(--nav-height);
-    }
-
-    .content {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-
-      .title {
-        display: flex;
-        align-items: flex-end;
-        min-height: 140px;
-        margin-top: 40px;
-        font-weight: 700;
-        font-size: 36px;
-        text-shadow: 0 0 6px black;
+      @media (min-width: 768px) {
+        flex-direction: row;
       }
+    }
 
-      .detail-info {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin-top: 6px;
-        padding: 20px 26px;
-        border-radius: 24px 24px 0 0;
-        background-color: rgba(var(--color-darkblue), 0.4);
+    &__authors {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      gap: 8px;
 
-        .authors {
-          display: flex;
-          flex-grow: 1;
-          flex-direction: column;
-          gap: 8px;
-
-          @media (min-width: 768px) {
-            display: block;
-            width: 0;
-          }
-        }
-
-        @media (min-width: 768px) {
-          flex-direction: row;
-        }
+      @media (min-width: 768px) {
+        display: block;
+        width: 0;
       }
     }
   }

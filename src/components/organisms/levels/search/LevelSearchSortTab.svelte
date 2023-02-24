@@ -27,8 +27,8 @@
 </script>
 
 <SearchGroup title="SORT_BY">
-  <div class="sort-container">
-    <div class="sort-unit-container">
+  <div class="sort">
+    <div class="sort__unit-container">
       <SortOrderRadio
         icon="topLeft"
         key="SORT_ASC"
@@ -49,9 +49,9 @@
       />
     </div>
     {#if $searchSetingStore.sort.order !== 'shuffle'}
-      <div class="sort-order-area" transition:fade={{ duration: 200 }}>
-        <div class="sort-divider" />
-        <div class="sort-order-container">
+      <div class="sort__order-area" transition:fade={{ duration: 200 }}>
+        <div class="sort__divider" />
+        <div class="sort__order-container">
           <SortOrderRadio
             icon="calendar"
             key="SORT_CREATED"
@@ -79,12 +79,12 @@
 </SearchGroup>
 
 <style lang="scss">
-  .sort-container {
+  .sort {
     display: flex;
     flex-direction: column;
     gap: 12px;
 
-    .sort-unit-container {
+    &__unit-container {
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -95,33 +95,33 @@
       }
     }
 
-    .sort-order-area {
+    &__order-area {
       display: flex;
       flex-direction: column;
 
-      .sort-divider {
-        display: none;
-        margin-right: 24px;
-        border-right: 1px solid rgba(255, 255, 255, 0.4);
-
-        @media (min-width: 768px) {
-          display: block;
-        }
-      }
-
-      .sort-order-container {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-
-        @media (min-width: 640px) {
-          flex-direction: row;
-          gap: 24px;
-        }
-      }
-
       @media (min-width: 768px) {
         flex-direction: row;
+      }
+    }
+
+    &__divider {
+      display: none;
+      margin-right: 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+
+    &__order-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @media (min-width: 640px) {
+        flex-direction: row;
+        gap: 24px;
       }
     }
 

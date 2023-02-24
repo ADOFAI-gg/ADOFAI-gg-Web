@@ -16,8 +16,8 @@
       <slot name="name" slot="name" />
     </TagCheckboxBaseInner>
     <div class="tooltip-balloon">
-      <div class="tag-name"><slot name="name" /></div>
-      <div class="tag-description"><slot name="description" /></div>
+      <div class="tooltip-balloon__tag-name"><slot name="name" /></div>
+      <div class="tooltip-balloon__tag-description"><slot name="description" /></div>
     </div>
   </Tooltip>
 {:else}
@@ -31,12 +31,12 @@
   .tooltip-balloon {
     padding: 16px;
 
-    .tag-name {
+    &__tag-name {
       font-weight: 800;
       font-size: 16px;
     }
 
-    .tag-description {
+    &__tag-description {
       margin-top: 4px;
       font-size: 14px;
     }

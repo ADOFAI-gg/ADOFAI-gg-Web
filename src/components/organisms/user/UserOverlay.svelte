@@ -61,38 +61,38 @@
     width: 100vw;
     max-width: 256px;
 
-    > .user-overlay-loader {
+    &-loader {
       display: flex;
       justify-content: center;
       padding: 12px 0;
     }
 
-    > .user-overlay-padder {
+    &-padder {
       padding: 24px 0;
-
-      > .user-overlay-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        > .name-text {
-          font-weight: 700;
-          font-size: 21px;
-          text-align: center;
-        }
-
-        > .divider {
-          width: 110px;
-          margin: 16px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        > .details-container {
-          display: flex;
-          width: 100%;
-          padding: 0 32px;
-        }
-      }
     }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .name-text {
+    font-weight: 700;
+    font-size: 21px;
+    text-align: center;
+  }
+
+  .divider {
+    width: 110px;
+    margin: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .details-container {
+    display: flex;
+    width: 100%;
+    padding: 0 32px;
   }
 </style>

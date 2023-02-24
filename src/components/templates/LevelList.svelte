@@ -217,32 +217,32 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+  }
 
-    > .top-spacer {
-      height: var(--nav-height);
-      margin-top: 24px;
+  .top-spacer {
+    height: var(--nav-height);
+    margin-top: 24px;
+  }
+
+  .list-view-search-area {
+    padding: 0 16px;
+
+    &-content {
+      max-width: 1100px;
+      margin: 0 auto;
     }
+  }
 
-    > .list-view-search-area {
-      padding: 0 16px;
+  .search-settings-area {
+    margin-top: 8px;
+    padding: 0 12px;
+  }
 
-      > .list-view-search-area-content {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-    }
-
-    .search-settings-area {
-      margin-top: 8px;
-      padding: 0 12px;
-    }
-
-    .list-loader {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-top: 16px;
-    }
+  .list-loader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
   }
 
   .table-view-search-area {

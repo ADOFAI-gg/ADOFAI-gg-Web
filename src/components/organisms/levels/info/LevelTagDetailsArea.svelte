@@ -31,12 +31,12 @@
   })();
 </script>
 
-<div class="tags-container">
+<div class="tags">
   {#if highlighted.length}
-    <div class="highlighted">
+    <div class="tags__highlighted">
       {#each highlighted as tag (tag)}
         <Tooltip placement="bottom-start">
-          <div slot="button" class="tag">
+          <div slot="button" class="tags__highlighted-tag">
             <Icon
               namespace="tagIcons"
               icon={`${tag}`}
@@ -62,10 +62,10 @@
       {/each}
     </div>
 
-    <div class="divider" />
+    <div class="tags__divider" />
   {/if}
 
-  <div class="tags">
+  <div class="tags__content">
     {#each normalTags as tag (tag.id)}
       <TooltippedTagIcon tag={tag.id} />
     {/each}
@@ -73,18 +73,18 @@
 </div>
 
 <style lang="scss">
-  .tags-container {
+  .tags {
     display: flex;
     flex-direction: column;
     gap: 12px;
 
-    .highlighted {
+    &__highlighted {
       display: flex;
       flex-direction: column;
       gap: 6px;
       align-items: flex-start;
 
-      .tag {
+      &-tag {
         display: flex;
         gap: 6px;
         align-items: center;
@@ -94,13 +94,13 @@
       }
     }
 
-    .tags {
+    &__content {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .divider {
+    &__divider {
       width: 120px;
       height: 1px;
       background-color: rgba(255, 255, 255, 0.4);

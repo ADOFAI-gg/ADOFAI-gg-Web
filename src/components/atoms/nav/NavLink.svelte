@@ -17,10 +17,8 @@
     &:hover {
       opacity: 1;
     }
-  }
 
-  @media (min-width: 768px) {
-    .slot {
+    @media (min-width: 768px) {
       font-size: 21px;
     }
   }

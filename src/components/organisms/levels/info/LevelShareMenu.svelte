@@ -47,11 +47,11 @@
   </Button>
 
   <div class="popover">
-    <div class="title">Share</div>
+    <div class="popover__title">Share</div>
 
     <CopyableInput value={url} />
 
-    <div class="buttons">
+    <div class="popover__buttons">
       <ShareButton on:click={facebook} style="background-color: rgb(24, 119, 242);">
         <Facebook />
       </ShareButton>
@@ -72,12 +72,12 @@
     max-width: 320px;
     padding: 16px;
 
-    .title {
+    &__title {
       font-weight: 700;
       font-size: 21px;
     }
 
-    .buttons {
+    &__buttons {
       display: flex;
       gap: 8px;
     }

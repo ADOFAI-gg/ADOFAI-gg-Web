@@ -7,25 +7,25 @@
   import Popover from '@atoms/common/Popover.svelte';
 </script>
 
-<nav>
+<nav class="nav">
   <Logo />
 
-  <div class="links">
+  <div class="nav__links">
     <NavLinks />
   </div>
 
   <div style="flex-grow: 1;" />
 
   {#if import.meta.env.VITE_USE_ACCOUNT}
-    <div class=" sign-area">
+    <div class="nav__sign-area">
       <NavSignArea />
     </div>
 
-    <div class="division-line" />
+    <div class="nav__divider" />
   {/if}
 
   <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
-    <span slot="button" class="expand-icon">
+    <span slot="button" class="nav__expand-icon">
       <Icon icon="expand" size={16} alt="Expand icon" />
     </span>
 
@@ -34,7 +34,7 @@
 </nav>
 
 <style lang="scss">
-  nav {
+  .nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,19 +48,19 @@
     background-color: rgba(var(--color-darkblue), 0.5);
     backdrop-filter: blur(4px);
 
-    .links {
+    &__links {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
 
-    .division-line {
+    &__divider {
       width: 1px;
       height: 18px;
       background-color: rgba(255, 255, 255, 0.4);
     }
 
-    .expand-icon {
+    &__expand-icon {
       opacity: 0.8;
       cursor: pointer;
       transition: opacity 0.2s ease-in-out;
@@ -71,9 +71,9 @@
       }
     }
 
-    .links,
-    .sign-area,
-    .division-line {
+    &__links,
+    &__sign-area,
+    &__divider {
       display: none;
 
       @media (min-width: 768px) {

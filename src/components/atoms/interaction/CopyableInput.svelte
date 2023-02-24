@@ -26,7 +26,7 @@
 </script>
 
 <div class="copyable-input">
-  <input type="text" {value} />
+  <input type="text" {value} class="copyable-input__input" />
 
   <button class="copy-icon" tabindex="0" class:copied on:click={copy}>
     {#if copied}
@@ -47,7 +47,7 @@
     border-radius: 6px;
     background-color: rgba(0, 0, 0, 0.4);
 
-    & > input {
+    &__input {
       flex-grow: 1;
       width: 0;
       background-color: transparent;

@@ -19,7 +19,7 @@
     <div
       on:click={updateTab(null)}
       on:keydown={(e) => e.key === 'Enter' && updateTab(null)()}
-      class="menuitem"
+      class="menu-item"
       tabindex="0"
       role="menuitem"
     >
@@ -32,7 +32,7 @@
         on:keydown={(e) => e.key === 'Enter' && updateLang(lang.code)()}
         role="menuitem"
         tabindex="0"
-        class="menuitem"
+        class="menu-item"
       >
         {lang.name}
       </div>
@@ -48,11 +48,11 @@
       Lang(Debug)
     </div>
 
-    <div class="for-mobile">
+    <div class="menu:mobile">
       <NavLinks />
 
       {#if import.meta.env.VITE_USE_ACCOUNT}
-        <div class="division-line" />
+        <div class="menu__divider" />
 
         <NavSignArea />
       {/if}
@@ -68,7 +68,7 @@
     width: 240px;
     padding: 16px;
 
-    .menuitem {
+    &-item {
       padding: 8px;
       border-radius: 6px;
       cursor: pointer;
@@ -80,13 +80,13 @@
       }
     }
 
-    .division-line {
+    &__divider {
       width: 100%;
       height: 1px;
       background-color: rgba(255, 255, 255, 0.2);
     }
 
-    .for-mobile {
+    &\:mobile {
       display: flex;
       flex-direction: column;
       gap: 16px;

@@ -9,14 +9,14 @@
 
 <article>
   <div class="left-side">
-    <div class="rank">#{index + 1}</div>
+    <div class="left-side__rank">#{index + 1}</div>
 
-    <div class="player">
-      <div class="player-name">{play.player.name}</div>
+    <div class="left-side__player">
+      <div class="left-side__player-name">{play.player.name}</div>
     </div>
   </div>
 
-  <div class="right-side ">
+  <div class="right-side">
     <div style="width: 128px;">
       <LeaderboardStatItem icon="fire" postfix="PP">
         {play.playPoint.toFixed(3)}
@@ -35,9 +35,9 @@
       </LeaderboardStatItem>
     </div>
 
-    <div class="division-line" />
+    <div class="right-side__divider" />
 
-    <a href={play.url} target="_blank" class="video-link" rel="noreferrer">
+    <a href={play.url} target="_blank" class="right-side__video-link" rel="noreferrer">
       <Icon icon="playOutlined" size={16} alt="Video Icon" />
       <span>Clear Video</span>
     </a>
@@ -57,52 +57,52 @@
     &:focus {
       background-color: rgba(var(--color-darkblue), 0.2);
     }
+  }
 
-    .left-side {
-      display: flex;
-      gap: 14px;
-      align-items: center;
+  .left-side {
+    display: flex;
+    gap: 14px;
+    align-items: center;
 
-      .rank {
-        width: 56px;
-        font-size: 24px;
-        font-family: var(--font-mono);
-        text-align: center;
-      }
-
-      .player {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-
-        &-name {
-          font-weight: 500;
-          font-size: 21px;
-        }
-      }
+    &__rank {
+      width: 56px;
+      font-size: 24px;
+      font-family: var(--font-mono);
+      text-align: center;
     }
 
-    .right-side {
+    &__player {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       align-items: center;
 
-      .division-line {
-        width: 1px;
-        height: 16px;
-        background-color: rgba(255, 255, 255, 0.4);
+      &-name {
+        font-weight: 500;
+        font-size: 21px;
       }
+    }
+  }
 
-      .video-link {
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        transition: font-weight 0.1s ease;
+  .right-side {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 
-        &:hover,
-        &:focus {
-          font-weight: 500;
-        }
+    &__divider {
+      width: 1px;
+      height: 16px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    &__video-link {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      transition: font-weight 0.1s ease;
+
+      &:hover,
+      &:focus {
+        font-weight: 500;
       }
     }
   }

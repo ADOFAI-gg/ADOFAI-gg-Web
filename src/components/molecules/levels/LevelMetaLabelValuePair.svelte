@@ -5,8 +5,8 @@
 </script>
 
 <div class="fair">
-  <div class="label"><Translation key={label} /></div>
-  <div class="value"><slot /></div>
+  <div class="fair__label"><Translation key={label} /></div>
+  <div class="fair__value"><slot /></div>
 </div>
 
 <style lang="scss">
@@ -14,13 +14,13 @@
     display: flex;
     flex-direction: column;
 
-    .label {
+    &__label {
       font-weight: 300;
       font-size: 16px;
       opacity: 0.8;
     }
 
-    .value {
+    &__value {
       margin-top: 6px;
       font-weight: 500;
       font-size: 28px;
