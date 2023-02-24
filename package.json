@@ -18,6 +18,7 @@
     "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
+    "@fontsource/m-plus-rounded-1c": "4.5.10",
     "@fontsource/quicksand": "^4.5.12",
     "@playwright/test": "^1.21.0",
     "@sveltejs/adapter-auto": "^1.0.0-next.72",
@@ -90,5 +91,8 @@
     "*.{js,ts,jsx,tsx,svelte}": "eslint --cache --fix",
     "*.{js,ts,jsx,tsx,svelte,css,scss,md}": "prettier --ignore-path .gitignore --write"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.0",
+  "resolutions": {
+    "@fontsource/m-plus-rounded-1c@4.5.10": "patch:@fontsource/m-plus-rounded-1c@npm%3A4.5.10#./.yarn/patches/@fontsource-m-plus-rounded-1c-npm-4.5.10-3cae002275.patch"
+  }
 }
