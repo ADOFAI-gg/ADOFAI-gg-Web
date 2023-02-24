@@ -38,6 +38,9 @@
   import '@fontsource/m-plus-rounded-1c/400.css?inline';
   import '@fontsource/m-plus-rounded-1c/500.css?inline';
   import '@fontsource/m-plus-rounded-1c/700.css?inline';
+  // Roboto Mono
+  import '@fontsource/roboto-mono/300.css';
+  import '@fontsource/roboto-mono/500.css';
 
   onMount(() => {
     setupSentry();
