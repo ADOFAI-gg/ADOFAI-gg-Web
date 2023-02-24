@@ -16,6 +16,8 @@
 <script lang="ts">
   import '@/stylesheets/main.scss';
   import '@/stylesheets/font.scss';
+  import '@fontsource/quicksand/variable.css';
+  import '@fontsource/quicksand/index.css';
   import Nav from '@organisms/layout/Nav.svelte';
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { onMount } from 'svelte';
