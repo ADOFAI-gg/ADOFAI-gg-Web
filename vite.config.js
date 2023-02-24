@@ -2,6 +2,7 @@ import * as path from 'path';
 import glob from 'vite-plugin-glob';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import preload from 'vite-plugin-preload';
 
 export default defineConfig({
   resolve: {
@@ -13,5 +14,5 @@ export default defineConfig({
       '@templates': path.resolve('./src/components/templates')
     }
   },
-  plugins: [glob(), sveltekit()]
+  plugins: [glob(), sveltekit(), preload()]
 });
