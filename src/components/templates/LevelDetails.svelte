@@ -24,9 +24,9 @@
 <div class="page-padder" />
 
 <PageContainer>
-  <div class="meta-container">
+  <div class="meta">
     <Video {videoId} bind:player />
-    <div class="meta-area">
+    <div class="meta-content">
       <LevelMetaArea video={player} {level} />
     </div>
   </div>
@@ -41,12 +41,12 @@
     margin-top: 24px;
   }
 
-  .meta-container {
+  .meta {
     display: flex;
     flex-direction: column;
     gap: 24px;
 
-    > .meta-area {
+    > &-content {
       @media (min-width: 768px) {
         min-width: 360px;
       }

@@ -4,7 +4,7 @@
 </script>
 
 <div class="sign-area">
-  <a href="/signup" class="singup">
+  <a href="/signup" class="sign-area__singup">
     <Translation key="NAV_SIGNUP" />
   </a>
 
@@ -22,7 +22,7 @@
     justify-content: center;
     width: 100%;
 
-    .singup {
+    &__singup {
       font-weight: 400;
       font-size: 14px;
       text-align: center;

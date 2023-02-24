@@ -48,7 +48,7 @@
   const loadPromise = loadData();
 </script>
 
-<div class="reference-table-root">
+<div class="reference-table">
   {#await loadPromise}
     <div class="loading-container">
       <LoadingSpinner />
@@ -90,16 +90,16 @@
               <DifficultyIcon difficulty={reference.difficulty} size={28} />
             </Cell>
 
-            <Cell class="pp-rating-cell" border>
+            <Cell class="reference-table__pp-rating-cell" border>
               {reference.ppRating}
             </Cell>
 
             {#each reference.levels as level}
               {#if level}
                 <Cell leftSideBorder>
-                  <div class="level-cell-content">
+                  <div class="reference-table__level-cell-content">
                     {#if level.levelId}
-                      <div class="level-id-text">
+                      <div class="reference-table__level-id-text">
                         #{level.levelId}
                       </div>
                     {/if}
@@ -125,34 +125,34 @@
 </div>
 
 <style lang="scss">
-  .reference-table-root {
-    .loading-container {
-      display: flex;
-      justify-content: cetner;
-    }
+  .loading-container {
+    display: flex;
+    justify-content: cetner;
+  }
 
+  .reference-table {
     :global(.reference-table) {
       width: 100%;
       min-width: 1680px;
       table-layout: fixed;
+    }
 
-      :global(.pp-rating-cell) {
+    :global(.reference-table__pp-rating-cell) {
+      font-weight: 300;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: -0.1em;
+    }
+
+    :global(.reference-table__level-cell-content) {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+
+      :global(.reference-table__level-id-text) {
         font-weight: 300;
         font-family: 'Roboto Mono', monospace;
         letter-spacing: -0.1em;
-      }
-
-      :global(.level-cell-content) {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-
-        :global(.level-id-text) {
-          font-weight: 300;
-          font-family: 'Roboto Mono', monospace;
-          letter-spacing: -0.1em;
-          opacity: 0.4;
-        }
+        opacity: 0.4;
       }
     }
   }

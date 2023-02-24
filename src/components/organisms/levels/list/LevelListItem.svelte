@@ -9,35 +9,35 @@
 </script>
 
 <a class="level-list-item" href="/levels/{level.id}">
-  <div class="info-container">
-    <div class="basic-info">
-      <div class="difficulty">
+  <div class="level-list-item__info-container">
+    <div class="level-list-item__basic-info">
+      <div class="level-list-item__basic-info__difficulty">
         <DifficultyIcon size={42} difficulty={level.difficulty} />
 
-        <div class="id">ID {level.id}</div>
+        <div class="level-list-item__basic-info__difficulty__id">ID {level.id}</div>
       </div>
 
       <div class="title-and-authors">
-        <div class="title">
+        <div class="title-and-authors__title">
           {level.title}
         </div>
 
         <div class="details-area">
           <div class="authors">
-            <div class="labels">
+            <div class="authors__labels">
               <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
               <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
             </div>
 
-            <div class="values">
-              <div class="value-wrapper">
-                <div class="value">
+            <div class="authors__values">
+              <div class="authors__value-wrapper">
+                <div class="authors__value">
                   {level.music.artists.map((x) => x.name).join(' & ')}
                 </div>
               </div>
 
-              <div class="value-wrapper">
-                <div class="value">
+              <div class="authors__value-wrapper">
+                <div class="authors__value">
                   {level.creators.map((x) => x.name).join(' & ')}
                 </div>
               </div>
@@ -88,7 +88,7 @@
       background-color: rgba(var(--color-darkblue), 0.2);
     }
 
-    .info-container {
+    &__info-container {
       display: flex;
       flex-grow: 1;
       flex-direction: column;
@@ -102,80 +102,80 @@
       }
     }
 
-    .basic-info {
+    &__basic-info {
       display: flex;
       flex-grow: 1;
       gap: 8px;
       align-items: center;
       width: 100%;
 
-      .difficulty {
+      &__difficulty {
         display: flex;
         flex-direction: column;
         gap: 2px;
         align-items: center;
         width: 60px;
 
-        .id {
+        &__id {
           font-size: 14px;
           opacity: 0.8;
         }
       }
+    }
 
-      .title-and-authors {
+    .title-and-authors {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 0;
+
+      &__title {
+        overflow-x: clip;
+        height: 28px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .authors {
+      display: flex;
+      flex-grow: 1;
+      gap: 8px;
+      align-items: center;
+      height: 46px;
+      line-height: 16px;
+
+      &__labels {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-weight: 300;
+        opacity: 0.6;
+      }
+
+      &__values {
         display: flex;
         flex-grow: 1;
         flex-direction: column;
-        justify-content: space-between;
+        gap: 4px;
         width: 0;
+        opacity: 0.8;
+      }
 
-        .title {
-          overflow-x: clip;
-          height: 28px;
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 28px;
-          text-overflow: ellipsis;
-        }
+      &__value-wrapper {
+        position: relative;
+        height: 16px;
+      }
 
-        .authors {
-          display: flex;
-          flex-grow: 1;
-          gap: 8px;
-          align-items: center;
-          height: 46px;
-          line-height: 16px;
-
-          .labels {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            font-weight: 300;
-            opacity: 0.6;
-          }
-
-          .values {
-            display: flex;
-            flex-grow: 1;
-            flex-direction: column;
-            gap: 4px;
-            width: 0;
-            opacity: 0.8;
-
-            .value-wrapper {
-              position: relative;
-              height: 16px;
-
-              .value {
-                position: absolute;
-                overflow-x: hidden;
-                width: 100%;
-                height: 24px;
-                text-overflow: ellipsis;
-              }
-            }
-          }
-        }
+      &__value {
+        position: absolute;
+        overflow-x: hidden;
+        width: 100%;
+        height: 24px;
+        text-overflow: ellipsis;
       }
     }
 

@@ -7,16 +7,16 @@
 </script>
 
 <div class="stat">
-  <div class="icon">
+  <div class="stat__icon">
     <Icon {icon} size={16} alt="{icon} icon" />
   </div>
 
-  <div class="content">
+  <div class="stat__content">
     <slot />
   </div>
 
   {#if postfix}
-    <div class="postfix">
+    <div class="stat__postfix">
       {postfix}
     </div>
   {/if}
@@ -28,17 +28,17 @@
     gap: 4px;
     align-items: center;
 
-    .icon {
+    &__icon {
       opacity: 0.6;
     }
 
-    .content {
+    &__content {
       font-weight: 500;
       font-size: 16px;
       opacity: 0.6;
     }
 
-    .postfix {
+    &__postfix {
       font-weight: 400;
       font-size: 16px;
       opacity: 0.4;

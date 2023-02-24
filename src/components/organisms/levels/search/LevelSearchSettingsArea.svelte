@@ -61,7 +61,7 @@
 </script>
 
 <div>
-  <div class="tabs-container">
+  <div class="tabs">
     <SearchTabs style="flex-grow: 1;" value={currentTab} deselectable>
       <SearchTabItem value="tags" icon="tag">
         <Translation key="SEARCH_TAB_TAGS" />
@@ -75,10 +75,10 @@
         <Translation key="SEARCH_TAB_SORT" />
       </SearchTabItem>
 
-      <div class="tabs-last">
+      <div class="tabs__last">
         <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} alt="Reset icon" />
-          <span class="reset-text">
+          <span class="tabs__reset-text">
             <Translation key="SEARCH_SETTINGS_RESET" />
           </span>
         </Button>
@@ -118,12 +118,12 @@
 </div>
 
 <style lang="scss">
-  .tabs-container {
+  .tabs {
     display: flex;
     flex-direction: column;
     gap: 4px;
 
-    .tabs-last {
+    &__last {
       display: flex;
       flex-grow: 1;
       flex-direction: row-reverse;
@@ -134,17 +134,17 @@
         font-size: 14px;
       }
 
-      .reset-text {
-        display: none;
-        font-size: 14px;
-
-        @media (min-width: 768px) {
-          display: block;
-        }
-      }
-
       @media (min-width: 768px) {
         flex-direction: row;
+      }
+    }
+
+    &__reset-text {
+      display: none;
+      font-size: 14px;
+
+      @media (min-width: 768px) {
+        display: block;
       }
     }
 

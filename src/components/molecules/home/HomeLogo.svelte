@@ -20,7 +20,7 @@
 <div class="home-logo">
   <HomeLogoImage />
 
-  <span class="description">
+  <span class="home-logo__description">
     <Translation key="HOME_HERO_DESCRIPTION" htmlReplacer={forumLinkReplacer} />
   </span>
 </div>
@@ -33,7 +33,7 @@
     width: 100%;
     text-align: center;
 
-    .description {
+    &__description {
       font-weight: 500;
       font-size: 24px;
 

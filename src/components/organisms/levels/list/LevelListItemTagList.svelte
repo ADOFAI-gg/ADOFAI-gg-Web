@@ -37,7 +37,7 @@
         <Icon icon={`${tag}`} namespace="tagIcons" size={24} slot="button" alt="Tag Icon" />
 
         <div class="tooltip">
-          <div class="title">
+          <div class="tooltip__title">
             <Translation key="TAG_{tag}_NAME" />
           </div>
           <Translation key="TAG_{tag}_DESCRIPTION" />
@@ -116,7 +116,7 @@
     font-weight: 400;
     font-size: 14px;
 
-    .title {
+    &__title {
       font-weight: 700;
     }
   }

@@ -7,7 +7,7 @@
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
 </script>
 
-<div class="meta-container">
+<div class="meta">
   <SearchGroup title="SEARCH_META_AUTHOR">
     <div class="meta-group">
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
@@ -70,11 +70,11 @@
 </div>
 
 <style lang="scss">
-  .meta-container {
+  .meta {
     display: grid;
     gap: 12px;
 
-    .meta-group {
+    &-group {
       display: flex;
       flex-direction: column;
       gap: 16px;

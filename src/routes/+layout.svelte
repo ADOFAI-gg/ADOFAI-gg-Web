@@ -56,7 +56,7 @@
   {/each}
 </svelte:head>
 
-<div class="page-container">
+<div>
   <LoadingIndiciator />
 
   <Nav />
@@ -78,19 +78,17 @@
 {/if}
 
 <style lang="scss">
-  .page-container {
-    > .page-layout {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+  .page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-      > .page-content {
-        flex-grow: 1;
-      }
+  .page-content {
+    flex-grow: 1;
+  }
 
-      > .footer-spacer {
-        margin-top: 64px;
-      }
-    }
+  .footer-spacer {
+    margin-top: 64px;
   }
 </style>

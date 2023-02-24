@@ -8,8 +8,8 @@
 </script>
 
 <div class="list-popover-content">
-  <div class="popover-title">{allTitle}</div>
-  <div class="popover-user-list">
+  <div class="list-popover-content__title">{allTitle}</div>
+  <div class="list-popover-content__user-list">
     {#each users as user, i (i)}
       <UserListItem popup {user} />
     {/each}
@@ -21,12 +21,12 @@
     min-width: 240px;
     padding: 14px;
 
-    > .popover-title {
+    &__title {
       font-weight: 700px;
       font-size: 14px;
     }
 
-    > .popover-user-list {
+    &__user-list {
       display: flex;
       flex-direction: column;
       gap: 16px;

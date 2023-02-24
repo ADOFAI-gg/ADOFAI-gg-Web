@@ -65,21 +65,21 @@
 
   .icon-group {
     margin-top: 16px;
+  }
 
-    .icon-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+  .icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 
-      .icon-list-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+  .icon-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-      .icon-filename {
-        margin-top: 8px;
-      }
-    }
+  .icon-filename {
+    margin-top: 8px;
   }
 </style>

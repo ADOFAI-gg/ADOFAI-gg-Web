@@ -37,7 +37,7 @@
     on:click={onClick}
     on:keydown={(e) => e.key === 'Enter' && onClick()}
   >
-    <div class="content">
+    <div class="tab-item__content">
       {#if icon}
         <Icon {icon} size={11} alt={`${icon} icon`} />
       {/if}
@@ -70,7 +70,7 @@
       }
     }
 
-    & > .content {
+    &__content {
       display: flex;
       gap: 6px;
       align-items: center;

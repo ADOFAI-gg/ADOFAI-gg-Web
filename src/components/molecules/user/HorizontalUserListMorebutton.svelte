@@ -3,7 +3,7 @@
 </script>
 
 <button class="more-button">
-  <div class="more-button-icon">
+  <div class="more-button__icon">
     <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
   </div>
   <div>Show All</div>
@@ -25,7 +25,7 @@
       opacity: 1;
     }
 
-    .more-button-icon {
+    &__icon {
       width: 14px;
       height: 14px;
       filter: drop-shadow(0 0 6px rgba(0, 0, 0, 1));

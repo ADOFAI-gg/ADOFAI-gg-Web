@@ -41,6 +41,7 @@
     "string-quotes": "single",
     "indentation": null,
     "selector-descendant-combinator-no-non-space": null,
+    "selector-class-pattern": null,
     "string-no-newline": null,
     "selector-pseudo-class-no-unknown": [
       true,
