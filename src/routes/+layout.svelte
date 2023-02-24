@@ -48,10 +48,10 @@
 </script>
 
 <svelte:head>
-  <title>{$page.data.meta?.title || 'ADOFAI.gg'}</title>
+  <title>{$page.data?.meta?.title || 'ADOFAI.gg'}</title>
   <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png" />
   <meta name="theme-color" content="#ffffff" />
-  {#each $page.data.meta?.metaTags ?? defaultMeta as meta}
+  {#each $page.data?.meta?.metaTags ?? defaultMeta as meta}
     <meta {...meta} />
   {/each}
 </svelte:head>
@@ -65,7 +65,7 @@
       <slot />
     </div>
 
-    {#if !$page.data.meta?.hideFooter}
+    {#if !$page.data?.meta?.hideFooter}
       <div class="footer-spacer" />
 
       <Footer />

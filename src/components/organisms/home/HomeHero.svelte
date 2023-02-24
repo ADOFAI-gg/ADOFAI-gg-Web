@@ -1,7 +1,8 @@
 <script lang="ts">
   import HomeLogo from '@molecules/home/HomeLogo.svelte';
   import SearchInput from '@molecules/search/SearchInput.svelte';
-  import { goto } from '$app/navigation';
+  // TODO fix navigation
+  // import { goto } from '$app/navigation';
   import { searchSetingStore } from '@/stores/search';
 
   let searchQuery: string;
@@ -16,7 +17,7 @@
         title: searchQuery
       }
     }));
-    goto('/levels');
+    // goto('/levels');
   };
 </script>
 
