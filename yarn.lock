@@ -662,6 +662,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource/roboto-mono@npm:4.5.10":
+  version: 4.5.10
+  resolution: "@fontsource/roboto-mono@npm:4.5.10"
+  checksum: 5f47ea4a6b9eff6743f1e45a44ac1bc8542bd8224d4ff2d866a7c04a2bcddba1e3dcb6a0feddf63c5f799c65589f485cbbb1a6acbafa91a9579b759441369ba7
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -1770,6 +1777,7 @@ __metadata:
     "@commitlint/config-conventional": ^16.2.4
     "@fontsource/m-plus-rounded-1c": 4.5.10
     "@fontsource/quicksand": ^4.5.12
+    "@fontsource/roboto-mono": 4.5.10
     "@playwright/test": ^1.21.0
     "@sentry/browser": ^7.14.2
     "@sentry/integrations": ^7.14.2
