@@ -5,14 +5,6 @@
   export let data: Data;
 </script>
 
-<div class="nav-spacer" />
-
-<PageContainer>
+<PageContainer navOffset>
   <Home {data} />
 </PageContainer>
-
-<style lang="scss">
-  .nav-spacer {
-    height: var(--nav-height);
-  }
-</style>
