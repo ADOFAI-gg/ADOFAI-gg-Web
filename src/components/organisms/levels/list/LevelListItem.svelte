@@ -178,66 +178,67 @@
         text-overflow: ellipsis;
       }
     }
+  }
 
-    .details-area {
-      display: flex;
-      flex-direction: column;
+  .details-area {
+    display: flex;
+    flex-direction: column;
 
-      @media (min-width: 768px) {
-        flex-direction: row;
-      }
+    @media (min-width: 768px) {
+      flex-direction: row;
     }
+  }
 
-    .additional-info {
+  .additional-info {
+    display: flex;
+
+    .hearts {
       display: flex;
 
-      .hearts {
+      .divider {
+        width: 2px;
+        height: 100%;
+        margin: 0 12px;
+        border-radius: 100em;
+        background-color: rgba(232, 232, 232, 0.4);
+      }
+
+      .content {
         display: flex;
-
-        .divider {
-          width: 2px;
-          height: 100%;
-          margin: 0 12px;
-          border-radius: 100em;
-          background-color: rgba(232, 232, 232, 0.4);
-        }
-
-        .content {
-          display: flex;
-          gap: 6px;
-          align-items: center;
-          font-weight: 500;
-          font-size: 16px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        flex-direction: row;
-        align-self: flex-end;
-        justify-content: flex-start;
-        margin-top: 8px;
-        padding-left: 70px;
-      }
-
-      @media (min-width: 1024px) {
-        justify-content: flex-end;
-        margin-top: 0;
-        padding: 11px 0;
+        gap: 6px;
+        align-items: center;
+        font-weight: 500;
+        font-size: 16px;
       }
     }
 
-    .download {
-      position: relative;
-      align-self: center;
-      width: 48px;
-      opacity: 1;
-
-      a {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translateY(-50%);
-      }
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-self: flex-end;
+      justify-content: flex-start;
+      margin-top: 8px;
+      padding-left: 70px;
     }
+
+    @media (min-width: 1024px) {
+      justify-content: flex-end;
+      margin-top: 0;
+      padding: 11px 0;
+    }
+  }
+
+  .download {
+    /* position: relative; */
+    align-self: center;
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+
+    /* a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateY(-50%);
+    } */
   }
 </style>

@@ -16,8 +16,7 @@ const minification_options = {
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
   sortAttributes: true,
-  sortClassName: true,
-  removeEmptyElements: true
+  sortClassName: true
 };
 
 export const handle: Handle = async ({ resolve, event }) => {
