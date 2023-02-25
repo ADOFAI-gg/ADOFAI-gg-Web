@@ -34,10 +34,10 @@
   import '@fontsource/quicksand/700.css';
 
   // M Plus Rounded 1c
-  import '@fontsource/m-plus-rounded-1c/300.css';
-  import '@fontsource/m-plus-rounded-1c/400.css';
-  import '@fontsource/m-plus-rounded-1c/500.css';
-  import '@fontsource/m-plus-rounded-1c/700.css';
+  import '@fontsource/m-plus-rounded-1c/japanese-300.css';
+  import '@fontsource/m-plus-rounded-1c/japanese-400.css';
+  import '@fontsource/m-plus-rounded-1c/japanese-500.css';
+  import '@fontsource/m-plus-rounded-1c/japanese-700.css';
   // Roboto Mono
   import '@fontsource/roboto-mono/300.css';
   import '@fontsource/roboto-mono/500.css';
