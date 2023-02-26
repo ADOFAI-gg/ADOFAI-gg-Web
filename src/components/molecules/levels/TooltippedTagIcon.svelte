@@ -4,10 +4,11 @@
   import Translation from '@/components/utils/Translation.svelte';
 
   export let tag: number;
+  export let size = 24;
 </script>
 
 <Tooltip placement="bottom-start">
-  <Icon slot="button" icon={`${tag}`} namespace="tagIcons" size={24} alt="tag icon" />
+  <Icon slot="button" icon={`${tag}`} namespace="tagIcons" {size} alt="tag icon" />
 
   <div style="padding: 12px; font-size: 14px;">
     <div style="font-weight: 700;">

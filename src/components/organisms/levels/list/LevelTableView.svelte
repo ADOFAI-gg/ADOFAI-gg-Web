@@ -7,6 +7,7 @@
   import { browser } from '$app/environment';
   import Table from '@atoms/table/Table.svelte';
   import { default as Cell } from '@atoms/table/TableCell.svelte';
+  import TooltippedTagIcon from '@/components/molecules/levels/TooltippedTagIcon.svelte';
 
   export let levels: Level[];
 
@@ -117,7 +118,7 @@
         <div class="tags">
           {#each item.tags.slice(0, 5) as tag (tag.id)}
             {#if tag.id !== 4}
-              <Icon icon={`${tag.id}`} namespace="tagIcons" size={20} alt="{tag.name} tag icon" />
+              <TooltippedTagIcon tag={tag.id} size={20} />
             {/if}
           {/each}
 
