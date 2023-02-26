@@ -22,6 +22,7 @@
 
 <div
   aria-label={alt}
+  role="img"
   style="
 /* stylelint-disable-next-line max-empty-lines */
 
