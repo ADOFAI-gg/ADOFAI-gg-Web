@@ -18,7 +18,7 @@
   onMount(() => {
     if (!iframe) return;
     (async () => {
-      while (!window.YT) {
+      while (!window.YT?.Player) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
 
