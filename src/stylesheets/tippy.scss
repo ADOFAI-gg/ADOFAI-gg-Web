@@ -1,5 +1,5 @@
 .tippy-box {
-  border-radius: var(--tippy-corner-radius, 4px);
+  border-radius: var(--tippy-corner-radius, 4px) !important;
   background-color: rgba(var(--color-dropdown), 100) !important;
 
   .tippy-arrow {

@@ -10,7 +10,12 @@
 
 <NavMenuGroup label="NAV_SETTINGS_LANGUAGES" backTab={null}>
   {#each availableLanguages as lang}
-    <NavMenuItem on:click={updateLang(lang.code)} role="menuitem" tabindex="0">
+    <NavMenuItem
+      on:click={updateLang(lang.code)}
+      role="menuitem"
+      tabindex="0"
+      active={$currentLang === lang.code}
+    >
       {lang.name}
     </NavMenuItem>
   {/each}

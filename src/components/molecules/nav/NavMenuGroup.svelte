@@ -18,7 +18,7 @@
     {#if backTab !== undefined}
       <button
         on:click={() => {
-          if (!backTab) return;
+          if (backTab === undefined) return;
           currentTab.set(backTab);
         }}
       >
