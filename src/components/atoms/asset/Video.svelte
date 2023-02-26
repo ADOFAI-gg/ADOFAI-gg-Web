@@ -17,14 +17,20 @@
 
   onMount(() => {
     if (!iframe) return;
-    // eslint-disable-next-line no-undef
-    const p = new YT.Player(iframe, {
-      events: {
-        onReady: () => {
-          player = p;
-        }
+    (async () => {
+      while (!window.YT) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
-    });
+
+      // eslint-disable-next-line no-undef
+      const p = new YT.Player(iframe, {
+        events: {
+          onReady: () => {
+            player = p;
+          }
+        }
+      });
+    })();
   });
 </script>
 
