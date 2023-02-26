@@ -15,13 +15,13 @@ export const load: Load = async () => {
   });
 
   const topPlays: PlayLogWithLevel[] = await Promise.all(
-    topPlaysRaw.map(
-      async (x) =>
-        ({
-          ...x,
-          level: await (await api.get<Level>(`/api/v1/levels/${x.level.id}`)).data
-        } as PlayLogWithLevel)
-    )
+    topPlaysRaw.map(async (x) => ({
+      ...x,
+      level: {
+        ...x.level,
+        ...(await (await api.get<Level>(`/api/v1/levels/${x.level.id}`)).data)
+      }
+    }))
   );
 
   const {
