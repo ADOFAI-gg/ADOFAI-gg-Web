@@ -49,15 +49,15 @@
         gap: 12px;
         align-items: center;
       }
+
+      @media (min-width: 768px) {
+        display: none;
+      }
     }
 
     hr {
       flex-grow: 1;
       opacity: 0.2;
-    }
-
-    @media (min-width: 768px) {
-      display: none;
     }
   }
 </style>
