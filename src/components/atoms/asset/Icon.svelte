@@ -34,7 +34,8 @@ width: {size}px; height: {size}px; {style}"
 <style lang="scss">
   .icon {
     background-color: currentcolor;
-    mask-size: cover;
+    mask-size: contain;
+    mask-repeat: no-repeat;
     mask-image: var(--icon-url);
   }
 </style>
