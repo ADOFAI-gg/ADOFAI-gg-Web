@@ -1,17 +1,13 @@
 <script lang="ts">
-  import { api } from '@/api';
-
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Image from '@atoms/asset/Image.svelte';
-  import type { PlayLog } from '@/types';
+  import type { PlayLogWithLevel } from '@/types';
   import { getYoutubeVideoId } from '@/utils/youtube';
   import TopPlayDetailPair from '@molecules/home/TopPlayDetailPair.svelte';
 
-  export let play: PlayLog;
+  export let play: PlayLogWithLevel;
 
-  $: difficulty = (async () => {
-    return api.get(`/api/v1/levels/${play.level.id}`).then((x) => x.data.difficulty);
-  })();
+  $: difficulty = play.level.difficulty;
 </script>
 
 <div class="top-play-wrapper">
@@ -31,9 +27,7 @@
       </div>
 
       <div class="top-play__level">
-        {#await difficulty then difficulty}
-          <DifficultyIcon {difficulty} />
-        {/await}
+        <DifficultyIcon {difficulty} />
 
         <div>{play.level.name}</div>
       </div>
