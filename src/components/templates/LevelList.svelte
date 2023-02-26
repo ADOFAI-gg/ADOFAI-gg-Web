@@ -166,7 +166,10 @@
 </script>
 
 {#if browser}
-  <div class="level-list-container">
+  <div
+    class="level-list-container"
+    class:level-list-container-table-view={$currentView === 'table'}
+  >
     <div class="top-spacer" />
 
     <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
@@ -216,8 +219,12 @@
   .level-list-container {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     min-height: 100vh;
+  }
+
+  .level-list-container-table-view {
+    width: fit-content;
+    min-width: 100vw;
   }
 
   .top-spacer {
