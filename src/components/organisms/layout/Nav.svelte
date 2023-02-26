@@ -23,8 +23,13 @@
 
     <div class="nav__divider" />
   {/if}
-
-  <Popover options={{ maxWidth: '100vw' }} placement="bottom-end">
+  <Popover
+    style="
+    /* stylelint-disable-next-line max-empty-lines */
+    --tippy-corner-radius: 12px;"
+    options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
+    placement="bottom-end"
+  >
     <span slot="button" class="nav__expand-icon">
       <Icon icon="expand" size={16} alt="Expand icon" />
     </span>

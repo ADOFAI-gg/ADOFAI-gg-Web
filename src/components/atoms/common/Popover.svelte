@@ -62,7 +62,7 @@
   $subscriber;
 </script>
 
-<div>
+<div {...$$restProps}>
   <div bind:this={button} aria-expanded={show} role="button" tabindex="0">
     <slot name="button" />
   </div>
