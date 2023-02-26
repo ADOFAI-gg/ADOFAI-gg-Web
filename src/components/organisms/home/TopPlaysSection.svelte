@@ -1,9 +1,9 @@
 <script lang="ts">
   import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
   import TopPlay from '@molecules/home/TopPlay.svelte';
-  import type { PlayLog } from '@/types';
+  import type { PlayLogWithLevel } from '@/types';
 
-  export let plays: PlayLog[] = [];
+  export let plays: PlayLogWithLevel[] = [];
 </script>
 
 <MainSectionTitle title="HOME_TOP_PLAYS" moreLink="/rankings" />

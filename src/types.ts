@@ -11,6 +11,10 @@ export interface PlayLog {
   xAccuracy: number;
 }
 
+export type PlayLogWithLevel = PlayLog & {
+  level: Level;
+};
+
 export interface Ranking {
   id: number;
   name: string;
