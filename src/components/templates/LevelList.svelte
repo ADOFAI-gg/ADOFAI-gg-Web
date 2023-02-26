@@ -216,6 +216,7 @@
   .level-list-container {
     display: flex;
     flex-direction: column;
+    width: fit-content;
     min-height: 100vh;
   }
 
