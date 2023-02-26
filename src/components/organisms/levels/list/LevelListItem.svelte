@@ -223,7 +223,7 @@
     @media (min-width: 1024px) {
       justify-content: flex-end;
       margin-top: 0;
-      padding: 11px 0;
+      padding: 6px 0;
     }
   }
 
