@@ -43,7 +43,7 @@
       on:keydown={(e) => e.key === 'Enter' && updateTab('lang')()}
       role="menuitem"
       tabindex="0"
-      class="menuitem"
+      class="menu-item"
     >
       Lang(Debug)
     </div>
