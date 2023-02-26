@@ -44,7 +44,7 @@
       left: 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 26px;
       width: 240px;
       padding: 16px;
     }
