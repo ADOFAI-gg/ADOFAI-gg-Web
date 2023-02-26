@@ -1,4 +1,4 @@
-name: Deploy Beta
+name: Deploy Staging
 
 env:
   REGISTRY: ghcr.io
