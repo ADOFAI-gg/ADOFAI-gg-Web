@@ -8,6 +8,20 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
+  "shortcuts": [
+    {
+      "name": "Levels",
+      "url": "/levels"
+    },
+    {
+      "name": "Rankings",
+      "url": "/rankings"
+    },
+    {
+      "name": "References",
+      "url": "/references"
+    }
+  ],
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
