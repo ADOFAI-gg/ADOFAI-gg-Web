@@ -11,15 +11,30 @@
   "shortcuts": [
     {
       "name": "Levels",
-      "url": "/levels"
+      "url": "/levels",
+      "icons": [
+        {
+          "src": "/images/icons/icon-96x96.png"
+        }
+      ]
     },
     {
       "name": "Rankings",
-      "url": "/rankings"
+      "url": "/rankings",
+      "icons": [
+        {
+          "src": "/images/icons/icon-96x96.png"
+        }
+      ]
     },
     {
       "name": "References",
-      "url": "/references"
+      "url": "/references",
+      "icons": [
+        {
+          "src": "/images/icons/icon-96x96.png"
+        }
+      ]
     }
   ],
   "icons": [
