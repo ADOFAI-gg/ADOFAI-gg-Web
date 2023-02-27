@@ -19,19 +19,21 @@
   </NavMenuItem>
 </NavMenuGroup>
 
-<NavMenuGroup label="NAV_PAGES">
-  <NavMenuItemLink href="/levels">
-    <Translation key="NAV_LEVELS" />
-  </NavMenuItemLink>
+<div class="mobile-only">
+  <NavMenuGroup label="NAV_PAGES">
+    <NavMenuItemLink href="/levels">
+      <Translation key="NAV_LEVELS" />
+    </NavMenuItemLink>
 
-  <NavMenuItemLink href="/rankings">
-    <Translation key="NAV_RANKINGS" />
-  </NavMenuItemLink>
+    <NavMenuItemLink href="/rankings">
+      <Translation key="NAV_RANKINGS" />
+    </NavMenuItemLink>
 
-  <NavMenuItemLink href="/references">
-    <Translation key="NAV_REFERENCES" />
-  </NavMenuItemLink>
-</NavMenuGroup>
+    <NavMenuItemLink href="/references">
+      <Translation key="NAV_REFERENCES" />
+    </NavMenuItemLink>
+  </NavMenuGroup>
+</div>
 
 {#if import.meta.env.VITE_USE_ACCOUNT}
   <div class="menu__divider" />

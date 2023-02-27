@@ -68,6 +68,14 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 }
 
+.mobile-only {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
+
 // #root {
 //   width: 100vw;
 //   height: 100vh;
