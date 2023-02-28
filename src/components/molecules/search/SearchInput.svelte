@@ -55,12 +55,14 @@
 
     &__placeholder {
       position: absolute;
-      display: flex;
-      align-items: center;
+      top: 50%;
+      overflow: hidden;
       width: 100%;
-      height: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       opacity: 0.4;
       pointer-events: none;
+      transform: translateY(-50%);
     }
   }
 </style>
