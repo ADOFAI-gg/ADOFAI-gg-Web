@@ -49,11 +49,14 @@
   const options: Partial<Props> = {
     onShow: (i) => {
       instance = i;
+    },
+    popperOptions: {
+      strategy: 'fixed'
     }
   };
 </script>
 
-<Popover placement="bottom" {options}>
+<Popover placement="bottom-end" {options}>
   <div class="input" slot="button">
     {#if value}
       <DifficultyIcon size={18} difficulty={value} />
