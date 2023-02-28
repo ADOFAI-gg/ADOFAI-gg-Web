@@ -108,3 +108,14 @@ export interface RawPPRatings {
   difficulty: number;
   rating: number;
 }
+
+export enum SyncStatus {
+  Ok = 'ok',
+  Err = 'error'
+}
+
+export interface SyncStatusResponse {
+  status: SyncStatus;
+  lastSucceedAt: string;
+  exception: string | null;
+}

@@ -1,9 +1,9 @@
 import { api } from '@/api';
-import type { Level, ListResponse, PlayLog, PlayLogWithLevel } from '@/types';
+import type { Level, ListResponse, PlayLog, PlayLogWithLevel, SyncStatusResponse } from '@/types';
 
-import type { Load } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
-export const load: Load = async () => {
+export const load: PageLoad = async () => {
   const {
     data: { results: topPlaysRaw }
   } = await api.get<ListResponse<PlayLog>>('/api/v1/playLogs', {
@@ -34,8 +34,11 @@ export const load: Load = async () => {
     }
   });
 
+  const { data: syncStatus } = await api.get<SyncStatusResponse>('/api/v1/status/sync');
+
   return {
     topPlays,
-    recentLevels
+    recentLevels,
+    syncStatus
   };
 };

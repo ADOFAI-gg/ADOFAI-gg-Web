@@ -1,6 +1,8 @@
 <script lang="ts">
   import HomeLogoImage from '@atoms/home/HomeLogoImage.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import { type SyncStatusResponse, SyncStatus } from '@/types';
+  import { currentLang } from '@/utils/i18n';
 
   const forumLinkReplacer = (html: string) => {
     return html.replace(
@@ -15,6 +17,10 @@
       </a>`
     );
   };
+
+  export let syncStatus: SyncStatusResponse;
+
+  $: lastSyncedAt = new Date(syncStatus.lastSucceedAt).toLocaleTimeString($currentLang);
 </script>
 
 <div class="home-logo">
@@ -22,6 +28,24 @@
 
   <span class="home-logo__description">
     <Translation key="HOME_HERO_DESCRIPTION" htmlReplacer={forumLinkReplacer} />
+  </span>
+
+  <span class="home-logo__sync-status">
+    <span class="home-logo__sync-status__status">
+      <Translation
+        key={syncStatus.status === SyncStatus.Ok
+          ? 'DATA_SYNCHRONIZATION_SUCCEEDED'
+          : 'DATA_SYNCHRONIZATION_FAILED'}
+      />
+    </span>
+    <span class="home-logo__sync-status__time">
+      <Translation
+        key="DATA_SYNCHRONIZATION_LAST"
+        params={{
+          time: lastSyncedAt
+        }}
+      />
+    </span>
   </span>
 </div>
 
@@ -32,6 +56,20 @@
     align-items: center;
     width: 100%;
     text-align: center;
+
+    &__sync-status {
+      display: flex;
+      gap: 12px;
+      opacity: 0.6;
+
+      &__status {
+        font-weight: 600;
+      }
+
+      &__time {
+        font-weight: 400;
+      }
+    }
 
     &__description {
       font-weight: 600;

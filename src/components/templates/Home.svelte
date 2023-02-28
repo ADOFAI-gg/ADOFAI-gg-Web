@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
-  import type { PlayLog, Level } from '@/types';
+  import type { Level, SyncStatusResponse, PlayLogWithLevel } from '@/types';
 
   export type Data = {
-    topPlays: PlayLog[];
+    topPlays: PlayLogWithLevel[];
     recentLevels: Level[];
+    syncStatus: SyncStatusResponse;
   };
 </script>
 
@@ -15,7 +16,7 @@
   export let data: Data;
 </script>
 
-<HomeHero />
+<HomeHero syncStatus={data.syncStatus} />
 
 <div class="top-plays-padder" />
 
