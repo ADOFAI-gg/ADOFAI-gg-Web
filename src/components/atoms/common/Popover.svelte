@@ -25,7 +25,7 @@
         trigger: 'click',
         placement,
         popperOptions: {
-          strategy: 'fixed',
+          strategy: 'absolute',
           modifiers: [
             {
               name: 'preventOverflow',
@@ -34,7 +34,8 @@
                 tether: false
               }
             }
-          ]
+          ],
+          ...options.popperOptions
         },
         hideOnClick: 'toggle',
         onClickOutside: () => {
@@ -63,9 +64,9 @@
 </script>
 
 <div {...$$restProps}>
-  <button bind:this={button} aria-expanded={show} tabindex="0">
+  <div bind:this={button} aria-expanded={show} role="button" tabindex="0">
     <slot name="button" />
-  </button>
+  </div>
 
   <div role="menu" bind:this={content}>
     {#if show}

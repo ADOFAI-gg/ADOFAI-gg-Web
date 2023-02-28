@@ -22,16 +22,7 @@
         content,
         placement,
         popperOptions: {
-          strategy: 'fixed',
-          modifiers: [
-            {
-              name: 'preventOverflow',
-              options: {
-                altAxis: true,
-                tether: false
-              }
-            }
-          ]
+          strategy: 'fixed'
         },
         ...options
       });
