@@ -7,7 +7,7 @@
     switch ($page.status) {
       case 404:
         return {
-          description: 'This page does not exist or expired.',
+          description: $page.error?.message || 'This page does not exist or expired.',
           image: {
             url: notfoundImage,
             alt: 'A very perplexed person, scratching their head'
