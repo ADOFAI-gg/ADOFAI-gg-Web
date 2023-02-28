@@ -8,6 +8,7 @@
 </script>
 
 <div class="nav-container">
+  <div id="nprogress-parent" />
   <nav class="nav">
     <Logo />
 
@@ -43,6 +44,15 @@
     position: sticky;
     top: 0;
     z-index: 999999;
+  }
+
+  #nprogress-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    pointer-events: none;
   }
 
   .nav {
