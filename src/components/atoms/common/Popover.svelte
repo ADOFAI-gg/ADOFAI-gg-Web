@@ -22,7 +22,7 @@
 
       const instance = tippy(button, {
         content,
-        trigger: 'focus click',
+        trigger: 'click',
         placement,
         popperOptions: {
           strategy: 'fixed',
@@ -63,9 +63,9 @@
 </script>
 
 <div {...$$restProps}>
-  <div bind:this={button} aria-expanded={show} role="button" tabindex="0">
+  <button bind:this={button} aria-expanded={show} tabindex="0">
     <slot name="button" />
-  </div>
+  </button>
 
   <div role="menu" bind:this={content}>
     {#if show}
