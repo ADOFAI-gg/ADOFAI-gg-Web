@@ -7,43 +7,50 @@
   import Popover from '@atoms/common/Popover.svelte';
 </script>
 
-<nav class="nav">
-  <Logo />
+<div class="nav-container">
+  <nav class="nav">
+    <Logo />
 
-  <div class="nav__links">
-    <NavLinks />
-  </div>
-
-  <div style="flex-grow: 1;" />
-
-  {#if import.meta.env.VITE_USE_ACCOUNT}
-    <div class="nav__sign-area">
-      <NavSignArea />
+    <div class="nav__links">
+      <NavLinks />
     </div>
 
-    <div class="nav__divider" />
-  {/if}
-  <Popover
-    style="
-    /* stylelint-disable-next-line max-empty-lines */
-    --tippy-corner-radius: 12px;"
-    options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
-    placement="bottom-end"
-  >
-    <span slot="button" class="nav__expand-icon">
-      <Icon icon="expand" size={16} alt="Expand icon" />
-    </span>
+    <div style="flex-grow: 1;" />
 
-    <NavMenuOverlay />
-  </Popover>
-</nav>
+    {#if import.meta.env.VITE_USE_ACCOUNT}
+      <div class="nav__sign-area">
+        <NavSignArea />
+      </div>
+
+      <div class="nav__divider" />
+    {/if}
+    <Popover
+      style="
+      /* stylelint-disable-next-line max-empty-lines */
+      --tippy-corner-radius: 12px;"
+      options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
+      placement="bottom-end"
+    >
+      <span slot="button" class="nav__expand-icon">
+        <Icon icon="expand" size={16} alt="Expand icon" />
+      </span>
+
+      <NavMenuOverlay />
+    </Popover>
+  </nav>
+</div>
 
 <style lang="scss">
+  .nav-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
   .nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
     display: flex;
     gap: 16px;
     align-items: center;
