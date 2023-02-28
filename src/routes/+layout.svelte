@@ -1,6 +1,4 @@
 <script context="module" lang="ts">
-  const loaded = writable<boolean>(false);
-
   const defaultMeta = [
     {
       name: 'description',
@@ -73,9 +71,7 @@
   </div>
 </div>
 
-{#if $loaded}
-  <UpdateNotification />
-{/if}
+<UpdateNotification />
 
 <style lang="scss">
   .page-layout {
