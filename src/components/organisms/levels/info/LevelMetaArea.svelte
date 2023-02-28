@@ -9,23 +9,23 @@
   import LevelShareMenu from '@organisms/levels/info/LevelShareMenu.svelte';
   import LevelTagDetailsArea from '@organisms/levels/info/LevelTagDetailsArea.svelte';
 
-  const convertLength = (length: number) => {
+  $: unit = (name: string, v: number) => {
     const current = $currentLang;
 
     const fallback = fallbackLang;
 
-    const unit = (name: string, v: number) => {
-      let key = `TIME_UNIT_${name}`;
+    let key = `TIME_UNIT_${name}`;
 
-      if (v > 1) {
-        key += 'S';
-      }
+    if (v > 1) {
+      key += 'S';
+    }
 
-      return (langData[current]?.[key] || langData[fallback]?.[key] || key)
-        .split('{value}')
-        .join(`${v}`);
-    };
+    return (langData[current]?.[key] || langData[fallback]?.[key] || key)
+      .split('{value}')
+      .join(`${v}`);
+  };
 
+  $: convertLength = (length: number) => {
     const seconds = Math.floor(length % 60);
     const minutes = Math.floor((length / 60) % 60);
     const hours = Math.floor(length / 3600);
@@ -60,6 +60,8 @@
 
     return 'MEDIUM';
   })();
+
+  $: lengthText = typeof length === 'number' ? convertLength(length) : '';
 </script>
 
 <section>
@@ -72,7 +74,7 @@
       <Translation
         params={typeof length === 'number'
           ? {
-              time: convertLength(length)
+              time: lengthText
             }
           : undefined}
         key={typeof length === 'number' ? 'LENGTH_VIDEO' : `LENGTH_${length}`}
