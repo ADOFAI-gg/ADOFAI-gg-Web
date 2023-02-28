@@ -11,20 +11,6 @@ export const setupSentry = () => {
         if (['EvalError', 'SyntaxError'].includes(event.exception.values?.[0].type as string)) {
           return null;
         }
-        Sentry.showReportDialog({
-          eventId: event.event_id
-          // title: '',
-          // subtitle: '',
-          // subtitle2: '',
-          // labelName: '',
-          // labelEmail: '',
-          // labelComments: '',
-          // labelClose: '',
-          // labelSubmit: '',
-          // errorGeneric: '',
-          // errorFormEntry: '',
-          // successMessage: '',
-        });
       }
 
       return event;
