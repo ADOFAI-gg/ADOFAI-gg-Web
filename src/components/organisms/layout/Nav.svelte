@@ -25,9 +25,7 @@
       <div class="nav__divider" />
     {/if}
     <Popover
-      style="
-      /* stylelint-disable-next-line max-empty-lines */
-      --tippy-corner-radius: 12px;"
+      style="--tippy-corner-radius: 12px;"
       options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
       placement="bottom-end"
     >
