@@ -27,7 +27,7 @@
       </div>
 
       <div class="top-play__level">
-        <DifficultyIcon {difficulty} />
+        <DifficultyIcon {difficulty} censored={play.level.censored} />
 
         <div>{play.level.name}</div>
       </div>

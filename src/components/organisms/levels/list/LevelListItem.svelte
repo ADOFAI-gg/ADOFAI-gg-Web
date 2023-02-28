@@ -12,7 +12,7 @@
   <div class="level-list-item__info-container">
     <div class="level-list-item__basic-info">
       <div class="level-list-item__basic-info__difficulty">
-        <DifficultyIcon size={42} difficulty={level.difficulty} />
+        <DifficultyIcon size={42} difficulty={level.difficulty} censored={level.censored} />
 
         <div class="level-list-item__basic-info__difficulty__id">ID {level.id}</div>
       </div>

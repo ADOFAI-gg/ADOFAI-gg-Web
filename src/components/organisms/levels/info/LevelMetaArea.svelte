@@ -65,7 +65,7 @@
 <section>
   <div class="horizontal">
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
-      <DifficultyIcon difficulty={level.difficulty} size={28} />
+      <DifficultyIcon difficulty={level.difficulty} size={28} censored={level.censored} />
     </LevelMetaLabelValuePair>
 
     <LevelMetaLabelValuePair label="LEVEL_DETAIL_SONG_LENGTH">

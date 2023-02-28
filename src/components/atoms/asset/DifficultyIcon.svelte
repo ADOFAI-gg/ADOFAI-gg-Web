@@ -9,9 +9,13 @@
 
   export let size = 24;
 
+  export let censored = false;
+
   $: url = (
-    icons[`../../../assets/difficultyIcons/${difficulty}.svg`] as { default: string } | undefined
+    icons[`../../../assets/difficultyIcons/${censored ? -2 : difficulty}.svg`] as
+      | { default: string }
+      | undefined
   )?.default;
 </script>
 
-<img src={url} width={size} height={size} alt="lv.{difficulty}" draggable="false" />
+<img src={url} width={size} height={size} alt="lv.{censored ? -2 : difficulty}" draggable="false" />

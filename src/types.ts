@@ -53,6 +53,7 @@ export interface Level {
   music: PartialMusic;
   tiles: number;
   video: string;
+  censored: boolean;
 
   download: string;
   workshop: string | null;

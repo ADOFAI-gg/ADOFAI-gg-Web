@@ -90,7 +90,7 @@
       >
 
       <Cell>
-        <DifficultyIcon difficulty={item.difficulty} size={28} />
+        <DifficultyIcon difficulty={item.difficulty} size={28} censored={item.censored} />
       </Cell>
 
       <Cell leftSideBorder>
