@@ -89,7 +89,7 @@
         gap: 6px;
         align-items: center;
         color: rgba(var(--color-red), 1);
-        font-weight: 500;
+        font-weight: 600;
         font-size: 16px;
       }
     }
