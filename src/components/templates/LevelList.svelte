@@ -256,6 +256,7 @@
   .table-view-search-area {
     position: sticky;
     left: 120px;
+    z-index: 10;
     width: calc(100vw - 240px);
 
     @media screen and (max-width: 768px) {
