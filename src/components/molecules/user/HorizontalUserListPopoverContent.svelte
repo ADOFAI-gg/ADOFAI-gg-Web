@@ -1,5 +1,6 @@
 <script lang="ts">
   import UserListItem from '@/components/molecules/user/UserListItem.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
   import type { PartialMember } from '@/types';
 
   export let users: PartialMember[];
@@ -8,7 +9,9 @@
 </script>
 
 <div class="list-popover-content">
-  <div class="list-popover-content__title">{allTitle}</div>
+  <div class="list-popover-content__title">
+    <Translation key={allTitle} />
+  </div>
   <div class="list-popover-content__user-list">
     {#each users as user, i (i)}
       <UserListItem popup {user} />

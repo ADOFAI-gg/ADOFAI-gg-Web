@@ -1,12 +1,15 @@
 <script lang="ts">
   import Icon from '@/components/atoms/asset/Icon.svelte';
+  import Translation from '@/components/utils/Translation.svelte';
 </script>
 
 <button class="more-button">
   <div class="more-button__icon">
     <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
   </div>
-  <div>Show All</div>
+  <div>
+    <Translation key="SHOW_ALL" />
+  </div>
 </button>
 
 <style lang="scss">
