@@ -14,7 +14,10 @@
   placement={popup ? 'right' : 'bottom'}
   options={{
     offset: popup ? [0, 20] : [0, 10],
-    arrow: !popup
+    arrow: !popup,
+    popperOptions: {
+      strategy: 'fixed'
+    }
   }}
 >
   <div slot="button" class="user" style="font-size: {popup ? '16px' : '24px'};">

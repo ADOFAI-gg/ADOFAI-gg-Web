@@ -26,15 +26,6 @@
         placement,
         popperOptions: {
           strategy: 'absolute',
-          modifiers: [
-            {
-              name: 'preventOverflow',
-              options: {
-                altAxis: true,
-                tether: false
-              }
-            }
-          ],
           ...options.popperOptions
         },
         hideOnClick: 'toggle',

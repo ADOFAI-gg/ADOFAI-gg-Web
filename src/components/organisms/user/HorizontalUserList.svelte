@@ -67,7 +67,14 @@
     {/each}
 
     <div class="popover-container">
-      <Popover bind:button={moreButton}>
+      <Popover
+        bind:button={moreButton}
+        options={{
+          popperOptions: {
+            strategy: 'fixed'
+          }
+        }}
+      >
         <HorizontalUserListMorebutton slot="button" />
         <HorizontalUserListPopoverContent {allTitle} {users} />
       </Popover>
