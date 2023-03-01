@@ -3,7 +3,6 @@
     "esbenp.prettier-vscode",
     "svelte.svelte-vscode",
     "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
     "stylelint.vscode-stylelint"
   ]
 }
