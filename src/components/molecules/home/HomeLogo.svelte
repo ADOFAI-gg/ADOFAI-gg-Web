@@ -12,9 +12,7 @@
         href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468"
         rel="noreferrer"
         target="_blank"
-      >
-        $1
-      </a>`
+      >$1</a>`
     );
   };
 
