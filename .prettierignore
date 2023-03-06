@@ -16,3 +16,5 @@ yarn-error.log
 .pnp.*
 .yarn
 src/assets
+
+storybook-static
