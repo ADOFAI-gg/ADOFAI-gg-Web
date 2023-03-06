@@ -9,10 +9,9 @@
 </script>
 
 <script lang="ts">
-  import { langData, currentLang, fallbackLang } from '@/utils/i18n';
-  import type Translations from '@/assets/translations/en.json';
+  import { langData, currentLang, fallbackLang, type TranslationKeys } from '@/utils/i18n';
 
-  export let key: keyof typeof Translations;
+  export let key: TranslationKeys;
   export let params: Record<string, string> = {};
 
   export let htmlReplacer: (value: string) => string = (v) => v;

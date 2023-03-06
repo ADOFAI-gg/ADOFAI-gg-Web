@@ -1,7 +1,11 @@
 import { writable } from 'svelte/store';
+import type Translations from '@/assets/translations/en.json';
+
 import langs from '@/assets/langs.json';
 import { browser } from '$app/environment';
 import Cookies from 'js-cookie';
+
+export type TranslationKeys = keyof typeof Translations;
 
 export const availableLanguages: LangResponse[] = langs;
 
