@@ -10,7 +10,8 @@
   --color-darkblue: 0, 2, 15;
   --color-dropdown: 11, 24, 35;
   --color-bg-solid: 35, 43, 90;
-  --font-normal: 'QuicksandVariable', 'Quicksand', 'M PLUS Rounded 1c', 'NanumSquareRound', sans-serif;
+  --font-normal: 'QuicksandVariable', 'Quicksand', 'M PLUS Rounded 1c', 'NanumSquareRound',
+    sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   --animation-fadein: fade-in 0.2s linear;
   --drop-shadow-6: 0 0 6px rgb(0, 0, 0);
@@ -62,13 +63,17 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
   }
 }
 
 body:not(.enable-motion) {
-  * {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
   }
 }
