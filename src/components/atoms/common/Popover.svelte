@@ -26,6 +26,12 @@
         placement,
         popperOptions: {
           strategy: 'absolute',
+          modifiers: [
+            {
+              name: 'preventOverflow'
+            },
+            ...(options.popperOptions?.modifiers ?? [])
+          ],
           ...options.popperOptions
         },
         hideOnClick: 'toggle',

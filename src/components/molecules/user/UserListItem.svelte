@@ -11,7 +11,7 @@
 </script>
 
 <Popover
-  placement={popup ? 'right' : 'bottom'}
+  placement="bottom"
   options={{
     offset: popup ? [0, 20] : [0, 10],
     arrow: !popup,
