@@ -17,6 +17,14 @@
   >
     <Translation key="NAV_SETTINGS_LANGUAGES_BUTTON" />
   </NavMenuItem>
+  <NavMenuItem
+    on:click={() => ($currentTab = 'accessibility')}
+    role="menuitem"
+    tabindex="0"
+    class="menu-item"
+  >
+    <Translation key="NAV_SETTINGS_ACCESSIBILITY" />
+  </NavMenuItem>
 </NavMenuGroup>
 
 <div class="mobile-only">

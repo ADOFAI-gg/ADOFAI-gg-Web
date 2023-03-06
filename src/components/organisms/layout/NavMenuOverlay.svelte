@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  export type NavMenuTabType = 'lang' | null;
+  export type NavMenuTabType = 'lang' | 'accessibility' | null;
   export const getNavCurrentTab = () => getContext<Writable<NavMenuTabType>>('currentTab');
 </script>
 
@@ -8,6 +8,7 @@
   import { writable, type Writable } from 'svelte/store';
   import { fade } from 'svelte/transition';
   import DefaultMenuOverlayContent from './DefaultMenuOverlayContent.svelte';
+  import MenuOverlayAccessibilityTab from './MenuOverlayAccessibilityTab.svelte';
   import MenuOverlayLangTab from './MenuOverlayLangTab.svelte';
 
   let currentTab = writable<NavMenuTabType>(null);
@@ -23,7 +24,11 @@
     <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
       <MenuOverlayLangTab />
     </div>
-  {:else if !$currentTab}
+  {:else if $currentTab === 'accessibility'}
+    <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
+      <MenuOverlayAccessibilityTab />
+    </div>
+  {:else}
     <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
       <DefaultMenuOverlayContent />
     </div>
