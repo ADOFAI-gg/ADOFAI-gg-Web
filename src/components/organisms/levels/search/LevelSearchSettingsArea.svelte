@@ -21,6 +21,7 @@
   import LevelSearchMetaTab from '@organisms/levels/search/LevelSearchMetaTab.svelte';
   import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
   import { tick } from 'svelte';
+  import { reduceMotion } from '@/utils/settings';
 
   let height = 0;
 
@@ -84,7 +85,7 @@
         </Button>
 
         {#if $currentTab === 'tags'}
-          <div transition:fade={{ duration: 200 }} class="help-area">
+          <div transition:fade={{ duration: $reduceMotion ? 0 : 200 }} class="help-area">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}
@@ -102,15 +103,15 @@
   </div>
   <div class="settings-container" class:settings-open={!!$currentTab} style="height: {height}px;">
     {#if $currentTab === 'tags'}
-      <div transition:fade bind:this={tagSearchTab}>
+      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={tagSearchTab}>
         <TagSearchTab />
       </div>
     {:else if $currentTab === 'meta'}
-      <div transition:fade bind:this={filterTab}>
+      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={filterTab}>
         <LevelSearchMetaTab />
       </div>
     {:else if $currentTab === 'sort'}
-      <div transition:fade bind:this={sortTab}>
+      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={sortTab}>
         <LevelSearchSortTab />
       </div>
     {/if}

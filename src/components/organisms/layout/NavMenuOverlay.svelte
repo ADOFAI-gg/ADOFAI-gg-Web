@@ -4,6 +4,8 @@
 </script>
 
 <script lang="ts">
+  import { reduceMotion } from '@/utils/settings';
+
   import { getContext, setContext } from 'svelte';
   import { writable, type Writable } from 'svelte/store';
   import { fade } from 'svelte/transition';
@@ -21,15 +23,30 @@
 
 <div class="menu" style="--width: {width}px; --height: {height}px;">
   {#if $currentTab === 'lang'}
-    <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
+    <div
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      class="menu-group"
+      bind:clientWidth={width}
+      bind:clientHeight={height}
+    >
       <MenuOverlayLangTab />
     </div>
   {:else if $currentTab === 'accessibility'}
-    <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
+    <div
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      class="menu-group"
+      bind:clientWidth={width}
+      bind:clientHeight={height}
+    >
       <MenuOverlayAccessibilityTab />
     </div>
   {:else}
-    <div transition:fade class="menu-group" bind:clientWidth={width} bind:clientHeight={height}>
+    <div
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      class="menu-group"
+      bind:clientWidth={width}
+      bind:clientHeight={height}
+    >
       <DefaultMenuOverlayContent />
     </div>
   {/if}

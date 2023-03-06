@@ -2,6 +2,7 @@
   import Icon from '@atoms/asset/Icon.svelte';
   import { fade } from 'svelte/transition';
   import { translate, currentLang } from '@/utils/i18n';
+  import { reduceMotion } from '@/utils/settings';
 
   export let value = '';
 
@@ -17,7 +18,10 @@
     <input bind:value type="text" class="search-input__input" aria-label={placeholderContent} />
 
     {#if !value}
-      <div transition:fade={{ duration: 200 }} class="search-input__placeholder">
+      <div
+        transition:fade={{ duration: $reduceMotion ? 0 : 200 }}
+        class="search-input__placeholder"
+      >
         {placeholderContent}
       </div>
     {/if}

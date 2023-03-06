@@ -49,7 +49,7 @@
       />
     </div>
     {#if $searchSetingStore.sort.order !== 'shuffle'}
-      <div class="sort__order-area" transition:fade={{ duration: 200 }}>
+      <div class="sort__order-area" transition:fade={{ duration: 400 }}>
         <div class="sort__divider" />
         <div class="sort__order-container">
           <SortOrderRadio
