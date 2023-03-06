@@ -12,6 +12,7 @@
   import type { Instance, Props } from 'tippy.js';
   import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import { reduceMotion } from '@/utils/settings';
 
   export let placeholder: string;
 
@@ -66,7 +67,7 @@
         <Icon icon="close" size={14} alt="Reset Value Icon" />
       </button>
     {:else}
-      <div class="input-placeholder" transition:fade={{ duration: 200 }}>
+      <div class="input-placeholder" transition:fade={{ duration: $reduceMotion ? 0 : 200 }}>
         <Translation key={placeholder} />
       </div>
     {/if}

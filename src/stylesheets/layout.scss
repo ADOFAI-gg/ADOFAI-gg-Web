@@ -1,0 +1,25 @@
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(var(--color-bg-solid), 1);
+  color: white;
+  letter-spacing: -0.01rem;
+
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &.image-bg {
+    background-image: url('/background.webp');
+  }
+}

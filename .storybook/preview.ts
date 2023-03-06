@@ -12,7 +12,7 @@ const preview: Preview = {
         },
         {
           name: 'solid',
-          value: 'rgba(var(--color-bg-solid), 1)'
+          value: 'rgba(35, 43, 90, 1)'
         }
       ]
     },
