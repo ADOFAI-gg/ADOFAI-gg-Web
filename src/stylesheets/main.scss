@@ -61,32 +61,14 @@ body {
   }
 }
 
-// #root {
-//   width: 100vw;
-//   height: 100vh;
-//   overflow-y: scroll;
-// }
-
-// Scrollbar --------------------------------------------------
-
-body > .simplebar-wrapper {
-  width: 100vw;
-  height: 100vh;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }
 
-.simplebar-scrollbar::before {
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.simplebar-track {
-  pointer-events: all;
-}
-
-.simplebar-vertical .simplebar-scrollbar::before {
-  width: 10px;
-}
-
-.simplebar-horizontal .simplebar-scrollbar::before {
-  height: 10px;
+body:not(.enable-motion) {
+  * {
+    transition: none !important;
+  }
 }

@@ -19,3 +19,21 @@ useSolidBackground.subscribe((v) => {
     }
   }
 });
+
+export const reduceMotion = writable(browser ? !!Cookies.get('_adofaigg-reduce-motion') : false);
+
+reduceMotion.subscribe((v) => {
+  if (v) {
+    Cookies.set('_adofaigg-reduce-motion', '1');
+  } else {
+    Cookies.remove('_adofaigg-reduce-motion');
+  }
+
+  if (browser) {
+    if (v) {
+      document.body.classList.remove('enable-motion');
+    } else {
+      document.body.classList.add('enable-motion');
+    }
+  }
+});
