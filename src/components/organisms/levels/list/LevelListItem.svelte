@@ -180,12 +180,6 @@
     }
   }
 
-  :global(body:not(.enable-motion)) {
-    .level-list-item {
-      background-color: transparent !important;
-    }
-  }
-
   .details-area {
     display: flex;
     flex-direction: column;

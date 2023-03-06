@@ -128,17 +128,4 @@
       gap: 24px;
     }
   }
-
-  :global(body:not(.enable-motion)) {
-    .top-play-wrapper {
-      background-color: transparent !important;
-    }
-
-    .top-play {
-      &:hover,
-      &:focus {
-        transform: scale(1) !important;
-      }
-    }
-  }
 </style>

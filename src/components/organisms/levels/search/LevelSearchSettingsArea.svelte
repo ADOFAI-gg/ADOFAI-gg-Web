@@ -85,7 +85,7 @@
         </Button>
 
         {#if $currentTab === 'tags'}
-          <div transition:fade={{ duration: $reduceMotion ? 0 : 200 }} class="help-area">
+          <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} class="help-area">
             <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
           </div>
         {/if}
