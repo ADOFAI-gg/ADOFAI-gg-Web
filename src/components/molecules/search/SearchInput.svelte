@@ -1,20 +1,47 @@
+<script lang="ts" context="module">
+  const escape = (str: string) =>
+    str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+</script>
+
 <script lang="ts">
   import Icon from '@atoms/asset/Icon.svelte';
   import { fade } from 'svelte/transition';
   import { translate, currentLang } from '@/utils/i18n';
+  import { parseSearchString, type SearchChunk } from '@/utils/search';
 
   export let value = '';
+  export let parsedValue: SearchChunk[] = [];
 
   export let placeholder = 'SEARCH_INPUT_PLACEHOLDER_HOME';
 
   $: placeholderContent = translate(placeholder || '', $currentLang);
+
+  $: parsedValue = parseSearchString(value);
 </script>
 
 <div class="search-input">
   <Icon icon="search" size={16} alt="Search Icon" />
 
   <div class="search-input__input-wrapper">
-    <input bind:value type="text" class="search-input__input" aria-label={placeholderContent} />
+    <input type="text" class="search-input__input" bind:value />
+    <div class="search-renderer">
+      {#each parsedValue as chunk (chunk)}
+        {#if chunk.type === 'normal'}
+          {@html escape(chunk.value).replace(/ /g, '&nbsp;')}
+        {:else}
+          <span>{chunk.type}:</span><span class="search-parameter-content">
+            {@html escape(
+              chunk.quote ? `${chunk.quote}${chunk.value}${chunk.quote}` : chunk.value
+            ).replace(/ /g, '&nbsp;')}
+          </span>
+        {/if}
+      {/each}
+    </div>
 
     {#if !value}
       <div transition:fade={{ duration: 200 }} class="search-input__placeholder">
@@ -44,13 +71,16 @@
 
     &__input {
       position: absolute;
-      top: 0;
+      top: 50%;
       left: 0;
+      align-items: center;
       width: 100%;
-      height: 100%;
       background-color: transparent;
+      color: transparent;
       outline: none;
       font-size: 16px;
+      transform: translateY(-50%);
+      caret-color: white;
     }
 
     &__placeholder {
@@ -64,5 +94,22 @@
       pointer-events: none;
       transform: translateY(-50%);
     }
+  }
+
+  .search-renderer {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    font-size: 16px;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  .search-parameter-content {
+    color: rgba(var(--color-blue), 1);
   }
 </style>

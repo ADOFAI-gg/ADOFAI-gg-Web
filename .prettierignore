@@ -16,3 +16,4 @@ yarn-error.log
 .pnp.*
 .yarn
 src/assets
+src/utils/search/parser.ts

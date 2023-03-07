@@ -12,3 +12,4 @@ node_modules
 .cache
 static/assets
 yarn-error.log
+src/utils/search/parser.ts
