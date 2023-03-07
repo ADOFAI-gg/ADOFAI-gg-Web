@@ -19,6 +19,8 @@
 
   export let placeholder = 'SEARCH_INPUT_PLACEHOLDER_HOME';
 
+  let inputWidth = 0;
+
   $: placeholderContent = translate(placeholder || '', $currentLang);
 
   $: parsedValue = parseSearchString(value);
@@ -28,8 +30,8 @@
   <Icon icon="search" size={16} alt="Search Icon" />
 
   <div class="search-input__input-wrapper">
-    <input type="text" class="search-input__input" bind:value />
-    <div class="search-renderer">
+    <input type="text" class="search-input__input" bind:value style="width: {inputWidth}px;" />
+    <div class="search-renderer" bind:clientWidth={inputWidth}>
       {#each parsedValue as chunk (chunk)}
         {#if chunk.type === 'normal'}
           <span>{@html escape(chunk.value).replace(/ /g, '&nbsp;')}</span>
@@ -72,8 +74,10 @@
     &__input-wrapper {
       position: relative;
       flex-grow: 1;
+      overflow-x: scroll;
       width: 0;
       height: 100%;
+      scrollbar-width: none;
     }
 
     &__input {
@@ -108,7 +112,7 @@
     top: 50%;
     left: 0;
     align-items: center;
-    width: 100%;
+    width: fit-content;
     background-color: transparent;
     outline: none;
     font-size: 16px;
