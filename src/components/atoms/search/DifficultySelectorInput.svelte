@@ -13,13 +13,18 @@
   import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import { reduceMotion } from '@/utils/settings';
+  import { createEventDispatcher } from 'svelte';
 
   export let placeholder: string;
 
   export let value: number | null;
 
+  const dispatch = createEventDispatcher();
+
   $: update = (difficulty: number | null) => () => {
-    value = difficulty;
+    // value = difficulty;
+
+    dispatch('change', { value: difficulty });
   };
 
   let instance: Instance | null;

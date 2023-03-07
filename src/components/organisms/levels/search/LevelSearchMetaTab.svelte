@@ -3,13 +3,11 @@
   import RangeInputPair from '@atoms/interaction/RangeInputPair.svelte';
   import SearchMetaInput from '@atoms/search/SearchMetaInput.svelte';
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
-  import { searchSetingStore } from '@/stores/search';
+  import { parsedQuery, searchSetingStore } from '@/stores/search';
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
   import { encodeSearchString, parseSearchString, SearchStringAnalyzer } from '@/utils/search';
 
   $: parsed = parseSearchString($searchSetingStore.query);
-
-  $: analyzed = new SearchStringAnalyzer(parsed);
 
   const onChangeArtist = (e: Event) => {
     const value = (e.target as HTMLInputElement).value;
@@ -46,6 +44,78 @@
 
     $searchSetingStore.query = encodeSearchString(filtered);
   };
+
+  const onChangeMinTiles = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'minTiles');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'minTiles');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: null,
+        type: 'minTiles',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
+
+  const onChangeMaxTiles = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'maxTiles');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'maxTiles');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: null,
+        type: 'maxTiles',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
+
+  const onChangeMinBPM = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'minBpm');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'minBpm');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: null,
+        type: 'minBpm',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
+
+  const onChangeMaxBPM = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'maxBpm');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'maxBpm');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: null,
+        type: 'maxBpm',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
 </script>
 
 <div class="meta">
@@ -54,14 +124,14 @@
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
         <SearchMetaInput
           on:input={onChangeArtist}
-          value={analyzed.artist}
+          value={$parsedQuery.artist}
           placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
         />
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
         <SearchMetaInput
           on:input={onChangeCreator}
-          value={analyzed.creator}
+          value={$parsedQuery.creator}
           placeholder="SEARCH_META_CREATOR_PLACEHOLDER"
         />
       </LabeledInputContainer>
@@ -75,14 +145,16 @@
       <LabeledInputContainer label="SEARCH_META_TILES_LABEL">
         <RangeInputPair>
           <SearchMetaInput
-            bind:value={$searchSetingStore.filter.tiles.min}
+            value={$parsedQuery.minTiles}
+            on:input={onChangeMinTiles}
             slot="min"
             min={0}
             type="number"
             placeholder="SEARCH_META_TILES_MIN"
           />
           <SearchMetaInput
-            bind:value={$searchSetingStore.filter.tiles.max}
+            value={$parsedQuery.maxTiles}
+            on:input={onChangeMaxTiles}
             slot="max"
             min={0}
             type="number"
@@ -93,14 +165,16 @@
       <LabeledInputContainer label="SEARCH_META_BPM_LABEL">
         <RangeInputPair>
           <SearchMetaInput
-            bind:value={$searchSetingStore.filter.bpm.min}
+            value={$parsedQuery.minBpm}
+            on:input={onChangeMinBPM}
             slot="min"
             min={0}
             type="number"
             placeholder="SEARCH_META_BPM_MIN"
           />
           <SearchMetaInput
-            bind:value={$searchSetingStore.filter.bpm.max}
+            value={$parsedQuery.maxBpm}
+            on:input={onChangeMaxBPM}
             slot="max"
             min={0}
             type="number"

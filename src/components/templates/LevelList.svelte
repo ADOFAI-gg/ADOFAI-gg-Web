@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { searchSetingStore } from '@/stores/search';
+  import { parsedQuery, searchSetingStore } from '@/stores/search';
 
   import SearchInput from '@molecules/search/SearchInput.svelte';
   import LevelSearchSettingsArea, {
@@ -15,7 +15,6 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
-  import { parseSearchString, SearchStringAnalyzer } from '@/utils/search';
 
   let items: Writable<Level[]> = writable([]);
 
@@ -40,7 +39,7 @@
   const params = (start: number) => {
     const settings = $searchSetingStore;
 
-    const analyzed = new SearchStringAnalyzer(parseSearchString(settings.query));
+    const analyzed = $parsedQuery;
 
     const result: Record<string, string | number | null> = {
       queryTitle: analyzed.song.trim(),
@@ -55,20 +54,14 @@
       excludeTags: settings.filter.tags.exclude.join(',')
     };
 
-    if (settings.filter.bpm.min !== null && settings.filter.bpm.min >= 0)
-      result.minBpm = settings.filter.bpm.min;
-    if (settings.filter.bpm.max !== null && settings.filter.bpm.max >= 0)
-      result.maxBpm = settings.filter.bpm.max;
+    if (typeof analyzed.minBpm === 'number') result.minBpm = analyzed.minBpm;
+    if (typeof analyzed.maxBpm === 'number') result.maxBpm = analyzed.maxBpm;
 
-    if (settings.filter.difficulty.min !== null)
-      result.minDifficulty = settings.filter.difficulty.min;
-    if (settings.filter.difficulty.max !== null)
-      result.maxDifficulty = settings.filter.difficulty.max;
+    if (typeof analyzed.minDifficulty === 'number') result.minDifficulty = analyzed.minDifficulty;
+    if (typeof analyzed.maxDifficulty === 'number') result.maxDifficulty = analyzed.maxDifficulty;
 
-    if (settings.filter.tiles.min !== null && settings.filter.tiles.min >= 0)
-      result.minTiles = settings.filter.tiles.min;
-    if (settings.filter.tiles.max !== null && settings.filter.tiles.max >= 0)
-      result.maxTiles = settings.filter.tiles.max;
+    if (typeof analyzed.minTiles === 'number') result.minTiles = analyzed.minTiles;
+    if (typeof analyzed.maxTiles === 'number') result.maxTiles = analyzed.maxTiles;
 
     if (settings.sort.order !== 'shuffle') {
       let res: string;

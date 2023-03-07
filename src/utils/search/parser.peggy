@@ -13,7 +13,7 @@ ArgumentedChunk = type:ArgumentName ':' afterLabel:' '? value:ArgumentedChunkTex
 
 SpecialChunk = value:(DifficultyChunk / IntChunk / FloatChunk) afterExp:' '? { return { ...value, afterExp } }
 
-DifficultyChunk = 'difficulty:' value:DifficultyChunkValue { return { type: 'difficulty', value, quote: null } }
+DifficultyChunk = type:('minDifficulty' / 'maxDifficulty') ':' afterLabel:' '? value:DifficultyChunkValue { return { type, value, quote: null, afterLabel } }
 
 DifficultyChunkValue = 'tiny' / '10' / '11' / '12' / '13' / '14' 
     / '15' / '16' / '17' / '18.5' / '18' / '19.5' / '19' / '20.0' / '20.1' / '20.2' / '20.3' / '20.4' / '20.5' 

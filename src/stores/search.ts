@@ -1,4 +1,5 @@
-import { writable } from 'svelte/store';
+import { parseSearchString, SearchStringAnalyzer } from '@/utils/search';
+import { derived, writable } from 'svelte/store';
 
 type Filters = {
   tags: {
@@ -57,3 +58,7 @@ export const defaultSearchSettings: SearchSettings = {
 };
 
 export const searchSetingStore = writable<SearchSettings>(defaultSearchSettings);
+
+export const parsedQuery = derived(searchSetingStore, values => {
+  return new SearchStringAnalyzer(parseSearchString(values.query))
+})
