@@ -32,17 +32,20 @@
     <div class="search-renderer">
       {#each parsedValue as chunk (chunk)}
         {#if chunk.type === 'normal'}
-          {@html escape(chunk.value).replace(/ /g, '&nbsp;')}
+          <span>{@html escape(chunk.value).replace(/ /g, '&nbsp;')}</span>
         {:else}
-          <span>{chunk.type}:</span><span class="search-parameter-content">
-            {@html escape(
-              chunk.quote
-                ? `${chunk.quote}${chunk.value.split(chunk.quote).join(`\\${chunk.quote}`)}${
-                    chunk.quote
-                  }`
-                : chunk.value
-            ).replace(/ /g, '&nbsp;')}
-          </span>
+          <span class="search-parameter-label">{chunk.type}:</span><span
+            class="search-parameter-content"
+            >{@html escape(
+              (chunk.afterLabel ?? '') +
+                (chunk.quote
+                  ? `${chunk.quote}${chunk.value.split(chunk.quote).join(`\\${chunk.quote}`)}${
+                      chunk.quote
+                    }`
+                  : chunk.value) +
+                (chunk.afterExp ?? '')
+            ).replace(/ /g, '&nbsp;')}</span
+          >
         {/if}
       {/each}
     </div>

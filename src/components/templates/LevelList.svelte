@@ -43,10 +43,10 @@
     const analyzed = new SearchStringAnalyzer(parseSearchString(settings.query));
 
     const result: Record<string, string | number | null> = {
-      queryTitle: analyzed.song,
-      queryArtist: analyzed.artist,
-      queryCreator: analyzed.creator,
-      query: analyzed.normal,
+      queryTitle: analyzed.song.trim(),
+      queryArtist: analyzed.artist.trim(),
+      queryCreator: analyzed.creator.trim(),
+      query: analyzed.normal.trim(),
 
       offset: start,
       amount: '25',

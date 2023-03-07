@@ -1,8 +1,10 @@
 import { parse } from './parser';
 
 export interface SearchChunk {
-  type: 'artist' | 'creator' | 'song' | 'normal';
+  type: 'artist' | 'creator' | 'song' | 'normal' | 'difficulty' | 'minBpm' | 'maxBpm' | 'minTiles' | 'maxTiles';
   value: string;
+  afterLabel?: string | null
+  afterExp?: string | null
   quote: string | null;
 }
 
