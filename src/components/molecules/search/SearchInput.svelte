@@ -85,7 +85,7 @@
       top: 50%;
       left: 0;
       align-items: center;
-      width: 100%;
+      min-width: 100%;
       background-color: transparent;
       color: transparent;
       outline: none;
