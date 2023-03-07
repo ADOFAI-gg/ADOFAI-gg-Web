@@ -16,4 +16,6 @@ yarn-error.log
 .pnp.*
 .yarn
 src/assets
+
+storybook-static
 src/utils/search/parser.ts

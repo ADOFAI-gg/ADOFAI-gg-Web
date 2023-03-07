@@ -56,8 +56,7 @@
     text-align: center;
 
     &__sync-status {
-      display: flex;
-      gap: 12px;
+      display: block;
       opacity: 0.6;
 
       &__status {
@@ -65,6 +64,7 @@
       }
 
       &__time {
+        margin-left: 12px;
         font-weight: 400;
       }
     }

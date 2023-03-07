@@ -18,5 +18,12 @@
   },
   "eslint.validate": ["typescript", "svelte"],
   "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
-  "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"]
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "scss",
+    "svelte"
+  ],
+  "files.eol": "\n"
 }

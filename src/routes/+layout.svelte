@@ -13,11 +13,11 @@
 
 <script lang="ts">
   import '@/stylesheets/main.scss';
+  import '@/stylesheets/layout.scss';
   import '@/stylesheets/font.scss';
   import Nav from '@organisms/layout/Nav.svelte';
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { onMount } from 'svelte';
-  import { writable } from 'svelte/store';
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
   import { setupSentry } from '@/utils/sentry';

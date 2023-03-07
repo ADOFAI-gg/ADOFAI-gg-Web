@@ -9,9 +9,9 @@
 </script>
 
 <script lang="ts">
-  import { langData, currentLang, fallbackLang } from '@/utils/i18n';
+  import { langData, currentLang, fallbackLang, type TranslationKeys } from '@/utils/i18n';
 
-  export let key: string;
+  export let key: TranslationKeys | string;
   export let params: Record<string, string> = {};
 
   export let htmlReplacer: (value: string) => string = (v) => v;
