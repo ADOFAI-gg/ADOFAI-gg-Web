@@ -15,6 +15,7 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
+  import { parseSearchString, SearchStringAnalyzer } from '@/utils/search';
 
   let items: Writable<Level[]> = writable([]);
 
@@ -39,11 +40,13 @@
   const params = (start: number) => {
     const settings = $searchSetingStore;
 
+    const analyzed = new SearchStringAnalyzer(parseSearchString(settings.query));
+
     const result: Record<string, string | number | null> = {
-      queryTitle: settings.query.full ? null : settings.query.title || null,
-      queryArtist: settings.query.artist || null,
-      queryCreator: settings.query.creator || null,
-      query: settings.query.full ? settings.query.title || null : null,
+      queryTitle: analyzed.song,
+      queryArtist: analyzed.artist,
+      queryCreator: analyzed.creator,
+      query: analyzed.normal,
 
       offset: start,
       amount: '25',
@@ -175,10 +178,8 @@
     <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
       <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
         <SearchInput
-          placeholder={$searchSetingStore.query.full
-            ? 'SEARCH_INPUT_PLACEHOLDER_HOME'
-            : 'SEARCH_INPUT_PLACEHOLDER_LEVELS'}
-          bind:value={$searchSetingStore.query.title}
+          placeholder={'SEARCH_INPUT_PLACEHOLDER_HOME'}
+          bind:value={$searchSetingStore.query}
         />
         <div class="search-settings-area">
           <LevelSearchSettingsArea />

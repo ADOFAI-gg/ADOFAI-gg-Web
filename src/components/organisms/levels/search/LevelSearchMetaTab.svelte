@@ -5,6 +5,47 @@
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
   import { searchSetingStore } from '@/stores/search';
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
+  import { encodeSearchString, parseSearchString, SearchStringAnalyzer } from '@/utils/search';
+
+  $: parsed = parseSearchString($searchSetingStore.query);
+
+  $: analyzed = new SearchStringAnalyzer(parsed);
+
+  const onChangeArtist = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'artist');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'artist');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: value.includes(' ') ? '"' : null,
+        type: 'artist',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
+
+  const onChangeCreator = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'creator');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'creator');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: value.includes(' ') ? '"' : null,
+        type: 'creator',
+        value
+      });
+    }
+
+    $searchSetingStore.query = encodeSearchString(filtered);
+  };
 </script>
 
 <div class="meta">
@@ -12,13 +53,15 @@
     <div class="meta-group">
       <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
         <SearchMetaInput
-          bind:value={$searchSetingStore.query.artist}
+          on:input={onChangeArtist}
+          value={analyzed.artist}
           placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
         />
       </LabeledInputContainer>
       <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
         <SearchMetaInput
-          bind:value={$searchSetingStore.query.creator}
+          on:input={onChangeCreator}
+          value={analyzed.creator}
           placeholder="SEARCH_META_CREATOR_PLACEHOLDER"
         />
       </LabeledInputContainer>

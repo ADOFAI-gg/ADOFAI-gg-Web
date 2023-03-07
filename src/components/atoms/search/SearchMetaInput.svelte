@@ -28,6 +28,7 @@
         type="number"
         class="input-container__input"
         bind:value
+        on:input
         {min}
         {max}
         aria-label={placeholderContent}
@@ -37,6 +38,7 @@
         type="text"
         class="input-container__input"
         bind:value
+        on:input
         {min}
         {max}
         aria-label={placeholderContent}

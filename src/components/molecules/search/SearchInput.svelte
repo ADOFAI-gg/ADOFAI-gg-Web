@@ -36,7 +36,11 @@
         {:else}
           <span>{chunk.type}:</span><span class="search-parameter-content">
             {@html escape(
-              chunk.quote ? `${chunk.quote}${chunk.value}${chunk.quote}` : chunk.value
+              chunk.quote
+                ? `${chunk.quote}${chunk.value.split(chunk.quote).join(`\\${chunk.quote}`)}${
+                    chunk.quote
+                  }`
+                : chunk.value
             ).replace(/ /g, '&nbsp;')}
           </span>
         {/if}

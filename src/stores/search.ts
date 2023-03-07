@@ -21,12 +21,7 @@ type Filters = {
 };
 
 export type SearchSettings = {
-  query: {
-    full?: boolean;
-    artist: string;
-    creator: string;
-    title: string;
-  };
+  query: string;
   filter: Filters;
   sort: {
     order: 'asc' | 'desc' | 'shuffle';
@@ -35,11 +30,7 @@ export type SearchSettings = {
 };
 
 export const defaultSearchSettings: SearchSettings = {
-  query: {
-    artist: '',
-    creator: '',
-    title: ''
-  },
+  query: '',
   filter: {
     tags: {
       include: [],

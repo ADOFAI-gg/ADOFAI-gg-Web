@@ -12,7 +12,28 @@ export const parseSearchString = (text: string) => {
   return items as SearchChunk[];
 };
 
-const escape = (text: string) => `"${text.replace(/(["'])/g, '\\$1')}"`;
+export class SearchStringAnalyzer {
+  constructor(private chunks: SearchChunk[]) {}
+
+  get artist() {
+    return this.chunks.find((x) => x.type === 'artist')?.value ?? '';
+  }
+
+  get song() {
+    return this.chunks.find((x) => x.type === 'song')?.value ?? '';
+  }
+
+  get creator() {
+    return this.chunks.find((x) => x.type === 'creator')?.value ?? '';
+  }
+
+  get normal() {
+    return this.chunks
+      .filter((x) => x.type === 'normal')
+      .map((x) => x.value)
+      .join(' ');
+  }
+}
 
 export const encodeSearchString = (chunks: SearchChunk[]): string => {
   let result = '';
@@ -21,7 +42,11 @@ export const encodeSearchString = (chunks: SearchChunk[]): string => {
     if (chunk.type === 'normal') {
       result += chunk.value;
     } else {
-      result += `${chunk.type}:` + escape(chunk.value);
+      result +=
+        `${chunk.type}:` +
+        (chunk.quote
+          ? `${chunk.quote}${chunk.value.split(chunk.quote).join(`\\${chunk.quote}`)}${chunk.quote}`
+          : chunk.value);
     }
   }
 

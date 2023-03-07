@@ -11,11 +11,7 @@
     e.preventDefault();
     searchSetingStore.update((v) => ({
       ...v,
-      query: {
-        ...v.query,
-        full: true,
-        title: searchQuery
-      }
+      query: searchQuery
     }));
     goto('/levels');
   };
