@@ -78,6 +78,11 @@
       width: 0;
       height: 100%;
       scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
     }
 
     &__input {
