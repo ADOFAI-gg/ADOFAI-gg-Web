@@ -59,6 +59,6 @@ export const defaultSearchSettings: SearchSettings = {
 
 export const searchSetingStore = writable<SearchSettings>(defaultSearchSettings);
 
-export const parsedQuery = derived(searchSetingStore, values => {
-  return new SearchStringAnalyzer(parseSearchString(values.query))
-})
+export const parsedQuery = derived(searchSetingStore, (values) => {
+  return new SearchStringAnalyzer(parseSearchString(values.query));
+});

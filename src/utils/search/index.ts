@@ -1,10 +1,20 @@
 import { parse } from './parser';
 
 export interface SearchChunk {
-  type: 'artist' | 'creator' | 'song' | 'normal' | 'minDifficulty' | 'maxDifficulty' | 'minBpm' | 'maxBpm' | 'minTiles' | 'maxTiles';
+  type:
+    | 'artist'
+    | 'creator'
+    | 'song'
+    | 'normal'
+    | 'minDifficulty'
+    | 'maxDifficulty'
+    | 'minBpm'
+    | 'maxBpm'
+    | 'minTiles'
+    | 'maxTiles';
   value: string;
-  afterLabel?: string | null
-  afterExp?: string | null
+  afterLabel?: string | null;
+  afterExp?: string | null;
   quote: string | null;
 }
 
@@ -30,62 +40,63 @@ export class SearchStringAnalyzer {
   }
 
   get minBpm() {
-    const value = this.chunks.find((x) => x.type === 'minBpm')?.value
+    const value = this.chunks.find((x) => x.type === 'minBpm')?.value;
 
-    if (!value) return
+    if (!value) return;
 
-    return +value  }
+    return +value;
+  }
 
   get maxBpm() {
-    const value = this.chunks.find((x) => x.type === 'maxBpm')?.value
+    const value = this.chunks.find((x) => x.type === 'maxBpm')?.value;
 
-    if (!value) return
+    if (!value) return;
 
-    return +value
+    return +value;
   }
 
   get minTiles() {
-    const value = this.chunks.find((x) => x.type === 'minTiles')?.value
+    const value = this.chunks.find((x) => x.type === 'minTiles')?.value;
 
-    if (!value) return
+    if (!value) return;
 
-    return +value
+    return +value;
   }
 
   get maxTiles() {
-    const value = this.chunks.find((x) => x.type === 'maxTiles')?.value
+    const value = this.chunks.find((x) => x.type === 'maxTiles')?.value;
 
-    if (!value) return
+    if (!value) return;
 
-    return +value
+    return +value;
   }
 
   get minDifficulty() {
-    let value = this.chunks.find((x) => x.type === 'minDifficulty')?.value
+    let value = this.chunks.find((x) => x.type === 'minDifficulty')?.value;
 
     if (value === 'tiny') {
-      value = '0.1'
+      value = '0.1';
     } else if (value === '-1') {
-      value = '101'
+      value = '101';
     }
 
-    if (!value) return null
+    if (!value) return null;
 
-    return +(value ?? '')
+    return +(value ?? '');
   }
 
   get maxDifficulty() {
-    let value = this.chunks.find((x) => x.type === 'maxDifficulty')?.value
+    let value = this.chunks.find((x) => x.type === 'maxDifficulty')?.value;
 
     if (value === 'tiny') {
-      value = '0.1'
+      value = '0.1';
     } else if (value === '-1') {
-      value = '101'
+      value = '101';
     }
 
-    if (!value) return null
+    if (!value) return null;
 
-    return +(value ?? '')
+    return +(value ?? '');
   }
 
   get normal() {
@@ -110,10 +121,10 @@ export const encodeSearchString = (chunks: SearchChunk[]): string => {
           : chunk.value);
     }
 
-    if (!result.endsWith(' ')) result += ' '
+    if (!result.endsWith(' ')) result += ' ';
   }
 
-  result = result.trimEnd()
+  result = result.trimEnd();
 
   return result;
 };
