@@ -18,6 +18,8 @@
   --drop-shadow-5: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   --nav-height: 56px;
 
+  --app-height: 100%;
+
   color-scheme: dark;
 }
 
@@ -39,11 +41,16 @@ body {
   }
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 #root {
   position: relative;
   overflow: auto;
-  width: 100vw;
-  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: var(--app-height);
 }
 
 .text-shadow-6 {
