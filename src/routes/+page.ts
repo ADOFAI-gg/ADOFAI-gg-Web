@@ -3,7 +3,7 @@ import type { Level, ListResponse, PlayLog, PlayLogWithLevel, SyncStatusResponse
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async () => {
+const loadPlayLogs = async () => {
   const {
     data: { results: topPlaysRaw }
   } = await api.get<ListResponse<PlayLog>>('/api/v1/playLogs', {
@@ -14,7 +14,7 @@ export const load: PageLoad = async () => {
     }
   });
 
-  const topPlays: PlayLogWithLevel[] = await Promise.all(
+  return Promise.all(
     topPlaysRaw.map(async (x) => ({
       ...x,
       level: {
@@ -22,19 +22,28 @@ export const load: PageLoad = async () => {
         ...(await (await api.get<Level>(`/api/v1/levels/${x.level.id}`)).data)
       }
     }))
-  );
+  ) as Promise<PlayLogWithLevel[]>;
+};
 
-  const {
-    data: { results: recentLevels }
-  } = await api.get('/api/v1/levels', {
-    params: {
-      offset: 0,
-      amount: 10,
-      sort: 'RECENT_DESC'
-    }
-  });
+const loadRecentLevels = () =>
+  api
+    .get<ListResponse<Level>>('/api/v1/levels', {
+      params: {
+        offset: 0,
+        amount: 10,
+        sort: 'RECENT_DESC'
+      }
+    })
+    .then((x) => x.data.results);
 
-  const { data: syncStatus } = await api.get<SyncStatusResponse>('/api/v1/status/sync');
+const loadSyncStatus = () => api.get<SyncStatusResponse>('/api/v1/status/sync').then((x) => x.data);
+
+export const load: PageLoad = async () => {
+  const [topPlays, recentLevels, syncStatus] = await Promise.all([
+    loadPlayLogs(),
+    loadRecentLevels(),
+    loadSyncStatus()
+  ]);
 
   return {
     topPlays,
