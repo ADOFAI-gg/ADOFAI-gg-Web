@@ -1,16 +1,11 @@
 <script lang="ts">
   import { setContext } from 'svelte';
-  import { writable } from 'svelte/store';
+  import type { Readable } from 'svelte/store';
 
   type T = $$Generic;
-  export let value: T;
+  export let value: Readable<T>;
 
-  let current = writable(value);
-  setContext('tabValue', current);
-
-  $: {
-    value = $current;
-  }
+  setContext('tabValue', value);
 </script>
 
 <div class="slot">

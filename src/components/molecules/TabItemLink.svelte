@@ -1,12 +1,12 @@
 <script lang="ts">
   import { getContext } from 'svelte';
-  import type { Writable } from 'svelte/store';
+  import type { Readable } from 'svelte/store';
   import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
 
   type T = $$Generic;
 
-  const currentValue = getContext<Writable<T>>('tabValue');
+  const currentValue = getContext<Readable<T>>('tabValue');
 
   export let value: T;
 

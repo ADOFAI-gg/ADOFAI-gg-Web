@@ -10,9 +10,9 @@
 
   import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
-  import TabGroup from '@atoms/interaction/TabGroup.svelte';
   import { derived } from 'svelte/store';
   import { page } from '$app/stores';
+  import LinkTabGroup from '@/components/atoms/interaction/LinkTabGroup.svelte';
 
   const currentTab = derived(page, (page) => {
     return page.data.tab;
@@ -27,7 +27,7 @@
   <PageContainer wide={isReferenceTab}>
     <MainSectionTitle title="REFERENCES" />
 
-    <TabGroup bind:value={$currentTab}>
+    <LinkTabGroup value={currentTab}>
       <TabItemLink
         icon="scale"
         title="DIFFICULTY_REFERENCE"
@@ -40,7 +40,7 @@
         value={ReferenceTab.Indication}
         href="/references/indication"
       />
-    </TabGroup>
+    </LinkTabGroup>
   </PageContainer>
 </div>
 
