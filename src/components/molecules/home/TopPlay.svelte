@@ -17,7 +17,7 @@
         width="100%"
         height="100%"
         alt="Youtube Video Thumbnail"
-        src="https://i.ytimg.com/vi/{getYoutubeVideoId(play.url)}/original.jpg"
+        src="/api/thumbnail/{getYoutubeVideoId(play.url)}"
       />
     </div>
 
