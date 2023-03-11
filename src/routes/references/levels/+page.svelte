@@ -1,9 +1,12 @@
 <script lang="ts">
-  import DifficultyReference from '@organisms/reference/DifficultyReference.svelte';
+  import DifficultyReferenceView from '@/components/organisms/reference/DifficultyReferenceView.svelte';
+  import type { DifficultyReference } from '@/types';
+
+  export let data: { references: DifficultyReference[] };
 </script>
 
 <div class="table-view-container">
-  <DifficultyReference />
+  <DifficultyReferenceView data={data.references} />
 </div>
 
 <style lang="scss">

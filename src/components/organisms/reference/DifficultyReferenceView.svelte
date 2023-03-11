@@ -1,46 +1,11 @@
 <script lang="ts">
-  import type { DifficultyReference, DifficultyReferenceLevel } from '@/types';
+  import type { DifficultyReference } from '@/types';
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import Table from '@atoms/table/Table.svelte';
   import { default as Cell } from '@atoms/table/TableCell.svelte';
-  import levels from '@/assets/data/difficultyReferences.json';
-  import ratings from '@/assets/data/ppRatings.json';
 
-  const loadData = (): DifficultyReference[] => {
-    const referenceMap = new Map<number, DifficultyReference>();
-
-    for (const rating of ratings) {
-      const { difficulty, rating: ppRating } = rating;
-
-      const reference: DifficultyReference = {
-        difficulty,
-        ppRating,
-        levels: [null, null, null, null]
-      };
-      referenceMap.set(difficulty, reference);
-    }
-
-    for (const referenceLevel of levels) {
-      const { difficulty, easiestLevel, level, position } = referenceLevel;
-
-      const reference = referenceMap.get(difficulty);
-
-      if (!reference) continue;
-
-      reference.levels[easiestLevel ? 3 : position] = {
-        levelId: level.levelId,
-        name: level.name,
-        url: level.url
-      } as DifficultyReferenceLevel;
-    }
-
-    const result: DifficultyReference[] = Array.from(referenceMap.values());
-
-    return result;
-  };
-
-  const data = loadData();
+  export let data: DifficultyReference[];
 </script>
 
 <div class="reference-table">
