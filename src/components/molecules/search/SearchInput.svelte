@@ -30,7 +30,13 @@
   <Icon icon="search" size={16} alt="Search Icon" />
 
   <div class="search-input__input-wrapper">
-    <input type="text" class="search-input__input" bind:value style="width: {inputWidth}px;" />
+    <input
+      type="text"
+      class="search-input__input"
+      placeholder={placeholderContent}
+      bind:value
+      style="width: {inputWidth}px;"
+    />
     <div class="search-renderer" bind:clientWidth={inputWidth}>
       {#each parsedValue as chunk (chunk)}
         {#if chunk.type === 'normal'}
