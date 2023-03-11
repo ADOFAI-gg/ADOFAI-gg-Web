@@ -1,5 +1,4 @@
 <script lang="ts">
-  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import type { DifficultyReference, DifficultyReferenceLevel } from '@/types';
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
