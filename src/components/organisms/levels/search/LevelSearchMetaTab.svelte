@@ -3,11 +3,11 @@
   import RangeInputPair from '@atoms/interaction/RangeInputPair.svelte';
   import SearchMetaInput from '@atoms/search/SearchMetaInput.svelte';
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
-  import { parsedQuery, searchSetingStore } from '@/stores/search';
+  import { parsedQuery, searchSettingStore } from '@/stores/search';
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
   import { encodeSearchString, parseSearchString, SearchStringAnalyzer } from '@/utils/search';
 
-  $: parsed = parseSearchString($searchSetingStore.query);
+  $: parsed = parseSearchString($searchSettingStore.query);
 
   const onChangeArtist = (e: Event) => {
     const value = (e.target as HTMLInputElement).value;
@@ -24,7 +24,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeCreator = (e: Event) => {
@@ -42,7 +42,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeMinTiles = (e: Event) => {
@@ -60,7 +60,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeMaxTiles = (e: Event) => {
@@ -78,7 +78,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeMinBPM = (e: Event) => {
@@ -96,7 +96,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeMaxBPM = (e: Event) => {
@@ -114,7 +114,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 </script>
 

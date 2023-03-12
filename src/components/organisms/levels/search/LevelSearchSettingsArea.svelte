@@ -19,7 +19,7 @@
   import Translation from '@/components/utils/Translation.svelte';
   import SearchHelpArea from '@molecules/levels/SearchHelpArea.svelte';
   import LevelSearchMetaTab from '@organisms/levels/search/LevelSearchMetaTab.svelte';
-  import { defaultSearchSettings, searchSetingStore } from '@/stores/search';
+  import { defaultSearchSettings, searchSettingStore } from '@/stores/search';
   import { tick } from 'svelte';
   import { reduceMotion } from '@/utils/settings';
 
@@ -55,7 +55,7 @@
   }
 
   const reset = () => {
-    searchSetingStore.set(defaultSearchSettings);
+    searchSettingStore.set(defaultSearchSettings);
     $currentTab = null;
     $currentView = 'list';
   };

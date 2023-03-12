@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { searchSetingStore } from '@/stores/search';
+  import { searchSettingStore } from '@/stores/search';
 
   import Translation from '@/components/utils/Translation.svelte';
 
@@ -9,10 +9,10 @@
   export let tag: number;
 
   const update = () => {
-    const state = $searchSetingStore.filter.tags;
+    const state = $searchSettingStore.filter.tags;
 
     if (state.exclude.includes(tag)) {
-      searchSetingStore.update((v) => ({
+      searchSettingStore.update((v) => ({
         ...v,
         filter: {
           ...v.filter,
@@ -23,7 +23,7 @@
         }
       }));
     } else if (state.include.includes(tag)) {
-      searchSetingStore.update((v) => ({
+      searchSettingStore.update((v) => ({
         ...v,
         filter: {
           ...v.filter,
@@ -34,7 +34,7 @@
         }
       }));
     } else {
-      searchSetingStore.update((v) => ({
+      searchSettingStore.update((v) => ({
         ...v,
         filter: {
           ...v.filter,
@@ -49,8 +49,8 @@
 </script>
 
 <TagCheckboxBase
-  include={$searchSetingStore.filter.tags.include.includes(tag)}
-  exclude={$searchSetingStore.filter.tags.exclude.includes(tag)}
+  include={$searchSettingStore.filter.tags.include.includes(tag)}
+  exclude={$searchSettingStore.filter.tags.exclude.includes(tag)}
   on:click={update}
 >
   <Icon style="" size={22} namespace="tagIcons" icon={`${tag}`} slot="icon" alt="tag icon" />

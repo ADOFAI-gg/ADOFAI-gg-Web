@@ -3,10 +3,10 @@
   import { fade } from 'svelte/transition';
 
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
-  import { searchSetingStore, type SearchSettings } from '@/stores/search';
+  import { searchSettingStore, type SearchSettings } from '@/stores/search';
 
   const updateOrder = (v: SearchSettings['sort']['order']) => () => {
-    searchSetingStore.update((x) => ({
+    searchSettingStore.update((x) => ({
       ...x,
       sort: {
         ...x.sort,
@@ -16,7 +16,7 @@
   };
 
   const updateType = (v: SearchSettings['sort']['type']) => () => {
-    searchSetingStore.update((x) => ({
+    searchSettingStore.update((x) => ({
       ...x,
       sort: {
         ...x.sort,
@@ -32,43 +32,43 @@
       <SortOrderRadio
         icon="topLeft"
         key="SORT_ASC"
-        checked={$searchSetingStore.sort.order === 'asc'}
+        checked={$searchSettingStore.sort.order === 'asc'}
         on:click={updateOrder('asc')}
       />
       <SortOrderRadio
         icon="bottomRight"
         key="SORT_DESC"
-        checked={$searchSetingStore.sort.order === 'desc'}
+        checked={$searchSettingStore.sort.order === 'desc'}
         on:click={updateOrder('desc')}
       />
       <SortOrderRadio
         icon="shuffle"
         key="SORT_SHUFFLE"
-        checked={$searchSetingStore.sort.order === 'shuffle'}
+        checked={$searchSettingStore.sort.order === 'shuffle'}
         on:click={updateOrder('shuffle')}
       />
     </div>
-    {#if $searchSetingStore.sort.order !== 'shuffle'}
+    {#if $searchSettingStore.sort.order !== 'shuffle'}
       <div class="sort__order-area" transition:fade={{ duration: 400 }}>
         <div class="sort__divider" />
         <div class="sort__order-container">
           <SortOrderRadio
             icon="calendar"
             key="SORT_CREATED"
-            checked={$searchSetingStore.sort.type === 'created'}
+            checked={$searchSettingStore.sort.type === 'created'}
             on:click={updateType('created')}
           />
           <SortOrderRadio
             icon="fire"
             key="SORT_DIFFICULTY"
-            checked={$searchSetingStore.sort.type === 'difficulty'}
+            checked={$searchSettingStore.sort.type === 'difficulty'}
             on:click={updateType('difficulty')}
           />
           {#if import.meta.env.VITE_USE_ACCOUNT}
             <SortOrderRadio
               icon="heart"
               key="SORT_LIKES"
-              checked={$searchSetingStore.sort.type === 'likes'}
+              checked={$searchSettingStore.sort.type === 'likes'}
               on:click={updateType('likes')}
             />
           {/if}

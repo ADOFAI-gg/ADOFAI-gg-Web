@@ -2,14 +2,14 @@
   import HomeLogo from '@molecules/home/HomeLogo.svelte';
   import SearchInput from '@molecules/search/SearchInput.svelte';
   import { goto } from '$app/navigation';
-  import { searchSetingStore } from '@/stores/search';
+  import { searchSettingStore } from '@/stores/search';
   import type { SyncStatusResponse } from '@/types';
 
   let searchQuery: string;
 
   const onSubmitSearch = (e: Event) => {
     e.preventDefault();
-    searchSetingStore.update((v) => ({
+    searchSettingStore.update((v) => ({
       ...v,
       query: searchQuery
     }));

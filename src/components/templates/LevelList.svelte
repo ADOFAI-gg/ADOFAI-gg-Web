@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { parsedQuery, searchSetingStore } from '@/stores/search';
+  import { parsedQuery, searchSettingStore } from '@/stores/search';
 
   import SearchInput from '@molecules/search/SearchInput.svelte';
   import LevelSearchSettingsArea, {
@@ -37,7 +37,7 @@
   };
 
   const params = (start: number) => {
-    const settings = $searchSetingStore;
+    const settings = $searchSettingStore;
 
     const analyzed = $parsedQuery;
 
@@ -129,7 +129,7 @@
 
   let timeout: number | null = null;
 
-  searchSetingStore.subscribe(() => {
+  searchSettingStore.subscribe(() => {
     if (browser) {
       if (timeout) {
         clearTimeout(timeout);
@@ -172,7 +172,7 @@
       <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
         <SearchInput
           placeholder={'SEARCH_INPUT_PLACEHOLDER_HOME'}
-          bind:value={$searchSetingStore.query}
+          bind:value={$searchSettingStore.query}
         />
         <div class="search-settings-area">
           <LevelSearchSettingsArea />

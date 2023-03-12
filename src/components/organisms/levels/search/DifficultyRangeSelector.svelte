@@ -2,10 +2,10 @@
   import DifficultySelectorInput from '@atoms/search/DifficultySelectorInput.svelte';
 
   import RangeInputPair from '@atoms/interaction/RangeInputPair.svelte';
-  import { parsedQuery, searchSetingStore } from '@/stores/search';
+  import { parsedQuery, searchSettingStore } from '@/stores/search';
   import { encodeSearchString, parseSearchString } from '@/utils/search';
 
-  $: parsed = parseSearchString($searchSetingStore.query);
+  $: parsed = parseSearchString($searchSettingStore.query);
 
   const onChangeMin = (e: CustomEvent) => {
     const value = e.detail.value;
@@ -22,7 +22,7 @@
       });
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 
   const onChangeMax = (e: CustomEvent) => {
@@ -48,7 +48,7 @@
       }
     }
 
-    $searchSetingStore.query = encodeSearchString(filtered);
+    $searchSettingStore.query = encodeSearchString(filtered);
   };
 </script>
 
