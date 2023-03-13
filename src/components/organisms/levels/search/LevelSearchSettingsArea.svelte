@@ -55,7 +55,7 @@
   }
 
   const reset = () => {
-    searchSettingStore.set(defaultSearchSettings);
+    searchSettingStore.set(defaultSearchSettings());
     $currentTab = null;
     $currentView = 'list';
   };

@@ -30,7 +30,7 @@ export type SearchSettings = {
   };
 };
 
-export const defaultSearchSettings: SearchSettings = {
+export const defaultSearchSettings = (): SearchSettings => ({
   query: '',
   filter: {
     tags: {
@@ -55,9 +55,9 @@ export const defaultSearchSettings: SearchSettings = {
     order: 'desc',
     type: 'created'
   }
-};
+});
 
-export const searchSettingStore = writable<SearchSettings>(defaultSearchSettings);
+export const searchSettingStore = writable<SearchSettings>(defaultSearchSettings());
 
 export const parsedQuery = derived(searchSettingStore, (values) => {
   return new SearchStringAnalyzer(parseSearchString(values.query));
