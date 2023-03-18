@@ -1,6 +1,19 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
+  import { writable } from 'svelte/store';
+
+  let focusHandle: HTMLDivElement;
+
+  const focusHandleValue = writable<HTMLDivElement | null>(null);
+
+  setContext('focusHandle', focusHandleValue);
+
+  $: focusHandleValue.set(focusHandle);
+
   export let style = '';
 </script>
+
+<div class="focus-handle" bind:this={focusHandle} />
 
 <table {style} {...$$restProps}>
   <slot />
@@ -8,6 +21,19 @@
 
 <style lang="scss">
   /* stylelint-disable selector-pseudo-class-no-unknown */
+
+  .focus-handle {
+    position: absolute;
+    border: 2px solid transparent;
+    pointer-events: none;
+    transition: all ease 0.2s;
+
+    &.active {
+      // TODO
+
+      border-color: rgba(var(--color-blue), 1);
+    }
+  }
 
   table {
     table-layout: fixed;
