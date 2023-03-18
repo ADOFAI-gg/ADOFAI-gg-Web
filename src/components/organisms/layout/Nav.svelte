@@ -43,6 +43,7 @@
   .nav-container {
     position: sticky;
     top: 0;
+    left: 0;
     z-index: 999999;
   }
 
