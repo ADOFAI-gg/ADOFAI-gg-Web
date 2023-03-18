@@ -54,10 +54,11 @@
   {/each}
 </svelte:head>
 
-<div>
-  <LoadingIndiciator />
+<Nav />
 
-  <Nav />
+<LoadingIndiciator />
+
+<div>
   <div class="page-layout">
     <div class="page-content">
       <slot />
