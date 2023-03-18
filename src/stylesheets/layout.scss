@@ -19,7 +19,7 @@ body {
     background-repeat: no-repeat;
   }
 
-  &.image-bg {
+  &.image-bg::after {
     background-image: url('/background.webp');
   }
 }
