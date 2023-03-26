@@ -5,7 +5,7 @@ export const getYoutubeVideoId = (url: string) => youtubeIdRegex.exec(url)?.[1] 
 export const getTimestamp = (url: string) => {
   const time = new URL(url).searchParams.get('t');
 
-  if (!time) return null;
+  if (!time) return 0;
 
   return parseInt(time);
 };
