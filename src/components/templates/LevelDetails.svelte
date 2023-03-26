@@ -2,7 +2,7 @@
   import type { Level } from '@/types';
   import LevelHeader from '@organisms/levels/info/LevelHeader.svelte';
   import Video from '@atoms/asset/Video.svelte';
-  import { getYoutubeVideoId } from '@/utils/youtube';
+  import { getTimestamp, getYoutubeVideoId } from '@/utils/youtube';
   import LevelMetaArea from '@organisms/levels/info/LevelMetaArea.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import LevelLeaderboard from '@organisms/levels/info/LevelLeaderboard.svelte';
@@ -13,6 +13,8 @@
   let player: YT.Player | null = null;
 
   $: videoId = getYoutubeVideoId(level.video);
+
+  $: time = getTimestamp(level.video);
 </script>
 
 <svelte:head>
@@ -25,7 +27,7 @@
 
 <PageContainer>
   <div class="meta">
-    <Video {videoId} bind:player />
+    <Video {videoId} startTime={time}  bind:player />
     <div class="meta-content">
       <LevelMetaArea video={player} {level} />
     </div>

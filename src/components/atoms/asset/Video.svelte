@@ -4,6 +4,8 @@
 
   export let videoId: string;
 
+  export let startTime: number | null = null;
+
   export let iframe: HTMLIFrameElement | null = null;
 
   // eslint-disable-next-line no-undef
@@ -40,7 +42,8 @@
     width="100%"
     height="100%"
     title="Video"
-    src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}"
+    src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}&start={startTime ??
+      0}"
     allow="fullscreen"
     frameborder="0"
   />
