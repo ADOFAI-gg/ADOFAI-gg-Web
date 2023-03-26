@@ -110,6 +110,7 @@
       top: 50%;
       overflow: hidden;
       width: 100%;
+      font-size: 16px;
       text-overflow: ellipsis;
       white-space: nowrap;
       opacity: 0.4;
