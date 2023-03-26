@@ -18,7 +18,7 @@
       <div class="left-side__player">
         <div class="left-side__player-name">{play.player.name}</div>
         {#if play.description}
-          <div class="left-side__player-description">{play.description}</div>
+          <div class="left-side__player-description">“{play.description}”</div>
         {/if}
       </div>
     </div>
