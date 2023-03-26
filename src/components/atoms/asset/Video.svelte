@@ -4,7 +4,7 @@
 
   export let videoId: string;
 
-  export let startTime: number | null = null;
+  export let startTime = 0;
 
   export let iframe: HTMLIFrameElement | null = null;
 
@@ -42,8 +42,7 @@
     width="100%"
     height="100%"
     title="Video"
-    src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}&start={startTime ??
-      0}"
+    src="https://www.youtube.com/embed/{videoId}?enablejsapi=1&origin={origin}&start={startTime}"
     allow="fullscreen"
     frameborder="0"
   />
