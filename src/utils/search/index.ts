@@ -103,7 +103,7 @@ export class SearchStringAnalyzer {
     return this.chunks
       .filter((x) => x.type === 'normal')
       .map((x) => x.value)
-      .join(' ');
+      .join('');
   }
 }
 
