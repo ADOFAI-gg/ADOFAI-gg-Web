@@ -27,6 +27,26 @@
   </NavMenuItem>
 </NavMenuGroup>
 
+<NavMenuGroup label="NAV_LINKS">
+  <NavMenuItemLink
+    href="https://docs.google.com/forms/d/e/1FAIpQLScyHHUYzdFsL4HxhElhmj70_JNhTtfxiZM-KcbsYVBA_YfSvA/viewform?usp=send_form"
+  >
+    <Translation key="NAV_LINK_SUBMIT_PLAY" />
+  </NavMenuItemLink>
+
+  <NavMenuItemLink
+    href="https://docs.google.com/forms/d/e/1FAIpQLSfhDCiKdZTkD_A6RFeei3eGZFdNTb8yClfBZgJ7um8veKV5aQ/viewform"
+  >
+    <Translation key="NAV_LINK_SUBMIT_LEVEL" />
+  </NavMenuItemLink>
+
+  <NavMenuItemLink
+    href="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link"
+  >
+    <Translation key="NAV_LINK_RE_LEVEL" />
+  </NavMenuItemLink>
+</NavMenuGroup>
+
 <div class="mobile-only">
   <NavMenuGroup label="NAV_PAGES">
     <NavMenuItemLink href="/levels">
