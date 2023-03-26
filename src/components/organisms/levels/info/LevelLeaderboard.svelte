@@ -31,7 +31,7 @@
   {:then data}
     {#if data.length}
       <div>
-        <SectionTitle title="Leaderboard" />
+        <SectionTitle title="LEVEL_LEADERBOARD" />
 
         <div class="list">
           {#each Object.entries(data) as [index, item]}
