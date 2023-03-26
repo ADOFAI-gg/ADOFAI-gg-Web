@@ -11,17 +11,17 @@
 </script>
 
 <div class="top-play-wrapper">
-  <a href={play.url} rel="noreferrer" target="_blank" class="top-play">
-    <div class="top-play__thumbnail-wrapper">
+  <div class="top-play">
+    <a href={play.url} rel="noreferrer" target="_blank" class="top-play__thumbnail-wrapper">
       <Image
         width="100%"
         height="100%"
         alt="Youtube Video Thumbnail"
         src="/api/thumbnail/{getYoutubeVideoId(play.url)}"
       />
-    </div>
+    </a>
 
-    <div class="top-play__info-container">
+    <a href="/levels/{play.level.id}" class="top-play__info-container">
       <div class="top-play__player-name">
         {play.player.name}
       </div>
@@ -40,8 +40,8 @@
         />
         <TopPlayDetailPair icon="fire" value="{play.playPoint.toFixed(0)} PP" />
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
 </div>
 
 <style lang="scss">
