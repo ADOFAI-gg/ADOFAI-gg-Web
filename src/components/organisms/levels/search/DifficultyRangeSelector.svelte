@@ -1,3 +1,16 @@
+<script lang="ts" context="module">
+  const convertDifficulty = (v: string) => {
+    switch (v) {
+      case 101:
+        return '-1';
+      case 0.1:
+        return 'tiny';
+      default:
+        return v;
+    }
+  };
+</script>
+
 <script lang="ts">
   import DifficultySelectorInput from '@atoms/search/DifficultySelectorInput.svelte';
 
@@ -18,7 +31,7 @@
       filtered.splice(index < 0 ? 0 : index, 0, {
         quote: null,
         type: 'minDifficulty',
-        value
+        value: convertDifficulty(value)
       });
     }
 
@@ -38,7 +51,7 @@
       filtered.splice(finalIndex, 0, {
         quote: null,
         type: 'maxDifficulty',
-        value
+        value: convertDifficulty(value)
       });
 
       if ($parsedQuery.minDifficulty) {
