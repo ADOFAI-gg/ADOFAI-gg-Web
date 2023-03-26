@@ -102,23 +102,45 @@
     </SearchTabs>
   </div>
   <div class="settings-container" class:settings-open={!!$currentTab} style="height: {height}px;">
-    {#if $currentTab === 'tags'}
-      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={tagSearchTab}>
-        <TagSearchTab />
-      </div>
-    {:else if $currentTab === 'meta'}
-      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={filterTab}>
-        <LevelSearchMetaTab />
-      </div>
-    {:else if $currentTab === 'sort'}
-      <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} bind:this={sortTab}>
-        <LevelSearchSortTab />
-      </div>
-    {/if}
+    <div
+      class="settings-tab"
+      class:show={$currentTab === 'tags'}
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      bind:this={tagSearchTab}
+    >
+      <TagSearchTab />
+    </div>
+    <div
+      class="settings-tab"
+      class:show={$currentTab === 'meta'}
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      bind:this={filterTab}
+    >
+      <LevelSearchMetaTab />
+    </div>
+    <div
+      class="settings-tab"
+      class:show={$currentTab === 'sort'}
+      transition:fade={{ duration: $reduceMotion ? 0 : 400 }}
+      bind:this={sortTab}
+    >
+      <LevelSearchSortTab />
+    </div>
   </div>
 </div>
 
 <style lang="scss">
+  .settings-tab {
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease-out 0.4s;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   .tabs {
     display: flex;
     flex-direction: column;
@@ -158,7 +180,7 @@
     position: relative;
     overflow: hidden;
     margin-top: 16px;
-    transition: all cubic-bezier(0.4, 0, 0.2, 1) 150ms;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
 
     &.settings-open {
       margin-bottom: 16px;
