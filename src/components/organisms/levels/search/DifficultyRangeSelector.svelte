@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
   const convertDifficulty = (v: string) => {
     switch (v) {
-      case 101:
+      case '101':
         return '-1';
-      case 0.1:
+      case '0.1':
         return 'tiny';
       default:
         return v;
@@ -31,7 +31,7 @@
       filtered.splice(index < 0 ? 0 : index, 0, {
         quote: null,
         type: 'minDifficulty',
-        value: convertDifficulty(value)
+        value: convertDifficulty(value.toString())
       });
     }
 
@@ -51,7 +51,7 @@
       filtered.splice(finalIndex, 0, {
         quote: null,
         type: 'maxDifficulty',
-        value: convertDifficulty(value)
+        value: convertDifficulty(value.toString())
       });
 
       if ($parsedQuery.minDifficulty) {
