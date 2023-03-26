@@ -4,7 +4,14 @@
   export let href: string;
 </script>
 
-<a class="menu-item" {href} class:active={$page.url.pathname === href} {...$$restProps} on:click>
+<a
+  class="menu-item"
+  rel="noreferrer"
+  {href}
+  class:active={$page.url.pathname === href}
+  {...$$restProps}
+  on:click
+>
   <slot />
 </a>
 
