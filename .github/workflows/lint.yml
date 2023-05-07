@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  pull_request:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Setup yarn
+        run: corepack enable
+      - name: Get yarn cache directory
+        id: yarn-cache-dir-path
+        run: echo "dir=$(C:\Users\paring\Documents\Programming\adofai-gg-web\.yarn\cache)" >> $GITHUB_ENV
+      - name: Cache yarn dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn lint
