@@ -19,5 +19,11 @@
   "eslint.validate": ["typescript", "svelte"],
   "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
   "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"],
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "[markdown]": {
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.formatOnSave": true
+  }
 }
