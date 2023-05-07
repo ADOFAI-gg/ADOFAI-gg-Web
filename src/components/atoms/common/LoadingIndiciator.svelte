@@ -3,14 +3,16 @@
   import { afterNavigate } from '$app/navigation';
   import NProgress from 'nprogress';
 
-  afterNavigate(() => {
+  afterNavigate((data) => {
     const app = document.querySelector('#root');
 
-    app?.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    if (data.type !== 'enter') {
+      app?.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
   });
 
   $: {
