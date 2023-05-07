@@ -7,9 +7,9 @@ let lang = '';
 
 currentLang.subscribe((v) => (lang = v));
 
-export const load: PageLoad = async ({ params }) => {
-  const pages = import.meta.glob('/src/content/*.md');
+const pages = import.meta.glob('/src/content/*.md');
 
+export const load: PageLoad = async ({ params }) => {
   const page =
     pages[`/src/content/${params.slug}.${lang}.md`] ?? pages[`/src/content/${params.slug}.md`];
 
