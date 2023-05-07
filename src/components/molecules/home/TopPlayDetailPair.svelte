@@ -5,7 +5,7 @@
   export let value: string;
 </script>
 
-<div class="pair ">
+<div class="pair">
   <Icon {icon} size={16} alt="{icon} icon" />
 
   <span class="pair__label">{value}</span>
