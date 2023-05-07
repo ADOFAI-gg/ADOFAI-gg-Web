@@ -73,4 +73,24 @@
       border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
   }
+
+  strong {
+    font-weight: 700;
+  }
+
+  small {
+    font-size: 12px;
+  }
+
+  ul {
+    list-style-position: inside;
+    list-style-type: circle;
+  }
+
+  hr {
+    height: 2px;
+    margin-top: 8px;
+    border-width: 2px;
+    color: rgba(255, 255, 255, 0.2);
+  }
 }
