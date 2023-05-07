@@ -45,9 +45,7 @@
       </div>
     </div>
 
-    <div class="footer__copyright">
-      © 2023 ADOFAI.gg Development Team.
-    </div>
+    <div class="footer__copyright">© 2023 ADOFAI.gg Development Team.</div>
   </PageContainer>
 </footer>
 
