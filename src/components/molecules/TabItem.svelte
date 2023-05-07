@@ -4,7 +4,7 @@
   import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
 
-  type T = $$Generic;
+  type T = $$Generic; /* eslint-disable-line no-undef */
 
   const currentValue = getContext<Writable<T>>('tabValue');
 

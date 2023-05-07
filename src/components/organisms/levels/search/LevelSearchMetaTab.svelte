@@ -5,7 +5,7 @@
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
   import { parsedQuery, searchSettingStore } from '@/stores/search';
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
-  import { encodeSearchString, parseSearchString, SearchStringAnalyzer } from '@/utils/search';
+  import { encodeSearchString, parseSearchString } from '@/utils/search';
 
   $: parsed = parseSearchString($searchSettingStore.query);
 
@@ -197,7 +197,7 @@
       gap: 16px;
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }

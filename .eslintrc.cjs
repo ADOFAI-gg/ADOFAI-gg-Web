@@ -7,12 +7,15 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended'
   ],
-  plugins: ['svelte3', '@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   ignorePatterns: ['*.cjs'],
   overrides: [
     {
       files: ['*.svelte'],
-      processor: 'svelte3/svelte3'
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser'
+      }
     }
   ],
   settings: {
@@ -20,7 +23,8 @@ module.exports = {
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
+    extraFileExtensions: ['.svelte']
   },
   env: {
     browser: true,

@@ -2,7 +2,7 @@
   import { setContext } from 'svelte';
   import type { Readable } from 'svelte/store';
 
-  type T = $$Generic;
+  type T = $$Generic; /* eslint-disable-line no-undef */
   export let value: Readable<T>;
 
   setContext('tabValue', value);

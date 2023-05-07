@@ -2,7 +2,7 @@
   import { setContext } from 'svelte';
   import { writable } from 'svelte/store';
 
-  type T = $$Generic;
+  type T = $$Generic; /* eslint-disable-line no-undef */
   export let value: T;
 
   let current = writable(value);
