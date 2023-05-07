@@ -1,16 +1,6 @@
 {
-  "editor.formatOnSave": false,
-  "[svelte]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  },
+  "editor.formatOnSave": true,
   "svelte.enable-ts-plugin": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "scss.lint.unknownAtRules": "ignore",
   "eslint.workingDirectories": ["./src"],
   "editor.codeActionsOnSave": {
@@ -20,10 +10,5 @@
   "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
   "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"],
   "files.eol": "\n",
-  "[markdown]": {
-    "editor.formatOnSave": true
-  },
-  "[scss]": {
-    "editor.formatOnSave": true
-  }
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
