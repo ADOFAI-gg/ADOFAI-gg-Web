@@ -27,7 +27,7 @@
 
 <PageContainer>
   <div class="meta">
-    <Video {videoId} startTime={time}  bind:player />
+    <Video {videoId} startTime={time} bind:player />
     <div class="meta-content">
       <LevelMetaArea video={player} {level} />
     </div>
