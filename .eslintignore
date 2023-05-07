@@ -15,3 +15,5 @@ yarn-error.log
 
 storybook-static
 src/utils/search/parser.ts
+
+src/assets
