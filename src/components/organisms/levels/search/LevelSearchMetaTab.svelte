@@ -5,7 +5,7 @@
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
   import { parsedQuery, searchSettingStore } from '@/stores/search';
   import DifficultyRangeSelector from '@organisms/levels/search/DifficultyRangeSelector.svelte';
-  import { encodeSearchString, parseSearchString, SearchStringAnalyzer } from '@/utils/search';
+  import { encodeSearchString, parseSearchString } from '@/utils/search';
 
   $: parsed = parseSearchString($searchSettingStore.query);
 
