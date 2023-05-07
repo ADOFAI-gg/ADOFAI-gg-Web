@@ -10,6 +10,6 @@
 
 <style lang="scss">
   .spacer {
-    margin-top: 24px;
+    margin-top: 72px;
   }
 </style>
