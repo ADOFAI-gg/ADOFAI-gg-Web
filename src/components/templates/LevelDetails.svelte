@@ -48,13 +48,13 @@
     flex-direction: column;
     gap: 24px;
 
-    > &-content {
-      @media (min-width: 768px) {
+    &-content {
+      @media (width >= 768px) {
         min-width: 360px;
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
     }
   }
