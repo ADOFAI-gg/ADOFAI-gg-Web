@@ -24,6 +24,8 @@
   $: placeholderContent = translate(placeholder || '', $currentLang);
 
   $: parsedValue = parseSearchString(value);
+
+  /* eslint svelte/no-at-html-tags: 0 */
 </script>
 
 <div class="search-input">

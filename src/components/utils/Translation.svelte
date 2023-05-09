@@ -6,6 +6,8 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+
+  /* eslint svelte/no-at-html-tags: 0 */
 </script>
 
 <script lang="ts">
