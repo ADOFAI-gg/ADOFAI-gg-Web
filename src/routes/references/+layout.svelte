@@ -21,7 +21,7 @@
   $: isReferenceTab = $currentTab === ReferenceTab.Reference;
 </script>
 
-<div class="nav-spacer" />
+<div class="top-spacer" />
 
 <div class="table-view-header-area">
   <PageContainer wide={isReferenceTab}>
