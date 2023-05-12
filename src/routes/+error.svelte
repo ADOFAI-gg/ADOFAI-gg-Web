@@ -49,10 +49,6 @@
     padding: 16px;
   }
 
-  .nav-spacer {
-    height: var(--nav-height);
-  }
-
   .error-content {
     display: flex;
     flex-grow: 1;

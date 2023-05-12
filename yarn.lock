@@ -5,13 +5,6 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@adofai-gg/svelte-virtualized-infinite-scroll@npm:1.0.12":
-  version: 1.0.12
-  resolution: "@adofai-gg/svelte-virtualized-infinite-scroll@npm:1.0.12"
-  checksum: fa4a44f93e0dd01af2c008ad1db7f86c2039791e07555632b6bce7c9acd52156abdc551ac1aadd08389df00a9dbe453fe4cb12feb7cc89943fd86c79b99baa83
-  languageName: node
-  linkType: hard
-
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.0
   resolution: "@ampproject/remapping@npm:2.2.0"
@@ -5281,7 +5274,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "adofai-gg@workspace:."
   dependencies:
-    "@adofai-gg/svelte-virtualized-infinite-scroll": 1.0.12
     "@babel/core": ^7.17.9
     "@commitlint/cli": ^16.2.4
     "@commitlint/config-conventional": ^16.2.4

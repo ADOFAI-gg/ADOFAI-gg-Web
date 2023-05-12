@@ -71,10 +71,6 @@
     backdrop-filter: blur(8px);
   }
 
-  .blank {
-    height: var(--nav-height);
-  }
-
   .content {
     width: 100%;
     max-width: 1100px;
@@ -99,7 +95,7 @@
       border-radius: 24px 24px 0 0;
       background-color: rgba(var(--color-darkblue), 0.4);
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         flex-direction: row;
       }
     }
@@ -110,7 +106,7 @@
       flex-direction: column;
       gap: 8px;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: block;
         width: 0;
       }

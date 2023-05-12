@@ -22,7 +22,6 @@
     "server.js"
   ],
   "devDependencies": {
-    "@adofai-gg/svelte-virtualized-infinite-scroll": "1.0.12",
     "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",

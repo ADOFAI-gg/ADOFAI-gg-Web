@@ -38,8 +38,6 @@
   const loadPromise = load();
 </script>
 
-<div class="nav-spacer" />
-
 <PageContainer>
   {#await loadPromise then data}
     {#each data as group}
@@ -59,10 +57,6 @@
 </PageContainer>
 
 <style lang="scss">
-  .nav-spacer {
-    height: var(--nav-height);
-  }
-
   .icon-group {
     margin-top: 16px;
   }

@@ -8,10 +8,10 @@
   import RankingListItem from '@organisms/rankings/RankingListItem.svelte';
   import RankingTopItem from '@organisms/rankings/RankingTopItem.svelte';
   import type { ListResponse } from '@/types';
-  import VirtualizedInfiniteScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import type { RankingResult } from './+page';
+  import Virtuallist from '@/components/utils/VirtualList.svelte';
 
   let items = writable<RankingResult[]>([]);
 
@@ -59,8 +59,6 @@
   $: listItems = $items.slice(3);
 </script>
 
-<div class="nav-spacer" />
-
 <PageContainer>
   <div class="top-spacer">
     <MainSectionTitle title="RANKING_TITLE" />
@@ -71,26 +69,16 @@
         <RankingTopItem {item} />
       {/each}
     </div>
-    <VirtualizedInfiniteScroll
-      scrollContainer="#root"
-      data={listItems}
-      on:more={onMore}
-      let:item
-      total={Math.max(0, total - 3)}
-    >
+    <Virtuallist data={listItems} on:more={onMore} let:item total={Math.max(0, total - 3)}>
       <RankingListItem {item} />
       <div slot="loading" class="loader">
         <LoadingSpinner size={48} />
       </div>
-    </VirtualizedInfiniteScroll>
+    </Virtuallist>
   {/if}
 </PageContainer>
 
 <style lang="scss">
-  .nav-spacer {
-    height: var(--nav-height);
-  }
-
   .top-spacer {
     margin-top: 24px;
   }
@@ -101,12 +89,12 @@
     gap: 24px;
     margin-bottom: 16px;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }

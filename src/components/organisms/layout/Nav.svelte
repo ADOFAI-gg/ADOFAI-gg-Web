@@ -7,59 +7,41 @@
   import Popover from '@atoms/common/Popover.svelte';
 </script>
 
-<div class="nav-container">
-  <div id="nprogress-parent" />
-  <nav class="nav">
-    <Logo />
+<nav class="nav">
+  <Logo />
 
-    <div class="nav__links">
-      <NavLinks />
+  <div class="nav__links">
+    <NavLinks />
+  </div>
+
+  <div style="flex-grow: 1;" />
+
+  {#if import.meta.env.VITE_USE_ACCOUNT}
+    <div class="nav__sign-area">
+      <NavSignArea />
     </div>
 
-    <div style="flex-grow: 1;" />
+    <div class="nav__divider" />
+  {/if}
+  <Popover
+    style="--tippy-corner-radius: 12px;"
+    options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
+    placement="bottom-end"
+  >
+    <span slot="button" class="nav__expand-icon">
+      <Icon icon="expand" size={16} alt="Expand icon" />
+    </span>
 
-    {#if import.meta.env.VITE_USE_ACCOUNT}
-      <div class="nav__sign-area">
-        <NavSignArea />
-      </div>
-
-      <div class="nav__divider" />
-    {/if}
-    <Popover
-      style="--tippy-corner-radius: 12px;"
-      options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
-      placement="bottom-end"
-    >
-      <span slot="button" class="nav__expand-icon">
-        <Icon icon="expand" size={16} alt="Expand icon" />
-      </span>
-
-      <NavMenuOverlay />
-    </Popover>
-  </nav>
-</div>
+    <NavMenuOverlay />
+  </Popover>
+</nav>
 
 <style lang="scss">
-  .nav-container {
+  .nav {
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 999999;
-  }
-
-  #nprogress-parent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-height);
-    pointer-events: none;
-  }
-
-  .nav {
-    position: absolute;
-    top: 0;
-    left: 0;
+    z-index: 99999;
     display: flex;
     gap: 16px;
     align-items: center;
@@ -97,7 +79,7 @@
     &__divider {
       display: none;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: block;
       }
     }

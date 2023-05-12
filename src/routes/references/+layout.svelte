@@ -49,11 +49,6 @@
 </div>
 
 <style lang="scss">
-  .nav-spacer {
-    height: var(--nav-height);
-    margin-top: 24px;
-  }
-
   .table-view-header-area {
     position: sticky;
     left: 0;

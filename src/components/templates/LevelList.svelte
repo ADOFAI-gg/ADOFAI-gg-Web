@@ -5,7 +5,6 @@
   import LevelSearchSettingsArea, {
     currentView
   } from '@organisms/levels/search/LevelSearchSettingsArea.svelte';
-  import VirtualScroll from '@adofai-gg/svelte-virtualized-infinite-scroll';
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/environment';
   import { writable, type Writable } from 'svelte/store';
@@ -15,6 +14,7 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
+  import VirtualList from '../utils/VirtualList.svelte';
 
   let items: Writable<Level[]> = writable([]);
 
@@ -159,71 +159,63 @@
   onDestroy(() => {
     mounted = false;
   });
+
+  const estimateSize = () => {
+    if (window.innerWidth >= 1024) return 111;
+    return 135;
+  };
 </script>
 
-{#if browser}
-  <div
-    class="level-list-container"
-    class:level-list-container-table-view={$currentView === 'table'}
-  >
-    <div class="top-spacer" />
-
-    <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
-      <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
-        <SearchInput
-          placeholder={'SEARCH_INPUT_PLACEHOLDER_HOME'}
-          bind:value={$searchSettingStore.query}
-        />
-        <div class="search-settings-area">
-          <LevelSearchSettingsArea />
-        </div>
+<div class="level-list-container" class:level-list-container-table-view={$currentView === 'table'}>
+  <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
+    <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
+      <SearchInput
+        placeholder={'SEARCH_INPUT_PLACEHOLDER_HOME'}
+        bind:value={$searchSettingStore.query}
+      />
+      <div class="search-settings-area">
+        <LevelSearchSettingsArea />
       </div>
     </div>
-
-    {#if $currentView === 'list'}
-      <PageContainer>
-        <VirtualScroll
-          scrollContainer="#root"
-          total={itemCount}
-          on:more={(e) => addItems(e.detail.offset)}
-          data={$items}
-          let:item
-        >
-          <div>
-            <LevelListItem level={item} />
-          </div>
-          <div slot="loading" class="list-loader">
-            <LoadingSpinner size={48} />
-          </div>
-        </VirtualScroll>
-      </PageContainer>
-    {:else if $currentView === 'table'}
-      <div class="table-view-container">
-        <LevelTableView
-          levels={$items}
-          total={itemCount}
-          on:more={(e) => addItems(e.detail.offset)}
-        />
-      </div>
-    {/if}
   </div>
-{/if}
+
+  {#if $currentView === 'list'}
+    <PageContainer>
+      <VirtualList
+        on:more={(e) => addItems(e.detail.offset)}
+        total={itemCount}
+        data={$items}
+        let:item
+      >
+        <div>
+          <LevelListItem level={item} />
+        </div>
+        <div slot="loading" class="list-loader">
+          <LoadingSpinner size={48} />
+        </div>
+      </VirtualList>
+    </PageContainer>
+  {:else if $currentView === 'table'}
+    <div class="table-view-container">
+      <LevelTableView
+        levels={$items}
+        total={itemCount}
+        on:more={(e) => addItems(e.detail.offset)}
+      />
+    </div>
+  {/if}
+</div>
 
 <style lang="scss">
   .level-list-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    margin-top: 24px;
   }
 
   .level-list-container-table-view {
     width: fit-content;
     min-width: 100vw;
-  }
-
-  .top-spacer {
-    height: var(--nav-height);
-    margin-top: 24px;
   }
 
   .list-view-search-area {
@@ -253,7 +245,7 @@
     z-index: 10;
     width: calc(100vw - 240px);
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
       left: 24px;
       width: calc(100vw - 48px);
     }
@@ -263,7 +255,7 @@
     padding-right: 120px;
     padding-left: 120px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
       padding-right: 24px;
       padding-left: 24px;
     }

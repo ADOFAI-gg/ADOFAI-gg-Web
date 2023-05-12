@@ -43,18 +43,6 @@ input {
   }
 }
 
-html {
-  height: -webkit-fill-available;
-}
-
-#root {
-  position: relative;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-  height: var(--app-height);
-}
-
 .text-shadow-6 {
   text-shadow: 0 0 6px rgb(0, 0, 0);
 }
@@ -66,7 +54,7 @@ html {
 .mobile-only {
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (width <= 768px) {
     display: block;
   }
 }
