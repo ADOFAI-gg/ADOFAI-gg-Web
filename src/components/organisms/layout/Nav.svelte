@@ -8,6 +8,8 @@
 </script>
 
 <nav class="nav">
+  <div id="nprogress-parent" />
+
   <Logo />
 
   <div class="nav__links">
@@ -50,6 +52,15 @@
     padding: 0 24px;
     background-color: rgba(var(--color-darkblue), 0.5);
     backdrop-filter: blur(4px);
+
+    #nprogress-parent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      pointer-events: none;
+    }
 
     &__links {
       position: absolute;

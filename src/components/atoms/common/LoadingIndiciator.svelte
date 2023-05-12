@@ -17,6 +17,10 @@
 
   $: {
     if ($navigating) {
+      NProgress.configure({
+        parent: '#nprogress-parent'
+      });
+
       NProgress.start();
     } else {
       NProgress.done();

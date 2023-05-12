@@ -51,6 +51,24 @@ input {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 }
 
+#nprogress .bar {
+  background: rgba(var(--color-blue), 1) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px rgba(var(--color-blue), 1), 0 0 5px rgba(var(--color-blue), 1);
+}
+
+#nprogress .spinner-icon {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  border-top-color: rgba(var(--color-blue), 1);
+  border-left-color: rgba(var(--color-blue), 1);
+}
+
 .mobile-only {
   display: none;
 
