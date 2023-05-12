@@ -6,7 +6,7 @@
   afterNavigate((data) => {
     const app = document.querySelector('#root');
 
-    if (data.type !== 'enter') {
+    if (data.type === 'link' || data.type === 'goto') {
       app?.scrollTo({
         top: 0,
         left: 0,
