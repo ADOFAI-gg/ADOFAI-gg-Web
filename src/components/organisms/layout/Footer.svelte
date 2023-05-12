@@ -30,7 +30,7 @@
 
       <div class="list">
         <FooterSection title="FOOTER_SECTION_LEGAL">
-          <FooterLink href="/legal">
+          <FooterLink href="/docs/legal">
             <Translation key="FOOTER_LEGAL_NOTICE" />
           </FooterLink>
 
@@ -71,7 +71,7 @@
         flex-grow: 1;
         width: 0;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           width: auto;
         }
       }
@@ -81,7 +81,7 @@
         justify-content: center;
       }
 
-      @media (max-width: 768px) {
+      @media (width <= 768px) {
         flex-direction: column;
         gap: 24px;
         align-items: flex-start;

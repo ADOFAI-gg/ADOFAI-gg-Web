@@ -2,15 +2,19 @@
   import { page } from '$app/stores';
 </script>
 
-<div class="title">
-  {$page.data.metadata.title}
-</div>
+{#if $page.data.metadata.title || $page.data.metadata.summary}
+  {#if $page.data.metadata.title}
+    <div class="title">
+      {$page.data.metadata.title}
+    </div>
+  {/if}
 
-{#if $page.data.metadata.summary}
-  <div class="summary">{$page.data.metadata.summary}</div>
+  {#if $page.data.metadata.summary}
+    <div class="summary">{$page.data.metadata.summary}</div>
+  {/if}
+
+  <div class="top-divider" />
 {/if}
-
-<div class="top-divider" />
 
 <div class="markdown-body">
   <svelte:component this={$page.data.component} />
