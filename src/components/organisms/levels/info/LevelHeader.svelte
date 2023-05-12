@@ -44,17 +44,18 @@
 <style lang="scss">
   header {
     position: relative;
+    display: flex;
     width: 100%;
     padding: 0 32px;
   }
 
   .bg-image {
     position: absolute;
-    top: 0;
+    top: calc(var(--nav-height) * -1);
     left: 0;
     z-index: -10;
     width: 100%;
-    height: 100%;
+    height: calc(100% + var(--nav-height));
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -63,11 +64,11 @@
 
   .bg-image-backdrop {
     position: absolute;
-    top: 0;
+    top: calc(var(--nav-height) * -1);
     left: 0;
     z-index: -10;
     width: 100%;
-    height: 100%;
+    height: calc(100% + var(--nav-height));
     backdrop-filter: blur(8px);
   }
 
