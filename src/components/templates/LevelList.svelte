@@ -159,11 +159,6 @@
   onDestroy(() => {
     mounted = false;
   });
-
-  const estimateSize = () => {
-    if (window.innerWidth >= 1024) return 111;
-    return 135;
-  };
 </script>
 
 <div class="level-list-container" class:level-list-container-table-view={$currentView === 'table'}>
