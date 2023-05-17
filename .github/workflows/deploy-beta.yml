@@ -36,6 +36,8 @@ jobs:
             OPENGRAPH_ENDPOINT=${{ secrets.STAGING_OPENGRAPH_ENDPOINT }}
             DISCORD_INVITE=https://discord.gg/adofaigg
             SUPPORT_MAIL=support@adofai.gg
+            GTM_ID=GTM-WDQRN9M
+            GA_ID=G-3BKXMVNJYQ
       - name: Send update signal to kubernetes
         run: bash ./deploy/staging/deploy-beta.sh
         env:
