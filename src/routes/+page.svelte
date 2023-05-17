@@ -5,6 +5,6 @@
   export let data: Data;
 </script>
 
-<PageContainer navOffset>
+<PageContainer>
   <Home {data} />
 </PageContainer>

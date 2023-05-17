@@ -1767,6 +1767,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@builder.io/partytown@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@builder.io/partytown@npm:0.8.0"
+  bin:
+    partytown: bin/partytown.cjs
+  checksum: 98f38806afad78d3a8b1ff9610462cdfcc0b31d5e039bc77617bc33d15debe63a803669da36d9e0d98e693f6f7cc5fef1b0f3d0fd11f45ca1c0b3bc8fdf75a22
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:1.5.0":
   version: 1.5.0
   resolution: "@colors/colors@npm:1.5.0"
@@ -5275,6 +5284,7 @@ __metadata:
   resolution: "adofai-gg@workspace:."
   dependencies:
     "@babel/core": ^7.17.9
+    "@builder.io/partytown": ^0.8.0
     "@commitlint/cli": ^16.2.4
     "@commitlint/config-conventional": ^16.2.4
     "@fontsource/m-plus-rounded-1c": 4.5.10

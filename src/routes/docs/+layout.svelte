@@ -2,7 +2,7 @@
   import PageContainer from '@/components/atoms/common/PageContainer.svelte';
 </script>
 
-<PageContainer navOffset>
+<PageContainer>
   <div class="spacer">
     <slot />
   </div>

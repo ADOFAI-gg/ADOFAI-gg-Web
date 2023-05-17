@@ -119,3 +119,9 @@ export interface SyncStatusResponse {
   lastSucceedAt: string;
   exception: string | null;
 }
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}

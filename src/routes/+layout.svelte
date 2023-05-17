@@ -22,6 +22,7 @@
   import { page } from '$app/stores';
   import { setupSentry } from '@/utils/sentry';
   import Footer from '@organisms/layout/Footer.svelte';
+  import { partytownSnippet } from '@builder.io/partytown/integration';
 
   // quicksand
   import '@fontsource/quicksand/variable.css';
@@ -40,8 +41,44 @@
   import '@fontsource/roboto-mono/300.css';
   import '@fontsource/roboto-mono/500.css';
 
+  let partytownScriptEl: HTMLScriptElement;
+
+  const getGtagContent = () => {
+    const scriptTagName = 'script';
+
+    let content = `<${scriptTagName} type="text/partytown">`;
+
+    content += `
+    window.dataLayer = window.dataLayer || [];
+
+    window.gtag = function gtag() {
+      dataLayer.push(arguments);
+    };
+
+    gtag('js', new Date());
+    `;
+
+    if (import.meta.env.VITE_GA_ID) {
+      content += `
+      gtag('config', ${JSON.stringify(import.meta.env.VITE_GA_ID)}, {
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+      `;
+    }
+    content += `</${scriptTagName}>`;
+
+    return content;
+  };
+
+  const gtagContent = getGtagContent();
+
   onMount(() => {
     setupSentry();
+
+    if (partytownScriptEl) {
+      partytownScriptEl.textContent = partytownSnippet();
+    }
   });
 </script>
 
@@ -52,6 +89,23 @@
   {#each $page.data?.meta?.metaTags ?? defaultMeta as meta}
     <meta {...meta} />
   {/each}
+
+  <script>
+    partytown = {
+      forward: ['dataLayer.push', 'gtag']
+    };
+  </script>
+  <script bind:this={partytownScriptEl}></script>
+
+  {#if import.meta.env.VITE_GTAG_ID}
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id={import.meta.env.VITE_GTAG_ID}"
+    ></script>
+
+    <!-- eslint-disable-next-line svelte/no-at-html-tags-->
+    {@html gtagContent}
+  {/if}
 </svelte:head>
 
 <Nav />

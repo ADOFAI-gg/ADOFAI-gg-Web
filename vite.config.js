@@ -3,6 +3,7 @@ import glob from 'vite-plugin-glob';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import preload from 'vite-plugin-preload';
+import { partytownVite } from '@builder.io/partytown/utils';
 
 export default defineConfig({
   resolve: {
@@ -14,5 +15,12 @@ export default defineConfig({
       '@templates': path.resolve('./src/components/templates')
     }
   },
-  plugins: [glob(), sveltekit(), preload()]
+  plugins: [
+    glob(),
+    sveltekit(),
+    preload(),
+    partytownVite({
+      dest: path.join(process.cwd(), 'static', '~partytown')
+    })
+  ]
 });

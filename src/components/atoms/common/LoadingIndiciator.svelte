@@ -13,6 +13,13 @@
         behavior: 'smooth'
       });
     }
+
+    if ((['link', 'goto'] as (typeof data)['type'][]).includes(data.type)) {
+      window.gtag?.('event', 'page_view', {
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
+    }
   });
 
   $: {
