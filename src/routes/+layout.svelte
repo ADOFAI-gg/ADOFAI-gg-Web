@@ -97,10 +97,10 @@
   </script>
   <script bind:this={partytownScriptEl}></script>
 
-  {#if import.meta.env.VITE_GTAG_ID}
+  {#if import.meta.env.VITE_GTM_ID}
     <script
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id={import.meta.env.VITE_GTAG_ID}"
+      src="https://www.googletagmanager.com/gtag/js?id={import.meta.env.VITE_GTM_ID}"
     ></script>
 
     <!-- eslint-disable-next-line svelte/no-at-html-tags-->
