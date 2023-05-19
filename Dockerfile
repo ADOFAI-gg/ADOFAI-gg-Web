@@ -38,6 +38,7 @@ RUN tar xvzf package.tgz && \
     rm package.tgz && \
     mv package app && \
     cd app && \
+    echo "nodeLinker: pnpm" >> .yarnrc.yml \
     corepack enable && \
     yarn
 
