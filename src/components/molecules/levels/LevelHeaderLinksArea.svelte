@@ -5,6 +5,10 @@
   import type { Level } from '@/types';
 
   export let level: Level;
+
+  const collectDownloadEvent = () => {
+    window.gtag?.('event', 'level_download', { level_id: level.id, level_name: level.title });
+  };
 </script>
 
 <div class="links">
@@ -24,7 +28,7 @@
   {/if}
 
   {#if level.download}
-    <a href={level.download} target="_blank" rel="noreferrer">
+    <a href={level.download} target="_blank" rel="noreferrer" on:click={collectDownloadEvent}>
       <Icon icon="download" size={36} alt="Download icon" />
     </a>
   {/if}
@@ -46,7 +50,7 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       justify-content: flex-end;
     }
   }

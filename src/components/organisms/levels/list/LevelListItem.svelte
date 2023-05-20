@@ -67,7 +67,13 @@
   </div>
 
   <div class="download">
-    <button on:click|preventDefault={() => window.open(level.download)}>
+    <button
+      on:click|preventDefault={() => {
+        window.gtag?.('event', 'level_download', { level_id: level.id, level_name: level.title });
+
+        window.open(level.download);
+      }}
+    >
       <Icon icon="downloadFile" size={48} alt="Download Icon" />
     </button>
   </div>
