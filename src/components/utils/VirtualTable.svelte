@@ -194,5 +194,3 @@
 {#if hasMore}
   <slot name="loading" />
 {/if}
-
-<div style=" position: fixed; bottom: 0; left: 0">{startIndex} - {endIndex}</div>
