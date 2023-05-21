@@ -17,7 +17,7 @@ jobs:
         run: corepack enable
       - name: Get yarn cache directory
         id: yarn-cache-dir-path
-        run: echo "dir=$(C:\Users\paring\Documents\Programming\adofai-gg-web\.yarn\cache)" >> $GITHUB_ENV
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_ENV
       - name: Cache yarn dependencies
         uses: actions/cache@v3
         with:
