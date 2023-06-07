@@ -20,7 +20,6 @@
   import { onMount } from 'svelte';
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
-  import { setupSentry } from '@/utils/sentry';
   import Footer from '@organisms/layout/Footer.svelte';
   import { partytownSnippet } from '@builder.io/partytown/integration';
 
@@ -74,8 +73,6 @@
   const gtagContent = getGtagContent();
 
   onMount(() => {
-    setupSentry();
-
     if (partytownScriptEl) {
       partytownScriptEl.textContent = partytownSnippet();
     }
