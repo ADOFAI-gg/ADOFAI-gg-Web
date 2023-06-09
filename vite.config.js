@@ -18,11 +18,17 @@ export default defineConfig({
   },
   plugins: [
     sentrySvelteKit({
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      url: process.env.SENTRY_URL,
-      autoUploadSourceMaps: true
+      sourceMapsUploadOptions: {
+        org: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        url: process.env.SENTRY_URL,
+        cleanArtifacts: true,
+        setCommits: {
+          auto: true
+        },
+        include: ['dist']
+      }
     }),
     glob(),
     sveltekit(),
