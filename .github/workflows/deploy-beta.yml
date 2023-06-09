@@ -38,6 +38,10 @@ jobs:
             SUPPORT_MAIL=support@adofai.gg
             GTM_ID=GTM-WDQRN9M
             GA_ID=G-3BKXMVNJYQ
+            SENTRY_ENV=beta
+            SENTRY_ORG=${{ secrets.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Send update signal to kubernetes
         run: bash ./deploy/staging/deploy-beta.sh
         env:

@@ -36,6 +36,10 @@ jobs:
             OPENGRAPH_ENDPOINT=${{ secrets.STAGING_OPENGRAPH_ENDPOINT }}
             DISCORD_INVITE=https://discord.gg/adofaigg
             SUPPORT_MAIL=support@adofai.gg
+            SENTRY_ENV=staging
+            SENTRY_ORG=${{ secrets.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Send update signal to kubernetes
         run: bash ./deploy/staging/deploy.sh
         env:

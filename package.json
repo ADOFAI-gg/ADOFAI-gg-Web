@@ -33,6 +33,7 @@
     "@sentry/integrations": "^7.14.2",
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "^7.14.2",
+    "@sentry/vite-plugin": "^2.2.1",
     "@storybook/addon-essentials": "7.0.0-beta.61",
     "@storybook/addon-interactions": "7.0.0-beta.61",
     "@storybook/addon-links": "7.0.0-beta.61",

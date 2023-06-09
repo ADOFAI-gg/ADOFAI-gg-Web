@@ -16,7 +16,7 @@ Sentry.init({
 
   // If you don't want to use Session Replay, just remove the line below:
   integrations: [new Replay()],
-  environment: dev ? 'dev' : 'prod'
+  environment: dev ? 'dev' : import.meta.env.VITE_SENTRY_ENV
 });
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`
