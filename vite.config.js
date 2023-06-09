@@ -26,8 +26,7 @@ export default defineConfig({
         cleanArtifacts: true,
         setCommits: {
           auto: true
-        },
-        include: ['dist']
+        }
       }
     }),
     glob(),
