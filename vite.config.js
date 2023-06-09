@@ -32,7 +32,8 @@ export default defineConfig({
       release: {
         name: process.env.VITE_SENTRY_RELEASE,
         setCommits: {
-          auto: true
+          auto: true,
+          repo: 'ADOFAI-gg/ADOFAI-gg-Web'
         }
       },
       url: process.env.SENTRY_URL
