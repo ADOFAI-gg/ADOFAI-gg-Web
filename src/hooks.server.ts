@@ -6,8 +6,7 @@ import { dev } from '$app/environment';
 Sentry.init({
   dsn: 'https://aa59dab6a96a4261ac725a3eef4de52e@sentry.pikokr.dev/2',
   tracesSampleRate: 1,
-  environment: dev ? 'dev' : import.meta.env.VITE_SENTRY_ENV,
-  release: import.meta.env.VITE_SENTRY_RELEASE
+  environment: dev ? 'dev' : import.meta.env.VITE_SENTRY_ENV
 });
 
 export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, resolve }) => {

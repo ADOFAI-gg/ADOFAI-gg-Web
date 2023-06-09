@@ -5,7 +5,6 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import preload from 'vite-plugin-preload';
 import { partytownVite } from '@builder.io/partytown/utils';
-import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 export default defineConfig({
   resolve: {
@@ -18,25 +17,18 @@ export default defineConfig({
     }
   },
   plugins: [
-    sentrySvelteKit(),
+    sentrySvelteKit({
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      url: process.env.SENTRY_URL,
+      autoUploadSourceMaps: true
+    }),
     glob(),
     sveltekit(),
     preload(),
     partytownVite({
       dest: path.join(process.cwd(), 'static', '~partytown')
-    }),
-    sentryVitePlugin({
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      release: {
-        name: process.env.VITE_SENTRY_RELEASE,
-        setCommits: {
-          auto: true,
-          repo: 'https://github.com/ADOFAI-gg/ADOFAI-gg-Web'
-        }
-      },
-      url: process.env.SENTRY_URL
     })
   ],
   build: {
