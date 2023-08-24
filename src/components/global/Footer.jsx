@@ -29,17 +29,6 @@ const Footer = () => {
           <div>
             <a href='mailto:adofai.gg@gmail.com'>Contact Us</a>
           </div>
-
-          <div>
-            Powered By{' '}
-            <a
-              href='https://www.hanmesoft.com/'
-              target='_blank'
-              rel='noreferrer'
-            >
-              Hanmesoft
-            </a>
-          </div>
         </div>
       </div>
     </footer>
