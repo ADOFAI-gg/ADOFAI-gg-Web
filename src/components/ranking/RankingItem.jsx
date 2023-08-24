@@ -5,6 +5,8 @@ const RankingItem = ({ rank, index }) => {
   const { name, totalPp, bestPlay } = rank;
   const speedFormat = String(bestPlay.speed / 100);
 
+  const artists = bestPlay.level.music.artists;
+
   return (
     <article className='ranking-item'>
       <div className='ranking-item-rank'>#{index + 1}</div>
@@ -19,9 +21,7 @@ const RankingItem = ({ rank, index }) => {
               to={`/levels/${bestPlay.level.id}`}
               className='ranking-item-detail-highest-title'
             >
-              {bestPlay.level.music.artists[1]
-                ? `${bestPlay.level.music.artists[0].name}…`
-                : bestPlay.level.music.artists[0].name}
+              {artists.length ? artists[0].name + (artists.length > 1 ? '...' : '') : 'Unknown Artist'}
               {' - '}
               {bestPlay.level.name}
             </Link>
