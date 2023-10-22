@@ -53,7 +53,7 @@
   .footer {
     position: sticky;
     left: 0;
-    width: 100%;
+    width: var(--client-width);
     padding: 24px 0;
     background-color: rgba(var(--color-darkblue), 0.2);
 

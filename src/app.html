@@ -12,12 +12,13 @@
   <body class="%body_class%">
     <div id="root">%sveltekit.body%</div>
     <script>
-      const appHeight = () => {
+      const setupStyleVar = () => {
         const doc = document.documentElement;
+        doc.style.setProperty('--client-width', `${document.documentElement.clientWidth}px`);
         doc.style.setProperty('--app-height', `${window.innerHeight}px`);
       };
-      window.addEventListener('resize', appHeight);
-      appHeight();
+      window.addEventListener('resize', setupStyleVar);
+      setupStyleVar();
     </script>
   </body>
 </html>

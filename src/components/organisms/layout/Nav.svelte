@@ -47,7 +47,7 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    width: 100%;
+    width: var(--client-width);
     height: var(--nav-height);
     padding: 0 24px;
     background-color: rgba(var(--color-darkblue), 0.5);
@@ -57,7 +57,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: var(--app-width);
       height: var(--nav-height);
       pointer-events: none;
     }
