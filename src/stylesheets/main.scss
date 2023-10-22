@@ -4,8 +4,6 @@
 @import 'markdown';
 
 :root {
-  width: fit-content;
-
   --color-yellow: 255, 231, 110;
   --color-red: 245, 79, 81;
   --color-blue: 77, 147, 252;
@@ -23,6 +21,7 @@
 
   --app-height: 100%;
 
+  width: fit-content;
   color-scheme: dark;
 }
 
