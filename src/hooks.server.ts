@@ -4,7 +4,7 @@ import type { Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 
 Sentry.init({
-  dsn: 'https://aa59dab6a96a4261ac725a3eef4de52e@sentry.pikokr.dev/2',
+  dsn: 'https://ffe732e916eb1ee8d1351c62fe863448@sentry.paring.moe/3',
   tracesSampleRate: 1,
   environment: dev ? 'dev' : import.meta.env.VITE_SENTRY_ENV
 });

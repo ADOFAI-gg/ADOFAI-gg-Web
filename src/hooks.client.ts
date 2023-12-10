@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/sveltekit';
 import { dev } from '$app/environment';
 
 Sentry.init({
-  dsn: 'https://aa59dab6a96a4261ac725a3eef4de52e@sentry.pikokr.dev/2',
+  dsn: 'https://ffe732e916eb1ee8d1351c62fe863448@sentry.paring.moe/3',
   tracesSampleRate: 1.0,
 
   // This sets the sample rate to be 10%. You may want this to be 100% while
