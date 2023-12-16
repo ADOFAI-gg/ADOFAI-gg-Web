@@ -48,6 +48,7 @@
             <div class="additional-info">
               <LevelListItemTagList {level} />
 
+              <!-- TODO: uncomment after backend implements likes feature
               {#if useAccount}
                 <div class="hearts">
                   {#if level.tags.length || level.epilepsyWarning}
@@ -60,6 +61,7 @@
                   </div>
                 </div>
               {/if}
+              -->
             </div>
           {/if}
         </div>
@@ -199,6 +201,7 @@
   .additional-info {
     display: flex;
 
+    /* TODO: uncomment after backend implements likes feature
     .hearts {
       display: flex;
 
@@ -218,6 +221,7 @@
         font-size: 16px;
       }
     }
+    */
 
     @media (width >= 768px) {
       flex-direction: row;
