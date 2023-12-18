@@ -119,7 +119,7 @@
     {#if !$page.data?.meta?.hideFooter}
       <div class="footer-spacer" />
 
-      <Footer />
+      <Footer minimal={!!$page.data.minimalFooter} />
     {/if}
   </div>
 </div>

@@ -4,6 +4,8 @@
   import FooterSection from '@molecules/FooterSection.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import { PUBLIC_DISCORD_INVITE, PUBLIC_SUPPORT_MAIL } from '$env/static/public';
+
+  export let minimal = false;
 </script>
 
 <footer class="footer">
@@ -12,39 +14,41 @@
       <Translation key="footer:title" />
     </div>
 
-    <div class="footer__content-container" style="letter-spacing: -0.04em;">
-      <div>
-        <Translation key="footer:description" />
-      </div>
+    {#if !minimal}
+      <div class="footer__content-container" style="letter-spacing: -0.04em;">
+        <div>
+          <Translation key="footer:description" />
+        </div>
 
-      <div class="list">
-        <FooterSection title="footer:section-contact">
-          <FooterLink href="mailto:{PUBLIC_SUPPORT_MAIL}">
-            <Translation key="footer:link-email" />
-          </FooterLink>
+        <div class="list">
+          <FooterSection title="footer:section-contact">
+            <FooterLink href="mailto:{PUBLIC_SUPPORT_MAIL}">
+              <Translation key="footer:link-email" />
+            </FooterLink>
 
-          <FooterLink target="_blank" href={PUBLIC_DISCORD_INVITE}>
-            <Translation key="footer:link-discord" />
-          </FooterLink>
-        </FooterSection>
-      </div>
+            <FooterLink target="_blank" href={PUBLIC_DISCORD_INVITE}>
+              <Translation key="footer:link-discord" />
+            </FooterLink>
+          </FooterSection>
+        </div>
 
-      <div class="list">
-        <FooterSection title="footer:section-legal">
-          <FooterLink href="/docs/legal">
-            <Translation key="footer:link-legal-notice" />
-          </FooterLink>
+        <div class="list">
+          <FooterSection title="footer:section-legal">
+            <FooterLink href="/docs/legal">
+              <Translation key="footer:link-legal-notice" />
+            </FooterLink>
 
-          <!-- <FooterLink href="/docs/terms">
+            <!-- <FooterLink href="/docs/terms">
               <Translation key="footer:link-terms" />
             </FooterLink>
 
             <FooterLink href="/docs/privacy">
               <Translation key="footer:link-privacy" />
             </FooterLink> -->
-        </FooterSection>
+          </FooterSection>
+        </div>
       </div>
-    </div>
+    {/if}
 
     <div class="footer__copyright">© 2023 ADOFAI.gg Development Team.</div>
   </PageContainer>
