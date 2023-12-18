@@ -47,6 +47,9 @@
 
     @media screen and (width >= 768px) {
       width: fit-content;
+      &__overlay {
+        display: none;
+      }
     }
   }
 </style>
