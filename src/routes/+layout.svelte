@@ -131,7 +131,7 @@
   .page-layout {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--nav-height));
   }
 
   .page-content {
