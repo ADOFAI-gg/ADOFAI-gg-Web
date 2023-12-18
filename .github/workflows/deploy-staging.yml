@@ -41,8 +41,3 @@ jobs:
             SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }}
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             SENTRY_URL=${{ secrets.SENTRY_URL }}
-      - name: Send update signal to kubernetes
-        run: bash ./deploy/staging/deploy.sh
-        env:
-          API_ENDPOINT: ${{ secrets.STAGING_KUBERNETES_API_ENDPOINT }}
-          API_TOKEN: ${{ secrets.STAGING_KUBERNETES_API_TOKEN }}
