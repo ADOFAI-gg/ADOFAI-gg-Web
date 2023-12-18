@@ -68,6 +68,5 @@
 {#if useAccount}
   <!-- <div class="menu__divider" /> -->
 
-  <!-- TODO -->
   <NavSignArea overlay />
 {/if}
