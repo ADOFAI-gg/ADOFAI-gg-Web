@@ -19,7 +19,15 @@ const config = {
   extensions: ['.svelte', '.md', '.svx'],
 
   kit: {
-    adapter: process.env.VERCEL ? vercelAdapter() : nodeAdapter()
+    adapter: process.env.VERCEL ? vercelAdapter() : nodeAdapter(),
+
+    alias: {
+      '@/*': './src/*',
+      '@atoms/*': './src/components/atoms/*',
+      '@molecules/*': './src/components/molecules/*',
+      '@organisms/*': './src/components/organisms/*',
+      '@templates/*': './src/components/templates/*'
+    }
   }
 };
 

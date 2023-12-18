@@ -3,6 +3,7 @@
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import FooterSection from '@molecules/FooterSection.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import { PUBLIC_DISCORD_INVITE, PUBLIC_SUPPORT_MAIL } from '$env/static/public';
 </script>
 
 <footer class="footer">
@@ -18,11 +19,11 @@
 
       <div class="list">
         <FooterSection title="FOOTER_SECTION_CONTACT">
-          <FooterLink href="mailto:{import.meta.env.VITE_SUPPORT_MAIL}">
+          <FooterLink href="mailto:{PUBLIC_SUPPORT_MAIL}">
             <Translation key="FOOTER_CONTACT_EMAIL" />
           </FooterLink>
 
-          <FooterLink target="_blank" href={import.meta.env.VITE_DISCORD_INVITE}>
+          <FooterLink target="_blank" href={PUBLIC_DISCORD_INVITE}>
             <Translation key="FOOTER_CONTACT_DISCORD" />
           </FooterLink>
         </FooterSection>

@@ -4,6 +4,7 @@
 
   import SearchGroup from '@molecules/levels/SearchGroup.svelte';
   import { searchSettingStore, type SearchSettings } from '@/stores/search';
+  import { useAccount } from '@/utils/constants';
 
   const updateOrder = (v: SearchSettings['sort']['order']) => () => {
     searchSettingStore.update((x) => ({
@@ -64,7 +65,7 @@
             checked={$searchSettingStore.sort.type === 'difficulty'}
             on:click={updateType('difficulty')}
           />
-          {#if import.meta.env.VITE_USE_ACCOUNT}
+          {#if useAccount}
             <SortOrderRadio
               icon="heart"
               key="SORT_LIKES"

@@ -1,3 +1,5 @@
-const endpoint = import.meta.env.VITE_OPENGRAPH_ENDPOINT;
+import { PUBLIC_OPENGRAPH_ENDPOINT } from '$env/static/public';
+
+const endpoint = PUBLIC_OPENGRAPH_ENDPOINT;
 
 export const levelOpenGraphUrl = (id: number) => `${endpoint}/levels/${id}`;

@@ -6,8 +6,6 @@
   export let user: PartialMember;
 
   export let popup = false;
-
-  // const useAccount = !!import.meta.env.VITE_USE_ACCOUNT;
 </script>
 
 <Popover

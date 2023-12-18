@@ -4,6 +4,7 @@
   import Translation from '@/components/utils/Translation.svelte';
   import type { Level } from '@/types';
   import LevelListItemTagList from '@organisms/levels/list/LevelListItemTagList.svelte';
+  import { useAccount } from '@/utils/constants';
 
   export let level: Level;
 </script>
@@ -43,11 +44,11 @@
               </div>
             </div>
           </div>
-          {#if import.meta.env.VITE_USE_ACCOUNT || level.tags.length}
+          {#if useAccount || level.tags.length}
             <div class="additional-info">
               <LevelListItemTagList {level} />
 
-              {#if import.meta.env.VITE_USE_ACCOUNT}
+              {#if useAccount}
                 <div class="hearts">
                   {#if level.tags.length || level.epilepsyWarning}
                     <div class="divider" />

@@ -5,6 +5,7 @@
   import Icon from '@atoms/asset/Icon.svelte';
   import NavMenuOverlay from '@organisms/layout/NavMenuOverlay.svelte';
   import Popover from '@atoms/common/Popover.svelte';
+  import { useAccount } from '@/utils/constants';
 </script>
 
 <nav class="nav">
@@ -18,7 +19,7 @@
 
   <div style="flex-grow: 1;" />
 
-  {#if import.meta.env.VITE_USE_ACCOUNT}
+  {#if useAccount}
     <div class="nav__sign-area">
       <NavSignArea />
     </div>

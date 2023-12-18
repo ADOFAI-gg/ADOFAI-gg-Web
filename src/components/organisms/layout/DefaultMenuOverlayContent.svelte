@@ -4,6 +4,7 @@
   import NavMenuGroup from '@/components/molecules/nav/NavMenuGroup.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import { getNavCurrentTab } from './NavMenuOverlay.svelte';
+  import { useAccount } from '@/utils/constants';
 
   const currentTab = getNavCurrentTab();
 </script>
@@ -63,7 +64,7 @@
   </NavMenuGroup>
 </div>
 
-{#if import.meta.env.VITE_USE_ACCOUNT}
+{#if useAccount}
   <div class="menu__divider" />
 
   <!-- TODO -->

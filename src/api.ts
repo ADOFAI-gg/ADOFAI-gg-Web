@@ -1,5 +1,6 @@
 import Axios from 'axios';
+import { PUBLIC_API_ENDPOINT } from '$env/static/public';
 
 export const api = Axios.create({
-  baseURL: import.meta.env.VITE_API_ENDPOINT
+  baseURL: PUBLIC_API_ENDPOINT
 });

@@ -20,6 +20,8 @@
 
 <svelte:element
   this={href ? 'a' : 'button'}
+  role="button"
+  tabindex="0"
   on:click
   on:keydown={onKeydown}
   {href}

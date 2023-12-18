@@ -11,5 +11,9 @@
   "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"],
   "files.eol": "\n",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "prettier.prettierPath": "./node_modules/prettier"
 }

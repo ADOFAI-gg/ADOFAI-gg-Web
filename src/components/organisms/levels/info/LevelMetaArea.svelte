@@ -8,6 +8,7 @@
   import { currentLang, fallbackLang, langData } from '@/utils/i18n';
   import LevelShareMenu from '@organisms/levels/info/LevelShareMenu.svelte';
   import LevelTagDetailsArea from '@organisms/levels/info/LevelTagDetailsArea.svelte';
+  import { useAccount } from '@/utils/constants';
 
   $: unit = (name: string, v: number) => {
     const current = $currentLang;
@@ -103,7 +104,7 @@
   <div class="blank" />
 
   <div class="buttons">
-    {#if import.meta.env.VITE_USE_ACCOUNT}
+    {#if useAccount}
       <Button type="levelAction">
         <div class="buttons__like-container">
           <Icon style="color: rgba(var(--color-red), 1);" icon="heart" size={20} alt="Heart Icon" />

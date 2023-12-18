@@ -24,7 +24,6 @@
   import { partytownSnippet } from '@builder.io/partytown/integration';
 
   // quicksand
-  import '@fontsource/quicksand/variable.css';
   import '@fontsource/quicksand/300.css';
   import '@fontsource/quicksand/400.css';
   import '@fontsource/quicksand/500.css';
@@ -39,6 +38,8 @@
   // Roboto Mono
   import '@fontsource/roboto-mono/300.css';
   import '@fontsource/roboto-mono/500.css';
+  import { PUBLIC_GA_ID, PUBLIC_GTM_ID } from '$env/static/public';
+  import IconProvider from '@/components/utils/IconProvider.svelte';
 
   let partytownScriptEl: HTMLScriptElement;
 
@@ -57,9 +58,9 @@
     gtag('js', new Date());
     `;
 
-    if (import.meta.env.VITE_GA_ID) {
+    if (PUBLIC_GA_ID) {
       content += `
-      gtag('config', ${JSON.stringify(import.meta.env.VITE_GA_ID)}, {
+      gtag('config', ${JSON.stringify(PUBLIC_GA_ID)}, {
         page_location: window.location.href,
         page_path: window.location.pathname
       });
@@ -94,10 +95,10 @@
   </script>
   <script bind:this={partytownScriptEl}></script>
 
-  {#if import.meta.env.VITE_GTM_ID}
+  {#if PUBLIC_GTM_ID}
     <script
       type="text/partytown"
-      src="https://www.googletagmanager.com/gtag/js?id={import.meta.env.VITE_GTM_ID}"
+      src="https://www.googletagmanager.com/gtag/js?id={PUBLIC_GTM_ID}"
     ></script>
 
     <!-- eslint-disable-next-line svelte/no-at-html-tags-->
@@ -124,6 +125,7 @@
 </div>
 
 <UpdateNotification />
+<IconProvider />
 
 <style lang="scss">
   .page-layout {

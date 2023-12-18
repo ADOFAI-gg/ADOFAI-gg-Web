@@ -2,11 +2,12 @@ import { sequence } from '@sveltejs/kit/hooks';
 import * as Sentry from '@sentry/sveltekit';
 import type { Handle } from '@sveltejs/kit';
 import { dev } from '$app/environment';
+import { PUBLIC_SENTRY_DSN, PUBLIC_SENTRY_ENV } from '$env/static/public';
 
 Sentry.init({
-  dsn: 'https://ffe732e916eb1ee8d1351c62fe863448@sentry.paring.moe/3',
+  dsn: PUBLIC_SENTRY_DSN,
   tracesSampleRate: 1,
-  environment: dev ? 'dev' : import.meta.env.VITE_SENTRY_ENV
+  environment: dev ? 'dev' : PUBLIC_SENTRY_ENV
 });
 
 export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, resolve }) => {

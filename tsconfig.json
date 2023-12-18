@@ -13,13 +13,6 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@atoms/*": ["./src/components/atoms/*"],
-      "@molecules/*": ["./src/components/molecules/*"],
-      "@organisms/*": ["./src/components/organisms/*"],
-      "@templates/*": ["./src/components/templates/*"]
-    },
     "types": ["vite-plugin-glob/client", "@types/youtube"]
   }
 }
