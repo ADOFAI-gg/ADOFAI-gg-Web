@@ -6,11 +6,11 @@
 </script>
 
 <div class="sign-area" class:sign-area__overlay={overlay}>
-  <a href="/signup" class="sign-area__singup">
+  <a href="/auth/signup" class="sign-area__singup">
     <Translation key="common:sign-up" />
   </a>
 
-  <Button type="nav" href="/signin">
+  <Button type="nav" href="/auth/signin">
     <Translation key="common:sign-in" />
   </Button>
 </div>
