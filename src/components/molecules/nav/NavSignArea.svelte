@@ -1,14 +1,16 @@
 <script lang="ts">
   import Button from '@atoms/interaction/Button.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+
+  export let overlay = false;
 </script>
 
-<div class="sign-area">
+<div class="sign-area" class:sign-area__overlay={overlay}>
   <a href="/signup" class="sign-area__singup">
     <Translation key="common:sign-up" />
   </a>
 
-  <Button type="nav" href="/login">
+  <Button type="nav" href="/signin">
     <Translation key="common:sign-in" />
   </Button>
 </div>
@@ -21,6 +23,10 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    &__overlay {
+      width: 100% !important;
+    }
 
     &__singup {
       font-weight: 400;

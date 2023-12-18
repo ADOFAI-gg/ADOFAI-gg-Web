@@ -5,6 +5,7 @@
   import Translation from '@/components/utils/Translation.svelte';
   import { getNavCurrentTab } from './NavMenuOverlay.svelte';
   import { useAccount } from '@/utils/constants';
+  import NavSignArea from '@/components/molecules/nav/NavSignArea.svelte';
 
   const currentTab = getNavCurrentTab();
 </script>
@@ -65,8 +66,8 @@
 </div>
 
 {#if useAccount}
-  <div class="menu__divider" />
+  <!-- <div class="menu__divider" /> -->
 
   <!-- TODO -->
-  <!-- <NavSignArea /> -->
+  <NavSignArea overlay />
 {/if}
