@@ -8,15 +8,15 @@
 
 <div class="legal-docs-container">
   <a href="../docs/legal" target="_blank">
-    <Translation key="FOOTER_LEGAL_NOTICE" />
+    <Translation key="LEGAL_NOTICE" />
   </a>
   <div class="separator" />
   <a href="../docs/terms" target="_blank">
-    <Translation key="FOOTER_LEGAL_TERMS" />
+    <Translation key="TERMS_OF_SERVICE" />
   </a>
   <div class="separator" />
   <a href="../docs/privacy" target="_blank">
-    <Translation key="FOOTER_LEGAL_PRIVACY_POLICY" />
+    <Translation key="PRIVACY_POLICY" />
   </a>
 </div>
 
