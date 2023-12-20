@@ -28,6 +28,7 @@
     border-radius: 16px;
     display: flex;
     flex-direction: column;
+    row-gap: 32px;
   }
 
   .legal-docs-container {
