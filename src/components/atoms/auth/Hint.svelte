@@ -1,8 +1,12 @@
 <script lang="ts">
+  import { reduceMotion } from '@/utils/settings';
+
   export let warn: boolean = false;
 
   let hint: HTMLDivElement;
   export const animate = () => {
+    if ($reduceMotion) return;
+
     hint.classList.remove('animate-shake');
 
     setTimeout(() => {
