@@ -28,7 +28,7 @@
       width: 100% !important;
     }
 
-    &__singup {
+    &__signup {
       font-weight: 400;
       font-size: 14px;
       text-align: center;
