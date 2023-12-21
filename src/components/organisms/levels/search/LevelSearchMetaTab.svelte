@@ -27,6 +27,24 @@
     $searchSettingStore.query = encodeSearchString(filtered);
   };
 
+  const onChangeSong = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value;
+
+    const filtered = parsed.filter((x) => x.type !== 'song');
+
+    if (value) {
+      const index = parsed.findIndex((x) => x.type === 'song');
+
+      filtered.splice(index < 0 ? 0 : index, 0, {
+        quote: value.includes(' ') ? '"' : null,
+        type: 'song',
+        value
+      });
+    }
+
+    $searchSettingStore.query = encodeSearchString(filtered);
+  };
+
   const onChangeCreator = (e: Event) => {
     const value = (e.target as HTMLInputElement).value;
 
@@ -119,13 +137,20 @@
 </script>
 
 <div class="meta">
-  <SearchGroup title="SEARCH_META_AUTHOR">
+  <SearchGroup title="SEARCH_META_CREDIT">
     <div class="meta-group">
       <LabeledInputContainer key="SEARCH_META_ARTIST_LABEL">
         <SearchMetaInput
           on:input={onChangeArtist}
           value={$parsedQuery.artist}
           placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
+        />
+      </LabeledInputContainer>
+      <LabeledInputContainer label="SEARCH_META_SONG_LABEL">
+        <SearchMetaInput
+          on:input={onChangeSong}
+          value={$parsedQuery.song}
+          placeholder="SEARCH_META_SONG_PLACEHOLDER"
         />
       </LabeledInputContainer>
       <LabeledInputContainer key="SEARCH_META_CREATOR_LABEL">
