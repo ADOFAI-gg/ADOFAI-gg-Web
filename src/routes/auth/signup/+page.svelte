@@ -14,12 +14,14 @@
   let signupFailed = false;
   let allConditionsHint: Hint;
 
-  $: signupFailed && validate(legalAgreements);
+  $: signupFailed && validate(false, legalAgreements);
 
   const hasAgreed = (agreements = legalAgreements) => agreements.every((agreement) => agreement);
 
-  const validate = (agreements = legalAgreements) => {
+  const validate = (animate = true, agreements = legalAgreements) => {
     if (!hasAgreed(agreements)) {
+      if (!animate) return false;
+
       signupFailed = true;
       tick().then(() => allConditionsHint?.animate());
       return false;
