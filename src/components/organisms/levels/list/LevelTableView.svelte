@@ -34,15 +34,15 @@
     <thead slot="head">
       <tr>
         <th>
-          <Translation key="SEARCH_TABLE_COL_ID" />
+          <Translation key="level-table-cols:id" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_DIFFICULTY" />
+          <Translation key="level-table-cols:difficulty" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_LEVEL_NAME" />
+          <Translation key="level-table-cols:level-name" />
         </th>
 
         <!-- <th>
@@ -50,33 +50,33 @@
       </th> -->
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_ARTIST" />
+          <Translation key="level-table-cols:artist" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_CREATOR" />
+          <Translation key="level-table-cols:creator" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_BPM" />
+          <Translation key="level-table-cols:bpm" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_TILES" />
+          <Translation key="level-table-cols:tils" />
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_TAGS" />
+          <Translation key="level-table-cols:tags" />
         </th>
 
         <th class="auto-fit">
           <div bind:clientWidth={swwidth}>
-            <Translation key="SEARCH_TABLE_COL_WARNINGS" />
+            <Translation key="level-table-cols:warnings" />
           </div>
         </th>
 
         <th>
-          <Translation key="SEARCH_TABLE_COL_LINKS" />
+          <Translation key="level-table-cols:links" />
         </th>
       </tr>
     </thead>

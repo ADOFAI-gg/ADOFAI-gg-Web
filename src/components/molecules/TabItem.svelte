@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { TranslationKey } from '@/utils/i18n';
+
   import { getContext } from 'svelte';
   import type { Writable } from 'svelte/store';
   import Icon from '@atoms/asset/Icon.svelte';
@@ -12,7 +14,7 @@
 
   $: active = $currentValue === value;
 
-  export let title: string;
+  export let titleKey: TranslationKey;
 
   export let icon: string | undefined = undefined;
 
@@ -26,7 +28,7 @@
     <Icon size={18} {icon} alt="{icon} icon" />
   {/if}
   <div>
-    <Translation key={title} />
+    <Translation key={titleKey} />
   </div>
   <div class="tab-item__indicator" class:selected={active} />
 </button>

@@ -11,17 +11,17 @@
 <script lang="ts">
   import Icon from '@atoms/asset/Icon.svelte';
   import { fade } from 'svelte/transition';
-  import { translate, currentLang } from '@/utils/i18n';
+  import { translate, currentLang, type TranslationKey } from '@/utils/i18n';
   import { parseSearchString, type SearchChunk } from '@/utils/search';
 
   export let value = '';
   export let parsedValue: SearchChunk[] = [];
 
-  export let placeholder = 'SEARCH_INPUT_PLACEHOLDER_HOME';
+  const placeholder: TranslationKey = 'search:input-placeholder';
 
   let inputWidth = 0;
 
-  $: placeholderContent = translate(placeholder || '', $currentLang);
+  $: placeholderContent = translate(placeholder || '', {}, true, $currentLang);
 
   $: parsedValue = parseSearchString(value);
 

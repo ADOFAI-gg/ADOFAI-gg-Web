@@ -4,7 +4,13 @@
   import { reduceMotion, useSolidBackground } from '@/utils/settings';
 </script>
 
-<NavMenuGroup label="NAV_SETTINGS_ACCESSIBILITY" backTab={null}>
-  <NavSettingsSwitch label="ACCESSIBILITY_SOLID_BACKGROUND" bind:checked={$useSolidBackground} />
-  <NavSettingsSwitch label="ACCESSIBILITY_REDUCE_ANIMATION" bind:checked={$reduceMotion} />
+<NavMenuGroup labelKey="nav:setting-accessibility" backTab={null}>
+  <NavSettingsSwitch
+    labelKey="settings:accessibility-solid-background"
+    bind:checked={$useSolidBackground}
+  />
+  <NavSettingsSwitch
+    labelKey="settings:accessibility-reduce-animation"
+    bind:checked={$reduceMotion}
+  />
 </NavMenuGroup>

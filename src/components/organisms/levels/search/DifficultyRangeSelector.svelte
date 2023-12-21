@@ -69,13 +69,13 @@
   <DifficultySelectorInput
     bind:value={$parsedQuery.minDifficulty}
     on:change={onChangeMin}
-    placeholder="SEARCH_META_LV_MIN"
+    placeholderKey="SEARCH_META_LV_MIN"
     slot="min"
   />
   <DifficultySelectorInput
     bind:value={$parsedQuery.maxDifficulty}
     on:change={onChangeMax}
-    placeholder="SEARCH_META_LV_MAX"
+    placeholderKey="SEARCH_META_LV_MAX"
     slot="max"
   />
 </RangeInputPair>

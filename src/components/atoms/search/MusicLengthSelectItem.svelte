@@ -10,7 +10,7 @@
 
   export let icon = `${tag}`;
 
-  export let namespace = 'TAG';
+  export let namespace = 'tag';
 
   export let value: SearchSettings['filter']['musicLength'];
 
@@ -38,6 +38,6 @@
 
 <TagCheckboxBase on:click={click} include={value === $searchSettingStore.filter.musicLength}>
   <Icon style="" size={22} namespace="tagIcons" {icon} slot="icon" alt="Tag Icon" />
-  <Translation key="{namespace}_{tag}_NAME" slot="name" />
-  <Translation key="{namespace}_{tag}_DESCRIPTION" slot="description" />
+  <Translation key="tags:{namespace}-{tag}-name" slot="name" />
+  <Translation key="tags:{namespace}-{tag}-description" slot="description" />
 </TagCheckboxBase>

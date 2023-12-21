@@ -4,12 +4,13 @@
 
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
   import { setContext } from 'svelte';
   import type { Writable } from 'svelte/store';
 
   export let value: Writable<unknown>;
 
-  export let label: string | null = null;
+  export let labelKey: TranslationKey | null = null;
 
   export let deselectable = false;
 
@@ -23,10 +24,10 @@
 </script>
 
 <div class="tabs" style={$$props.style}>
-  {#if label}
+  {#if labelKey}
     <div class="tabs__label-container">
       <span class="tabs__label">
-        <Translation key={label} />
+        <Translation key={labelKey} />
       </span>
       <hr />
     </div>

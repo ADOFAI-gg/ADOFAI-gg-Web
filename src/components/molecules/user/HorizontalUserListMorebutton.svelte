@@ -8,7 +8,7 @@
     <Icon size={14} icon="bottomArrowCircleOutlined" alt="Expand Icon" />
   </div>
   <div>
-    <Translation key="SHOW_ALL" />
+    <Translation key="common:show-all" />
   </div>
 </button>
 

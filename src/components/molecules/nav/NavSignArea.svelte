@@ -5,11 +5,11 @@
 
 <div class="sign-area">
   <a href="/signup" class="sign-area__singup">
-    <Translation key="NAV_SIGNUP" />
+    <Translation key="common:sign-up" />
   </a>
 
   <Button type="nav" href="/login">
-    <Translation key="NAV_LOGIN" />
+    <Translation key="common:sign-in" />
   </Button>
 </div>
 

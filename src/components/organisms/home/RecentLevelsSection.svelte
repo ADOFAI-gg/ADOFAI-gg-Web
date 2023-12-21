@@ -6,7 +6,7 @@
   export let levels: Level[];
 </script>
 
-<MainSectionTitle title="HOME_RECENT_LEVELS" moreLink="/levels" />
+<MainSectionTitle titleKey="home:recent-levels" moreLink="/levels" />
 
 <div style="margin-top: -18px;">
   {#each levels as level}

@@ -17,7 +17,7 @@
       <Icon icon="playFilled" size={36} alt="Play button icon" />
     </a>
     <div class="p-2 text-lg font-medium">
-      <Translation key="LEVEL_OPEN_IN_ADOFAI" />
+      <Translation key="level-details:open-in-adofai" />
     </div>
   </Tooltip> -->
 

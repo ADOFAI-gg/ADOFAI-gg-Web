@@ -164,10 +164,7 @@
 <div class="level-list-container" class:level-list-container-table-view={$currentView === 'table'}>
   <div class={$currentView === 'list' ? 'list-view-search-area' : 'table-view-search-area'}>
     <div class={$currentView === 'list' ? 'list-view-search-area-content' : ''}>
-      <SearchInput
-        placeholder={'SEARCH_INPUT_PLACEHOLDER_HOME'}
-        bind:value={$searchSettingStore.query}
-      />
+      <SearchInput bind:value={$searchSettingStore.query} />
       <div class="search-settings-area">
         <LevelSearchSettingsArea />
       </div>

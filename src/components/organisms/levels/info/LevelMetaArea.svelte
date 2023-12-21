@@ -5,42 +5,25 @@
   import LevelMetaLabelValuePair from '@molecules/levels/LevelMetaLabelValuePair.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import type { Level } from '@/types';
-  import { currentLang, fallbackLang, langData } from '@/utils/i18n';
   import LevelShareMenu from '@organisms/levels/info/LevelShareMenu.svelte';
   import LevelTagDetailsArea from '@organisms/levels/info/LevelTagDetailsArea.svelte';
   import { useAccount } from '@/utils/constants';
 
-  $: unit = (name: string, v: number) => {
-    const current = $currentLang;
-
-    const fallback = fallbackLang;
-
-    let key = `TIME_UNIT_${name}`;
-
-    if (v > 1) {
-      key += 'S';
-    }
-
-    return (langData[current]?.[key] || langData[fallback]?.[key] || key)
-      .split('{value}')
-      .join(`${v}`);
-  };
-
-  $: convertLength = (length: number) => {
+  $: convertLength = (length: number): [string, number] => {
     const seconds = Math.floor(length % 60);
     const minutes = Math.floor((length / 60) % 60);
     const hours = Math.floor(length / 3600);
 
     if (!minutes) {
       const v = seconds - Math.ceil(seconds / 5);
-      return unit('SECOND', v);
+      return ['seconds', v];
     }
 
     if (!hours) {
-      return unit('MINUTE', minutes);
+      return ['minutes', minutes];
     }
 
-    return unit('HOUR', hours);
+    return ['hours', hours];
   };
 
   export let level: Level;
@@ -55,36 +38,35 @@
       return video.getDuration();
     }
 
-    if (level.tags.find((x) => x.id === 11)) return 'LONG';
+    if (level.tags.find((x) => x.id === 11)) return 'long';
 
-    if (level.difficulty === 0.1) return 'SHORT';
+    if (level.difficulty === 0.1) return 'short';
 
-    return 'MEDIUM';
+    return 'medium';
   })();
 
-  $: lengthText = typeof length === 'number' ? convertLength(length) : '';
+  $: videoLength = typeof length === 'number' ? convertLength(length) : undefined;
 </script>
 
 <section>
   <div class="horizontal">
-    <LevelMetaLabelValuePair label="LEVEL_DETAIL_DIFFICULTY">
+    <LevelMetaLabelValuePair label="level-details:difficulty">
       <DifficultyIcon difficulty={level.difficulty} size={28} censored={level.censored} />
     </LevelMetaLabelValuePair>
 
-    <LevelMetaLabelValuePair label="LEVEL_DETAIL_SONG_LENGTH">
+    <LevelMetaLabelValuePair label="level-details:song-length">
       <Translation
-        params={typeof length === 'number'
-          ? {
-              time: lengthText
-            }
-          : undefined}
-        key={typeof length === 'number' ? 'LENGTH_VIDEO' : `LENGTH_${length}`}
+        params={videoLength && {
+          time: videoLength[1],
+          timeUnit: videoLength[0]
+        }}
+        key={typeof length === 'number' ? 'tags:length-from-video' : `tags:length-${length}-name`}
       />
     </LevelMetaLabelValuePair>
   </div>
 
   <div class="horizontal">
-    <LevelMetaLabelValuePair label="LEVEL_DETAIL_BPM">
+    <LevelMetaLabelValuePair label="level-details:bpm">
       {#if music.minBpm === music.maxBpm}
         {music.minBpm}
       {:else}
@@ -92,12 +74,12 @@
       {/if}
     </LevelMetaLabelValuePair>
 
-    <LevelMetaLabelValuePair label="LEVEL_DETAIL_TILES">
+    <LevelMetaLabelValuePair label="level-details:tiles">
       {level.tiles}
     </LevelMetaLabelValuePair>
   </div>
 
-  <LevelMetaLabelValuePair label="LEVEL_DETAIL_TAGS">
+  <LevelMetaLabelValuePair label="level-details:tags">
     <LevelTagDetailsArea {level} />
   </LevelMetaLabelValuePair>
 

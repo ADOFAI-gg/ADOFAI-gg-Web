@@ -25,6 +25,7 @@
     "@babel/core": "^7.23.6",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@fluent/bundle": "^0.18.0",
     "@fontsource/m-plus-rounded-1c": "^5.0.11",
     "@fontsource/quicksand": "^5.0.16",
     "@fontsource/roboto-mono": "^5.0.16",

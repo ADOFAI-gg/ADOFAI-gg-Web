@@ -54,6 +54,6 @@
   on:click={update}
 >
   <Icon style="" size={22} namespace="tagIcons" icon={`${tag}`} slot="icon" alt="tag icon" />
-  <Translation key="TAG_{tag}_NAME" slot="name" />
-  <Translation key="TAG_{tag}_DESCRIPTION" slot="description" />
+  <Translation key="tags:tag-{tag}-name" slot="name" />
+  <Translation key="tags:tag-{tag}-description" slot="description" />
 </TagCheckboxBase>

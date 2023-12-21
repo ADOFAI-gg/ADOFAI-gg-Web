@@ -14,8 +14,9 @@
   import Translation from '@/components/utils/Translation.svelte';
   import { reduceMotion } from '@/utils/settings';
   import { createEventDispatcher } from 'svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let placeholder: string;
+  export let placeholderKey: TranslationKey;
 
   export let value: number | null;
 
@@ -73,7 +74,7 @@
       </button>
     {:else}
       <div class="input-placeholder" transition:fade={{ duration: $reduceMotion ? 0 : 200 }}>
-        <Translation key={placeholder} />
+        <Translation key={placeholderKey} />
       </div>
     {/if}
   </div>

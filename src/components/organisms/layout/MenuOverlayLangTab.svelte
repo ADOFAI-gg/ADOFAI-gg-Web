@@ -8,7 +8,7 @@
   };
 </script>
 
-<NavMenuGroup label="NAV_SETTINGS_LANGUAGES" backTab={null}>
+<NavMenuGroup labelKey="nav:setting-language" backTab={null}>
   {#each availableLanguages as lang}
     <NavMenuItem
       on:click={updateLang(lang.code)}

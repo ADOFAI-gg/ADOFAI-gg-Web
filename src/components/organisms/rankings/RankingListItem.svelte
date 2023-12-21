@@ -21,7 +21,7 @@
     <a href={item.bestPlay.url} target="_blank" rel="noreferrer" class="best-play-container">
       <Icon icon="playOutlined" size={16} alt="Video Icon" />
       <div>
-        <Translation key="RANKING_HIGHEST_PLAY" />
+        <Translation key="ranking:highest-play" />
       </div>
     </a>
   </div>

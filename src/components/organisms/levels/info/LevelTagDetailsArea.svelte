@@ -24,7 +24,7 @@
     )[];
 
     if (level.epilepsyWarning) {
-      result.push('SW');
+      result.push('sw');
     }
 
     return result;
@@ -45,17 +45,17 @@
             />
 
             <div>
-              <Translation key="TAG_{tag}_NAME" />
+              <Translation key="tags:tag-{tag}-name" />
             </div>
           </div>
 
           <div class="tooltip">
             <div style="font-weight: 700;">
-              <Translation key="TAG_{tag}_NAME" />
+              <Translation key="tags:tag-{tag}-name" />
             </div>
 
             <div>
-              <Translation key="TAG_{tag}_DESCRIPTION" />
+              <Translation key="tags:tag-{tag}-description" />
             </div>
           </div>
         </Tooltip>

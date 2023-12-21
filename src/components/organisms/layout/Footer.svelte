@@ -9,38 +9,38 @@
 <footer class="footer">
   <PageContainer>
     <div class="footer__title">
-      <Translation key="FOOTER_TITLE" />
+      <Translation key="footer:title" />
     </div>
 
     <div class="footer__content-container" style="letter-spacing: -0.04em;">
       <div>
-        <Translation key="FOOTER_DESCRIPTION" />
+        <Translation key="footer:description" />
       </div>
 
       <div class="list">
-        <FooterSection title="FOOTER_SECTION_CONTACT">
+        <FooterSection title="footer:section-contact">
           <FooterLink href="mailto:{PUBLIC_SUPPORT_MAIL}">
-            <Translation key="FOOTER_CONTACT_EMAIL" />
+            <Translation key="footer:link-email" />
           </FooterLink>
 
           <FooterLink target="_blank" href={PUBLIC_DISCORD_INVITE}>
-            <Translation key="FOOTER_CONTACT_DISCORD" />
+            <Translation key="footer:link-discord" />
           </FooterLink>
         </FooterSection>
       </div>
 
       <div class="list">
-        <FooterSection title="FOOTER_SECTION_LEGAL">
+        <FooterSection title="footer:section-legal">
           <FooterLink href="/docs/legal">
-            <Translation key="FOOTER_LEGAL_NOTICE" />
+            <Translation key="footer:link-legal-notice" />
           </FooterLink>
 
-          <!-- <FooterLink href="/tos">
-              <Translation key="FOOTER_LEGAL_TERMS" />
+          <!-- <FooterLink href="/docs/terms">
+              <Translation key="footer:link-terms" />
             </FooterLink>
 
-            <FooterLink href="/privacy">
-              <Translation key="FOOTER_LEGAL_PRIVACY_POLICY" />
+            <FooterLink href="/docs/privacy">
+              <Translation key="footer:link-privacy" />
             </FooterLink> -->
         </FooterSection>
       </div>

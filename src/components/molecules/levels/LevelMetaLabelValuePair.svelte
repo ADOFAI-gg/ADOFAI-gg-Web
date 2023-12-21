@@ -1,7 +1,8 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let label: string;
+  export let label: TranslationKey;
 </script>
 
 <div class="fair">

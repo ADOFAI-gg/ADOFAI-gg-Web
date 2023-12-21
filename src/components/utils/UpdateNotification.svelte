@@ -32,7 +32,7 @@
     class="update-notification"
   >
     <div class="update-available-text">
-      <Translation key="UPDATE_AVAILABLE" />
+      <Translation key="common:update-available" />
     </div>
     <button on:click={browser ? () => window.location.reload() : () => null} class="refresh-button">
       <Icon icon="refresh" size={12} alt="Refresh Icon" />

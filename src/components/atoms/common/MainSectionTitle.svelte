@@ -1,20 +1,26 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let title: string;
+  export let title: string | undefined = undefined;
+  export let titleKey: TranslationKey = 'common:change-me';
   export let moreLink: string | null = null;
 </script>
 
 <div class="main-section-title">
   <span class="main-section-title-text">
-    <Translation key={title} />
+    {#if title !== undefined}
+      {title}
+    {:else}
+      <Translation key={titleKey} />
+    {/if}
   </span>
 
   <div class="main-section-title-space" />
 
   {#if moreLink}
     <a href={moreLink} class="main-section-title-more">
-      <Translation key="SHOW_MORE" />
+      <Translation key="common:show-more" />
       <div>›</div>
     </a>
   {/if}

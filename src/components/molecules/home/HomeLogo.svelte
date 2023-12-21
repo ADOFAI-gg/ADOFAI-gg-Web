@@ -1,12 +1,10 @@
 <script lang="ts">
   import HomeLogoImage from '@atoms/home/HomeLogoImage.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-  import { type SyncStatusResponse, SyncStatus } from '@/types';
-  import { currentLang } from '@/utils/i18n';
 
   const forumLinkReplacer = (html: string) => {
     return html.replace(
-      /<forumLink>(.+?)<\/forumLink>/g,
+      /\[forumLink\](.+?)\[\/forumLink\]/g,
       `<a
         class="forum-link"
         href="https://docs.google.com/spreadsheets/d/1PzLHfWmVWJHrBGnNSsLTsdH0ibdk0hB4MpKHET1nkpU/edit#gid=1848316468"
@@ -16,19 +14,17 @@
     );
   };
 
-  export let syncStatus: SyncStatusResponse;
-
-  $: lastSyncedAt = new Date(syncStatus.lastSucceedAt).toLocaleTimeString($currentLang);
+  // $: lastSyncedAt = new Date(syncStatus.lastSucceedAt).toLocaleTimeString($currentLang);
 </script>
 
 <div class="home-logo">
   <HomeLogoImage />
 
   <span class="home-logo__description">
-    <Translation key="HOME_HERO_DESCRIPTION" htmlReplacer={forumLinkReplacer} />
+    <Translation key="home:hero-description" htmlReplacer={forumLinkReplacer} />
   </span>
 
-  <span class="home-logo__sync-status">
+  <!-- <span class="home-logo__sync-status">
     <span class="home-logo__sync-status__status">
       <Translation
         key={syncStatus.status === SyncStatus.Ok
@@ -44,7 +40,7 @@
         }}
       />
     </span>
-  </span>
+  </span> -->
 </div>
 
 <style lang="scss">
@@ -55,19 +51,19 @@
     width: 100%;
     text-align: center;
 
-    &__sync-status {
-      display: block;
-      opacity: 0.6;
+    // &__sync-status {
+    //   display: block;
+    //   opacity: 0.6;
 
-      &__status {
-        font-weight: 600;
-      }
+    //   &__status {
+    //     font-weight: 600;
+    //   }
 
-      &__time {
-        margin-left: 12px;
-        font-weight: 400;
-      }
-    }
+    //   &__time {
+    //     margin-left: 12px;
+    //     font-weight: 400;
+    //   }
+    // }
 
     &__description {
       font-weight: 600;

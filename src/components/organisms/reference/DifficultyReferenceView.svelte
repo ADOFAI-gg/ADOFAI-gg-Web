@@ -18,22 +18,22 @@
     <thead>
       <tr>
         <th>
-          <Translation key="REFERENCE_DIFFICULTY" />
+          <Translation key="references:reference-difficulty" />
         </th>
         <th>
-          <Translation key="REFERENCE_PP_RATING" />
+          <Translation key="references:reference-pp-rating" />
         </th>
         <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_FIRST" />
+          <Translation key="references:reference-standard-level-first" />
         </th>
         <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_SECOND" />
+          <Translation key="references:reference-standard-level-second" />
         </th>
         <th>
-          <Translation key="REFERENCE_STANDARD_LEVEL_THIRD" />
+          <Translation key="references:reference-standard-level-third" />
         </th>
         <th>
-          <Translation key="REFERENCE_EASIEST_LEVEL" />
+          <Translation key="references:reference-easiest-level" />
         </th>
       </tr>
     </thead>

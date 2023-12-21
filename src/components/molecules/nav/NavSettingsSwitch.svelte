@@ -1,16 +1,16 @@
 <script lang="ts">
   import Switch from '@/components/atoms/form/Switch.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-  import type { TranslationKeys } from '@/utils/i18n';
+  import type { TranslationKey } from '@/utils/i18n';
 
   export let checked: boolean;
 
-  export let label: TranslationKeys;
+  export let labelKey: TranslationKey;
 </script>
 
 <div class="settings-switch">
   <div class="settings-switch-label">
-    <Translation key={label} />
+    <Translation key={labelKey} />
   </div>
   <Switch bind:checked />
 </div>

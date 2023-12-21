@@ -5,15 +5,15 @@
 
 <div class="nav-link">
   <NavLink to="/levels">
-    <Translation key="NAV_LEVELS" />
+    <Translation key="nav:levels" />
   </NavLink>
 
   <NavLink to="/rankings">
-    <Translation key="NAV_RANKINGS" />
+    <Translation key="nav:rankings" />
   </NavLink>
 
   <NavLink to="/references">
-    <Translation key="NAV_REFERENCES" />
+    <Translation key="nav:references" />
   </NavLink>
 </div>
 

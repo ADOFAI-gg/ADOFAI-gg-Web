@@ -6,7 +6,7 @@
   export let plays: PlayLogWithLevel[] = [];
 </script>
 
-<MainSectionTitle title="HOME_TOP_PLAYS" moreLink="/rankings" />
+<MainSectionTitle titleKey="home:top-plays" moreLink="/rankings" />
 
 <div class="top-play">
   {#each plays.slice(0, 3) as play (play.id)}

@@ -121,14 +121,14 @@
 <div class="meta">
   <SearchGroup title="SEARCH_META_AUTHOR">
     <div class="meta-group">
-      <LabeledInputContainer label="SEARCH_META_ARTIST_LABEL">
+      <LabeledInputContainer key="SEARCH_META_ARTIST_LABEL">
         <SearchMetaInput
           on:input={onChangeArtist}
           value={$parsedQuery.artist}
           placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
         />
       </LabeledInputContainer>
-      <LabeledInputContainer label="SEARCH_META_CREATOR_LABEL">
+      <LabeledInputContainer key="SEARCH_META_CREATOR_LABEL">
         <SearchMetaInput
           on:input={onChangeCreator}
           value={$parsedQuery.creator}
@@ -139,10 +139,10 @@
   </SearchGroup>
   <SearchGroup title="SEARCH_META_LEVEL">
     <div class="meta-group">
-      <LabeledInputContainer label="SEARCH_META_LV_LABEL">
+      <LabeledInputContainer key="SEARCH_META_LV_LABEL">
         <DifficultyRangeSelector />
       </LabeledInputContainer>
-      <LabeledInputContainer label="SEARCH_META_TILES_LABEL">
+      <LabeledInputContainer key="SEARCH_META_TILES_LABEL">
         <RangeInputPair>
           <SearchMetaInput
             value={$parsedQuery.minTiles}
@@ -162,7 +162,7 @@
           />
         </RangeInputPair>
       </LabeledInputContainer>
-      <LabeledInputContainer label="SEARCH_META_BPM_LABEL">
+      <LabeledInputContainer key="SEARCH_META_BPM_LABEL">
         <RangeInputPair>
           <SearchMetaInput
             value={$parsedQuery.minBpm}
