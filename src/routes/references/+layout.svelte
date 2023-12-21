@@ -25,18 +25,18 @@
 
 <div class="table-view-header-area">
   <PageContainer wide={isReferenceTab}>
-    <MainSectionTitle title="REFERENCES" />
+    <MainSectionTitle titleKey="references:title" />
 
     <LinkTabGroup value={currentTab}>
       <TabItemLink
         icon="scale"
-        title="DIFFICULTY_REFERENCE"
+        titleKey="references:tab-reference"
         value={ReferenceTab.Reference}
         href="/references/levels"
       />
       <TabItemLink
         icon="question"
-        title="DIFFICULTY_INDICATION"
+        titleKey="references:tab-indication"
         value={ReferenceTab.Indication}
         href="/references/indication"
       />

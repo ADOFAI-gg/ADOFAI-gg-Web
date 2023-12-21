@@ -29,7 +29,10 @@
           <div class="divider" />
           <div class="details-container">
             <!-- <UserOverlayDetail label="USER_POPUP_RANKING" value="#66,236" /> -->
-            <UserOverlayDetail label="USER_POPUP_TOTAL_PP" value={`${member.totalPp.toFixed(3)}`} />
+            <UserOverlayDetail
+              labelKey="user-popup:user-total-pp"
+              value={`${member.totalPp.toFixed(3)}`}
+            />
           </div>
         </div>
       </div>
@@ -50,7 +53,7 @@
       <UserOverlayDetail label="USER_POPUP_TOTAL_PP" value="20,854.81" />
     </div>
     <Button href="/users/{user.id}" type="bordered" class="mt-[24px] text-md border-blue text-blue">
-      <Translation key="USER_POPUP_SHOW_MORE_LINK" />
+      <Translation key="user-popup:show-more" />
     </Button>
   </div> -->
 </div>

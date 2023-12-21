@@ -5,8 +5,9 @@
     type NavMenuTabType
   } from '@/components/organisms/layout/NavMenuOverlay.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let label: string;
+  export let labelKey: TranslationKey;
 
   export let backTab: NavMenuTabType | undefined = undefined;
 
@@ -25,7 +26,7 @@
         <Icon icon="chevronLeft" alt="back" size={18} />
       </button>
     {/if}
-    <Translation key={label} />
+    <Translation key={labelKey} />
   </div>
   <div class="group-content">
     <slot />

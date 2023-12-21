@@ -24,14 +24,14 @@
     <div class="content__detail-info">
       <div class="content__authors">
         <HorizontalUserList
-          allTitle="LEVEL_AUTHORS_CREATOR"
-          label="LEVEL_DETAIL_LEVEL_BY"
+          allTitleKey="level-details:creator-popup-title"
+          labelKey="level-details:level-by"
           users={level.creators}
         />
 
         <HorizontalUserList
-          allTitle="LEVEL_AUTHORS_ARTIST"
-          label="LEVEL_DETAIL_MUSIC_BY"
+          allTitleKey="level-details:artist-popup-title"
+          labelKey="level-details:music-by"
           users={level.music.artists}
         />
       </div>

@@ -1,17 +1,23 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let label: string;
-  export let value: string;
+  export let labelKey: TranslationKey;
+  export let value = '';
+  export let valueKey: TranslationKey = 'common:change-me';
 </script>
 
 <div class="pair">
   <div class="pair__label">
-    <Translation key={label} />
+    <Translation key={labelKey} />
   </div>
 
   <div class="pair__value">
-    <Translation key={value} />
+    {#if value}
+      {value}
+    {:else}
+      <Translation key={valueKey} />
+    {/if}
   </div>
 </div>
 

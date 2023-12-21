@@ -2,8 +2,9 @@
   import Icon from '@atoms/asset/Icon.svelte';
   import Tooltip from '@atoms/common/Tooltip.svelte';
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let key: string;
+  export let key: TranslationKey;
 
   let contentWidth: number;
   let containerWidth: number;

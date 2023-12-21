@@ -2,15 +2,16 @@
   import UserListItem from '@/components/molecules/user/UserListItem.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import type { PartialMember } from '@/types';
+  import type { TranslationKey } from '@/utils/i18n';
 
   export let users: PartialMember[];
 
-  export let allTitle: string;
+  export let allTitleKey: TranslationKey;
 </script>
 
 <div class="list-popover-content">
   <div class="list-popover-content__title">
-    <Translation key={allTitle} />
+    <Translation key={allTitleKey} />
   </div>
   <div class="list-popover-content__user-list">
     {#each users as user, i (i)}

@@ -65,39 +65,39 @@
   <div class="tabs">
     <SearchTabs style="flex-grow: 1;" value={currentTab} deselectable>
       <SearchTabItem value="tags" icon="tag">
-        <Translation key="SEARCH_TAB_TAGS" />
+        <Translation key="search:tab-tags" />
       </SearchTabItem>
 
       <SearchTabItem value="meta" icon="filter">
-        <Translation key="SEARCH_TAB_META" />
+        <Translation key="search:tab-meta" />
       </SearchTabItem>
 
       <SearchTabItem value="sort" icon="sort">
-        <Translation key="SEARCH_TAB_SORT" />
+        <Translation key="search:tab-sort" />
       </SearchTabItem>
 
       <div class="tabs__last">
         <Button type="search" on:click={reset}>
           <Icon icon="refresh" size={11} alt="Reset icon" />
           <span class="tabs__reset-text">
-            <Translation key="SEARCH_SETTINGS_RESET" />
+            <Translation key="search:reset" />
           </span>
         </Button>
 
         {#if $currentTab === 'tags'}
           <div transition:fade={{ duration: $reduceMotion ? 0 : 400 }} class="help-area">
-            <SearchHelpArea key="SEARCH_TAB_TAGS_HELP" />
+            <SearchHelpArea key="search:tab-tags-help" />
           </div>
         {/if}
       </div>
     </SearchTabs>
 
-    <SearchTabs value={currentView} label="SEARCH_VIEW_LABEL">
+    <SearchTabs value={currentView} labelKey="search:view-label">
       <SearchTabItem value="list" icon="list">
-        <Translation key="SEARCH_VIEW_LIST" />
+        <Translation key="search:view-list" />
       </SearchTabItem>
       <SearchTabItem value="table" icon="sheet">
-        <Translation key="SEARCH_VIEW_TABLE" />
+        <Translation key="search:view-table" />
       </SearchTabItem>
     </SearchTabs>
   </div>

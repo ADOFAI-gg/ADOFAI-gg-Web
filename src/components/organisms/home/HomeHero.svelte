@@ -3,7 +3,6 @@
   import SearchInput from '@molecules/search/SearchInput.svelte';
   import { goto } from '$app/navigation';
   import { searchSettingStore } from '@/stores/search';
-  import type { SyncStatusResponse } from '@/types';
 
   let searchQuery: string;
 
@@ -16,11 +15,11 @@
     goto('/levels');
   };
 
-  export let syncStatus: SyncStatusResponse;
+  // export let syncStatus: SyncStatusResponse;
 </script>
 
 <div class="hero">
-  <HomeLogo {syncStatus} />
+  <HomeLogo />
 
   <form class="hero__form" on:submit={onSubmitSearch}>
     <SearchInput bind:value={searchQuery} />

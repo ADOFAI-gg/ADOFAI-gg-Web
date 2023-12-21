@@ -5,14 +5,15 @@
   import Translation from '@/components/utils/Translation.svelte';
   import HorizontalUserListPopoverContent from '../../molecules/user/HorizontalUserListPopoverContent.svelte';
   import HorizontalUserListMorebutton from '../../molecules/user/HorizontalUserListMorebutton.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
   let moreButton: HTMLButtonElement;
 
   export let users: PartialMember[];
 
-  export let label: string;
+  export let labelKey: TranslationKey;
 
-  export let allTitle: string = label;
+  export let allTitleKey = labelKey;
 
   let containerWidth = 0;
 
@@ -50,8 +51,8 @@
 </script>
 
 <div class="user-list">
-  {#if label}
-    <span class="user-list-label"><Translation key={label} /></span>
+  {#if labelKey}
+    <span class="user-list-label"><Translation key={labelKey} /></span>
   {/if}
   <div class="user-list-content" bind:clientWidth={containerWidth}>
     {#each users as user, i (i)}
@@ -76,7 +77,7 @@
         }}
       >
         <HorizontalUserListMorebutton slot="button" />
-        <HorizontalUserListPopoverContent {allTitle} {users} />
+        <HorizontalUserListPopoverContent {allTitleKey} {users} />
       </Popover>
     </div>
   </div>

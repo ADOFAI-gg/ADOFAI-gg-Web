@@ -12,11 +12,11 @@
 
   <div style="padding: 12px; font-size: 14px;">
     <div style="font-weight: 700;">
-      <Translation key="TAG_{tag}_NAME" />
+      <Translation key="tags:tag-{tag}-name" />
     </div>
 
     <div style="font-weight: 400;">
-      <Translation key="TAG_{tag}_DESCRIPTION" />
+      <Translation key="tags:tag-{tag}-description" />
     </div>
   </div>
 </Tooltip>

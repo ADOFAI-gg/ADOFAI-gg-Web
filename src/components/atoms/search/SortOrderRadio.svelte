@@ -3,9 +3,10 @@
   import Icon from '@atoms/asset/Icon.svelte';
 
   import TagCheckboxBase from './TagCheckboxBase.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
   export let icon: string;
-  export let key: string;
+  export let key: TranslationKey;
 
   export let checked: boolean;
 </script>

@@ -13,11 +13,11 @@
   <thead>
     <tr>
       <th>
-        <Translation key="REFERENCE_DIFFICULTY" />
+        <Translation key="references:reference-difficulty" />
       </th>
 
       <th>
-        <Translation key="REFERENCE_DESCRIPTION" />
+        <Translation key="references:reference-description" />
       </th>
     </tr>
   </thead>
@@ -29,7 +29,7 @@
       </Cell>
 
       <Cell leftSideBorder>
-        <Translation key="REFERENCE_INDICATION_RATED" />
+        <Translation key="references:indication-rated" />
       </Cell>
     </tr>
 
@@ -39,7 +39,7 @@
       </Cell>
 
       <Cell leftSideBorder>
-        <Translation key="REFERENCE_INDICATION_TINY" />
+        <Translation key="references:indication-tiny" />
       </Cell>
     </tr>
 
@@ -49,7 +49,7 @@
       </Cell>
 
       <Cell leftSideBorder>
-        <Translation key="REFERENCE_INDICATION_NOT_RATED" />
+        <Translation key="references:indication-not-rated" />
       </Cell>
     </tr>
 
@@ -59,7 +59,7 @@
       </Cell>
 
       <Cell leftSideBorder>
-        <Translation key="REFERENCE_INDICATION_UNCLEARABLE" />
+        <Translation key="references:indication-unclearable" />
       </Cell>
     </tr>
 
@@ -69,7 +69,7 @@
       </Cell>
 
       <Cell leftSideBorder>
-        <Translation key="REFERENCE_INDICATION_CENSORED" />
+        <Translation key="references:indication-censored" />
       </Cell>
     </tr>
   </tbody>

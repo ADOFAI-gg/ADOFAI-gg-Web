@@ -38,9 +38,9 @@
 
         <div class="tooltip">
           <div class="tooltip__title">
-            <Translation key="TAG_{tag}_NAME" />
+            <Translation key="tags:tag-{tag}-name" />
           </div>
-          <Translation key="TAG_{tag}_DESCRIPTION" />
+          <Translation key="tags:tag-{tag}-description" />
         </div>
       </Tooltip>
     {/each}
@@ -58,9 +58,9 @@
 
         <div class="tooltip">
           <div class="title">
-            <Translation key="TAG_4_NAME" />
+            <Translation key="tags:tag-4-name" />
           </div>
-          <Translation key="TAG_4_DESCRIPTION" />
+          <Translation key="tags:tag-4-description" />
         </div>
       </Tooltip>
     {/if}
@@ -78,9 +78,9 @@
 
         <div class="tooltip">
           <div class="title">
-            <Translation key="TAG_SW_NAME" />
+            <Translation key="tags:tag-sw-name" />
           </div>
-          <Translation key="TAG_SW_DESCRIPTION" />
+          <Translation key="tags:tag-sw-description" />
         </div>
       </Tooltip>
     {/if}

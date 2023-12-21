@@ -26,8 +26,8 @@
         <div class="details-area">
           <div class="authors">
             <div class="authors__labels">
-              <div><Translation key="LEVEL_DETAIL_MUSIC_BY" /></div>
-              <div><Translation key="LEVEL_DETAIL_LEVEL_BY" /></div>
+              <div><Translation key="level-details:music-by" /></div>
+              <div><Translation key="level-details:level-by" /></div>
             </div>
 
             <div class="authors__values">

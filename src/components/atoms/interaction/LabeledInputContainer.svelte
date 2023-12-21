@@ -1,12 +1,13 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
-  export let label: string;
+  export let key: TranslationKey;
 </script>
 
 <div>
   <div class="translation">
-    <Translation key={label} />
+    <Translation {key} />
   </div>
   <div class="slot">
     <slot />

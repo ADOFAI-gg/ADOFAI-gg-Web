@@ -9,14 +9,14 @@
   const currentTab = getNavCurrentTab();
 </script>
 
-<NavMenuGroup label="NAV_SETTINGS">
+<NavMenuGroup labelKey="nav:group-settings">
   <NavMenuItem
     on:click={() => ($currentTab = 'lang')}
     role="menuitem"
     tabindex="0"
     class="menu-item"
   >
-    <Translation key="NAV_SETTINGS_LANGUAGES_BUTTON" />
+    <Translation key="nav:setting-language-international" />
   </NavMenuItem>
   <NavMenuItem
     on:click={() => ($currentTab = 'accessibility')}
@@ -24,42 +24,42 @@
     tabindex="0"
     class="menu-item"
   >
-    <Translation key="NAV_SETTINGS_ACCESSIBILITY" />
+    <Translation key="nav:setting-accessibility" />
   </NavMenuItem>
 </NavMenuGroup>
 
-<NavMenuGroup label="NAV_LINKS">
+<NavMenuGroup labelKey="nav:group-links">
   <NavMenuItemLink
     href="https://docs.google.com/forms/d/e/1FAIpQLScyHHUYzdFsL4HxhElhmj70_JNhTtfxiZM-KcbsYVBA_YfSvA/viewform?usp=send_form"
   >
-    <Translation key="NAV_LINK_SUBMIT_PLAY" />
+    <Translation key="nav:external-submit-play" />
   </NavMenuItemLink>
 
   <NavMenuItemLink
     href="https://docs.google.com/forms/d/e/1FAIpQLSfhDCiKdZTkD_A6RFeei3eGZFdNTb8yClfBZgJ7um8veKV5aQ/viewform"
   >
-    <Translation key="NAV_LINK_SUBMIT_LEVEL" />
+    <Translation key="nav:external-submit-level" />
   </NavMenuItemLink>
 
   <NavMenuItemLink
     href="https://docs.google.com/forms/d/e/1FAIpQLSff8C5U7_aXwwO56uvnZMvLoA6P3iY8YRAg2J2UVAusHOkM2Q/viewform?usp=sf_link"
   >
-    <Translation key="NAV_LINK_RE_LEVEL" />
+    <Translation key="nav:external-re-level" />
   </NavMenuItemLink>
 </NavMenuGroup>
 
 <div class="mobile-only">
-  <NavMenuGroup label="NAV_PAGES">
+  <NavMenuGroup labelKey="nav:group-pages">
     <NavMenuItemLink href="/levels">
-      <Translation key="NAV_LEVELS" />
+      <Translation key="nav:levels" />
     </NavMenuItemLink>
 
     <NavMenuItemLink href="/rankings">
-      <Translation key="NAV_RANKINGS" />
+      <Translation key="nav:rankings" />
     </NavMenuItemLink>
 
     <NavMenuItemLink href="/references">
-      <Translation key="NAV_REFERENCES" />
+      <Translation key="nav:references" />
     </NavMenuItemLink>
   </NavMenuGroup>
 </div>
