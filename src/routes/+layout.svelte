@@ -15,6 +15,7 @@
   import '@/stylesheets/main.scss';
   import '@/stylesheets/layout.scss';
   import '@/stylesheets/font.scss';
+  import '@/stylesheets/animation.scss';
   import Nav from '@organisms/layout/Nav.svelte';
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { onMount } from 'svelte';

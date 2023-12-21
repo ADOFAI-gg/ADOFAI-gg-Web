@@ -113,5 +113,36 @@
         opacity: 1;
       }
     }
+
+    &[data-type='authActionAccent'],
+    &[data-type='authAction'] {
+      display: flex;
+      flex-grow: 1;
+      padding: 14px 32px;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      text-align: center;
+      border-radius: 5px;
+      transition: background-color 0.2s ease;
+    }
+
+    &[data-type='authAction'] {
+      background-color: rgba(255, 255, 255, 0.2);
+
+      &:hover,
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    &[data-type='authActionAccent'] {
+      background-color: rgba(var(--color-blue), 0.2);
+
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--color-blue), 0.3);
+      }
+    }
   }
 </style>
