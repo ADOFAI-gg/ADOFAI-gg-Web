@@ -5,13 +5,15 @@
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
+
+  export let labelKey: string = 'SIGNIN_MORE_OPTIONS';
 </script>
 
 <div class="oauth2-container">
   <div class="oauth2-header">
     <div class="oauth2-line" />
     <p>
-      <Translation key="SIGNUP_MORE_OPTIONS" />
+      <Translation key={labelKey} />
     </p>
     <div class="oauth2-line" />
   </div>
