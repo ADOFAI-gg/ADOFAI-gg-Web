@@ -28,6 +28,7 @@
     "@babel/core": "^7.23.6",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@felte/validator-zod": "^1.0.17",
     "@fluent/bundle": "^0.18.0",
     "@fontsource/m-plus-rounded-1c": "4.5.10",
     "@fontsource/quicksand": "^5.0.16",
@@ -76,6 +77,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-svelte": "^2.35.1",
+    "felte": "^1.2.12",
     "fs-extra": "^11.2.0",
     "husky": "^8.0.3",
     "js-cookie": "^3.0.5",
@@ -116,7 +118,8 @@
     "vite": "^5.0.10",
     "vite-plugin-glob": "^0.3.2",
     "vite-plugin-preload": "^0.3.1",
-    "webpack": "^5.89.0"
+    "webpack": "^5.89.0",
+    "zod": "^3.22.4"
   },
   "type": "module",
   "dependencies": {
