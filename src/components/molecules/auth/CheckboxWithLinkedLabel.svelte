@@ -1,6 +1,5 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
-  import { createEventDispatcher } from 'svelte';
 
   /**
    * The checkboxes state.
@@ -21,30 +20,30 @@
    * The extra label's translation key.
    */
   export let extraLabelKey: string;
-
-  const dispatch = createEventDispatcher();
-
-  const onClick = () => {
-    checked = !checked;
-    dispatch('valueChanged');
-  };
 </script>
 
 <div class="checkbox-with-linked-label-container">
-  <label class="checkbox-container">
-    <input type="checkbox" style="display: none;" on:click={onClick} />
-    <span class="checkbox">
-      <svg
-        class="checkbox-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="8"
-        height="7"
-        viewBox="0 0 8 7"
-        fill="none"
-      >
-        <path d="M0.5 3L3 6L7.5 1" stroke="white" stroke-linecap="round" />
-      </svg>
+  <label class="checkbox-label">
+    <span class="checkbox-container">
+      <input
+        type="checkbox"
+        style="position: absolute; opacity: 0; pointer-events: none;"
+        bind:checked
+      />
+      <span class="checkbox">
+        <svg
+          class="checkbox-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="7"
+          viewBox="0 0 8 7"
+          fill="none"
+        >
+          <path d="M0.5 3L3 6L7.5 1" stroke="white" stroke-linecap="round" />
+        </svg>
+      </span>
     </span>
+
     <span class="checkbox-label">
       <Translation key={labelKey} />
     </span>
@@ -71,6 +70,12 @@
   }
 
   .checkbox-container {
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+
+  .checkbox-label {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -98,6 +103,10 @@
     top: 50%;
     transform: translate(-50%, -50%);
     transition: opacity ease 0.1s;
+  }
+
+  input[type='checkbox']:focus + .checkbox {
+    border-color: white;
   }
 
   input[type='checkbox']:checked + .checkbox > .checkbox-icon {

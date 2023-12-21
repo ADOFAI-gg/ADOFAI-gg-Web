@@ -7,31 +7,36 @@
   import OAuth2SignOptions from '@molecules/auth/OAuth2SignOptions.svelte';
   import { tick } from 'svelte';
 
-  let legalAgreements = new Array(2).fill(false);
+  let agreeTos = false;
+  let agreePrivacy = false;
+  $: legalAgreements = [agreeTos, agreePrivacy];
+
   let signupFailed = false;
   let allConditionsHint: Hint;
 
-  const hasAgreed = () => legalAgreements.every((agreement) => agreement);
+  $: signupFailed && validate(legalAgreements);
 
-  const validation = () => {
-    if (!hasAgreed()) {
+  const hasAgreed = (agreements = legalAgreements) => agreements.every((agreement) => agreement);
+
+  const validate = (agreements = legalAgreements) => {
+    if (!hasAgreed(agreements)) {
       signupFailed = true;
       tick().then(() => allConditionsHint?.animate());
-      return true;
+      return false;
     }
 
     signupFailed = false;
-    return false;
+    return true;
   };
 
   const emailSignup = () => {
-    if (validation()) return;
+    if (!validate()) return;
 
     window.location.href = '/auth/signup/email';
   };
 
   const googleSignup = () => {
-    if (validation()) return;
+    if (!validate()) return;
 
     // TODO implement after social login is implemented in backend
 
@@ -39,7 +44,7 @@
   };
 
   const discordSignup = () => {
-    if (validation()) return;
+    if (!validate()) return;
 
     // TODO implement after social login is implemented in backend
 
@@ -52,51 +57,42 @@
 </AuthTitle>
 
 <!-- register form -->
-<div class="sign-up-form">
-  <div class="legal-agreement-terms-group">
-    <h1>
-      <Translation key="SIGNUP_TERMS" />
-    </h1>
-    <div class="legal-agreement-container">
-      <CheckboxWithLinkedLabel
-        labelKey="SIGNUP_AGREE_TERMS"
-        extraLabelKey="SIGNUP_READ_TERMS"
-        extraLabelLink="../docs/terms"
-        bind:checked={legalAgreements[0]}
-        on:valueChanged={hasAgreed}
-      />
-      <CheckboxWithLinkedLabel
-        labelKey="SIGNUP_AGREE_PRIVACY"
-        extraLabelKey="SIGNUP_READ_PRIVACY"
-        extraLabelLink="../docs/privacy"
-        bind:checked={legalAgreements[1]}
-        on:valueChanged={hasAgreed}
-      />
-    </div>
-    {#if signupFailed && !hasAgreed()}
-      <Hint warn={true} bind:this={allConditionsHint}>
-        <Translation key="SIGNUP_ERROR_AGREE_CONDITIONS" />
-      </Hint>
-    {/if}
+<div class="legal-agreement-terms-group">
+  <h3>
+    <Translation key="SIGNUP_TERMS" />
+  </h3>
+  <div class="legal-agreement-container">
+    <CheckboxWithLinkedLabel
+      labelKey="SIGNUP_AGREE_TERMS"
+      extraLabelKey="SIGNUP_READ_TERMS"
+      extraLabelLink="../docs/terms"
+      bind:checked={agreeTos}
+    />
+    <CheckboxWithLinkedLabel
+      labelKey="SIGNUP_AGREE_PRIVACY"
+      extraLabelKey="SIGNUP_READ_PRIVACY"
+      extraLabelLink="../docs/privacy"
+      bind:checked={agreePrivacy}
+    />
   </div>
-  <Button type="authActionAccent" on:click={emailSignup}>
-    <Translation key="SIGNUP_WITH_EMAIL" />
-  </Button>
+  {#if signupFailed && !hasAgreed()}
+    <Hint warn={true} bind:this={allConditionsHint}>
+      <Translation key="SIGNUP_ERROR_AGREE_CONDITIONS" />
+    </Hint>
+  {/if}
 </div>
+<Button type="authActionAccent" on:click={emailSignup}>
+  <Translation key="SIGNUP_WITH_EMAIL" />
+</Button>
 
 <!-- oauth2 register buttons -->
-<OAuth2SignOptions on:googleSignup={googleSignup} on:discordSignup={discordSignup} />
+<OAuth2SignOptions
+  labelKey="SIGNUP_MORE_OPTIONS"
+  on:googleSignup={googleSignup}
+  on:discordSignup={discordSignup}
+/>
 
 <style lang="scss">
-  .sign-up-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    align-self: stretch;
-  }
-
   .legal-agreement-terms-group {
     display: flex;
     flex-direction: column;
@@ -105,7 +101,7 @@
     gap: 12px;
     align-self: stretch;
 
-    > h1 {
+    > h3 {
       font-size: 16px;
       font-style: normal;
       font-weight: 700;
