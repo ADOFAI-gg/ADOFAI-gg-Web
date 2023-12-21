@@ -118,13 +118,14 @@
     &[data-type='authAction'] {
       display: flex;
       flex-grow: 1;
-      padding: 14px 32px;
+      height: 48px;
       justify-content: center;
       align-items: center;
-      align-self: stretch;
       text-align: center;
       border-radius: 5px;
       transition: background-color 0.2s ease;
+      font-size: 16px;
+      line-height: 1;
     }
 
     &[data-type='authAction'] {
