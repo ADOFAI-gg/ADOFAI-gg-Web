@@ -28,7 +28,8 @@ const langSections = [
   'sign-up-email',
   'sign-up',
   'tags',
-  'user-popup'
+  'user-popup',
+  'form'
 ] as const;
 
 export type LangSection = (typeof langSections)[number];
