@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/svelte';
 import '../src/stylesheets/main.scss';
 import StorybookGlobalDecorator from '../src/components/storybook/StorybookGlobalDecorator.svelte';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const preview: Preview = {
   parameters: {
@@ -26,7 +27,7 @@ const preview: Preview = {
     }
   },
   // @ts-expect-error (maybe) storybook type issue
-  decorators: [() => StorybookGlobalDecorator]
+  decorators: [() => StorybookGlobalDecorator, withActions]
 };
 
 export default preview;

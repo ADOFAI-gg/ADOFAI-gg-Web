@@ -37,6 +37,7 @@
     "@sentry/integrations": "^7.88.0",
     "@sentry/rrweb": "^0.3.3",
     "@sentry/tracing": "^7.88.0",
+    "@storybook/addon-actions": "^7.6.6",
     "@storybook/addon-essentials": "^7.6.5",
     "@storybook/addon-interactions": "^7.6.5",
     "@storybook/addon-links": "^7.6.5",
