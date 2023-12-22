@@ -12,10 +12,7 @@
 </script>
 
 <script lang="ts">
-  import '@/stylesheets/main.scss';
-  import '@/stylesheets/layout.scss';
-  import '@/stylesheets/font.scss';
-  import '@/stylesheets/animation.scss';
+  import '@/utils/globalStyles';
   import Nav from '@organisms/layout/Nav.svelte';
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
   import { onMount } from 'svelte';
@@ -24,21 +21,6 @@
   import Footer from '@organisms/layout/Footer.svelte';
   import { partytownSnippet } from '@builder.io/partytown/integration';
 
-  // quicksand
-  import '@fontsource/quicksand/300.css';
-  import '@fontsource/quicksand/400.css';
-  import '@fontsource/quicksand/500.css';
-  import '@fontsource/quicksand/600.css';
-  import '@fontsource/quicksand/700.css';
-
-  // M Plus Rounded 1c
-  import '@fontsource/m-plus-rounded-1c/japanese-300.css';
-  import '@fontsource/m-plus-rounded-1c/japanese-400.css';
-  import '@fontsource/m-plus-rounded-1c/japanese-500.css';
-  import '@fontsource/m-plus-rounded-1c/japanese-700.css';
-  // Roboto Mono
-  import '@fontsource/roboto-mono/300.css';
-  import '@fontsource/roboto-mono/500.css';
   import { PUBLIC_GA_ID, PUBLIC_GTM_ID } from '$env/static/public';
   import IconProvider from '@/components/utils/IconProvider.svelte';
 

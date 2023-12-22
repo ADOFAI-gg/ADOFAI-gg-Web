@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/svelte';
 import '../src/stylesheets/main.scss';
+import StorybookGlobalDecorator from '../src/components/storybook/StorybookGlobalDecorator.svelte';
 
 const preview: Preview = {
   parameters: {
@@ -23,7 +24,9 @@ const preview: Preview = {
         date: /Date$/
       }
     }
-  }
+  },
+  // @ts-expect-error (maybe) storybook type issue
+  decorators: [() => StorybookGlobalDecorator]
 };
 
 export default preview;

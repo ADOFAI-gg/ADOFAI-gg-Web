@@ -31,9 +31,9 @@ reduceMotion.subscribe((v) => {
 
   if (browser) {
     if (v) {
-      document.body.classList.remove('enable-motion');
+      document.body.classList.add('disable-motion');
     } else {
-      document.body.classList.add('enable-motion');
+      document.body.classList.remove('disable-motion');
     }
   }
 });
