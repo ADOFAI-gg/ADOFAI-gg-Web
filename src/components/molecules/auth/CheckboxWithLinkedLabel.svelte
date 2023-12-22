@@ -21,6 +21,8 @@
    * The extra label's translation key.
    */
   export let extraLabelKey: TranslationKey;
+
+  export let onChange: ((event: Event) => void) | undefined = undefined;
 </script>
 
 <div class="checkbox-with-linked-label-container">
@@ -31,6 +33,7 @@
         style="position: absolute; opacity: 0; pointer-events: none;"
         bind:checked
         {...$$restProps}
+        on:change={onChange}
       />
       <span class="checkbox">
         <svg

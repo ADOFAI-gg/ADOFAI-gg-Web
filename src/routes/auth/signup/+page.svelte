@@ -5,31 +5,30 @@
   import Button from '@atoms/interaction/Button.svelte';
   import CheckboxWithLinkedLabel from '@molecules/auth/CheckboxWithLinkedLabel.svelte';
   import OAuth2SignOptions from '@molecules/auth/OAuth2SignOptions.svelte';
+  import { goto } from '$app/navigation';
 
   let agreeTos = false;
   let agreePrivacy = false;
 
   $: legalAgreements = [agreeTos, agreePrivacy];
-  $: hasAgreed(legalAgreements);
-
-  const hasAgreed = (agreements = legalAgreements) => agreements.every((agreement) => agreement);
-
   let signupFailed = false;
+  let validationResultViaCheckboxUpdate = false;
 
-  const validate = (agreements = legalAgreements) => {
-    if (!hasAgreed(agreements)) {
-      signupFailed = true;
-      return false;
-    }
+  const validate = (updateSignupFailed = true) => {
+    const result = legalAgreements.every((agreement) => agreement);
 
-    signupFailed = false;
-    return true;
+    if (updateSignupFailed) signupFailed = !result;
+    return result;
+  };
+
+  const onCheckboxUpdate = () => {
+    validationResultViaCheckboxUpdate = validate(false);
   };
 
   const emailSignup = () => {
     if (!validate()) return;
 
-    window.location.href = '/auth/signup/email';
+    return goto('/auth/signup/email');
   };
 
   const googleSignup = () => {
@@ -64,15 +63,17 @@
       extraLabelKey="sign-up:terms-link"
       extraLabelLink="../docs/terms"
       bind:checked={agreeTos}
+      onChange={onCheckboxUpdate}
     />
     <CheckboxWithLinkedLabel
       labelKey="sign-up:privacy-agreement"
       extraLabelKey="sign-up:privacy-link"
       extraLabelLink="../docs/privacy"
       bind:checked={agreePrivacy}
+      onChange={onCheckboxUpdate}
     />
   </div>
-  {#if signupFailed && !hasAgreed()}
+  {#if signupFailed && !validationResultViaCheckboxUpdate}
     <Hint variant="error">
       <Translation key="sign-up:error-agreement-required" />
     </Hint>
