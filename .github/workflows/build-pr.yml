@@ -15,6 +15,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - name: Setup pnpm
+        run: corepack enable
       - name: Get pnpm store directory
         shell: bash
         run: |
