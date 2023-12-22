@@ -4,11 +4,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json .yarnrc.yml yarn.lock ./
+COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 
-COPY .yarn .yarn
-
-RUN corepack enable && yarn --frozen-lockfile
+RUN corepack enable && pnpm i --frozen-lockfile
 
 COPY . .
 
@@ -33,14 +32,14 @@ RUN apk add git && \
     PUBLIC_GTM_ID=${GTM_ID} PUBLIC_GA_ID=${GA_ID} SENTRY_ORG=${SENTRY_ORG} PUBLIC_USE_ACCOUNT=${USE_ACCOUNT} \
     PUBLIC_SENTRY_ENV=${SENTRY_ENV} PUBLIC_SENTRY_DSN=${SENTRY_DSN} SENTRY_ORG=${SENTRY_ORG} SENTRY_PROJECT=${SENTRY_PROJECT} \
     SENTRY_AUTH_TOKEN=${SENTRY_AUTH_TOKEN} PUBLIC_SENTRY_RELEASE=$(git rev-parse --short HEAD) \
-    SENTRY_URL=${SENTRY_URL} yarn build && \
+    SENTRY_URL=${SENTRY_URL} pnpm build && \
     mv static/~partytown build/client/~partytown
 
 RUN apk add jq
 
 RUN cat package.json | jq 'del(.devDependencies) | del(.resolutions) | del(.scripts)' | tee package.json
 
-RUN yarn pack
+RUN pnpm pack && mv adofai-gg-*.tgz package.tgz
 
 FROM node:18-alpine AS runner
 
@@ -50,10 +49,9 @@ RUN tar xvzf package.tgz && \
     rm package.tgz && \
     mv package app && \
     cd app && \
-    echo "nodeLinker: pnpm" >> .yarnrc.yml && \
     corepack enable && \
-    yarn
+    pnpm i --production
 
 WORKDIR /app
 
-CMD ["yarn", "node", "server.js"]
+CMD ["node", "server.js"]

@@ -2,11 +2,11 @@
   "name": "adofai-gg",
   "version": "0.0.1",
   "scripts": {
-    "dev": "yarn prebuild && vite dev",
-    "build": "yarn prebuild && vite build",
+    "dev": "pnpm prebuild && vite dev",
+    "build": "pnpm prebuild && vite build",
     "package": "vite package",
     "preview": "vite preview",
-    "test": "yarn build && playwright test",
+    "test": "pnpm build && playwright test",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --check --plugin-search-dir=. . && eslint --max-warnings=0 .",
@@ -26,7 +26,7 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@fluent/bundle": "^0.18.0",
-    "@fontsource/m-plus-rounded-1c": "^5.0.11",
+    "@fontsource/m-plus-rounded-1c": "4.5.10",
     "@fontsource/quicksand": "^5.0.16",
     "@fontsource/roboto-mono": "^5.0.16",
     "@playwright/test": "^1.40.1",
@@ -129,8 +129,10 @@
     "*.{js,ts,jsx,tsx,svelte}": "eslint --cache --fix",
     "*.{js,ts,jsx,tsx,svelte,css,scss,md}": "prettier --ignore-path .gitignore --write"
   },
-  "packageManager": "yarn@3.3.0",
-  "resolutions": {
-    "@fontsource/m-plus-rounded-1c@4.5.10": "patch:@fontsource/m-plus-rounded-1c@npm%3A4.5.10#./.yarn/patches/@fontsource-m-plus-rounded-1c-npm-4.5.10-3cae002275.patch"
+  "packageManager": "pnpm@8.12.1",
+  "pnpm": {
+    "patchedDependencies": {
+      "@fontsource/m-plus-rounded-1c@4.5.10": "patches/@fontsource__m-plus-rounded-1c@4.5.10.patch"
+    }
   }
 }
