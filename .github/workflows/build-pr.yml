@@ -33,8 +33,9 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: |
-          yarn build
-          yarn pack
+          pnpm build
+          pnpm pack
+          cp adofai-gg-*.tgz package.tgz
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
