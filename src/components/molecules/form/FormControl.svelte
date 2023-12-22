@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Hint from '@/components/atoms/auth/Hint.svelte';
+  import Hint from '@/components/atoms/form/Hint.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import { useForm } from '@/utils/forms';
   import type { TranslationKey } from '@/utils/i18n';

@@ -1,7 +1,7 @@
 <script lang="ts">
   import AuthTitle from '@/components/atoms/auth/AuthTitle.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-  import Hint from '@atoms/auth/Hint.svelte';
+  import Hint from '@/components/atoms/form/Hint.svelte';
   import Button from '@atoms/interaction/Button.svelte';
   import CheckboxWithLinkedLabel from '@molecules/auth/CheckboxWithLinkedLabel.svelte';
   import OAuth2SignOptions from '@molecules/auth/OAuth2SignOptions.svelte';
