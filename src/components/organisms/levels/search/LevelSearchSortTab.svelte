@@ -90,7 +90,7 @@
       flex-direction: column;
       gap: 12px;
 
-      @media (min-width: 640px) {
+      @media (width >= 640px) {
         flex-direction: row;
         gap: 24px;
       }
@@ -100,7 +100,7 @@
       display: flex;
       flex-direction: column;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         flex-direction: row;
       }
     }
@@ -110,7 +110,7 @@
       margin-right: 24px;
       border-right: 1px solid rgba(255, 255, 255, 0.4);
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: block;
       }
     }
@@ -120,13 +120,13 @@
       flex-direction: column;
       gap: 12px;
 
-      @media (min-width: 640px) {
+      @media (width >= 640px) {
         flex-direction: row;
         gap: 24px;
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
       gap: 0;
     }

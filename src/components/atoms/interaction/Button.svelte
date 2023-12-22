@@ -66,7 +66,7 @@
         opacity: 1;
       }
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         width: fit-content;
         padding: 0 8px;
       }

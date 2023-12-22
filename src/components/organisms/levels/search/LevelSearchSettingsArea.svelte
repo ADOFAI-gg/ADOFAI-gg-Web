@@ -157,7 +157,7 @@
         font-size: 14px;
       }
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         flex-direction: row;
       }
     }
@@ -166,12 +166,12 @@
       display: none;
       font-size: 14px;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: block;
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
     }
   }

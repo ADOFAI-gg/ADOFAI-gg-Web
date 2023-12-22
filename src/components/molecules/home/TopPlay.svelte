@@ -58,7 +58,7 @@
       background-color: rgba(var(--color-darkblue), 0.2);
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       max-width: none;
 
       &:last-child {
@@ -67,7 +67,7 @@
       }
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
       max-width: 360px;
 
       &:first-child {

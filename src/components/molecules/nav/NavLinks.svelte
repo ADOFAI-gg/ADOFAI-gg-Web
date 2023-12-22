@@ -21,7 +21,7 @@
   .nav-link {
     display: flex;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       gap: 40px;
     }
   }

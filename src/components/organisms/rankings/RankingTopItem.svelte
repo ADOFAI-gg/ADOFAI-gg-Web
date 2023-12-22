@@ -49,7 +49,7 @@
       border-radius: 27px;
       background-color: rgba(var(--color-darkblue), 0.4);
 
-      @media (min-width: 1024px) {
+      @media (width >= 1024px) {
         max-width: 330px;
       }
     }
@@ -57,12 +57,12 @@
     &:nth-child(1) {
       justify-content: center;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         grid-column: span 2 / span 2;
         justify-content: flex-start;
       }
 
-      @media (min-width: 1024px) {
+      @media (width >= 1024px) {
         grid-column: span 1 / span 1;
       }
     }
@@ -74,7 +74,7 @@
     &:nth-child(3) {
       justify-content: center;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         justify-content: flex-end;
       }
     }
