@@ -82,7 +82,7 @@
     display: flex;
     flex-grow: 1;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       flex-direction: column;
     }
   }
@@ -110,7 +110,7 @@
       }
     }
 
-    @media (min-width: 769px) {
+    @media (width >= 769px) {
       width: 0;
     }
   }

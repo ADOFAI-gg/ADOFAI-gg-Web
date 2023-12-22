@@ -18,7 +18,7 @@
       opacity: 1;
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       font-size: 21px;
     }
   }

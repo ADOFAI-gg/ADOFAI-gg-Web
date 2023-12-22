@@ -34,12 +34,12 @@
         opacity: 1;
       }
 
-      @media screen and (min-width: 768px) {
+      @media screen and (width >= 768px) {
         width: fit-content;
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
       width: fit-content;
     }
   }

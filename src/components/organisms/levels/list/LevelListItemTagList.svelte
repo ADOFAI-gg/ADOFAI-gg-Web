@@ -98,7 +98,7 @@
     display: flex;
     gap: 6px;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       justify-content: flex-end;
     }
   }

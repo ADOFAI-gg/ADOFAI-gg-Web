@@ -56,12 +56,12 @@
       align-items: center;
       margin-top: 8px;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         margin-top: 0;
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
       align-items: center;
     }
@@ -80,7 +80,7 @@
     flex-grow: 1;
     height: 16px;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-grow: 0;
       border: 1px solid rgba(255, 255, 255, 0.4);
     }

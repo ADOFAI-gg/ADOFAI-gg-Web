@@ -123,7 +123,7 @@
       flex-shrink: 0;
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       flex-direction: row;
       gap: 24px;
       align-items: center;

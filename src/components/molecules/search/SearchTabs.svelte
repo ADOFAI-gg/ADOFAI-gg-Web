@@ -51,7 +51,7 @@
         align-items: center;
       }
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: none;
       }
     }

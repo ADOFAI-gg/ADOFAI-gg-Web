@@ -19,3 +19,5 @@ src/assets
 
 storybook-static
 src/utils/search/parser.ts
+
+pnpm-lock.yaml
