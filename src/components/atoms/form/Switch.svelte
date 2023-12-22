@@ -37,7 +37,7 @@
       </svg>
     </div>
   </span>
-  <input class="switch-checkbox" type="checkbox" bind:checked />
+  <input class="switch-checkbox" type="checkbox" bind:checked on:change />
 </label>
 
 <style lang="scss">
