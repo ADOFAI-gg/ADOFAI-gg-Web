@@ -1,5 +1,6 @@
 <script lang="ts">
   import Translation from '@/components/utils/Translation.svelte';
+  import type { TranslationKey } from '@/utils/i18n';
 
   /**
    * The checkboxes state.
@@ -9,7 +10,7 @@
   /**
    * The checkbox label's translation key.
    */
-  export let labelKey: string;
+  export let labelKey: TranslationKey;
 
   /**
    * The extra label's link.
@@ -19,7 +20,7 @@
   /**
    * The extra label's translation key.
    */
-  export let extraLabelKey: string;
+  export let extraLabelKey: TranslationKey;
 </script>
 
 <div class="checkbox-with-linked-label-container">
@@ -29,6 +30,7 @@
         type="checkbox"
         style="position: absolute; opacity: 0; pointer-events: none;"
         bind:checked
+        {...$$restProps}
       />
       <span class="checkbox">
         <svg
@@ -56,16 +58,16 @@
 <style lang="scss">
   .checkbox-with-linked-label-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     align-self: stretch;
+    justify-content: space-between;
   }
 
   .extra-label {
     color: rgba(255, 255, 255, 0.6);
-    text-align: right;
     font-size: 14px;
     line-height: 1.2;
+    text-align: right;
     text-decoration-line: underline;
   }
 
@@ -78,31 +80,28 @@
   .checkbox-label {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 6px;
-  }
-
-  .checkbox-label {
+    align-items: center;
     font-size: 16px;
     line-height: 1.2;
   }
 
   .checkbox {
-    display: inline-block;
     position: relative;
+    display: inline-block;
     width: 14px;
     height: 14px;
-    border-radius: 3px;
     border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
   }
 
   .checkbox-icon {
-    opacity: 0;
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%;
+    opacity: 0;
     transition: opacity ease 0.1s;
+    transform: translate(-50%, -50%);
   }
 
   input[type='checkbox']:focus + .checkbox {

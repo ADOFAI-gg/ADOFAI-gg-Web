@@ -3,6 +3,7 @@
 
   export let href = '';
   export let type = 'default';
+  export let htmlType = 'button';
 
   let className = '';
   let style = '';
@@ -29,6 +30,7 @@
   class={'button ' + className}
   {style}
   data-type={type}
+  type={htmlType}
 >
   <slot />
 </svelte:element>
@@ -118,14 +120,14 @@
     &[data-type='authAction'] {
       display: flex;
       flex-grow: 1;
-      height: 48px;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      justify-content: center;
+      height: 48px;
       border-radius: 5px;
-      transition: background-color 0.2s ease;
       font-size: 16px;
       line-height: 1;
+      text-align: center;
+      transition: background-color 0.2s ease;
     }
 
     &[data-type='authAction'] {

@@ -5,25 +5,20 @@
   import Button from '@atoms/interaction/Button.svelte';
   import CheckboxWithLinkedLabel from '@molecules/auth/CheckboxWithLinkedLabel.svelte';
   import OAuth2SignOptions from '@molecules/auth/OAuth2SignOptions.svelte';
-  import { tick } from 'svelte';
 
   let agreeTos = false;
   let agreePrivacy = false;
+
   $: legalAgreements = [agreeTos, agreePrivacy];
-
-  let signupFailed = false;
-  let allConditionsHint: Hint;
-
-  $: signupFailed && validate(false, legalAgreements);
+  $: hasAgreed(legalAgreements);
 
   const hasAgreed = (agreements = legalAgreements) => agreements.every((agreement) => agreement);
 
-  const validate = (animate = true, agreements = legalAgreements) => {
-    if (!hasAgreed(agreements)) {
-      if (!animate) return false;
+  let signupFailed = false;
 
+  const validate = (agreements = legalAgreements) => {
+    if (!hasAgreed(agreements)) {
       signupFailed = true;
-      tick().then(() => allConditionsHint?.animate());
       return false;
     }
 
@@ -78,7 +73,7 @@
     />
   </div>
   {#if signupFailed && !hasAgreed()}
-    <Hint warn={true} bind:this={allConditionsHint}>
+    <Hint variant="error">
       <Translation key="sign-up:error-agreement-required" />
     </Hint>
   {/if}
@@ -98,15 +93,15 @@
   .legal-agreement-terms-group {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     gap: 12px;
+    align-items: flex-start;
     align-self: stretch;
+    justify-content: center;
 
     > h3 {
-      font-size: 16px;
-      font-style: normal;
       font-weight: 700;
+      font-style: normal;
+      font-size: 16px;
       line-height: 1.2;
     }
   }
@@ -114,8 +109,8 @@
   .legal-agreement-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
+    align-items: flex-start;
     align-self: stretch;
   }
 </style>

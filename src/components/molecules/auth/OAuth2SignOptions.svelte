@@ -37,37 +37,37 @@
   .oauth2-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 12px;
+    align-items: center;
+    justify-content: center;
   }
 
   .oauth2-header {
     display: flex;
+    gap: 12px;
     align-items: center;
     align-self: stretch;
-    gap: 12px;
 
     > p {
-      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
       font-size: 14px;
       line-height: 1.2;
-      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
     }
   }
 
   .oauth2-line {
+    flex-grow: 1;
     height: 1px;
     background: rgba(255, 255, 255, 0.4);
-    flex-grow: 1;
   }
 
   .oauth2-options {
     display: flex;
     flex-direction: row;
-    align-self: stretch;
-    align-items: flex-start;
     gap: 12px;
+    align-items: flex-start;
+    align-self: stretch;
   }
 
   .oauth2-options :global(svg) {

@@ -22,32 +22,32 @@
 
 <style lang="scss">
   .auth-card {
-    padding: 64px;
-    background: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    border-radius: 16px;
     display: flex;
     flex-direction: column;
     row-gap: 32px;
+    width: 100%;
+    padding: 64px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.2);
   }
 
   .legal-docs-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
     margin-top: 16px;
     margin-bottom: 16px;
     font-size: 14px;
     text-decoration: none;
 
     .separator {
-      margin-left: 6px;
-      margin-right: 6px;
-      background-color: rgba(255, 255, 255, 0.2);
       width: 2px;
       height: 2px;
+      margin-right: 6px;
+      margin-left: 6px;
       border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     a {

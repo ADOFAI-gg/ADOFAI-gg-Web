@@ -1,31 +1,19 @@
 <script lang="ts">
-  import { reduceMotion } from '@/utils/settings';
+  type Variant = 'note' | 'warn' | 'error';
+  export let variant: Variant;
 
-  export let warn: boolean = false;
-
-  let hint: HTMLDivElement;
-  export const animate = () => {
-    if ($reduceMotion) return;
-
-    hint.classList.remove('animate-shake');
-
-    setTimeout(() => {
-      hint.classList.add('animate-shake');
-    }, 0);
+  const variantColors: Record<Variant, string> = {
+    warn: 'rgb(var(--color-yellow))',
+    error: 'rgb(var(--color-red))',
+    note: 'transparent'
   };
 </script>
 
-<div class="hint" bind:this={hint}>
-  {#if warn}
-    <div class="hint-warn-marker" />
-    <p class="hint-warn">
-      <slot />
-    </p>
-  {:else}
-    <p class="hint-normal">
-      <slot />
-    </p>
-  {/if}
+<div class="hint">
+  <div class:hint-marker={variant !== 'note'} style="background-color: {variantColors[variant]}" />
+  <div class="hint-{variant}">
+    <slot />
+  </div>
 </div>
 
 <style lang="scss">
@@ -35,27 +23,33 @@
     gap: 6px;
     align-items: baseline;
 
-    .hint-normal,
-    .hint-warn {
+    .hint-note,
+    .hint-warn,
+    .hint-error {
       line-height: 1.4;
+
       // text-wrap: pretty;
     }
 
-    .hint-normal {
+    .hint-note {
       font-size: 12px;
     }
 
     .hint-warn {
+      color: rgba(var(--color-yellow), 1);
       font-size: 14px;
-      color: rgb(var(--color-red));
     }
 
-    .hint-warn-marker {
+    .hint-error {
+      color: rgba(var(--color-red), 1);
+      font-size: 14px;
+    }
+
+    .hint-marker {
+      flex-shrink: 0;
       width: 8px;
       height: 8px;
       border-radius: 100%;
-      background-color: rgb(var(--color-red));
-      flex-shrink: 0;
     }
   }
 </style>
