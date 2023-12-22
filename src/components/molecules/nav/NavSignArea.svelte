@@ -6,7 +6,7 @@
 </script>
 
 <div class="sign-area" class:sign-area__overlay={overlay}>
-  <a href="/auth/signup" class="sign-area__singup">
+  <a href="/auth/signup" class="sign-area__signup">
     <Translation key="common:sign-up" />
   </a>
 

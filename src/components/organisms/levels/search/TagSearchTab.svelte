@@ -6,7 +6,7 @@
 
 <div class="tag-search-tab-container">
   {#each tagGroups as group}
-    <SearchTagGroup tags={group.tags} title={`TAG_GROUP_${group.key}`} />
+    <SearchTagGroup tags={group.tags} title={`tags:group-${group.key}`} />
   {/each}
   <MusicTagSearchArea />
 </div>

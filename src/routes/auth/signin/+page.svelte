@@ -8,33 +8,33 @@
 </script>
 
 <AuthTitle>
-  <Translation key="SIGN_IN" />
+  <Translation key="sign-in:title" />
 </AuthTitle>
 
 <div class="sign-in-form-container">
   <div class="sign-in-form">
-    <InputField placeholder="SIGNIN_IDENTIFIER_PLACEHOLDER" />
-    <InputField placeholder="SIGNIN_PASSWORD_PLACEHOLDER" type="password" />
+    <InputField placeholder="sign-in:form-id-placeholder" />
+    <InputField placeholder="sign-in:form-password-placeholder" type="password" />
   </div>
   <CheckboxWithLinkedLabel
-    labelKey="SIGNIN_STAY_LABEL"
-    extraLabelKey="SIGNIN_RECOVERY"
+    labelKey="sign-in:keep-logged-in"
+    extraLabelKey="sign-in:forgot-password"
     extraLabelLink="/auth/forgot-password"
   />
 </div>
 
 <Button type="authAction">
-  <Translation key="SIGN_IN" />
+  <Translation key="sign-in:title" />
 </Button>
 
 <OAuth2SignOptions />
 
 <div class="new-to-adofaigg-container">
   <div class="new-to-adofaigg">
-    <Translation key="NEW_TO_ADOFAIGG" />
+    <Translation key="sign-in:new-to-adofai-gg" />
   </div>
   <a class="signup-link" href="/auth/signup">
-    <Translation key="NEW_TO_ADOFAIGG_SIGN_UP" />
+    <Translation key="sign-in:sign-up-link" />
   </a>
 </div>
 

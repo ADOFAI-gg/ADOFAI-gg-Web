@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { currentLangData, type TranslationKey } from '@/utils/i18n';
+  import { currentLang, type TranslationKey, translate } from '@/utils/i18n';
   import Icon from '@atoms/asset/Icon.svelte';
 
-  export let value: TranslationKey = '';
+  export let value: string = '';
   export let placeholder: string = '';
   export let passwordVisible: boolean = false;
 
@@ -14,7 +14,7 @@
     input.type = showPassword ? 'text' : 'password';
   };
 
-  $: localizedPlaceholder = $currentLangData[placeholder];
+  $: localizedPlaceholder = translate(placeholder as TranslationKey, {}, true, $currentLang);
 </script>
 
 <div class="input-field-container">

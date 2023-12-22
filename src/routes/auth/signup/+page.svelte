@@ -55,41 +55,41 @@
 </script>
 
 <AuthTitle>
-  <Translation key="SIGN_UP" />
+  <Translation key="sign-up:title" />
 </AuthTitle>
 
 <!-- register form -->
 <div class="legal-agreement-terms-group">
   <h3>
-    <Translation key="SIGNUP_TERMS" />
+    <Translation key="sign-up:section-terms" />
   </h3>
   <div class="legal-agreement-container">
     <CheckboxWithLinkedLabel
-      labelKey="SIGNUP_AGREE_TERMS"
-      extraLabelKey="SIGNUP_READ_TERMS"
+      labelKey="sign-up:terms-agreement"
+      extraLabelKey="sign-up:terms-link"
       extraLabelLink="../docs/terms"
       bind:checked={agreeTos}
     />
     <CheckboxWithLinkedLabel
-      labelKey="SIGNUP_AGREE_PRIVACY"
-      extraLabelKey="SIGNUP_READ_PRIVACY"
+      labelKey="sign-up:privacy-agreement"
+      extraLabelKey="sign-up:privacy-link"
       extraLabelLink="../docs/privacy"
       bind:checked={agreePrivacy}
     />
   </div>
   {#if signupFailed && !hasAgreed()}
     <Hint warn={true} bind:this={allConditionsHint}>
-      <Translation key="SIGNUP_ERROR_AGREE_CONDITIONS" />
+      <Translation key="sign-up:error-agreement-required" />
     </Hint>
   {/if}
 </div>
 <Button type="authActionAccent" on:click={emailSignup}>
-  <Translation key="SIGNUP_WITH_EMAIL" />
+  <Translation key="sign-up:strategy-email" />
 </Button>
 
 <!-- oauth2 register buttons -->
 <OAuth2SignOptions
-  labelKey="SIGNUP_MORE_OPTIONS"
+  labelKey="sign-up:more-options"
   on:googleSignup={googleSignup}
   on:discordSignup={discordSignup}
 />

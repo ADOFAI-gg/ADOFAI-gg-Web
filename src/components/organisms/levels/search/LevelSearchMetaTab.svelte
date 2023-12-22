@@ -137,37 +137,37 @@
 </script>
 
 <div class="meta">
-  <SearchGroup title="SEARCH_META_CREDIT">
+  <SearchGroup title="search:meta-group-credit">
     <div class="meta-group">
-      <LabeledInputContainer key="SEARCH_META_ARTIST_LABEL">
+      <LabeledInputContainer key="search:meta-field-artist">
         <SearchMetaInput
           on:input={onChangeArtist}
           value={$parsedQuery.artist}
-          placeholder="SEARCH_META_ARTIST_PLACEHOLDER"
+          placeholder="search:meta-field-artist-placeholder"
         />
       </LabeledInputContainer>
-      <LabeledInputContainer label="SEARCH_META_SONG_LABEL">
+      <LabeledInputContainer key="search:meta-field-song">
         <SearchMetaInput
           on:input={onChangeSong}
           value={$parsedQuery.song}
-          placeholder="SEARCH_META_SONG_PLACEHOLDER"
+          placeholder="search:meta-field-song-placeholder"
         />
       </LabeledInputContainer>
-      <LabeledInputContainer key="SEARCH_META_CREATOR_LABEL">
+      <LabeledInputContainer key="search:meta-field-creator">
         <SearchMetaInput
           on:input={onChangeCreator}
           value={$parsedQuery.creator}
-          placeholder="SEARCH_META_CREATOR_PLACEHOLDER"
+          placeholder="search:meta-field-creator-placeholder"
         />
       </LabeledInputContainer>
     </div>
   </SearchGroup>
-  <SearchGroup title="SEARCH_META_LEVEL">
+  <SearchGroup title="search:meta-group-level">
     <div class="meta-group">
-      <LabeledInputContainer key="SEARCH_META_LV_LABEL">
+      <LabeledInputContainer key="search:meta-field-difficulty-label">
         <DifficultyRangeSelector />
       </LabeledInputContainer>
-      <LabeledInputContainer key="SEARCH_META_TILES_LABEL">
+      <LabeledInputContainer key="search:meta-field-tiles-label">
         <RangeInputPair>
           <SearchMetaInput
             value={$parsedQuery.minTiles}
@@ -175,7 +175,7 @@
             slot="min"
             min={0}
             type="number"
-            placeholder="SEARCH_META_TILES_MIN"
+            placeholder="search:meta-field-tiles-placeholder-min"
           />
           <SearchMetaInput
             value={$parsedQuery.maxTiles}
@@ -183,11 +183,11 @@
             slot="max"
             min={0}
             type="number"
-            placeholder="SEARCH_META_TILES_MAX"
+            placeholder="search:meta-field-tiles-placeholder-max"
           />
         </RangeInputPair>
       </LabeledInputContainer>
-      <LabeledInputContainer key="SEARCH_META_BPM_LABEL">
+      <LabeledInputContainer key="search:meta-field-bpm-label">
         <RangeInputPair>
           <SearchMetaInput
             value={$parsedQuery.minBpm}
@@ -195,7 +195,7 @@
             slot="min"
             min={0}
             type="number"
-            placeholder="SEARCH_META_BPM_MIN"
+            placeholder="search:meta-field-bpm-placeholder-min"
           />
           <SearchMetaInput
             value={$parsedQuery.maxBpm}
@@ -203,7 +203,7 @@
             slot="max"
             min={0}
             type="number"
-            placeholder="SEARCH_META_BPM_MAX"
+            placeholder="search:meta-field-bpm-placeholder-max"
           />
         </RangeInputPair>
       </LabeledInputContainer>

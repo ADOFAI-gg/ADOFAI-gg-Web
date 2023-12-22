@@ -3,10 +3,11 @@
   import Button from '@atoms/interaction/Button.svelte';
   import Google from 'svelte-icons/fa/FaGoogle.svelte';
   import { createEventDispatcher } from 'svelte';
+  import type { StringTranslationKey } from '@/utils/i18n';
 
   const dispatch = createEventDispatcher();
 
-  export let labelKey: string = 'SIGNIN_MORE_OPTIONS';
+  export let labelKey: StringTranslationKey = 'sign-in:more-options';
 </script>
 
 <div class="oauth2-container">

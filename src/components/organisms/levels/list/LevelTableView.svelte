@@ -13,11 +13,11 @@
 
   export let total: number;
 
-  let swwidth = 0;
+  let swWidth = 0;
 </script>
 
 {#if browser}
-  <VirtualTable style="width: {1582 + swwidth + 24}px;" data={levels} let:item {total} on:more>
+  <VirtualTable style="width: {1582 + swWidth + 24}px;" data={levels} let:item {total} on:more>
     <colgroup slot="cols">
       <col width="56" />
       <col width="40" />
@@ -28,7 +28,7 @@
       <col width="144" />
       <col width="120" />
       <col width="180" />
-      <col style="min-width: {swwidth + 24}px;" />
+      <col style="min-width: {swWidth + 24}px;" />
       <col width="92" />
     </colgroup>
     <thead slot="head">
@@ -62,7 +62,7 @@
         </th>
 
         <th>
-          <Translation key="level-table-cols:tils" />
+          <Translation key="level-table-cols:tiles" />
         </th>
 
         <th>
@@ -70,7 +70,7 @@
         </th>
 
         <th class="auto-fit">
-          <div bind:clientWidth={swwidth}>
+          <div bind:clientWidth={swWidth}>
             <Translation key="level-table-cols:warnings" />
           </div>
         </th>

@@ -47,7 +47,7 @@
       <a href={play.url} target="_blank" class="right-side__video-link" rel="noreferrer">
         <Icon icon="playOutlined" size={16} alt="Video Icon" />
         <span>
-          <Translation key="level-details:clear-video" />
+          <Translation key="level-details:leaderboard-clear-video" />
         </span>
       </a>
     </div>

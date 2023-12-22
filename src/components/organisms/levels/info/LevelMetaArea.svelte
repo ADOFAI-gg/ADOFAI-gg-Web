@@ -1,13 +1,10 @@
 <script lang="ts">
-  import Button from '@atoms/interaction/Button.svelte';
   import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
-  import Icon from '@atoms/asset/Icon.svelte';
   import LevelMetaLabelValuePair from '@molecules/levels/LevelMetaLabelValuePair.svelte';
   import Translation from '@/components/utils/Translation.svelte';
   import type { Level } from '@/types';
   import LevelShareMenu from '@organisms/levels/info/LevelShareMenu.svelte';
   import LevelTagDetailsArea from '@organisms/levels/info/LevelTagDetailsArea.svelte';
-  import { useAccount } from '@/utils/constants';
 
   $: convertLength = (length: number): [string, number] => {
     const seconds = Math.floor(length % 60);
@@ -86,15 +83,15 @@
   <div class="blank" />
 
   <div class="buttons">
-    {#if useAccount}
-      <Button type="levelAction">
-        <div class="buttons__like-container">
-          <Icon style="color: rgba(var(--color-red), 1);" icon="heart" size={20} alt="Heart Icon" />
+    <!-- TODO: uncomment after backend implements likes feature
+    <Button type="levelAction">
+      <div class="buttons__like-container">
+        <Icon style="color: rgba(var(--color-red), 1);" icon="heart" size={20} alt="Heart Icon" />
 
-          <div class="buttons__like-container-text">1.4K</div>
-        </div>
-      </Button>
-    {/if}
+        <div class="buttons__like-container-text">1.4K</div>
+      </div>
+    </Button>
+    -->
 
     <LevelShareMenu {level} />
   </div>
@@ -121,6 +118,7 @@
     display: flex;
     gap: 12px;
 
+    /* TODO: uncomment after backend implements likes feature
     &__like-container {
       display: flex;
       gap: 6px;
@@ -131,5 +129,6 @@
         font-size: 16px;
       }
     }
+    */
   }
 </style>

@@ -113,13 +113,29 @@ export const translate = (
     [sectionName, key] = rawKey;
   }
 
-  if (!l) return key;
+  if (!l) {
+    console.error(`received null or empty language code.`);
+    return key;
+  }
+
   const lang = langData[l];
-  if (!lang) return key;
+  if (!lang) {
+    console.error(`'${l}' is not a valid language code.`);
+    return key;
+  }
+
   const section = lang[sectionName];
-  if (!section) return key;
+  if (!section) {
+    console.error(`'${sectionName}' is not a valid section name.`);
+    return key;
+  }
+
   const message = section.getMessage(key);
-  if (!message?.value) return key;
+  if (!message?.value) {
+    console.error(`message value did not exist for key '${key}'. wrong key?`);
+    return key;
+  }
+
   const result = section.formatPattern(message.value, args);
   if (escape) escapeHtmlTags(result);
   return result;
