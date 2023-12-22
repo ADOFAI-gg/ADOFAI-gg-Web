@@ -4,7 +4,7 @@
   import type { FormEventHandler } from 'svelte/elements';
 
   export let value: string = '';
-  export let placeholder: string = '';
+  export let placeholder: TranslationKey | undefined = undefined;
   export let type = 'text';
 
   let showPassword: boolean = false;
@@ -13,7 +13,9 @@
     value = (e.target as HTMLInputElement).value;
   };
 
-  $: localizedPlaceholder = translate(placeholder as TranslationKey, {}, true, $currentLang);
+  $: localizedPlaceholder = placeholder
+    ? translate(placeholder, {}, true, $currentLang)
+    : undefined;
   $: inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
   $: passwordVisible = type === 'password';
 </script>
@@ -32,6 +34,7 @@
       <button
         type="button"
         class="input-field__password-button"
+        tabindex={-1}
         on:click={() => {
           showPassword = !showPassword;
         }}

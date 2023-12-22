@@ -8,13 +8,23 @@
 
   export let key: TranslationKey;
   export let params: Record<string, FluentVariable> = {};
+  export let allowLinks = false;
 
   export let htmlReplacer: (value: string) => string = (v) => v;
+
+  const builtinReplacer = (text: string): string => {
+    if (allowLinks)
+      text = text.replace(/\[link="([^"]*)"\]([^"]*)\[\/link\]/g, (_, href, text) => {
+        return `<a href="${href}" class="link">${decodeURIComponent(text)}</a>`;
+      });
+    return text;
+  };
 
   $: htmlValue = (() => {
     let k = translate(key, params, true, $currentLang);
 
     k = htmlReplacer(k);
+    k = builtinReplacer(k);
 
     return k;
   })();

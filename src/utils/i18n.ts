@@ -25,7 +25,6 @@ const langSections = [
   'search',
   'settings',
   'sign-in',
-  'sign-up-email',
   'sign-up',
   'tags',
   'user-popup',
@@ -65,6 +64,8 @@ const buildLangBundle = (lang: string): LangData => {
 
 const setupFunctions = (bundle: FluentBundle) => {
   bundle._functions.FORUM_LINK = (text) => `[forumLink]${text}[/forumLink]`;
+  bundle._functions.LINK = ([text, href]) =>
+    `[link="${encodeURI(href as string)}"]${encodeURIComponent(text as string)}[/link]`;
 };
 
 export const langData: Record<string, LangData> = Object.fromEntries(

@@ -2,12 +2,13 @@
   import Translation from '@/components/utils/Translation.svelte';
   import Button from '@atoms/interaction/Button.svelte';
   import Google from 'svelte-icons/fa/FaGoogle.svelte';
-  import { createEventDispatcher } from 'svelte';
   import type { StringTranslationKey } from '@/utils/i18n';
 
-  const dispatch = createEventDispatcher();
-
   export let labelKey: StringTranslationKey = 'sign-in:more-options';
+
+  type Provider = 'discord' | 'google';
+
+  export let providerLinks: Record<Provider, string>;
 </script>
 
 <div class="oauth2-container">
@@ -19,10 +20,10 @@
     <div class="oauth2-line" />
   </div>
   <div class="oauth2-options">
-    <Button type="authAction" on:click={() => dispatch('googleSignup')}>
+    <Button type="authAction" href={providerLinks.google}>
       <Google />
     </Button>
-    <Button type="authAction" on:click={() => dispatch('discordSignup')}>
+    <Button type="authAction" href={providerLinks.discord}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
         ><path
           fill="#fff"

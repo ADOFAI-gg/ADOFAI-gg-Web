@@ -52,6 +52,11 @@ input {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
 }
 
+.link {
+  color: white;
+  text-decoration: underline;
+}
+
 #nprogress .bar {
   background: rgba(var(--color-blue), 1) !important;
 }

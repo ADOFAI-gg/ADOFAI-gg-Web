@@ -55,7 +55,12 @@
     <Translation key="sign-in:title" />
   </Button>
 
-  <OAuth2SignOptions />
+  <OAuth2SignOptions
+    providerLinks={{
+      google: '/auth/signin/google',
+      discord: '/auth/signin/discord'
+    }}
+  />
 
   <div class="new-to-adofaigg-container">
     <div class="new-to-adofaigg">

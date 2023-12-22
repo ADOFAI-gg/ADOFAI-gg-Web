@@ -12,10 +12,11 @@
   $: error = $errors[name];
 </script>
 
-<div class="form-control">
+<label class="form-control">
   {#if labelKey}
-    <Translation key={labelKey} />
-    <div>label(TODO)</div>
+    <span class="form-label">
+      <Translation key={labelKey} />
+    </span>
   {/if}
 
   <slot />
@@ -25,12 +26,17 @@
       <Translation key="form:error-{error}" />
     </Hint>
   {/if}
-</div>
+</label>
 
 <style lang="scss">
   .form-control {
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .form-label {
+    font-weight: 500;
+    font-size: 16px;
   }
 </style>

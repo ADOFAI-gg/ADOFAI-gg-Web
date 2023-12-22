@@ -153,7 +153,7 @@
           placeholder="search:meta-field-song-placeholder"
         />
       </LabeledInputContainer>
-      <LabeledInputContainer key="search:meta-field-creator">
+      <LabeledInputContainer key="search:meta-field-creator-label">
         <SearchMetaInput
           on:input={onChangeCreator}
           value={$parsedQuery.creator}
