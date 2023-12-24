@@ -72,6 +72,15 @@
   }}
 />
 
+<div class="signin-question-container">
+  <div class="signin-question-text">
+    <Translation key="sign-up:sign-in-question" />
+  </div>
+  <a class="signin-link" href="/auth/signin">
+    <Translation key="sign-up:sign-in-link" />
+  </a>
+</div>
+
 <style lang="scss">
   .form-fields {
     display: flex;
@@ -88,5 +97,20 @@
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
+  }
+
+  .signin-question-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signin-question-text {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .signin-link {
+    text-decoration: underline;
   }
 </style>

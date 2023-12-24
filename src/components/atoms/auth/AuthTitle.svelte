@@ -2,8 +2,8 @@
 
 <style lang="scss">
   .auth-title {
-    font-size: 36px;
     font-weight: 400;
+    font-size: 36px;
     text-align: center;
   }
 </style>
