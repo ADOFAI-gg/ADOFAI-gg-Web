@@ -6,45 +6,68 @@
   import NavMenuOverlay from '@organisms/layout/NavMenuOverlay.svelte';
   import Popover from '@atoms/common/Popover.svelte';
   import { useAccount } from '@/utils/constants';
+  import Translation from '@/components/utils/Translation.svelte';
+
+  export let needsEmailVerify = false;
 </script>
 
-<nav class="nav">
-  <div id="nprogress-parent" />
+<div class="nav-container">
+  {#if needsEmailVerify}
+    <div class="nav-notification">
+      <Translation key="common-auth:email-verification-required" />
+    </div>
+  {/if}
+  <nav class="nav">
+    <div id="nprogress-parent" />
 
-  <Logo />
+    <Logo />
 
-  <div class="nav__links">
-    <NavLinks />
-  </div>
-
-  <div style="flex-grow: 1;" />
-
-  {#if useAccount}
-    <div class="nav__sign-area">
-      <NavSignArea />
+    <div class="nav__links">
+      <NavLinks />
     </div>
 
-    <div class="nav__divider" />
-  {/if}
-  <Popover
-    style="--tippy-corner-radius: 12px;"
-    options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
-    placement="bottom-end"
-  >
-    <span slot="button" class="nav__expand-icon">
-      <Icon icon="expand" size={16} alt="Expand icon" />
-    </span>
+    <div style="flex-grow: 1;" />
 
-    <NavMenuOverlay />
-  </Popover>
-</nav>
+    {#if useAccount}
+      <div class="nav__sign-area">
+        <NavSignArea />
+      </div>
+
+      <div class="nav__divider" />
+    {/if}
+    <Popover
+      style="--tippy-corner-radius: 12px;"
+      options={{ maxWidth: '100vw', offset: [0, 30], arrow: false }}
+      placement="bottom-end"
+    >
+      <span slot="button" class="nav__expand-icon">
+        <Icon icon="expand" size={16} alt="Expand icon" />
+      </span>
+
+      <NavMenuOverlay />
+    </Popover>
+  </nav>
+</div>
 
 <style lang="scss">
-  .nav {
+  .nav-container {
     position: sticky;
     top: 0;
     left: 0;
     z-index: 99999;
+  }
+
+  .nav-notification {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 32px;
+    background: rgba(var(--color-blue), 1);
+  }
+
+  .nav {
     display: flex;
     gap: 16px;
     align-items: center;
