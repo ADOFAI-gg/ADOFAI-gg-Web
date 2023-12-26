@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const schema = z
   .object({
-    email: z.string().email(),
+    email: z.string().email({ message: 'invalid-email' }),
     username: usernameRule,
     password: passwordRule,
     confirmPassword: passwordRule
