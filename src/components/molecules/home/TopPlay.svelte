@@ -17,7 +17,7 @@
         width="100%"
         height="100%"
         alt="Youtube Video Thumbnail"
-        src="/api/thumbnail/{getYoutubeVideoId(play.url)}"
+        src="/api-proxy/thumbnail/{getYoutubeVideoId(play.url)}"
       />
     </a>
 
