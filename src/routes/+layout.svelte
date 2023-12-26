@@ -23,6 +23,9 @@
 
   import { PUBLIC_GA_ID, PUBLIC_GTM_ID } from '$env/static/public';
   import IconProvider from '@/components/utils/IconProvider.svelte';
+  import DebugPopup from '@/components/utils/DebugPopup.svelte';
+  import { debugData } from '@/utils/debug';
+  import { dev } from '$app/environment';
 
   let partytownScriptEl: HTMLScriptElement;
 
@@ -89,7 +92,11 @@
   {/if}
 </svelte:head>
 
-<Nav />
+<Nav needsEmailVerify={$debugData.emailVerificationNotification} />
+
+{#if dev}
+  <DebugPopup />
+{/if}
 
 <LoadingIndiciator />
 
