@@ -492,7 +492,7 @@ const AWCQ1RankingPage = () => {
             추가 생존자가 한 명 발생할 수 있습니다!`,
               `There might be 1 additional survivor due to the regulations, since
               surviving percentage of participants' count isn't an integer!`,
-              '由于参赛人数的晋级百分比不是整数，因此根据规定可能会增加1名晋级参赛者！由于参赛人数的晋级百分比不是整数，因此根据规定可能会增加1名晋级参赛者！'
+              '由于参赛人数的晋级百分比不是整数，因此根据规定可能会增加1名晋级参赛者！'
             )}
           </Note>
         )}
