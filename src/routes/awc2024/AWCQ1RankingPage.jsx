@@ -406,7 +406,6 @@ const AWCQ1RankingPage = () => {
 
     const fetchData = async () => {
       try {
-        const sizeRes = await axios.get(`${API_BASE_URL}measure/rank/`);
         const groupARes = await axios.get(
           `${API_BASE_URL}measure/rank/a?limit=200`
         );
@@ -414,10 +413,11 @@ const AWCQ1RankingPage = () => {
           `${API_BASE_URL}measure/rank/b?limit=200`
         );
 
-        setGroupASize(sizeRes.data.data.groupA);
-        setGroupBSize(sizeRes.data.data.groupB);
         setGroupAData(groupARes.data.data);
         setGroupBData(groupBRes.data.data);
+
+        setGroupASize(groupARes.data.data.length);
+        setGroupBSize(groupBRes.data.data.length);
       } catch (e) {
         console.error(e);
       }
