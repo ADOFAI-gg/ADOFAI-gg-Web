@@ -33,7 +33,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
           push: true
           builder: ${{ steps.buildx.outputs.name }}
-          platforms: ${{ steps.buildx.outputs.platforms }}
+          platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
