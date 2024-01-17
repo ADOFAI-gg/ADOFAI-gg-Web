@@ -3,7 +3,7 @@ import SectionTitle from '../../components/global/SectionTitle';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://corsproxy.io/?' + 'https://2024-awc.adofai.gg/'; // TODO
+const API_BASE_URL = 'https://2024-awc.adofai.gg/'; // TODO
 
 const Wrapper = styled.div`
   width: 1100px;
@@ -343,10 +343,10 @@ const RankingItemList = ({
             <ItemLevelRecord
               label={
                 {
-                  levelA: t('첫째', 'Level 1', '第1关'),
-                  levelB: t('둘째', 'Level 2', '第2关'),
-                  levelC: t('셋째', 'Level 3', '第3关'),
-                  levelD: t('넷째', 'Level 4', '第4关')
+                  levelA: t('레벨 1', 'Level 1', '第1关卡'),
+                  levelB: t('레벨 2', 'Level 2', '第2关卡'),
+                  levelC: t('레벨 3', 'Level 3', '第3关卡'),
+                  levelD: t('레벨 4', 'Level 4', '第4关卡')
                 }[levelType]
               }
               xAcc={a.levelStats[levelType].xacc}
@@ -378,7 +378,6 @@ const tabShowDate = {
 };
 
 const AWCQ2RankingPage = () => {
-  /** 0: 모두 보기, 1: 그룹 A, 2: 그룹 B */
   const [currentTab, setCurrentTab] = useState(0);
   const [lang, setLang] = useState('ko-KR');
 
@@ -426,28 +425,28 @@ const AWCQ2RankingPage = () => {
         </SectionTitle>
         <TabRow>
           <Tab $active={currentTab === 0} onClick={() => setCurrentTab(0)}>
-            {t('첫 번째 레벨', 'First Level')}
+            {t('첫 번째 레벨', 'First Level', '第1关卡')}
           </Tab>
           <Tab
             $active={currentTab === 1}
             onClick={() => setCurrentTab(1)}
             disabled={Date.now() < tabShowDate.levelB.getTime()}
           >
-            {t('두 번째 레벨', 'Second Level')}
+            {t('두 번째 레벨', 'Second Level', '第2关卡')}
           </Tab>
           <Tab
             $active={currentTab === 2}
             onClick={() => setCurrentTab(2)}
             disabled={Date.now() < tabShowDate.levelC.getTime()}
           >
-            {t('세 번째 레벨', 'Third Level')}
+            {t('세 번째 레벨', 'Third Level', '第3关卡')}
           </Tab>
           <Tab
             $active={currentTab === 3}
             onClick={() => setCurrentTab(3)}
             disabled={Date.now() < tabShowDate.levelD.getTime()}
           >
-            {t('네 번째 레벨', 'Foruth Level')}
+            {t('네 번째 레벨', 'Foruth Level', '第4关卡')}
           </Tab>
         </TabRow>
 
