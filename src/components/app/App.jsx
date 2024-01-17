@@ -18,6 +18,9 @@ const RankingPage = lazy(() => import('../../routes/RankingPage'));
 const AWC2024Q1RankingPage = lazy(() =>
   import('../../routes/awc2024/AWCQ1RankingPage')
 );
+const AWC2024Q2RankingPage = lazy(() =>
+  import('../../routes/awc2024/AWCQ2RankingPage')
+);
 const Error404Page = lazy(() => import('../../routes/error/404'));
 
 const App = () => {
@@ -43,6 +46,11 @@ const App = () => {
                 exact
                 path='/awc2024/qualifier1/ranks'
                 component={AWC2024Q1RankingPage}
+              />
+              <Route
+                exact
+                path='/awc2024/qualifier2/ranks'
+                component={AWC2024Q2RankingPage}
               />
 
               <Route component={Error404Page} />
