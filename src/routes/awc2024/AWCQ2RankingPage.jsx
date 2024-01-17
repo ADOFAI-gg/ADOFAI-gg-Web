@@ -3,7 +3,7 @@ import SectionTitle from '../../components/global/SectionTitle';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://2024-awc.adofai.gg/'; // TODO
+const API_BASE_URL = 'https://corsproxy.io/?' + 'https://2024-awc.adofai.gg/';
 
 const Wrapper = styled.div`
   width: 1100px;
@@ -235,7 +235,7 @@ const ItemHitMargin = ({ color, label, content }) => {
  * @param {Number} props.xAccuracy
  */
 const ItemLevelRecord = ({ label, xAcc, hitMargins, fillAsRow }) => {
-  const formattedXAcc = xAcc >= 1 ? '100.000' : (xAcc * 100).toFixed(3);
+  const formattedXAcc = (xAcc * 100).toFixed(3);
 
   return (
     <RankingItemRow $fillAsRow={fillAsRow}>
@@ -331,11 +331,15 @@ const RankingItemList = ({
         >
           <ItemLevelRecord
             label={t('합산', 'Sum', '合计')}
-            xAcc={Object.values(a.levelStats).reduce((a, b) => a + b.xacc, 0)}
-            hitMargins={Object.values(a.levelStats).reduce(
-              (a, b) => a.map((v, i) => v + b.hitMargins[i]),
-              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            )}
+            xAcc={Object.values(a.levelStats)
+              .splice(0, levelTypeToShow.length)
+              .reduce((a, b) => a + b.xacc, 0)}
+            hitMargins={Object.values(a.levelStats)
+              .splice(0, levelTypeToShow.length)
+              .reduce(
+                (a, b) => a.map((v, i) => v + b.hitMargins[i]),
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              )}
             fillAsRow={levelTypeToShow.length > 1}
           />
 
