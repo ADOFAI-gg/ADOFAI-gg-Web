@@ -343,10 +343,10 @@ const RankingItemList = ({
             <ItemLevelRecord
               label={
                 {
-                  levelA: t('레벨 1', 'Level 1', '第1关卡'),
-                  levelB: t('레벨 2', 'Level 2', '第2关卡'),
-                  levelC: t('레벨 3', 'Level 3', '第3关卡'),
-                  levelD: t('레벨 4', 'Level 4', '第4关卡')
+                  levelA: t('레벨 1', 'Level 1', '关卡一'),
+                  levelB: t('레벨 2', 'Level 2', '关卡二'),
+                  levelC: t('레벨 3', 'Level 3', '关卡三'),
+                  levelD: t('레벨 4', 'Level 4', '关卡四')
                 }[levelType]
               }
               xAcc={a.levelStats[levelType].xacc}
@@ -425,28 +425,28 @@ const AWCQ2RankingPage = () => {
         </SectionTitle>
         <TabRow>
           <Tab $active={currentTab === 0} onClick={() => setCurrentTab(0)}>
-            {t('첫 번째 레벨', 'First Level', '第1关卡')}
+            {t('첫 번째 레벨', 'First Level', '关卡一')}
           </Tab>
           <Tab
             $active={currentTab === 1}
             onClick={() => setCurrentTab(1)}
             disabled={Date.now() < tabShowDate.levelB.getTime()}
           >
-            {t('두 번째 레벨', 'Second Level', '第2关卡')}
+            {t('두 번째 레벨', 'Second Level', '关卡二')}
           </Tab>
           <Tab
             $active={currentTab === 2}
             onClick={() => setCurrentTab(2)}
             disabled={Date.now() < tabShowDate.levelC.getTime()}
           >
-            {t('세 번째 레벨', 'Third Level', '第3关卡')}
+            {t('세 번째 레벨', 'Third Level', '关卡三')}
           </Tab>
           <Tab
             $active={currentTab === 3}
             onClick={() => setCurrentTab(3)}
             disabled={Date.now() < tabShowDate.levelD.getTime()}
           >
-            {t('네 번째 레벨', 'Foruth Level', '第4关卡')}
+            {t('네 번째 레벨', 'Foruth Level', '关卡四')}
           </Tab>
         </TabRow>
 
