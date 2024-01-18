@@ -3,7 +3,7 @@ import SectionTitle from '../../components/global/SectionTitle';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://corsproxy.io/?' + 'https://2024-awc.adofai.gg/';
+const API_BASE_URL = 'https://2024-awc.adofai.gg/';
 
 const Wrapper = styled.div`
   width: 1100px;
