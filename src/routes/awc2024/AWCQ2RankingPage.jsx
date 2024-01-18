@@ -3,7 +3,7 @@ import SectionTitle from '../../components/global/SectionTitle';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://2024-awc.adofai.gg/';
+const API_BASE_URL = 'https://corsproxy.io/?' + 'https://2024-awc.adofai.gg/';
 
 const Wrapper = styled.div`
   width: 1100px;
@@ -325,59 +325,69 @@ const RankingItemList = ({
       .splice(0, levelTypeToShow.length)
       .reduce((a, b) => a + b.xacc, 0);
 
+  const preprocessedRankData = rankData
+    .filter((a) => a.levelStats[levelTypeToFilter])
+    .sort(
+      (a, b) =>
+        sumXAcc(b) - sumXAcc(a) ||
+        new Date(a.levelStats[levelTypeToFilter].updatedAt) -
+          new Date(b.levelStats[levelTypeToFilter].updatedAt)
+    );
+
   return (
     <>
-      {rankData
-        .filter((a) => a.levelStats[levelTypeToFilter])
-        .sort((a, b) => sumXAcc(b) - sumXAcc(a))
-        .map((a, i) => (
-          <RankingItemFrame
-            playerName={a.player.playerName}
-            rank={i + 1}
-            t={t}
-            showCutoffLineBottom={i + 1 === cutOffLine}
-            key={a.player.playerId}
-          >
-            <ItemLevelRecord
-              label={t('합산', 'Sum', '合计')}
-              xAcc={sumXAcc(a)}
-              hitMargins={Object.values(a.levelStats)
-                .splice(0, levelTypeToShow.length)
-                .reduce(
-                  (a, b) => a.map((v, i) => v + b.hitMargins[i]),
-                  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                )}
-              fillAsRow={levelTypeToShow.length > 1}
-            />
+      {preprocessedRankData.map((a, i) => (
+        <RankingItemFrame
+          playerName={a.player.playerName}
+          rank={i + 1}
+          t={t}
+          showCutoffLineBottom={i + 1 === cutOffLine}
+          key={a.player.playerId}
+        >
+          <ItemLevelRecord
+            label={t('합산', 'Sum', '合计')}
+            xAcc={sumXAcc(a)}
+            hitMargins={Object.values(a.levelStats)
+              .splice(0, levelTypeToShow.length)
+              .reduce(
+                (a, b) => a.map((v, i) => v + b.hitMargins[i]),
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              )}
+            fillAsRow={levelTypeToShow.length > 1}
+          />
 
-            {levelTypeToShow.map((levelType) => (
-              <ItemLevelRecord
-                label={
-                  {
-                    levelA: t('레벨 1', 'Level 1', '关卡一'),
-                    levelB: t('레벨 2', 'Level 2', '关卡二'),
-                    levelC: t('레벨 3', 'Level 3', '关卡三'),
-                    levelD: t('레벨 4', 'Level 4', '关卡四')
-                  }[levelType]
-                }
-                xAcc={a.levelStats[levelType].xacc}
-                hitMargins={a.levelStats[levelType].hitMargins}
-                key={levelType}
-              />
-            ))}
-          </RankingItemFrame>
-        ))}
+          {levelTypeToShow.map((levelType) => (
+            <ItemLevelRecord
+              label={
+                {
+                  levelA: t('레벨 1', 'Level 1', '关卡一'),
+                  levelB: t('레벨 2', 'Level 2', '关卡二'),
+                  levelC: t('레벨 3', 'Level 3', '关卡三'),
+                  levelD: t('레벨 4', 'Level 4', '关卡四')
+                }[levelType]
+              }
+              xAcc={a.levelStats[levelType].xacc}
+              hitMargins={a.levelStats[levelType].hitMargins}
+              key={levelType}
+            />
+          ))}
+        </RankingItemFrame>
+      ))}
 
       {/* 커트라인까지 rankItem 없으면 스켈레톤 */}
-      {rankData.length < cutOffLine &&
-        Array.from({ length: cutOffLine - rankData.length }).map((_, i) => (
-          <RankingItemSkeleton
-            rank={rankData.length + i + 1}
-            showCutoffLineBottom={rankData.length + i + 1 === cutOffLine}
-            t={t}
-            key={i}
-          />
-        ))}
+      {preprocessedRankData.length < cutOffLine &&
+        Array.from({ length: cutOffLine - preprocessedRankData.length }).map(
+          (_, i) => (
+            <RankingItemSkeleton
+              rank={preprocessedRankData.length + i + 1}
+              showCutoffLineBottom={
+                preprocessedRankData.length + i + 1 === cutOffLine
+              }
+              t={t}
+              key={i}
+            />
+          )
+        )}
     </>
   );
 };
