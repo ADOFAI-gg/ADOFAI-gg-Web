@@ -440,7 +440,7 @@ const AWCQ2RankingPage = () => {
   const [rankData, setRankData] = useState([]);
 
   const t = (ko, en, cn) =>
-    lang === 'ko-KR' ? ko : lang === 'zh-CN' ? cn : en;
+    lang === 'ko-KR' || lang === 'ko' ? ko : lang === 'zh-CN' ? cn : en;
 
   useEffect(() => {
     const _lang = navigator.language;
