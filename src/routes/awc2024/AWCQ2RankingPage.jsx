@@ -341,30 +341,36 @@ const RankingItemList = ({
   cutOffLine,
   t
 }) => {
+  const getLevelsStats = (a) =>
+    Object.keys(a.levelStats).sort().splice(0, levelTypeToShow.length);
+
   const sumXAcc = (a) =>
-    Object.keys(a.levelStats)
-      .sort()
-      .splice(0, levelTypeToShow.length)
-      .reduce((_a, _b) => _a + a.levelStats[_b].xacc, 0);
+    getLevelsStats(a).reduce((_a, _b) => _a + a.levelStats[_b].xacc, 0);
 
   const sumHitMargins = (a) =>
-    Object.keys(a.levelStats)
-      .sort()
-      .splice(0, levelTypeToShow.length)
-      .reduce(
-        (_a, _b) => _a.map((v, i) => v + a.levelStats[_b].hitMargins[i]),
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      );
+    getLevelsStats(a).reduce(
+      (_a, _b) => _a.map((v, i) => v + a.levelStats[_b].hitMargins[i]),
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    );
 
+  // xAcc -> failMiss + failOverload가 적을수록(idx 8+9) -> perfect가 많을수록(idx 3) -> q1Data -> updatedAt
   const preprocessedRankData = rankData
     .filter((a) => a.levelStats[levelTypeToFilter])
-    .sort(
-      (a, b) =>
+    .sort((a, b) => {
+      const sumHitMarginsA = sumHitMargins(a);
+      const sumHitMarginsB = sumHitMargins(b);
+
+      return (
         sumXAcc(b) - sumXAcc(a) ||
+        sumHitMarginsB[8] +
+          sumHitMarginsB[9] -
+          (sumHitMarginsA[8] + sumHitMarginsA[9]) ||
+        sumHitMarginsA[3] - sumHitMarginsB[3] ||
         q1Data[b.player.playerId] - q1Data[a.player.playerId] ||
         new Date(a.levelStats[levelTypeToFilter].updatedAt) -
           new Date(b.levelStats[levelTypeToFilter].updatedAt)
-    );
+      );
+    });
 
   return (
     <>
