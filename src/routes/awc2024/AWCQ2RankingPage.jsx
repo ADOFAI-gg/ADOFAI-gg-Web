@@ -347,6 +347,15 @@ const RankingItemList = ({
       .splice(0, levelTypeToShow.length)
       .reduce((_a, _b) => _a + a.levelStats[_b].xacc, 0);
 
+  const sumHitMargins = (a) =>
+    Object.keys(a.levelStats)
+      .sort()
+      .splice(0, levelTypeToShow.length)
+      .reduce(
+        (_a, _b) => _a.map((v, i) => v + a.levelStats[_b].hitMargins[i]),
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      );
+
   const preprocessedRankData = rankData
     .filter((a) => a.levelStats[levelTypeToFilter])
     .sort(
@@ -371,12 +380,7 @@ const RankingItemList = ({
           <ItemLevelRecord
             label={t('합산', 'Sum', '合计')}
             xAcc={sumXAcc(a)}
-            hitMargins={Object.values(a.levelStats)
-              .splice(0, levelTypeToShow.length)
-              .reduce(
-                (a, b) => a.map((v, i) => v + b.hitMargins[i]),
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-              )}
+            hitMargins={sumHitMargins(a)}
             fillAsRow={levelTypeToShow.length > 1}
           />
 
@@ -433,7 +437,6 @@ const AWCQ2RankingPage = () => {
     lang === 'ko-KR' ? ko : lang === 'zh-CN' ? cn : en;
 
   useEffect(() => {
-    // 언어 설정
     const _lang = navigator.language;
     setLang(_lang);
 
