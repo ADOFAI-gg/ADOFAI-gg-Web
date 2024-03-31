@@ -68,7 +68,7 @@
     {#if level.epilepsyWarning}
       <Tooltip placement="bottom-end">
         <Icon
-          icon="SW"
+          icon="sw"
           namespace="tagIcons"
           style="color: rgba(var(--color-red), 100);"
           size={24}
