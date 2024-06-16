@@ -41,8 +41,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            API_ENDPOINT=${{ secrets.STAGING_API_ENDPOINT }}
-            OPENGRAPH_ENDPOINT=${{ secrets.STAGING_OPENGRAPH_ENDPOINT }}
+            API_ENDPOINT=https://adofai.gg
+            OPENGRAPH_ENDPOINT=https://og.afg.ink
             DISCORD_INVITE=https://discord.gg/adofaigg
             SUPPORT_MAIL=support@adofai.gg
             SENTRY_ENV=staging
