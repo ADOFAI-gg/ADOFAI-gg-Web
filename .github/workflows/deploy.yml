@@ -1,7 +1,7 @@
 name: Deploy
 on:
   workflow_run:
-    workflows: ["Docker"]
+    workflows: ['Docker']
     types:
       - completed
 
@@ -13,4 +13,3 @@ jobs:
       - uses: newarifrh/portainer-service-webhook@v1
         with:
           webhook_url: ${{ secrets.STAGING_DEPLOY_WEBHOOK }}
-      
