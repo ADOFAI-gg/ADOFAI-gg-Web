@@ -21,7 +21,7 @@
     </div>
   </Tooltip> -->
 
-  {#if level.workshop}
+  {#if level.workshop?.trim()}
     <a href={level.workshop} target="_blank" rel="noreferrer">
       <Icon icon="steam" size={36} alt="Steam Workshop icon" />
     </a>

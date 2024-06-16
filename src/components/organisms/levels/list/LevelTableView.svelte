@@ -46,8 +46,8 @@
         </th>
 
         <!-- <th>
-        <Translation key="SEARCH_TABLE_COL_MUSIC_NAME" />
-      </th> -->
+      <Translation key="SEARCH_TABLE_COL_MUSIC_NAME" />
+    </th> -->
 
         <th>
           <Translation key="level-table-cols:artist" />
@@ -145,7 +145,7 @@
         <a href={item.workshop} target="_blank" rel="noreferrer">
           <Icon
             icon="steam"
-            style={item.workshop ? 'color: white;' : 'color: rgba(255, 255, 255, 0.2)'}
+            style={item.workshop?.trim() ? 'color: white;' : 'color: rgba(255, 255, 255, 0.2)'}
             size={16}
             alt="Steam Workshop Icon"
           />
