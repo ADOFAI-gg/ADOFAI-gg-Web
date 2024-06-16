@@ -1,0 +1,16 @@
+name: Deploy
+on:
+  workflow_run:
+    workflows: ["Docker"]
+    types:
+      - completed
+
+jobs:
+  staging:
+    name: Deploy Staging
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: newarifrh/portainer-service-webhook@v1
+        with:
+          webhook_url: ${{ secrets.STAGING_DEPLOY_WEBHOOK }}
+      
