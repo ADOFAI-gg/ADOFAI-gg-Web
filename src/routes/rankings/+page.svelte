@@ -61,7 +61,7 @@
 
 <PageContainer>
   <div class="top-spacer">
-    <MainSectionTitle titleKey="RANKING_TITLE" />
+    <MainSectionTitle titleKey="ranking:title" />
   </div>
   {#if browser}
     <div class="top-rankings">
