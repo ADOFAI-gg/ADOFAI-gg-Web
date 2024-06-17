@@ -25,7 +25,7 @@
 
   let query = createInfiniteQuery({
     queryKey: ['levels'],
-    queryFn: ({ pageParam }) => fetchPage(pageParam),
+    queryFn: ({ pageParam, signal }) => fetchPage(pageParam, signal),
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) => {
       return lastPage.length === pageSize ? pages.length + 1 : null;
@@ -46,9 +46,10 @@
   //   loading = false;
   // };
 
-  const fetchPage = async (page: number) => {
+  const fetchPage = async (page: number, signal: AbortSignal) => {
     const { data } = await api.get<ListResponse<Level>>('/api/v1/levels', {
-      params: params(page * pageSize)
+      params: params(page * pageSize),
+      signal
     });
 
     return data.results;

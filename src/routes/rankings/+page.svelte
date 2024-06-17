@@ -16,16 +16,17 @@
 
   let query = createInfiniteQuery({
     queryKey: ['rankings'],
-    queryFn: ({ pageParam }) => fetchPage(pageParam),
+    queryFn: ({ pageParam, signal }) => fetchPage(pageParam, signal),
     initialPageParam: 0,
     getNextPageParam: (lastPage, pages) => {
       return lastPage.length === pageSize ? pages.length + 1 : null;
     }
   });
 
-  const fetchPage = async (page: number) => {
+  const fetchPage = async (page: number, signal: AbortSignal) => {
     const { data } = await api.get<ListResponse<RankingResult>>('/api/v1/ranking', {
-      params: { offset: page * pageSize, amount: pageSize }
+      params: { offset: page * pageSize, amount: pageSize },
+      signal
     });
 
     return data.results;
