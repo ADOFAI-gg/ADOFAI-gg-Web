@@ -22,7 +22,12 @@
         </div>
       </div>
       <div class="details-best-play-container">
-        <a href={item.bestPlay.url} target="_blank" rel="noreferrer" class="details-best-play-link">
+        <a
+          href={item.bestPlay?.url}
+          target="_blank"
+          rel="noreferrer"
+          class="details-best-play-link"
+        >
           <Icon icon="playOutlined" size={16} alt="Video Icon" />
           <div>
             <Translation key="ranking:highest-play" />

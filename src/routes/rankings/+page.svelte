@@ -8,78 +8,53 @@
   import RankingListItem from '@organisms/rankings/RankingListItem.svelte';
   import RankingTopItem from '@organisms/rankings/RankingTopItem.svelte';
   import type { ListResponse } from '@/types';
-  import { onMount } from 'svelte';
-  import { writable } from 'svelte/store';
   import type { RankingResult } from './+page';
-  import { VirtualizedInfiniteScrollList } from '@adofai-gg/svelte-virtualized-infinite-scroll';
+  import VirtualList from '@/components/utils/VirtualList.svelte';
+  import { createInfiniteQuery } from '@tanstack/svelte-query';
 
-  let items = writable<RankingResult[]>([]);
+  const pageSize = 30;
 
-  let total = 0;
-
-  let offsets = writable<number[]>([]);
-
-  $: loadMore = async (offset = 0) => {
-    offsets.update((x) => [...x, offset]);
-
-    const { data } = await api.get<ListResponse<RankingResult>>('/api/v1/ranking', {
-      params: { offset, amount: 30 }
-    });
-
-    const results = data.results.map((x, i) => ({ ...x, rank: offset + i + 1 }));
-
-    if (offset === 0) items.set(results);
-    else items.update((x) => [...x, ...results]);
-    total = data.count;
-  };
-
-  onMount(async () => {
-    total = (
-      await api.get<ListResponse<RankingResult>>('/api/v1/ranking', {
-        params: { amount: 1, offset: 0 }
-      })
-    ).data.count;
-
-    const contentWrapper = document.querySelector('.simplebar-content-wrapper');
-
-    setTimeout(() => {
-      contentWrapper?.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }, 100);
+  let query = createInfiniteQuery({
+    queryKey: ['rankings'],
+    queryFn: ({ pageParam }) => fetchPage(pageParam),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, pages) => {
+      return lastPage.length === pageSize ? pages.length + 1 : null;
+    }
   });
 
-  $: onMore = (e: CustomEvent<{ offset: number }>) => {
-    loadMore(e.detail.offset ? e.detail.offset + 3 : 0);
+  const fetchPage = async (page: number) => {
+    const { data } = await api.get<ListResponse<RankingResult>>('/api/v1/ranking', {
+      params: { offset: page * pageSize, amount: pageSize }
+    });
+
+    return data.results;
   };
 
-  $: topItems = $items.slice(0, 3);
-
-  $: listItems = $items.slice(3);
+  $: topItems =
+    $query.data?.pages[0].slice(0, 3).map((x, i) => ({
+      ...x,
+      rank: i + 1
+    })) || [];
 </script>
 
 <PageContainer>
   <div class="top-spacer">
     <MainSectionTitle titleKey="ranking:title" />
   </div>
-  {#if browser}
+  {#if $query.isLoading}
+    <div class="loader">
+      <LoadingSpinner />
+    </div>
+  {:else if browser}
     <div class="top-rankings">
       {#each topItems as item}
         <RankingTopItem {item} />
       {/each}
     </div>
-    <VirtualizedInfiniteScrollList
-      data={listItems}
-      on:more={onMore}
-      let:item
-      total={Math.max(0, total - 3)}
-    >
-      <RankingListItem {item} />
-      <div slot="loading" class="loader">
-        <LoadingSpinner size={48} />
-      </div>
-    </VirtualizedInfiniteScrollList>
+    <VirtualList {query} offset={3}>
+      <RankingListItem slot="item" let:item let:row item={{ ...item, rank: row.index + 3 + 1 }} />
+    </VirtualList>
   {/if}
 </PageContainer>
 

@@ -18,7 +18,7 @@
       <span class="pp-label">PP</span>
     </div>
     <div class="divider" />
-    <a href={item.bestPlay.url} target="_blank" rel="noreferrer" class="best-play-container">
+    <a href={item.bestPlay?.url} target="_blank" rel="noreferrer" class="best-play-container">
       <Icon icon="playOutlined" size={16} alt="Video Icon" />
       <div>
         <Translation key="ranking:highest-play" />

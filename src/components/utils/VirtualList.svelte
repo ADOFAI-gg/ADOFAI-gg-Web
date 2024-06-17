@@ -5,6 +5,7 @@
   import { createWindowVirtualizer } from '@tanstack/svelte-virtual';
   import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
 
+  export let offset = 0;
   export let estimateSize = 100;
 
   // eslint-disable-next-line no-undef
@@ -12,7 +13,7 @@
 
   export let query: CreateInfiniteQueryResult<InfiniteData<T[]>, Error>;
 
-  $: allItems = $query.data?.pages.flatMap((x) => x) || [];
+  $: allItems = ($query.data?.pages.flatMap((x) => x) || []).slice(offset);
 
   let listEl: HTMLDivElement;
 
@@ -60,7 +61,7 @@
               </div>
             {/if}
           {:else}
-            <slot name="item" item={allItems[row.index]} />
+            <slot name="item" item={allItems[row.index]} {row} />
           {/if}
         </VirtualListItem>
       {/each}

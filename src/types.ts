@@ -19,7 +19,7 @@ export interface Ranking {
   id: number;
   name: string;
   totalPp: number;
-  bestPlay: PlayLog;
+  bestPlay: PlayLog | null;
 }
 
 export interface PartialMember {
