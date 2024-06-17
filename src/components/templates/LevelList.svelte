@@ -12,20 +12,26 @@
   import LevelListItem from '@organisms/levels/list/LevelListItem.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import { onDestroy, onMount } from 'svelte';
-  import { createInfiniteQuery } from '@tanstack/svelte-query';
+  import { createInfiniteQuery, getQueryClientContext } from '@tanstack/svelte-query';
   import VirtualList from '../utils/VirtualList.svelte';
   import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
 
   let randomSeed: Writable<number | null> = writable(null);
 
+  let mounted = false;
+
   const pageSize = 30;
 
-  const query = createInfiniteQuery({
+  let query = createInfiniteQuery({
     queryKey: ['levels'],
     queryFn: ({ pageParam }) => fetchPage(pageParam),
     initialPageParam: 0,
-    getNextPageParam: (_lastPage, page) => page.length
+    getNextPageParam: (lastPage, pages) => {
+      return lastPage.length === pageSize ? pages.length + 1 : null;
+    }
   });
+
+  const queryClient = getQueryClientContext();
 
   // $: addItems = async (start = 0) => {
   //   if (loading) return;
@@ -59,7 +65,7 @@
       query: analyzed.normal.trim(),
 
       offset: start,
-      amount: '25',
+      amount: pageSize,
 
       includeTags: settings.filter.tags.include.join(','),
       excludeTags: settings.filter.tags.exclude.join(',')
@@ -135,11 +141,16 @@
 
   $: reset = async () => {
     $randomSeed = null;
+
+    queryClient.resetQueries({
+      queryKey: ['levels']
+    });
   };
 
   let timeout: number | null = null;
 
-  searchSettingStore.subscribe(() => {
+  const unsubscribeSettings = searchSettingStore.subscribe(() => {
+    if (!mounted) return;
     if (browser) {
       if (timeout) {
         clearTimeout(timeout);
@@ -150,7 +161,9 @@
     }
   });
 
-  let mounted = false;
+  onDestroy(() => {
+    unsubscribeSettings();
+  });
 
   $: {
     if (browser && mounted) {

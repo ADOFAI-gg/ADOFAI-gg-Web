@@ -99,7 +99,13 @@
 
   const gtagContent = getGtagContent();
 
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        enabled: browser
+      }
+    }
+  });
 
   onMount(() => {
     if (partyTownScriptEl) {

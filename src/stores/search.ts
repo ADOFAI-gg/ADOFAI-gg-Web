@@ -1,5 +1,6 @@
 import { parseSearchString, SearchStringAnalyzer } from '@/utils/search';
-import { derived, writable } from 'svelte/store';
+import { derived } from 'svelte/store';
+import { createLocalStorage } from './localStorage';
 
 type Filters = {
   tags: {
@@ -57,7 +58,10 @@ export const defaultSearchSettings = (): SearchSettings => ({
   }
 });
 
-export const searchSettingStore = writable<SearchSettings>(defaultSearchSettings());
+export const searchSettingStore = createLocalStorage<SearchSettings>(
+  'searchSettings',
+  defaultSearchSettings()
+);
 
 export const parsedQuery = derived(searchSettingStore, (values) => {
   return new SearchStringAnalyzer(parseSearchString(values.query));
