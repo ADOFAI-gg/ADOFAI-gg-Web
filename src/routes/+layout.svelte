@@ -17,11 +17,13 @@
   import '@/stylesheets/font.scss';
   import Nav from '@organisms/layout/Nav.svelte';
   import LoadingIndiciator from '@atoms/common/LoadingIndiciator.svelte';
-  import { onMount } from 'svelte';
+  import { onMount, setContext } from 'svelte';
   import UpdateNotification from '@/components/utils/UpdateNotification.svelte';
   import { page } from '$app/stores';
   import Footer from '@organisms/layout/Footer.svelte';
   import { partytownSnippet } from '@builder.io/partytown/integration';
+  import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+  import { writable } from 'svelte/store';
 
   // quicksand
   import '@fontsource/quicksand/300.css';
@@ -40,8 +42,32 @@
   import '@fontsource/roboto-mono/500.css';
   import { PUBLIC_GA_ID, PUBLIC_GTM_ID } from '$env/static/public';
   import IconProvider from '@/components/utils/IconProvider.svelte';
+  import { browser } from '$app/environment';
+  import { getLangCode } from '@/utils/i18n';
+  import Cookies from 'js-cookie';
 
-  let partytownScriptEl: HTMLScriptElement;
+  let partyTownScriptEl: HTMLScriptElement;
+
+  const getInitialLang = (): string => {
+    // if (browser) {
+    //   return getLangCode(Cookies.get('_adofaigg-lang') || window.navigator.language);
+    // }
+
+    // return 'en';
+
+    return getLangCode($page.data.initialLang);
+  };
+
+  const lang = writable(getInitialLang());
+
+  $: {
+    if (browser) {
+      Cookies.set('_adofaigg-lang', $lang, { expires: 365 * 10 });
+      console.log($lang);
+    }
+  }
+
+  setContext('lang', lang);
 
   const getGtagContent = () => {
     const scriptTagName = 'script';
@@ -73,9 +99,11 @@
 
   const gtagContent = getGtagContent();
 
+  const queryClient = new QueryClient();
+
   onMount(() => {
-    if (partytownScriptEl) {
-      partytownScriptEl.textContent = partytownSnippet();
+    if (partyTownScriptEl) {
+      partyTownScriptEl.textContent = partytownSnippet();
     }
   });
 </script>
@@ -89,11 +117,12 @@
   {/each}
 
   <script>
+    // noinspection JSUnresolvedReference
     partytown = {
       forward: ['dataLayer.push', 'gtag']
     };
   </script>
-  <script bind:this={partytownScriptEl}></script>
+  <script bind:this={partyTownScriptEl}></script>
 
   {#if PUBLIC_GTM_ID}
     <script
@@ -110,19 +139,21 @@
 
 <LoadingIndiciator />
 
-<div>
-  <div class="page-layout">
-    <div class="page-content">
-      <slot />
+<QueryClientProvider client={queryClient}>
+  <div>
+    <div class="page-layout">
+      <div class="page-content">
+        <slot />
+      </div>
+
+      {#if !$page.data?.meta?.hideFooter}
+        <div class="footer-spacer" />
+
+        <Footer />
+      {/if}
     </div>
-
-    {#if !$page.data?.meta?.hideFooter}
-      <div class="footer-spacer" />
-
-      <Footer />
-    {/if}
   </div>
-</div>
+</QueryClientProvider>
 
 <UpdateNotification />
 <IconProvider />

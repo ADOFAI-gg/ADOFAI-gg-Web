@@ -10,30 +10,41 @@
   import { writable, type Writable } from 'svelte/store';
   import { api } from '@/api';
   import LevelListItem from '@organisms/levels/list/LevelListItem.svelte';
-  import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
-  import LevelTableView from '@organisms/levels/list/LevelTableView.svelte';
   import { onDestroy, onMount } from 'svelte';
+  import { createInfiniteQuery } from '@tanstack/svelte-query';
   import VirtualList from '../utils/VirtualList.svelte';
-
-  let items: Writable<Level[]> = writable([]);
-
-  let itemCount = 0;
-
-  let loading = false;
+  import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
 
   let randomSeed: Writable<number | null> = writable(null);
 
-  $: addItems = async (start = 0) => {
-    if (loading) return;
-    loading = true;
-    const { data } = await api.get<ListResponse<Level>>(
-      '/api/v1/levels?' + new URLSearchParams(params(start) as Record<string, string>).toString()
-    );
-    if (start === 0) items.set(data.results);
-    else items.update((x) => [...x, ...data.results]);
-    itemCount = data.count;
-    loading = false;
+  const pageSize = 30;
+
+  const query = createInfiniteQuery({
+    queryKey: ['levels'],
+    queryFn: ({ pageParam }) => fetchPage(pageParam),
+    initialPageParam: 0,
+    getNextPageParam: (_lastPage, page) => page.length
+  });
+
+  // $: addItems = async (start = 0) => {
+  //   if (loading) return;
+  //   loading = true;
+  //   const { data } = await api.get<ListResponse<Level>>(
+  //     '/api/v1/levels?' + new URLSearchParams(params(start) as Record<string, string>).toString()
+  //   );
+  //   if (start === 0) items.set(data.results);
+  //   else items.update((x) => [...x, ...data.results]);
+  //   itemCount = data.count;
+  //   loading = false;
+  // };
+
+  const fetchPage = async (page: number) => {
+    const { data } = await api.get<ListResponse<Level>>('/api/v1/levels', {
+      params: params(page * pageSize)
+    });
+
+    return data.results;
   };
 
   const params = (start: number) => {
@@ -124,7 +135,6 @@
 
   $: reset = async () => {
     $randomSeed = null;
-    await addItems(0);
   };
 
   let timeout: number | null = null;
@@ -171,9 +181,16 @@
     </div>
   </div>
 
-  {#if $currentView === 'list'}
+  {#if $query.isLoading}
+    <div class="loading-container">
+      <LoadingSpinner />
+    </div>
+  {:else if $currentView === 'list'}
     <PageContainer>
-      <VirtualList
+      <VirtualList estimateSize={110} {query}>
+        <LevelListItem slot="item" let:item level={item} />
+      </VirtualList>
+      <!-- <VirtualList
         on:more={(e) => addItems(e.detail.offset)}
         total={itemCount}
         data={$items}
@@ -185,16 +202,16 @@
         <div slot="loading" class="list-loader">
           <LoadingSpinner size={48} />
         </div>
-      </VirtualList>
+      </VirtualList> -->
     </PageContainer>
   {:else if $currentView === 'table'}
-    <div class="table-view-container">
+    <!-- <div class="table-view-container">
       <LevelTableView
         levels={$items}
         total={itemCount}
         on:more={(e) => addItems(e.detail.offset)}
       />
-    </div>
+    </div> -->
   {/if}
 </div>
 
@@ -224,13 +241,6 @@
     padding: 0 12px;
   }
 
-  .list-loader {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 16px;
-  }
-
   .table-view-search-area {
     position: sticky;
     left: 120px;
@@ -243,7 +253,7 @@
     }
   }
 
-  .table-view-container {
+  /* .table-view-container {
     padding-right: 120px;
     padding-left: 120px;
 
@@ -251,5 +261,11 @@
       padding-right: 24px;
       padding-left: 24px;
     }
+  } */
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
   }
 </style>

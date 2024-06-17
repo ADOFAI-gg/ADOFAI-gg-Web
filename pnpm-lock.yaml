@@ -120,6 +120,12 @@ devDependencies:
   '@sveltejs/vite-plugin-svelte':
     specifier: ^3.0.1
     version: 3.0.1(svelte@4.2.8)(vite@5.0.10)
+  '@tanstack/svelte-query':
+    specifier: ^5.45.0
+    version: 5.45.0(svelte@4.2.8)
+  '@tanstack/svelte-virtual':
+    specifier: ^3.5.1
+    version: 3.5.1(svelte@4.2.8)
   '@types/compression':
     specifier: ^1.7.5
     version: 1.7.5
@@ -4549,6 +4555,32 @@ packages:
       vitefu: 0.2.5(vite@5.0.10)
     transitivePeerDependencies:
       - supports-color
+
+  /@tanstack/query-core@5.45.0:
+    resolution: {integrity: sha512-RVfIZQmFUTdjhSAAblvueimfngYyfN6HlwaJUPK71PKd7yi43Vs1S/rdimmZedPWX/WGppcq/U1HOj7O7FwYxw==}
+    dev: true
+
+  /@tanstack/svelte-query@5.45.0(svelte@4.2.8):
+    resolution: {integrity: sha512-2IfvB437cDq/4xSQO+v8A+GgsZ6F5o6SusCPJ1i8uOIt2p9eljlsvpFoNrZ0reD9O1aAvbieg0JV77QSMiJDEA==}
+    peerDependencies:
+      svelte: ^3.54.0 || ^4.0.0 || ^5.0.0-next.0
+    dependencies:
+      '@tanstack/query-core': 5.45.0
+      svelte: 4.2.8
+    dev: true
+
+  /@tanstack/svelte-virtual@3.5.1(svelte@4.2.8):
+    resolution: {integrity: sha512-QQ0W+CZL6rX0zRiu3yL3+b9LLMbaKWU1jcd+vU/jpglaQC9R0AWPn5fBURLkLURFkIslFbA/i5mz0lF5RQ05FQ==}
+    peerDependencies:
+      svelte: ^3.48.0 || ^4.0.0
+    dependencies:
+      '@tanstack/virtual-core': 3.5.1
+      svelte: 4.2.8
+    dev: true
+
+  /@tanstack/virtual-core@3.5.1:
+    resolution: {integrity: sha512-046+AUSiDru/V9pajE1du8WayvBKeCvJ2NmKPy/mR8/SbKKrqmSbj7LJBfXE+nSq4f5TBXvnCzu0kcYebI9WdQ==}
+    dev: true
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}

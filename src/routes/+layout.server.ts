@@ -1,4 +1,3 @@
-import { currentLang, getLangCode } from '@/utils/i18n';
 import { useSolidBackground } from '@/utils/settings';
 import type { LayoutServerLoad } from './$types';
 
@@ -10,8 +9,10 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
     useSolidBackground.set(true);
   }
 
-  if (lang) {
-    currentLang.set(getLangCode(lang));
-  }
-  return {};
+  // if (lang) {
+  //   currentLang.set(getLangCode(lang));
+  // }
+  return {
+    initialLang: lang
+  };
 };

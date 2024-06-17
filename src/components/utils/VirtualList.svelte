@@ -1,187 +1,77 @@
 <script lang="ts">
-  import { createEventDispatcher, onDestroy, onMount, tick } from 'svelte';
+  import VirtualListItem from './VirtualListItem.svelte';
 
-  type T = $$Generic; /* eslint-disable-line no-undef */
+  import type { CreateInfiniteQueryResult, InfiniteData } from '@tanstack/svelte-query';
+  import { createWindowVirtualizer } from '@tanstack/svelte-virtual';
+  import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
 
-  export let data: T[];
+  export let estimateSize = 100;
 
-  export let total: number;
+  // eslint-disable-next-line no-undef
+  type T = $$Generic;
 
-  export let threshold = 10;
+  export let query: CreateInfiniteQueryResult<InfiniteData<T[]>, Error>;
 
-  let mounted = false;
+  $: allItems = $query.data?.pages.flatMap((x) => x) || [];
 
-  let root: HTMLElement;
+  let listEl: HTMLDivElement;
 
-  $: if (mounted) refresh(data, window.innerHeight);
-
-  $: if (data.length) onScroll();
-
-  let averageHeight = 0;
-
-  async function onScroll() {
-    if (!root) return;
-
-    const oldStart = startIndex;
-
-    for (let v = 0; v < rows.length; v++) {
-      const row = rows[v];
-      if (!row) break;
-      heightMap[startIndex + v] = row.offsetHeight;
-    }
-
-    let i = 0;
-    let y = 0;
-
-    const scrollTop = window.scrollY;
-
-    const offset = root.getBoundingClientRect().y + window.scrollY;
-
-    while (i < data.length) {
-      const rowHeight = heightMap[i];
-
-      if (y + rowHeight > scrollTop - offset) {
-        startIndex = i;
-        top = y;
-
-        break;
-      }
-
-      y += rowHeight;
-      i += 1;
-    }
-
-    while (i < data.length) {
-      y += heightMap[i];
-      i += 1;
-
-      if (y > scrollTop + window.innerHeight) break;
-    }
-
-    endIndex = i;
-
-    const remaining = data.length - endIndex;
-
-    averageHeight = y / endIndex;
-
-    while (i < data.length) heightMap[i++] = averageHeight;
-
-    bottom = remaining * averageHeight;
-
-    if (startIndex < oldStart) {
-      await tick();
-
-      let expected = 0;
-      let actual = 0;
-
-      for (let i = 0; i < oldStart; i++) {
-        if (rows[i - startIndex]) {
-          expected += heightMap[i];
-          actual += rows[i - startIndex].offsetHeight;
-        }
-      }
-
-      const d = actual - expected;
-
-      window.scrollTo(window.scrollX, scrollTop + d);
-    }
-  }
-
-  onMount(() => {
-    window.addEventListener('scroll', onScroll);
-
-    // scrollY = scroller.scrollTop;
-
-    window.addEventListener('resize', onScroll);
-
-    mounted = true;
+  $: virtualizer = createWindowVirtualizer<HTMLDivElement>({
+    count: 0,
+    overscan: 5,
+    estimateSize: () => estimateSize
   });
 
-  onDestroy(() => {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', onScroll);
-
-      window.removeEventListener('resize', onScroll);
-    }
-
-    mounted = false;
-  });
-
-  let top = 0;
-  let bottom = 0;
-
-  let startIndex = 0;
-  let endIndex = 0;
-
-  let rows: HTMLElement[] = [];
-
-  const heightMap: number[] = [];
-
-  async function refresh(items: T[], viewportHeight: number) {
-    const scrollTop = window.scrollY;
-
-    await tick();
-
-    let contentHeight = top - scrollTop;
-
-    let i = startIndex;
-
-    while (contentHeight < viewportHeight && i < items.length) {
-      let row = rows[i - startIndex];
-
-      if (!row) {
-        endIndex = i + 1;
-
-        await tick();
-
-        row = rows[i - startIndex];
-      }
-
-      if (!row) return;
-
-      const rowHeight = (heightMap[i] = row.offsetHeight);
-
-      contentHeight += rowHeight;
-
-      i++;
-    }
-  }
-
-  $: hasMore = total > data.length;
-
-  const dispatch = createEventDispatcher();
-
-  let lastLength = 0;
-
-  let updating = false;
-
   $: {
-    if (endIndex > data.length - threshold && hasMore && !updating) {
-      updating = true;
-      dispatch('more', { offset: data.length });
+    const count = $query.hasNextPage ? allItems.length + 1 : allItems.length;
+
+    $virtualizer.setOptions({
+      count
+    });
+
+    const [lastItem] = [...$virtualizer.getVirtualItems()].reverse();
+
+    if (
+      lastItem &&
+      lastItem.index > allItems.length - 1 &&
+      $query.hasNextPage &&
+      !$query.isFetchingNextPage
+    ) {
+      $query.fetchNextPage();
     }
   }
 
-  $: {
-    if (data.length !== lastLength) {
-      updating = false;
-      lastLength = data.length;
-    }
-  }
-
-  $: sliced = data.slice(startIndex, endIndex).map((x, i) => ({ item: x, index: i }));
+  $: items = $virtualizer.getVirtualItems();
 </script>
 
-<div>
-  <div bind:this={root} style="padding-top: {top}px; padding-bottom: {bottom}px;">
-    {#each sliced as { item, index } (startIndex + index)}
-      <virtual-list-item style="display: block;" bind:this={rows[index]}>
-        <slot {item} />
-      </virtual-list-item>
-    {/each}
+<div bind:this={listEl}>
+  <div style="position: relative; width: 100%; height: {$virtualizer.getTotalSize()}px;">
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; transform: translateY({items[0]
+        ? items[0].start
+        : 0}px);"
+    >
+      {#each $virtualizer.getVirtualItems() as row (row.index)}
+        <VirtualListItem {virtualizer} item={row}>
+          {#if row.index > allItems.length - 1}
+            {#if $query.hasNextPage}
+              <div class="loading-container">
+                <LoadingSpinner />
+              </div>
+            {/if}
+          {:else}
+            <slot name="item" item={allItems[row.index]} />
+          {/if}
+        </VirtualListItem>
+      {/each}
+    </div>
   </div>
-
-  {#if hasMore}
-    <slot name="loading" />
-  {/if}
 </div>
+
+<style lang="scss">
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+  }
+</style>
