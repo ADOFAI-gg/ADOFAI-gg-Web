@@ -18,7 +18,7 @@
 
   $: virtualizer = createWindowVirtualizer<HTMLDivElement>({
     count: 0,
-    overscan: 5,
+    overscan: 20,
     estimateSize: () => estimateSize
   });
 

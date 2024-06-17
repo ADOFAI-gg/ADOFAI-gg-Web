@@ -15,6 +15,7 @@
   import { createInfiniteQuery, getQueryClientContext } from '@tanstack/svelte-query';
   import VirtualList from '../utils/VirtualList.svelte';
   import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
+  import LevelTableView from '../organisms/levels/list/LevelTableView.svelte';
 
   let randomSeed: Writable<number | null> = writable(null);
 
@@ -218,13 +219,9 @@
       </VirtualList> -->
     </PageContainer>
   {:else if $currentView === 'table'}
-    <!-- <div class="table-view-container">
-      <LevelTableView
-        levels={$items}
-        total={itemCount}
-        on:more={(e) => addItems(e.detail.offset)}
-      />
-    </div> -->
+    <div class="table-view-container">
+      <LevelTableView {query} />
+    </div>
   {/if}
 </div>
 
@@ -266,7 +263,7 @@
     }
   }
 
-  /* .table-view-container {
+  .table-view-container {
     padding-right: 120px;
     padding-left: 120px;
 
@@ -274,7 +271,7 @@
       padding-right: 24px;
       padding-left: 24px;
     }
-  } */
+  }
 
   .loading-container {
     display: flex;

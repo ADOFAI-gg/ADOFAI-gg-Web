@@ -55,6 +55,7 @@
     "@sveltejs/kit": "^2.0.2",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@tanstack/svelte-query": "^5.45.0",
+    "@tanstack/svelte-table": "^8.17.3",
     "@tanstack/svelte-virtual": "^3.5.1",
     "@types/compression": "^1.7.5",
     "@types/express": "^4.17.21",
@@ -131,7 +132,7 @@
     "*.{js,ts,jsx,tsx,svelte}": "eslint --cache --fix",
     "*.{js,ts,jsx,tsx,svelte,css,scss,md}": "prettier --ignore-path .gitignore --write"
   },
-  "packageManager": "pnpm@8.12.1",
+  "packageManager": "pnpm@9.3.0",
   "pnpm": {
     "patchedDependencies": {
       "@fontsource/m-plus-rounded-1c@4.5.10": "patches/@fontsource__m-plus-rounded-1c@4.5.10.patch"

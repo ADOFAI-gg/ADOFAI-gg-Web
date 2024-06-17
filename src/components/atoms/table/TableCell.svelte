@@ -1,135 +1,127 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import type { Readable } from 'svelte/store';
-
   export let leftSideBorder = false;
   export let border = false;
 
   let focus = false;
   let target: HTMLTableCellElement;
 
-  const focusHandle: Readable<HTMLDivElement | null> = getContext('focusHandle');
+  // const focusHandle: Readable<HTMLDivElement | null> = getContext('focusHandle');
 
-  const onCopy = (e: ClipboardEvent | KeyboardEvent) => {
-    const sel = window.getSelection();
-    if (sel && !sel.isCollapsed) return;
-    console.log(e);
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText((<HTMLElement>e.currentTarget).innerText);
-  };
+  // const onCopy = (e: ClipboardEvent | KeyboardEvent) => {
+  //   const sel = window.getSelection();
+  //   if (sel && !sel.isCollapsed) return;
+  //   console.log(e);
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   navigator.clipboard.writeText((<HTMLElement>e.currentTarget).innerText);
+  // };
 
-  const onFocus = () => {
-    focus = true;
+  // const onFocus = () => {
+  //   focus = true;
 
-    if ($focusHandle) {
-      const handle = $focusHandle;
+  //   if ($focusHandle) {
+  //     const handle = $focusHandle;
 
-      const root = document.getElementById('root') as HTMLDivElement;
+  //     const root = document.getElementById('root') as HTMLDivElement;
 
-      handle.classList.add('active');
+  //     handle.classList.add('active');
 
-      const rect = target.getBoundingClientRect();
+  //     const rect = target.getBoundingClientRect();
 
-      handle.style.width = rect.width + 'px';
-      handle.style.height = rect.height + 'px';
+  //     handle.style.width = rect.width + 'px';
+  //     handle.style.height = rect.height + 'px';
 
-      handle.style.left = rect.left + root.scrollLeft + 'px';
-      handle.style.top = rect.top + root.scrollTop + 'px';
-    }
-  };
+  //     handle.style.left = rect.left + root.scrollLeft + 'px';
+  //     handle.style.top = rect.top + root.scrollTop + 'px';
+  //   }
+  // };
 
-  const onBlur = () => {
-    focus = false;
+  // const onBlur = () => {
+  //   focus = false;
 
-    if ($focusHandle) {
-      const handle = $focusHandle;
+  //   if ($focusHandle) {
+  //     const handle = $focusHandle;
 
-      handle.classList.remove('active');
-    }
-  };
+  //     handle.classList.remove('active');
+  //   }
+  // };
 
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (e.ctrlKey && e.key === 'c') onCopy(e);
-    else if (!e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
-      switch (e.key) {
-        case 'ArrowLeft': {
-          const toFocus = target.previousElementSibling as HTMLElement;
+  // const onKeyDown = (e: KeyboardEvent) => {
+  //   if (e.ctrlKey && e.key === 'c') onCopy(e);
+  //   else if (!e.ctrlKey && !e.altKey && !e.metaKey && !e.shiftKey) {
+  //     switch (e.key) {
+  //       case 'ArrowLeft': {
+  //         const toFocus = target.previousElementSibling as HTMLElement;
 
-          if (!toFocus || !(toFocus instanceof HTMLTableCellElement)) break;
+  //         if (!toFocus || !(toFocus instanceof HTMLTableCellElement)) break;
 
-          e.preventDefault();
+  //         e.preventDefault();
 
-          toFocus.focus();
+  //         toFocus.focus();
 
-          break;
-        }
-        case 'ArrowRight': {
-          const toFocus = target.nextElementSibling as HTMLElement;
+  //         break;
+  //       }
+  //       case 'ArrowRight': {
+  //         const toFocus = target.nextElementSibling as HTMLElement;
 
-          if (!toFocus || !(toFocus instanceof HTMLTableCellElement)) break;
+  //         if (!toFocus || !(toFocus instanceof HTMLTableCellElement)) break;
 
-          e.preventDefault();
+  //         e.preventDefault();
 
-          toFocus.focus();
+  //         toFocus.focus();
 
-          break;
-        }
-        case 'ArrowUp': {
-          const targetRow = target.parentElement?.previousElementSibling;
+  //         break;
+  //       }
+  //       case 'ArrowUp': {
+  //         const targetRow = target.parentElement?.previousElementSibling;
 
-          if (!targetRow || !(targetRow instanceof HTMLTableRowElement)) break;
-          const targetCellIndex = target.cellIndex;
+  //         if (!targetRow || !(targetRow instanceof HTMLTableRowElement)) break;
+  //         const targetCellIndex = target.cellIndex;
 
-          for (let i = 0; i < targetRow.children.length; i++) {
-            const element = targetRow.children.item(i);
+  //         for (let i = 0; i < targetRow.children.length; i++) {
+  //           const element = targetRow.children.item(i);
 
-            if (!(element instanceof HTMLTableCellElement)) continue;
+  //           if (!(element instanceof HTMLTableCellElement)) continue;
 
-            if (element.cellIndex === targetCellIndex) {
-              e.preventDefault();
-              element.focus();
-              break;
-            }
-          }
+  //           if (element.cellIndex === targetCellIndex) {
+  //             e.preventDefault();
+  //             element.focus();
+  //             break;
+  //           }
+  //         }
 
-          break;
-        }
-        case 'ArrowDown': {
-          const targetRow = target.parentElement?.nextElementSibling;
+  //         break;
+  //       }
+  //       case 'ArrowDown': {
+  //         const targetRow = target.parentElement?.nextElementSibling;
 
-          if (!targetRow || !(targetRow instanceof HTMLTableRowElement)) break;
-          const targetCellIndex = target.cellIndex;
+  //         if (!targetRow || !(targetRow instanceof HTMLTableRowElement)) break;
+  //         const targetCellIndex = target.cellIndex;
 
-          for (let i = 0; i < targetRow.children.length; i++) {
-            const element = targetRow.children.item(i);
+  //         for (let i = 0; i < targetRow.children.length; i++) {
+  //           const element = targetRow.children.item(i);
 
-            if (!(element instanceof HTMLTableCellElement)) continue;
+  //           if (!(element instanceof HTMLTableCellElement)) continue;
 
-            if (element.cellIndex === targetCellIndex) {
-              e.preventDefault();
-              element.focus();
-              break;
-            }
-          }
+  //           if (element.cellIndex === targetCellIndex) {
+  //             e.preventDefault();
+  //             element.focus();
+  //             break;
+  //           }
+  //         }
 
-          break;
-        }
-      }
-    }
-  };
+  //         break;
+  //       }
+  //     }
+  //   }
+  // };
 </script>
 
 <td
   bind:this={target}
-  on:focus={onFocus}
-  on:blur={onBlur}
-  on:copy={(e) => onCopy(e)}
-  on:keydown={onKeyDown}
   class:focus
   class:col-border={border}
   class:left-border={leftSideBorder}
-  tabindex="-1"
   {...$$restProps}
 >
   <slot />
@@ -137,7 +129,8 @@
 
 <style lang="scss">
   td {
-    padding: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
 
     &:focus {
       outline: none;

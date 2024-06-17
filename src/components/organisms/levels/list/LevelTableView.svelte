@@ -1,224 +1,157 @@
 <script lang="ts">
-  import type { Level } from '@/types';
-  import DifficultyIcon from '@atoms/asset/DifficultyIcon.svelte';
-  import Icon from '@atoms/asset/Icon.svelte';
   import Translation from '@/components/utils/Translation.svelte';
-  import { browser } from '$app/environment';
-  import { default as Cell } from '@atoms/table/TableCell.svelte';
-  import TooltippedTagIcon from '@/components/molecules/levels/TooltippedTagIcon.svelte';
-  import VirtualTable from '@/components/utils/VirtualTable.svelte';
+  import type { Level } from '@/types';
+  import type { CreateInfiniteQueryResult, InfiniteData } from '@tanstack/svelte-query';
+  import { createWindowVirtualizer } from '@tanstack/svelte-virtual';
+  import LevelTableRow from './LevelTableRow.svelte';
   import LoadingSpinner from '@/components/atoms/common/LoadingSpinner.svelte';
 
-  export let levels: Level[];
+  export let query: CreateInfiniteQueryResult<InfiniteData<Level[]>, Error>;
 
-  export let total: number;
+  const rowHeight = 52;
 
-  let swwidth = 0;
+  const columns = [
+    {
+      id: 'id',
+      size: 72
+    },
+    {
+      id: 'difficulty',
+      size: 48
+    },
+    {
+      id: 'level-name',
+      size: 400
+    },
+    {
+      id: 'artist',
+      size: 360
+    },
+    {
+      id: 'creator',
+      size: 360
+    },
+    {
+      id: 'bpm',
+      size: 144
+    },
+    {
+      id: 'tiles',
+      size: 120
+    },
+    {
+      id: 'tags',
+      size: 240
+    },
+    {
+      id: 'warnings',
+      size: 128
+    },
+    {
+      id: 'links',
+      size: 104
+    }
+  ];
+
+  $: allItems = $query.data?.pages.flatMap((x) => x) || [];
+
+  $: virtualizer = createWindowVirtualizer<HTMLTableRowElement>({
+    count: allItems.length,
+    estimateSize: () => rowHeight,
+    overscan: 20
+  });
+
+  $: {
+    $virtualizer.setOptions({
+      count: allItems.length
+    });
+  }
+
+  $: {
+    const [lastItem] = [...$virtualizer.getVirtualItems()].reverse();
+    if (
+      lastItem &&
+      lastItem.index >= allItems.length - 1 &&
+      $query.hasNextPage &&
+      !$query.isFetchingNextPage
+    ) {
+      $query.fetchNextPage();
+    }
+  }
+
+  $: items = $virtualizer.getVirtualItems();
 </script>
 
-{#if browser}
-  <VirtualTable style="width: {1582 + swwidth + 24}px;" data={levels} let:item {total} on:more>
-    <colgroup slot="cols">
-      <col width="56" />
-      <col width="40" />
-      <col width="450" />
-      <!-- <col width="450" /> -->
-      <col width="250" />
-      <col width="250" />
-      <col width="144" />
-      <col width="120" />
-      <col width="180" />
-      <col style="min-width: {swwidth + 24}px;" />
-      <col width="92" />
-    </colgroup>
-    <thead slot="head">
+<div class="table-container">
+  <div style="height: {$virtualizer.getTotalSize() + 32}px;" class="level-table-width"></div>
+  <table class="level-table level-table-width">
+    <thead>
       <tr>
-        <th>
-          <Translation key="level-table-cols:id" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:difficulty" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:level-name" />
-        </th>
-
-        <!-- <th>
-      <Translation key="SEARCH_TABLE_COL_MUSIC_NAME" />
-    </th> -->
-
-        <th>
-          <Translation key="level-table-cols:artist" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:creator" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:bpm" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:tils" />
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:tags" />
-        </th>
-
-        <th class="auto-fit">
-          <div bind:clientWidth={swwidth}>
-            <Translation key="level-table-cols:warnings" />
-          </div>
-        </th>
-
-        <th>
-          <Translation key="level-table-cols:links" />
-        </th>
+        {#each columns as header (header.id)}
+          <th class="table-header-text" style="width: {header.size}px;">
+            <Translation key="level-table-cols:{header.id}" />
+          </th>
+        {/each}
       </tr>
     </thead>
+    <tbody class="table-body" style="transform: translateY({items[0]?.start || 0}px);">
+      <!-- {#if items[0]}
+      {@const item = items[0]}
 
-    <Cell
-      style="color: rgba(255, 255, 255, 0.8);
-          font-weight: 300;
-          font-size: 16px;
-          font-family: var(--font-mono);">{item.id}</Cell
-    >
+      <tr style="height: {item.start}px;"></tr>
+    {/if} -->
+      {#each items as row (row.index)}
+        <LevelTableRow item={row} level={allItems[row.index]} />
+        <!-- <tr
+        data-index={row.index}
+        class="row"
+        style="height: {row.size}px; transform: translateY({row.start - idx * row.size}px);"
+      >
+        <td>{allItems[row.index].id}</td>
+      </tr> -->
+      {/each}
+    </tbody>
+  </table>
 
-    <Cell>
-      <DifficultyIcon difficulty={item.difficulty} size={28} censored={item.censored} />
-    </Cell>
-
-    <Cell leftSideBorder>
-      <a href="/levels/{item.id}">{item.title}</a>
-    </Cell>
-
-    <!-- <td leftSideBorder>{item.music.name}</td> -->
-
-    <Cell leftSideBorder>{item.music.artists.map((x) => x.name).join(' & ')}</Cell>
-
-    <Cell leftSideBorder>{item.creators.map((x) => x.name).join(' & ')}</Cell>
-
-    <Cell leftSideBorder>
-      {item.music.minBpm}
-      {#if item.music.minBpm !== item.music.maxBpm}
-        - {item.music.maxBpm}
-      {/if}
-    </Cell>
-
-    <Cell leftSideBorder>
-      {item.tiles.toLocaleString('en-US')}
-    </Cell>
-
-    <Cell leftSideBorder>
-      <div class="tags">
-        {#each item.tags.slice(0, 5) as tag (tag.id)}
-          {#if tag.id !== 4}
-            <TooltippedTagIcon tag={tag.id} size={20} />
-          {/if}
-        {/each}
-
-        {#if item.tags.length > 5}
-          <div class="tags__and-more">
-            +{item.tags.length - 5}
-          </div>
-        {/if}
-      </div>
-    </Cell>
-
-    <Cell leftSideBorder>
-      <div class="warnings">
-        <div class="warnings__item" class:active={item.epilepsyWarning} />
-        <div class="warnings__item" class:active={!!item.tags.find((x) => x.id === 4)} />
-      </div>
-    </Cell>
-
-    <Cell>
-      <div class="links">
-        <a href={item.download} target="_blank" rel="noreferrer">
-          <Icon icon="download" size={16} alt="Download Icon" />
-        </a>
-
-        <a href={item.workshop} target="_blank" rel="noreferrer">
-          <Icon
-            icon="steam"
-            style={item.workshop?.trim() ? 'color: white;' : 'color: rgba(255, 255, 255, 0.2)'}
-            size={16}
-            alt="Steam Workshop Icon"
-          />
-        </a>
-
-        <!-- <a href="adofaigg://level/{item.id}">
-          <Icon icon="playFilled" size={16} alt="Play On ADOFAI Icon" />
-        </a> -->
-
-        <a href={item.video}>
-          <Icon icon="playFilled" size={16} alt="Video Icon" />
-        </a>
-      </div>
-    </Cell>
-
-    <div slot="loading" class="list-loader">
-      <LoadingSpinner size={48} />
+  {#if $query.hasNextPage}
+    <div class="loading">
+      <LoadingSpinner />
     </div>
-  </VirtualTable>
-{/if}
+  {/if}
+</div>
 
 <style lang="scss">
-  .list-loader {
-    display: flex;
-    justify-content: center;
+  .level-table {
+    position: absolute;
+    top: 0;
+    left: 0;
+    table-layout: fixed;
   }
 
-  .tags {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-
-    &__and-more {
-      padding: 2px 4px;
-      border-radius: 100em;
-      background-color: rgba(255, 255, 255, 0.2);
-      font-weight: 400;
-      font-size: 13px;
-      font-family: var(--font-mono);
-      line-height: 12px;
-    }
+  .level-table-width {
+    width: max(100vw, 2000px);
   }
 
-  .warnings {
-    display: flex;
-    gap: 24px;
-
-    &__item {
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      border-radius: 100em;
-
-      &.active {
-        border: none;
-        background-color: rgba(var(--color-red), 1);
-      }
-    }
+  .table-header-text {
+    height: 32px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    font-size: 14px;
+    text-align: left;
+    white-space: nowrap;
   }
 
-  th.auto-fit {
+  .table-body {
     position: relative;
-
-    & > div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: fit-content;
-    }
   }
 
-  .links {
-    display: flex;
-    gap: 16px;
+  .table-container {
+    position: relative;
+  }
+
+  .loading {
+    margin-top: 16px;
   }
 </style>
