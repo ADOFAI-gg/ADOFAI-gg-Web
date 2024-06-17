@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { translate, currentLang } from '@/utils/i18n';
+  import { getLangContext, translate, type TranslationKey } from '@/utils/i18n';
+
+  const currentLang = getLangContext();
 
   export let placeholder: string | null = null;
 
@@ -10,7 +12,7 @@
   export let min: number | undefined = undefined;
   export let max: number | undefined = undefined;
 
-  $: placeholderContent = translate(placeholder || '', $currentLang);
+  $: placeholderContent = translate((placeholder || '') as TranslationKey, {}, true, $currentLang);
 
   $: textValue = `${value ?? ''}`;
 

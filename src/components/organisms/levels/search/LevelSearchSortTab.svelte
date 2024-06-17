@@ -27,24 +27,24 @@
   };
 </script>
 
-<SearchGroup title="SORT_BY">
+<SearchGroup title="search:sort-by">
   <div class="sort">
     <div class="sort__unit-container">
       <SortOrderRadio
         icon="topLeft"
-        key="SORT_ASC"
+        key="search:sort-direction-asc"
         checked={$searchSettingStore.sort.order === 'asc'}
         on:click={updateOrder('asc')}
       />
       <SortOrderRadio
         icon="bottomRight"
-        key="SORT_DESC"
+        key="search:sort-direction-desc"
         checked={$searchSettingStore.sort.order === 'desc'}
         on:click={updateOrder('desc')}
       />
       <SortOrderRadio
         icon="shuffle"
-        key="SORT_SHUFFLE"
+        key="search:sort-direction-shuffle"
         checked={$searchSettingStore.sort.order === 'shuffle'}
         on:click={updateOrder('shuffle')}
       />
@@ -55,20 +55,20 @@
         <div class="sort__order-container">
           <SortOrderRadio
             icon="calendar"
-            key="SORT_CREATED"
+            key="search:sort-by-created"
             checked={$searchSettingStore.sort.type === 'created'}
             on:click={updateType('created')}
           />
           <SortOrderRadio
             icon="fire"
-            key="SORT_DIFFICULTY"
+            key="search:sort-by-difficulty"
             checked={$searchSettingStore.sort.type === 'difficulty'}
             on:click={updateType('difficulty')}
           />
           {#if useAccount}
             <SortOrderRadio
               icon="heart"
-              key="SORT_LIKES"
+              key="search:sort-by-likes"
               checked={$searchSettingStore.sort.type === 'likes'}
               on:click={updateType('likes')}
             />

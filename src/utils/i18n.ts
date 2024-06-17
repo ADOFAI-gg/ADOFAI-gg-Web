@@ -1,16 +1,11 @@
-import { writable } from 'svelte/store';
-
 import langs from '@/assets/langs.json';
-import { browser } from '$app/environment';
-import Cookies from 'js-cookie';
-
 import { FluentBundle, FluentResource, type FluentVariable } from '@fluent/bundle';
+import { getContext } from 'svelte';
+import type { Writable } from 'svelte/store';
 
 export const availableLanguages: LangResponse[] = langs;
 
 export const fallbackLang = 'en';
-
-let _currentLang = 'en';
 
 const langSections = [
   'common',
@@ -75,14 +70,14 @@ export const getLangCode = (code: string) => {
   return lang?.code || 'en';
 };
 
-export const currentLang = writable<string>(
-  getLangCode(browser ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
-);
+// export const currentLang = writable<string>(
+//   getLangCode(browser ? Cookies.get('_adofaigg-lang') || window.navigator.language : 'en')
+// );
 
-currentLang.subscribe((v) => {
-  Cookies.set('_adofaigg-lang', v, { expires: 365 * 10 });
-  _currentLang = v;
-});
+// currentLang.subscribe((v) => {
+//   Cookies.set('_adofaigg-lang', v, { expires: 365 * 10 });
+//   _currentLang = v;
+// });
 
 type LangResponse = {
   code: string;
@@ -100,9 +95,9 @@ const escapeHtmlTags = (str: string) =>
 
 export const translate = (
   rawKey: TranslationKey,
-  args: Record<string, FluentVariable> = {},
-  escape = true,
-  l: string = _currentLang
+  args: Record<string, FluentVariable>,
+  escape: boolean,
+  l: string
 ) => {
   let key: string;
   let sectionName: LangSection;
@@ -124,3 +119,5 @@ export const translate = (
   if (escape) escapeHtmlTags(result);
   return result;
 };
+
+export const getLangContext = () => getContext<Writable<string>>('lang');

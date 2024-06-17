@@ -1,7 +1,9 @@
 <script lang="ts">
   import NavMenuItem from '@/components/atoms/nav/NavMenuItem.svelte';
   import NavMenuGroup from '@/components/molecules/nav/NavMenuGroup.svelte';
-  import { availableLanguages, currentLang } from '@/utils/i18n';
+  import { availableLanguages, getLangContext } from '@/utils/i18n';
+
+  const currentLang = getLangContext();
 
   const updateLang = (code: string) => () => {
     $currentLang = code;

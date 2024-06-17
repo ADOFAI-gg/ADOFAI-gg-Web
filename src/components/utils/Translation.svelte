@@ -3,13 +3,15 @@
 </script>
 
 <script lang="ts">
-  import { currentLang, type TranslationKey, translate } from '@/utils/i18n';
+  import { type TranslationKey, translate, getLangContext } from '@/utils/i18n';
   import type { FluentVariable } from '@fluent/bundle';
 
   export let key: TranslationKey;
   export let params: Record<string, FluentVariable> = {};
 
   export let htmlReplacer: (value: string) => string = (v) => v;
+
+  const currentLang = getLangContext();
 
   $: htmlValue = (() => {
     let k = translate(key, params, true, $currentLang);

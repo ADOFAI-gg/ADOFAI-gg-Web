@@ -11,7 +11,7 @@
   import { onMount } from 'svelte';
   import { writable } from 'svelte/store';
   import type { RankingResult } from './+page';
-  import Virtuallist from '@/components/utils/VirtualList.svelte';
+  import { VirtualizedInfiniteScrollList } from '@adofai-gg/svelte-virtualized-infinite-scroll';
 
   let items = writable<RankingResult[]>([]);
 
@@ -69,12 +69,17 @@
         <RankingTopItem {item} />
       {/each}
     </div>
-    <Virtuallist data={listItems} on:more={onMore} let:item total={Math.max(0, total - 3)}>
+    <VirtualizedInfiniteScrollList
+      data={listItems}
+      on:more={onMore}
+      let:item
+      total={Math.max(0, total - 3)}
+    >
       <RankingListItem {item} />
       <div slot="loading" class="loader">
         <LoadingSpinner size={48} />
       </div>
-    </Virtuallist>
+    </VirtualizedInfiniteScrollList>
   {/if}
 </PageContainer>
 

@@ -11,7 +11,7 @@
 <script lang="ts">
   import Icon from '@atoms/asset/Icon.svelte';
   import { fade } from 'svelte/transition';
-  import { translate, currentLang, type TranslationKey } from '@/utils/i18n';
+  import { getLangContext, translate, type TranslationKey } from '@/utils/i18n';
   import { parseSearchString, type SearchChunk } from '@/utils/search';
 
   export let value = '';
@@ -20,6 +20,8 @@
   const placeholder: TranslationKey = 'search:input-placeholder';
 
   let inputWidth = 0;
+
+  const currentLang = getLangContext();
 
   $: placeholderContent = translate(placeholder || '', {}, true, $currentLang);
 
