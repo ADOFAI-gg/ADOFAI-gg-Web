@@ -1,12 +1,12 @@
-import { api } from '@/api';
-import type { Level, ListResponse, PlayLog, PlayLogWithLevel, SyncStatusResponse } from '@/types';
+import { serverApi } from '$lib/server/serverApi';
+import type { Level, ListResponse, PlayLog, PlayLogWithLevel } from '@/types';
 
 import type { PageLoad } from './$types';
 
 const loadPlayLogs = async () => {
   const {
     data: { results: topPlaysRaw }
-  } = await api.get<ListResponse<PlayLog>>('/api/v1/playLogs', {
+  } = await serverApi.get<ListResponse<PlayLog>>('/api/v1/playLogs', {
     params: {
       offset: 0,
       amount: 3,
@@ -19,14 +19,14 @@ const loadPlayLogs = async () => {
       ...x,
       level: {
         ...x.level,
-        ...(await (await api.get<Level>(`/api/v1/levels/${x.level.id}`)).data)
+        ...(await serverApi.get<Level>(`/api/v1/levels/${x.level.id}`)).data
       }
     }))
   ) as Promise<PlayLogWithLevel[]>;
 };
 
 const loadRecentLevels = () =>
-  api
+  serverApi
     .get<ListResponse<Level>>('/api/v1/levels', {
       params: {
         offset: 0,
@@ -36,18 +36,11 @@ const loadRecentLevels = () =>
     })
     .then((x) => x.data.results);
 
-const loadSyncStatus = () => api.get<SyncStatusResponse>('/api/v1/status/sync').then((x) => x.data);
-
 export const load: PageLoad = async () => {
-  const [topPlays, recentLevels, syncStatus] = await Promise.all([
-    loadPlayLogs(),
-    loadRecentLevels(),
-    loadSyncStatus()
-  ]);
+  const [topPlays, recentLevels] = await Promise.all([loadPlayLogs(), loadRecentLevels()]);
 
   return {
     topPlays,
-    recentLevels,
-    syncStatus
+    recentLevels
   };
 };

@@ -1,16 +1,16 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { api } from '@/api';
 
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import SectionTitle from '@atoms/common/MainSectionTitle.svelte';
   import type { ListResponse, PlayLog } from '@/types';
   import LevelLeaderboardItem from '@organisms/levels/info/LevelLeaderboardItem.svelte';
+  import axios from 'axios';
 
   export let levelId: number;
 
   $: promise = browser
-    ? api
+    ? axios
         .get<ListResponse<PlayLog>>('/api/v1/playLogs', {
           params: {
             levelId,

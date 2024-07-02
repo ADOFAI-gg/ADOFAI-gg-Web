@@ -1,11 +1,11 @@
-import { api } from '@/api';
+import { serverApi } from '$lib/server/serverApi';
 import type { Level } from '@/types';
 import { levelOpenGraphUrl } from '@/utils/og';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-  const { data, status } = await api.get<Level>(`/api/v1/levels/${params.id}`, {
+  const { data, status } = await serverApi.get<Level>(`/api/v1/levels/${params.id}`, {
     validateStatus: (status) => [200, 404].includes(status)
   });
 

@@ -1,20 +1,15 @@
 <script lang="ts">
   import { browser } from '$app/environment';
 
-  import { api } from '@/api';
-
   import type { Member, PartialMember } from '@/types';
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
-  // import Avatar from '../atoms/Avatar.svelte';
-  // import Button from '../atoms/Button.svelte';
-  // import Image from '../atoms/Image.svelte';
   import UserOverlayDetail from '@molecules/user/UserOverlayDetail.svelte';
-  // import Translation from '../utils/Translation.svelte';
+  import { clientApi } from '$lib/api';
 
   export let user: PartialMember;
 
   $: fullUserPromise = browser
-    ? api.get<Member>(`/api/v1/members/${user.id}`).then((x) => x.data)
+    ? clientApi.get<Member>(`/api/v1/members/${user.id}`).then((x) => x.data)
     : null;
 </script>
 

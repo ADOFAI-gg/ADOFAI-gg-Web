@@ -1,6 +1,5 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { api } from '@/api';
 
   import LoadingSpinner from '@atoms/common/LoadingSpinner.svelte';
   import MainSectionTitle from '@atoms/common/MainSectionTitle.svelte';
@@ -11,6 +10,7 @@
   import type { RankingResult } from './+page';
   import VirtualList from '@/components/utils/VirtualList.svelte';
   import { createInfiniteQuery } from '@tanstack/svelte-query';
+  import { clientApi } from '$lib/api';
 
   const pageSize = 30;
 
@@ -24,7 +24,7 @@
   });
 
   const fetchPage = async (page: number, signal: AbortSignal) => {
-    const { data } = await api.get<ListResponse<RankingResult>>('/api/v1/ranking', {
+    const { data } = await clientApi.get<ListResponse<RankingResult>>('/api/v1/ranking', {
       params: { offset: page * pageSize, amount: pageSize },
       signal
     });

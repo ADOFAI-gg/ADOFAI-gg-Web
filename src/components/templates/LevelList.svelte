@@ -8,7 +8,6 @@
   import type { Level, ListResponse } from '@/types';
   import { browser } from '$app/environment';
   import { writable, type Writable } from 'svelte/store';
-  import { api } from '@/api';
   import LevelListItem from '@organisms/levels/list/LevelListItem.svelte';
   import PageContainer from '@atoms/common/PageContainer.svelte';
   import { onDestroy, onMount } from 'svelte';
@@ -16,6 +15,7 @@
   import VirtualList from '../utils/VirtualList.svelte';
   import LoadingSpinner from '../atoms/common/LoadingSpinner.svelte';
   import LevelTableView from '../organisms/levels/list/LevelTableView.svelte';
+  import { clientApi } from '$lib/api';
 
   let randomSeed: Writable<number | null> = writable(null);
 
@@ -47,7 +47,7 @@
   // };
 
   const fetchPage = async (page: number, signal: AbortSignal) => {
-    const { data } = await api.get<ListResponse<Level>>('/api/v1/levels', {
+    const { data } = await clientApi.get<ListResponse<Level>>('/api/v1/levels', {
       params: params(page * pageSize),
       signal
     });
