@@ -45,9 +45,5 @@ jobs:
             OPENGRAPH_ENDPOINT=https://og.afg.ink
             DISCORD_INVITE=https://discord.gg/adofaigg
             SUPPORT_MAIL=support@adofai.gg
-            SENTRY_ENV=staging
-            SENTRY_ORG=${{ secrets.SENTRY_ORG }}
-            SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }}
-            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-            SENTRY_URL=${{ secrets.SENTRY_URL }}
-            SENTRY_DSN=${{ secrets.SENTRY_DSN }}
+            PUBLIC_TELEMETRY_ENDPOINT=${{ secrets.TELEMETRY_ENDPOINT }}
+            PUBLIC_TELEMETRY_API_KEY=${{ secrets.TELEMETRY_API_KEY }}

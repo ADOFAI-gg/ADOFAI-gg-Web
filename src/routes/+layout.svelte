@@ -24,6 +24,8 @@
   import { partytownSnippet } from '@builder.io/partytown/integration';
   import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
   import { writable } from 'svelte/store';
+  import { PUBLIC_TELEMETRY_ENDPOINT, PUBLIC_TELEMETRY_API_KEY } from '$env/static/public';
+  import { version } from '$app/environment';
 
   // quicksand
   import '@fontsource/quicksand/300.css';
@@ -45,6 +47,8 @@
   import { browser } from '$app/environment';
   import { getLangCode } from '@/utils/i18n';
   import Cookies from 'js-cookie';
+  import { initializeFaro } from '@grafana/faro-web-sdk';
+  import { env } from '$env/dynamic/public';
 
   let partyTownScriptEl: HTMLScriptElement;
 
@@ -68,7 +72,6 @@
   }
 
   setContext('lang', lang);
-
   const getGtagContent = () => {
     const scriptTagName = 'script';
 
@@ -110,6 +113,30 @@
   onMount(() => {
     if (partyTownScriptEl) {
       partyTownScriptEl.textContent = partytownSnippet();
+    }
+
+    if (browser && PUBLIC_TELEMETRY_ENDPOINT) {
+      initializeFaro({
+        url: PUBLIC_TELEMETRY_ENDPOINT,
+        apiKey: PUBLIC_TELEMETRY_API_KEY,
+        app: {
+          name: 'ADOFAI.gg Web',
+          version: version,
+          environment: env.PUBLIC_APP_ENV ?? 'dev'
+        }
+      });
+    }
+
+    if (browser) {
+      console.log(
+        `%cADO%cF%cA%cI%c.GG WEB%c\n(version ${version})`,
+        'font-size: 48px; font-weight: 800;',
+        'font-size: 48px; color: #F54F51; font-weight: 800;',
+        'font-size: 48px; color: inherit; font-weight: 800;',
+        'font-size: 48px; color: #4D93FC; font-weight: 800;',
+        'font-size: 48px; color:inherit; font-weight: 800;',
+        'font-size: 16px'
+      );
     }
   });
 </script>
