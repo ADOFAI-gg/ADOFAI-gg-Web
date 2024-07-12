@@ -27,11 +27,6 @@ const config = {
       '@molecules/*': './src/components/molecules/*',
       '@organisms/*': './src/components/organisms/*',
       '@templates/*': './src/components/templates/*'
-    },
-    version: {
-      name: process.env.IS_RELEASE
-        ? process.env.npm_package_version
-        : process.env.npm_package_version + '-dev'
     }
   }
 };
