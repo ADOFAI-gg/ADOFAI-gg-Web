@@ -23,7 +23,7 @@
 		"server.js"
 	],
 	"devDependencies": {
-		"@adofai-gg/ui": "1.2.0-beta.21",
+		"@adofai-gg/ui": "1.2.0-beta.27",
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
 		"@fluent/bundle": "^0.18.0",
@@ -70,7 +70,6 @@
 	"type": "module",
 	"dependencies": {
 		"@builder.io/partytown": "^0.8.1",
-		"axios": "^1.6.2",
 		"compression": "^1.7.4",
 		"express": "^4.19.2",
 		"github-markdown-css": "^5.5.0",
