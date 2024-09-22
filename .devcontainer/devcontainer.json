@@ -1,7 +1,7 @@
 {
-  "forwardPorts": [3000],
-  "build": {
-    "context": "../",
-    "dockerfile": "../.docker/dev.Dockerfile"
-  }
+	"forwardPorts": [3000],
+	"build": {
+		"context": "../",
+		"dockerfile": "../.docker/dev.Dockerfile"
+	}
 }

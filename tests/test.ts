@@ -1,2 +1,2 @@
-import './main.js';
-import './levels.js';
+import './main.js'
+import './levels.js'

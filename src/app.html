@@ -1,24 +1,24 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <link rel="preload" as="script" href="https://www.youtube.com/iframe_api" />
-    <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="/manifest.json" />
-    %sveltekit.head%
-  </head>
-  <body class="%body_class%">
-    <div id="root">%sveltekit.body%</div>
-    <script>
-      const setupStyleVar = () => {
-        const doc = document.documentElement;
-        doc.style.setProperty('--client-width', `${document.documentElement.clientWidth}px`);
-        doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-      };
-      window.addEventListener('resize', setupStyleVar);
-      setupStyleVar();
-    </script>
-  </body>
+	<head>
+		<link rel="preload" as="script" href="https://www.youtube.com/iframe_api" />
+		<script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="manifest" href="/manifest.json" />
+		%sveltekit.head%
+	</head>
+	<body class="%body_class%">
+		<div id="root">%sveltekit.body%</div>
+		<script>
+			const setupStyleVar = () => {
+				const doc = document.documentElement
+				doc.style.setProperty('--client-width', `${document.documentElement.clientWidth}px`)
+				doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+			}
+			window.addEventListener('resize', setupStyleVar)
+			setupStyleVar()
+		</script>
+	</body>
 </html>

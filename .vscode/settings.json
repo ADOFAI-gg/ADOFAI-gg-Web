@@ -1,20 +1,20 @@
 {
-  "editor.formatOnSave": true,
-  "svelte.enable-ts-plugin": true,
-  "scss.lint.unknownAtRules": "ignore",
-  "eslint.workingDirectories": ["./src"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
-  },
-  "eslint.validate": ["typescript", "svelte"],
-  "stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
-  "stylelint.validate": ["css", "less", "postcss", "scss", "svelte"],
-  "files.eol": "\n",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  },
-  "prettier.prettierPath": "./node_modules/prettier",
-  "stylelint.stylelintPath": "./node_modules/stylelint"
+	"editor.formatOnSave": true,
+	"svelte.enable-ts-plugin": true,
+	"scss.lint.unknownAtRules": "ignore",
+	"eslint.workingDirectories": ["./src"],
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	"eslint.validate": ["typescript", "svelte"],
+	"stylelint.snippet": ["css", "less", "postcss", "scss", "svelte"],
+	"stylelint.validate": ["css", "less", "postcss", "scss", "svelte"],
+	"files.eol": "\n",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"prettier.prettierPath": "./node_modules/prettier",
+	"stylelint.stylelintPath": "./node_modules/stylelint"
 }
