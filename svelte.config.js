@@ -1,34 +1,25 @@
-import nodeAdapter from '@sveltejs/adapter-node';
-import vercelAdapter from '@sveltejs/adapter-vercel';
-import preprocess from 'svelte-preprocess';
-import { mdsvex } from 'mdsvex';
+import nodeAdapter from '@sveltejs/adapter-node'
+import preprocess from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://github.com/sveltejs/svelte-preprocess
-  // for more information about preprocessors
-  preprocess: [
-    preprocess({
-      postcss: true
-    }),
-    mdsvex({
-      extensions: ['.md', '.svx']
-    })
-  ],
+	// Consult https://github.com/sveltejs/svelte-preprocess
+	// for more information about preprocessors
+	preprocess: [
+		preprocess({
+			postcss: true
+		})
+	],
 
-  extensions: ['.svelte', '.md', '.svx'],
+	extensions: ['.svelte', '.md', '.svx'],
 
-  kit: {
-    adapter: process.env.VERCEL ? vercelAdapter() : nodeAdapter(),
+	kit: {
+		adapter: nodeAdapter(),
 
-    alias: {
-      '@/*': './src/*',
-      '@atoms/*': './src/components/atoms/*',
-      '@molecules/*': './src/components/molecules/*',
-      '@organisms/*': './src/components/organisms/*',
-      '@templates/*': './src/components/templates/*'
-    }
-  }
-};
+		alias: {
+			'~/*': './src/*'
+		}
+	}
+}
 
-export default config;
+export default config

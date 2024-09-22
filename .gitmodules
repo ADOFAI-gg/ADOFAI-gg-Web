@@ -1,4 +1,0 @@
-[submodule "assets"]
-	path = src/assets
-	url = https://github.com/adofai-gg/adofai-gg-assets
-	branch = "main"

@@ -1,127 +1,127 @@
 export interface PlayLog {
-  accept: boolean;
-  description: string;
-  id: number;
-  level: { id: number; name: string };
-  playPoint: number;
-  player: { id: number; name: string };
-  speed: number;
-  timestamp: string;
-  url: string;
-  xAccuracy: number;
+	accept: boolean
+	description: string
+	id: number
+	level: { id: number; name: string }
+	playPoint: number
+	player: { id: number; name: string }
+	speed: number
+	timestamp: string
+	url: string
+	xAccuracy: number
 }
 
 export type PlayLogWithLevel = PlayLog & {
-  level: Level;
-};
+	level: Level
+}
 
 export interface Ranking {
-  id: number;
-  name: string;
-  totalPp: number;
-  bestPlay: PlayLog | null;
+	id: number
+	name: string
+	totalPp: number
+	bestPlay: PlayLog | null
 }
 
 export interface PartialMember {
-  id: number;
-  name: string;
+	id: number
+	name: string
 }
 
 export interface Member extends PartialMember {
-  totalPp: number;
+	totalPp: number
 }
 
 export interface PartialMusic {
-  id: number;
-  name: string;
+	id: number
+	name: string
 
-  minBpm: number;
-  maxBpm: number;
+	minBpm: number
+	maxBpm: number
 
-  artists: PartialMember[];
+	artists: PartialMember[]
 }
 
 export interface Music extends PartialMusic {
-  createdLevelAmount: number;
+	createdLevelAmount: number
 }
 
 export interface Level {
-  id: number;
-  title: string;
-  difficulty: number;
-  creators: PartialMember[];
-  music: PartialMusic;
-  tiles: number;
-  video: string;
-  censored: boolean;
+	id: number
+	title: string
+	difficulty: number
+	creators: PartialMember[]
+	music: PartialMusic
+	tiles: number
+	video: string
+	censored: boolean
 
-  download: string;
-  workshop: string | null;
+	download: string
+	workshop: string | null
 
-  tags: Tag[];
+	tags: Tag[]
 
-  epilepsyWarning: boolean;
+	epilepsyWarning: boolean
 
-  // and more(not added)
+	// and more(not added)
 }
 
 export interface Tag {
-  id: number;
-  name: string;
+	id: number
+	name: string
 }
 
 export interface ListResponse<T> {
-  results: T[];
-  count: number;
+	results: T[]
+	count: number
 }
 
 export interface DifficultyReference {
-  difficulty: number;
-  ppRating: number;
-  levels: (DifficultyReferenceLevel | null)[];
+	difficulty: number
+	ppRating: number
+	levels: (DifficultyReferenceLevel | null)[]
 }
 
 export type DifficultyReferenceLevel =
-  | DifficultyReferenceLevelForum
-  | DifficultyReferenceLevelOfficial;
+	| DifficultyReferenceLevelForum
+	| DifficultyReferenceLevelOfficial
 
 export interface DifficultyReferenceLevelForum {
-  levelId: number;
-  name: string;
-  url: null;
+	levelId: number
+	name: string
+	url: null
 }
 
 export interface DifficultyReferenceLevelOfficial {
-  levelId: null;
-  name: string;
-  url: string;
+	levelId: null
+	name: string
+	url: string
 }
 
 export interface RawDifficultyReference {
-  difficulty: number;
-  easiestLevel: boolean;
-  position: number;
-  level: DifficultyReferenceLevel;
+	difficulty: number
+	easiestLevel: boolean
+	position: number
+	level: DifficultyReferenceLevel
 }
 
 export interface RawPPRatings {
-  difficulty: number;
-  rating: number;
+	difficulty: number
+	rating: number
 }
 
 export enum SyncStatus {
-  Ok = 'ok',
-  Err = 'error'
+	Ok = 'ok',
+	Err = 'error'
 }
 
 export interface SyncStatusResponse {
-  status: SyncStatus;
-  lastSucceedAt: string;
-  exception: string | null;
+	status: SyncStatus
+	lastSucceedAt: string
+	exception: string | null
 }
 
 declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
+	interface Window {
+		gtag?: (...args: unknown[]) => void
+	}
 }
