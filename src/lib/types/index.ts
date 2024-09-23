@@ -1,3 +1,8 @@
+export interface APITag {
+	id: number
+	name: string
+}
+
 export interface APILevel {
 	id: number
 	appendingTitle: string | null
@@ -17,6 +22,6 @@ export interface APILevel {
 	// file
 	// thumbnail
 	// creators
-	// tags
-	// epilepsyWarning
+	tags: APITag[]
+	epilepsyWarning: boolean
 }

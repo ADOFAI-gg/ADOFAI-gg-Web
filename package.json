@@ -23,10 +23,12 @@
 		"server.js"
 	],
 	"devDependencies": {
-		"@adofai-gg/ui": "1.2.0-beta.28",
+		"@adofai-gg/ui": "1.2.0-beta.30",
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
 		"@fluent/bundle": "^0.18.0",
+		"@melt-ui/pp": "^0.3.2",
+		"@melt-ui/svelte": "^0.83.0",
 		"@playwright/test": "^1.40.1",
 		"@sveltejs/adapter-node": "^2.0.2",
 		"@sveltejs/kit": "2.5.28",

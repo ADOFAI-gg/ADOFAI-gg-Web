@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Container, Panel } from '@adofai-gg/ui'
+	import { Container } from '@adofai-gg/ui'
 	import LevelDetailHeader from '~/lib/components/levelDetail/LevelDetailHeader.svelte'
 	import type { PageData } from './$types'
 	import LevelMetadataArea from '~/lib/components/levelDetail/LevelMetadataArea.svelte'
+	import LevelTagDisplay from '~/lib/components/levelDetail/LevelTagDisplay.svelte'
 
 	interface Props {
 		data: PageData
@@ -18,7 +19,7 @@
 			<LevelMetadataArea level={data.level} />
 		</div>
 		<div class="meta-area">
-			<Panel>TODO</Panel>
+			<LevelTagDisplay level={data.level} />
 		</div>
 	</Container>
 </div>
