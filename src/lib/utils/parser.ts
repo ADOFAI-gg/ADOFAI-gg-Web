@@ -13,3 +13,21 @@ export const getLevelThumbnail = (level: APILevel): string | null => {
 
 	return null
 }
+
+export const parseVideoUrl = (
+	url: string
+): { type: 'youtube'; videoId: string; start: number } | null => {
+	const youtubeVideoId = getYoutubeVideoId(url)
+
+	if (youtubeVideoId) {
+		const start = parseInt(new URL(url).searchParams.get('t') ?? '0')
+
+		return {
+			type: 'youtube',
+			videoId: youtubeVideoId,
+			start: isNaN(start) ? 0 : start
+		}
+	}
+
+	return null
+}

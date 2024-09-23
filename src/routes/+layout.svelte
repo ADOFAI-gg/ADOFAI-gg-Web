@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@adofai-gg/ui/dist/stylesheets/globals.scss'
-	import { IconProvider, Nav, setGlobalContext } from '@adofai-gg/ui'
+	import { IconProvider, Nav, Footer, setGlobalContext } from '@adofai-gg/ui'
 
 	import type { Snippet } from 'svelte'
 	import { writable } from 'svelte/store'
@@ -37,7 +37,27 @@
 	})
 </script>
 
-<Nav user={null} />
+<div class="layout">
+	<Nav user={null} />
 
-{@render children()}
+	<main class="content">
+		{@render children()}
+	</main>
+
+	<Footer />
+</div>
+
 <IconProvider />
+
+<style lang="scss">
+	.layout {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	.content {
+		flex-grow: 1;
+		margin-bottom: 64px;
+	}
+</style>
