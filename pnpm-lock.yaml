@@ -25,8 +25,8 @@ importers:
         version: 0.33.1
     devDependencies:
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.30
-        version: 1.2.0-beta.30(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)
+        specifier: 1.2.0-beta.31
+        version: 1.2.0-beta.31(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)
       '@commitlint/cli':
         specifier: ^18.4.3
         version: 18.4.3(typescript@5.3.3)
@@ -82,8 +82,8 @@ importers:
         specifier: ^5.0.1
         version: 5.1.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@8.56.0))(eslint@8.56.0)(prettier@3.1.1)
       eslint-plugin-svelte:
-        specifier: 2.36.0-next.13
-        version: 2.36.0-next.13(eslint@8.56.0)(svelte@5.0.0-next.257)
+        specifier: 2.44.0
+        version: 2.44.0(eslint@8.56.0)(svelte@5.0.0-next.257)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -166,8 +166,8 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  '@adofai-gg/ui@1.2.0-beta.30':
-    resolution: {integrity: sha512-zEtvxybslO7a3YB5EsKv+DW5G4tqNBQ+ap/71lSofiEa7auvtZxn1NlTtZ3NKO3DIlGAOmDQpgHYja+QS5Nv9g==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.30/c58b81fa2585bfbfd8afff8f73815f4d8fccb8b0}
+  '@adofai-gg/ui@1.2.0-beta.31':
+    resolution: {integrity: sha512-NkBpTDI04D7dtZ7tYGJHgIPAeUEFwPjQOVO7EEYJJmJam2jfbU3nHYmy064fwzzsxeGGnUuVNDY5vx5xoxZwEA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.31/406ba137307b2cf5141d76fbd85655057256c76f}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -1722,12 +1722,12 @@ packages:
       eslint-config-prettier:
         optional: true
 
-  eslint-plugin-svelte@2.36.0-next.13:
-    resolution: {integrity: sha512-N4bLGdFkGbbAQiKvX17kLfBgnZ+Em00khOY3AReppO7fkP9jaSxwjdgTCcWf+Q5/uZWor58g4GleRqHcb2Dk2w==}
+  eslint-plugin-svelte@2.44.0:
+    resolution: {integrity: sha512-wav4MOs02vBb1WjvTCYItwJCxMkuk2Z4p+K/eyjL0N/z7ahXLP+0LtQQjiKc2ezuif7GnZLbD1F3o1VHzSvdVg==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0-0 || ^9.0.0-0
-      svelte: ^3.37.0 || ^4.0.0 || ^5.0.0-next.73
+      svelte: ^3.37.0 || ^4.0.0 || ^5.0.0-next.191
     peerDependenciesMeta:
       svelte:
         optional: true
@@ -2330,8 +2330,8 @@ packages:
   known-css-properties@0.29.0:
     resolution: {integrity: sha512-Ne7wqW7/9Cz54PDt4I3tcV+hAyat8ypyOGzYRJQfdxnnjeWsTxt1cy8pjvvKeI5kfXuyvULyeeAvwvvtAX3ayQ==}
 
-  known-css-properties@0.30.0:
-    resolution: {integrity: sha512-VSWXYUnsPu9+WYKkfmJyLKtIvaRJi1kXUqVmBACORXZQxT5oZDsoZ2vQP+bQFDnWtpI/4eq3MLoRMjI2fnLzTQ==}
+  known-css-properties@0.34.0:
+    resolution: {integrity: sha512-tBECoUqNFbyAY4RrbqsBQqDFpGXAEbdD5QKr8kACx3+rnArmuuR22nKQWKazvp07N9yjTyDZaw/20UIH8tL9DQ==}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -3679,7 +3679,7 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-  '@adofai-gg/ui@1.2.0-beta.30(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)':
+  '@adofai-gg/ui@1.2.0-beta.31(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)':
     dependencies:
       '@fontsource/ibm-plex-sans-kr': 5.1.0
       '@melt-ui/svelte': 0.83.0(svelte@5.0.0-next.257)
@@ -5190,15 +5190,14 @@ snapshots:
       '@types/eslint': 8.56.10
       eslint-config-prettier: 9.1.0(eslint@8.56.0)
 
-  eslint-plugin-svelte@2.36.0-next.13(eslint@8.56.0)(svelte@5.0.0-next.257):
+  eslint-plugin-svelte@2.44.0(eslint@8.56.0)(svelte@5.0.0-next.257):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.56.0)
       '@jridgewell/sourcemap-codec': 1.5.0
-      debug: 4.3.7
       eslint: 8.56.0
       eslint-compat-utils: 0.5.1(eslint@8.56.0)
       esutils: 2.0.3
-      known-css-properties: 0.30.0
+      known-css-properties: 0.34.0
       postcss: 8.4.39
       postcss-load-config: 3.1.4(postcss@8.4.39)
       postcss-safe-parser: 6.0.0(postcss@8.4.39)
@@ -5208,7 +5207,6 @@ snapshots:
     optionalDependencies:
       svelte: 5.0.0-next.257
     transitivePeerDependencies:
-      - supports-color
       - ts-node
 
   eslint-scope@5.1.1:
@@ -5872,7 +5870,7 @@ snapshots:
 
   known-css-properties@0.29.0: {}
 
-  known-css-properties@0.30.0: {}
+  known-css-properties@0.34.0: {}
 
   levn@0.4.1:
     dependencies:

@@ -4,6 +4,7 @@
 
 	import type { Snippet } from 'svelte'
 	import { writable } from 'svelte/store'
+	import { page } from '$app/stores'
 
 	interface Props {
 		children: Snippet
@@ -36,6 +37,10 @@
 		}
 	})
 </script>
+
+<svelte:head>
+	<title>{$page.data.pageTitle}</title>
+</svelte:head>
 
 <div class="layout">
 	<Nav user={null} />
