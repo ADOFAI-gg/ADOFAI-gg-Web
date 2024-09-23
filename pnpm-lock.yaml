@@ -25,8 +25,8 @@ importers:
         version: 0.33.1
     devDependencies:
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.27
-        version: 1.2.0-beta.27(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)
+        specifier: 1.2.0-beta.28
+        version: 1.2.0-beta.28(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)
       '@commitlint/cli':
         specifier: ^18.4.3
         version: 18.4.3(typescript@5.3.3)
@@ -160,8 +160,8 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  '@adofai-gg/ui@1.2.0-beta.27':
-    resolution: {integrity: sha512-FuC/gh1g1r90oNaPUVVB9F0C958B9m5rDFgWiZLImLZ0ywlXbMk6xRQOYthi6mNVdnefyrzccshCTU8H/zURDw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.27/c0a2f08bb7eda24368b3db39cdd876e613792d78}
+  '@adofai-gg/ui@1.2.0-beta.28':
+    resolution: {integrity: sha512-NNmPRSwTEEw0tn3k6DsnWm7LFjv/KgzCYD3p5tKy/HvqKEsA66Dr/4YhTSdfwj39ZWVkyIO7jjQfIdb9pP7MkQ==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.28/bebdbd384b38703ad93d15753abe56df4abc2690}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -3664,7 +3664,7 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-  '@adofai-gg/ui@1.2.0-beta.27(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)':
+  '@adofai-gg/ui@1.2.0-beta.28(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.257))(svelte@5.0.0-next.257)':
     dependencies:
       '@fontsource/ibm-plex-sans-kr': 5.1.0
       '@melt-ui/svelte': 0.83.0(svelte@5.0.0-next.257)

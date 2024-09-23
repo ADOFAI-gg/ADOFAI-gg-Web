@@ -1,0 +1,76 @@
+<script lang="ts">
+	import type { APILevel } from '~/lib/types'
+	import Video from '../Video.svelte'
+	import DifficultyIcon from '../DifficultyIcon.svelte'
+	import LevelStat from './LevelStat.svelte'
+	import { Translation } from '@adofai-gg/ui'
+
+	interface Props {
+		level: APILevel
+	}
+
+	const { level }: Props = $props()
+
+	const tiles = $derived(level.tile.toLocaleString())
+
+	const bpm = $derived.by(() => {
+		if (level.minBpm !== level.maxBpm) {
+			return `${level.minBpm}-${level.maxBpm}`
+		}
+
+		if (level.minBpm === 0 && level.maxBpm === 0) return null
+
+		return `${level.minBpm}`
+	})
+</script>
+
+<div class="level-metadata-area">
+	<Video url={level.videoUrl} />
+
+	<div class="details-area">
+		<DifficultyIcon size={48} difficulty={level.difficulty} />
+		<LevelStat key="level:song-length">TODO</LevelStat>
+		<LevelStat key="level:bpm">
+			{#if bpm}
+				{bpm}
+			{:else}
+				<Translation key="common:unknown" />
+			{/if}
+		</LevelStat>
+		<LevelStat key="level:tiles">{tiles}</LevelStat>
+		<div class="spacer"></div>
+		<div class="extra-area">
+			<span class="level-id">#{level.id}</span>
+		</div>
+	</div>
+</div>
+
+<style lang="scss">
+	@import '@adofai-gg/ui/dist/stylesheets/system/colors';
+
+	.level-metadata-area {
+		overflow: hidden;
+		border-radius: 12px;
+		background-color: rgba($darkblue, 0.2);
+	}
+
+	.details-area {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+		padding: 16px;
+	}
+
+	.spacer {
+		flex-grow: 1;
+	}
+
+	.extra-area {
+		display: flex;
+		gap: 8px;
+	}
+
+	.level-id {
+		color: rgba(255, 255, 255, 0.4);
+	}
+</style>
