@@ -56,13 +56,16 @@
 
 	.details-area {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 24px;
 		align-items: center;
-		padding: 16px;
+		padding: 24px;
 	}
 
 	.spacer {
 		flex-grow: 1;
+		margin-right: -24px;
+		margin-left: -24px;
 	}
 
 	.extra-area {
