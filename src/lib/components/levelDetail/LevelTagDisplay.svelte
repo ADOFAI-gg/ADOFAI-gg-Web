@@ -30,13 +30,15 @@
 	})
 </script>
 
-<Panel>
-	<div class="tags">
-		{#each tags as tag}
-			<TagIcon size={26} {tag} />
-		{/each}
-	</div>
-</Panel>
+{#if tags.length}
+	<Panel>
+		<div class="tags">
+			{#each tags as tag}
+				<TagIcon size={26} {tag} />
+			{/each}
+		</div>
+	</Panel>
+{/if}
 
 <style lang="scss">
 	.tags {
