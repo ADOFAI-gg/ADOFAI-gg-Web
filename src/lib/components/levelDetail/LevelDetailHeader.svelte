@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container } from '@adofai-gg/ui'
+	import { Container, Tag } from '@adofai-gg/ui'
 	import type { APILevel } from '~/lib/types'
 	import { getLevelThumbnail } from '~/lib/utils/parser'
 
@@ -17,7 +17,15 @@
 	style={thumbnailUrl ? `--background-image: url('${thumbnailUrl}')` : ''}
 >
 	<Container>
-		{level.title}
+		<div class="label-container">
+			<Tag color="yellow">legendary</Tag>
+			<Tag color="blue">recommended</Tag>
+			<Tag color="white">unlisted</Tag>
+			<Tag color="gray">hidden</Tag>
+		</div>
+		<div class="level-title">
+			{level.title}
+		</div>
 	</Container>
 </div>
 
@@ -29,5 +37,18 @@
 			var(--background-image);
 		background-position: center;
 		background-size: cover;
+	}
+
+	.label-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.level-title {
+		margin-top: 6px;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 140%;
 	}
 </style>
