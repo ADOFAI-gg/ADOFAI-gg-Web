@@ -7,6 +7,7 @@
 	import UserListPanel from '~/lib/components/UserListPanel.svelte'
 	import type { UserListItemModel } from '@adofai-gg/ui'
 	import { convertUser } from '~/lib/utils/converter'
+	import LevelActionsArea from '~/lib/components/levelDetail/LevelActionsArea.svelte'
 
 	interface Props {
 		data: PageData
@@ -41,12 +42,15 @@
 	<LevelDetailHeader level={data.level} />
 	<Container topMargin class="grid">
 		<div class="main-content-area">
-			<LevelMetadataArea level={data.level} />
+			<div class="main-upper-container">
+				<LevelMetadataArea level={data.level} />
+				<LevelActionsArea level={data.level} />
+			</div>
 		</div>
 		<div class="meta-area">
 			<LevelTagDisplay level={data.level} />
-			<UserListPanel items={creators} title="level:artists" />
-			<UserListPanel items={artists} title="level:creators" />
+			<UserListPanel items={artists} title="level:artists" />
+			<UserListPanel items={creators} title="level:creators" />
 		</div>
 	</Container>
 </div>
@@ -89,5 +93,11 @@
 		.meta-area {
 			grid-column: span 3;
 		}
+	}
+
+	.main-upper-container {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
 	}
 </style>

@@ -2,6 +2,7 @@
 	import '$lib'
 	import '@adofai-gg/ui/dist/stylesheets/globals.scss'
 	import { IconProvider, Nav, Footer, setGlobalContext } from '@adofai-gg/ui'
+	import { env } from '$env/dynamic/public'
 
 	import type { Snippet } from 'svelte'
 	import { writable } from 'svelte/store'
@@ -33,8 +34,8 @@
 		},
 		urls: {
 			main: '/',
-			signIn: '', // TODO
-			signUp: ''
+			signIn: `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signin`, // TODO
+			signUp: `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
 		}
 	})
 </script>
