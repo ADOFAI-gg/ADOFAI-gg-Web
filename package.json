@@ -23,7 +23,7 @@
 		"server.js"
 	],
 	"devDependencies": {
-		"@adofai-gg/ui": "1.2.0-beta.31",
+		"@adofai-gg/ui": "1.2.0-beta.35",
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
 		"@fluent/bundle": "^0.18.0",

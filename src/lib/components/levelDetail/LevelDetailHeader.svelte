@@ -18,10 +18,15 @@
 >
 	<Container>
 		<div class="label-container">
-			<Tag color="yellow">legendary</Tag>
-			<Tag color="blue">recommended</Tag>
-			<Tag color="white">unlisted</Tag>
-			<Tag color="gray">hidden</Tag>
+			{#if level.quality === 'LEGENDARY'}
+				<Tag color="yellow">legendary</Tag>
+			{:else if level.quality === 'FEATURED'}
+				<Tag color="blue">recommended</Tag>
+			{:else if level.quality === 'HIDDEN'}
+				<Tag color="gray">hidden</Tag>
+			{:else if level.quality === 'UNLISTED'}
+				<Tag color="white">unlisted</Tag>
+			{/if}
 		</div>
 		<div class="level-title">
 			{level.title}

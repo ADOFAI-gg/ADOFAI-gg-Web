@@ -14,6 +14,8 @@ export const load: PageLoad = async ({ params, fetch }) => {
 
 	const data: APILevel = await res.json()
 
+	console.log(data)
+
 	return {
 		level: data,
 		pageTitle: data.title
