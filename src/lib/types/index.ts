@@ -3,6 +3,20 @@ export interface APITag {
 	name: string
 }
 
+export interface APIMember {
+	id: number
+	displayName: string
+	username: string | null
+	totalPp: number
+	avatar: string | null
+}
+
+export interface APIMusic {
+	id: number
+	name: string
+	artists: APIMember[]
+}
+
 export interface APILevel {
 	id: number
 	appendingTitle: string | null
@@ -21,7 +35,8 @@ export interface APILevel {
 	title: string
 	// file
 	// thumbnail
-	// creators
+	creators: APIMember[]
 	tags: APITag[]
 	epilepsyWarning: boolean
+	music: APIMusic
 }

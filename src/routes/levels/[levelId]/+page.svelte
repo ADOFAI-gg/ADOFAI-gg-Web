@@ -4,12 +4,37 @@
 	import type { PageData } from './$types'
 	import LevelMetadataArea from '~/lib/components/levelDetail/LevelMetadataArea.svelte'
 	import LevelTagDisplay from '~/lib/components/levelDetail/LevelTagDisplay.svelte'
+	import UserListPanel from '~/lib/components/UserListPanel.svelte'
+	import type { UserListItemModel } from '@adofai-gg/ui'
+	import { convertUser } from '~/lib/utils/converter'
 
 	interface Props {
 		data: PageData
 	}
 
 	const { data }: Props = $props()
+
+	let creators = $derived(
+		data.level.creators.map(
+			(x) =>
+				({
+					type: 'user',
+					data: convertUser(x, 'creator'),
+					href: `/users/${x.id}`
+				}) as UserListItemModel
+		)
+	)
+
+	let artists = $derived(
+		data.level.music.artists.map(
+			(x) =>
+				({
+					type: 'user',
+					data: convertUser(x, 'artist'),
+					href: `/users/${x.id}`
+				}) as UserListItemModel
+		)
+	)
 </script>
 
 <div class="level-detail-container">
@@ -20,6 +45,8 @@
 		</div>
 		<div class="meta-area">
 			<LevelTagDisplay level={data.level} />
+			<UserListPanel items={creators} title="level:artists" />
+			<UserListPanel items={artists} title="level:creators" />
 		</div>
 	</Container>
 </div>
@@ -38,7 +65,10 @@
 	}
 
 	.meta-area {
+		display: flex;
+		flex-direction: column;
 		grid-column: span 12;
+		gap: 20px;
 	}
 
 	@include breakpoint('md') {

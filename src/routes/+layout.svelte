@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '$lib'
 	import '@adofai-gg/ui/dist/stylesheets/globals.scss'
 	import { IconProvider, Nav, Footer, setGlobalContext } from '@adofai-gg/ui'
 
