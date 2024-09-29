@@ -28,7 +28,7 @@
 	<Video url={level.videoUrl} />
 
 	<div class="details-area">
-		<DifficultyIcon size={48} difficulty={level.difficulty} />
+		<DifficultyIcon size={48} difficulty={level.quality === 'HIDDEN' ? -2 : level.difficulty} />
 		<LevelStat key="level:song-length">TODO</LevelStat>
 		<LevelStat key="level:bpm">
 			{#if bpm}
