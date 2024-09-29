@@ -9,3 +9,9 @@ download = 다운로드
 workshop = 창작마당
 share = 공유
 report = 신고
+
+search-placeholder = 레벨, 노래, 아티스트, 제작자를 검색하세요.
+
+filter-title = 레벨 제목
+filter-artist = 아티스트
+filter-creator = 제작자
