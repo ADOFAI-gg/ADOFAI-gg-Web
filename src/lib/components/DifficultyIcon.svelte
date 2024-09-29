@@ -20,7 +20,8 @@
 	})
 
 	let icon = $derived(
-		(icons[`../assets/difficultyIcons/${difficultyName}.svg`] as { default: string }).default
+		(icons[`../assets/difficultyIcons/${difficultyName}.svg`] as { default: string })?.default ??
+			(icons['../assets/difficultyIcons/unknown.svg'] as { default: string }).default
 	)
 </script>
 
