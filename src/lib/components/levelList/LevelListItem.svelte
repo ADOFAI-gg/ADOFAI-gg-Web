@@ -51,6 +51,7 @@
 		gap: 16px;
 		align-items: center;
 		padding: 18px 16px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 		background-color: rgba(0, 0, 0, var(--bg-opacity));
 		transition: background-color ease 0.2s;
 
