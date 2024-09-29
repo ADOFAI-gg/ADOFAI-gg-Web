@@ -4,6 +4,7 @@
 	import DifficultyIcon from '../DifficultyIcon.svelte'
 	import LevelStat from './LevelStat.svelte'
 	import { Translation } from '@adofai-gg/ui'
+	import { getDifficulty } from '~/lib/utils/level'
 
 	interface Props {
 		level: APILevel
@@ -28,7 +29,7 @@
 	<Video url={level.videoUrl} />
 
 	<div class="details-area">
-		<DifficultyIcon size={48} difficulty={level.quality === 'HIDDEN' ? -2 : level.difficulty} />
+		<DifficultyIcon size={48} difficulty={getDifficulty(level)} />
 		<LevelStat key="level:song-length">TODO</LevelStat>
 		<LevelStat key="level:bpm">
 			{#if bpm}

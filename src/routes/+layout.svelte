@@ -8,6 +8,9 @@
 	import { writable } from 'svelte/store'
 	import { page } from '$app/stores'
 
+	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
+	import { browser } from '$app/environment'
+
 	interface Props {
 		children: Snippet
 	}
@@ -38,23 +41,33 @@
 			signUp: `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
 		}
 	})
+
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				enabled: browser
+			}
+		}
+	})
 </script>
 
 <svelte:head>
 	<title>{$page.data.pageTitle}</title>
 </svelte:head>
 
-<div class="layout">
-	<Nav user={null} />
+<QueryClientProvider client={queryClient}>
+	<div class="layout">
+		<Nav user={null} />
 
-	<main class="content">
-		{@render children()}
-	</main>
+		<main class="content">
+			{@render children()}
+		</main>
 
-	<Footer />
-</div>
+		<Footer />
+	</div>
 
-<IconProvider />
+	<IconProvider />
+</QueryClientProvider>
 
 <style lang="scss">
 	.layout {
