@@ -11,6 +11,8 @@
 	}
 
 	const { src, danger, warning, size, meltElement }: Props = $props()
+
+	let srcContent = $derived(src.replaceAll("'", "\\'"))
 </script>
 
 <div
@@ -19,11 +21,11 @@
 		danger,
 		warning
 	})}
-	style="--size: {size}px; --image: url('{src}');"
+	style="--size: {size}px; --image: url('{srcContent}');"
 ></div>
 
 <style lang="scss">
-	@import '@adofai-gg/ui/dist/stylesheets/system/colors';
+	@use '@adofai-gg/ui/dist/stylesheets/system/colors';
 
 	.tag-icon {
 		width: var(--size);
@@ -33,11 +35,11 @@
 		mask-image: var(--image);
 
 		&.danger {
-			background-color: $red;
+			background-color: colors.$red;
 		}
 
 		&.warning {
-			background-color: $yellow;
+			background-color: colors.$yellow;
 		}
 	}
 </style>

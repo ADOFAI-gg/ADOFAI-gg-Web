@@ -73,9 +73,9 @@
 
 		<Footer />
 	</div>
-
-	<IconProvider />
 </QueryClientProvider>
+
+<IconProvider />
 
 <style lang="scss">
 	.layout {

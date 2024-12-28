@@ -47,12 +47,12 @@
 </div>
 
 <style lang="scss">
-	@import '@adofai-gg/ui/dist/stylesheets/system/colors';
+	@use '@adofai-gg/ui/dist/stylesheets/system/colors';
 
 	.level-metadata-area {
 		overflow: hidden;
 		border-radius: 12px;
-		background-color: rgba($darkblue, 0.2);
+		background-color: rgba(colors.$darkblue, 0.2);
 	}
 
 	.details-area {
