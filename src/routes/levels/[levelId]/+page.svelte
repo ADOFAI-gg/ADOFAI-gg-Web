@@ -56,7 +56,7 @@
 </div>
 
 <style lang="scss">
-	@import '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
+	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
 
 	.level-detail {
 		&-container {
@@ -75,7 +75,7 @@
 		gap: 20px;
 	}
 
-	@include breakpoint('md') {
+	@include breakpoints.breakpoint('md') {
 		.main-content-area {
 			grid-column: span 8;
 		}
@@ -85,7 +85,7 @@
 		}
 	}
 
-	@include breakpoint('lg') {
+	@include breakpoints.breakpoint('lg') {
 		.main-content-area {
 			grid-column: span 9;
 		}

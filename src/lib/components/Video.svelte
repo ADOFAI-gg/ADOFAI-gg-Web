@@ -34,7 +34,7 @@
 </div>
 
 <style lang="scss">
-	@import '@adofai-gg/ui/dist/stylesheets/system/colors';
+	@use '@adofai-gg/ui/dist/stylesheets/system/colors';
 
 	.video {
 		aspect-ratio: 16/9;
@@ -43,7 +43,7 @@
 	.not-found {
 		width: 100%;
 		height: 100%;
-		background-color: $red;
+		background-color: colors.$red;
 	}
 
 	.video-iframe:focus {
