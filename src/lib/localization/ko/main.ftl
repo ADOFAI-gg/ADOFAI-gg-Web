@@ -1,0 +1,1 @@
+recent-featured-levels = 최근 등재된 Featured 레벨
