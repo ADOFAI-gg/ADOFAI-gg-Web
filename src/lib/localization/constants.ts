@@ -1,1 +1,1 @@
-export const extraSections = ['nav', 'level', 'common', 'tags'] as const
+export const extraSections = ['nav', 'level', 'common', 'tags', 'main'] as const
