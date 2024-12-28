@@ -1,6 +1,14 @@
 <script lang="ts">
 	import '$lib'
-	import '@adofai-gg/ui/dist/stylesheets/globals.scss'
+
+	import '@adofai-gg/ui/globals.scss'
+
+	import '@fontsource/ibm-plex-sans-kr/300.css'
+	import '@fontsource/ibm-plex-sans-kr/400.css'
+	import '@fontsource/ibm-plex-sans-kr/500.css'
+	import '@fontsource/ibm-plex-sans-kr/600.css'
+	import '@fontsource/ibm-plex-sans-kr/700.css'
+
 	import { IconProvider, Nav, Footer, setGlobalContext } from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 

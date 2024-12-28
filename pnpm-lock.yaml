@@ -25,8 +25,8 @@ importers:
         version: 0.33.1
     devDependencies:
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.45
-        version: 1.2.0-beta.45(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.260))(svelte@5.0.0-next.260)
+        specifier: 1.2.0-beta.59
+        version: 1.2.0-beta.59(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.260))(svelte@5.0.0-next.260)
       '@commitlint/cli':
         specifier: ^18.4.3
         version: 18.4.3(typescript@5.3.3)
@@ -36,6 +36,9 @@ importers:
       '@fluent/bundle':
         specifier: ^0.18.0
         version: 0.18.0
+      '@fontsource/ibm-plex-sans-kr':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@melt-ui/pp':
         specifier: ^0.3.2
         version: 0.3.2(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.260))(svelte@5.0.0-next.260)
@@ -172,8 +175,8 @@ packages:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
 
-  '@adofai-gg/ui@1.2.0-beta.45':
-    resolution: {integrity: sha512-E/W94ufMqaPCb8hVlcTBhtnrva0Ljzw0L2H0uLBz8jh8KTSlJfkdDTJqB/7ecxb1uLVnTt2+EgkZyWZT/IHt5w==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.45/b04edd5d8e845d246b44c584c96987b0d6ed5fab}
+  '@adofai-gg/ui@1.2.0-beta.59':
+    resolution: {integrity: sha512-ulgXx5P3CXOYGtehIV3le9fpl9m+45CK61uTZQPqlCsceCiXblaA6NNdKNWdU2JG/WhFV1oacQi6RGVIA6Olaw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.59/56d3b66b5d8170b7adcac4ca06a9dae8e9f837cd}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -1137,6 +1140,7 @@ packages:
 
   acorn-import-assertions@1.9.0:
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -3701,9 +3705,8 @@ snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-  '@adofai-gg/ui@1.2.0-beta.45(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.260))(svelte@5.0.0-next.260)':
+  '@adofai-gg/ui@1.2.0-beta.59(@melt-ui/svelte@0.83.0(svelte@5.0.0-next.260))(svelte@5.0.0-next.260)':
     dependencies:
-      '@fontsource/ibm-plex-sans-kr': 5.1.0
       '@melt-ui/svelte': 0.83.0(svelte@5.0.0-next.260)
       clsx: 2.1.1
       js-cookie: 3.0.5
