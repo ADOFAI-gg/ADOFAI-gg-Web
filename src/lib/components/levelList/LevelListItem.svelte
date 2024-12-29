@@ -3,7 +3,7 @@
 	import DifficultyIcon from '../DifficultyIcon.svelte'
 	import LevelListItemUserList from './LevelListItemUserList.svelte'
 	import { getDifficulty, getTags } from '~/lib/utils/level'
-	import { Icon } from '@adofai-gg/ui'
+	import { getGlobalContext, Icon } from '@adofai-gg/ui'
 	import TagIcon from '../TagIcon.svelte'
 
 	interface Props {
@@ -11,6 +11,12 @@
 	}
 
 	const { level }: Props = $props()
+
+	const { language } = getGlobalContext()
+
+	let fmt = $derived(Intl.NumberFormat($language, { notation: 'compact' }))
+
+	let likes = $derived(fmt.format(12345))
 </script>
 
 <a href="/levels/{level.id}" class="level-list-item">
@@ -21,11 +27,15 @@
 	<div class="metadata-area">
 		<div class="level-title">{level.title}</div>
 		<div class="credits-area">
-			<LevelListItemUserList icon="music" users={level.creators} />
+			<LevelListItemUserList icon="music" users={level.music.artists} />
 			<LevelListItemUserList icon="chart" users={level.creators} />
 		</div>
 	</div>
 	<div class="extra-area">
+		<div class="likes">
+			<Icon icon="heartOutlined" size={18} alt="likes" />
+			{likes}
+		</div>
 		<div class="tags">
 			{#each getTags(level) as tag}
 				<TagIcon size={24} {tag} />
@@ -74,7 +84,7 @@
 
 	.level-id {
 		color: rgba(255, 255, 255, 0.4);
-		font-weight: 12px;
+		font-size: 12px;
 		line-height: 120%;
 	}
 
@@ -101,10 +111,19 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+		align-items: flex-end;
 	}
 
 	.tags {
 		display: flex;
 		gap: 4px;
+	}
+
+	.likes {
+		font-size: 16px;
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+		gap: 2px;
 	}
 </style>
