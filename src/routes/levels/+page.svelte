@@ -1,6 +1,8 @@
 <script lang="ts" module>
 	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
 	import { createInfiniteQuery } from '@tanstack/svelte-query'
+	import { api, type APILevel } from '$lib'
+	import type { Filter, SearchQuery } from '$lib/utils/advanced-query'
 
 	const scheme: SearchOptionScheme = {
 		filter: {
@@ -111,10 +113,9 @@
 
 <script lang="ts">
 	import { Container, SearchBar, SearchOptionsBar } from '@adofai-gg/ui'
-	import { api, type APILevel } from '~/lib'
 	import { createWindowVirtualizer, type VirtualItem } from '@tanstack/svelte-virtual'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
-	import type { Filter, SearchQuery } from '~/lib/utils/advanced-query'
+	import { onMount } from 'svelte'
 
 	let searchOptions: SearchOptionsData = $state({
 		filter: [],
@@ -140,6 +141,11 @@
 
 	let allItems = $derived(($query.data && $query.data.pages.flat()) || [])
 	let items = $state<VirtualItem[]>([])
+
+	onMount(() => {
+		const params = new URLSearchParams(window.location.search)
+		if (params.get('q')) searchQuery = params.get('q')!
+	})
 
 	$effect(() => {
 		$virtualizer.setOptions({
