@@ -33,12 +33,12 @@
 			{
 				href: '/levels',
 				key: 'nav:levels'
-			},
-			{ href: '/lb', key: 'nav:rankings' },
-			{
-				href: '/references',
-				key: 'nav:references'
 			}
+			// { href: '/lb', key: 'nav:rankings' },
+			// {
+			// 	href: '/references',
+			// 	key: 'nav:references'
+			// }
 		],
 		setLanguage: (lang) => {
 			language.set(lang)
