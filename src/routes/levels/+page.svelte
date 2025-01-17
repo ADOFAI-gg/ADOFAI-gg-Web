@@ -1,26 +1,27 @@
 <script lang="ts" module>
 	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
-	import { createInfiniteQuery } from '@tanstack/svelte-query'
+	import { createInfiniteQuery, infiniteQueryOptions, queryOptions } from '@tanstack/svelte-query'
 	import { api, type APILevel } from '$lib'
-	import type { Filter, SearchQuery } from '$lib/utils/advanced-query'
+	import type { Filter, SearchQuery } from '@adofai-gg/query-types'
+	import * as store from 'svelte/store'
 
 	const scheme: SearchOptionScheme = {
 		filter: {
-			title: {
+			'music.name': {
 				default: '',
 				icon: 'music',
-				label: 'level:filter-title',
-				name: 'level:filter-title',
+				label: 'level:filter-music',
+				name: 'level:filter-music',
 				type: 'string'
 			},
-			artist: {
+			'music.artists.name': {
 				default: '',
 				icon: 'creator',
 				label: 'level:filter-artist',
 				name: 'level:filter-artist',
 				type: 'string'
 			},
-			creator: {
+			'creators.name': {
 				default: '',
 				icon: 'creator',
 				label: 'level:filter-creator',
@@ -33,12 +34,27 @@
 
 	const pageSize = 50
 
-	const fetchLevels = async (offset: number, limit: number) => {
-		const url = new URL(api.forum('levels'))
-		url.searchParams.set('offset', `${offset}`)
-		url.searchParams.set('limit', `${limit}`)
+	let searchOptions = $state<SearchOptionsData>({
+		filter: [],
+		sort: []
+	})
 
-		const res = await fetch(url)
+	const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
+		const url = new URL(api.forum('levels/search'))
+		// url.searchParams.set('offset', `${offset}`)
+		// url.searchParams.set('limit', `${limit}`)
+
+		const res = await fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({
+				skip,
+				take,
+				query
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
 
 		if (!res.ok) throw new Error(`Request failed with status code: ${res.status}`)
 
@@ -62,25 +78,19 @@
 				data: [
 					{
 						op: 'stringContains',
-						key: 'title',
+						key: 'music.name',
 						value: search,
 						ignoreCase: true
 					},
 					{
 						op: 'stringContains',
-						key: 'music.title',
+						key: 'music.artists.name',
 						value: search,
 						ignoreCase: true
 					},
 					{
 						op: 'stringContains',
-						key: 'music.artists.displayName',
-						value: search,
-						ignoreCase: true
-					},
-					{
-						op: 'stringContains',
-						key: 'creators.displayName',
+						key: 'creators.name',
 						value: search,
 						ignoreCase: true
 					}
@@ -112,26 +122,14 @@
 </script>
 
 <script lang="ts">
-	import { Container, SearchBar, SearchOptionsBar } from '@adofai-gg/ui'
+	import { Container, LoadingSpinner, SearchBar, SearchOptionsBar } from '@adofai-gg/ui'
 	import { createWindowVirtualizer, type VirtualItem } from '@tanstack/svelte-virtual'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
-	import { onMount } from 'svelte'
+	import { onMount, tick } from 'svelte'
+	import { goto } from '$app/navigation'
+	import { parseFilter } from '~/lib/utils/filter'
 
-	let searchOptions: SearchOptionsData = $state({
-		filter: [],
-		sort: []
-	})
 	let searchQuery = $state('')
-
-	const query = createInfiniteQuery({
-		queryKey: ['levels', 'search', { filter: [], sort: [] } as SearchOptionsData],
-		queryFn: ({ pageParam }) => fetchLevels(pageSize * pageParam, pageSize),
-		initialPageParam: 0,
-		getNextPageParam: (prevPage, _allPages, prevParam) => {
-			if (prevPage.length < pageSize) return undefined
-			return prevParam + 1
-		}
-	})
 
 	const virtualizer = createWindowVirtualizer({
 		count: 0,
@@ -139,19 +137,94 @@
 		estimateSize: () => 108
 	})
 
-	let allItems = $derived(($query.data && $query.data.pages.flat()) || [])
 	let items = $state<VirtualItem[]>([])
 
-	onMount(() => {
-		const params = new URLSearchParams(window.location.search)
-		if (params.get('q')) searchQuery = params.get('q')!
+	let elements = $state<HTMLDivElement[]>([])
+
+	$effect(() => {
+		elements.forEach((el) => $virtualizer.measureElement(el))
 	})
+
+	let debouncedSearchText = store.writable('')
+	let searchOptionsWritable = store.writable<SearchOptionsData>({
+		filter: [],
+		sort: []
+	})
+
+	let queryParams = store.derived(
+		[debouncedSearchText, searchOptionsWritable],
+		([$debouncedSearchText, $searchOptions]) => {
+			return buildQuery($debouncedSearchText, $searchOptions)
+		}
+	)
+
+	let mounted = false
+
+	onMount(() => {
+		const url = new URL(window.location.href)
+		const params = url.searchParams
+
+		searchOptions.filter = parseFilter(params.get('f'), scheme)
+		searchQuery = $debouncedSearchText = params.get('q') || ''
+
+		mounted = true
+	})
+
+	$effect(() => {
+		if (!mounted) return
+		const searchText = $debouncedSearchText
+		const filter = JSON.stringify(searchOptions.filter.map(({ id, ...x }) => ({ ...x })))
+
+		const prevUrl = new URL(window.location.href)
+
+		if (prevUrl.searchParams.get('q') !== searchText || prevUrl.searchParams.get('f') !== filter) {
+			goto(
+				`${prevUrl.pathname}?q=${encodeURIComponent(searchText)}&f=${encodeURIComponent(filter)}&psize=${pageSize}`,
+				{ replaceState: true, keepFocus: true }
+			)
+		}
+	})
+
+	const query = createInfiniteQuery(
+		store.derived([queryParams], ([$queryParams]) =>
+			infiniteQueryOptions({
+				queryKey: ['levels', 'search', $queryParams],
+				queryFn: ({ pageParam, queryKey }) =>
+					fetchLevels(pageSize * pageParam, pageSize, queryKey[2] as SearchQuery),
+				initialPageParam: 0,
+				getNextPageParam: (prevPage, _allPages, prevParam) => {
+					if (prevPage.length < pageSize) return undefined
+					return prevParam + 1
+				}
+			})
+		)
+	)
+
+	$effect(() => {
+		$searchOptionsWritable = $state.snapshot(searchOptions)
+	})
+
+	$effect(() => {
+		const t = searchQuery
+		const timeout = setTimeout(() => {
+			$debouncedSearchText = t
+		}, 200)
+
+		return () => {
+			clearTimeout(timeout)
+		}
+	})
+
+	let allItems = $derived(($query.data && $query.data.pages.flat()) || [])
 
 	$effect(() => {
 		$virtualizer.setOptions({
 			count: $query.hasNextPage ? allItems.length + 1 : allItems.length
 		})
+		console.log(allItems.length)
+	})
 
+	$effect(() => {
 		items = $virtualizer.getVirtualItems()
 
 		const [lastItem] = [...$virtualizer.getVirtualItems()].reverse()
@@ -165,16 +238,6 @@
 			$query.fetchNextPage()
 		}
 	})
-
-	let elements = $state<HTMLDivElement[]>([])
-
-	$effect(() => {
-		elements.forEach((el) => $virtualizer.measureElement(el))
-	})
-
-	$effect(() => {
-		console.log(buildQuery(searchQuery, searchOptions))
-	})
 </script>
 
 <Container>
@@ -184,7 +247,7 @@
 	</div>
 	<div class="list-area">
 		{#if $query.isPending}
-			loading
+			<LoadingSpinner />
 		{/if}
 
 		{#if $query.isSuccess}
@@ -197,7 +260,7 @@
 					{#each items as item, i (item.index)}
 						<div class="item" bind:this={elements[i]} data-index={item.index}>
 							{#if $query.hasNextPage && item.index === allItems.length}
-								loading
+								<LoadingSpinner />
 							{:else}
 								<LevelListItem level={allItems[item.index]} />
 							{/if}
