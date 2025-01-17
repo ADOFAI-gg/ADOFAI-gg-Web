@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container, SearchBar, Logo } from '@adofai-gg/ui'
+	import { Container, SearchBar, Logo, type SearchOptionsData } from '@adofai-gg/ui'
 	import MainSection from '$lib/components/main/MainSection.svelte'
 	import { goto } from '$app/navigation'
 
@@ -34,24 +34,23 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
 
 	.root {
-		margin-top: 64px;
-
 		@include breakpoints.breakpoint('md') {
 			margin-top: 138px;
 		}
+
+		margin-top: 64px;
 	}
 
 	.search-area {
-		margin-top: 38px;
-		max-width: 760px;
 		width: 100%;
+		max-width: 760px;
+		margin-top: 38px;
 	}
 
 	.top {
-		margin-bottom: 84px;
-
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		margin-bottom: 84px;
 	}
 </style>

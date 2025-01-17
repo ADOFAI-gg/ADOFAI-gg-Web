@@ -1,5 +1,5 @@
 {
-	"editor.formatOnSave": false,
+	"editor.formatOnSave": true,
 	"svelte.enable-ts-plugin": true,
 	"scss.lint.unknownAtRules": "ignore",
 	"eslint.workingDirectories": ["./src"],
