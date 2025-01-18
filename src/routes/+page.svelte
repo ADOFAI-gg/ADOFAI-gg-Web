@@ -1,7 +1,15 @@
 <script lang="ts">
-	import { Container, SearchBar, Logo, type SearchOptionsData } from '@adofai-gg/ui'
+	import { Container, SearchBar, Logo } from '@adofai-gg/ui'
 	import MainSection from '$lib/components/main/MainSection.svelte'
 	import { goto } from '$app/navigation'
+	import type { PageData } from './$types'
+	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
+
+	interface Props {
+		data: PageData
+	}
+
+	const { data }: Props = $props()
 
 	let searchQuery = $state('')
 
@@ -26,7 +34,11 @@
 			</div>
 		</div>
 
-		<MainSection title="main:recent-featured-levels">wow</MainSection>
+		<MainSection title="main:recent-featured-levels">
+			{#each data.featured.results as level}
+				<LevelListItem {level} />
+			{/each}
+		</MainSection>
 	</Container>
 </main>
 
