@@ -41,8 +41,6 @@
 
 	const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
 		const url = new URL(api.forum('levels/search'))
-		// url.searchParams.set('offset', `${offset}`)
-		// url.searchParams.set('limit', `${limit}`)
 
 		const res = await fetch(url, {
 			method: 'POST',
