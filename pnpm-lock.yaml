@@ -63,9 +63,9 @@ importers:
       '@tanstack/svelte-query':
         specifier: ^5.62.9
         version: 5.62.9(svelte@5.16.0)
-      '@tanstack/svelte-virtual':
+      '@tanstack/virtual-core':
         specifier: ^3.11.2
-        version: 3.11.2(svelte@5.16.0)
+        version: 3.11.2
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
@@ -996,11 +996,6 @@ packages:
     resolution: {integrity: sha512-2M/CpePioU4IRw1OOdA+/KwA+0swJAb3c0uipFOoWkuT11uC4tTe8UD/lYRQpJYFFn5hML7KYRxVOW0HH60XiA==}
     peerDependencies:
       svelte: ^3.54.0 || ^4.0.0 || ^5.0.0-next.0
-
-  '@tanstack/svelte-virtual@3.11.2':
-    resolution: {integrity: sha512-o0VWDf8GlkZ8S5E2GjQq39qhZIB6U1Kej05/aTdxIQy18c022CxYgGWUydmrWJE3DV2ZA/q+Zm30oqnSRhQ4Lw==}
-    peerDependencies:
-      svelte: ^3.48.0 || ^4.0.0 || ^5.0.0
 
   '@tanstack/virtual-core@3.11.2':
     resolution: {integrity: sha512-vTtpNt7mKCiZ1pwU9hfKPhpdVO2sVzFQsxoVBGtOSHxlrRRzYr8iQ2TlwbAcRYCcEiZ9ECAM8kBzH0v2+VzfKw==}
@@ -4088,11 +4083,6 @@ snapshots:
   '@tanstack/svelte-query@5.62.9(svelte@5.16.0)':
     dependencies:
       '@tanstack/query-core': 5.62.9
-      svelte: 5.16.0
-
-  '@tanstack/svelte-virtual@3.11.2(svelte@5.16.0)':
-    dependencies:
-      '@tanstack/virtual-core': 3.11.2
       svelte: 5.16.0
 
   '@tanstack/virtual-core@3.11.2': {}

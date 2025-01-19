@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
-	import { createInfiniteQuery, infiniteQueryOptions, queryOptions } from '@tanstack/svelte-query'
+	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
 	import { api, type APILevel } from '$lib'
 	import type { Filter, SearchQuery } from '@adofai-gg/query-types'
 	import * as store from 'svelte/store'
@@ -121,7 +121,7 @@
 
 <script lang="ts">
 	import { Container, LoadingSpinner, SearchBar, SearchOptionsBar } from '@adofai-gg/ui'
-	import { createWindowVirtualizer, type VirtualItem } from '@tanstack/svelte-virtual'
+	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
 	import { onMount, tick } from 'svelte'
 	import { goto } from '$app/navigation'
@@ -129,18 +129,16 @@
 
 	let searchQuery = $state('')
 
-	const virtualizer = createWindowVirtualizer({
+	let virtualizer = createWindowVirtualizer({
 		count: 0,
 		overscan: 3,
 		estimateSize: () => 108
 	})
 
-	let items = $state<VirtualItem[]>([])
-
 	let elements = $state<HTMLDivElement[]>([])
 
 	$effect(() => {
-		elements.forEach((el) => $virtualizer.measureElement(el))
+		elements.forEach((el) => virtualizer.measureElement(el))
 	})
 
 	let debouncedSearchText = store.writable('')
@@ -216,16 +214,15 @@
 	let allItems = $derived(($query.data && $query.data.pages.flat()) || [])
 
 	$effect(() => {
-		$virtualizer.setOptions({
+		virtualizer.setOptions({
+			...virtualizer.options,
 			count: $query.hasNextPage ? allItems.length + 1 : allItems.length
 		})
-		console.log(allItems.length)
+		virtualizer.measure()
 	})
 
 	$effect(() => {
-		items = $virtualizer.getVirtualItems()
-
-		const [lastItem] = [...$virtualizer.getVirtualItems()].reverse()
+		const [lastItem] = [...virtualizer.getVirtualItems()].reverse()
 
 		if (
 			lastItem &&
@@ -249,10 +246,11 @@
 		{/if}
 
 		{#if $query.isSuccess}
-			<div class="level-list" style="height: {$virtualizer.getTotalSize()}px;">
+			{@const items = virtualizer.getVirtualItems()}
+			<div class="level-list" style="height: {virtualizer.getTotalSize()}px;">
 				<div
 					style="position: absolute; top: 0; left: 0; width: 100%; transform: translateY({items[0]
-						? items[0].start - $virtualizer.options.scrollMargin
+						? items[0].start - virtualizer.options.scrollMargin
 						: 0}px);"
 				>
 					{#each items as item, i (item.index)}

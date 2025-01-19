@@ -11,6 +11,11 @@ export interface APIMember {
 	avatar: string | null
 }
 
+export interface APIMe extends APIMember {
+	permissionFlag: number
+	levelRaterDifficultyRangeFlag: number
+}
+
 export interface APIMusic {
 	id: number
 	name: string

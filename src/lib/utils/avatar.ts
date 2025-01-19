@@ -11,5 +11,5 @@ export const getAvatarUrl = (
 		return usage === 'artist' ? defaultDark : defaultLight
 	}
 
-	return `${env.PUBLIC_ACCOUNT_SERVICE_URL}/content/avatars/${user}/${user.avatar ?? 'default'}`
+	return `${env.PUBLIC_ACCOUNT_SERVICE_URL}/content/avatars/${user.id}/${user.avatar ?? 'default'}`
 }
