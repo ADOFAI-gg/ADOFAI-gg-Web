@@ -9,7 +9,7 @@
 	import '@fontsource/ibm-plex-sans-kr/600.css'
 	import '@fontsource/ibm-plex-sans-kr/700.css'
 
-	import { IconProvider, Nav, Footer, setGlobalContext } from '@adofai-gg/ui'
+	import { IconProvider, Nav, Footer, setGlobalContext, type User } from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 
 	import type { Snippet } from 'svelte'
@@ -18,12 +18,15 @@
 
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
 	import { browser } from '$app/environment'
+	import type { LayoutData } from './$types'
+	import { getAvatarUrl } from '~/lib/utils/avatar'
 
 	interface Props {
 		children: Snippet
+		data: LayoutData
 	}
 
-	const { children }: Props = $props()
+	const { children, data }: Props = $props()
 
 	const language = writable('ko')
 
@@ -57,6 +60,16 @@
 			}
 		}
 	})
+
+	let user: User | null = $derived.by(() => {
+		if (!data.currentUser) return null
+
+		return {
+			displayName: data.currentUser.displayName,
+			avatarURL: getAvatarUrl(data.currentUser),
+			isAdmin: false
+		} as User
+	})
 </script>
 
 <svelte:head>
@@ -65,7 +78,7 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="layout">
-		<Nav user={null} />
+		<Nav {user} />
 
 		<main class="content">
 			{@render children()}
