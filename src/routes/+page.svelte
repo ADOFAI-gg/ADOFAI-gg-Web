@@ -50,7 +50,9 @@
 			margin-top: 138px;
 		}
 
-		margin-top: 64px;
+		& {
+			margin-top: 64px;
+		}
 	}
 
 	.search-area {
