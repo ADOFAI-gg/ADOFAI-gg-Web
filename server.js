@@ -31,7 +31,7 @@ app.get('/api/thumbnail/:id', async (req, res) => {
 		 * @type {import('http').IncomingMessage}
 		 */
 		const data = (
-			await axios.get(`https://i.ytimg.com/vi/${id}/original.jpg`, {
+			await axios.get(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, {
 				responseType: 'stream'
 			})
 		).data
