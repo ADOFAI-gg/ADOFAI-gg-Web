@@ -34,7 +34,7 @@
 			</div>
 		</div>
 
-		<MainSection title="main:recent-featured-levels">
+		<MainSection title="main:recent-legendary-levels">
 			{#each data.featured.results as level}
 				<LevelListItem {level} />
 			{/each}

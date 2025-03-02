@@ -19,7 +19,7 @@ export const load: PageLoad = async ({ fetch }) => {
 				filter: {
 					op: 'eq',
 					key: 'quality',
-					value: 'FEATURED'
+					value: 'LEGENDARY'
 				}
 			} satisfies SearchQuery
 		}),
