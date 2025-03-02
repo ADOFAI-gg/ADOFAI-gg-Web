@@ -8,7 +8,7 @@ export const getLevelThumbnail = (level: APILevel): string | null => {
 	const youtubeVideoId = getYoutubeVideoId(level.videoUrl)
 
 	if (youtubeVideoId) {
-		return `https://i.ytimg.com/vi/${youtubeVideoId}/original.jpg`
+		return `https://i.ytimg.com/vi/${youtubeVideoId}/maxresdefault.jpg`
 	}
 
 	return null
