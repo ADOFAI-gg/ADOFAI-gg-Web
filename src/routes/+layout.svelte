@@ -9,7 +9,15 @@
 	import '@fontsource/ibm-plex-sans-kr/600.css'
 	import '@fontsource/ibm-plex-sans-kr/700.css'
 
-	import { IconProvider, Nav, Footer, setGlobalContext, type User } from '@adofai-gg/ui'
+	import {
+		IconProvider,
+		Nav,
+		Footer,
+		setGlobalContext,
+		type User,
+		MenuItem,
+		Translation
+	} from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 
 	import type { Snippet } from 'svelte'
@@ -20,6 +28,7 @@
 	import { browser } from '$app/environment'
 	import type { LayoutData } from './$types'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
+	import Cookies from 'js-cookie'
 
 	interface Props {
 		children: Snippet
@@ -66,10 +75,15 @@
 
 		return {
 			displayName: data.currentUser.displayName,
-			avatarURL: getAvatarUrl(data.currentUser),
+			avatarURL: getAvatarUrl(data.currentUser, null, 64),
 			isAdmin: false
 		} as User
 	})
+
+	const onLogout = () => {
+		Cookies.set('redirectTo', window.location.href, { domain: env.PUBLIC_COOKIE_DOMAIN, path: '/' })
+		window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signout`
+	}
 </script>
 
 <svelte:head>
@@ -78,7 +92,13 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="layout">
-		<Nav {user} />
+		<Nav {user}>
+			{#snippet menu()}
+				<MenuItem variant="danger" onclick={onLogout}>
+					<Translation key="ui-common:sign-out" />
+				</MenuItem>
+			{/snippet}
+		</Nav>
 
 		<main class="content">
 			{@render children()}
