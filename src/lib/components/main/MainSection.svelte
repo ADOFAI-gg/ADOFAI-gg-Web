@@ -5,9 +5,10 @@
 	interface Props {
 		title: TranslationKey
 		children: Snippet
+		link?: string
 	}
 
-	const { children, title }: Props = $props()
+	const { children, title, link }: Props = $props()
 </script>
 
 <section class="section">
@@ -18,11 +19,13 @@
 
 		<div class="spacer"></div>
 
-		<a href="/" class="more-link">
-			<Translation key="common:show-more" />
+		{#if link}
+			<a href="/" class="more-link">
+				<Translation key="common:show-more" />
 
-			<Icon icon="chevronRight" size={18} alt="icon" />
-		</a>
+				<Icon icon="chevronRight" size={18} alt="icon" />
+			</a>
+		{/if}
 	</div>
 </section>
 
@@ -30,8 +33,8 @@
 
 <style lang="scss">
 	.title {
-		font-size: 24px;
 		font-weight: 600;
+		font-size: 24px;
 		line-height: 140%;
 	}
 
@@ -46,10 +49,10 @@
 	}
 
 	.more-link {
-		font-size: 16px;
-		font-weight: 600;
 		display: flex;
 		gap: 4px;
 		align-items: center;
+		font-weight: 600;
+		font-size: 16px;
 	}
 </style>
