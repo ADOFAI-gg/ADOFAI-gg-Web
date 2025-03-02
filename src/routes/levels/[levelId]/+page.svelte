@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container } from '@adofai-gg/ui'
+	import { Container, Tag } from '@adofai-gg/ui'
 	import LevelDetailHeader from '~/lib/components/levelDetail/LevelDetailHeader.svelte'
 	import type { PageData } from './$types'
 	import LevelMetadataArea from '~/lib/components/levelDetail/LevelMetadataArea.svelte'
@@ -36,11 +36,29 @@
 				}) as UserListItemModel
 		)
 	)
+
+	const level = $derived(data.level)
 </script>
 
 <div class="level-detail-container">
 	<LevelDetailHeader level={data.level} />
 	<Container topMargin class="grid">
+		<div class="title-area">
+			<div class="label-container">
+				{#if level.quality === 'LEGENDARY'}
+					<Tag color="yellow">legendary</Tag>
+				{:else if level.quality === 'FEATURED'}
+					<Tag color="blue">recommended</Tag>
+				{:else if level.quality === 'HIDDEN'}
+					<Tag color="gray">hidden</Tag>
+				{:else if level.quality === 'UNLISTED'}
+					<Tag color="white">unlisted</Tag>
+				{/if}
+			</div>
+			<div class="level-title">
+				{level.title}
+			</div>
+		</div>
 		<div class="main-content-area">
 			<div class="main-upper-container">
 				<LevelMetadataArea level={data.level} />
@@ -64,7 +82,8 @@
 		}
 	}
 
-	.main-content-area {
+	.main-content-area,
+	.title-area {
 		grid-column: span 12;
 	}
 
@@ -99,5 +118,18 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+	}
+
+	.label-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.level-title {
+		margin-top: 6px;
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 140%;
 	}
 </style>
