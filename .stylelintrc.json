@@ -24,6 +24,7 @@
 		"custom-property-empty-line-before": null,
 		"declaration-block-no-duplicate-properties": true,
 		"hue-degree-notation": "angle",
+		"no-duplicate-selectors": null,
 		"function-calc-no-unspaced-operator": true,
 		"font-family-name-quotes": "always-unless-keyword",
 		"no-descending-specificity": true,
