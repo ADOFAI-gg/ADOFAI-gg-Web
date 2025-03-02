@@ -11,7 +11,7 @@ export const load: LayoutLoad = async ({ fetch }) => {
 		return error(500, 'failed to fetch user')
 	}
 
-	const user: APIMember = await userResponse.json()
+	const user: APIMember | null = userResponse.status === 403 ? null : await userResponse.json()
 
 	return {
 		pageTitle: 'ADOFAI.gg',
