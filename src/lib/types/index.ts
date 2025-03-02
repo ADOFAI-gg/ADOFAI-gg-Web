@@ -9,6 +9,7 @@ export interface APIMember {
 	username: string | null
 	totalPp: number
 	avatar: string | null
+	authUserId: string | null
 }
 
 export interface APIMe extends APIMember {
