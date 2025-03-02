@@ -28,8 +28,8 @@ importers:
         specifier: 1.0.0-alpha.3
         version: 1.0.0-alpha.3
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.81
-        version: 1.2.0-beta.81(@melt-ui/svelte@0.86.2(svelte@5.16.0))(svelte@5.16.0)
+        specifier: 1.2.0-beta.89
+        version: 1.2.0-beta.89(@melt-ui/svelte@0.86.2(svelte@5.16.0))(svelte@5.16.0)
       '@commitlint/cli':
         specifier: ^19.6.1
         version: 19.6.1(@types/node@22.10.2)(typescript@5.7.2)
@@ -66,6 +66,9 @@ importers:
       '@tanstack/virtual-core':
         specifier: ^3.11.2
         version: 3.11.2
+      '@types/js-cookie':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.2
@@ -87,6 +90,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       eslint:
         specifier: ^9.17.0
         version: 9.17.0(jiti@2.4.2)
@@ -99,6 +105,12 @@ importers:
       eslint-plugin-svelte:
         specifier: 2.46.1
         version: 2.46.1(eslint@9.17.0(jiti@2.4.2))(svelte@5.16.0)
+      http-proxy:
+        specifier: ^1.18.1
+        version: 1.18.1
+      js-cookie:
+        specifier: ^3.0.5
+        version: 3.0.5
       lint-staged:
         specifier: ^15.3.0
         version: 15.3.0
@@ -180,8 +192,8 @@ packages:
   '@adofai-gg/query-types@1.0.0-alpha.3':
     resolution: {integrity: sha512-U3XWyN6sTMUZiaCW8G4ulql2zAhY/DQtV/j3mKDP5uUn64ajOxktLZk+/eXoyPVwPoWN6YAhmtwHQA/xmqNGpA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.3/1ccefdd71cd397f39f2b48a675871c681dd2cdb2}
 
-  '@adofai-gg/ui@1.2.0-beta.81':
-    resolution: {integrity: sha512-MXxLU65b517u+Uk/2CGW1hlDPlqS2g2HPzZ2aKkrxHzlPZYR9GWHacLtpkkiPEs2aAy9eOY+b6WV2Nd9UBCT7g==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.81/b5ebdbec2ffb123c87f06a3013dd5b3e1480284e}
+  '@adofai-gg/ui@1.2.0-beta.89':
+    resolution: {integrity: sha512-Gg1z2uGkzrbk9La+Cq3cKV5jCZJbnqF1SxK/cY3YAgU0g2MO8CUyXqMBX8/qnkUeDNf70/Yq+pYuUHPBi7BGFg==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.89/e1b2556db99e64b66d4018b34db0a990c0f6f073}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -1015,6 +1027,9 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
+  '@types/js-cookie@3.0.6':
+    resolution: {integrity: sha512-wkw9yd1kEXOPnvEeEV1Go1MmxtBJL0RR79aOTAApecWFVu7w0NNXNqhcWgvw2YgZDYadliXkl14pa3WXw5jlCQ==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -1528,6 +1543,10 @@ packages:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
 
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
+
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
@@ -1722,6 +1741,9 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
+  eventemitter3@4.0.7:
+    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+
   eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
 
@@ -1816,6 +1838,15 @@ packages:
 
   focus-trap@7.6.2:
     resolution: {integrity: sha512-9FhUxK1hVju2+AiQIDJ5Dd//9R2n2RAfJ0qfhF4IHGHgcoEUTMpbTeG/zbEuwaiYXfuAH6XE0/aCyxDdRM+W5w==}
+
+  follow-redirects@1.15.9:
+    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
 
   foreground-child@3.3.0:
     resolution: {integrity: sha512-Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==}
@@ -1967,6 +1998,10 @@ packages:
   http-proxy-agent@7.0.2:
     resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==}
     engines: {node: '>= 14'}
+
+  http-proxy@1.18.1:
+    resolution: {integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==}
+    engines: {node: '>=8.0.0'}
 
   https-proxy-agent@7.0.6:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
@@ -2701,6 +2736,11 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
+  runed@0.23.4:
+    resolution: {integrity: sha512-9q8oUiBYeXIDLWNK5DfCWlkL0EW3oGbk845VdKlPeia28l751VpfesaB/+7pI6rnbx1I6rqoZ2fZxptOJLxILA==}
+    peerDependencies:
+      svelte: ^5.7.0
+
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
@@ -3336,11 +3376,12 @@ snapshots:
 
   '@adofai-gg/query-types@1.0.0-alpha.3': {}
 
-  '@adofai-gg/ui@1.2.0-beta.81(@melt-ui/svelte@0.86.2(svelte@5.16.0))(svelte@5.16.0)':
+  '@adofai-gg/ui@1.2.0-beta.89(@melt-ui/svelte@0.86.2(svelte@5.16.0))(svelte@5.16.0)':
     dependencies:
       '@melt-ui/svelte': 0.86.2(svelte@5.16.0)
       clsx: 2.1.1
       js-cookie: 3.0.5
+      runed: 0.23.4(svelte@5.16.0)
       svelte: 5.16.0
       svelte-component-actions: 1.1.0
 
@@ -4105,6 +4146,8 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
+  '@types/js-cookie@3.0.6': {}
+
   '@types/json-schema@7.0.15': {}
 
   '@types/node@22.10.2':
@@ -4640,6 +4683,8 @@ snapshots:
     dependencies:
       is-obj: 2.0.0
 
+  dotenv@16.4.7: {}
+
   dunder-proto@1.0.1:
     dependencies:
       call-bind-apply-helpers: 1.0.1
@@ -4861,6 +4906,8 @@ snapshots:
 
   etag@1.8.1: {}
 
+  eventemitter3@4.0.7: {}
+
   eventemitter3@5.0.1: {}
 
   events@3.3.0: {}
@@ -5001,6 +5048,8 @@ snapshots:
   focus-trap@7.6.2:
     dependencies:
       tabbable: 6.2.0
+
+  follow-redirects@1.15.9: {}
 
   foreground-child@3.3.0:
     dependencies:
@@ -5149,6 +5198,14 @@ snapshots:
       debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
+
+  http-proxy@1.18.1:
+    dependencies:
+      eventemitter3: 4.0.7
+      follow-redirects: 1.15.9
+      requires-port: 1.0.0
+    transitivePeerDependencies:
+      - debug
 
   https-proxy-agent@7.0.6:
     dependencies:
@@ -5767,6 +5824,11 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  runed@0.23.4(svelte@5.16.0):
+    dependencies:
+      esm-env: 1.2.1
+      svelte: 5.16.0
 
   sade@1.8.1:
     dependencies:
