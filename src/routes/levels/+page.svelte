@@ -1,9 +1,23 @@
-<script lang="ts" module>
+<script lang="ts">
+	import * as store from 'svelte/store'
 	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
-	import { api, type APILevel } from '$lib'
+	import { api, localizeOptions, type APILevel } from '$lib'
 	import type { Filter, SearchQuery } from '@adofai-gg/query-types'
-	import * as store from 'svelte/store'
+	import {
+		Container,
+		getGlobalContext,
+		LoadingSpinner,
+		SearchBar,
+		SearchOptionsBar
+	} from '@adofai-gg/ui'
+	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
+	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
+	import { onMount } from 'svelte'
+	import { goto } from '$app/navigation'
+	import { parseFilter } from '~/lib/utils/filter'
+
+	const { language } = getGlobalContext()
 
 	const scheme: SearchOptionScheme = {
 		filter: {
@@ -27,9 +41,37 @@
 				label: 'level:filter-creator',
 				name: 'level:filter-creator',
 				type: 'string'
+			},
+			quality: {
+				type: 'select',
+				name: 'level:filter-quality',
+				icon: 'category',
+				default: ['LISTED', 'FEATURED', 'LEGENDARY'],
+				options: localizeOptions($language, [
+					{
+						value: 'LISTED',
+						label: 'level:quality-listed'
+					},
+					{
+						value: 'FEATURED',
+						label: 'level:quality-featured'
+					},
+					{
+						value: 'LEGENDARY',
+						label: 'level:quality-legendary'
+					}
+				]),
+				label: 'level:filter-quality',
+				multiple: true
 			}
 		},
-		sort: []
+		sort: [
+			{
+				name: 'custom:Test',
+				direction: 'asc',
+				objective: 'createdAt'
+			}
+		]
 	} satisfies SearchOptionScheme
 
 	const pageSize = 50
@@ -101,13 +143,32 @@
 				const schemeData = scheme.filter[filter.key]
 				if (!schemeData) continue
 
-				if (schemeData.type === 'string') {
-					rootFilter.data.push({
-						op: 'stringContains',
-						key: filter.key,
-						value: filter.value as string,
-						ignoreCase: false
-					})
+				switch (schemeData.type) {
+					case 'string':
+						rootFilter.data.push({
+							op: 'stringContains',
+							key: filter.key,
+							value: filter.value as string,
+							ignoreCase: true
+						})
+						break
+					case 'select':
+						if (schemeData.multiple) {
+							rootFilter.data.push({
+								op: 'or',
+								data: (filter.value as string[]).map((x) => ({
+									op: 'eq',
+									key: filter.key,
+									value: x
+								}))
+							})
+						} else {
+							// TODO make this
+						}
+
+						break
+					default:
+						break
 				}
 			}
 		}
@@ -117,15 +178,6 @@
 			sort: []
 		}
 	}
-</script>
-
-<script lang="ts">
-	import { Container, LoadingSpinner, SearchBar, SearchOptionsBar } from '@adofai-gg/ui'
-	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
-	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
-	import { onMount, tick } from 'svelte'
-	import { goto } from '$app/navigation'
-	import { parseFilter } from '~/lib/utils/filter'
 
 	let searchQuery = $state('')
 

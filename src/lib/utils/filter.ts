@@ -11,6 +11,16 @@ export const parseFilterItem = (rawData: any, scheme: SearchOptionScheme): Searc
 		case 'string':
 			if (typeof value !== 'string') throw new Error('invalid type')
 			break
+		case 'select':
+			if (schemeData.multiple) {
+				if (!(value instanceof Array)) throw new Error('invalid type')
+				const allowed = schemeData.options.map((x) => x.value)
+				if (!value.every((x) => allowed.includes(x))) throw new Error('invalid value')
+			} else {
+				if (typeof value !== 'string') throw new Error('invalid type')
+				if (!schemeData.options.find((x) => x.value === value)) throw new Error('invalid value')
+			}
+			break
 		default:
 			throw new Error('not implemented')
 	}
