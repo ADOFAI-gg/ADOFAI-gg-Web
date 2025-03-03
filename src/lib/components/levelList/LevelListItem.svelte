@@ -16,7 +16,7 @@
 
 	let fmt = $derived(Intl.NumberFormat($language, { notation: 'compact' }))
 
-	let likes = $derived(fmt.format(12345))
+	let likes = $derived(fmt.format(0))
 </script>
 
 <a href="/levels/{level.id}" class="level-list-item">
@@ -120,10 +120,10 @@
 	}
 
 	.likes {
-		font-size: 16px;
-		font-weight: 500;
 		display: flex;
-		align-items: center;
 		gap: 2px;
+		align-items: center;
+		font-weight: 500;
+		font-size: 16px;
 	}
 </style>

@@ -15,8 +15,10 @@
 		Footer,
 		setGlobalContext,
 		type User,
-		MenuItem,
-		Translation
+		NavMenuGroup,
+		NavMenuItem,
+		Translation,
+		NavLanguageSwitcher
 	} from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 
@@ -39,6 +41,10 @@
 
 	const language = writable('ko')
 
+	const setRedirect = () => {
+		Cookies.set('redirectTo', window.location.href, { domain: env.PUBLIC_COOKIE_DOMAIN, path: '/' })
+	}
+
 	setGlobalContext({
 		language,
 		links: [
@@ -56,9 +62,17 @@
 			language.set(lang)
 		},
 		urls: {
-			main: '/',
-			signIn: `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signin`, // TODO
-			signUp: `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
+			main: '/'
+		},
+		callbacks: {
+			signIn: () => {
+				setRedirect()
+				window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signin`
+			},
+			signUp: () => {
+				setRedirect()
+				window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
+			}
 		}
 	})
 
@@ -81,7 +95,8 @@
 	})
 
 	const onLogout = () => {
-		Cookies.set('redirectTo', window.location.href, { domain: env.PUBLIC_COOKIE_DOMAIN, path: '/' })
+		setRedirect()
+
 		window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signout`
 	}
 </script>
@@ -94,9 +109,27 @@
 	<div class="layout">
 		<Nav {user}>
 			{#snippet menu()}
-				<MenuItem variant="danger" onclick={onLogout}>
+				<!-- <MenuItem variant="danger" onclick={onLogout}>
 					<Translation key="ui-common:sign-out" />
-				</MenuItem>
+				</MenuItem> -->
+				<NavMenuGroup id="default">
+					<NavMenuItem switchGroup="language">
+						<Translation key="ui-common:language" />
+					</NavMenuItem>
+
+					{#if user}
+						<NavMenuItem link href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}>
+							<Translation key="nav:account-settings" />
+						</NavMenuItem>
+						<NavMenuItem onclick={() => onLogout()} type="danger">
+							<Translation key="ui-common:sign-out" />
+						</NavMenuItem>
+					{/if}
+				</NavMenuGroup>
+
+				<NavMenuGroup id="language">
+					<NavLanguageSwitcher />
+				</NavMenuGroup>
 			{/snippet}
 		</Nav>
 
