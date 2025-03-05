@@ -39,6 +39,9 @@ importers:
       '@fluent/bundle':
         specifier: ^0.18.0
         version: 0.18.0
+      '@fontsource/ibm-plex-sans-jp':
+        specifier: 5.1.1
+        version: 5.1.1
       '@fontsource/ibm-plex-sans-kr':
         specifier: ^5.1.0
         version: 5.1.0
@@ -573,6 +576,9 @@ packages:
   '@fluent/bundle@0.18.0':
     resolution: {integrity: sha512-8Wfwu9q8F9g2FNnv82g6Ch/E1AW1wwljsUOolH5NEtdJdv0sZTuWvfCM7c3teB9dzNaJA8rn4khpidpozHWYEA==}
     engines: {node: '>=14.0.0', npm: '>=7.0.0'}
+
+  '@fontsource/ibm-plex-sans-jp@5.1.1':
+    resolution: {integrity: sha512-2hZUtBrHpdqK0ITx7fBS6AQZ335ca4PTXGLURYojJsNPwzDSrQfjLb9v2Y/Gp6sj2Vf0NomiKyw4ZaLvqZIKkw==}
 
   '@fontsource/ibm-plex-sans-kr@5.1.0':
     resolution: {integrity: sha512-6wZqYoptCL+8VqR3oFK4rCLYtasZ9VtyEQ+NYpUhuzqh15FkonW8kJNpqocM1tmVyAOEXC/tZgcqeAEAY5lJig==}
@@ -3833,6 +3839,8 @@ snapshots:
   '@floating-ui/utils@0.2.8': {}
 
   '@fluent/bundle@0.18.0': {}
+
+  '@fontsource/ibm-plex-sans-jp@5.1.1': {}
 
   '@fontsource/ibm-plex-sans-kr@5.1.0': {}
 

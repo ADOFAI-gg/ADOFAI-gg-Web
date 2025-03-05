@@ -9,6 +9,12 @@
 	import '@fontsource/ibm-plex-sans-kr/600.css'
 	import '@fontsource/ibm-plex-sans-kr/700.css'
 
+	import '@fontsource/ibm-plex-sans-jp/300.css'
+	import '@fontsource/ibm-plex-sans-jp/400.css'
+	import '@fontsource/ibm-plex-sans-jp/500.css'
+	import '@fontsource/ibm-plex-sans-jp/600.css'
+	import '@fontsource/ibm-plex-sans-jp/700.css'
+
 	import {
 		IconProvider,
 		Nav,
