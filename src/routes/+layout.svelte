@@ -18,7 +18,9 @@
 		NavMenuGroup,
 		NavMenuItem,
 		Translation,
-		NavLanguageSwitcher
+		NavLanguageSwitcher,
+		Button,
+		Toaster
 	} from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 
@@ -89,7 +91,7 @@
 
 		return {
 			displayName: data.currentUser.displayName,
-			avatarURL: getAvatarUrl(data.currentUser, null, 64),
+			avatarURL: getAvatarUrl(data.currentUser.authUserId, data.currentUser.avatar, null, 64),
 			isAdmin: false
 		} as User
 	})
@@ -105,6 +107,8 @@
 	<title>{$page.data.pageTitle}</title>
 </svelte:head>
 
+<Toaster />
+
 <QueryClientProvider client={queryClient}>
 	<div class="layout">
 		<Nav {user}>
@@ -118,7 +122,11 @@
 					</NavMenuItem>
 
 					{#if user}
-						<NavMenuItem link href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}>
+						<NavMenuItem
+							link
+							href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
+							target="_blank"
+						>
 							<Translation key="nav:account-settings" />
 						</NavMenuItem>
 						<NavMenuItem onclick={() => onLogout()} type="danger">
@@ -130,6 +138,16 @@
 				<NavMenuGroup id="language">
 					<NavLanguageSwitcher />
 				</NavMenuGroup>
+			{/snippet}
+
+			{#snippet rightSlot()}
+				{#if user}
+					<div class="right-actions-area">
+						<Button size="md" variant="outlined" link href="/levels/create">
+							<Translation key="nav:upload-level" />
+						</Button>
+					</div>
+				{/if}
 			{/snippet}
 		</Nav>
 
@@ -147,11 +165,17 @@
 	.layout {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
 	}
 
 	.content {
+		display: flex;
 		flex-grow: 1;
+		flex-direction: column;
+		min-height: calc(100vh - 56px);
 		margin-bottom: 64px;
+	}
+
+	.right-actions-area {
+		margin-right: 12px;
 	}
 </style>

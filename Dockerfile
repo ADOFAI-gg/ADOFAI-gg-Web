@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:20-alpine AS builder
+FROM --platform=$BUILDPLATFORM node:22-alpine AS builder
 
 RUN mkdir -p /app
 
@@ -36,7 +36,7 @@ RUN cat package.json | jq 'del(.devDependencies) | del(.resolutions) | del(.scri
 
 RUN pnpm pack && mv adofai-gg-*.tgz package.tgz
 
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 
 COPY --from=builder /app/package.tgz .
 

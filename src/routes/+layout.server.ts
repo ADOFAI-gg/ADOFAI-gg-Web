@@ -1,8 +1,8 @@
 import { api, type APIMember } from '~/lib'
-import type { LayoutLoad } from './$types'
+import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 
-export const load: LayoutLoad = async ({ fetch }) => {
+export const load: LayoutServerLoad = async ({ fetch }) => {
 	const userResponse = await fetch(api.forum('members/@me'), {
 		credentials: 'include'
 	})
