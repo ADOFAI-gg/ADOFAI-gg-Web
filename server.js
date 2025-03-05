@@ -1,9 +1,7 @@
 import { handler } from './build/handler.js'
-import axios from 'axios'
 
 import express from 'express'
 import compression from 'compression'
-import sharp from 'sharp'
 
 const app = express()
 
@@ -21,28 +19,6 @@ app.use((req, res, next) => {
 	}
 
 	next()
-})
-
-app.get('/api/thumbnail/:id', async (req, res) => {
-	try {
-		const id = req.params.id
-
-		/**
-		 * @type {import('http').IncomingMessage}
-		 */
-		const data = (
-			await axios.get(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`, {
-				responseType: 'stream'
-			})
-		).data
-
-		res.header('content-type', 'image/webp')
-		res.header('cache-control', 'max-age=1209600')
-
-		data.pipe(sharp().resize(640, 360)).pipe(res)
-	} catch {
-		res.status(404).send('not found')
-	}
 })
 
 app.use(handler)
