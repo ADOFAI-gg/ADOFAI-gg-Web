@@ -24,7 +24,7 @@
 	],
 	"devDependencies": {
 		"@adofai-gg/query-types": "1.0.0-alpha.3",
-		"@adofai-gg/ui": "1.2.0-beta.99",
+		"@adofai-gg/ui": "1.2.0-beta.122",
 		"@commitlint/cli": "^19.6.1",
 		"@commitlint/config-conventional": "^19.6.0",
 		"@fluent/bundle": "^0.18.0",
@@ -53,6 +53,7 @@
 		"http-proxy": "^1.18.1",
 		"js-cookie": "^3.0.5",
 		"lint-staged": "^15.3.0",
+		"melt": "^0.17.0",
 		"postcss": "^8.4.49",
 		"postcss-html": "^1.7.0",
 		"postcss-load-config": "^6.0.1",
@@ -60,6 +61,7 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.2",
 		"rimraf": "^6.0.1",
+		"runed": "^0.23.4",
 		"sass": "^1.83.0",
 		"stylelint": "^16.12.0",
 		"stylelint-config-html": "^1.1.0",
@@ -76,7 +78,8 @@
 		"uuid": "^11.0.5",
 		"vite": "^6.0.6",
 		"vite-plugin-glob": "^0.3.2",
-		"vite-plugin-preload": "^0.4.2"
+		"vite-plugin-preload": "^0.4.2",
+		"zod": "^3.24.2"
 	},
 	"type": "module",
 	"dependencies": {
