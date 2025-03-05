@@ -27,7 +27,7 @@ jobs:
         with:
           registry: cr.afg.ink
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORRD }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
