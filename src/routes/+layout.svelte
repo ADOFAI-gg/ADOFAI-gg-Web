@@ -58,7 +58,7 @@
 		links: [
 			{
 				href: '/levels',
-				key: 'nav:levels'
+				key: 'common:levels'
 			}
 			// { href: '/lb', key: 'nav:rankings' },
 			// {
@@ -133,7 +133,7 @@
 							href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
 							target="_blank"
 						>
-							<Translation key="nav:account-settings" />
+							<Translation key="common:account-settings" />
 						</NavMenuItem>
 						<NavMenuItem onclick={() => onLogout()} type="danger">
 							<Translation key="ui-common:sign-out" />
@@ -150,7 +150,7 @@
 				{#if user}
 					<div class="right-actions-area">
 						<Button size="md" variant="outlined" link href="/levels/create">
-							<Translation key="nav:upload-level" />
+							<Translation key="common:upload-level" />
 						</Button>
 					</div>
 				{/if}

@@ -45,7 +45,8 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				method: 'POST'
+				method: 'POST',
+				credentials: 'include'
 			})
 
 			if (!res.ok) {
