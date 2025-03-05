@@ -1,34 +1,23 @@
 FROM --platform=$BUILDPLATFORM node:22-alpine AS builder
 
+ARG GH_NPM_TOKEN
+
 RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
-COPY patches ./patches
+COPY package.json pnpm-lock.yaml .npmrc ./
+
+RUN echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc
 
 RUN corepack enable && pnpm i --frozen-lockfile
 
 COPY . .
 
-ARG API_ENDPOINT
-ARG OPENGRAPH_ENDPOINT
-ARG DISCORD_INVITE
-ARG SUPPORT_MAIL
-ARG GTM_ID
-ARG GA_ID
-ARG USE_ACCOUNT=false
-ARG PUBLIC_TELEMETRY_ENDPOINT
-ARG PUBLIC_TELEMETRY_API_KEY
-
 ENV IS_RELEASE=1
 
 RUN apk add git && \
-    PUBLIC_API_ENDPOINT=${API_ENDPOINT} PUBLIC_OPENGRAPH_ENDPOINT=${OPENGRAPH_ENDPOINT} \
-    PUBLIC_DISCORD_INVITE=${DISCORD_INVITE} PUBLIC_SUPPORT_MAIL=${SUPPORT_MAIL} \
-    PUBLIC_GTM_ID=${GTM_ID} PUBLIC_GA_ID=${GA_ID} PUBLIC_USE_ACCOUNT=${USE_ACCOUNT} \
-    pnpm build && \
-    mv static/~partytown build/client/~partytown
+    pnpm build
 
 RUN apk add jq
 
@@ -44,6 +33,7 @@ RUN tar xvzf package.tgz && \
     rm package.tgz && \
     mv package app && \
     cd app && \
+    echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc && \
     corepack enable && \
     pnpm i --production
 
