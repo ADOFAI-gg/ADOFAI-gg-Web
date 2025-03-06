@@ -6,3 +6,4 @@ rankings = Rankings
 references = References
 account-settings = Account settings
 upload-level = 레벨 투고
+submit = 제출
