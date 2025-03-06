@@ -1,6 +1,11 @@
 <script lang="ts">
 	import type { Writable } from 'svelte/store'
-	import { api, type PartialLevelCreatePayload, type UploadState } from '~/lib'
+	import {
+		api,
+		type LevelUploadInfo,
+		type PartialLevelCreatePayload,
+		type UploadState
+	} from '~/lib'
 	import { FileUpload } from 'melt/builders'
 	import FormTitle from '~/lib/components/form/FormTitle.svelte'
 	import {
@@ -11,6 +16,8 @@
 		toast,
 		translateKey
 	} from '@adofai-gg/ui'
+	import axios from 'axios'
+	import { md5 } from 'js-md5'
 
 	interface Props {
 		payload: Writable<PartialLevelCreatePayload>
@@ -32,14 +39,13 @@
 
 			const buffer = await file.arrayBuffer()
 
-			const hash = await crypto.subtle.digest('SHA-256', buffer)
-
-			const hashStr = [...new Uint8Array(hash)].map((x) => x.toString(16).padStart(2, '0')).join('')
+			const hash = md5.create().update(buffer).base64()
+			console.log(hash)
 
 			const res = await fetch(api.forum('levels/files/pre-signed-url'), {
 				body: JSON.stringify({
 					fileName: file.name,
-					sha256Hash: hashStr,
+					contentMD5: hash,
 					contentLength: file.size
 				}),
 				headers: {
@@ -54,12 +60,38 @@
 				throw new Error('server returned invalid status code: ' + res.status)
 			}
 
-			await new Promise((resolve) => setTimeout(resolve, 1000))
+			const data: LevelUploadInfo = await res.json()
 
 			$uploadState = {
 				abort: ac,
 				status: 'uploading',
 				progress: 0
+			}
+
+			onNext()
+
+			await axios.request({
+				withCredentials: true,
+				url: data.url,
+				data: buffer,
+				method: 'PUT',
+				headers: {
+					'Content-MD5': hash
+				},
+				onUploadProgress: (ev) => {
+					$uploadState = {
+						status: 'uploading',
+						abort: ac,
+						progress: ev.progress || 0
+					}
+				},
+				signal: ac.signal
+			})
+
+			$uploadState = {
+				status: 'complete',
+				fileId: data.s3ObjectKey,
+				fileName: file.name
 			}
 		} catch (e) {
 			console.error(e)
@@ -86,7 +118,7 @@
 					toast.error(translateKey($language, 'errors:invalid-file-type', {}))
 					break
 				case 'size':
-					toast.error(translateKey($language, 'errors:level-file-too-big', {}))
+					toast.error(translateKey($language, 'errors:file-too-big', { size: '3GB' }))
 					break
 			}
 		},

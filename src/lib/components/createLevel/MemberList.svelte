@@ -15,14 +15,16 @@
 	import { Debounced } from 'runed'
 	import { api } from '~/lib'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
+	import { stripValues } from '@melt-ui/svelte/internal/helpers'
 
 	interface Props {
 		value: MemberIdOrCreate[]
 		canEdit: boolean
 		isCreator: boolean
+		registeredOnly?: boolean
 	}
 
-	let { value = $bindable(), canEdit, isCreator }: Props = $props()
+	let { value = $bindable(), canEdit, registeredOnly, isCreator }: Props = $props()
 
 	const { language } = getGlobalContext()
 
@@ -46,9 +48,18 @@
 				return
 			}
 
-			const res = await fetch(api.forum('members') + '?' + new URLSearchParams({ name: query }), {
-				signal: abort
-			})
+			const res = await fetch(
+				api.forum('members') +
+					'?' +
+					new URLSearchParams({
+						displayName: query,
+						registered: registeredOnly ? 'true' : 'false',
+						sort: 'DISPLAY_NAME_LENGTH_ASC'
+					}),
+				{
+					signal: abort
+				}
+			)
 			results = (await res.json()).results
 		} catch (e) {
 			if (e instanceof DOMException) {
@@ -78,7 +89,7 @@
 	const items = $derived.by(() => {
 		const result: SelectOption<number | 'create', APIMember>[] = []
 
-		if (debouncedSearch.current) {
+		if (debouncedSearch.current && !registeredOnly) {
 			result.push({
 				label: translateKey($language, 'level-create:create-item', {
 					value: debouncedSearch.current
@@ -107,20 +118,22 @@
 <div class="member-list">
 	{#if value.length > 0}
 		<OutlinedPanel>
-			{#each value as member}
-				<SelectedItem
-					name={member.data.name}
-					onRemove={canEdit
-						? () => {
-								value = value.filter((x) => x !== member)
-							}
-						: undefined}
-				>
-					{#snippet icon()}
-						<Avatar size={24} src={member.data.avatarUrl} />
-					{/snippet}
-				</SelectedItem>
-			{/each}
+			<div class="list">
+				{#each value as member}
+					<SelectedItem
+						name={member.data.name}
+						onRemove={canEdit
+							? () => {
+									value = value.filter((x) => x !== member)
+								}
+							: undefined}
+					>
+						{#snippet icon()}
+							<Avatar size={24} src={member.data.avatarUrl} />
+						{/snippet}
+					</SelectedItem>
+				{/each}
+			</div>
 		</OutlinedPanel>
 	{/if}
 
@@ -130,6 +143,27 @@
 			onSelect={(x) => {
 				if (x === 'create') {
 					if (value.some((y) => !y.exists && y.data.name === debouncedSearch.current)) {
+						return
+					}
+
+					const existing = items.find(
+						(x) =>
+							x.customData?.authUserId === null &&
+							x.customData.displayName === debouncedSearch.current
+					)
+
+					if (existing) {
+						value = [
+							...value,
+							{
+								exists: true,
+								data: {
+									avatarUrl: getAvatarUrl(null, null, isCreator ? 'creator' : 'artist', 24),
+									name: existing.customData!.displayName
+								},
+								id: existing.value as number
+							}
+						]
 						return
 					}
 
@@ -205,6 +239,12 @@
 
 <style lang="scss">
 	.member-list {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.list {
 		display: flex;
 		flex-direction: column;
 		gap: 8px;

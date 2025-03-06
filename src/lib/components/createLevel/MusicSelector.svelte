@@ -28,9 +28,12 @@
 				return
 			}
 
-			const res = await fetch(api.forum('music') + '?' + new URLSearchParams({ name: query }), {
-				signal: abort
-			})
+			const res = await fetch(
+				api.forum('music') + '?' + new URLSearchParams({ name: query, sort: 'NAME_LENGTH_ASC' }),
+				{
+					signal: abort
+				}
+			)
 			results = (await res.json()).results
 		} catch (e) {
 			if (e instanceof DOMException) {

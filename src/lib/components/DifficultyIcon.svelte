@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+	import { Avatar } from '@adofai-gg/ui'
+
 	interface Props {
 		difficulty: number | null
 		size?: number
@@ -11,14 +13,14 @@
 
 	let difficultyName = $derived.by(() => {
 		if (difficulty === null) return 'unknown'
-		if (difficulty === 0.1) return 'tiny'
-		if (difficulty === 18.5) return '18+'
-		if (difficulty === 19.5) return '19+'
-		if (difficulty === 20) return '20.1'
-		if (difficulty === 21) return '21.0'
-		if (difficulty === 22) return '22.0'
-		if (difficulty === 101) return '-1'
-		return difficulty.toString()
+		// if (difficulty === 0.1) return 'tiny'
+		// if (difficulty === 18.5) return '18+'
+		// if (difficulty === 19.5) return '19+'
+		// if (difficulty === 20) return '20.1'
+		// if (difficulty === 21) return '21.0'
+		// if (difficulty === 22) return '22.0'
+		// if (difficulty === 101) return '-1'
+		return difficulty.toFixed(1)
 	})
 
 	let icon = $derived(
@@ -27,4 +29,4 @@
 	)
 </script>
 
-<img width={size} height={size} src={icon} alt="difficulty icon" />
+<Avatar {size} src={icon} />

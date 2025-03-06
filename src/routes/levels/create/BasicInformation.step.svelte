@@ -18,9 +18,10 @@
 
 	interface Props {
 		payload: Writable<PartialLevelCreatePayload>
+		onNext: () => void
 	}
 
-	let { payload }: Props = $props()
+	let { payload, onNext }: Props = $props()
 	const { language } = getGlobalContext()
 
 	let errors = $state<Record<string, TranslationKey | undefined>>({})
@@ -36,6 +37,11 @@
 			hasErrors = true
 		}
 
+		if (!p.music?.data.artists.length) {
+			newErrors.artists = 'form:required'
+			hasErrors = true
+		}
+
 		if (!p.creators.length) {
 			newErrors.creators = 'form:required'
 			hasErrors = true
@@ -45,7 +51,7 @@
 			errors = newErrors
 		}
 
-		return hasErrors
+		return !hasErrors
 	}
 
 	const onSubmit = () => {
@@ -54,6 +60,8 @@
 		if (!validate(p)) {
 			return
 		}
+
+		onNext()
 	}
 
 	$effect(() => {
@@ -84,16 +92,10 @@
 	</FormField>
 
 	{#if $payload.music}
-		<FormField
-			error={errors.music}
-			noLabel={!!$payload.music}
-			label="level-create:artists"
-			required
-			noHintsArea
-		>
+		<FormField error={errors.artists} noLabel label="level-create:artists" required noHintsArea>
 			<MemberList
 				isCreator={false}
-				value={$payload.music.data.artists}
+				bind:value={$payload.music.data.artists}
 				canEdit={!$payload.music.exists}
 			/>
 		</FormField>
@@ -114,7 +116,7 @@
 		subtitle="level-create:creators-subtitle"
 		required
 	>
-		<MemberList isCreator={false} bind:value={$payload.creators} canEdit />
+		<MemberList registeredOnly isCreator={false} bind:value={$payload.creators} canEdit />
 	</FormField>
 
 	<FormField label="level-create:creator-alias" subtitle="level-create:creator-alias-subtitle">
