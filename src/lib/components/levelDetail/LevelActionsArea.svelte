@@ -1,17 +1,20 @@
 <script lang="ts">
 	import { Button, Translation } from '@adofai-gg/ui'
 	import type { APILevel } from '~/lib/types'
+	import { getDownloadUrl } from '~/lib/utils/level'
 
 	interface Props {
 		level: APILevel
 	}
 
 	const { level }: Props = $props()
+
+	const downloadUrl = $derived(getDownloadUrl(level))
 </script>
 
 <div class="level-actions-area">
-	{#if level.downloadUrl}
-		<a href={level.downloadUrl} rel="noreferrer" target="_blank">
+	{#if downloadUrl}
+		<a href={downloadUrl} rel="noreferrer" target="_blank">
 			<Button size="lg" leftIcon="fileDownload">
 				<Translation key="level:download" />
 			</Button>

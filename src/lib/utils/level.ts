@@ -1,3 +1,4 @@
+import { api } from '..'
 import type { APILevel } from '../types'
 
 export const getDifficulty = (level: APILevel) => {
@@ -24,4 +25,12 @@ export const getTags = (level: APILevel) => {
 	}
 
 	return [...dangerTags, ...warningTags, ...result]
+}
+
+export const getDownloadUrl = (level: APILevel) => {
+	if (level.file) {
+		return api.forum(`levels/${level.id}/download`)
+	}
+
+	return level.downloadUrl
 }

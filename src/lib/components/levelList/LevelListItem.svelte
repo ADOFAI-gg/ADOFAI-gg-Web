@@ -2,7 +2,7 @@
 	import type { APILevel } from '~/lib/types'
 	import DifficultyIcon from '../DifficultyIcon.svelte'
 	import LevelListItemUserList from './LevelListItemUserList.svelte'
-	import { getDifficulty, getTags } from '~/lib/utils/level'
+	import { getDifficulty, getDownloadUrl, getTags } from '~/lib/utils/level'
 	import { getGlobalContext, Icon } from '@adofai-gg/ui'
 	import TagIcon from '../TagIcon.svelte'
 
@@ -17,6 +17,7 @@
 	let fmt = $derived(Intl.NumberFormat($language, { notation: 'compact' }))
 
 	let likes = $derived(fmt.format(0))
+	const downloadUrl = $derived(getDownloadUrl(level))
 </script>
 
 <a href="/levels/{level.id}" class="level-list-item">
@@ -46,7 +47,7 @@
 		class="download-button"
 		onclick={(e) => {
 			e.preventDefault()
-			if (level.downloadUrl) window.open(level.downloadUrl, '_blank')
+			if (downloadUrl) window.open(downloadUrl, '_blank')
 		}}
 	>
 		<Icon alt="download" icon="fileDownload" size={48} />

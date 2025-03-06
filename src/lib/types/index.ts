@@ -25,6 +25,14 @@ export interface APIMusic {
 	artists: APIMember[]
 }
 
+export interface APIFile {
+	id: number
+	name: string
+	extension: string
+	contentMD5: string
+	size: number
+}
+
 export interface APILevel {
 	id: number
 	appendingTitle: string | null
@@ -39,6 +47,9 @@ export interface APILevel {
 	lengthMs: number | null
 	tile: number
 	difficulty: number | null
+
+	file: APIFile | null
+	thumbnail: APIFile | null
 
 	title: string
 	// file
