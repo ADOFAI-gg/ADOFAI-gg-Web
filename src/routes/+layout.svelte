@@ -60,7 +60,6 @@
 				href: '/levels',
 				key: 'common:levels'
 			}
-			// { href: '/lb', key: 'nav:rankings' },
 			// {
 			// 	href: '/references',
 			// 	key: 'nav:references'
@@ -68,6 +67,10 @@
 		],
 		setLanguage: (lang) => {
 			language.set(lang)
+			fetch('/api/set-lang', {
+				method: 'POST',
+				body: JSON.stringify({ lang })
+			})
 		},
 		urls: {
 			main: '/'
