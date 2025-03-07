@@ -125,16 +125,16 @@
 	const uploadThumbnail = async (file: LevelCreatePayload['thumbnail']) => {
 		if (!file) return null
 
-		const buffer = await file.file.arrayBuffer()
+		const f = file.file
 
+		const buffer = await f.arrayBuffer()
 		const hash = md5.create().update(buffer).base64()
-		console.log(hash)
 
 		const res = await fetch(api.forum('levels/files/pre-signed-url'), {
 			body: JSON.stringify({
-				fileName: file.file.name,
+				fileName: f.name,
 				contentMD5: hash,
-				contentLength: file.file.size
+				contentLength: f.size
 			}),
 			headers: {
 				'Content-Type': 'application/json'
@@ -193,11 +193,13 @@
 		const minBpm = data.minBPM!
 		const maxBpm = data.maxBPM!
 		const expectedDifficulty = data.expectedDifficulty!
-		const thumbnail = await uploadThumbnail(data.thumbnail)
+		const thumbnail = await uploadThumbnail($payload.thumbnail)
 		const file = {
 			s3ObjectKey: $uploadState.fileId,
 			fileName: $uploadState.fileName
 		}
+		const isDlc = data.limits.neoCosmos
+		const isEpilepsyWarning = data.limits.seizure
 
 		const res = await fetch(api.forum('levels'), {
 			body: JSON.stringify({
@@ -213,7 +215,9 @@
 				maxBpm,
 				expectedDifficulty,
 				thumbnail,
-				file
+				file,
+				isDlc,
+				isEpilepsyWarning
 			}),
 			method: 'POST',
 			headers: {

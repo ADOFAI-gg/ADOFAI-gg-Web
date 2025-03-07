@@ -101,7 +101,7 @@
 				if ($payload.thumbnail) {
 					URL.revokeObjectURL($payload.thumbnail.url)
 				}
-				const bytes = await file.bytes()
+				const bytes = await file.arrayBuffer()
 				const blob = new Blob([bytes])
 				$payload.thumbnail = {
 					file,
