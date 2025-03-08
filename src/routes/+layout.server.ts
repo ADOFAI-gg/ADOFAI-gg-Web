@@ -1,8 +1,9 @@
 import { api, type APIMember } from '~/lib'
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
+import { env } from '$env/dynamic/private'
 
-export const load: LayoutServerLoad = async ({ fetch }) => {
+export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 	const userResponse = await fetch(api.forum('members/@me'), {
 		credentials: 'include'
 	})
@@ -13,8 +14,22 @@ export const load: LayoutServerLoad = async ({ fetch }) => {
 
 	const user: APIMember | null = userResponse.status === 403 ? null : await userResponse.json()
 
+	const lang = cookies.get('adofaigg.lang')
+
+	if (lang) {
+		cookies.set('adofaigg.lang', lang, {
+			domain: env.PUBLIC_GLOBAL_COOKIE_DOMAIN,
+			path: '/',
+			maxAge: 60 * 60 * 24 * 365,
+			httpOnly: false,
+			secure: true,
+			sameSite: 'lax'
+		})
+	}
+
 	return {
 		pageTitle: 'ADOFAI.gg',
-		currentUser: user
+		currentUser: user,
+		lang
 	}
 }

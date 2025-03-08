@@ -47,10 +47,14 @@
 
 	const { children, data }: Props = $props()
 
-	const language = writable('ko')
+	const language = writable(data.lang)
 
 	const setRedirect = () => {
-		Cookies.set('redirectTo', window.location.href, { domain: env.PUBLIC_COOKIE_DOMAIN, path: '/' })
+		Cookies.set('redirectTo', window.location.href, {
+			domain: env.PUBLIC_COOKIE_DOMAIN,
+			path: '/',
+			secure: true
+		})
 	}
 
 	setGlobalContext({
@@ -70,6 +74,13 @@
 			fetch('/api/set-lang', {
 				method: 'POST',
 				body: JSON.stringify({ lang })
+			})
+			Cookies.set('adofaigg.lang', lang, {
+				domain: env.PUBLIC_COOKIE_DOMAIN,
+				expires: 60 * 60 * 24 * 365,
+				path: '/',
+				secure: true,
+				sameSite: 'Lax'
 			})
 		},
 		urls: {
