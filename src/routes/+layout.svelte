@@ -15,6 +15,8 @@
 	import '@fontsource/ibm-plex-sans-jp/600.css'
 	import '@fontsource/ibm-plex-sans-jp/700.css'
 
+	import '../stylesheets/docs.scss'
+
 	import {
 		IconProvider,
 		Nav,

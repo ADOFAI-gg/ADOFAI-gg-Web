@@ -57,6 +57,7 @@
 		"js-cookie": "^3.0.5",
 		"js-md5": "^0.8.3",
 		"lint-staged": "^15.3.0",
+		"mdsvex": "^0.12.3",
 		"melt": "^0.17.0",
 		"postcss": "^8.4.49",
 		"postcss-html": "^1.7.0",
