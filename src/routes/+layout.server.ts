@@ -1,7 +1,7 @@
 import { api, type APIMember } from '~/lib'
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
-import { env } from '$env/dynamic/private'
+import { env } from '$env/dynamic/public'
 
 export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 	const userResponse = await fetch(api.forum('members/@me'), {
@@ -18,7 +18,7 @@ export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 
 	if (lang) {
 		cookies.set('adofaigg.lang', lang, {
-			domain: env.PUBLIC_GLOBAL_COOKIE_DOMAIN,
+			domain: env.PUBLIC_COOKIE_DOMAIN,
 			path: '/',
 			maxAge: 60 * 60 * 24 * 365,
 			httpOnly: false,
