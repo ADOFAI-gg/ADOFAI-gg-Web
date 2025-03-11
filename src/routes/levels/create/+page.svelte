@@ -198,8 +198,8 @@
 			s3ObjectKey: $uploadState.fileId,
 			fileName: $uploadState.fileName
 		}
-		const isDlc = data.limits.neoCosmos
-		const isEpilepsyWarning = data.limits.seizure
+		const dlc = data.limits.neoCosmos
+		const epilepsyWarning = data.limits.seizure
 
 		const res = await fetch(api.forum('levels'), {
 			body: JSON.stringify({
@@ -216,8 +216,8 @@
 				expectedDifficulty,
 				thumbnail,
 				file,
-				isDlc,
-				isEpilepsyWarning
+				dlc,
+				epilepsyWarning
 			}),
 			method: 'POST',
 			headers: {
