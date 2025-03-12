@@ -2,6 +2,10 @@ name: Test Build
 
 on:
   pull_request:
+
+permissions:
+  packages: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +18,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '22'
       - name: Setup pnpm
         run: corepack enable
       - name: Get pnpm store directory
@@ -30,7 +34,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc
+          GH_NPM_TOKEN="${{ secrets.GITHUB_TOKEN }}" pnpm install --frozen-lockfile
       - name: Build
         run: |
           pnpm build
