@@ -46,7 +46,3 @@ NO_SPEED_CHANGES-description = 이 레벨은 일정한 속도를 유지합니다
 DLC-description = 이 레벨은 Neo Cosmos DLC를 요구합니다.
 POLYRHYTHM-description = 이 레벨은 폴리리듬을 포함합니다.
 GIMMICK-description = 이 레벨은 기믹을 포함합니다.
-LEGENDARY = TODO
-LEGENDARY-description = TODO
-FEATURED = TODO
-FEATURED-description = TODO
