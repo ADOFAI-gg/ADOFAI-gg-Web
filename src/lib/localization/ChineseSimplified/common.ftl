@@ -1,0 +1,9 @@
+show-more = 더 보기
+next = 다음으로
+unknown = 알 수 없음
+account-settings = 계정 설정
+submit = 제출
+rankings = 랭킹
+upload-level = 레벨 투고
+references = 기준
+levels = 레벨
