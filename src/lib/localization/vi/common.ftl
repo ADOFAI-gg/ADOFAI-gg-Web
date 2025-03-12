@@ -1,0 +1,9 @@
+show-more = Hiện thêm
+next = Tiếp tục
+unknown = Không rõ
+account-settings = Cài đặt tài khoản
+submit = Nhập
+rankings = Xếp hạng
+upload-level = Đăng lên một cấp độ
+references = Tham khảo
+levels = Các cấp độ
