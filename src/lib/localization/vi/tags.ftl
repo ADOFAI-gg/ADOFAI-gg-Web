@@ -46,3 +46,7 @@ NSFW = NSFW
 GIMMICK-description = Cấp độ này chứa các cơ chế phức tạp
 PSEUDO-description = 이 레벨은 두 손가락으로 동시에 눌러야 하는 부분을 포함합니다.
 TRIPLET-description = 이 레벨은 셋잇단을 포함합니다.
+LEGENDARY = 레전드리
+LEGENDARY-description = 트랙과 이펙트의 퀄리티가 우수하여 적극 추천하는 레벨입니다.
+FEATURED = 추천
+FEATURED-description = 트랙의 퀄리티가 준수하여 추천하는 레벨입니다.
