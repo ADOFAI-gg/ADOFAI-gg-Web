@@ -38,6 +38,11 @@
 			{likes}
 		</div>
 		<div class="tags">
+			{#if level.quality === 'FEATURED'}
+				<TagIcon size={24} tag="FEATURED" />
+			{:else if level.quality === 'LEGENDARY'}
+				<TagIcon size={24} tag="LEGENDARY" />
+			{/if}
 			{#each getTags(level) as tag}
 				<TagIcon size={24} {tag} />
 			{/each}
