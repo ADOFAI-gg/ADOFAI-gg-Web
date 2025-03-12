@@ -29,7 +29,7 @@ export const getTags = (level: APILevel) => {
 
 export const getDownloadUrl = (level: APILevel) => {
 	if (level.file) {
-		return api.forum(`levels/${level.id}/download`)
+		return api.forum(`levels/${level.id}/file`)
 	}
 
 	return level.downloadUrl
