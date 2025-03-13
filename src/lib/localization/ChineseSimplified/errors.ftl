@@ -1,4 +1,4 @@
-file-too-big = 파일이 너무 큽니다(최대 { $size })
-invalid-file-type = 허용되지 않은 파일 유형입니다
-level-upload-failed = 레벨 업로드 실패: { $message }
-thumbnail-invalid-file-type = PNG, JPEG, WEBP 파일만 선택할 수 있습니다
+file-too-big = 文件太大了（最大限制 { $size }）
+invalid-file-type = 不支持您上传的文件类型
+level-upload-failed = 关卡上传失败: { $message }
+thumbnail-invalid-file-type = 仅可选择 PNG、JPEG 和 WEBP 文件
