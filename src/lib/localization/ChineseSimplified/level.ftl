@@ -15,3 +15,7 @@ tiles = 物量
 share = 分享
 search-placeholder = 搜索关卡、歌曲、作曲家、谱师
 bpm = BPM
+sort-id-asc = 과거순
+sort-id-desc = 최신순
+sort-difficulty-asc = 난도 낮은 순
+sort-difficulty-desc = 난도 높은 순
