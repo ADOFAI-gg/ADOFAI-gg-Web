@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { dev } from '$app/environment'
-	import { getGlobalContext, Panel, translateKey } from '@adofai-gg/ui'
-	import { writable } from 'svelte/store'
+	import { getGlobalContext, Panel, translateKey, Translation } from '@adofai-gg/ui'
+	import { derived, writable } from 'svelte/store'
 	import {
 		api,
 		type APILevel,
@@ -22,6 +22,7 @@
 	import { md5 } from 'js-md5'
 	import { onDestroy } from 'svelte'
 	import axios from 'axios'
+	import Progress from '~/lib/components/Progress.svelte'
 
 	enum UploadStep {
 		FileUpload,
@@ -234,12 +235,28 @@
 
 		await goto(`/levels/${level.id}`)
 	}
+
+	const progress = derived(uploadState, (x) => {
+		if (x.status !== 'uploading') return 0
+		return Math.floor(x.progress * 100)
+	})
 </script>
 
 <div class="create-level-root">
 	{#if $uploadState.status === 'uploading'}
 		<Panel noPadding>
-			Uploading: {$uploadState.progress}
+			<div class="uploading">
+				<div class="uploading-text-area">
+					<Translation key="level-create:uploading" />
+
+					<div class="uploading-progress-text">{$progress}%</div>
+				</div>
+				<div class="uploading-content">
+					<div class="uploading-progress">
+						<Progress max={100} value={$progress} />
+					</div>
+				</div>
+			</div>
 		</Panel>
 	{/if}
 
@@ -277,11 +294,35 @@
 </div>
 
 <style lang="scss">
+	.uploading {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+
+		&-text-area {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-weight: 500;
+			font-size: 16px;
+		}
+
+		&-progress-text {
+			font-weight: 500;
+			font-size: 12px;
+			opacity: 0.4;
+		}
+
+		&-progress {
+			flex-grow: 1;
+		}
+	}
+
 	.create-level-root {
 		display: flex;
 		flex-grow: 1;
 		flex-direction: column;
-		gap: 32px;
+		gap: 16px;
 		align-items: center;
 		justify-content: center;
 		padding: 16px;
