@@ -15,3 +15,7 @@ tiles = Tiles
 share = Share
 search-placeholder = Search the levels, songs, artists, and creators.
 bpm = BPM
+sort-id-asc = 과거순
+sort-id-desc = 최신순
+sort-difficulty-asc = 난도 낮은 순
+sort-difficulty-desc = 난도 높은 순
