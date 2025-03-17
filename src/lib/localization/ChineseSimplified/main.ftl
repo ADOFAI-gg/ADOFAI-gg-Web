@@ -1,1 +1,1 @@
-recent-legendary-levels = 최근 등재된 Legendary 레벨
+recent-legendary-levels = 最近新增的传奇关卡
