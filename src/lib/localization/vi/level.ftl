@@ -15,3 +15,7 @@ tiles = 타일 수
 share = 공유
 search-placeholder = 레벨, 노래, 아티스트, 제작자를 검색하세요.
 bpm = BPM
+sort-id-asc = 과거순
+sort-id-desc = 최신순
+sort-difficulty-asc = 난도 낮은 순
+sort-difficulty-desc = 난도 높은 순
