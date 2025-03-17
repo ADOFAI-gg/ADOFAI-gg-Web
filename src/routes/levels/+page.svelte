@@ -9,7 +9,8 @@
 		getGlobalContext,
 		LoadingSpinner,
 		SearchBar,
-		SearchOptionsBar
+		SearchOptionsBar,
+		translateKey
 	} from '@adofai-gg/ui'
 	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
@@ -19,7 +20,7 @@
 
 	const { language } = getGlobalContext()
 
-	const scheme: SearchOptionScheme = {
+	const scheme: SearchOptionScheme = $derived({
 		filter: {
 			'music.name': {
 				default: '',
@@ -67,23 +68,23 @@
 		},
 		sort: [
 			{
-				name: '최신순',
+				name: translateKey($language, 'level:sort-id-desc', {}),
 				objective: 'id:desc'
 			},
 			{
-				name: '과거순',
+				name: translateKey($language, 'level:sort-id-asc', {}),
 				objective: 'id:asc'
 			},
 			{
-				name: '난도 높은 순',
+				name: translateKey($language, 'level:sort-difficulty-desc', {}),
 				objective: 'difficulty:desc'
 			},
 			{
-				name: '난도 낮은 순',
+				name: translateKey($language, 'level:sort-difficulty-asc', {}),
 				objective: 'difficulty:asc'
 			}
 		]
-	} satisfies SearchOptionScheme
+	} satisfies SearchOptionScheme)
 
 	const pageSize = 50
 
