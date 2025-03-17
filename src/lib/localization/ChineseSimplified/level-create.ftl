@@ -50,3 +50,4 @@ bpm = 기본 BPM
 thumbnail-drop-to-change = 여기에 드래그해 썸네일 바꾸기
 creators-subtitle = ADOFAI.gg에 계정을 등록한 사람만 추가할 수 있습니다.
 min-bpm = 최소 BPM
+uploading = 업로드 중...
