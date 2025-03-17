@@ -3,7 +3,7 @@
 	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
 	import { api, localizeOptions, type APILevel } from '$lib'
-	import type { Filter, SearchQuery } from '@adofai-gg/query-types'
+	import type { Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
 	import {
 		Container,
 		getGlobalContext,
@@ -67,9 +67,20 @@
 		},
 		sort: [
 			{
-				name: 'custom:Test',
-				direction: 'asc',
-				objective: 'createdAt'
+				name: '최신순',
+				objective: 'id:desc'
+			},
+			{
+				name: '과거순',
+				objective: 'id:asc'
+			},
+			{
+				name: '난도 높은 순',
+				objective: 'difficulty:desc'
+			},
+			{
+				name: '난도 낮은 순',
+				objective: 'difficulty:asc'
 			}
 		]
 	} satisfies SearchOptionScheme
@@ -78,7 +89,7 @@
 
 	let searchOptions = $state<SearchOptionsData>({
 		filter: [],
-		sort: []
+		sort: 'id:desc'
 	})
 
 	const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
@@ -108,6 +119,7 @@
 			op: 'and',
 			data: []
 		}
+		const sort: Sort[] = []
 
 		const hasSearchQuery = search.length >= 1
 		const hasOptionalFilter = searchOptions.filter.length >= 1
@@ -173,9 +185,19 @@
 			}
 		}
 
+		if (searchOptions.sort) {
+			const [objective, direction] = searchOptions.sort.split(':')
+			if (['asc', 'desc'].includes(direction)) {
+				sort.push({
+					objective,
+					direction: direction as 'asc' | 'desc'
+				})
+			}
+		}
+
 		return {
 			filter: hasSearchQuery || hasOptionalFilter ? rootFilter : null,
-			sort: []
+			sort
 		}
 	}
 
@@ -196,7 +218,7 @@
 	let debouncedSearchText = store.writable('')
 	let searchOptionsWritable = store.writable<SearchOptionsData>({
 		filter: [],
-		sort: []
+		sort: 'recent-desc'
 	})
 
 	let queryParams = store.derived(
