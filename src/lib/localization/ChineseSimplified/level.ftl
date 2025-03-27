@@ -19,3 +19,4 @@ sort-id-asc = 时间由旧到新排序
 sort-id-desc = 时间由新到旧排序
 sort-difficulty-asc = 难度低到高排序
 sort-difficulty-desc = 难度高到低排序
+link-copied = 레벨 링크가 복사되었습니다!
