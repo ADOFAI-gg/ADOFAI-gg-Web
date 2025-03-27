@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Translation } from '@adofai-gg/ui'
+	import { Button, getGlobalContext, toast, translateKey, Translation } from '@adofai-gg/ui'
 	import type { APILevel } from '~/lib/types'
 	import { getDownloadUrl } from '~/lib/utils/level'
 
@@ -10,6 +10,21 @@
 	const { level }: Props = $props()
 
 	const downloadUrl = $derived(getDownloadUrl(level))
+
+	const { language } = getGlobalContext()
+
+	const shareLevel = async () => {
+		const href = new URL(`/levels/${level.id}`, document.baseURI).toString()
+		if (typeof navigator.share === 'function') {
+			await navigator.share({
+				title: `${level.music.artists.map((x) => x.displayName).join(' & ')} - ${level.title}`,
+				url: href
+			})
+		} else {
+			await navigator.clipboard.writeText(href)
+			toast.success(translateKey($language, 'level:link-copied', {}))
+		}
+	}
 </script>
 
 <div class="level-actions-area">
@@ -27,13 +42,13 @@
 			</Button>
 		</a>
 	{/if}
-	<Button size="lg" leftIcon="heartOutlined" variant="ghost-dark">TODO</Button>
-	<Button size="lg" variant="ghost-dark">
+	<!-- <Button size="lg" leftIcon="heartOutlined" variant="ghost-dark">TODO</Button> -->
+	<Button size="lg" variant="ghost-dark" onclick={() => shareLevel()}>
 		<Translation key="level:share" />
 	</Button>
-	<Button size="lg" variant="ghost-dark">
+	<!-- <Button size="lg" variant="ghost-dark">
 		<Translation key="level:report" />
-	</Button>
+	</Button> -->
 </div>
 
 <style lang="scss">

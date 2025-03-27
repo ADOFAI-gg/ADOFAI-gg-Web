@@ -25,3 +25,5 @@ sort-id-asc = 과거순
 sort-id-desc = 최신순
 sort-difficulty-asc = 난도 낮은 순
 sort-difficulty-desc = 난도 높은 순
+
+link-copied = 레벨 링크가 복사되었습니다!
