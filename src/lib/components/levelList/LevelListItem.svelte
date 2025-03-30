@@ -125,11 +125,11 @@
 		gap: 4px;
 	}
 
-	.likes {
+	/* .likes {
 		display: flex;
 		gap: 2px;
 		align-items: center;
 		font-weight: 500;
 		font-size: 16px;
-	}
+	} */
 </style>
