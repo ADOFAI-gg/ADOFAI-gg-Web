@@ -14,7 +14,7 @@ export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 
 	const user: APIMember | null = userResponse.status === 403 ? null : await userResponse.json()
 
-	const lang = cookies.get('adofaigg.lang')
+	const lang = cookies.get('adofaigg.lang') || 'en'
 
 	if (lang) {
 		cookies.set('adofaigg.lang', lang, {
