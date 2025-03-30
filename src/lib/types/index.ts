@@ -36,6 +36,7 @@ export interface APIFile {
 export interface APILevel {
 	id: number
 	appendingTitle: string | null
+	description: string
 	creatorAlias: string | null
 	pending: boolean
 	quality: 'HIDDEN' | 'UNLISTED' | 'LISTED' | 'FEATURED' | 'LEGENDARY'

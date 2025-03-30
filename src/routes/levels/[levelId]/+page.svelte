@@ -8,6 +8,7 @@
 	import type { UserListItemModel } from '@adofai-gg/ui'
 	import { convertUser } from '~/lib/utils/converter'
 	import LevelActionsArea from '~/lib/components/levelDetail/LevelActionsArea.svelte'
+	import Description from '~/lib/components/Description.svelte'
 
 	interface Props {
 		data: PageData
@@ -63,6 +64,7 @@
 			<div class="main-upper-container">
 				<LevelMetadataArea level={data.level} />
 				<LevelActionsArea level={data.level} />
+				<Description maxHeight={84}>{data.level.description}</Description>
 			</div>
 		</div>
 		<div class="meta-area">
