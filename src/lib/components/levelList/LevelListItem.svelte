@@ -33,10 +33,10 @@
 		</div>
 	</div>
 	<div class="extra-area">
-		<div class="likes">
+		<!-- <div class="likes">
 			<Icon icon="heartOutlined" size={18} alt="likes" />
 			{likes}
-		</div>
+		</div> -->
 		<div class="tags">
 			{#if level.quality === 'FEATURED'}
 				<TagIcon size={24} tag="FEATURED" />
