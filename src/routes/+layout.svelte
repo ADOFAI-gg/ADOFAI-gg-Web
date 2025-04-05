@@ -133,46 +133,47 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="layout">
-		<Nav {user}>
-			{#snippet menu()}
-				<!-- <MenuItem variant="danger" onclick={onLogout}>
-					<Translation key="ui-common:sign-out" />
-				</MenuItem> -->
-				<NavMenuGroup id="default">
-					<NavMenuItem switchGroup="language">
-						<Translation key="ui-common:language" />
-					</NavMenuItem>
+		<div class="nav-position-fixer">
+			<Nav {user}>
+				{#snippet menu()}
+					<!-- <MenuItem variant="danger" onclick={onLogout}>
+						<Translation key="ui-common:sign-out" />
+					</MenuItem> -->
+					<NavMenuGroup id="default">
+						<NavMenuItem switchGroup="language">
+							<Translation key="ui-common:language" />
+						</NavMenuItem>
 
+						{#if user}
+							<NavMenuItem
+								link
+								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
+								target="_blank"
+							>
+								<Translation key="common:account-settings" />
+							</NavMenuItem>
+							<NavMenuItem onclick={() => onLogout()} type="danger">
+								<Translation key="ui-common:sign-out" />
+							</NavMenuItem>
+						{/if}
+					</NavMenuGroup>
+
+					<NavMenuGroup id="language">
+						<NavLanguageSwitcher />
+					</NavMenuGroup>
+				{/snippet}
+
+				{#snippet rightSlot()}
 					{#if user}
-						<NavMenuItem
-							link
-							href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
-							target="_blank"
-						>
-							<Translation key="common:account-settings" />
-						</NavMenuItem>
-						<NavMenuItem onclick={() => onLogout()} type="danger">
-							<Translation key="ui-common:sign-out" />
-						</NavMenuItem>
+						<div class="right-actions-area">
+							<Button size="md" variant="outlined" link href="/levels/create">
+								<Translation key="common:upload-level" />
+							</Button>
+						</div>
 					{/if}
-				</NavMenuGroup>
-
-				<NavMenuGroup id="language">
-					<NavLanguageSwitcher />
-				</NavMenuGroup>
-			{/snippet}
-
-			{#snippet rightSlot()}
-				{#if user}
-					<div class="right-actions-area">
-						<Button size="md" variant="outlined" link href="/levels/create">
-							<Translation key="common:upload-level" />
-						</Button>
-					</div>
-				{/if}
-			{/snippet}
-		</Nav>
-
+				{/snippet}
+			</Nav>
+		</div>
 		<main class="content">
 			{@render children()}
 		</main>
@@ -187,6 +188,24 @@
 	.layout {
 		display: flex;
 		flex-direction: column;
+		width: fit-content;
+
+		:global(.footer) {
+			position: sticky;
+			left: 0;
+			width: var(--client-width);
+		}
+	}
+
+	.nav-position-fixer {
+		width: var(--client-width);
+		position: sticky;
+		left: 0;
+		top: 0;
+
+		/* :global(.nav-container) {
+			position: static;
+		} */
 	}
 
 	.content {

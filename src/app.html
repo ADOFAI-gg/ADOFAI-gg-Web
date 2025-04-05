@@ -14,7 +14,7 @@
 		<script>
 			const setupStyleVar = () => {
 				const doc = document.documentElement
-				doc.style.setProperty('--client-width', `${document.documentElement.clientWidth}px`)
+				doc.style.setProperty('--client-width', `${document.body.clientWidth}px`)
 				doc.style.setProperty('--app-height', `${window.innerHeight}px`)
 			}
 			window.addEventListener('resize', setupStyleVar)
