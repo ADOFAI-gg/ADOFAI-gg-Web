@@ -65,11 +65,11 @@
 			{
 				href: '/levels',
 				key: 'common:levels'
+			},
+			{
+				href: '/references',
+				key: 'common:references'
 			}
-			// {
-			// 	href: '/references',
-			// 	key: 'nav:references'
-			// }
 		],
 		setLanguage: (lang) => {
 			language.set(lang)

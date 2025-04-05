@@ -1,0 +1,29 @@
+[
+	{
+		"difficulty": 1,
+		"reference1": {
+			"id": 0,
+			"title": "Sans Song"
+		},
+		"reference2": {
+			"id": 1000,
+			"title": "Wow"
+		},
+		"reference3": {
+			"id": 10,
+			"title": "Sans Song"
+		},
+		"lower1": {
+			"id": 0,
+			"title": "Sans Song"
+		},
+		"lower2": {
+			"id": 1000,
+			"title": "Wow"
+		},
+		"lower3": {
+			"id": 2000,
+			"title": "Something"
+		}
+	}
+]
