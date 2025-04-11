@@ -198,10 +198,11 @@
 	}
 
 	.nav-position-fixer {
-		width: var(--client-width);
 		position: sticky;
-		left: 0;
 		top: 0;
+		left: 0;
+		z-index: 9999;
+		width: var(--client-width);
 
 		/* :global(.nav-container) {
 			position: static;
