@@ -16,6 +16,7 @@ filter-music = 곡 제목
 filter-artist = 아티스트
 filter-creator = 제작자
 filter-quality = 분류
+filter-tags = 태그
 
 filter-difficulty = 난도
 filter-difficulty-min = 최소 난도

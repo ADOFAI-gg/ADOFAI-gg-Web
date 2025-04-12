@@ -19,6 +19,7 @@
 	import { parseFilter } from '~/lib/utils/filter'
 	import { difficultyOptions } from '~/lib/utils/difficulty'
 	import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
+	import { tagOptions } from '~/lib/utils/tags'
 
 	const { language } = getGlobalContext()
 
@@ -76,6 +77,15 @@
 				default: [],
 				options: difficultyOptions,
 				optionIconSnippet: difficultyIconTemplate as Snippet<[]>
+			},
+			'tags.name': {
+				type: 'select',
+				options: localizeOptions($language, tagOptions),
+				default: [],
+				multiple: true,
+				name: 'level:filter-tags',
+				icon: 'tag',
+				label: 'level:filter-tags'
 			}
 		},
 		sort: [
@@ -179,14 +189,29 @@
 						break
 					case 'select':
 						if (schemeData.multiple) {
-							rootFilter.data.push({
-								op: 'or',
-								data: (filter.value as string[]).map((x) => ({
-									op: 'eq',
+							if (filter.key === 'tags.name') {
+								// rootFilter.data.push({
+								// 	op: 'and',
+								// 	data: (filter.value as string[]).map((x) => ({
+								// 		op: 'eq',
+								// 		key: filter.key,
+								// 		value: x
+								// 	}))
+								// })
+								rootFilter.data.push({
+									op: 'containsAll',
 									key: filter.key,
-									value: x
-								}))
-							})
+									values: filter.value as string[]
+								})
+							} else
+								rootFilter.data.push({
+									op: 'or',
+									data: (filter.value as string[]).map((x) => ({
+										op: 'eq',
+										key: filter.key,
+										value: x
+									}))
+								})
 						} else {
 							// TODO make this
 						}

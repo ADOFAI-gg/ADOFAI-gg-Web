@@ -25,8 +25,8 @@ importers:
         version: 0.33.5
     devDependencies:
       '@adofai-gg/query-types':
-        specifier: 1.0.0-alpha.5
-        version: 1.0.0-alpha.5
+        specifier: 1.0.0-alpha.7
+        version: 1.0.0-alpha.7
       '@adofai-gg/ui':
         specifier: 1.2.0-beta.131
         version: 1.2.0-beta.131(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)
@@ -213,8 +213,8 @@ importers:
 
 packages:
 
-  '@adofai-gg/query-types@1.0.0-alpha.5':
-    resolution: {integrity: sha512-n724At301N4BaQrMwe2ma+athnuN/ntyXak2eX4WH78xQEYr3ZejkxN4XBPbl0S52Udr4utVVShs8Q1rGYUzcA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.5/ca037d49456d16c5caf28a7b34dd89009ad7f22a}
+  '@adofai-gg/query-types@1.0.0-alpha.7':
+    resolution: {integrity: sha512-KWEC+pRsov5XeVgAx7xy0EeTHko6kXkOwKiwjoA63KX7KynkvltNpat/dZiZscliDzciaEL56kFBLCsh5/bVbw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.7/a3568dd9a83b059219e749f54fd56dea295999e9}
 
   '@adofai-gg/ui@1.2.0-beta.131':
     resolution: {integrity: sha512-GtO/8S3d6Kz/WTtndhqLaBFbrXWP4rk7sZf0YWeh1c2yVy4+sBsPDv4MeqLvFn/WiZvEO1mIlzIOI94gONR8zQ==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.131/b13eead337318ab40cb20c657edbcdfffc8cc8e3}
@@ -3532,7 +3532,7 @@ packages:
 
 snapshots:
 
-  '@adofai-gg/query-types@1.0.0-alpha.5': {}
+  '@adofai-gg/query-types@1.0.0-alpha.7': {}
 
   '@adofai-gg/ui@1.2.0-beta.131(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)':
     dependencies:
