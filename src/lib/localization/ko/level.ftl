@@ -26,6 +26,10 @@ filter-tiles = 타일 수
 filter-tiles-min = 최소 타일 수
 filter-tiles-max = 최대 타일 수
 
+filter-bpm = BPM
+filter-bpm-min = 최소 BPM
+filter-bpm-max = 최대 BPM
+
 quality-listed = 일반
 quality-featured = 추천
 quality-legendary = 레전드리

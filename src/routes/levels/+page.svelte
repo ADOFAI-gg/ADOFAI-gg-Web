@@ -103,6 +103,15 @@
 				minLabel: 'level:filter-tiles-min',
 				maxLabel: 'level:filter-tiles-max',
 				default: []
+			},
+			bpm: {
+				type: 'range',
+				icon: 'bpm',
+				name: 'level:filter-bpm',
+				min: 1,
+				minLabel: 'level:filter-bpm-min',
+				maxLabel: 'level:filter-bpm-max',
+				default: []
 			}
 		},
 		sort: [
@@ -240,7 +249,7 @@
 						if (min !== undefined) {
 							q.data.push({
 								op: 'gte',
-								key: filter.key,
+								key: filter.key === 'bpm' ? 'minBpm' : filter.key,
 								value: min
 							} satisfies Filter)
 						}
@@ -248,7 +257,7 @@
 						if (max !== undefined) {
 							q.data.push({
 								op: 'lte',
-								key: filter.key,
+								key: filter.key === 'bpm' ? 'maxBpm' : filter.key,
 								value: max
 							} satisfies Filter)
 						}
