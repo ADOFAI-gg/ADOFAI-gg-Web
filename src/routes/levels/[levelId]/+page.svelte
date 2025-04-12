@@ -16,8 +16,8 @@
 
 	const { data }: Props = $props()
 
-	let creators = $derived(
-		data.level.creators.map(
+	let creators = $derived.by(() => {
+		const res = data.level.creators.map(
 			(x) =>
 				({
 					type: 'user',
@@ -25,10 +25,20 @@
 					// href: `/users/${x.id}`
 				}) as UserListItemModel
 		)
-	)
 
-	let artists = $derived(
-		data.level.music.artists.map(
+		if (!data.level.creatorAlias) return res
+
+		return [
+			{
+				type: 'group',
+				name: data.level.creatorAlias,
+				data: res
+			}
+		]
+	})
+
+	let artists = $derived.by(() => {
+		const res = data.level.music.artists.map(
 			(x) =>
 				({
 					type: 'user',
@@ -36,7 +46,9 @@
 					// href: `/users/${x.id}`
 				}) as UserListItemModel
 		)
-	)
+
+		return res
+	})
 
 	const level = $derived(data.level)
 </script>
