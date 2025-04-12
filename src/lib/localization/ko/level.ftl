@@ -17,9 +17,13 @@ filter-artist = 아티스트
 filter-creator = 제작자
 filter-quality = 분류
 
-quality-listed = Listed
-quality-featured = Featured
-quality-legendary = Legendary
+filter-difficulty = 난도
+filter-difficulty-min = 최소 난도
+filter-difficulty-max = 최대 난도
+
+quality-listed = 일반
+quality-featured = 추천
+quality-legendary = 레전드리
 
 sort-id-asc = 과거순
 sort-id-desc = 최신순

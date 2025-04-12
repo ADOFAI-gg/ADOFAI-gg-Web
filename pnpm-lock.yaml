@@ -25,11 +25,11 @@ importers:
         version: 0.33.5
     devDependencies:
       '@adofai-gg/query-types':
-        specifier: 1.0.0-alpha.3
-        version: 1.0.0-alpha.3
+        specifier: 1.0.0-alpha.5
+        version: 1.0.0-alpha.5
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.129
-        version: 1.2.0-beta.129(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)
+        specifier: 1.2.0-beta.131
+        version: 1.2.0-beta.131(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.13.14)(typescript@5.8.2)
@@ -213,11 +213,11 @@ importers:
 
 packages:
 
-  '@adofai-gg/query-types@1.0.0-alpha.3':
-    resolution: {integrity: sha512-U3XWyN6sTMUZiaCW8G4ulql2zAhY/DQtV/j3mKDP5uUn64ajOxktLZk+/eXoyPVwPoWN6YAhmtwHQA/xmqNGpA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.3/1ccefdd71cd397f39f2b48a675871c681dd2cdb2}
+  '@adofai-gg/query-types@1.0.0-alpha.5':
+    resolution: {integrity: sha512-n724At301N4BaQrMwe2ma+athnuN/ntyXak2eX4WH78xQEYr3ZejkxN4XBPbl0S52Udr4utVVShs8Q1rGYUzcA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.5/ca037d49456d16c5caf28a7b34dd89009ad7f22a}
 
-  '@adofai-gg/ui@1.2.0-beta.129':
-    resolution: {integrity: sha512-YxCUsEl3W3De5KlhmauGIMdnP5Nq4tHCsptDJ7Opf7HqW5wOXnFCTgmKUIZkyNY663wnZWulRiAXbMuacyknkA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.129/c5177eb7e530f91f4c338fd482d1ad7b119c5f20}
+  '@adofai-gg/ui@1.2.0-beta.131':
+    resolution: {integrity: sha512-GtO/8S3d6Kz/WTtndhqLaBFbrXWP4rk7sZf0YWeh1c2yVy4+sBsPDv4MeqLvFn/WiZvEO1mIlzIOI94gONR8zQ==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.131/b13eead337318ab40cb20c657edbcdfffc8cc8e3}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -3532,9 +3532,9 @@ packages:
 
 snapshots:
 
-  '@adofai-gg/query-types@1.0.0-alpha.3': {}
+  '@adofai-gg/query-types@1.0.0-alpha.5': {}
 
-  '@adofai-gg/ui@1.2.0-beta.129(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)':
+  '@adofai-gg/ui@1.2.0-beta.131(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)':
     dependencies:
       '@melt-ui/svelte': 0.86.6(svelte@5.25.3)
       clsx: 2.1.1

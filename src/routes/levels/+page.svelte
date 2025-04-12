@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as store from 'svelte/store'
-	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
+	import type { SearchFilter, SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
 	import { api, localizeOptions, type APILevel } from '$lib'
-	import type { Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
+	import type { AndFilter, Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
 	import {
 		Container,
 		getGlobalContext,
@@ -17,6 +17,8 @@
 	import { onMount } from 'svelte'
 	import { goto } from '$app/navigation'
 	import { parseFilter } from '~/lib/utils/filter'
+	import { difficultyOptions } from '~/lib/utils/difficulty'
+	import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
 
 	const { language } = getGlobalContext()
 
@@ -64,6 +66,17 @@
 				]),
 				label: 'level:filter-quality',
 				multiple: true
+			},
+			difficulty: {
+				type: 'rangeSelect',
+				name: 'level:filter-difficulty',
+				icon: 'difficulty',
+				minLabel: 'level:filter-difficulty-min',
+				maxLabel: 'level:filter-difficulty-max',
+				default: [],
+				options: difficultyOptions,
+				// @ts-expect-error param type can be mismatched because option can also receive strings
+				optionIconSnippet: difficultyIconTemplate
 			}
 		},
 		sort: [
@@ -180,6 +193,34 @@
 						}
 
 						break
+					case 'rangeSelect': {
+						const v = filter.value as number[]
+						const min = v[0]
+						const max = v[1]
+
+						const q = {
+							op: 'and',
+							data: []
+						} as AndFilter
+
+						if (min !== undefined) {
+							q.data.push({
+								op: 'gte',
+								key: filter.key,
+								value: min
+							} satisfies Filter)
+						}
+
+						if (max !== undefined) {
+							q.data.push({
+								op: 'lte',
+								key: filter.key,
+								value: max
+							} satisfies Filter)
+						}
+
+						rootFilter.data.push(q)
+					}
 					default:
 						break
 				}
