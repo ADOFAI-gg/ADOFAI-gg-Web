@@ -14,7 +14,7 @@
 	} from '@adofai-gg/ui'
 	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
-	import { onMount } from 'svelte'
+	import { onMount, type Snippet } from 'svelte'
 	import { goto } from '$app/navigation'
 	import { parseFilter } from '~/lib/utils/filter'
 	import { difficultyOptions } from '~/lib/utils/difficulty'
@@ -75,8 +75,7 @@
 				maxLabel: 'level:filter-difficulty-max',
 				default: [],
 				options: difficultyOptions,
-				// @ts-expect-error param type can be mismatched because option can also receive strings
-				optionIconSnippet: difficultyIconTemplate
+				optionIconSnippet: difficultyIconTemplate as Snippet<[]>
 			}
 		},
 		sort: [
