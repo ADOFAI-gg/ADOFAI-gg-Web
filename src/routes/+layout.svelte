@@ -28,7 +28,8 @@
 		Translation,
 		NavLanguageSwitcher,
 		Button,
-		Toaster
+		Toaster,
+		type GlobalContext
 	} from '@adofai-gg/ui'
 	import { env } from '$env/dynamic/public'
 
@@ -41,6 +42,7 @@
 	import type { LayoutData } from './$types'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import Cookies from 'js-cookie'
+	import { goto } from '$app/navigation'
 
 	interface Props {
 		children: Snippet
@@ -59,18 +61,20 @@
 		})
 	}
 
+	const links = [
+		{
+			href: '/levels',
+			key: 'common:levels'
+		},
+		{
+			href: '/references',
+			key: 'common:references'
+		}
+	] as GlobalContext['links']
+
 	setGlobalContext({
 		language,
-		links: [
-			{
-				href: '/levels',
-				key: 'common:levels'
-			},
-			{
-				href: '/references',
-				key: 'common:references'
-			}
-		],
+		links,
 		setLanguage: (lang) => {
 			language.set(lang)
 			fetch('/api/set-lang', {
@@ -123,11 +127,15 @@
 
 		window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signout`
 	}
+
+	let windowWidth = $state(0)
 </script>
 
 <svelte:head>
 	<title>{$page.data.pageTitle}</title>
 </svelte:head>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <Toaster />
 
@@ -136,13 +144,23 @@
 		<div class="nav-position-fixer">
 			<Nav {user}>
 				{#snippet menu()}
-					<!-- <MenuItem variant="danger" onclick={onLogout}>
-						<Translation key="ui-common:sign-out" />
-					</MenuItem> -->
 					<NavMenuGroup id="default">
 						<NavMenuItem switchGroup="language">
 							<Translation key="ui-common:language" />
 						</NavMenuItem>
+
+						{#if windowWidth < 768}
+							{#each links as link}
+								<NavMenuItem
+									onclick={() => {
+										goto(link.href)
+									}}
+									href={link.href}
+								>
+									<Translation key={link.key} />
+								</NavMenuItem>
+							{/each}
+						{/if}
 
 						{#if user}
 							<NavMenuItem
