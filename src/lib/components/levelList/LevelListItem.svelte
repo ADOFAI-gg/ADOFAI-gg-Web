@@ -22,7 +22,7 @@
 
 <a href="/levels/{level.id}" class="level-list-item">
 	<div class="id-difficulty-area">
-		<DifficultyIcon size={48} difficulty={getDifficulty(level)} />
+		<DifficultyIcon display size={48} difficulty={getDifficulty(level)} />
 		<div class="level-id">#{level.id}</div>
 	</div>
 	<div class="metadata-area">

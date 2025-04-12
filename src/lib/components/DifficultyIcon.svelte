@@ -7,15 +7,25 @@
 
 	interface Props {
 		difficulty: number | null
+		display?: boolean
 		size?: number
 	}
-	const { difficulty, size = 48 }: Props = $props()
+	const { difficulty, display, size = 48 }: Props = $props()
 
 	let difficultyName = $derived.by(() => {
 		if (difficulty === null) return 'unknown'
 		if (difficulty === 0.1) return 'legacy_tiny'
 		if (difficulty === 101) return 'legacy_minus1'
-		return difficulty.toFixed(1)
+
+		if (!display || difficulty < 20) return difficulty.toFixed(1)
+
+		let result = Math.floor(difficulty).toString()
+
+		if (difficulty % 1 >= 0.5) {
+			result += '+'
+		}
+
+		return result
 	})
 
 	let icon = $derived(
