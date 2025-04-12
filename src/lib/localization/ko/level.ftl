@@ -22,6 +22,10 @@ filter-difficulty = 난도
 filter-difficulty-min = 최소 난도
 filter-difficulty-max = 최대 난도
 
+filter-tiles = 타일 수
+filter-tiles-min = 최소 타일 수
+filter-tiles-max = 최대 타일 수
+
 quality-listed = 일반
 quality-featured = 추천
 quality-legendary = 레전드리

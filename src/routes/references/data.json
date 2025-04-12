@@ -3,27 +3,834 @@
 		"difficulty": 1,
 		"reference1": {
 			"id": 0,
-			"title": "Sans Song"
+			"title": "4-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=210"
 		},
 		"reference2": {
-			"id": 1000,
-			"title": "Wow"
+			"id": 2101,
+			"title": "Dream Culture",
+			"url": "https://www.youtube.com/watch?v=6quIRetescM"
+		}
+	},
+	{
+		"difficulty": 2,
+		"reference1": {
+			"id": 0,
+			"title": "2-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=83"
 		},
-		"reference3": {
-			"id": 10,
-			"title": "Sans Song"
+		"reference2": {
+			"id": 273,
+			"title": "The Last Page",
+			"url": "https://www.youtube.com/watch?v=Vuc7X6MPF3I"
 		},
 		"lower1": {
 			"id": 0,
-			"title": "Sans Song"
+			"title": "1-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=1"
+		}
+	},
+	{
+		"difficulty": 3,
+		"reference1": {
+			"id": 0,
+			"title": "3-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=148"
+		},
+		"reference2": {
+			"id": 3484,
+			"title": "Polygons",
+			"url": "https://youtu.be/3XV4-jPGNNU?si=xu37pdcy7MpItfDF"
+		},
+		"lower1": {
+			"id": 736,
+			"title": "Fate",
+			"url": "https://youtu.be/l6e__xh3BEY"
+		}
+	},
+	{
+		"difficulty": 4,
+		"reference1": {
+			"id": 0,
+			"title": "5-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=332"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "9-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=703"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "Night Wander (cnsouka remix)",
+			"url": "https://www.youtube.com/watch?v=FQ4iLSrrVII"
+		},
+		"lower1": {
+			"id": 0,
+			"title": "XM-X",
+			"url": "https://youtu.be/Ut-yaJLQ2DY?si=C307gU1HKnN9mEW2"
+		}
+	},
+	{
+		"difficulty": 5,
+		"reference1": {
+			"id": 0,
+			"title": "8-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=612"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "Star Drain",
+			"url": "https://youtu.be/Vm1Q6tfqALo?si=nbBS7dqaq2XzhdCo"
+		},
+		"lower1": {
+			"id": 0,
+			"title": "Feral (Easy)",
+			"url": "https://youtu.be/sLLEum8euvA?si=OKWr2CrMQ8rdhxJy"
+		}
+	},
+	{
+		"difficulty": 6,
+		"reference1": {
+			"id": 0,
+			"title": "11-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=895"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "12-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=1022"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "Rainbow",
+			"url": "https://youtu.be/H645rVyH5TI?si=b8ZwhD-lJm8i3pzm"
+		},
+		"lower1": {
+			"id": 204,
+			"title": "Find our way",
+			"url": "https://youtu.be/SBzOMDhlMFM"
+		}
+	},
+	{
+		"difficulty": 7,
+		"reference1": {
+			"id": 0,
+			"title": "w=addict",
+			"url": "https://youtu.be/FHb-IjdkVTs?si=er5232mrbcdzp880"
+		},
+		"reference2": {
+			"id": 4819,
+			"title": "Offshore",
+			"url": "https://youtu.be/Vm1Q6tfqALo?si=nbBS7dqaq2XzhdCo"
+		},
+		"lower1": {
+			"id": 1976,
+			"title": "Classy Kitty",
+			"url": "https://youtu.be/bJHdGHMP58Q"
+		}
+	},
+	{
+		"difficulty": 8,
+		"reference1": {
+			"id": 0,
+			"title": "B-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=1118"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "Sunshine",
+			"url": "https://youtu.be/48gOfXPw5rM?si=rkSCXF0pE9sUhoxN"
+		},
+		"reference3": {
+			"id": 2467,
+			"title": "MAKE IT FUNKY NOW",
+			"url": "https://www.youtube.com/watch?v=Q-B7N20AUIU"
+		},
+		"lower1": {
+			"id": 0,
+			"title": "She favours quiet colors",
+			"url": "https://www.youtube.com/watch?v=a-_VbziPp2o"
+		}
+	},
+	{
+		"difficulty": 9,
+		"reference1": {
+			"id": 0,
+			"title": "XS-X",
+			"url": "https://youtu.be/p9dCS4pbAPU?si=mVHSR5JqfM5sxVpP"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "S.A.T.E.L.L.I.T.E.",
+			"url": "https://youtu.be/HPcgoAuNQ5c?si=3XTqZWEi-UcH5CUY"
+		},
+		"lower1": {
+			"id": 0,
+			"title": "Vantablack",
+			"url": "https://youtu.be/DDrM6Yeft3A?si=fbaTq_Tnor7F9pLc"
+		}
+	},
+	{
+		"difficulty": 10,
+		"reference1": {
+			"id": 0,
+			"title": "XO-X",
+			"url": "https://youtu.be/6vBiQJpd-R0?t=1656"
+		},
+		"reference2": {
+			"id": 52,
+			"title": "Underground Party",
+			"url": "https://www.youtube.com/watch?v=iBVUwLC9KUg"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "Rain,thunder,and Vivid Rainbow",
+			"url": "https://youtu.be/8C1JSSRYijI?si=Xr92WnxF-lxLCPJi"
+		},
+		"lower1": {
+			"id": 2852,
+			"title": "GREAT GREAT",
+			"url": "https://youtu.be/TSGCnSEXldI"
+		}
+	},
+	{
+		"difficulty": 11,
+		"reference1": {
+			"id": 665,
+			"title": "Fairy Tale",
+			"url": "https://www.youtube.com/watch?v=shxwDW760qs"
+		},
+		"reference2": {
+			"id": 1946,
+			"title": "Alice in misanthrope",
+			"url": "https://youtu.be/OwIJvyuC4uo"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "Dark Sheep",
+			"url": "https://youtu.be/SjxApPBQ5IQ?si=wJFBRjlsz74joE4M"
+		},
+		"lower1": {
+			"id": 645,
+			"title": "Sirius A",
+			"url": "https://youtu.be/DAgcqiHuAW8"
+		}
+	},
+	{
+		"difficulty": 12,
+		"reference1": {
+			"id": 4543,
+			"title": "Like Games",
+			"url": "https://youtu.be/Zgs78n93d_M?si=WFwm_6q2Yyj3twNT"
+		},
+		"reference2": {
+			"id": 1978,
+			"title": "Otona!",
+			"url": "https://youtu.be/LvVHgFNW2WI"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "キュリオ都市 (curio city)",
+			"url": "https://youtu.be/s58sDC0sHMk"
+		},
+		"lower1": {
+			"id": 1632,
+			"title": "Dream Dash",
+			"url": "https://youtu.be/1ASDEegnYQk"
+		}
+	},
+	{
+		"difficulty": 13,
+		"reference1": {
+			"id": 1966,
+			"title": "Twinkle * Winter",
+			"url": "https://youtu.be/gsZpv20LqyM"
+		},
+		"reference2": {
+			"id": 2066,
+			"title": "Turkish March",
+			"url": "https://www.youtube.com/watch?v=YnX36m_d7_U"
+		},
+		"lower1": {
+			"id": 2733,
+			"title": "Overflow",
+			"url": "https://youtu.be/muCeEhyUi84"
+		}
+	},
+	{
+		"difficulty": 14,
+		"reference1": {
+			"id": 0,
+			"title": "Fresh! VIP",
+			"url": "https://youtu.be/wZpYcLDEZEM?si=n9Je3Mat-3L3GCvP"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "はずかしがりやのトイ・ソルジャー (Shy Toy Soldier)",
+			"url": "https://youtu.be/8moFzzENzU4?si=zkr9bTm8R0lPmnmX"
+		},
+		"lower1": {
+			"id": 3623,
+			"title": "Dance with Silence",
+			"url": "https://youtu.be/faTPWEydxDY"
+		}
+	},
+	{
+		"difficulty": 15,
+		"reference1": {
+			"id": 2664,
+			"title": "Dream Leaf (Short)",
+			"url": "https://youtu.be/mU9cd7-AaGg"
+		},
+		"reference2": {
+			"id": 2550,
+			"title": "Emerald wave",
+			"url": "https://youtu.be/3FR2mkqtH9w"
+		},
+		"lower1": {
+			"id": 3982,
+			"title": "Savage Salvation",
+			"url": "https://www.youtube.com/watch?v=eXviib6f4ec"
+		}
+	},
+	{
+		"difficulty": 16,
+		"reference1": {
+			"id": 5154,
+			"title": " Avantgarde",
+			"url": "https://youtu.be/_BsordABMUg?si=uUi2yZ1zuG3-ah9E"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "This Future (we didn't expect)",
+			"url": "https://youtu.be/MGatXEGEmQ0?si=sgoqremSxfLu36m2"
+		},
+		"lower1": {
+			"id": 3398,
+			"title": "Celica",
+			"url": "https://www.youtube.com/watch?v=FBca7r1HyGA"
+		}
+	},
+	{
+		"difficulty": 17,
+		"reference1": {
+			"id": 577,
+			"title": "Rainy Gate",
+			"url": "https://www.youtube.com/watch?v=tKE-0gmRY40"
+		},
+		"reference2": {
+			"id": 0,
+			"title": "PLAZMA",
+			"url": "https://youtu.be/ePvlMB-w-zY?si=ThKyJtliodKpCDAO"
+		},
+		"reference3": {
+			"id": 4810,
+			"title": "PiP!Pico Continue!",
+			"url": "https://youtu.be/TDtUbJmkV5A?si=uACZq34q-clEFioh"
+		},
+		"lower1": {
+			"id": 2573,
+			"title": "Decoherence",
+			"url": "https://youtu.be/nrISVxqSZLw"
+		}
+	},
+	{
+		"difficulty": 18,
+		"reference1": {
+			"id": 0,
+			"title": "FUN PARTY OF THE BEACH!!!",
+			"url": "https://youtu.be/SX4FSPQPq20?si=pXKkquMH5v88s2_g"
+		},
+		"reference2": {
+			"id": 1790,
+			"title": "crystallized",
+			"url": "https://www.youtube.com/watch?v=0hSgpOwCWWI"
+		},
+		"reference3": {
+			"id": 1957,
+			"title": "Happyyyy~★♥♪!!",
+			"url": "https://www.youtube.com/watch?v=SfSOn9CHYPM"
+		},
+		"lower1": {
+			"id": 114,
+			"title": "First Town Of This Journey",
+			"url": "https://youtu.be/gQAKBovGTEY"
+		}
+	},
+	{
+		"difficulty": 18.5,
+		"reference1": {
+			"id": 1795,
+			"title": "Mystery Circles Ultra / U.U.F.O.",
+			"url": "https://youtu.be/F9y-4sG2TsA"
+		},
+		"reference2": {
+			"id": 4621,
+			"title": "Crowning End",
+			"url": "https://youtu.be/PjQMt17FVME"
+		},
+		"lower1": {
+			"id": 4739,
+			"title": "Teleport me to your soul (AWC ver)",
+			"url": "https://youtu.be/JOa2An9KG_Y?si=MWIrc2BLFL4lK5-x"
+		}
+	},
+	{
+		"difficulty": 19,
+		"reference1": {
+			"id": 141,
+			"title": "We Could Get More Machinegun Psystyle! (And More Genre Switches)",
+			"url": "https://youtu.be/c_jCMw6Pv00"
+		},
+		"reference2": {
+			"id": 5099,
+			"title": "碧空の約束",
+			"url": "https://youtu.be/1UpksULjdzU?si=lbriMIhbtoM9pC4G"
+		},
+		"lower1": {
+			"id": 866,
+			"title": "ゆらゆらLovelight",
+			"url": "https://youtu.be/ZIPWGL49Cbg"
+		}
+	},
+	{
+		"difficulty": 19.5,
+		"reference1": {
+			"id": 4725,
+			"title": "Fever Time",
+			"url": "https://youtu.be/C9_wkOsy4fU?si=jRdcZWuOsLAPw3IX"
+		},
+		"reference2": {
+			"id": 2883,
+			"title": "The Metaphysical Android (Nerfed) ",
+			"url": "https://www.youtube.com/watch?v=-X91jvFTvNE&feature=youtu.be"
+		},
+		"lower1": {
+			"id": 1874,
+			"title": "Labyrinth in Kowloon: Walled World",
+			"url": "https://youtu.be/1wDdZ25n2h8"
+		}
+	},
+	{
+		"difficulty": 20.0,
+		"reference1": {
+			"id": 405,
+			"title": "Dance with Silence",
+			"url": "https://www.youtube.com/watch?v=0TyL1TmkYjU"
+		},
+		"reference2": {
+			"id": 1145,
+			"title": "Gravitation Revert (Changed)",
+			"url": "https://www.youtube.com/watch?v=869njEvp3EU"
+		},
+		"reference3": {
+			"id": 0,
+			"title": "True Hero",
+			"url": "https://youtu.be/sW_RfAe3iik?si=qIG9zi004B80Zmeo"
+		},
+		"lower1": {
+			"id": 1980,
+			"title": "Power Trip",
+			"url": "https://youtu.be/TxLqfZRkPpI"
+		}
+	},
+	{
+		"difficulty": 20.1,
+		"reference1": {
+			"id": 1789,
+			"title": "Alone Intelligence",
+			"url": "https://youtu.be/wVuA620jrZ0"
+		},
+		"reference2": {
+			"id": 1910,
+			"title": "Chronostasis",
+			"url": "https://youtu.be/AmM47yDbhp4?si=gwUpA3hg2WBT5nZT"
+		},
+		"lower1": {
+			"id": 1215,
+			"title": "ΩΩPARTS (Short ver.)",
+			"url": "https://youtu.be/SEZ3TcWpoFI?si=YQ_Lm-R29vKSChGM"
+		}
+	},
+	{
+		"difficulty": 20.2,
+		"reference1": {
+			"id": 2282,
+			"title": "Doppelganger [Extreme]",
+			"url": "https://youtu.be/VqHC9nHYTgk"
+		},
+		"reference2": {
+			"id": 677,
+			"title": "Exit This Earth's Atomosphere (Camellia's \"Planetary//200step\" Remix)",
+			"url": "https://youtu.be/RI3Kc4LJ3GM"
+		},
+		"reference3": {
+			"id": 1297,
+			"title": "櫻花劍舞 (앵화검무)",
+			"url": "https://youtu.be/QbMph-XRRA0"
+		},
+		"lower1": {
+			"id": 4727,
+			"title": "#4727. Oyasmy",
+			"url": "https://youtu.be/5K0lNWYgst8?si=nBPeKsk3DhEjtEkP"
+		}
+	},
+	{
+		"difficulty": 20.3,
+		"reference1": {
+			"id": 1,
+			"title": "[ns]",
+			"url": "https://www.youtube.com/watch?v=VdsntFy8bc0&feature=youtu.be"
+		},
+		"reference2": {
+			"id": 841,
+			"title": "Qyoh (Nine Stars) (Short)",
+			"url": "https://www.youtube.com/watch?v=xng50nrbJSw"
+		},
+		"reference3": {
+			"id": 1143,
+			"title": "My Capacitance",
+			"url": "https://www.youtube.com/watch?v=EyY-nRjvyDU&pp=ygUObXkgY2FwYWNpdGFuY2U%3D"
+		},
+		"lower1": {
+			"id": 1523,
+			"title": "New Era",
+			"url": "https://youtu.be/MUXXLRcJoZw"
+		}
+	},
+	{
+		"difficulty": 20.4,
+		"reference1": {
+			"id": 2396,
+			"title": "SLIME INCIDENT",
+			"url": "https://youtu.be/jycaGU_SR74"
+		},
+		"reference2": {
+			"id": 1640,
+			"title": "Heart of Android : Even If It's Only By Mechanism",
+			"url": "https://www.youtube.com/watch?v=pVv7EbYLzfM"
+		},
+		"lower1": {
+			"id": 1416,
+			"title": "スター・オブ・ザ・COME ON!!",
+			"url": "https://youtu.be/SKEwk1uzDas"
+		}
+	},
+	{
+		"difficulty": 20.5,
+		"reference1": {
+			"id": 1237,
+			"title": "Once Again (VIP)",
+			"url": "https://youtu.be/HGlzLm4GkAU?si=IBNsBSA-nlUAEaz6"
+		},
+		"reference2": {
+			"id": 1640,
+			"title": "Heart of Android : Even If It's Only By Mechanism",
+			"url": "https://www.youtube.com/watch?v=pVv7EbYLzfM"
+		},
+		"lower1": {
+			"id": 564,
+			"title": "Inferno (Nerfed)",
+			"url": "https://youtu.be/FxnSs-PYSQA"
+		}
+	},
+	{
+		"difficulty": 20.6,
+		"reference1": {
+			"id": 527,
+			"title": "Nacreous Snowmelt",
+			"url": "https://youtu.be/C4YC9bSTTGI"
+		},
+		"reference2": {
+			"id": 1877,
+			"title": "GHOUL",
+			"url": "https://youtu.be/5i-OUHxTFdE"
+		},
+		"lower1": {
+			"id": 330,
+			"title": "Blackmagik Blazing",
+			"url": "https://youtu.be/5xMaIrOULAk"
+		}
+	},
+	{
+		"difficulty": 20.7,
+		"reference1": {
+			"id": 1941,
+			"title": "Toxic Violet Cubes",
+			"url": "https://youtu.be/18DDqf48XF8"
+		},
+		"reference2": {
+			"id": 2380,
+			"title": "Inferno",
+			"url": "https://youtu.be/RC5dFXnrFmA"
+		},
+		"lower1": {
+			"id": 4933,
+			"title": "ギザバ怪文書",
+			"url": "https://youtu.be/muWRA6mKvlc"
+		}
+	},
+	{
+		"difficulty": 20.8,
+		"reference1": {
+			"id": 2264,
+			"title": "PP BREAKER (Nerfed)",
+			"url": "https://youtu.be/YVQPgYP5IjI"
+		},
+		"reference2": {
+			"id": 4896,
+			"title": "Chronoexplorers",
+			"url": "https://youtu.be/pDkk9zoyKHA?si=XpJgDSG93C70lUa2"
+		},
+		"lower1": {
+			"id": 3128,
+			"title": "Lúin øf Celtchaя",
+			"url": "https://youtu.be/QwvJsz5z8ww?t=1535"
+		}
+	},
+	{
+		"difficulty": 20.9,
+		"reference1": {
+			"id": 5083,
+			"title": "M.O.P.E.-333",
+			"url": "https://www.youtube.com/watch?v=placeholder"
+		},
+		"reference2": {
+			"id": 4880,
+			"title": "Escalation",
+			"url": "https://youtu.be/RmfsSLGPkUs"
+		},
+		"reference3": {
+			"id": 2273,
+			"title": "Palace of Melancholia",
+			"url": "https://youtu.be/c1P2uT3R4PI"
+		},
+		"lower1": {
+			"id": 3135,
+			"title": "⫻Under Construxion⫻ (Nerfed)",
+			"url": "https://youtu.be/EXXS1Gfo3RM"
+		}
+	},
+	{
+		"difficulty": 21.0,
+		"lower1": {
+			"id": 2823,
+			"title": "Mare Tranquillitatis",
+			"url": "https://youtu.be/gmXb9OEJGqM?feature=shared"
 		},
 		"lower2": {
-			"id": 1000,
-			"title": "Wow"
+			"id": 4888,
+			"title": "Noisy Parade",
+			"url": "https://www.youtube.com/watch?v=PcIlR9qljcE"
 		},
 		"lower3": {
-			"id": 2000,
-			"title": "Something"
+			"id": 1917,
+			"title": "goTe (Nerfed)",
+			"url": "https://youtu.be/gmXb9OEJGqM?feature=shared"
+		}
+	},
+	{
+		"difficulty": 21.1,
+		"lower1": {
+			"id": 4926,
+			"title": "Grabinschrift der Götter",
+			"url": "https://youtu.be/Ky2hEmeXKIM?feature=shared"
+		}
+	},
+	{
+		"difficulty": 21.2,
+		"lower1": {
+			"id": 4733,
+			"title": "∀nnihilation",
+			"url": "https://youtu.be/lOeRtGz2YEQ?si=pUHqkyRE8HzmR25V"
+		},
+		"lower3": {
+			"id": 3074,
+			"title": "マリキュールの大地を駆けて",
+			"url": "https://youtu.be/o5P_i5CleQs?si=W3G7zjedNh9aohnN"
+		}
+	},
+	{
+		"difficulty": 21.3,
+		"lower1": {
+			"id": 3596,
+			"title": "Collapsing Carnival",
+			"url": "https://www.youtube.com/watch?v=OPip93g2ab8"
+		},
+		"lower2": {
+			"id": 0,
+			"title": "Quàx Quàlv",
+			"url": "https://www.youtube.com/watch?v=iYA01dN-UuE"
+		},
+		"lower3": {
+			"id": 0,
+			"title": "This Future (we didn't expect)",
+			"url": "https://www.youtube.com/watch?v=_Iof3OAhJSI"
+		}
+	},
+	{
+		"difficulty": 21.4,
+		"lower1": {
+			"id": 4750,
+			"title": "Static Ste//arium",
+			"url": "https://www.youtube.com/watch?v=hyZy8J6yLZc"
+		},
+		"lower2": {
+			"id": 0,
+			"title": "Ray of Hope",
+			"url": "https://www.youtube.com/watch?v=QQ6qHZIal4o"
+		}
+	},
+	{
+		"difficulty": 21.5,
+		"lower1": {
+			"id": 4734,
+			"title": "LORELEI",
+			"url": "https://youtu.be/G6WpxJLc2ss?si=keCiLsFUlI7f5W2b"
+		},
+		"lower2": {
+			"id": 0,
+			"title": "SNS my beloved",
+			"url": "https://youtu.be/2LDWZbT0gsU?si=Gu3U1pbnsZrwq8zu"
+		},
+		"lower3": {
+			"id": 4866,
+			"title": "The Cat Evolved Into The Microwave-proof Cat!",
+			"url": "https://youtu.be/Sz9dJBEvgs0?feature=shared"
+		}
+	},
+	{
+		"difficulty": 21.6,
+		"lower1": {
+			"id": 2370,
+			"title": "Hello (BPM) 2021",
+			"url": "https://youtu.be/sTJruTPoKgs?si=Y6WTN6RKQM-R1J-f"
+		},
+		"lower2": {
+			"id": 4914,
+			"title": "Fractured Angel",
+			"url": "https://youtu.be/TwgXOgAcVSk"
+		}
+	},
+	{
+		"difficulty": 21.7,
+		"lower1": {
+			"id": 3632,
+			"title": "We Want To Run (Nerfed)",
+			"url": "https://youtu.be/8aaAdZjrTdE"
+		}
+	},
+	{
+		"difficulty": 21.8,
+		"lower1": {
+			"id": 0,
+			"title": "tachypsychia",
+			"url": "https://youtu.be/CbHVZVBKxUk"
+		},
+		"lower2": {
+			"id": 0,
+			"title": "⫻Under Construxion⫻",
+			"url": "https://youtu.be/Ek1b7OjHAvs?si=94kWpDFrGQ_WtUr8"
+		}
+	},
+	{
+		"difficulty": 21.9,
+		"lower3": {
+			"id": 0,
+			"title": "Cursed Metamorph",
+			"url": "https://youtu.be/P0DKhfzALwk?si=glVrreaxeqQliv7e"
+		}
+	},
+	{
+		"difficulty": 22.0,
+		"lower1": {
+			"id": 5085,
+			"title": "Icyxis ~True Ending~",
+			"url": "https://www.youtube.com/watch?v=xZsc7utLB2A"
+		},
+		"lower2": {
+			"id": 5104,
+			"title": "Eternal SubconsciencƎ",
+			"url": "https://youtu.be/IN37_SRv_YA?feature=shared"
+		},
+		"lower3": {
+			"id": 3637,
+			"title": "1KARUGA",
+			"url": "https://www.youtube.com/watch?v=jW3Zcire7j4"
+		}
+	},
+	{
+		"difficulty": 22.1,
+		"lower1": {
+			"id": 4931,
+			"title": "ANTINEUTRINO WITCHCRAFT",
+			"url": "https://www.youtube.com/watch?v=_tsChrMXR8A"
+		},
+		"lower2": {
+			"id": 0,
+			"title": "WYSI (ex)",
+			"url": "https://youtu.be/WyV86lBNSes?si=PxgJykl2gvab0_6n"
+		},
+		"lower3": {
+			"id": 4777,
+			"title": "Chaos-Rybdis",
+			"url": "https://youtu.be/utjPJn2jhKs"
+		}
+	},
+	{
+		"difficulty": 22.2,
+		"lower1": {
+			"id": 4134,
+			"title": "Blackmagik Blazing",
+			"url": "https://youtu.be/uSkNGvltqdU?si=gO8cLbHxqT5r7PdC"
+		},
+		"lower3": {
+			"id": 5082,
+			"title": "[ns]",
+			"url": "https://www.youtube.com/watch?v=JTirCHr64hU"
+		}
+	},
+	{
+		"difficulty": 22.3,
+		"lower1": {
+			"id": 4903,
+			"title": "Hello (BPM) 2023",
+			"url": "https://youtu.be/RKeCEx8x_uk?si=aCYxWhaQWdEQHqke"
+		},
+		"lower3": {
+			"id": 4937,
+			"title": "1KONOS",
+			"url": "https://www.youtube.com/watch?v=r4p3zUGWC48"
+		}
+	},
+	{
+		"difficulty": 22.4,
+		"lower1": {
+			"id": 0,
+			"title": "MEGALOVANIA (Camellia Remix) (ex)",
+			"url": "https://youtu.be/N3NFz8IvQkY"
+		},
+		"lower3": {
+			"id": 0,
+			"title": "goTe EX",
+			"url": "https://youtu.be/_JZtnU-b_48"
+		}
+	},
+	{
+		"difficulty": 22.5,
+		"lower1": {
+			"id": 0,
+			"title": "Hello (BPM) 2024",
+			"url": "https://youtu.be/pOl0cWRiwCM?si=8V15Hm2naFSIH1l9"
+		}
+	},
+	{
+		"difficulty": 22.6,
+		"lower1": {
+			"id": 4948,
+			"title": "Hello (BPM) 2025",
+			"url": "https://youtu.be/FsO2vdpD2SE"
 		}
 	}
 ]
