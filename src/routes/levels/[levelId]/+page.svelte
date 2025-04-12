@@ -21,8 +21,8 @@
 			(x) =>
 				({
 					type: 'user',
-					data: convertUser(x, 'creator'),
-					href: `/users/${x.id}`
+					data: convertUser(x, 'creator')
+					// href: `/users/${x.id}`
 				}) as UserListItemModel
 		)
 	)
@@ -32,8 +32,8 @@
 			(x) =>
 				({
 					type: 'user',
-					data: convertUser(x, 'artist'),
-					href: `/users/${x.id}`
+					data: convertUser(x, 'artist')
+					// href: `/users/${x.id}`
 				}) as UserListItemModel
 		)
 	)
