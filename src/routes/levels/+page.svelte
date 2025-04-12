@@ -94,6 +94,15 @@
 				icon: 'tag',
 				label: 'level:filter-tags',
 				optionIconSnippet: tagIconTemplate as Snippet<[]>
+			},
+			tile: {
+				type: 'range',
+				icon: 'tile',
+				name: 'level:filter-tiles',
+				min: 1,
+				minLabel: 'level:filter-tiles-min',
+				maxLabel: 'level:filter-tiles-max',
+				default: []
 			}
 		},
 		sort: [
@@ -198,14 +207,6 @@
 					case 'select':
 						if (schemeData.multiple) {
 							if (filter.key === 'tags.name') {
-								// rootFilter.data.push({
-								// 	op: 'and',
-								// 	data: (filter.value as string[]).map((x) => ({
-								// 		op: 'eq',
-								// 		key: filter.key,
-								// 		value: x
-								// 	}))
-								// })
 								rootFilter.data.push({
 									op: 'containsAll',
 									key: filter.key,
@@ -225,6 +226,7 @@
 						}
 
 						break
+					case 'range':
 					case 'rangeSelect': {
 						const v = filter.value as number[]
 						const min = v[0]
@@ -252,6 +254,7 @@
 						}
 
 						rootFilter.data.push(q)
+						break
 					}
 					default:
 						break
