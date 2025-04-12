@@ -30,7 +30,7 @@
 
 	<div class="details-area">
 		<DifficultyIcon size={48} difficulty={getDifficulty(level)} />
-		<LevelStat key="level:song-length">TODO</LevelStat>
+		<!-- <LevelStat key="level:song-length">TODO</LevelStat> -->
 		<LevelStat key="level:bpm">
 			{#if bpm}
 				{bpm}
