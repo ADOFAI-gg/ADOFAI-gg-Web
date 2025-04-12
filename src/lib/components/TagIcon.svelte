@@ -17,37 +17,50 @@
 
 	import TagIconContent from './TagIconContent.svelte'
 	import CustomTagIconContent from './CustomTagIconContent.svelte'
+	import { emptyMeltElement, type AnyMeltElement } from '@melt-ui/svelte'
 
 	interface Props {
 		tag: string
 		size?: number
+		noTooltip?: boolean
 	}
-	const { tag, size = 48 }: Props = $props()
+	const { tag, noTooltip, size = 48 }: Props = $props()
 
 	let icon = $derived((icons[`../assets/tagIcons/${tag}.svg`] as { default: string })?.default)
 </script>
 
-<Tooltip>
-	{#snippet trigger({ trigger })}
-		{@const customIcon = customIcons[tag]}
-		{#if customIcon}
-			<CustomTagIconContent meltElement={trigger} {size} src={customIcon} />
-		{:else}
-			<TagIconContent
-				meltElement={trigger}
-				danger={dangerIcons.includes(tag)}
-				warning={warningIcons.includes(tag)}
-				{size}
-				src={icon}
-			/>
-		{/if}
-	{/snippet}
+{#snippet iconPart(meltElement: AnyMeltElement)}
+	{@const customIcon = customIcons[tag]}
+	{#if customIcon}
+		<CustomTagIconContent {meltElement} {size} src={customIcon} />
+	{:else}
+		<TagIconContent
+			{meltElement}
+			danger={dangerIcons.includes(tag)}
+			warning={warningIcons.includes(tag)}
+			{size}
+			src={icon}
+		/>
+	{/if}
+{/snippet}
 
-	<TooltipTitle>
-		<Translation key="tags:{tag}" />
-	</TooltipTitle>
+{#if noTooltip}
+	{@render iconPart(
+		/* @ts-expect-error what */
+		emptyMeltElement
+	)}
+{:else}
+	<Tooltip>
+		{#snippet trigger({ trigger })}
+			{@render iconPart(trigger)}
+		{/snippet}
 
-	<TooltipDescription>
-		<Translation key="tags:{tag}-description" />
-	</TooltipDescription>
-</Tooltip>
+		<TooltipTitle>
+			<Translation key="tags:{tag}" />
+		</TooltipTitle>
+
+		<TooltipDescription>
+			<Translation key="tags:{tag}-description" />
+		</TooltipDescription>
+	</Tooltip>
+{/if}

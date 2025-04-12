@@ -1,6 +1,11 @@
 <script lang="ts">
 	import * as store from 'svelte/store'
-	import type { SearchFilter, SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
+	import type {
+		SearchFilter,
+		SearchOptionScheme,
+		SearchOptionsData,
+		SelectOption
+	} from '@adofai-gg/ui'
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
 	import { api, localizeOptions, type APILevel } from '$lib'
 	import type { AndFilter, Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
@@ -20,6 +25,8 @@
 	import { difficultyOptions } from '~/lib/utils/difficulty'
 	import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
 	import { tagOptions } from '~/lib/utils/tags'
+	import TagIcon from '~/lib/components/TagIcon.svelte'
+	import TagIconContent from '~/lib/components/TagIconContent.svelte'
 
 	const { language } = getGlobalContext()
 
@@ -85,7 +92,8 @@
 				multiple: true,
 				name: 'level:filter-tags',
 				icon: 'tag',
-				label: 'level:filter-tags'
+				label: 'level:filter-tags',
+				optionIconSnippet: tagIconTemplate as Snippet<[]>
 			}
 		},
 		sort: [
@@ -374,6 +382,10 @@
 		}
 	})
 </script>
+
+{#snippet tagIconTemplate(option: SelectOption<string>)}
+	<TagIcon noTooltip tag={option.value} size={18} />
+{/snippet}
 
 <Container>
 	<div class="search-area">
