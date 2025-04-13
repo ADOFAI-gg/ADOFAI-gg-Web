@@ -131,29 +131,19 @@
 	}
 
 	let windowWidth = $state(0)
+
+	$effect(() => {
+		if (browser) {
+			const path = $page.url.pathname
+
+			// @ts-ignore
+			window.dataLayer?.push({ event: 'pageview', page: path })
+		}
+	})
 </script>
 
 <svelte:head>
 	<title>{$page.data.pageTitle}</title>
-	<script>
-		partytown = {
-			forward: ['dataLayer.push', 'gtag']
-		}
-	</script>
-	{@html '<script>' + partytownSnippet() + '</script>'}
-
-	<script
-		type="text/partytown"
-		src="https://www.googletagmanager.com/gtag/js?id=GTM-WDQRN9M"
-	></script>
-	<script type="text/partytown">
-		window.dataLayer = window.dataLayer || []
-		window.gtag = function () {
-			dataLayer.push(arguments)
-		}
-		gtag('js', new Date())
-		gtag('config', 'GTM-WDQRN9M')
-	</script>
 </svelte:head>
 
 <svelte:window bind:innerWidth={windowWidth} />
