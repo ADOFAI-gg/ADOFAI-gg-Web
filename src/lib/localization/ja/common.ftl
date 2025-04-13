@@ -7,3 +7,4 @@ rankings = 랭킹
 upload-level = 레벨 투고
 references = 기준
 levels = 레벨
+table-of-contents = 목차
