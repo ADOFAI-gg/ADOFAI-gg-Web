@@ -1,6 +1,6 @@
 create-item = Add “{ $value }” to list
 music-title-subtitle = Featuring artists must also be included in the title. If you don't see your song in the list, add it yourself!
-upload-level-disclaimer = 다른 사람의 저작권이나 권리를 침해하면 등재가 거부되고 관련 법에 따라 처벌받을 수 있습니다.
+upload-level-disclaimer = Infringements of others' copyrights or other rights may result in rejection of your level and punishment according to relevant laws.
 appending-title-subtitle = Please enter if you have a subtitle, such as (EX) or (Nerfed).
 creator-alias-placeholder = Enter creator alias
 creator-alias-subtitle = Enter if you need to display another name instead, such as a team name.
