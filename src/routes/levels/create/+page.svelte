@@ -154,7 +154,7 @@
 		const data: LevelUploadInfo = await res.json()
 
 		await axios.request({
-			withCredentials: true,
+			// withCredentials: true,
 			url: data.url,
 			data: buffer,
 			method: 'PUT',

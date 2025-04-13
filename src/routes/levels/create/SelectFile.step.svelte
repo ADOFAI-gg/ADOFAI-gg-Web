@@ -71,7 +71,7 @@
 			onNext()
 
 			await axios.request({
-				withCredentials: true,
+				// withCredentials: true,
 				url: data.url,
 				data: buffer,
 				method: 'PUT',
