@@ -7,3 +7,4 @@ references = References
 account-settings = Account settings
 upload-level = Submit level
 submit = Submit
+table-of-contents = 목차
