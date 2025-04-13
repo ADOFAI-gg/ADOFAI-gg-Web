@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { Container, SearchBar, Logo } from '@adofai-gg/ui'
+	import { Container, SearchBar, Logo, Translation } from '@adofai-gg/ui'
 	import MainSection from '$lib/components/main/MainSection.svelte'
 	import { goto } from '$app/navigation'
 	import type { PageData } from './$types'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
+	import MainLink from '~/lib/components/main/MainLink.svelte'
 
 	interface Props {
 		data: PageData
@@ -31,6 +32,15 @@
 				<form onsubmit={onSearch}>
 					<SearchBar bind:value={searchQuery} placeholder="level:search-placeholder" />
 				</form>
+			</div>
+
+			<div class="links-area">
+				<MainLink href="/">
+					<Translation key="main:link-usage" />
+				</MainLink>
+				<MainLink href="/">
+					<Translation key="main:link-quality-guideline" />
+				</MainLink>
 			</div>
 		</div>
 
@@ -67,5 +77,11 @@
 		flex-direction: column;
 		align-items: center;
 		margin-bottom: 84px;
+	}
+
+	.links-area {
+		margin-top: 12px;
+		gap: 18px;
+		display: flex;
 	}
 </style>

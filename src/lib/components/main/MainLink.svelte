@@ -1,0 +1,32 @@
+<script lang="ts">
+	import { Icon } from '@adofai-gg/ui'
+	import type { Snippet } from 'svelte'
+
+	interface Props {
+		children: Snippet
+		href: string
+	}
+
+	const { children, href }: Props = $props()
+</script>
+
+<a class="main-link" {href} target="_blank" rel="noreferer">
+	<Icon alt="paper icon" icon="paper" size={18} />
+	{@render children()}
+</a>
+
+<style lang="scss">
+	.main-link {
+		--opacity: 0.4;
+		color: rgba(255, 255, 255, var(--opacity));
+		transition: color ease 0.2s;
+
+		display: flex;
+		gap: 2px;
+		align-items: center;
+
+		&:hover {
+			--opacity: 1;
+		}
+	}
+</style>
