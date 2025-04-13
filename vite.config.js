@@ -6,7 +6,12 @@ import preload from 'vite-plugin-preload'
 import { partytownVite } from '@qwik.dev/partytown/utils'
 
 export default defineConfig({
-	plugins: [glob(), sveltekit(), preload(), partytownVite({})],
+	plugins: [
+		glob(),
+		sveltekit(),
+		preload(),
+		partytownVite({ dest: path.join(process.cwd(), 'build', 'client', '~partytown') })
+	],
 	build: {
 		sourcemap: true
 	}

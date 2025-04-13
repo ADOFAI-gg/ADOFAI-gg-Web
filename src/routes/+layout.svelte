@@ -152,7 +152,7 @@
 			dataLayer.push(arguments)
 		}
 		gtag('js', new Date())
-		gtag('config', 'YOUR-ID-HERE')
+		gtag('config', 'GTM-WDQRN9M')
 	</script>
 </svelte:head>
 
