@@ -35,10 +35,9 @@
 			</div>
 
 			<div class="links-area">
-				<MainLink href="/">
-					<Translation key="main:link-usage" />
-				</MainLink>
-				<MainLink href="/">
+				<MainLink
+					href="https://adofaigg.notion.site/Hidden-Unlisted-1d4e99786f24802484a1cc070ddcce23?pvs=4"
+				>
 					<Translation key="main:link-quality-guideline" />
 				</MainLink>
 			</div>
@@ -59,12 +58,12 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
 
 	.root {
-		min-height: calc(100vh - 56px - 64px);
-		padding-top: 128px;
-		padding-bottom: 64px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		min-height: calc(100vh - 56px - 64px);
+		padding-top: 128px;
+		padding-bottom: 64px;
 	}
 
 	.search-area {
@@ -81,8 +80,8 @@
 	}
 
 	.links-area {
-		margin-top: 12px;
-		gap: 18px;
 		display: flex;
+		gap: 18px;
+		margin-top: 12px;
 	}
 </style>
