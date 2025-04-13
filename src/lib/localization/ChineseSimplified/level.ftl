@@ -20,3 +20,7 @@ sort-id-desc = 时间由新到旧排序
 sort-difficulty-asc = 难度低到高排序
 sort-difficulty-desc = 难度高到低排序
 link-copied = 레벨 링크가 복사되었습니다!
+difficulty = 난도
+reference-standard = 기준 레벨 { $idx }
+reference-base = 하한 레벨 { $idx }
+filter-difficulty = { difficulty }
