@@ -44,6 +44,8 @@
 	import Cookies from 'js-cookie'
 	import { goto } from '$app/navigation'
 
+	import { partytownSnippet } from '@qwik.dev/partytown/integration'
+
 	interface Props {
 		children: Snippet
 		data: LayoutData
@@ -133,6 +135,25 @@
 
 <svelte:head>
 	<title>{$page.data.pageTitle}</title>
+	<script>
+		partytown = {
+			forward: ['dataLayer.push', 'gtag']
+		}
+	</script>
+	{@html '<script>' + partytownSnippet() + '</script>'}
+
+	<script
+		type="text/partytown"
+		src="https://www.googletagmanager.com/gtag/js?id=GTM-WDQRN9M"
+	></script>
+	<script type="text/partytown">
+		window.dataLayer = window.dataLayer || []
+		window.gtag = function () {
+			dataLayer.push(arguments)
+		}
+		gtag('js', new Date())
+		gtag('config', 'YOUR-ID-HERE')
+	</script>
 </svelte:head>
 
 <svelte:window bind:innerWidth={windowWidth} />
