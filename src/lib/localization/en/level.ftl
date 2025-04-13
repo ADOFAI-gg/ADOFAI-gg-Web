@@ -30,3 +30,6 @@ filter-tiles-max = Max Tiles
 filter-bpm = BPM
 filter-bpm-min = Min BPM
 filter-bpm-max = Max BPM
+difficulty = 난도
+reference-standard = 기준 레벨 { $idx }
+reference-base = 하한 레벨 { $idx }
