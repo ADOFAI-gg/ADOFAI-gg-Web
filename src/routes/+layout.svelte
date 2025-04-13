@@ -232,7 +232,6 @@
 		flex-grow: 1;
 		flex-direction: column;
 		min-height: calc(100vh - 56px);
-		margin-bottom: 64px;
 	}
 
 	.right-actions-area {

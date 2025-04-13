@@ -49,13 +49,11 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
 
 	.root {
-		@include breakpoints.breakpoint('md') {
-			margin-top: 138px;
-		}
-
-		& {
-			margin-top: 64px;
-		}
+		min-height: calc(100vh - 56px);
+		padding: 128px 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 	.search-area {
