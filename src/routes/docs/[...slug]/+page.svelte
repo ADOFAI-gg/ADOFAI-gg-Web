@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Container } from '@adofai-gg/ui'
+	import { Container, Translation } from '@adofai-gg/ui'
 	import type { PageData } from './$types'
 	import { createTableOfContents } from '@melt-ui/svelte'
 	import ToCTree from './ToCTree.svelte'
@@ -16,7 +16,11 @@
 	} = createTableOfContents({
 		selector: '#docs-body',
 		scrollOffset: 96,
-		activeType: 'highest-parents'
+		activeType: 'highest'
+	})
+
+	$effect(() => {
+		console.log($activeHeadingIdxs)
 	})
 </script>
 
@@ -24,6 +28,7 @@
 	<div class="layout">
 		<div class="content">
 			<h1 class="title">{data.metadata.title}</h1>
+			<h2 class="subtitle">{data.metadata.subtitle}</h2>
 
 			<div class="markdown-body" id="docs-body">
 				<data.content />
@@ -31,6 +36,10 @@
 		</div>
 
 		<div class="toc">
+			<h4>
+				<Translation key="common:table-of-contents" />
+			</h4>
+
 			{#key $headingsTree}
 				<ToCTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
 			{/key}
@@ -59,6 +68,7 @@
 
 	.markdown-body {
 		flex-grow: 1;
+		margin-top: 16px;
 	}
 
 	.toc {
@@ -71,10 +81,24 @@
 		padding: 16px;
 		border-radius: 8px;
 		background-color: rgba(0, 0, 0, 0.1);
+
+		h4 {
+			margin-bottom: 8px;
+			font-weight: 800;
+			font-size: 14px;
+		}
 	}
 
 	.title {
-		font-weight: 800;
+		font-weight: 600;
 		font-size: 48px;
+		line-height: 1.2;
+	}
+
+	.subtitle {
+		margin-top: 8px;
+		font-weight: 500;
+		font-size: 28px;
+		line-height: 1.2;
 	}
 </style>

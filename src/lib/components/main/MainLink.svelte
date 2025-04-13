@@ -18,12 +18,12 @@
 <style lang="scss">
 	.main-link {
 		--opacity: 0.4;
-		color: rgba(255, 255, 255, var(--opacity));
-		transition: color ease 0.2s;
 
 		display: flex;
 		gap: 2px;
 		align-items: center;
+		color: rgba(255, 255, 255, var(--opacity));
+		transition: color ease 0.2s;
 
 		&:hover {
 			--opacity: 1;

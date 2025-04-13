@@ -17,7 +17,7 @@
             is also passed down, so you can display headings
             however you want.
           -->
-					{@html heading.node.innerHTML}
+					{heading.node.innerText}
 				</a>
 				{#if heading.children && heading.children.length}
 					<svelte:self tree={heading.children} level={level + 1} {activeHeadingIdxs} {item} />
@@ -31,12 +31,14 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/colors' as *;
 
 	.sub {
-		padding-left: 8px;
+		padding-left: 16px;
 	}
 
 	.item {
 		display: flex;
+		padding: 4px 0;
 		color: rgba(255, 255, 255, 0.4);
+		font-size: 14px;
 		transition: color ease 0.2s;
 
 		&:hover {
@@ -44,7 +46,7 @@
 		}
 
 		&:global([data-active]) {
-			color: $blue;
+			color: white;
 		}
 	}
 </style>
