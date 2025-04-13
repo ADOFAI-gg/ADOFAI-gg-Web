@@ -28,8 +28,8 @@ importers:
         specifier: 1.0.0-alpha.7
         version: 1.0.0-alpha.7
       '@adofai-gg/ui':
-        specifier: 1.2.0-beta.136
-        version: 1.2.0-beta.136(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)
+        specifier: 1.2.0-beta.137
+        version: 1.2.0-beta.137(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.13.14)(typescript@5.8.2)
@@ -222,8 +222,8 @@ packages:
   '@adofai-gg/query-types@1.0.0-alpha.7':
     resolution: {integrity: sha512-KWEC+pRsov5XeVgAx7xy0EeTHko6kXkOwKiwjoA63KX7KynkvltNpat/dZiZscliDzciaEL56kFBLCsh5/bVbw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.7/a3568dd9a83b059219e749f54fd56dea295999e9}
 
-  '@adofai-gg/ui@1.2.0-beta.136':
-    resolution: {integrity: sha512-WDEhOvGOkXzgXgWMNY2HrPMNbtM0ZHvXqzUWROcFxd++g32NAHzXqh4+GgXOK2V2HWPpkGTrEsMpXdr28PrCdA==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.136/933b5e6ed7936078924eb99719a0d7d75d671add}
+  '@adofai-gg/ui@1.2.0-beta.137':
+    resolution: {integrity: sha512-+ODKH6/z1yrgYm35MTGJ19H1KpnjzVE3M7/Dtk7Zzcgy7c3gg/8xeuCuIDeVqr/MOPDp6cGsZq5ruJFOv85idg==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/1.2.0-beta.137/311e0722b5ce9233933d565752e0073cdd959897}
     peerDependencies:
       '@melt-ui/svelte': '*'
       svelte: '5'
@@ -3604,7 +3604,7 @@ snapshots:
 
   '@adofai-gg/query-types@1.0.0-alpha.7': {}
 
-  '@adofai-gg/ui@1.2.0-beta.136(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)':
+  '@adofai-gg/ui@1.2.0-beta.137(@melt-ui/svelte@0.86.6(svelte@5.25.3))(svelte@5.25.3)':
     dependencies:
       '@melt-ui/svelte': 0.86.6(svelte@5.25.3)
       clsx: 2.1.1
