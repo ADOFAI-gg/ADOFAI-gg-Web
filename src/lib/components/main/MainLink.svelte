@@ -10,7 +10,7 @@
 	const { children, href }: Props = $props()
 </script>
 
-<a class="main-link" {href} target="_blank" rel="noreferer">
+<a class="main-link" {href}>
 	<Icon alt="paper icon" icon="paper" size={18} />
 	{@render children()}
 </a>

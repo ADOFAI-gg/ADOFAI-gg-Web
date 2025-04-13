@@ -35,9 +35,7 @@
 			</div>
 
 			<div class="links-area">
-				<MainLink
-					href="https://adofaigg.notion.site/Hidden-Unlisted-1d4e99786f24802484a1cc070ddcce23?pvs=4"
-				>
+				<MainLink href="/docs/censorship-guidelines">
 					<Translation key="main:link-quality-guideline" />
 				</MainLink>
 			</div>
