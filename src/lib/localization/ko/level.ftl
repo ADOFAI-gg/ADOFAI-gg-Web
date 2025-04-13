@@ -18,7 +18,7 @@ filter-creator = 제작자
 filter-quality = 분류
 filter-tags = 태그
 
-filter-difficulty = 난도
+filter-difficulty = { difficulty }
 filter-difficulty-min = 최소 난도
 filter-difficulty-max = 최대 난도
 
@@ -40,3 +40,7 @@ sort-difficulty-asc = 난도 낮은 순
 sort-difficulty-desc = 난도 높은 순
 
 link-copied = 레벨 링크가 복사되었습니다!
+
+difficulty = 난도
+reference-standard = 기준 레벨 { $idx }
+reference-base = 하한 레벨 { $idx }

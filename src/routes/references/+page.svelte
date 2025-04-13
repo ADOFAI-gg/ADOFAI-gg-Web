@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DifficultyIcon from '~/lib/components/DifficultyIcon.svelte'
 	import data from './data.json'
+	import { Translation } from '@adofai-gg/ui'
 </script>
 
 {#snippet item(info: { id: number; title: string; url?: string } | undefined)}
@@ -24,13 +25,27 @@
 
 		<thead>
 			<tr>
-				<th>난도</th>
-				<th>기준 레벨 1</th>
-				<th>기준 레벨 2</th>
-				<th>기준 레벨 3</th>
-				<th>하한 레벨 1</th>
-				<th>하한 레벨 2</th>
-				<th>하한 레벨 3</th>
+				<th>
+					<Translation key="level:difficulty" />
+				</th>
+				<th>
+					<Translation key="level:reference-standard" params={{ idx: 1 }} />
+				</th>
+				<th>
+					<Translation key="level:reference-standard" params={{ idx: 2 }} />
+				</th>
+				<th>
+					<Translation key="level:reference-standard" params={{ idx: 3 }} />
+				</th>
+				<th>
+					<Translation key="level:reference-base" params={{ idx: 1 }} />
+				</th>
+				<th>
+					<Translation key="level:reference-base" params={{ idx: 2 }} />
+				</th>
+				<th>
+					<Translation key="level:reference-base" params={{ idx: 3 }} />
+				</th>
 			</tr>
 		</thead>
 
@@ -53,14 +68,14 @@
 </div>
 
 <style lang="scss">
-	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints' as *;
-
 	$border: 1px solid rgba(255, 255, 255, 0.2);
+
+	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints' as *;
 
 	.table-container {
 		margin-top: 32px;
-		margin-left: auto;
 		margin-right: auto;
+		margin-left: auto;
 		padding: 0 24px;
 	}
 
@@ -75,9 +90,9 @@
 
 	thead th {
 		padding-bottom: 6px;
-		font-size: 14px;
 		color: rgba(255, 255, 255, 0.6);
 		font-weight: 400;
+		font-size: 14px;
 		text-align: left;
 	}
 
@@ -86,13 +101,13 @@
 	}
 
 	td:not(:first-child) {
-		border-left: $border;
 		padding: 0 12px;
+		border-left: $border;
 	}
 
 	.level-id {
-		font-size: 14px;
 		color: rgba(255, 255, 255, 0.4);
+		font-size: 14px;
 	}
 
 	.level-title {
