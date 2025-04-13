@@ -34,7 +34,10 @@
 			</div>
 		</div>
 
-		<MainSection title="main:recent-legendary-levels">
+		<MainSection
+			title="main:recent-legendary-levels"
+			link={`/levels?q=&f=[{"key"%3A"quality"%2C"value"%3A["LEGENDARY"]}]`}
+		>
 			{#each data.featured.results as level}
 				<LevelListItem {level} />
 			{/each}

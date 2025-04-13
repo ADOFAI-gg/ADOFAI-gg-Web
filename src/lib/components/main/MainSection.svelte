@@ -20,7 +20,7 @@
 		<div class="spacer"></div>
 
 		{#if link}
-			<a href="/" class="more-link">
+			<a href={link} class="more-link">
 				<Translation key="common:show-more" />
 
 				<Icon icon="chevronRight" size={18} alt="icon" />

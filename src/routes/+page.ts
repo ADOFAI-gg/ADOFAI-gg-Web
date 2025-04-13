@@ -11,10 +11,10 @@ export const load: PageLoad = async ({ fetch }) => {
 			take: 5,
 			query: {
 				sort: [
-					// {
-					// 	direction: 'desc',
-					// 	objective: 'recent'
-					// }
+					{
+						direction: 'desc',
+						objective: 'id'
+					}
 				],
 				filter: {
 					op: 'eq',
