@@ -59,8 +59,9 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
 
 	.root {
-		min-height: calc(100vh - 56px);
-		padding: 128px 0;
+		min-height: calc(100vh - 56px - 64px);
+		padding-top: 128px;
+		padding-bottom: 64px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
