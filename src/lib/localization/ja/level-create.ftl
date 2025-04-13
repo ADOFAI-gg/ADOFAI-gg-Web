@@ -1,3 +1,4 @@
+music-title = 노래 제목
 tiles-subtitle = 레벨 에디터에서 Ctrl + F (⌘ + F)를 눌러 타일 번호를 확인할 수 있습니다.
 music-title-subtitle = 피처링(feat.)도 제목에 적어야 합니다. 노래가 목록에 없다면 새로 등록하세요.
 thumbnail-subtitle = 설정하지 않으면 영상 썸네일이 적용됩니다. 사진에 대한 권리가 있는지 확인하세요. 최대 4MB까지 업로드할 수 있습니다.
@@ -14,7 +15,6 @@ preparing-upload = 업로드 준비 중...
 workshop-url = Steam 창작마당 링크
 video-url-subtitle = 레벨 전체를 녹화하고 YouTube에 업로드한 영상의 링크를 입력하세요.
 submitting = 레벨을 제출하는 중...
-music-title = 노래 제목
 limits-seizure = 광과민성 발작 가능성
 video-url = YouTube 영상 링크
 description = 레벨 설명
