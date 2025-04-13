@@ -7,3 +7,4 @@ rankings = 等级
 upload-level = 上传谱面
 references = 参考
 levels = 谱面
+table-of-contents = 목차
