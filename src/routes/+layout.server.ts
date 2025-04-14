@@ -2,8 +2,9 @@ import { api, type APIMember } from '~/lib'
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { env } from '$env/dynamic/public'
+import { availableLanguages } from '@adofai-gg/ui'
 
-export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
+export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
 	const userResponse = await fetch(api.forum('members/@me'), {
 		credentials: 'include'
 	})
@@ -14,7 +15,14 @@ export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
 
 	const user: APIMember | null = userResponse.status === 403 ? null : await userResponse.json()
 
-	const lang = cookies.get('adofaigg.lang') || 'en'
+	const acceptLang = (request.headers.get('Accept-Language') ?? '')
+		.split(',')
+		.map((x) => x.trim().split(';')[0])
+		.filter((x) => x)[0]
+
+	let lang = cookies.get('adofaigg.lang') || acceptLang || 'en'
+
+	if (!availableLanguages.find((x) => x.code === lang || x.aliases.includes(lang))) lang = 'en'
 
 	if (lang) {
 		cookies.set('adofaigg.lang', lang, {

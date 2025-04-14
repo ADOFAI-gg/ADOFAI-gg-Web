@@ -23,9 +23,10 @@
 		payload: Writable<PartialLevelCreatePayload>
 		uploadState: Writable<UploadState>
 		onNext: () => void
+		onFail: () => void
 	}
 
-	const { uploadState, onNext }: Props = $props()
+	const { uploadState, onNext, onFail }: Props = $props()
 
 	const { language } = getGlobalContext()
 
@@ -41,6 +42,7 @@
 
 			const hash = md5.create().update(buffer).base64()
 			console.log(hash)
+			throw new Error('wow sans')
 
 			const res = await fetch(api.forum('levels/files/pre-signed-url'), {
 				body: JSON.stringify({
@@ -102,6 +104,7 @@
 				status: 'fail',
 				error: e as Error
 			}
+			onFail()
 		} finally {
 			uploading = false
 		}

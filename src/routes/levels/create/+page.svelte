@@ -265,6 +265,7 @@
 			<SelectFile
 				{payload}
 				{uploadState}
+				onFail={() => step.set(UploadStep.FileUpload)}
 				onNext={() => {
 					step.set(UploadStep.BasicInformation)
 				}}
