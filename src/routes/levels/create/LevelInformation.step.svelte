@@ -151,6 +151,7 @@
 					type="number"
 					min={0}
 					max={100000}
+					step="0.001"
 					bind:value={$payload.minBPM}
 					placeholder={translateKey($language, 'level-create:min-bpm', {})}
 				/>
@@ -163,6 +164,7 @@
 					}}
 					error={errors.maxBPM}
 					type="number"
+					step="0.001"
 					min={0}
 					max={100000}
 					bind:value={$payload.maxBPM}
