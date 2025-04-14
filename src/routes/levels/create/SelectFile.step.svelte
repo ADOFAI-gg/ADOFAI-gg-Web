@@ -42,7 +42,6 @@
 
 			const hash = md5.create().update(buffer).base64()
 			console.log(hash)
-			throw new Error('wow sans')
 
 			const res = await fetch(api.forum('levels/files/pre-signed-url'), {
 				body: JSON.stringify({
