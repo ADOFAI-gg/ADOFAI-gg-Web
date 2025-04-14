@@ -15,7 +15,10 @@
 	import '@fontsource/ibm-plex-sans-jp/600.css'
 	import '@fontsource/ibm-plex-sans-jp/700.css'
 
+	import { BProgress } from '@bprogress/core'
+
 	import '../stylesheets/docs.scss'
+	import '../stylesheets/bprogress.css'
 
 	import {
 		IconProvider,
@@ -34,7 +37,7 @@
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools'
 	import { env } from '$env/dynamic/public'
 
-	import type { Snippet } from 'svelte'
+	import { onMount, type Snippet } from 'svelte'
 	import { writable } from 'svelte/store'
 	import { page } from '$app/state'
 
@@ -43,7 +46,7 @@
 	import type { LayoutData } from './$types'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import Cookies from 'js-cookie'
-	import { goto } from '$app/navigation'
+	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
 
 	interface Props {
 		children: Snippet
@@ -103,6 +106,14 @@
 				window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
 			}
 		}
+	})
+
+	beforeNavigate(() => {
+		BProgress.start()
+	})
+
+	afterNavigate(() => {
+		BProgress.done()
 	})
 
 	let user: User | null = $derived.by(() => {
