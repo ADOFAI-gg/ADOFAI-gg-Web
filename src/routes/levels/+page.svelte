@@ -26,7 +26,8 @@
 	import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
 	import { tagOptions } from '~/lib/utils/tags'
 	import TagIcon from '~/lib/components/TagIcon.svelte'
-	import TagIconContent from '~/lib/components/TagIconContent.svelte'
+	import { browser } from '$app/environment'
+	import { page } from '$app/state'
 
 	const { language } = getGlobalContext()
 
@@ -136,10 +137,30 @@
 
 	const pageSize = 50
 
-	let searchOptions = $state<SearchOptionsData>({
-		filter: [],
-		sort: 'id:desc'
+	const getSearchOptions = () => {
+		const params = page.url.searchParams
+		console.log(params, parseFilter(params.get('f'), scheme))
+
+		return {
+			filter: parseFilter(params.get('f'), scheme),
+			sort: 'id:desc'
+		}
+	}
+
+	let searchOptionsState = $state(getSearchOptions())
+	const searchOptions = $derived(getSearchOptions())
+
+	$effect(() => {
+		searchOptionsState = searchOptions
 	})
+
+	$effect(() => {
+		updateQuery($debouncedSearchText, searchOptionsState)
+	})
+
+	let searchQuery = $state(page.url.searchParams.get('q') || '')
+
+	// const searchQuery = $derived(page.url.searchParams.get('q') || '')
 
 	const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
 		const url = new URL(api.forum('levels/search'))
@@ -287,8 +308,6 @@
 		}
 	}
 
-	let searchQuery = $state('')
-
 	let virtualizer = createWindowVirtualizer({
 		count: 0,
 		overscan: 3,
@@ -316,30 +335,42 @@
 
 	let mounted = false
 
+	// let params = $derived.by(() => {
+	// 	if (browser) return page.url
+	// })
+
+	$effect(() => {
+		console.log()
+	})
+
 	onMount(() => {
 		const url = new URL(window.location.href)
 		const params = url.searchParams
 
-		searchOptions.filter = parseFilter(params.get('f'), scheme)
-		searchQuery = $debouncedSearchText = params.get('q') || ''
-
 		mounted = true
 	})
 
-	$effect(() => {
-		if (!mounted) return
-		const searchText = $debouncedSearchText
-		const filter = JSON.stringify(searchOptions.filter.map(({ id, ...x }) => ({ ...x })))
+	const updateQuery = (searchText: string, { filter, sort }: SearchOptionsData) => {
+		const filterStr = JSON.stringify(filter.map(({ ...x }) => ({ ...x })))
 
 		const prevUrl = new URL(window.location.href)
 
-		if (prevUrl.searchParams.get('q') !== searchText || prevUrl.searchParams.get('f') !== filter) {
-			goto(
-				`${prevUrl.pathname}?q=${encodeURIComponent(searchText)}&f=${encodeURIComponent(filter)}&psize=${pageSize}`,
-				{ replaceState: true, keepFocus: true }
-			)
+		if (
+			prevUrl.searchParams.get('q') === searchText &&
+			prevUrl.searchParams.get('f') === filterStr
+		) {
+			return
 		}
-	})
+
+		goto(
+			`${prevUrl.pathname}?q=${encodeURIComponent(searchText)}&f=${encodeURIComponent(filterStr)}`,
+			{ replaceState: true, keepFocus: true }
+		)
+	}
+
+	// $effect(() => {
+	// 	if (!mounted) return
+	// })
 
 	const query = createInfiniteQuery(
 		store.derived([queryParams], ([$queryParams]) =>
@@ -402,7 +433,7 @@
 <Container>
 	<div class="search-area">
 		<SearchBar bind:value={searchQuery} placeholder="level:search-placeholder" />
-		<SearchOptionsBar {scheme} bind:data={searchOptions} />
+		<SearchOptionsBar {scheme} bind:data={searchOptionsState} />
 	</div>
 	<div class="list-area">
 		{#if $query.isPending}

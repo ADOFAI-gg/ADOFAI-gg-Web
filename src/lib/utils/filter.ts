@@ -25,7 +25,7 @@ export const parseFilterItem = (rawData: any, scheme: SearchOptionScheme): Searc
 			throw new Error('not implemented')
 	}
 
-	return { key: rawData.key, value, id: v4() }
+	return { key: rawData.key, value, id: rawData.id || v4() }
 }
 
 export const parseFilter = (
@@ -46,7 +46,8 @@ export const parseFilter = (
 				}
 			})
 			.filter((x) => x) as SearchFilter[]
-	} catch {
+	} catch (e) {
+		console.warn(e)
 		return []
 	}
 }
