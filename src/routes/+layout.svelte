@@ -31,11 +31,12 @@
 		Toaster,
 		type GlobalContext
 	} from '@adofai-gg/ui'
+	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools'
 	import { env } from '$env/dynamic/public'
 
 	import type { Snippet } from 'svelte'
 	import { writable } from 'svelte/store'
-	import { page } from '$app/stores'
+	import { page } from '$app/state'
 
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
 	import { browser } from '$app/environment'
@@ -43,8 +44,6 @@
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import Cookies from 'js-cookie'
 	import { goto } from '$app/navigation'
-
-	import { partytownSnippet } from '@qwik.dev/partytown/integration'
 
 	interface Props {
 		children: Snippet
@@ -106,14 +105,6 @@
 		}
 	})
 
-	const queryClient = new QueryClient({
-		defaultOptions: {
-			queries: {
-				enabled: browser
-			}
-		}
-	})
-
 	let user: User | null = $derived.by(() => {
 		if (!data.currentUser) return null
 
@@ -134,7 +125,7 @@
 
 	$effect(() => {
 		if (browser) {
-			const path = $page.url.pathname
+			const path = page.url.pathname
 
 			// @ts-ignore
 			window.dataLayer?.push({ event: 'pageview', page: path })
@@ -143,14 +134,15 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.pageTitle}</title>
+	<title>{page.data.pageTitle}</title>
 </svelte:head>
 
 <svelte:window bind:innerWidth={windowWidth} />
 
 <Toaster />
 
-<QueryClientProvider client={queryClient}>
+<QueryClientProvider client={data.queryClient}>
+	<SvelteQueryDevtools />
 	<div class="layout">
 		<div class="nav-position-fixer">
 			<Nav {user}>

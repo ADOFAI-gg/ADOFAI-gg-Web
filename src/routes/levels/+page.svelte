@@ -1,154 +1,38 @@
 <script lang="ts">
 	import * as store from 'svelte/store'
-	import type {
-		SearchFilter,
-		SearchOptionScheme,
-		SearchOptionsData,
-		SelectOption
-	} from '@adofai-gg/ui'
+	import type { SearchOptionScheme, SearchOptionsData } from '@adofai-gg/ui'
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
-	import { api, localizeOptions, type APILevel } from '$lib'
-	import type { AndFilter, Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
+	import type { SearchQuery } from '@adofai-gg/query-types'
 	import {
 		Container,
 		getGlobalContext,
 		LoadingSpinner,
 		SearchBar,
-		SearchOptionsBar,
-		translateKey
+		SearchOptionsBar
 	} from '@adofai-gg/ui'
 	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
 	import { onMount, type Snippet } from 'svelte'
 	import { goto } from '$app/navigation'
 	import { parseFilter } from '~/lib/utils/filter'
-	import { difficultyOptions } from '~/lib/utils/difficulty'
-	import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
-	import { tagOptions } from '~/lib/utils/tags'
-	import TagIcon from '~/lib/components/TagIcon.svelte'
-	import { browser } from '$app/environment'
 	import { page } from '$app/state'
+	import {
+		buildLevelQuery,
+		buildLevelSearchScheme,
+		fetchLevels,
+		getLevelSearchOptions,
+		pageSize
+	} from './search'
+	import type { PageData } from './$types'
+	import { browser } from '$app/environment'
 
 	const { language } = getGlobalContext()
 
-	const scheme: SearchOptionScheme = $derived({
-		filter: {
-			'music.name': {
-				default: '',
-				icon: 'music',
-				label: 'level:filter-music',
-				name: 'level:filter-music',
-				type: 'string'
-			},
-			'music.artists.name': {
-				default: '',
-				icon: 'creator',
-				label: 'level:filter-artist',
-				name: 'level:filter-artist',
-				type: 'string'
-			},
-			'creators.name': {
-				default: '',
-				icon: 'creator',
-				label: 'level:filter-creator',
-				name: 'level:filter-creator',
-				type: 'string'
-			},
-			quality: {
-				type: 'select',
-				name: 'level:filter-quality',
-				icon: 'category',
-				default: ['LISTED', 'FEATURED', 'LEGENDARY'],
-				options: localizeOptions($language, [
-					{
-						value: 'LISTED',
-						label: 'level:quality-listed'
-					},
-					{
-						value: 'FEATURED',
-						label: 'level:quality-featured'
-					},
-					{
-						value: 'LEGENDARY',
-						label: 'level:quality-legendary'
-					}
-				]),
-				label: 'level:filter-quality',
-				multiple: true
-			},
-			difficulty: {
-				type: 'rangeSelect',
-				name: 'level:filter-difficulty',
-				icon: 'difficulty',
-				minLabel: 'level:filter-difficulty-min',
-				maxLabel: 'level:filter-difficulty-max',
-				default: [],
-				options: difficultyOptions,
-				optionIconSnippet: difficultyIconTemplate as Snippet<[]>
-			},
-			'tags.name': {
-				type: 'select',
-				options: localizeOptions($language, tagOptions),
-				default: [],
-				multiple: true,
-				name: 'level:filter-tags',
-				icon: 'tag',
-				label: 'level:filter-tags',
-				optionIconSnippet: tagIconTemplate as Snippet<[]>
-			},
-			tile: {
-				type: 'range',
-				icon: 'tile',
-				name: 'level:filter-tiles',
-				min: 1,
-				minLabel: 'level:filter-tiles-min',
-				maxLabel: 'level:filter-tiles-max',
-				default: []
-			},
-			bpm: {
-				type: 'range',
-				icon: 'bpm',
-				name: 'level:filter-bpm',
-				min: 1,
-				minLabel: 'level:filter-bpm-min',
-				maxLabel: 'level:filter-bpm-max',
-				default: []
-			}
-		},
-		sort: [
-			{
-				name: translateKey($language, 'level:sort-id-desc', {}),
-				objective: 'id:desc'
-			},
-			{
-				name: translateKey($language, 'level:sort-id-asc', {}),
-				objective: 'id:asc'
-			},
-			{
-				name: translateKey($language, 'level:sort-difficulty-desc', {}),
-				objective: 'difficulty:desc'
-			},
-			{
-				name: translateKey($language, 'level:sort-difficulty-asc', {}),
-				objective: 'difficulty:asc'
-			}
-		]
-	} satisfies SearchOptionScheme)
+	const scheme: SearchOptionScheme = $derived(buildLevelSearchScheme($language))
 
-	const pageSize = 50
-
-	const getSearchOptions = () => {
-		const params = page.url.searchParams
-		console.log(params, parseFilter(params.get('f'), scheme))
-
-		return {
-			filter: parseFilter(params.get('f'), scheme),
-			sort: 'id:desc'
-		}
-	}
-
-	let searchOptionsState = $state(getSearchOptions())
-	const searchOptions = $derived(getSearchOptions())
+	// svelte-ignore state_referenced_locally
+	let searchOptionsState = $state(getLevelSearchOptions(page.url, scheme))
+	const searchOptions = $derived(getLevelSearchOptions(page.url, scheme))
 
 	$effect(() => {
 		searchOptionsState = searchOptions
@@ -160,195 +44,17 @@
 
 	let searchQuery = $state(page.url.searchParams.get('q') || '')
 
-	// const searchQuery = $derived(page.url.searchParams.get('q') || '')
-
-	const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
-		const url = new URL(api.forum('levels/search'))
-
-		const res = await fetch(url, {
-			method: 'POST',
-			body: JSON.stringify({
-				skip,
-				take,
-				query
-			}),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		})
-
-		if (!res.ok) throw new Error(`Request failed with status code: ${res.status}`)
-
-		const data = await res.json()
-
-		return data.results as APILevel[]
-	}
-
-	const buildQuery = (search: string, searchOptions: SearchOptionsData): SearchQuery => {
-		const rootFilter: Filter = {
-			op: 'and',
-			data: []
-		}
-		const sort: Sort[] = []
-
-		const hasSearchQuery = search.length >= 1
-		const hasOptionalFilter = searchOptions.filter.length >= 1
-
-		if (hasSearchQuery) {
-			rootFilter.data.push({
-				op: 'or',
-				data: [
-					{
-						op: 'stringContains',
-						key: 'music.name',
-						value: search,
-						ignoreCase: true
-					},
-					{
-						op: 'stringContains',
-						key: 'music.artists.name',
-						value: search,
-						ignoreCase: true
-					},
-					{
-						op: 'stringContains',
-						key: 'creators.name',
-						value: search,
-						ignoreCase: true
-					}
-				]
-			} satisfies Filter)
-		}
-
-		if (hasOptionalFilter) {
-			for (const filter of searchOptions.filter) {
-				const schemeData = scheme.filter[filter.key]
-				if (!schemeData) continue
-
-				switch (schemeData.type) {
-					case 'string':
-						rootFilter.data.push({
-							op: 'stringContains',
-							key: filter.key,
-							value: filter.value as string,
-							ignoreCase: true
-						})
-						break
-					case 'select':
-						if (schemeData.multiple) {
-							if (filter.key === 'tags.name') {
-								rootFilter.data.push({
-									op: 'containsAll',
-									key: filter.key,
-									values: filter.value as string[]
-								})
-							} else
-								rootFilter.data.push({
-									op: 'or',
-									data: (filter.value as string[]).map((x) => ({
-										op: 'eq',
-										key: filter.key,
-										value: x
-									}))
-								})
-						} else {
-							// TODO make this
-						}
-
-						break
-					case 'range':
-					case 'rangeSelect': {
-						const v = filter.value as number[]
-						const min = v[0]
-						const max = v[1]
-
-						const q = {
-							op: 'and',
-							data: []
-						} as AndFilter
-
-						if (min !== undefined) {
-							q.data.push({
-								op: 'gte',
-								key: filter.key === 'bpm' ? 'minBpm' : filter.key,
-								value: min
-							} satisfies Filter)
-						}
-
-						if (max !== undefined) {
-							q.data.push({
-								op: 'lte',
-								key: filter.key === 'bpm' ? 'maxBpm' : filter.key,
-								value: max
-							} satisfies Filter)
-						}
-
-						rootFilter.data.push(q)
-						break
-					}
-					default:
-						break
-				}
-			}
-		}
-
-		if (searchOptions.sort) {
-			const [objective, direction] = searchOptions.sort.split(':')
-			if (['asc', 'desc'].includes(direction)) {
-				sort.push({
-					objective,
-					direction: direction as 'asc' | 'desc'
-				})
-			}
-		}
-
-		return {
-			filter: hasSearchQuery || hasOptionalFilter ? rootFilter : null,
-			sort
-		}
-	}
-
-	let virtualizer = createWindowVirtualizer({
-		count: 0,
-		overscan: 3,
-		estimateSize: () => 108
-	})
-
-	let elements = $state<HTMLDivElement[]>([])
-
-	$effect(() => {
-		elements.forEach((el) => virtualizer.measureElement(el))
-	})
-
-	let debouncedSearchText = store.writable('')
-	let searchOptionsWritable = store.writable<SearchOptionsData>({
-		filter: [],
-		sort: 'recent-desc'
-	})
+	// svelte-ignore state_referenced_locally
+	let debouncedSearchText = store.writable(searchQuery)
+	// svelte-ignore state_referenced_locally
+	let searchOptionsWritable = store.writable<SearchOptionsData>(searchOptions)
 
 	let queryParams = store.derived(
 		[debouncedSearchText, searchOptionsWritable],
 		([$debouncedSearchText, $searchOptions]) => {
-			return buildQuery($debouncedSearchText, $searchOptions)
+			return buildLevelQuery($debouncedSearchText, $searchOptions, scheme)
 		}
 	)
-
-	let mounted = false
-
-	// let params = $derived.by(() => {
-	// 	if (browser) return page.url
-	// })
-
-	$effect(() => {
-		console.log()
-	})
-
-	onMount(() => {
-		const url = new URL(window.location.href)
-		const params = url.searchParams
-
-		mounted = true
-	})
 
 	const updateQuery = (searchText: string, { filter, sort }: SearchOptionsData) => {
 		const filterStr = JSON.stringify(filter.map(({ ...x }) => ({ ...x })))
@@ -367,10 +73,6 @@
 			{ replaceState: true, keepFocus: true }
 		)
 	}
-
-	// $effect(() => {
-	// 	if (!mounted) return
-	// })
 
 	const query = createInfiniteQuery(
 		store.derived([queryParams], ([$queryParams]) =>
@@ -404,6 +106,18 @@
 
 	let allItems = $derived(($query.data && $query.data.pages.flat()) || [])
 
+	let virtualizer = createWindowVirtualizer({
+		count: 0,
+		overscan: 3,
+		estimateSize: () => 108
+	})
+
+	let elements = $state<HTMLDivElement[]>([])
+
+	$effect(() => {
+		elements.forEach((el) => virtualizer.measureElement(el))
+	})
+
 	$effect(() => {
 		virtualizer.setOptions({
 			...virtualizer.options,
@@ -426,10 +140,6 @@
 	})
 </script>
 
-{#snippet tagIconTemplate(option: SelectOption<string>)}
-	<TagIcon noTooltip tag={option.value} size={18} />
-{/snippet}
-
 <Container>
 	<div class="search-area">
 		<SearchBar bind:value={searchQuery} placeholder="level:search-placeholder" />
@@ -441,24 +151,32 @@
 		{/if}
 
 		{#if $query.isSuccess}
-			{@const items = virtualizer.getVirtualItems()}
-			<div class="level-list" style="height: {virtualizer.getTotalSize()}px;">
-				<div
-					style="position: absolute; top: 0; left: 0; width: 100%; transform: translateY({items[0]
-						? items[0].start - virtualizer.options.scrollMargin
-						: 0}px);"
-				>
-					{#each items as item, i (item.index)}
-						<div class="item" bind:this={elements[i]} data-index={item.index}>
-							{#if $query.hasNextPage && item.index === allItems.length}
-								<LoadingSpinner />
-							{:else}
-								<LevelListItem level={allItems[item.index]} />
-							{/if}
-						</div>
+			{#if browser}
+				{@const items = virtualizer.getVirtualItems()}
+				<div class="level-list" style="height: {virtualizer.getTotalSize()}px;">
+					<div
+						style="position: absolute; top: 0; left: 0; width: 100%; transform: translateY({items[0]
+							? items[0].start - virtualizer.options.scrollMargin
+							: 0}px);"
+					>
+						{#each items as item, i (item.index)}
+							<div class="item" bind:this={elements[i]} data-index={item.index}>
+								{#if $query.hasNextPage && item.index === allItems.length}
+									<LoadingSpinner />
+								{:else}
+									<LevelListItem level={allItems[item.index]} />
+								{/if}
+							</div>
+						{/each}
+					</div>
+				</div>
+			{:else}
+				<div class="level-list">
+					{#each allItems as level}
+						<LevelListItem {level} />
 					{/each}
 				</div>
-			</div>
+			{/if}
 		{/if}
 	</div>
 </Container>
