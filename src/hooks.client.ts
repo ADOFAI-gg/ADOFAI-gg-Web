@@ -18,6 +18,7 @@ export const handleError = handleErrorWithSentry()
 
 if (dev) {
 	Spotlight.init({
-		injectImmediately: true
+		injectImmediately: true,
+		anchor: 'bottomLeft'
 	})
 }
