@@ -12,9 +12,9 @@ export default defineConfig({
 			sourceMapsUploadOptions: {
 				org: 'adofaigg',
 				project: 'forum-web',
-				url: 'https://trace.afg.ink/',
-				authToken: process.env.SENTRY_AUTH_TOKEN
-			}
+				url: 'https://trace.afg.ink/'
+			},
+			debug: true
 		}),
 		glob(),
 		sveltekit(),
