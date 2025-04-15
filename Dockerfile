@@ -1,6 +1,7 @@
 FROM --platform=$BUILDPLATFORM node:22-alpine AS builder
 
 ARG GH_NPM_TOKEN
+ARG SENTRY_AUTH_TOKEN
 
 RUN mkdir -p /app
 

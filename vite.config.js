@@ -12,7 +12,8 @@ export default defineConfig({
 			sourceMapsUploadOptions: {
 				org: 'adofaigg',
 				project: 'forum-web',
-				url: 'https://trace.afg.ink/'
+				url: 'https://trace.afg.ink/',
+				authToken: process.env.SENTRY_AUTH_TOKEN
 			}
 		}),
 		glob(),
