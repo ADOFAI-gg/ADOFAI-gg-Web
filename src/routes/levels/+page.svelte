@@ -12,9 +12,7 @@
 	} from '@adofai-gg/ui'
 	import { createWindowVirtualizer, type VirtualItem } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
-	import { onMount, type Snippet } from 'svelte'
-	import { goto } from '$app/navigation'
-	import { parseFilter } from '~/lib/utils/filter'
+	import { goto, replaceState } from '$app/navigation'
 	import { page } from '$app/state'
 	import {
 		buildLevelQuery,
@@ -23,7 +21,6 @@
 		getLevelSearchOptions,
 		pageSize
 	} from './search'
-	import type { PageData } from './$types'
 	import { browser } from '$app/environment'
 
 	const { language } = getGlobalContext()
@@ -56,22 +53,19 @@
 		}
 	)
 
-	const updateQuery = (searchText: string, { filter, sort }: SearchOptionsData) => {
+	const updateQuery = async (searchText: string, { filter, sort }: SearchOptionsData) => {
 		const filterStr = JSON.stringify(filter.map(({ ...x }) => ({ ...x })))
+		const sortStr = sort
 
-		const prevUrl = new URL(window.location.href)
+		const prevUrl = page.url
+		const newUrl = new URL(prevUrl)
+		newUrl.searchParams.set('q', searchText)
+		newUrl.searchParams.set('f', filterStr)
+		newUrl.searchParams.set('sort', sortStr)
 
-		if (
-			prevUrl.searchParams.get('q') === searchText &&
-			prevUrl.searchParams.get('f') === filterStr
-		) {
-			return
-		}
+		if (prevUrl.toString() === newUrl.toString()) return
 
-		goto(
-			`${prevUrl.pathname}?q=${encodeURIComponent(searchText)}&f=${encodeURIComponent(filterStr)}`,
-			{ replaceState: true, keepFocus: true }
-		)
+		goto(newUrl, { keepFocus: true, replaceState: true, noScroll: true, invalidateAll: false })
 	}
 
 	const query = createInfiniteQuery(

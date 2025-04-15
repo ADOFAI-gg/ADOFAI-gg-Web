@@ -16,10 +16,11 @@ export const pageSize = 50
 
 export const getLevelSearchOptions = (url: URL, scheme: SearchOptionScheme) => {
 	const params = url.searchParams
+	const rawSort = params.get('sort')
 
 	return {
 		filter: parseFilter(params.get('f'), scheme),
-		sort: 'id:desc'
+		sort: scheme.sort.find((x) => x.objective === rawSort)?.objective || 'id:desc'
 	}
 }
 
