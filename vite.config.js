@@ -1,3 +1,4 @@
+import { sentrySvelteKit } from '@sentry/sveltekit'
 import * as path from 'path'
 import glob from 'vite-plugin-glob'
 import { sveltekit } from '@sveltejs/kit/vite'
@@ -7,6 +8,13 @@ import { partytownVite } from '@qwik.dev/partytown/utils'
 
 export default defineConfig({
 	plugins: [
+		sentrySvelteKit({
+			sourceMapsUploadOptions: {
+				org: 'adofaigg',
+				project: 'forum-web',
+				url: 'https://trace.afg.ink/'
+			}
+		}),
 		glob(),
 		sveltekit(),
 		preload(),

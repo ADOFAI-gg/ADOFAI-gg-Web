@@ -27,3 +27,5 @@ static/~partytown
 # Sentry
 .sentryclirc
 .direnv
+# Sentry Config File
+.env.sentry-build-plugin
