@@ -5,15 +5,20 @@
 	interface Props {
 		icon: string
 		users: APIMember[]
+		alias?: string | null
 	}
 
-	const { icon, users }: Props = $props()
+	const { icon, users, alias }: Props = $props()
 </script>
 
 <div class="user-list-item-user-list">
 	<Icon size={18} alt="icon" {icon} style="color: rgba(255, 255, 255, 0.4)" />
 	<div class="users">
-		{users.map((x) => x.displayName).join(' & ')}
+		{#if alias}
+			{alias}
+		{:else}
+			{users.map((x) => x.displayName).join(' & ')}
+		{/if}
 	</div>
 </div>
 

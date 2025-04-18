@@ -22,7 +22,10 @@ export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
 
 	let lang = cookies.get('adofaigg.lang') || acceptLang || 'en'
 
-	if (!availableLanguages.find((x) => x.code === lang || x.aliases.includes(lang))) lang = 'en'
+	const available = availableLanguages.find((x) => x.code === lang || x.aliases.includes(lang))
+
+	if (available) lang = available.code
+	else lang = 'en'
 
 	if (lang) {
 		cookies.set('adofaigg.lang', lang, {

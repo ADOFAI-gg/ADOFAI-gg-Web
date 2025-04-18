@@ -29,7 +29,7 @@
 		<div class="level-title">{level.title}</div>
 		<div class="credits-area">
 			<LevelListItemUserList icon="music" users={level.music.artists} />
-			<LevelListItemUserList icon="chart" users={level.creators} />
+			<LevelListItemUserList icon="chart" users={level.creators} alias={level.creatorAlias} />
 		</div>
 	</div>
 	<div class="extra-area">
