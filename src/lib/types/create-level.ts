@@ -24,6 +24,7 @@ export type MemberIdOrCreate = IdOrCreate<
 	{
 		name: string
 		avatarUrl: string | null
+		locked: boolean
 	}
 >
 

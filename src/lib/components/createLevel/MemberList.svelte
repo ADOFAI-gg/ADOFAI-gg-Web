@@ -15,7 +15,6 @@
 	import { Debounced } from 'runed'
 	import { api } from '~/lib'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
-	import { stripValues } from '@melt-ui/svelte/internal/helpers'
 
 	interface Props {
 		value: MemberIdOrCreate[]
@@ -122,7 +121,7 @@
 				{#each value as member}
 					<SelectedItem
 						name={member.data.name}
-						onRemove={canEdit
+						onRemove={canEdit && !member.data.locked
 							? () => {
 									value = value.filter((x) => x !== member)
 								}
@@ -159,7 +158,8 @@
 								exists: true,
 								data: {
 									avatarUrl: getAvatarUrl(null, null, isCreator ? 'creator' : 'artist', 24),
-									name: existing.customData!.displayName
+									name: existing.customData!.displayName,
+									locked: false
 								},
 								id: existing.value as number
 							}
@@ -173,7 +173,8 @@
 							exists: false,
 							data: {
 								name: debouncedSearch.current,
-								avatarUrl: getAvatarUrl(null, null, isCreator ? 'creator' : 'artist', 24)
+								avatarUrl: getAvatarUrl(null, null, isCreator ? 'creator' : 'artist', 24),
+								locked: false
 							}
 						}
 					]
@@ -195,7 +196,8 @@
 									member.authUserId,
 									member.avatar,
 									isCreator ? 'creator' : 'artist'
-								)
+								),
+								locked: false
 							}
 						}
 					]

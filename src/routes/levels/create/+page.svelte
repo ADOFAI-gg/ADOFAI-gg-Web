@@ -23,6 +23,8 @@
 	import { onDestroy } from 'svelte'
 	import axios from 'axios'
 	import Progress from '~/lib/components/Progress.svelte'
+	import type { PageData } from './$types'
+	import { getAvatarUrl } from '~/lib/utils/avatar'
 
 	enum UploadStep {
 		FileUpload,
@@ -30,6 +32,8 @@
 		DisplayInformation,
 		LevelInformation
 	}
+
+	let { data: pageData }: { data: PageData } = $props()
 
 	const step = writable(UploadStep.FileUpload)
 	const uploadState = writable<UploadState>({ status: 'idle' })
@@ -40,7 +44,21 @@
 		music: undefined,
 		thumbnail: undefined,
 
-		creators: [],
+		creators: [
+			{
+				exists: true,
+				id: pageData.currentUser!.id,
+				data: {
+					name: pageData.currentUser!.displayName,
+					avatarUrl: getAvatarUrl(
+						pageData.currentUser!.authUserId,
+						pageData.currentUser!.avatar,
+						'creator'
+					),
+					locked: true
+				}
+			}
+		],
 		appendingTitle: '',
 		creatorAlias: '',
 		description: '',
