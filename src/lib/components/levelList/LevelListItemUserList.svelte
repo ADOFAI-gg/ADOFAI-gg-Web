@@ -33,5 +33,11 @@
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 16px;
 		line-height: 120%;
+		flex-grow: 1;
+		width: 0;
+
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>

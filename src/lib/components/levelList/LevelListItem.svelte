@@ -60,6 +60,8 @@
 </a>
 
 <style lang="scss">
+	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints' as *;
+
 	.level-list-item {
 		--bg-opacity: 0;
 
@@ -132,4 +134,12 @@
 		font-weight: 500;
 		font-size: 16px;
 	} */
+
+	.download-button {
+		display: none;
+
+		@include breakpoint('md') {
+			display: block;
+		}
+	}
 </style>
