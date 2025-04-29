@@ -1,23 +1,26 @@
-import { api, type APILevel } from '~/lib'
+import { api, ky, type APILevel } from '~/lib'
 import type { PageLoad } from './$types'
 import { error } from '@sveltejs/kit'
+import { HTTPError } from 'ky'
 
 export const load: PageLoad = async ({ params, fetch }) => {
-	const res = await fetch(api.forum(`levels/${encodeURIComponent(params.levelId)}`), {
-		credentials: 'include'
-	})
+	try {
+		const res = await ky.get(api.forum(`levels/${encodeURIComponent(params.levelId)}`), {
+			fetch,
+			credentials: 'include'
+		})
 
-	if (!res.ok) {
-		if (res.status === 404) {
-			return error(404, { message: 'Unknown level' })
+		const data: APILevel = await res.json()
+
+		return {
+			level: data,
+			pageTitle: data.title
 		}
-		return error(500)
-	}
+	} catch (e) {
+		if (e instanceof HTTPError) {
+			return error(e.response.status, e.message)
+		}
 
-	const data: APILevel = await res.json()
-
-	return {
-		level: data,
-		pageTitle: data.title
+		throw e
 	}
 }

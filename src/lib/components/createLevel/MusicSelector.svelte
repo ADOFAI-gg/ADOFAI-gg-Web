@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Combobox, getGlobalContext, type SelectOption, translateKey } from '@adofai-gg/ui'
 	import { Debounced } from 'runed'
-	import { api, type APIMusic, type MusicIdOrCreate } from '~/lib'
+	import { api, ky, type APIMusic, type MusicIdOrCreate } from '~/lib'
 	import FakeOutlinedInput from '~/lib/components/FakeOutlinedInput.svelte'
 	import SelectedItem from '~/lib/components/SelectedItem.svelte'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
+	import type { ListResponse } from '~/types'
 
 	interface Props {
 		value: MusicIdOrCreate | undefined
@@ -28,13 +29,11 @@
 				return
 			}
 
-			const res = await fetch(
-				api.forum('music') + '?' + new URLSearchParams({ name: query, sort: 'NAME_LENGTH_ASC' }),
-				{
-					signal: abort
-				}
-			)
-			results = (await res.json()).results
+			const res = await ky.get(api.forum('music'), {
+				signal: abort,
+				searchParams: new URLSearchParams({ name: query, sort: 'NAME_LENGTH_ASC' })
+			})
+			results = (await res.json<ListResponse<APIMusic>>()).results
 		} catch (e) {
 			if (e instanceof DOMException) {
 				if (e.name === 'ABORT_ERR') return

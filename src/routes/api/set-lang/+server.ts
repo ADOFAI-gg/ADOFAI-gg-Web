@@ -1,11 +1,11 @@
 import { error, type RequestHandler } from '@sveltejs/kit'
-import { api } from '~/lib'
+import { api, ky } from '~/lib'
 
 export const POST: RequestHandler = async ({ fetch, request }) => {
-	const res = await fetch(api.auth('common/update-lang'), {
-		method: 'POST',
+	const res = await ky.post(api.auth('common/update-lang'), {
+		fetch,
 		credentials: 'include',
-		body: await request.json()
+		json: await request.json()
 	})
 
 	if (!res.ok) {
