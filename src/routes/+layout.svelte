@@ -210,7 +210,11 @@
 			{@render children()}
 		</main>
 
-		<Footer />
+		{#if !page.data.noFooter}
+			<div class="footer-container">
+				<Footer />
+			</div>
+		{/if}
 	</div>
 </QueryClientProvider>
 
@@ -246,7 +250,10 @@
 		flex-grow: 1;
 		flex-direction: column;
 		min-height: calc(100vh - 56px);
-		padding-bottom: 64px;
+	}
+
+	.footer-container {
+		padding-top: 64px;
 	}
 
 	.right-actions-area {
