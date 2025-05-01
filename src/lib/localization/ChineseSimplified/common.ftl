@@ -8,3 +8,4 @@ upload-level = 上传谱面
 references = 参考
 levels = 谱面
 table-of-contents = 续表
+my-levels = 내 레벨
