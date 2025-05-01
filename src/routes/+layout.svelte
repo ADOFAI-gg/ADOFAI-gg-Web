@@ -177,6 +177,9 @@
 						{/if}
 
 						{#if user}
+							<NavMenuItem link href="/my-levels">
+								<Translation key="common:my-levels" />
+							</NavMenuItem>
 							<NavMenuItem
 								link
 								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}

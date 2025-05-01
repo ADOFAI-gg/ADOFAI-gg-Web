@@ -12,3 +12,5 @@ account-settings = 계정 설정
 upload-level = 레벨 투고
 
 table-of-contents = 목차
+
+my-levels = 내 레벨
