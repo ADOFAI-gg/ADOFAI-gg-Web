@@ -3,7 +3,9 @@ import type { PageLoad } from './$types'
 import { error } from '@sveltejs/kit'
 
 export const load: PageLoad = async ({ params, fetch }) => {
-	const res = await fetch(api.forum(`levels/${encodeURIComponent(params.levelId)}`))
+	const res = await fetch(api.forum(`levels/${encodeURIComponent(params.levelId)}`), {
+		credentials: 'include'
+	})
 
 	if (!res.ok) {
 		if (res.status === 404) {
