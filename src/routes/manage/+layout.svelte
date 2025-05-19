@@ -36,7 +36,7 @@
 <style lang="scss">
 	.management-layout {
 		display: flex;
-		height: calc(100vh - 55px);
+		height: calc(100vh - 56px);
 
 		> :global(*:not(:last-child)) {
 			border-right: 1px solid rgba(255, 255, 255, 0.1);

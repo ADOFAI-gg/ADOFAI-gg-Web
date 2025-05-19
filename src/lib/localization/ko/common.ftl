@@ -14,3 +14,6 @@ upload-level = 레벨 투고
 table-of-contents = 목차
 
 my-levels = 내 레벨
+
+post-comment = 게시
+cancel = 취소

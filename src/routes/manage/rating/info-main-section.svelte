@@ -107,5 +107,6 @@
 	.actions-area {
 		display: flex;
 		gap: 8px;
+		flex-wrap: wrap;
 	}
 </style>

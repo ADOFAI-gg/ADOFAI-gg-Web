@@ -18,3 +18,8 @@ rating-set-quality = 카테고리 설정
 rating-set-expected = 예상 난도 재설정
 rating-force-confirm = 난도 강제 확정
 rating-mark-discussion-needed = 논의 필요로 표시
+
+level-info = 레벨 정보
+notes = 비고
+other-rating-status = 다른 책정자 현황
+add-note = 비고 달기...

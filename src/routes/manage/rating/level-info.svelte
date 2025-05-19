@@ -1,14 +1,22 @@
 <script lang="ts">
+	import { Translation, type User } from '@adofai-gg/ui'
+	import InfoDetails from './info-details.svelte'
 	import InfoMainSection from './info-main-section.svelte'
+
+	interface Props {
+		user: User
+	}
+
+	const { user }: Props = $props()
 </script>
 
-<!-- <div class="no-levels">
+<div class="no-levels">
 	<Translation key="manage:no-levels" />
-</div> -->
+</div>
 
 <InfoMainSection />
 
-<div class="details-section">asdf</div>
+<InfoDetails {user} />
 
 <style lang="scss">
 	@use '@adofai-gg/ui/dist/stylesheets/system/colors' as *;
@@ -23,9 +31,5 @@
 		align-items: center;
 		opacity: 0.4;
 		user-select: none;
-	}
-
-	.details-section {
-		width: 400px;
 	}
 </style>

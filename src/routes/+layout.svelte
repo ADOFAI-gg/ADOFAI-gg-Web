@@ -156,7 +156,7 @@
 	<SvelteQueryDevtools />
 	<div class="layout">
 		<div class="nav-position-fixer">
-			<Nav {user}>
+			<Nav {user} fullWidth={page.data.fullNav}>
 				{#snippet menu()}
 					<NavMenuGroup id="default">
 						<NavMenuItem switchGroup="language">

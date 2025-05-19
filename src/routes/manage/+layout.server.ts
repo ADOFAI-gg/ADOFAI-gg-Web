@@ -9,5 +9,8 @@ export const load: LayoutServerLoad = async ({ parent, cookies, url }) => {
 		cookies.set('redirectTo', url.toString(), { domain: env.PUBLIC_COOKIE_DOMAIN, path: '/' })
 		return redirect(302, `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signin`)
 	}
-	console.log(currentUser)
+
+	return {
+		currentUser
+	}
 }
