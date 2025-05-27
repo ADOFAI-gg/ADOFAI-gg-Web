@@ -74,6 +74,7 @@
 		</div>
 		<div class="main-content-area">
 			<div class="main-upper-container">
+				{#if data.level.note}<div>NOTE: {data.level.note}</div>{/if}
 				<LevelMetadataArea level={data.level} />
 				<LevelActionsArea level={data.level} />
 				<Description maxHeight={84}>{data.level.description}</Description>

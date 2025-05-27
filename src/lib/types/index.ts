@@ -35,6 +35,7 @@ export interface APIFile {
 
 export interface APILevel {
 	id: number
+	note: string | null
 	appendingTitle: string | null
 	description: string
 	creatorAlias: string | null
