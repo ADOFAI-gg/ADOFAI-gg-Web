@@ -75,9 +75,8 @@
 			"url": "https://youtu.be/6vBiQJpd-R0?t=612"
 		},
 		"reference2": {
-			"id": 5169,
-			"title": "Star Drain",
-			"url": "https://youtu.be/Vm1Q6tfqALo?si=nbBS7dqaq2XzhdCo"
+			"id": 5827,
+			"title": "FR01"
 		},
 		"reference3": {
 			"id": 5170,
@@ -94,13 +93,12 @@
 		"difficulty": 6,
 		"reference1": {
 			"id": 0,
-			"title": "11-X",
-			"url": "https://youtu.be/6vBiQJpd-R0?t=895"
-		},
-		"reference2": {
-			"id": 0,
 			"title": "12-X",
 			"url": "https://youtu.be/6vBiQJpd-R0?t=1022"
+		},
+		"reference2": {
+			"id": 4843,
+			"title": "Blue Reflection"
 		},
 		"reference3": {
 			"id": 5171,
@@ -108,8 +106,8 @@
 			"url": "https://youtu.be/H645rVyH5TI?si=b8ZwhD-lJm8i3pzm"
 		},
 		"lower1": {
-			"id": 198,
-			"title": "Find our way"
+			"id": 5119,
+			"title": "Chronomia"
 		}
 	},
 	{
@@ -429,7 +427,7 @@
 		},
 		"lower1": {
 			"id": 4696,
-			"title": "#4727. Oyasmy"
+			"title": "Oyasmy"
 		}
 	},
 	{
