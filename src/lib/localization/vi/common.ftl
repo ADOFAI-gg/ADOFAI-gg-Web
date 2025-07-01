@@ -7,4 +7,6 @@ rankings = Xếp hạng
 upload-level = Đăng lên một cấp độ
 references = Tham khảo
 levels = Các cấp độ
-table-of-contents = 목차
+table-of-contents = chỉ số
+my-levels = 내 레벨
+back = 돌아가기
