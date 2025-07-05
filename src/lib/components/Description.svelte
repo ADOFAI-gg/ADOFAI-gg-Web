@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Translation } from '@adofai-gg/ui'
-	import { onMount, type Snippet } from 'svelte'
+	import { type Snippet } from 'svelte'
 
 	interface Props {
 		children?: Snippet

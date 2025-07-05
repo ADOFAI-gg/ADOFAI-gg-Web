@@ -1,12 +1,14 @@
-import { api, type APIMember } from '~/lib'
+import { api, ky, type APIMember } from '~/lib'
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { env } from '$env/dynamic/public'
 import { availableLanguages } from '@adofai-gg/ui'
 
 export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
-	const userResponse = await fetch(api.forum('members/@me'), {
-		credentials: 'include'
+	const userResponse = await ky(api.forum('members/@me'), {
+		credentials: 'include',
+		fetch,
+		throwHttpErrors: false
 	})
 
 	if (!userResponse.ok && userResponse.status !== 403) {

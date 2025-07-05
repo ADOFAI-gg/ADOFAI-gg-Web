@@ -61,3 +61,21 @@ export interface APILevel {
 	epilepsyWarning: boolean
 	music: APIMusic
 }
+
+export interface APILevelRating {
+	id: number
+	expectDifficulty: number
+	finalDifficulty: number | null
+	finalQuality: string | null
+	completed: boolean
+	requiresDiscussion: boolean
+	difficultyRange: null
+	declineReason: string | null
+	createdAt: string
+	createdBy: {
+		id: number
+		name: string
+	}
+	reviews: unknown[]
+	level: APILevel
+}
