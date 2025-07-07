@@ -2,6 +2,7 @@
 	import type { Writable } from 'svelte/store'
 	import {
 		api,
+		ky,
 		type LevelUploadInfo,
 		type PartialLevelCreatePayload,
 		type UploadState
@@ -43,16 +44,12 @@
 			const hash = md5.create().update(buffer).base64()
 			console.log(hash)
 
-			const res = await fetch(api.forum('levels/files/pre-signed-url'), {
-				body: JSON.stringify({
+			const res = await ky.post(api.forum('levels/files/pre-signed-url'), {
+				json: {
 					fileName: file.name,
 					contentMD5: hash,
 					contentLength: file.size
-				}),
-				headers: {
-					'Content-Type': 'application/json'
 				},
-				method: 'POST',
 				credentials: 'include'
 			})
 

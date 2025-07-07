@@ -17,10 +17,7 @@ Sentry.init({
 const base = pubEnv.PUBLIC_API_BASE!
 const target = privEnv.INTERNAL_API_BASE
 
-export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, resolve }) => {
-	const response = await resolve(event)
-	return response
-})
+export const handle: Handle = sequence(Sentry.sentryHandle())
 
 export const handleFetch: HandleFetch = async ({ event, request, fetch }) => {
 	const cookie = event.request.headers.get('Cookie')
