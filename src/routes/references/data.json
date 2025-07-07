@@ -290,8 +290,8 @@
 			"title": "PiP!Pico Continue!"
 		},
 		"lower1": {
-			"id": 2542,
-			"title": "Decoherence"
+			"id": 4798,
+			"title": "Plastic Heart"
 		}
 	},
 	{
@@ -618,10 +618,6 @@
 	},
 	{
 		"difficulty": 21.8,
-		"lower1": {
-			"id": 5189,
-			"title": "tachypsychia"
-		},
 		"lower2": {
 			"id": 5190,
 			"title": "⫻Under Construxion⫻"
@@ -643,10 +639,6 @@
 		"lower2": {
 			"id": 5104,
 			"title": "Eternal SubconsciencƎ"
-		},
-		"lower3": {
-			"id": 3606,
-			"title": "1KARUGA"
 		}
 	},
 	{
@@ -680,10 +672,6 @@
 		"lower1": {
 			"id": 4903,
 			"title": "Hello (BPM) 2023"
-		},
-		"lower3": {
-			"id": 4937,
-			"title": "1KONOS"
 		}
 	},
 	{
