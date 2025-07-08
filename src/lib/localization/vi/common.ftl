@@ -9,4 +9,3 @@ references = Tham khảo
 levels = Các cấp độ
 table-of-contents = chỉ số
 my-levels = 내 레벨
-back = 돌아가기
