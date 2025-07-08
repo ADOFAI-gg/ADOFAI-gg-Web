@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Container, Tag, Panel, Translation, translateKey } from '@adofai-gg/ui'
+	import { Container, Tag } from '@adofai-gg/ui'
 	import LevelDetailHeader from '~/lib/components/levelDetail/LevelDetailHeader.svelte'
 	import type { PageData } from './$types'
 	import LevelMetadataArea from '~/lib/components/levelDetail/LevelMetadataArea.svelte'
 	import LevelTagDisplay from '~/lib/components/levelDetail/LevelTagDisplay.svelte'
 	import UserListPanel from '~/lib/components/UserListPanel.svelte'
-	import { PanelTitle, type UserListItemModel } from '@adofai-gg/ui'
+	import type { UserListItemModel } from '@adofai-gg/ui'
 	import { convertUser } from '~/lib/utils/converter'
 	import LevelActionsArea from '~/lib/components/levelDetail/LevelActionsArea.svelte'
 	import Description from '~/lib/components/Description.svelte'
@@ -73,25 +73,8 @@
 			</div>
 		</div>
 		<div class="main-content-area">
-			{#if data.level.note}
-				<Panel>
-					<div class="note-card">
-						<PanelTitle>
-							<Translation
-								key="level:note-reason"
-								params={{
-									quality: level.quality
-								}}
-							/>
-						</PanelTitle>
-						<div>
-							{data.level.note}
-						</div>
-					</div>
-				</Panel>
-			{/if}
-
 			<div class="main-upper-container">
+				{#if data.level.note}<div>NOTE: {data.level.note}</div>{/if}
 				<LevelMetadataArea level={data.level} />
 				<LevelActionsArea level={data.level} />
 				<Description maxHeight={84}>{data.level.description}</Description>
@@ -114,20 +97,9 @@
 		}
 	}
 
-	.note-card {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-
 	.main-content-area,
 	.title-area {
-		display: grid;
 		grid-column: span 12;
-	}
-
-	.main-content-area {
-		gap: 32px;
 	}
 
 	.meta-area {
