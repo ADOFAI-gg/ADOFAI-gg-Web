@@ -9,4 +9,3 @@ upload-level = Submit level
 submit = Submit
 table-of-contents = Table of Contets
 my-levels = 내 레벨
-back = 돌아가기
