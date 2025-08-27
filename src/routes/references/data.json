@@ -544,6 +544,10 @@
 		"lower1": {
 			"id": 4926,
 			"title": "Grabinschrift der Götter"
+		},
+		"lower2": {
+			"id": 3935,
+			"title": "愛歌「ネグラドルナ」"
 		}
 	},
 	{
@@ -551,6 +555,10 @@
 		"lower1": {
 			"id": 4702,
 			"title": "∀nnihilation"
+		},
+		"lower2": {
+			"id": 4967,
+			"title": "Baryogenesis"
 		},
 		"lower3": {
 			"id": 3043,
@@ -607,6 +615,10 @@
 		"lower2": {
 			"id": 4914,
 			"title": "Fractured Angel"
+		},
+		"lower3": {
+			"id": 2693,
+			"title": "Adcar"
 		}
 	},
 	{
@@ -614,10 +626,22 @@
 		"lower1": {
 			"id": 3601,
 			"title": "We Want To Run (Nerfed)"
+		},
+		"lower2": {
+			"id": 4862,
+			"title": "Rule 1: We don't take ANY responsibility about overdosing magical word \"OMG\"! (Nerfed)"
+		},
+		"lower3": {
+			"id": 4752,
+			"title": "Serrate"
 		}
 	},
 	{
 		"difficulty": 21.8,
+		"lower1": {
+			"id": 4943,
+			"title": "VOCAT1ON (feat. sonniet)"
+		},
 		"lower2": {
 			"id": 5190,
 			"title": "⫻Under Construxion⫻"
@@ -625,6 +649,10 @@
 	},
 	{
 		"difficulty": 21.9,
+		"lower2": {
+			"id": 5028,
+			"title": "Attractor Dimension"
+		},
 		"lower3": {
 			"id": 3847,
 			"title": "Cursed Metamorph"
@@ -672,6 +700,10 @@
 		"lower1": {
 			"id": 4903,
 			"title": "Hello (BPM) 2023"
+		},
+		"lower2": {
+			"id": 5884,
+			"title": "RAGN/a/ROk(EX)"
 		}
 	},
 	{
@@ -680,6 +712,10 @@
 			"id": 5192,
 			"title": "MEGALOVANIA (Camellia Remix) (ex)"
 		},
+		"lower2": {
+			"id": 4938,
+			"title": "Qyoh (Nine Stars) (Remake)"
+		},
 		"lower3": {
 			"id": 5934,
 			"title": "goTe EX"
@@ -687,9 +723,13 @@
 	},
 	{
 		"difficulty": 22.5,
-		"lower1": {
-			"id": 5193,
-			"title": "Hello (BPM) 2024"
+		"lower2": {
+			"id": 5465,
+			"title": "After the Demise"
+		},
+		"lower3": {
+			"id": 5934,
+			"title": "goTe EX"
 		}
 	},
 	{
