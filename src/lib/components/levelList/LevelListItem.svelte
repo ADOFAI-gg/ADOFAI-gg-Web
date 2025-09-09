@@ -8,9 +8,12 @@
 
 	interface Props {
 		level: APILevel
+		noDivider?: boolean
+		noLink?: boolean
+		noDownload?: boolean
 	}
 
-	const { level }: Props = $props()
+	const { level, noDivider = false, noLink = false, noDownload = false }: Props = $props()
 
 	const { language } = getGlobalContext()
 
@@ -20,7 +23,7 @@
 	const downloadUrl = $derived(getDownloadUrl(level))
 </script>
 
-<a href="/levels/{level.id}" class="level-list-item">
+{#snippet content()}
 	<div class="id-difficulty-area">
 		<DifficultyIcon display size={48} difficulty={getDifficulty(level)} />
 		<div class="level-id">#{level.id}</div>
@@ -34,9 +37,9 @@
 	</div>
 	<div class="extra-area">
 		<!-- <div class="likes">
-			<Icon icon="heartOutlined" size={18} alt="likes" />
-			{likes}
-		</div> -->
+				<Icon icon="heartOutlined" size={18} alt="likes" />
+				{likes}
+			</div> -->
 		<div class="tags">
 			{#if level.quality === 'FEATURED'}
 				<TagIcon size={24} tag="FEATURED" />
@@ -48,16 +51,29 @@
 			{/each}
 		</div>
 	</div>
-	<button
-		class="download-button"
-		onclick={(e) => {
-			e.preventDefault()
-			if (downloadUrl) window.open(downloadUrl, '_blank')
-		}}
-	>
-		<Icon alt="download" icon="fileDownload" size={48} />
-	</button>
-</a>
+
+	{#if !noDownload}
+		<button
+			class="download-button"
+			onclick={(e) => {
+				e.preventDefault()
+				if (downloadUrl) window.open(downloadUrl, '_blank')
+			}}
+		>
+			<Icon alt="download" icon="fileDownload" size={48} />
+		</button>
+	{/if}
+{/snippet}
+
+{#if noLink}
+	<div class="level-list-item">
+		{@render content()}
+	</div>
+{:else}
+	<a href="/levels/{level.id}" class="level-list-item" class:has-divider={!noDivider}>
+		{@render content()}
+	</a>
+{/if}
 
 <style lang="scss">
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints' as *;
@@ -69,10 +85,11 @@
 		gap: 16px;
 		align-items: center;
 		padding: 18px 16px;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 		background-color: rgba(0, 0, 0, var(--bg-opacity));
 		transition: background-color ease 0.2s;
+	}
 
+	a.level-list-item {
 		&:hover {
 			--bg-opacity: 0.1;
 		}
@@ -80,6 +97,10 @@
 		&:active {
 			--bg-opacity: 0.2;
 		}
+	}
+
+	.has-divider {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	}
 
 	.id-difficulty-area {
