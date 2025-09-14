@@ -44,15 +44,3 @@ link-copied = 레벨 링크가 복사되었습니다!
 difficulty = 난도
 reference-standard = 기준 레벨 { $idx }
 reference-base = 하한 레벨 { $idx }
-
-note-reason = { $quality } 결정 사유
-
-request-re-rate = 재책정 요청
-request-re-rate-description = 의미 없이 재책정을 요청하면 계정이 제한될 수 있습니다.
-request-re-rate-difficulty = 난이도
-request-re-rate-difficulty-up = 더 높아야 함
-request-re-rate-difficulty-down = 더 낮아야 함
-request-re-rate-difficulty-unknown = 잘 모르겠음
-request-re-rate-reason = 요청 사유
-request-re-rate-reason-placeholder = 이 레벨이 재책정에 필요한 이유 입력
-request-re-rate-submit = 요청

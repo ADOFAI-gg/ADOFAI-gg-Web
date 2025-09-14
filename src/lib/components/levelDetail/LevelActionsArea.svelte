@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { Button, getGlobalContext, Modal, toast, translateKey, Translation } from '@adofai-gg/ui'
+	import { Button, getGlobalContext, toast, translateKey, Translation } from '@adofai-gg/ui'
 	import type { APILevel } from '~/lib/types'
 	import { getDownloadUrl } from '~/lib/utils/level'
-	import ReRateDialog from './ReRateDialog.svelte'
 
 	interface Props {
 		level: APILevel
@@ -47,18 +46,9 @@
 	<Button size="lg" variant="ghost-dark" onclick={() => shareLevel()}>
 		<Translation key="level:share" />
 	</Button>
-
-	<Modal options={{ closeOnOutsideClick: false }}>
-		{#snippet trigger({ trigger })}
-			<Button size="lg" variant="ghost-dark" slot="trigger" meltElement={trigger}>
-				<Translation key="level:request-re-rate" />
-			</Button>
-		{/snippet}
-
-		{#snippet children({ close })}
-			<ReRateDialog {close} {level} />
-		{/snippet}
-	</Modal>
+	<!-- <Button size="lg" variant="ghost-dark">
+		<Translation key="level:report" />
+	</Button> -->
 </div>
 
 <style lang="scss">

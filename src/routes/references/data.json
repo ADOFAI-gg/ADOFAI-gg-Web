@@ -58,8 +58,7 @@
 		},
 		"reference3": {
 			"id": 5168,
-			"title": "Night Wander (cnsouka remix)",
-			"url": "https://www.youtube.com/watch?v=FQ4iLSrrVII"
+			"title": "Night Wander (cnsouka remix)"
 		},
 		"lower1": {
 			"id": 0,
@@ -80,13 +79,11 @@
 		},
 		"reference3": {
 			"id": 5170,
-			"title": "Ansik",
-			"url": "https://www.youtube.com/watch?v=vAWLRKVsUQ4"
+			"title": "Ansik"
 		},
 		"lower1": {
-			"id": 0,
-			"title": "Feral (Easy)",
-			"url": "https://youtu.be/sLLEum8euvA?si=OKWr2CrMQ8rdhxJy"
+			"id": 2252,
+			"title": "Feral (Easy)"
 		}
 	},
 	{
@@ -102,8 +99,7 @@
 		},
 		"reference3": {
 			"id": 5171,
-			"title": "Rainbow",
-			"url": "https://youtu.be/H645rVyH5TI?si=b8ZwhD-lJm8i3pzm"
+			"title": "Rainbow"
 		},
 		"lower1": {
 			"id": 5119,
@@ -114,8 +110,7 @@
 		"difficulty": 7,
 		"reference1": {
 			"id": 5172,
-			"title": "w=addict",
-			"url": "https://youtu.be/FHb-IjdkVTs?si=er5232mrbcdzp880"
+			"title": "w=addict"
 		},
 		"reference2": {
 			"id": 4819,
@@ -135,13 +130,11 @@
 		},
 		"reference2": {
 			"id": 5173,
-			"title": "Sunshine",
-			"url": "https://youtu.be/48gOfXPw5rM?si=rkSCXF0pE9sUhoxN"
+			"title": "Sunshine"
 		},
 		"reference3": {
 			"id": 2436,
-			"title": "MAKE IT FUNKY NOW",
-			"url": "https://www.youtube.com/watch?v=Q-B7N20AUIU"
+			"title": "MAKE IT FUNKY NOW"
 		},
 		"lower1": {
 			"id": 5505,
@@ -157,13 +150,11 @@
 		},
 		"reference2": {
 			"id": 5175,
-			"title": "S.A.T.E.L.L.I.T.E.",
-			"url": "https://youtu.be/HPcgoAuNQ5c?si=3XTqZWEi-UcH5CUY"
+			"title": "S.A.T.E.L.L.I.T.E."
 		},
 		"lower1": {
 			"id": 5176,
-			"title": "Vantablack",
-			"url": "https://youtu.be/DDrM6Yeft3A?si=fbaTq_Tnor7F9pLc"
+			"title": "Vantablack"
 		}
 	},
 	{
@@ -179,8 +170,7 @@
 		},
 		"reference3": {
 			"id": 5177,
-			"title": "Rain,thunder,and Vivid Rainbow",
-			"url": "https://youtu.be/8C1JSSRYijI?si=Xr92WnxF-lxLCPJi"
+			"title": "Rain,thunder,and Vivid Rainbow"
 		},
 		"lower1": {
 			"id": 2821,
@@ -199,13 +189,11 @@
 		},
 		"reference3": {
 			"id": 5178,
-			"title": "Dark Sheep",
-			"url": "https://youtu.be/SjxApPBQ5IQ?si=wJFBRjlsz74joE4M"
+			"title": "Dark Sheep"
 		},
 		"lower1": {
 			"id": 623,
-			"title": "Sirius A",
-			"url": "https://youtu.be/DAgcqiHuAW8"
+			"title": "Sirius A"
 		}
 	},
 	{
@@ -220,8 +208,7 @@
 		},
 		"reference3": {
 			"id": 5179,
-			"title": "キュリオ都市 (curio city)",
-			"url": "https://youtu.be/s58sDC0sHMk"
+			"title": "キュリオ都市 (curio city)"
 		},
 		"lower1": {
 			"id": 1601,
@@ -251,8 +238,7 @@
 		},
 		"reference2": {
 			"id": 5181,
-			"title": "はずかしがりやのトイ・ソルジャー (Shy Toy Soldier)",
-			"url": "https://youtu.be/8moFzzENzU4?si=zkr9bTm8R0lPmnmX"
+			"title": "はずかしがりやのトイ・ソルジャー (Shy Toy Soldier)"
 		},
 		"lower1": {
 			"id": 3592,
@@ -286,8 +272,7 @@
 		},
 		"lower1": {
 			"id": 3398,
-			"title": "Celica",
-			"url": "https://www.youtube.com/watch?v=FBca7r1HyGA"
+			"title": "Celica"
 		}
 	},
 	{
@@ -305,16 +290,15 @@
 			"title": "PiP!Pico Continue!"
 		},
 		"lower1": {
-			"id": 2542,
-			"title": "Decoherence"
+			"id": 4798,
+			"title": "Plastic Heart"
 		}
 	},
 	{
 		"difficulty": 18,
 		"reference1": {
 			"id": 5184,
-			"title": "FUN PARTY OF THE BEACH!!!",
-			"url": "https://youtu.be/SX4FSPQPq20?si=pXKkquMH5v88s2_g"
+			"title": "FUN PARTY OF THE BEACH!!!"
 		},
 		"reference2": {
 			"id": 1759,
@@ -386,8 +370,7 @@
 		},
 		"reference3": {
 			"id": 5185,
-			"title": "True Hero",
-			"url": "https://youtu.be/sW_RfAe3iik?si=qIG9zi004B80Zmeo"
+			"title": "True Hero"
 		},
 		"lower1": {
 			"id": 1949,
@@ -436,8 +419,7 @@
 		},
 		"reference2": {
 			"id": 814,
-			"title": "Qyoh (Nine Stars) (Short)",
-			"url": "https://www.youtube.com/watch?v=xng50nrbJSw"
+			"title": "Qyoh (Nine Stars) (Short)"
 		},
 		"reference3": {
 			"id": 1113,
@@ -460,8 +442,7 @@
 		},
 		"lower1": {
 			"id": 1416,
-			"title": "スター・オブ・ザ・COME ON!!",
-			"url": "https://youtu.be/SKEwk1uzDas"
+			"title": "スター・オブ・ザ・COME ON!!"
 		}
 	},
 	{
@@ -476,8 +457,7 @@
 		},
 		"lower1": {
 			"id": 544,
-			"title": "Inferno (Nerfed)",
-			"url": "https://youtu.be/FxnSs-PYSQA"
+			"title": "Inferno (Nerfed)"
 		}
 	},
 	{
@@ -514,8 +494,7 @@
 		"difficulty": 20.8,
 		"reference1": {
 			"id": 2233,
-			"title": "PP BREAKER (Nerfed)",
-			"url": "https://youtu.be/YVQPgYP5IjI"
+			"title": "PP BREAKER (Nerfed)"
 		},
 		"reference2": {
 			"id": 4896,
@@ -565,6 +544,10 @@
 		"lower1": {
 			"id": 4926,
 			"title": "Grabinschrift der Götter"
+		},
+		"lower2": {
+			"id": 3935,
+			"title": "愛歌「ネグラドルナ」"
 		}
 	},
 	{
@@ -572,6 +555,10 @@
 		"lower1": {
 			"id": 4702,
 			"title": "∀nnihilation"
+		},
+		"lower2": {
+			"id": 4967,
+			"title": "Baryogenesis"
 		},
 		"lower3": {
 			"id": 3043,
@@ -586,8 +573,7 @@
 		},
 		"lower2": {
 			"id": 5186,
-			"title": "Quàx Quàlv",
-			"url": "https://www.youtube.com/watch?v=iYA01dN-UuE"
+			"title": "Quàx Quàlv"
 		},
 		"lower3": {
 			"id": 3595,
@@ -602,8 +588,7 @@
 		},
 		"lower2": {
 			"id": 5187,
-			"title": "Ray of Hope",
-			"url": "https://www.youtube.com/watch?v=QQ6qHZIal4o"
+			"title": "Ray of Hope"
 		}
 	},
 	{
@@ -614,8 +599,7 @@
 		},
 		"lower2": {
 			"id": 5188,
-			"title": "SNS my beloved",
-			"url": "https://youtu.be/2LDWZbT0gsU?si=Gu3U1pbnsZrwq8zu"
+			"title": "SNS my beloved"
 		},
 		"lower3": {
 			"id": 4866,
@@ -631,6 +615,10 @@
 		"lower2": {
 			"id": 4914,
 			"title": "Fractured Angel"
+		},
+		"lower3": {
+			"id": 2693,
+			"title": "Adcar"
 		}
 	},
 	{
@@ -638,23 +626,33 @@
 		"lower1": {
 			"id": 3601,
 			"title": "We Want To Run (Nerfed)"
+		},
+		"lower2": {
+			"id": 4862,
+			"title": "Rule 1: We don't take ANY responsibility about overdosing magical word \"OMG\"! (Nerfed)"
+		},
+		"lower3": {
+			"id": 4752,
+			"title": "Serrate"
 		}
 	},
 	{
 		"difficulty": 21.8,
 		"lower1": {
-			"id": 5189,
-			"title": "tachypsychia",
-			"url": "https://youtu.be/CbHVZVBKxUk"
+			"id": 4943,
+			"title": "VOCAT1ON (feat. sonniet)"
 		},
 		"lower2": {
 			"id": 5190,
-			"title": "⫻Under Construxion⫻",
-			"url": "https://youtu.be/Ek1b7OjHAvs?si=94kWpDFrGQ_WtUr8"
+			"title": "⫻Under Construxion⫻"
 		}
 	},
 	{
 		"difficulty": 21.9,
+		"lower2": {
+			"id": 5028,
+			"title": "Attractor Dimension"
+		},
 		"lower3": {
 			"id": 3847,
 			"title": "Cursed Metamorph"
@@ -669,10 +667,6 @@
 		"lower2": {
 			"id": 5104,
 			"title": "Eternal SubconsciencƎ"
-		},
-		"lower3": {
-			"id": 3606,
-			"title": "1KARUGA"
 		}
 	},
 	{
@@ -683,8 +677,7 @@
 		},
 		"lower2": {
 			"id": 5191,
-			"title": "WYSI (ex)",
-			"url": "https://youtu.be/WyV86lBNSes?si=PxgJykl2gvab0_6n"
+			"title": "WYSI (ex)"
 		},
 		"lower3": {
 			"id": 4777,
@@ -708,30 +701,31 @@
 			"id": 4903,
 			"title": "Hello (BPM) 2023"
 		},
-		"lower3": {
-			"id": 4937,
-			"title": "1KONOS"
+		"lower2": {
+			"id": 5884,
+			"title": "RAGN/a/ROk(EX)"
 		}
 	},
 	{
 		"difficulty": 22.4,
 		"lower1": {
 			"id": 5192,
-			"title": "MEGALOVANIA (Camellia Remix) (ex)",
-			"url": "https://youtu.be/N3NFz8IvQkY"
+			"title": "MEGALOVANIA (Camellia Remix) (ex)"
 		},
-		"lower3": {
-			"id": 0,
-			"title": "goTe EX",
-			"url": "https://youtu.be/_JZtnU-b_48"
+		"lower2": {
+			"id": 4938,
+			"title": "Qyoh (Nine Stars) (Remake)"
 		}
 	},
 	{
 		"difficulty": 22.5,
-		"lower1": {
-			"id": 5193,
-			"title": "Hello (BPM) 2024",
-			"url": "https://youtu.be/pOl0cWRiwCM?si=8V15Hm2naFSIH1l9"
+		"lower2": {
+			"id": 5465,
+			"title": "After the Demise"
+		},
+		"lower3": {
+			"id": 5934,
+			"title": "goTe EX"
 		}
 	},
 	{
