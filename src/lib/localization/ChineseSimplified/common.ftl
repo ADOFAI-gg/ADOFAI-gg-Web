@@ -9,4 +9,3 @@ references = 参考
 levels = 谱面
 table-of-contents = 续表
 my-levels = 我的关卡
-back = 돌아가기
