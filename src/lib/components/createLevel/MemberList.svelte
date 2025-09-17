@@ -13,8 +13,9 @@
 		Icon
 	} from '@adofai-gg/ui'
 	import { Debounced } from 'runed'
-	import { api } from '~/lib'
+	import { api, ky } from '~/lib'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
+	import type { ListResponse } from '~/types'
 
 	interface Props {
 		value: MemberIdOrCreate[]
@@ -47,19 +48,15 @@
 				return
 			}
 
-			const res = await fetch(
-				api.forum('members') +
-					'?' +
-					new URLSearchParams({
-						displayName: query,
-						registered: registeredOnly ? 'true' : 'false',
-						sort: 'DISPLAY_NAME_LENGTH_ASC'
-					}),
-				{
-					signal: abort
-				}
-			)
-			results = (await res.json()).results
+			const res = await ky.get(api.forum('members'), {
+				signal: abort,
+				searchParams: new URLSearchParams({
+					displayName: query,
+					registered: registeredOnly ? 'true' : 'false',
+					sort: 'DISPLAY_NAME_LENGTH_ASC'
+				})
+			})
+			results = (await res.json<ListResponse<APIMember>>()).results
 		} catch (e) {
 			if (e instanceof DOMException) {
 				if (e.name === 'ABORT_ERR') return

@@ -4,6 +4,7 @@
 	import { derived, writable } from 'svelte/store'
 	import {
 		api,
+		ky,
 		type APILevel,
 		type APIMember,
 		type APIMusic,
@@ -91,15 +92,11 @@
 	const createMember = async (member: MemberIdOrCreate): Promise<number> => {
 		if (member.exists) return member.id
 
-		const res = await fetch(api.forum('members/forum'), {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
+		const res = await ky.post(api.forum('members/forum'), {
+			json: {
 				name: member.data.name
-			}),
-			credentials: 'include',
-			method: 'POST'
+			},
+			credentials: 'include'
 		})
 
 		if (!res.ok) {
@@ -118,16 +115,12 @@
 
 		const artists = await Promise.all(music.data.artists.map(createMember))
 
-		const res = await fetch(api.forum('music'), {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
+		const res = await ky.post(api.forum('music'), {
+			json: {
 				name: music.data.name,
 				artists
-			}),
-			credentials: 'include',
-			method: 'POST'
+			},
+			credentials: 'include'
 		})
 
 		if (!res.ok) {
@@ -149,16 +142,12 @@
 		const buffer = await f.arrayBuffer()
 		const hash = md5.create().update(buffer).base64()
 
-		const res = await fetch(api.forum('levels/files/pre-signed-url'), {
-			body: JSON.stringify({
+		const res = await ky.post(api.forum('levels/files/pre-signed-url'), {
+			json: {
 				fileName: f.name,
 				contentMD5: hash,
 				contentLength: f.size
-			}),
-			headers: {
-				'Content-Type': 'application/json'
 			},
-			method: 'POST',
 			credentials: 'include'
 		})
 
@@ -220,8 +209,8 @@
 		const dlc = data.limits.neoCosmos
 		const epilepsyWarning = data.limits.seizure
 
-		const res = await fetch(api.forum('levels'), {
-			body: JSON.stringify({
+		const res = await ky.post(api.forum('levels'), {
+			json: {
 				musicId,
 				creators,
 				appendingTitle,
@@ -237,10 +226,6 @@
 				file,
 				dlc,
 				epilepsyWarning
-			}),
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
 			},
 			credentials: 'include'
 		})
