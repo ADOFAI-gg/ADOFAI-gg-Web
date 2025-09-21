@@ -213,7 +213,7 @@
 			{@render children()}
 		</main>
 
-		<Footer />
+		<Footer date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`} />
 	</div>
 </QueryClientProvider>
 
