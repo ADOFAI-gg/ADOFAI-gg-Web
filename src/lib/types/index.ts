@@ -78,6 +78,13 @@ export interface APILevelRating {
 		id: number
 		name: string
 	}
-	reviews: unknown[]
-	level: APILevel
+	reviews: APILevelRatingReview[]
+	level: Omit<APILevel, 'music'>
+}
+
+export interface APILevelRatingReview {
+	difficulty: number
+	quality: APILevel['quality']
+	createdAt: [number, number, number, number, number, number, number]
+	reviewer: APIMember
 }

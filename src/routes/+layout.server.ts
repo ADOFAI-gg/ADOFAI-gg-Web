@@ -1,4 +1,4 @@
-import { api, ky, type APIMember } from '~/lib'
+import { api, ky, type APIMe, type APIMember } from '~/lib'
 import type { LayoutServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { env } from '$env/dynamic/public'
@@ -6,16 +6,16 @@ import { availableLanguages } from '@adofai-gg/ui'
 
 export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
 	const userResponse = await ky(api.forum('members/@me'), {
-		credentials: 'include',
 		fetch,
 		throwHttpErrors: false
 	})
 
 	if (!userResponse.ok && userResponse.status !== 403) {
+		console.error(await userResponse.text())
 		return error(500, 'failed to fetch user')
 	}
 
-	const user: APIMember | null = userResponse.status === 403 ? null : await userResponse.json()
+	const user: APIMe | null = userResponse.status === 403 ? null : await userResponse.json()
 
 	const acceptLang = (request.headers.get('Accept-Language') ?? '')
 		.split(',')

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import type { PageData } from './$types'
-	import LevelInfo from './level-info.svelte'
 	import { Translation, type User } from '@adofai-gg/ui'
 
 	interface Props {

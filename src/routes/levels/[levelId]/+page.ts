@@ -6,8 +6,7 @@ import { HTTPError } from 'ky'
 export const load: PageLoad = async ({ params, fetch }) => {
 	try {
 		const res = await ky.get(api.forum(`levels/${encodeURIComponent(params.levelId)}`), {
-			fetch,
-			credentials: 'include'
+			fetch
 		})
 
 		const data: APILevel = await res.json()

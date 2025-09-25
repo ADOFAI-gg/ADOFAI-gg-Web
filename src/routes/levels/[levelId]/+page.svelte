@@ -5,10 +5,9 @@
 	import LevelMetadataArea from '~/lib/components/levelDetail/LevelMetadataArea.svelte'
 	import LevelTagDisplay from '~/lib/components/levelDetail/LevelTagDisplay.svelte'
 	import UserListPanel from '~/lib/components/UserListPanel.svelte'
-	import type { UserListItemModel } from '@adofai-gg/ui'
-	import { convertUser } from '~/lib/utils/converter'
 	import LevelActionsArea from '~/lib/components/levelDetail/LevelActionsArea.svelte'
 	import Description from '~/lib/components/Description.svelte'
+	import { artistListModel, creatorListModel } from '~/lib/utils/list.svelte'
 
 	interface Props {
 		data: PageData
@@ -16,39 +15,8 @@
 
 	const { data }: Props = $props()
 
-	let creators = $derived.by(() => {
-		const res = data.level.creators.map(
-			(x) =>
-				({
-					type: 'user',
-					data: convertUser(x, 'creator')
-					// href: `/users/${x.id}`
-				}) as UserListItemModel
-		)
-
-		if (!data.level.creatorAlias) return res
-
-		return [
-			{
-				type: 'group',
-				name: data.level.creatorAlias,
-				data: res
-			}
-		]
-	})
-
-	let artists = $derived.by(() => {
-		const res = data.level.music.artists.map(
-			(x) =>
-				({
-					type: 'user',
-					data: convertUser(x, 'artist')
-					// href: `/users/${x.id}`
-				}) as UserListItemModel
-		)
-
-		return res
-	})
+	let creators = creatorListModel(() => data.level)
+	let artists = artistListModel(() => data.level)
 
 	const level = $derived(data.level)
 </script>

@@ -25,9 +25,9 @@
 		<SidebarItem active={activeSidebarItem === 'rating'} href="/manage/rating" icon="scale">
 			<Translation key="manage:menu-rating" />
 		</SidebarItem>
-		<SidebarItem active={activeSidebarItem === 'levels'} href="/manage/levels" icon="pencil">
+		<!-- <SidebarItem active={activeSidebarItem === 'levels'} href="/manage/levels" icon="pencil">
 			<Translation key="manage:menu-levels" />
-		</SidebarItem>
+		</SidebarItem> -->
 	</Sidebar>
 
 	{@render children()}

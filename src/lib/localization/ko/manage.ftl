@@ -17,7 +17,10 @@ rating-add = 난도 책정
 rating-set-quality = 퀄리티 책정
 rating-set-expected = 예상 난도 재설정
 rating-force-confirm = 난도 강제 확정
-rating-mark-discussion-needed = 논의 필요로 표시
+rating-mark-discussion-needed = 논의 { $target ->
+    [yes] 필요로
+    *[no] 필요 없음으로
+} 표시
 
 level-info = 레벨 정보
 notes = 비고
@@ -28,3 +31,12 @@ rating-status-ratingNeeded = 책정 필요
 rating-status-discussionNeeded = 논의 필요
 rating-status-confirmNeeded = 확정 대기 중
 rating-status-completed = 난도 확정됨
+
+unset = 미설정
+
+difficulty-range-low = 저렙
+difficulty-range-mid = 중렙
+difficulty-range-high = 고렙
+difficulty-range-veryhigh = 초고렙
+
+reset-difficulty = 선택 해제

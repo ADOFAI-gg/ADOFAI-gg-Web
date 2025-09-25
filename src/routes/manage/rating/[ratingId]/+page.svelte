@@ -8,7 +8,8 @@
 	import type { User } from '@adofai-gg/ui'
 	import type { PageData } from './$types'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
-	import LevelInfo from '../level-info.svelte'
+	import InfoMainSection from './info-main-section.svelte'
+	import InfoDetails from './info-details.svelte'
 
 	let user: User = $derived.by(() => {
 		return {
@@ -19,4 +20,6 @@
 	})
 </script>
 
-<LevelInfo {user} rating={data.rating} />
+<InfoMainSection rating={data.rating} me={data.currentUser} level={data.level} />
+
+<InfoDetails rating={data.rating} level={data.level} {user} />

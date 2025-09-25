@@ -18,9 +18,7 @@
 		url.searchParams.set('limit', take.toString())
 		url.searchParams.set('offset', skip.toString())
 		url.searchParams.set('sort', sort)
-		const res = await ky.get(url, {
-			credentials: 'include'
-		})
+		const res = await ky.get(url)
 
 		if (!res.ok) throw new Error(`Request failed with status code: ${res.status}`)
 

@@ -83,7 +83,7 @@
 	})
 
 	const items = $derived.by(() => {
-		const result: SelectOption<number | 'create', APIMember>[] = []
+		const result: SelectOption<string | 'create', APIMember>[] = []
 
 		if (debouncedSearch.current && !registeredOnly) {
 			result.push({
@@ -101,7 +101,7 @@
 				(x) =>
 					({
 						label: x.displayName,
-						value: x.id,
+						value: x.id.toString(),
 						customData: x
 					}) satisfies (typeof result)[number]
 			)
@@ -158,7 +158,7 @@
 									name: existing.customData!.displayName,
 									locked: false
 								},
-								id: existing.value as number
+								id: parseInt(existing.value)
 							}
 						]
 						return
@@ -176,17 +176,18 @@
 						}
 					]
 				} else {
-					if (value.some((y) => y.exists && y.id === x)) {
+					const v = parseInt(x)
+					if (value.some((y) => y.exists && y.id === v)) {
 						return
 					}
 
-					const member = results.find((y) => y.id === x)!
+					const member = results.find((y) => y.id === v)!
 
 					value = [
 						...value,
 						{
 							exists: true,
-							id: x,
+							id: parseInt(x),
 							data: {
 								name: member.displayName,
 								avatarUrl: getAvatarUrl(
@@ -201,7 +202,11 @@
 				}
 			}}
 			select
-			{items}
+			items={[
+				{
+					options: items
+				}
+			]}
 			bind:inputValue={search}
 			loading={fetching}
 		>

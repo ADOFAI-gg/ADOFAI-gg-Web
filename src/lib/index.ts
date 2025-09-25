@@ -6,6 +6,7 @@ import { default as origKy } from 'ky'
 const base = env.PUBLIC_API_BASE
 
 export const ky = origKy.extend({
+	credentials: 'include',
 	hooks: {
 		beforeError: [
 			async (error) => {
