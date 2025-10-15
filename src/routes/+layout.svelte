@@ -47,6 +47,7 @@
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import Cookies from 'js-cookie'
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
+	import ky from 'ky'
 
 	interface Props {
 		children: Snippet
@@ -81,9 +82,8 @@
 		links,
 		setLanguage: (lang) => {
 			language.set(lang)
-			fetch('/api/set-lang', {
-				method: 'POST',
-				body: JSON.stringify({ lang })
+			ky.post('/api/set-lang', {
+				json: { lang }
 			})
 			Cookies.set('adofaigg.lang', lang, {
 				domain: env.PUBLIC_COOKIE_DOMAIN,
@@ -108,11 +108,11 @@
 		}
 	})
 
-	beforeNavigate(() => {
+	beforeNavigate((nav) => {
 		BProgress.start()
 	})
 
-	afterNavigate(() => {
+	afterNavigate((nav) => {
 		BProgress.done()
 	})
 
@@ -156,7 +156,7 @@
 	<SvelteQueryDevtools />
 	<div class="layout">
 		<div class="nav-position-fixer">
-			<Nav {user}>
+			<Nav {user} fullWidth={page.data.fullNav}>
 				{#snippet menu()}
 					<NavMenuGroup id="default">
 						<NavMenuItem switchGroup="language">
@@ -213,7 +213,13 @@
 			{@render children()}
 		</main>
 
-		<Footer date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`} />
+		{#if !page.data.noFooter}
+			<div class="footer-container">
+				<Footer
+					date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`}
+				/>
+			</div>
+		{/if}
 	</div>
 </QueryClientProvider>
 
@@ -249,7 +255,10 @@
 		flex-grow: 1;
 		flex-direction: column;
 		min-height: calc(100vh - 56px);
-		padding-bottom: 64px;
+	}
+
+	.footer-container {
+		padding-top: 64px;
 	}
 
 	.right-actions-area {

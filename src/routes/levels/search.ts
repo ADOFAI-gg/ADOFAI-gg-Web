@@ -1,16 +1,15 @@
 import type { AndFilter, Filter, SearchQuery, Sort } from '@adofai-gg/query-types'
 import { translateKey, type SearchOptionScheme, type SearchOptionsData } from '@adofai-gg/ui'
-import { api, localizeOptions, type APILevel } from '~/lib'
+import { api, ky, localizeOptions, type APILevel } from '~/lib'
 import { difficultyOptions } from '~/lib/utils/difficulty'
 import { tagOptions } from '~/lib/utils/tags'
 
-// @ts-expect-error svelte file import
 import { difficultyIconTemplate } from '~/lib/utils/difficultySnippets.svelte'
-// @ts-expect-error svelte file import
 import { tagIconTemplate } from './snippets.svelte'
 
 import type { Snippet } from 'svelte'
 import { parseFilter } from '~/lib/utils/filter'
+import type { ListResponse } from '~/types'
 
 export const pageSize = 50
 
@@ -132,23 +131,19 @@ export const buildLevelSearchScheme = (lang: string): SearchOptionScheme =>
 export const fetchLevels = async (skip: number, take: number, query: SearchQuery) => {
 	const url = new URL(api.forum('levels/search'))
 
-	const res = await fetch(url, {
-		method: 'POST',
-		body: JSON.stringify({
+	const res = await ky.post(url, {
+		json: {
 			skip,
 			take,
 			query
-		}),
-		headers: {
-			'Content-Type': 'application/json'
 		}
 	})
 
 	if (!res.ok) throw new Error(`Request failed with status code: ${res.status}`)
 
-	const data = await res.json()
+	const data = await res.json<ListResponse<APILevel>>()
 
-	return data.results as APILevel[]
+	return data.results
 }
 
 export const buildLevelQuery = (

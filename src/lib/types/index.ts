@@ -61,3 +61,30 @@ export interface APILevel {
 	epilepsyWarning: boolean
 	music: APIMusic
 }
+
+export type DifficultyRange = 'LOW' | 'MEDIUM' | 'HIGH' | 'VERY_HIGH'
+
+export interface APILevelRating {
+	id: number
+	expectDifficulty: number
+	finalDifficulty: number | null
+	finalQuality: string | null
+	completed: boolean
+	requiresDiscussion: boolean
+	difficultyRange: null | DifficultyRange
+	declineReason: string | null
+	createdAt: string
+	createdBy: {
+		id: number
+		name: string
+	}
+	reviews: APILevelRatingReview[]
+	level: Omit<APILevel, 'music'>
+}
+
+export interface APILevelRatingReview {
+	difficulty: number
+	quality: APILevel['quality']
+	createdAt: [number, number, number, number, number, number, number]
+	reviewer: APIMember
+}
