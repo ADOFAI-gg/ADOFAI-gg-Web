@@ -40,3 +40,13 @@ difficulty-range-high = 고렙
 difficulty-range-veryhigh = 초고렙
 
 reset-difficulty = 선택 해제
+
+rating-sort-recent = 최신순
+rating-sort-incomplete = 내가 책정하지 않음
+rating-sort-requires-discussion = 논의 필요
+rating-sort-completed = 책정 완료
+rating-sort-difficulty-range = 내 난도대
+
+rating-filter-expected-difficulty = 예상 난도
+rating-filter-expected-difficulty-min = 최소 예상 난도
+rating-filter-expected-difficulty-max = 최대 예상 난도

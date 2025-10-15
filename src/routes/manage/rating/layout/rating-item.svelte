@@ -10,7 +10,7 @@
 
 	const { rating }: Props = $props()
 	const status = $derived(getRatingStatus(rating))
-	const selected = $derived(page.params.levelId === rating.id.toString())
+	const selected = $derived(page.params.ratingId === rating.id.toString())
 </script>
 
 <a href="/manage/rating/{rating.id}" class="rating-item rating-status-{status}" class:selected>

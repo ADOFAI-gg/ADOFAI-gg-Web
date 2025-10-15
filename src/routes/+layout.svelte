@@ -108,11 +108,11 @@
 		}
 	})
 
-	beforeNavigate(() => {
+	beforeNavigate((nav) => {
 		BProgress.start()
 	})
 
-	afterNavigate(() => {
+	afterNavigate((nav) => {
 		BProgress.done()
 	})
 
