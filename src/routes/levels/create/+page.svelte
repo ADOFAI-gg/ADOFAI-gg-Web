@@ -90,7 +90,7 @@
 	})
 
 	const createMember = async (member: MemberIdOrCreate): Promise<number> => {
-		if (member.exists) return member.id
+		if (member.exists) return { id: member.id }
 
 		const res = await ky.post(api.forum('members/forum'), {
 			json: {
@@ -107,7 +107,7 @@
 
 		const data: APIMember = await res.json()
 
-		return data.id
+		return { id: data.id }
 	}
 
 	const createMusic = async (music: MusicIdOrCreate): Promise<number> => {

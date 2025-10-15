@@ -215,7 +215,9 @@
 
 		{#if !page.data.noFooter}
 			<div class="footer-container">
-				<Footer />
+				<Footer
+					date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`}
+				/>
 			</div>
 		{/if}
 	</div>
