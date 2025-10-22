@@ -12,3 +12,4 @@ my-levels = 我的关卡
 back = 돌아가기
 post-comment = 게시
 cancel = 취소
+manage-rating = 레벨 책정
