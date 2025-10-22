@@ -69,6 +69,7 @@ export interface APILevelRating {
 	expectDifficulty: number
 	finalDifficulty: number | null
 	finalQuality: string | null
+	finalAbsoluteDifficulty?: number
 	completed: boolean
 	requiresDiscussion: boolean
 	difficultyRange: null | DifficultyRange
@@ -84,6 +85,7 @@ export interface APILevelRating {
 
 export interface APILevelRatingReview {
 	difficulty: number
+	absoluteDifficulty?: number
 	quality: APILevel['quality']
 	createdAt: [number, number, number, number, number, number, number]
 	reviewer: APIMember

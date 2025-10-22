@@ -24,7 +24,7 @@
 	],
 	"devDependencies": {
 		"@adofai-gg/query-types": "1.0.0-alpha.7",
-		"@adofai-gg/ui": "1.2.0-beta.152",
+		"@adofai-gg/ui": "1.2.0-beta.155",
 		"@bprogress/core": "^1.3.4",
 		"@commitlint/cli": "^20.0.0",
 		"@commitlint/config-conventional": "^20.0.0",

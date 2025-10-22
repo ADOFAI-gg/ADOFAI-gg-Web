@@ -48,6 +48,7 @@
 	import Cookies from 'js-cookie'
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
 	import ky from 'ky'
+	import { checkFlag } from '~/lib/utils/perm'
 
 	interface Props {
 		children: Snippet
@@ -108,13 +109,13 @@
 		}
 	})
 
-	beforeNavigate((nav) => {
-		BProgress.start()
-	})
+	// beforeNavigate((nav) => {
+	// 	BProgress.start()
+	// })
 
-	afterNavigate((nav) => {
-		BProgress.done()
-	})
+	// afterNavigate((nav) => {
+	// 	BProgress.done()
+	// })
 
 	let user: User | null = $derived.by(() => {
 		if (!data.currentUser) return null
@@ -180,6 +181,11 @@
 							<NavMenuItem link href="/my-levels">
 								<Translation key="common:my-levels" />
 							</NavMenuItem>
+							{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
+								<NavMenuItem link href="/manage/rating">
+									<Translation key="common:manage-rating" />
+								</NavMenuItem>
+							{/if}
 							<NavMenuItem
 								link
 								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
