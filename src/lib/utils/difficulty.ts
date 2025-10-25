@@ -2,10 +2,10 @@ import { translateKey, type SelectGroup, type SelectOption } from '@adofai-gg/ui
 
 export const difficulties = [
 	// 저렙
-	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 
 	// 중렙
-	17, 18, 18.5, 19, 19.5,
+	16, 17, 18, 18.5, 19, 19.5,
 
 	// 고렙
 	20, 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9,
@@ -37,11 +37,11 @@ export const difficultyOptions = difficulties.map(
 const difficultyRanges = [
 	{
 		id: 'low',
-		difficulties: difficulties.slice(0, 16)
+		difficulties: difficulties.slice(0, 15)
 	},
 	{
 		id: 'mid',
-		difficulties: difficulties.slice(16, 21)
+		difficulties: difficulties.slice(15, 21)
 	},
 	{
 		id: 'high',
