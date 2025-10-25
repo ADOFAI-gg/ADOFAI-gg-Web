@@ -199,7 +199,7 @@
 					{/snippet}
 				</ActionContainer>
 
-				<!-- <ActionContainer
+				<ActionContainer
 					action={async (value: number) => {
 						await ky.patch(api.forum(encode`levels/ratings/${rating.id}`), {
 							json: {
@@ -219,7 +219,10 @@
 							}}
 						>
 							{#snippet trigger(trigger)}
-								<Button variant="ghost-dark" meltElement={trigger} disabled={running}>
+								<!-- <Button variant="ghost-dark" meltElement={trigger} disabled={running}>
+									<Translation key="manage:rating-set-expected" />
+								</Button> -->
+								<Button variant="ghost-dark" meltElement={trigger} disabled={running || true}>
 									<Translation key="manage:rating-set-expected" />
 								</Button>
 							{/snippet}
@@ -229,7 +232,7 @@
 							{/snippet}
 						</PopoverSelect>
 					{/snippet}
-				</ActionContainer> -->
+				</ActionContainer>
 
 				<ActionContainer
 					action={async (value: number) => {
@@ -412,6 +415,42 @@
 					{#snippet children({ run, running })}
 						<Button variant="ghost-dark" leftIcon="check" disabled={running} onclick={run}>
 							<Translation key="manage:rating-mark-discussion-needed" />
+						</Button>
+					{/snippet}
+				</ActionContainer>
+
+				<ActionContainer
+					action={async () => {
+						await ky.patch(api.forum(`levels/ratings/${encodeURIComponent(rating.id)}`), {
+							json: {
+								// TODO clearCondition
+							}
+						})
+
+						await invalidateAll()
+					}}
+				>
+					{#snippet children({ run, running })}
+						<Button variant="ghost-dark" leftIcon="check" disabled={running || true} onclick={run}>
+							<Translation key="manage:set-clear-condition" />
+						</Button>
+					{/snippet}
+				</ActionContainer>
+
+				<ActionContainer
+					action={async () => {
+						await ky.patch(api.forum(`levels/ratings/${encodeURIComponent(rating.id)}`), {
+							json: {
+								// TODO tags
+							}
+						})
+
+						await invalidateAll()
+					}}
+				>
+					{#snippet children({ run, running })}
+						<Button variant="ghost-dark" leftIcon="check" disabled={running || true} onclick={run}>
+							<Translation key="manage:rating-set-tags" />
 						</Button>
 					{/snippet}
 				</ActionContainer>

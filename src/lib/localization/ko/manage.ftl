@@ -20,6 +20,8 @@ rating-set-quality = 퀄리티 책정
 rating-set-expected = 예상 난도 재설정
 rating-force-confirm = 난도 확정
 rating-mark-discussion-needed = 논의 필요로 표시
+rating-set-clear-condition = 클리어 조건 설정
+rating-set-tags = 태그 설정
 
 rating-action-difficulty = 난도 책정
 rating-action-quality = 퀄리티 책정
