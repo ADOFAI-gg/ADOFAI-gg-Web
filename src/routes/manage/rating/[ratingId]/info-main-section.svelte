@@ -431,8 +431,8 @@
 					}}
 				>
 					{#snippet children({ run, running })}
-						<Button variant="ghost-dark" leftIcon="check" disabled={running || true} onclick={run}>
-							<Translation key="manage:set-clear-condition" />
+						<Button variant="ghost-dark" disabled={running || true} onclick={run}>
+							<Translation key="manage:rating-set-clear-condition" />
 						</Button>
 					{/snippet}
 				</ActionContainer>
@@ -449,7 +449,7 @@
 					}}
 				>
 					{#snippet children({ run, running })}
-						<Button variant="ghost-dark" leftIcon="check" disabled={running || true} onclick={run}>
+						<Button variant="ghost-dark" disabled={running || true} onclick={run}>
 							<Translation key="manage:rating-set-tags" />
 						</Button>
 					{/snippet}
