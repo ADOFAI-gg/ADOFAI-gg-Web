@@ -428,13 +428,14 @@
 		flex-grow: 1;
 		flex-direction: column;
 		gap: 16px;
+		overflow: scroll;
 		width: 0;
 		min-width: 480px;
 		height: 100%;
 	}
 
 	.metadata-area {
-		overflow: hidden;
+		overflow: clip;
 		border-radius: 12px;
 	}
 
