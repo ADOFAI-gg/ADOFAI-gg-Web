@@ -10,3 +10,6 @@ levels = Các cấp độ
 table-of-contents = chỉ số
 my-levels = 내 레벨
 back = 돌아가기
+post-comment = 게시
+cancel = 취소
+manage-rating = 레벨 책정
