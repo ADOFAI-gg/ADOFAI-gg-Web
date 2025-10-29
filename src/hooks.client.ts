@@ -2,7 +2,6 @@ import { dev } from '$app/environment'
 import { handleErrorWithSentry } from '@sentry/sveltekit'
 import * as Sentry from '@sentry/sveltekit'
 import { env } from '$env/dynamic/public'
-import * as Spotlight from '@spotlightjs/spotlight'
 
 Sentry.init({
 	dsn: 'https://b0666c31b6c64ee6b8c89c6f461ce173@trace.afg.ink/1',
@@ -15,10 +14,3 @@ Sentry.init({
 
 // If you have a custom error handler, pass it to `handleErrorWithSentry`
 export const handleError = handleErrorWithSentry()
-
-if (dev) {
-	Spotlight.init({
-		injectImmediately: true,
-		anchor: 'bottomLeft'
-	})
-}

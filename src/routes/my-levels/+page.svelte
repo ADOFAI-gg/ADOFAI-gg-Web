@@ -3,10 +3,11 @@
 	import { createInfiniteQuery, infiniteQueryOptions } from '@tanstack/svelte-query'
 	import * as store from 'svelte/store'
 	import { pageSize } from '../levels/search'
-	import { api, type APILevel } from '~/lib'
+	import { api, ky, type APILevel } from '~/lib'
 	import { browser } from '$app/environment'
 	import { createWindowVirtualizer } from '~/lib/utils/virtualizer.svelte'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
+	import type { ListResponse } from '~/types'
 
 	const queryParams = store.writable({
 		sort: 'RECENT_DESC'
@@ -17,15 +18,13 @@
 		url.searchParams.set('limit', take.toString())
 		url.searchParams.set('offset', skip.toString())
 		url.searchParams.set('sort', sort)
-		const res = await fetch(url, {
-			credentials: 'include'
-		})
+		const res = await ky.get(url)
 
 		if (!res.ok) throw new Error(`Request failed with status code: ${res.status}`)
 
-		const data = await res.json()
+		const data = await res.json<ListResponse<APILevel>>()
 
-		return data.results as APILevel[]
+		return data.results
 	}
 
 	const query = createInfiniteQuery(
@@ -123,12 +122,12 @@
 <style lang="scss">
 	.title {
 		margin-top: 24px;
-		font-size: 32px;
 		font-weight: 700;
+		font-size: 32px;
 	}
 
 	.level-list {
-		margin-top: 16px;
 		position: relative;
+		margin-top: 16px;
 	}
 </style>

@@ -13,8 +13,9 @@
 		Icon
 	} from '@adofai-gg/ui'
 	import { Debounced } from 'runed'
-	import { api } from '~/lib'
+	import { api, ky } from '~/lib'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
+	import type { ListResponse } from '~/types'
 
 	interface Props {
 		value: MemberIdOrCreate[]
@@ -47,19 +48,15 @@
 				return
 			}
 
-			const res = await fetch(
-				api.forum('members') +
-					'?' +
-					new URLSearchParams({
-						displayName: query,
-						registered: registeredOnly ? 'true' : 'false',
-						sort: 'DISPLAY_NAME_LENGTH_ASC'
-					}),
-				{
-					signal: abort
-				}
-			)
-			results = (await res.json()).results
+			const res = await ky.get(api.forum('members'), {
+				signal: abort,
+				searchParams: new URLSearchParams({
+					displayName: query,
+					registered: registeredOnly ? 'true' : 'false',
+					sort: 'DISPLAY_NAME_LENGTH_ASC'
+				})
+			})
+			results = (await res.json<ListResponse<APIMember>>()).results
 		} catch (e) {
 			if (e instanceof DOMException) {
 				if (e.name === 'ABORT_ERR') return
@@ -86,7 +83,7 @@
 	})
 
 	const items = $derived.by(() => {
-		const result: SelectOption<number | 'create', APIMember>[] = []
+		const result: SelectOption<string | 'create', APIMember>[] = []
 
 		if (debouncedSearch.current && !registeredOnly) {
 			result.push({
@@ -104,7 +101,7 @@
 				(x) =>
 					({
 						label: x.displayName,
-						value: x.id,
+						value: x.id.toString(),
 						customData: x
 					}) satisfies (typeof result)[number]
 			)
@@ -161,7 +158,7 @@
 									name: existing.customData!.displayName,
 									locked: false
 								},
-								id: existing.value as number
+								id: parseInt(existing.value)
 							}
 						]
 						return
@@ -179,17 +176,18 @@
 						}
 					]
 				} else {
-					if (value.some((y) => y.exists && y.id === x)) {
+					const v = parseInt(x)
+					if (value.some((y) => y.exists && y.id === v)) {
 						return
 					}
 
-					const member = results.find((y) => y.id === x)!
+					const member = results.find((y) => y.id === v)!
 
 					value = [
 						...value,
 						{
 							exists: true,
-							id: x,
+							id: parseInt(x),
 							data: {
 								name: member.displayName,
 								avatarUrl: getAvatarUrl(
@@ -204,7 +202,11 @@
 				}
 			}}
 			select
-			{items}
+			items={[
+				{
+					options: items
+				}
+			]}
 			bind:inputValue={search}
 			loading={fetching}
 		>

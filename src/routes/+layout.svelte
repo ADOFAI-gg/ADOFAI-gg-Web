@@ -47,6 +47,8 @@
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 	import Cookies from 'js-cookie'
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
+	import ky from 'ky'
+	import { checkFlag } from '~/lib/utils/perm'
 
 	interface Props {
 		children: Snippet
@@ -81,9 +83,8 @@
 		links,
 		setLanguage: (lang) => {
 			language.set(lang)
-			fetch('/api/set-lang', {
-				method: 'POST',
-				body: JSON.stringify({ lang })
+			ky.post('/api/set-lang', {
+				json: { lang }
 			})
 			Cookies.set('adofaigg.lang', lang, {
 				domain: env.PUBLIC_COOKIE_DOMAIN,
@@ -108,13 +109,13 @@
 		}
 	})
 
-	beforeNavigate(() => {
-		BProgress.start()
-	})
+	// beforeNavigate((nav) => {
+	// 	BProgress.start()
+	// })
 
-	afterNavigate(() => {
-		BProgress.done()
-	})
+	// afterNavigate((nav) => {
+	// 	BProgress.done()
+	// })
 
 	let user: User | null = $derived.by(() => {
 		if (!data.currentUser) return null
@@ -156,7 +157,7 @@
 	<SvelteQueryDevtools />
 	<div class="layout">
 		<div class="nav-position-fixer">
-			<Nav {user}>
+			<Nav {user} fullWidth={page.data.fullNav}>
 				{#snippet menu()}
 					<NavMenuGroup id="default">
 						<NavMenuItem switchGroup="language">
@@ -180,6 +181,11 @@
 							<NavMenuItem link href="/my-levels">
 								<Translation key="common:my-levels" />
 							</NavMenuItem>
+							{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
+								<NavMenuItem link href="/manage/rating">
+									<Translation key="common:manage-rating" />
+								</NavMenuItem>
+							{/if}
 							<NavMenuItem
 								link
 								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
@@ -213,7 +219,13 @@
 			{@render children()}
 		</main>
 
-		<Footer date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`} />
+		{#if !page.data.noFooter}
+			<div class="footer-container">
+				<Footer
+					date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`}
+				/>
+			</div>
+		{/if}
 	</div>
 </QueryClientProvider>
 
@@ -249,7 +261,10 @@
 		flex-grow: 1;
 		flex-direction: column;
 		min-height: calc(100vh - 56px);
-		padding-bottom: 64px;
+	}
+
+	.footer-container {
+		padding-top: 64px;
 	}
 
 	.right-actions-area {

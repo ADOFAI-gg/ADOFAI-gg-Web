@@ -8,8 +8,8 @@ const proxy = httpProxy.createProxyServer({ changeOrigin: true })
 
 http
 	.createServer((req, res) => {
-		res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173')
-		res.setHeader('Access-Control-Allow-Credentials', 'true')
+		res.setHeader('access-control-allow-origin', 'http://localhost:5173')
+		res.setHeader('access-control-allow-credentials', 'true')
 		proxy.web(req, res, { target: process.env.API_PROXY_TARGET })
 	})
 	.listen(5174)

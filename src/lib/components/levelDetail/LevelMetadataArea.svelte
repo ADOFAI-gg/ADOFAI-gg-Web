@@ -5,6 +5,7 @@
 	import LevelStat from './LevelStat.svelte'
 	import { Translation } from '@adofai-gg/ui'
 	import { getDifficulty } from '~/lib/utils/level'
+	import { formatBPM } from '~/lib'
 
 	interface Props {
 		level: APILevel
@@ -15,13 +16,7 @@
 	const tiles = $derived(level.tile.toLocaleString())
 
 	const bpm = $derived.by(() => {
-		if (level.minBpm !== level.maxBpm) {
-			return `${level.minBpm}-${level.maxBpm}`
-		}
-
-		if (level.minBpm === 0 && level.maxBpm === 0) return null
-
-		return `${level.minBpm}`
+		return formatBPM(level.minBpm, level.maxBpm)
 	})
 </script>
 
