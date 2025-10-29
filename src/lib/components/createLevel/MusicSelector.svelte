@@ -127,7 +127,8 @@
 								id: x.id,
 								data: {
 									name: x.displayName,
-									avatarUrl: getAvatarUrl(x.authUserId, x.avatar, 'artist', 24)
+									avatarUrl: getAvatarUrl(x.authUserId, x.avatar, 'artist', 24),
+									locked: false
 								}
 							}))
 						}
