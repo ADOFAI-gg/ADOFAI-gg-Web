@@ -1,5 +1,9 @@
+# allow crawling everything by default
 User-agent: *
 Allow: /
 
 User-agent: *
 Disallow: /api
+
+User-agent: *
+Disallow: /manage

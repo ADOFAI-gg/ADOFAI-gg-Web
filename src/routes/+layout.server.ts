@@ -1,33 +1,10 @@
-import { api, ky, type APIMe, type APIMember } from '~/lib'
-import type { LayoutServerLoad } from './$types'
-import { error } from '@sveltejs/kit'
-import { env } from '$env/dynamic/public'
-import { availableLanguages } from '@adofai-gg/ui'
+import { env } from '$env/dynamic/public';
+import type { LayoutServerLoad } from './$types';
+import { acceptedLanguages } from '@adofai-gg/ui';
 
-export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
-	const userResponse = await ky(api.forum('members/@me'), {
-		fetch,
-		throwHttpErrors: false
-	})
-
-	if (!userResponse.ok && userResponse.status !== 403) {
-		console.error(await userResponse.text())
-		return error(500, 'failed to fetch user')
-	}
-
-	const user: APIMe | null = userResponse.status === 403 ? null : await userResponse.json()
-
-	const acceptLang = (request.headers.get('Accept-Language') ?? '')
-		.split(',')
-		.map((x) => x.trim().split(';')[0])
-		.filter((x) => x)[0]
-
-	let lang = cookies.get('adofaigg.lang') || acceptLang || 'en'
-
-	const available = availableLanguages.find((x) => x.code === lang || x.aliases.includes(lang))
-
-	if (available) lang = available.code
-	else lang = 'en'
+export const load: LayoutServerLoad = ({ request, cookies }) => {
+	const accepted = acceptedLanguages(request.headers.get('accept-language') ?? '');
+	const lang = cookies.get('adofaigg.lang');
 
 	if (lang) {
 		cookies.set('adofaigg.lang', lang, {
@@ -37,12 +14,8 @@ export const load: LayoutServerLoad = async ({ request, fetch, cookies }) => {
 			httpOnly: false,
 			secure: true,
 			sameSite: 'lax'
-		})
+		});
 	}
 
-	return {
-		pageTitle: 'ADOFAI.gg',
-		currentUser: user,
-		lang
-	}
-}
+	return { acceptedLanguages: accepted, initialLang: lang };
+};

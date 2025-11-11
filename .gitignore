@@ -1,31 +1,23 @@
-.DS_Store
 node_modules
-/build
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
 /.svelte-kit
-/package
-!.env
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
 .env.*
 !.env.example
-.idea
-.eslintcache
-.vercel
-.cache
-static/assets
-yarn-error.log
+!.env.test
 
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
-storybook-static
-src/utils/search/parser.ts
-static/~partytown
-# Sentry
-.sentryclirc
-.direnv
-# Sentry Config File
-.env.sentry-build-plugin
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

@@ -1,7 +1,38 @@
-# ADOFAi.gg Web
+# sv
 
-[![Translation status](https://weblate.paring.moe/widget/adofai-gg/svg-badge.svg)](https://weblate.paring.moe/engage/adofai-gg/)
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Used source
+## Creating a project
 
-in `.stylelintrc.js`, [(GitHub) hudochenkov/stylelint-config-hudochenkov/order.js](https://github.com/hudochenkov/stylelint-config-hudochenkov/blob/master/order.js) to sort the css properties
+If you're seeing this, you've probably already done this step. Congrats!
+
+```sh
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

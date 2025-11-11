@@ -1,10 +1,15 @@
-import { registerTranslations } from '@adofai-gg/ui'
-import { extraSections } from './constants'
+import { libTranslationResources, mergeLocalizationResources } from '@adofai-gg/ui';
 
-const translationData = Object.fromEntries(
-	Object.entries(
-		import.meta.glob('./*/*.ftl', { eager: true, query: '?raw', import: 'default' })
-	).map(([k, v]) => [k.slice(2, k.length - 4), v])
-) as Record<string, string>
+import ko from './sources/ko.ftl?raw';
+import en from './sources/en.ftl?raw';
+import ja from './sources/ja.ftl?raw';
+import vi from './sources/vi.ftl?raw';
 
-registerTranslations(translationData, [...extraSections])
+export const availableLanguages = Object.keys(libTranslationResources);
+
+export const translationResources = mergeLocalizationResources(libTranslationResources, {
+	ko: [ko],
+	en: [en],
+	ja: [ja],
+	vi: [vi]
+});

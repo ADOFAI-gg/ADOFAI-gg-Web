@@ -1,30 +1,14 @@
-import { preprocessMeltUI, sequence } from '@melt-ui/pp'
-import nodeAdapter from '@sveltejs/adapter-node'
-import { sveltePreprocess } from 'svelte-preprocess'
-import { mdsvex } from 'mdsvex'
-import slug from 'rehype-slug'
-import headings from 'rehype-autolink-headings'
+import { mdsvex } from 'mdsvex';
+import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-/** @type {import('@sveltejs/kit').Config}*/
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
+	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
-	preprocess: sequence([
-		sveltePreprocess({
-			postcss: true
-		}),
-		preprocessMeltUI(),
-		mdsvex({
-			extensions: ['.md', '.svx'],
-			rehypePlugins: [slug, headings]
-		})
-	]),
-	extensions: ['.svelte', '.md', '.svx'],
-	kit: {
-		adapter: nodeAdapter(),
-		alias: {
-			'~/*': './src/*'
-		}
-	}
-}
-export default config
+	preprocess: [vitePreprocess(), mdsvex()],
+	kit: { adapter: adapter() },
+	extensions: ['.svelte', '.svx']
+};
+
+export default config;
