@@ -16,6 +16,10 @@
 	import favicon from '$lib/assets/favicon.png';
 	import type { LayoutProps } from './$types';
 	import { availableLanguages, translationResources } from '$lib/localization';
+	import { toUIUser } from '$lib/utils/user';
+	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools';
+	import { browser } from '$app/environment';
 
 	let { children, data }: LayoutProps = $props();
 
@@ -45,6 +49,16 @@
 			)
 		)
 	);
+
+	const user = $derived(data.me ? toUIUser(data.me) : null);
+
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				enabled: browser
+			}
+		}
+	});
 </script>
 
 <svelte:head>
@@ -53,29 +67,39 @@
 
 <Toaster />
 
-<Scaffolding>
-	{#snippet nav()}
-		<Localized id="nav-links">
-			{#snippet children({ attrs })}
-				<Nav.Root
-					links={[
-						{
-							title: attrs.levels,
-							href: '/levels'
-						},
-						{
-							title: attrs.references,
-							href: '/references'
-						}
-					]}
-				/>
-			{/snippet}
-		</Localized>
-	{/snippet}
-	{#snippet content()}
-		{@render children()}
-	{/snippet}
-	{#snippet footer()}
-		<Footer />
-	{/snippet}
-</Scaffolding>
+<QueryClientProvider client={queryClient}>
+	<SvelteQueryDevtools />
+	<Scaffolding>
+		{#snippet nav()}
+			<Localized id="nav-links">
+				{#snippet children({ attrs })}
+					<Nav.Root
+						links={[
+							{
+								title: attrs.levels,
+								href: '/levels'
+							},
+							{
+								title: attrs.references,
+								href: '/references'
+							}
+						]}
+						{user}
+					>
+						{#snippet logo({ content })}
+							<a href="/">
+								{@render content()}
+							</a>
+						{/snippet}
+					</Nav.Root>
+				{/snippet}
+			</Localized>
+		{/snippet}
+		{#snippet content()}
+			{@render children()}
+		{/snippet}
+		{#snippet footer()}
+			<Footer />
+		{/snippet}
+	</Scaffolding>
+</QueryClientProvider>

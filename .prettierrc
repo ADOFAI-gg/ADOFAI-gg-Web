@@ -12,5 +12,6 @@
 			}
 		}
 	],
-	"tailwindStylesheet": "./src/app.css"
+	"tailwindStylesheet": "./src/app.css",
+	"tailwindFunctions": ["tv"]
 }

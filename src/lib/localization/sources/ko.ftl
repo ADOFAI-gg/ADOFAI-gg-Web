@@ -82,6 +82,10 @@ level-difficulty = 난도
 level-reference-standard = 기준 레벨 { $idx }
 level-reference-base = 하한 레벨 { $idx }
 
+level-reject-reason = { $quality } 결정 사유
+
+level-open-rating = 책정 페이지에서 열기
+
 tag-BEAT_P64 = 64+비트
     .description = 이 레벨은 64비트 이상을 포함합니다.
 

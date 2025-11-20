@@ -3,7 +3,7 @@
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 	import Icon from '@iconify/svelte';
 	import type { PageProps } from './$types';
-	import { LevelListItem } from '$lib/components';
+	import { LevelListItem } from '$lib/components/level-list-item';
 
 	const { data }: PageProps = $props();
 

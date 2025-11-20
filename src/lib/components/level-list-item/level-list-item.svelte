@@ -12,13 +12,12 @@
 
 	const { level, showDownload = true }: Props = $props();
 
-	const downloadUrl = $derived(getDownloadUrl(level));
-	const tags = $derived(getTags(level));
+	const tags = $derived(getTags(level.tags));
 </script>
 
 <a
 	href={`/levels/${level.id}`}
-	class="flex items-center gap-3 bg-transparent px-4 py-4.5 transition hover:bg-black/10 active:bg-black/20"
+	class="flex items-center gap-3 border-b border-b-white/10 bg-transparent px-4 py-4.5 transition hover:bg-black/10 active:bg-black/20"
 >
 	<div class="flex flex-col gap-1">
 		<Icon icon={getDifficultyIconName(level.difficulty)} class="size-12" />
@@ -46,18 +45,18 @@
 			<TagIcon {tag} class="size-6 text-gg-red" />
 		{/each}
 		{#each tags.warning as tag}
-			<TagIcon {tag} class="size-6" />
+			<TagIcon {tag} class="size-6 text-gg-yellow" />
 		{/each}
 		{#each tags.normal as tag}
 			<TagIcon {tag} class="size-6" />
 		{/each}
 	</div>
-	{#if downloadUrl && showDownload}
+	{#if showDownload}
 		<button
 			class="hidden md:block"
 			onclick={(e) => {
 				e.preventDefault();
-				window.open(downloadUrl, '_blank');
+				window.open(getDownloadUrl(level), '_blank');
 			}}
 		>
 			<Icon icon="gg:arrow-down-with-file" class="size-12" />

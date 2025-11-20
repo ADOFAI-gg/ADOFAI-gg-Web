@@ -8,9 +8,12 @@ importers:
 
   .:
     devDependencies:
+      '@adofai-gg/query-types':
+        specifier: 1.0.0-alpha.7
+        version: 1.0.0-alpha.7
       '@adofai-gg/ui':
-        specifier: 2.0.0-beta.18
-        version: 2.0.0-beta.18(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)
+        specifier: 2.0.0-beta.28
+        version: 2.0.0-beta.28(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)
       '@eslint/compat':
         specifier: ^1.4.0
         version: 1.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -47,6 +50,15 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.17(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2))
+      '@tanstack/svelte-query':
+        specifier: ^6.0.7
+        version: 6.0.7(svelte@5.38.1)
+      '@tanstack/svelte-query-devtools':
+        specifier: ^6.0.0
+        version: 6.0.0(@tanstack/svelte-query@6.0.7(svelte@5.38.1))(svelte@5.38.1)
+      '@tanstack/virtual-core':
+        specifier: ^3.13.12
+        version: 3.13.12
       '@types/node':
         specifier: ^20
         version: 20.19.24
@@ -89,6 +101,9 @@ importers:
       svelte-check:
         specifier: ^4.3.3
         version: 4.3.3(picomatch@4.0.3)(svelte@5.38.1)(typescript@5.9.3)
+      tailwind-variants:
+        specifier: ^3.1.1
+        version: 3.1.1(tailwind-merge@3.4.0)(tailwindcss@4.1.17)
       tailwindcss:
         specifier: ^4.1.14
         version: 4.1.17
@@ -104,14 +119,20 @@ importers:
       vite:
         specifier: ^7.1.10
         version: 7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)
+      zod:
+        specifier: ^4.1.12
+        version: 4.1.12
 
 packages:
 
   '@acemir/cssom@0.9.23':
     resolution: {integrity: sha512-2kJ1HxBKzPLbmhZpxBiTZggjtgCwKg1ma5RHShxvd6zgqhDEdEkzpiwe7jLkI2p2BrZvFCXIihdoMkl1H39VnA==}
 
-  '@adofai-gg/ui@2.0.0-beta.18':
-    resolution: {integrity: sha512-NH0KbuUuKdpEVTJhKGFcWJmVDFcLyUvJgPLCHDRy72n96OPjgNdqLKdIBkyjQd3SvZRax2KxQgForK3MnGjgvw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/2.0.0-beta.18/94ec0f7e38da77326031bafb6e9a78b0d5638bc4}
+  '@adofai-gg/query-types@1.0.0-alpha.7':
+    resolution: {integrity: sha512-KWEC+pRsov5XeVgAx7xy0EeTHko6kXkOwKiwjoA63KX7KynkvltNpat/dZiZscliDzciaEL56kFBLCsh5/bVbw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.7/a3568dd9a83b059219e749f54fd56dea295999e9}
+
+  '@adofai-gg/ui@2.0.0-beta.28':
+    resolution: {integrity: sha512-B+VSnaRiCeb9Firwc7YNOt+lpfO6dqYRUnou+a/PEwXxq8e0epQyKHHDysUZlPe/FZgZnyRGCNXV3yfT3OCxkw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/2.0.0-beta.28/4ed126383f90531cd8d5d83207ea85f556bc8107}
     peerDependencies:
       '@fluent/bundle': ^0.19.1
       '@iconify/svelte': ^5.0.0
@@ -758,6 +779,26 @@ packages:
     resolution: {integrity: sha512-4+9w8ZHOiGnpcGI6z1TVVfWaX/koK7fKeSYF3qlYg2xpBtbteP2ddBxiarL+HVgfSJGeK5RIxRQmKm4rTJJAwA==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
+
+  '@tanstack/query-core@5.90.9':
+    resolution: {integrity: sha512-UFOCQzi6pRGeVTVlPNwNdnAvT35zugcIydqjvFUzG62dvz2iVjElmNp/hJkUoM5eqbUPfSU/GJIr/wbvD8bTUw==}
+
+  '@tanstack/query-devtools@5.90.1':
+    resolution: {integrity: sha512-GtINOPjPUH0OegJExZ70UahT9ykmAhmtNVcmtdnOZbxLwT7R5OmRztR5Ahe3/Cu7LArEmR6/588tAycuaWb1xQ==}
+
+  '@tanstack/svelte-query-devtools@6.0.0':
+    resolution: {integrity: sha512-YMvrLmQ/itQJ62WAV8+E0d7WsQlNUFOfKgijPxvHlIkBEZalKdF2BH0dIUsXc+as2xOdOZlSbR4Tw7c/hhli4w==}
+    peerDependencies:
+      '@tanstack/svelte-query': ^6.0.0
+      svelte: ^5.25.0
+
+  '@tanstack/svelte-query@6.0.7':
+    resolution: {integrity: sha512-XSzU1JdCo142xjtL/jovi1W3dOK976eV7KZUuWJJ7fnKIaQuwbXBInyltno+hXGJLfHeLb43FUg8b4gmN9L+DQ==}
+    peerDependencies:
+      svelte: ^5.25.0
+
+  '@tanstack/virtual-core@3.13.12':
+    resolution: {integrity: sha512-1YBOJfRHV4sXUmWsFSf5rQor4Ss82G8dQWLRbnk3GA4jeP8hQt1hxXh0tmflpC0dz3VgEv/1+qwPyLeWkQuPFA==}
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2209,11 +2250,16 @@ packages:
   zimmerframe@1.1.4:
     resolution: {integrity: sha512-B58NGBEoc8Y9MWWCQGl/gq9xBCe4IiKM0a2x7GZdQKOW5Exr8S1W24J6OgM1njK8xCRGvAJIL/MxXHf6SkmQKQ==}
 
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
+
 snapshots:
 
   '@acemir/cssom@0.9.23': {}
 
-  '@adofai-gg/ui@2.0.0-beta.18(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)':
+  '@adofai-gg/query-types@1.0.0-alpha.7': {}
+
+  '@adofai-gg/ui@2.0.0-beta.28(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)':
     dependencies:
       '@fluent/bundle': 0.19.1
       '@fluent/langneg': 0.7.0
@@ -2764,6 +2810,24 @@ snapshots:
       '@tailwindcss/oxide': 4.1.17
       tailwindcss: 4.1.17
       vite: 7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)
+
+  '@tanstack/query-core@5.90.9': {}
+
+  '@tanstack/query-devtools@5.90.1': {}
+
+  '@tanstack/svelte-query-devtools@6.0.0(@tanstack/svelte-query@6.0.7(svelte@5.38.1))(svelte@5.38.1)':
+    dependencies:
+      '@tanstack/query-devtools': 5.90.1
+      '@tanstack/svelte-query': 6.0.7(svelte@5.38.1)
+      esm-env: 1.2.2
+      svelte: 5.38.1
+
+  '@tanstack/svelte-query@6.0.7(svelte@5.38.1)':
+    dependencies:
+      '@tanstack/query-core': 5.90.9
+      svelte: 5.38.1
+
+  '@tanstack/virtual-core@3.13.12': {}
 
   '@trysound/sax@0.2.0': {}
 
@@ -4172,3 +4236,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   zimmerframe@1.1.4: {}
+
+  zod@4.1.12: {}

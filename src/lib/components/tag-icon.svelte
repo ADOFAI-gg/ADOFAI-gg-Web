@@ -4,25 +4,27 @@
 	import Icon from '@iconify/svelte';
 	import { Localized } from '@nubolab-ffwd/svelte-fluent';
 
-	type Props = { tag: string; class?: string };
+	type Props = { tag: string; class?: string; noTooltip?: boolean };
 
-	const { class: className, tag, ...restProps }: Props = $props();
+	const { class: className, noTooltip, tag, ...restProps }: Props = $props();
 </script>
 
-<Localized id="tag-{tag}">
-	{#snippet children({ text, attrs })}
-		<Tooltip contentProps={{ side: 'bottom' }} disableHoverableContent>
+<Icon icon={tagIconName(tag)} class={cn(className)} {...restProps} />
+
+<!-- <Localized id="tag-{tag}">
+	{#snippet children({ text, attrs })} -->
+<!-- <Tooltip contentProps={{ side: 'bottom' }} disableHoverableContent>
 			{#snippet trigger({ props })}
 				<div {...props}>
-					<Icon icon={tagIconName(tag)} class={cn(className)} {...restProps} />
-				</div>
-			{/snippet}
+<Icon icon={tagIconName(tag)} class={cn(className)} {...restProps} />
+</div>
+			{/snippet} -->
 
-			{#snippet title()}
+<!-- {#snippet title()}
 				{text}
 			{/snippet}
 
 			{attrs.description}
-		</Tooltip>
-	{/snippet}
-</Localized>
+		</Tooltip> -->
+<!-- {/snippet}
+</Localized> -->
