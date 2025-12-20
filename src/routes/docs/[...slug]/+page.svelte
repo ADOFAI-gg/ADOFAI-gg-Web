@@ -26,15 +26,6 @@
 
 <Container>
 	<div class="layout">
-		<div class="content">
-			<h1 class="title">{data.metadata.title}</h1>
-			<h2 class="subtitle">{data.metadata.subtitle}</h2>
-
-			<div class="markdown-body" id="docs-body">
-				<data.content />
-			</div>
-		</div>
-
 		<div class="toc">
 			<h4>
 				<Translation key="common:table-of-contents" />
@@ -43,6 +34,14 @@
 			{#key $headingsTree}
 				<ToCTree tree={$headingsTree} activeHeadingIdxs={$activeHeadingIdxs} {item} />
 			{/key}
+		</div>
+		<div class="content">
+			<h1 class="title">{data.metadata.title}</h1>
+			<h2 class="subtitle">{data.metadata.subtitle}</h2>
+
+			<div class="markdown-body" id="docs-body">
+				<data.content />
+			</div>
 		</div>
 	</div>
 </Container>
@@ -60,8 +59,8 @@
 			grid-template-columns: 9fr 3fr;
 		}
 
-		display: flex;
-		flex-direction: column-reverse;
+		display: grid;
+		/* flex-direction: column-reverse; */
 		gap: 24px;
 		margin-top: 32px;
 	}
@@ -75,12 +74,13 @@
 		@include breakpoint('md') {
 			position: sticky;
 			top: 96px;
+			order: 1;
 		}
 
 		height: fit-content;
 		padding: 16px;
 		border-radius: 8px;
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: rgb(0, 0, 0, 0.1);
 
 		h4 {
 			margin-bottom: 8px;
