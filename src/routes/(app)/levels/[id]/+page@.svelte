@@ -14,7 +14,7 @@
 	const level = data.level;
 
 	const thumbnail = $derived(getLevelThumbnail(level));
-	const tags = $derived(getTags(level));
+	const tags = $derived(getTags(level.tags));
 	const hasTags = $derived(tags.danger.length + tags.normal.length + tags.warning.length > 0);
 </script>
 

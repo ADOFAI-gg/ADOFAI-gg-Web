@@ -12,8 +12,8 @@ importers:
         specifier: 1.0.0-alpha.7
         version: 1.0.0-alpha.7
       '@adofai-gg/ui':
-        specifier: 2.0.0-beta.28
-        version: 2.0.0-beta.28(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)
+        specifier: 2.0.0-beta.33
+        version: 2.0.0-beta.33(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)
       '@eslint/compat':
         specifier: ^1.4.0
         version: 1.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -131,8 +131,8 @@ packages:
   '@adofai-gg/query-types@1.0.0-alpha.7':
     resolution: {integrity: sha512-KWEC+pRsov5XeVgAx7xy0EeTHko6kXkOwKiwjoA63KX7KynkvltNpat/dZiZscliDzciaEL56kFBLCsh5/bVbw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/query-types/1.0.0-alpha.7/a3568dd9a83b059219e749f54fd56dea295999e9}
 
-  '@adofai-gg/ui@2.0.0-beta.28':
-    resolution: {integrity: sha512-B+VSnaRiCeb9Firwc7YNOt+lpfO6dqYRUnou+a/PEwXxq8e0epQyKHHDysUZlPe/FZgZnyRGCNXV3yfT3OCxkw==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/2.0.0-beta.28/4ed126383f90531cd8d5d83207ea85f556bc8107}
+  '@adofai-gg/ui@2.0.0-beta.33':
+    resolution: {integrity: sha512-7IeP9Wd1+5Rup8kgZnx4wH+iSvMNrllAVsrheoy5rs1y789c8gn18/WxT1SmNPvLKJN3yX7kpj7cOOxJYtjPrg==, tarball: https://npm.pkg.github.com/download/@adofai-gg/ui/2.0.0-beta.33/38ccab7bdf5cbdbae3eb90f7e0f9c7fdade049f7}
     peerDependencies:
       '@fluent/bundle': ^0.19.1
       '@iconify/svelte': ^5.0.0
@@ -2259,7 +2259,7 @@ snapshots:
 
   '@adofai-gg/query-types@1.0.0-alpha.7': {}
 
-  '@adofai-gg/ui@2.0.0-beta.28(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)':
+  '@adofai-gg/ui@2.0.0-beta.33(@fluent/bundle@0.19.1)(@iconify/svelte@5.1.0(svelte@5.38.1))(@internationalized/date@3.10.0)(@nubolab-ffwd/svelte-fluent@1.0.5(@fluent/bundle@0.19.1)(jsdom@27.1.0)(rollup@4.53.2)(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(@sveltejs/kit@2.48.4(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(vite@7.2.2(@types/node@20.19.24)(jiti@2.6.1)(lightningcss@1.30.2)))(svelte@5.38.1)(tailwindcss@4.1.17)':
     dependencies:
       '@fluent/bundle': 0.19.1
       '@fluent/langneg': 0.7.0

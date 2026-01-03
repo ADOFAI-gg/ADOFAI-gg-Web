@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { createLevelSearchQuery } from '$lib/api/queries/levels.svelte';
-	import { LoadingSpinner, SearchInput } from '@adofai-gg/ui';
+	import {
+		LoadingSpinner,
+		SearchInput,
+		SearchOptionsBar,
+		type FilterItem,
+		type FilterScheme
+	} from '@adofai-gg/ui';
 	import LevelListItem from '$lib/components/level-list-item/level-list-item.svelte';
 	import { createWindowVirtualizer } from '$lib/virtualizer.svelte';
 	import { browser } from '$app/environment';
-	import { Localized } from '@nubolab-ffwd/svelte-fluent';
+	import { getFluentContext, Localized } from '@nubolab-ffwd/svelte-fluent';
 
 	const query = createLevelSearchQuery(
 		() => ({
@@ -44,6 +50,61 @@
 			query.fetchNextPage();
 		}
 	});
+
+	const { localize } = getFluentContext();
+
+	const filterScheme = $derived({
+		filter: {
+			'music.name': {
+				default: '',
+				name: localize('level-filter-music'),
+				type: 'text',
+				options: {
+					label: localize('level-filter-music')
+				},
+				icon: 'gg:music'
+			},
+			'music.artists.name': {
+				type: 'text',
+				default: '',
+				icon: 'gg:creator',
+				name: localize('level-filter-artist'),
+				options: {
+					label: localize('level-filter-artist')
+				}
+			},
+			'creators.name': {
+				type: 'text',
+				default: '',
+				icon: 'gg:creator',
+				name: localize('level-filter-creator'),
+				options: {
+					label: localize('level-filter-creator')
+				}
+			}
+		},
+		sort: [
+			{
+				id: 'id:desc',
+				name: localize('level-sort-id-desc')
+			},
+			{
+				id: 'id:asc',
+				name: localize('level-sort-id-asc')
+			},
+			{
+				id: 'difficulty:desc',
+				name: localize('level-sort-difficulty-desc')
+			},
+			{
+				id: 'difficulty:asc',
+				name: localize('level-sort-difficulty-asc')
+			}
+		]
+	} satisfies FilterScheme);
+
+	let sort = $state('id:desc');
+	let filters = $state<FilterItem[]>([]);
 </script>
 
 <!-- SEARCH -->
@@ -53,7 +114,9 @@
 			<SearchInput placeholder={text} />
 		{/snippet}
 	</Localized>
-	<div class="mt-2 px-4">asdfasdfd</div>
+	<div class="mt-2 px-4">
+		<SearchOptionsBar {filterScheme} bind:sort bind:filters />
+	</div>
 </section>
 
 <!-- LIST -->

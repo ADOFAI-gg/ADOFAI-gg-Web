@@ -11,7 +11,7 @@
 </script>
 
 <div class="flex grow flex-col justify-center px-4">
-	<main class="mx-auto gg-container py-16">
+	<main class="mx-auto gg-container pt-24">
 		<Logo width="100%" class="mx-auto max-w-[564px]" />
 
 		<div class="mx-auto mt-9.5 max-w-3xl">
