@@ -13,7 +13,7 @@
 	const { difficulty, display, size = 48 }: Props = $props()
 
 	let difficultyName = $derived.by(() => {
-		if (difficulty === null) return 'unknown'
+		if (!difficulty) return 'unknown'
 		if (difficulty === 0.1) return 'legacy_tiny'
 		if (difficulty === 101) return 'legacy_minus1'
 
