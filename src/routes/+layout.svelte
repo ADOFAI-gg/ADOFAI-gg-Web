@@ -15,8 +15,6 @@
 	import '@fontsource/ibm-plex-sans-jp/600.css'
 	import '@fontsource/ibm-plex-sans-jp/700.css'
 
-	import { BProgress } from '@bprogress/core'
-
 	import '../stylesheets/docs.scss'
 	import '../stylesheets/bprogress.css'
 
@@ -108,14 +106,6 @@
 			}
 		}
 	})
-
-	// beforeNavigate((nav) => {
-	// 	BProgress.start()
-	// })
-
-	// afterNavigate((nav) => {
-	// 	BProgress.done()
-	// })
 
 	let user: User | null = $derived.by(() => {
 		if (!data.currentUser) return null

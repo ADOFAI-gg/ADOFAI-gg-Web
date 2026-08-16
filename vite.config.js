@@ -1,10 +1,7 @@
 import { sentrySvelteKit } from '@sentry/sveltekit'
-import * as path from 'path'
-import glob from 'vite-plugin-glob'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { defineConfig } from 'vite'
 import preload from 'vite-plugin-preload'
-import { partytownVite } from '@qwik.dev/partytown/utils'
 import { execSync } from 'child_process'
 
 export default defineConfig({
@@ -17,10 +14,8 @@ export default defineConfig({
 			},
 			debug: true
 		}),
-		glob(),
 		sveltekit(),
-		preload(),
-		partytownVite({ dest: path.join(process.cwd(), 'build', 'client', '~partytown') })
+		preload()
 	],
 	build: {
 		sourcemap: true

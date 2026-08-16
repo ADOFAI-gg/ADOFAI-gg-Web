@@ -23,7 +23,6 @@ yarn-error.log
 
 storybook-static
 src/utils/search/parser.ts
-static/~partytown
 # Sentry
 .sentryclirc
 .direnv
