@@ -29,10 +29,13 @@ RUN pnpm pack && mv adofai-gg-*.tgz package.tgz
 FROM node:22-alpine AS runner
 
 COPY --from=builder /app/package.tgz .
+COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
 
 RUN tar xvzf package.tgz && \
     rm package.tgz && \
     mv package app && \
+    cp pnpm-workspace.yaml app/pnpm-workspace.yaml && \
+    rm pnpm-workspace.yaml && \
     cd app && \
     echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc && \
     corepack enable && \
