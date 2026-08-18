@@ -27,16 +27,17 @@
 	import type { PageData } from './$types'
 	import { getAvatarUrl } from '~/lib/utils/avatar'
 
-	enum UploadStep {
-		FileUpload,
-		BasicInformation,
-		DisplayInformation,
-		LevelInformation
-	}
+	const UploadStep = {
+		FileUpload: 'file-upload',
+		BasicInformation: 'basic-information',
+		DisplayInformation: 'display-information',
+		LevelInformation: 'level-information'
+	} as const
+	type UploadStep = (typeof UploadStep)[keyof typeof UploadStep]
 
 	let { data: pageData }: { data: PageData } = $props()
 
-	const step = writable(UploadStep.FileUpload)
+	const step = writable<UploadStep>(UploadStep.FileUpload)
 	const uploadState = writable<UploadState>({ status: 'idle' })
 
 	const { language } = getGlobalContext()
@@ -90,7 +91,7 @@
 	})
 
 	const createMember = async (member: MemberIdOrCreate): Promise<number> => {
-		if (member.exists) return { id: member.id }
+		if (member.exists) return member.id
 
 		const res = await ky.post(api.forum('members/forum'), {
 			json: {
@@ -107,7 +108,7 @@
 
 		const data: APIMember = await res.json()
 
-		return { id: data.id }
+		return data.id
 	}
 
 	const createMusic = async (music: MusicIdOrCreate): Promise<number> => {

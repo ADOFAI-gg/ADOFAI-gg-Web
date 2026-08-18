@@ -1,4 +1,4 @@
-import { env } from '$env/dynamic/public'
+import { accountServiceUrl } from '$lib'
 import defaultDark from '$lib/assets/defaultAvatars/dark.png'
 import defaultLight from '$lib/assets/defaultAvatars/light.png'
 
@@ -12,5 +12,5 @@ export const getAvatarUrl = (
 		return usage === 'artist' ? defaultDark : defaultLight
 	}
 
-	return `${env.PUBLIC_ACCOUNT_SERVICE_URL}/content/avatars/${id}/${avatar ?? 'default'}.png?size=${size}`
+	return accountServiceUrl(`content/avatars/${id}/${avatar ?? 'default'}.png?size=${size}`)
 }

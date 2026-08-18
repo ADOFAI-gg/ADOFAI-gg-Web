@@ -17,7 +17,6 @@
 
 	import TagIconContent from './TagIconContent.svelte'
 	import CustomTagIconContent from './CustomTagIconContent.svelte'
-	import { emptyMeltElement, type AnyMeltElement } from '@melt-ui/svelte'
 
 	interface Props {
 		tag: string
@@ -29,13 +28,13 @@
 	let icon = $derived((icons[`../assets/tagIcons/${tag}.svg`] as { default: string })?.default)
 </script>
 
-{#snippet iconPart(meltElement: AnyMeltElement)}
+{#snippet iconPart(triggerProps: Record<string, unknown>)}
 	{@const customIcon = customIcons[tag]}
 	{#if customIcon}
-		<CustomTagIconContent {meltElement} {size} src={customIcon} />
+		<CustomTagIconContent {triggerProps} {size} src={customIcon} />
 	{:else}
 		<TagIconContent
-			{meltElement}
+			{triggerProps}
 			danger={dangerIcons.includes(tag)}
 			warning={warningIcons.includes(tag)}
 			{size}
@@ -45,14 +44,11 @@
 {/snippet}
 
 {#if noTooltip}
-	{@render iconPart(
-		/* @ts-expect-error what */
-		emptyMeltElement
-	)}
+	{@render iconPart({})}
 {:else}
 	<Tooltip>
-		{#snippet trigger({ trigger })}
-			{@render iconPart(trigger)}
+		{#snippet trigger({ props })}
+			{@render iconPart(props)}
 		{/snippet}
 
 		<TooltipTitle>

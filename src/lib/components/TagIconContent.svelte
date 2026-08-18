@@ -1,22 +1,21 @@
 <script lang="ts">
 	import clsx from 'clsx'
-	import { type AnyMeltElement, melt } from '@melt-ui/svelte'
 
 	interface Props {
 		danger: boolean
 		warning: boolean
 		src: string
 		size: number
-		meltElement: AnyMeltElement
+		triggerProps: Record<string, unknown>
 	}
 
-	const { src, danger, warning, size, meltElement }: Props = $props()
+	const { src, danger, warning, size, triggerProps }: Props = $props()
 
 	let srcContent = $derived(src.replaceAll("'", "\\'"))
 </script>
 
 <div
-	use:melt={$meltElement}
+	{...triggerProps}
 	class={clsx('tag-icon', {
 		danger,
 		warning

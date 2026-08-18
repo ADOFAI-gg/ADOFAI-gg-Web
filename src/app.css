@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin 'tailwindcss-animate';
+
+/* Scan Web's own utility classes and the packaged UI components. */
+@source './';
+@source '../node_modules/@adofai-gg/ui/dist';
+
+/* Keep the UI package's theme, base styles, and background in the app. */
+@import '@adofai-gg/ui/globals.css';
+
+/* Typography used by the production site's legacy global stylesheet. */
+* {
+	letter-spacing: -0.011em;
+}
+
+/* Match the legacy responsive container used by the production site. */
+.gg-container {
+	width: 100%;
+}
+
+@media (min-width: 640px) {
+	.gg-container {
+		max-width: 640px;
+	}
+}
+
+@media (min-width: 768px) {
+	.gg-container {
+		max-width: 768px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.gg-container {
+		max-width: 1024px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.gg-container {
+		max-width: 1200px;
+	}
+}
+
+/* beta.37's Panel still carries a generic grid utility. */
+.panel {
+	display: block;
+}
+
+.panel-title {
+	line-height: 1.2;
+}
+
+[data-button-root] {
+	line-height: 20px;
+}
+
+/* beta.37's legacy Nav still defaults the menu trigger to primary. */
+.nav-position-fixer [aria-label='menu'] {
+	background-color: transparent;
+	font-weight: 400;
+	line-height: 1.4;
+	padding: 0;
+}
+
+.nav-position-fixer [aria-label='menu']:hover {
+	background-color: rgb(3 6 28 / 20%);
+}

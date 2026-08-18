@@ -3,7 +3,11 @@ import { translateKey, type SelectOption, type TranslationKey } from '@adofai-gg
 import './localization'
 import { default as origKy } from 'ky'
 
-const base = env.PUBLIC_API_BASE
+const base = env.PUBLIC_API_BASE.replace(/\/+$/, '')
+const accountServiceBase = env.PUBLIC_ACCOUNT_SERVICE_URL.replace(/\/+$/, '')
+
+export const accountServiceUrl = (endpoint: string) =>
+	`${accountServiceBase}/${endpoint.replace(/^\/+/, '')}`
 
 export const ky = origKy.extend({
 	credentials: 'include',

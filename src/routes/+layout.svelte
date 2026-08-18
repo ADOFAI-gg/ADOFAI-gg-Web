@@ -1,7 +1,8 @@
 <script lang="ts">
 	import '$lib'
+	import { accountServiceUrl } from '$lib'
 
-	import '@adofai-gg/ui/globals.scss'
+	import '../app.css'
 
 	import '@fontsource/ibm-plex-sans-kr/300.css'
 	import '@fontsource/ibm-plex-sans-kr/400.css'
@@ -19,7 +20,10 @@
 	import '../stylesheets/bprogress.css'
 
 	import {
+		createBundles,
 		IconProvider,
+		libTranslationResources,
+		mergeLocalizationResources,
 		Nav,
 		Footer,
 		setGlobalContext,
@@ -29,9 +33,9 @@
 		Translation,
 		NavLanguageSwitcher,
 		Button,
-		Toaster,
-		type GlobalContext
+		Toaster
 	} from '@adofai-gg/ui'
+	import { FluentProvider } from '@nubolab-ffwd/svelte-fluent'
 	import { SvelteQueryDevtools } from '@tanstack/svelte-query-devtools'
 	import { env } from '$env/dynamic/public'
 
@@ -47,6 +51,7 @@
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
 	import ky from 'ky'
 	import { checkFlag } from '~/lib/utils/perm'
+	import { translationData } from '$lib/localization'
 
 	interface Props {
 		children: Snippet
@@ -56,6 +61,20 @@
 	const { children, data }: Props = $props()
 
 	const language = writable(data.lang)
+
+	const appTranslationResources = Object.entries(translationData).reduce<Record<string, string[]>>(
+		(resources, [key, source]) => {
+			const [language] = key.split('/', 1)
+			;(resources[language] ??= []).push(source)
+			return resources
+		},
+		{}
+	)
+
+	const fluentResources = mergeLocalizationResources(
+		libTranslationResources,
+		appTranslationResources
+	)
 
 	const setRedirect = () => {
 		Cookies.set('redirectTo', window.location.href, {
@@ -74,7 +93,7 @@
 			href: '/references',
 			key: 'common:references'
 		}
-	] as GlobalContext['links']
+	]
 
 	setGlobalContext({
 		language,
@@ -98,14 +117,16 @@
 		callbacks: {
 			signIn: () => {
 				setRedirect()
-				window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signin`
+				window.location.href = accountServiceUrl('auth/signin')
 			},
 			signUp: () => {
 				setRedirect()
-				window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signup`
+				window.location.href = accountServiceUrl('auth/signup')
 			}
 		}
 	})
+
+	const fluentBundles = $derived(createBundles(fluentResources, [$language]))
 
 	let user: User | null = $derived.by(() => {
 		if (!data.currentUser) return null
@@ -120,7 +141,7 @@
 	const onLogout = () => {
 		setRedirect()
 
-		window.location.href = `${env.PUBLIC_ACCOUNT_SERVICE_URL}/auth/signout`
+		window.location.href = accountServiceUrl('auth/signout')
 	}
 
 	let windowWidth = $state(0)
@@ -141,85 +162,83 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<Toaster />
+<FluentProvider bundles={fluentBundles}>
+	<Toaster />
 
-<QueryClientProvider client={data.queryClient}>
-	<SvelteQueryDevtools />
-	<div class="layout">
-		<div class="nav-position-fixer">
-			<Nav {user} fullWidth={page.data.fullNav}>
-				{#snippet menu()}
-					<NavMenuGroup id="default">
-						<NavMenuItem switchGroup="language">
-							<Translation key="ui-common:language" />
-						</NavMenuItem>
-
-						{#if windowWidth < 768}
-							{#each links as link}
-								<NavMenuItem
-									onclick={() => {
-										goto(link.href)
-									}}
-									href={link.href}
-								>
-									<Translation key={link.key} />
-								</NavMenuItem>
-							{/each}
-						{/if}
-
-						{#if user}
-							<NavMenuItem link href="/my-levels">
-								<Translation key="common:my-levels" />
+	<QueryClientProvider client={data.queryClient}>
+		<SvelteQueryDevtools />
+		<div class="layout">
+			<div class="nav-position-fixer">
+				<Nav {user} fullWidth={page.data.fullNav}>
+					{#snippet menu()}
+						<NavMenuGroup id="default">
+							<NavMenuItem switchGroup="language">
+								<Translation key="ui-common:language" />
 							</NavMenuItem>
-							{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
-								<NavMenuItem link href="/manage/rating">
-									<Translation key="common:manage-rating" />
+
+							{#if windowWidth < 768}
+								{#each links as link}
+									<NavMenuItem
+										onclick={() => {
+											goto(link.href)
+										}}
+										href={link.href}
+									>
+										<Translation key={link.key} />
+									</NavMenuItem>
+								{/each}
+							{/if}
+
+							{#if user}
+								<NavMenuItem link href="/my-levels">
+									<Translation key="common:my-levels" />
+								</NavMenuItem>
+								{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
+									<NavMenuItem link href="/manage/rating">
+										<Translation key="common:manage-rating" />
+									</NavMenuItem>
+								{/if}
+								<NavMenuItem link href={accountServiceUrl('settings/account')} target="_blank">
+									<Translation key="common:account-settings" />
+								</NavMenuItem>
+								<NavMenuItem onclick={() => onLogout()} type="danger">
+									<Translation key="ui-common:sign-out" />
 								</NavMenuItem>
 							{/if}
-							<NavMenuItem
-								link
-								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
-								target="_blank"
-							>
-								<Translation key="common:account-settings" />
-							</NavMenuItem>
-							<NavMenuItem onclick={() => onLogout()} type="danger">
-								<Translation key="ui-common:sign-out" />
-							</NavMenuItem>
+						</NavMenuGroup>
+
+						<NavMenuGroup id="language">
+							<NavLanguageSwitcher />
+						</NavMenuGroup>
+					{/snippet}
+
+					{#snippet rightSlot()}
+						{#if user}
+							<div class="right-actions-area">
+								<Button size="md" variant="outlined" link href="/levels/create">
+									<Translation key="common:upload-level" />
+								</Button>
+							</div>
 						{/if}
-					</NavMenuGroup>
-
-					<NavMenuGroup id="language">
-						<NavLanguageSwitcher />
-					</NavMenuGroup>
-				{/snippet}
-
-				{#snippet rightSlot()}
-					{#if user}
-						<div class="right-actions-area">
-							<Button size="md" variant="outlined" link href="/levels/create">
-								<Translation key="common:upload-level" />
-							</Button>
-						</div>
-					{/if}
-				{/snippet}
-			</Nav>
-		</div>
-		<main class="content">
-			{@render children()}
-		</main>
-
-		{#if !page.data.noFooter}
-			<div class="footer-container">
-				<Footer
-					date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`}
-				/>
+					{/snippet}
+				</Nav>
 			</div>
-		{/if}
-	</div>
-</QueryClientProvider>
+			<main class="content">
+				{@render children()}
+			</main>
 
-<IconProvider />
+			{#if !page.data.noFooter}
+				<div class="footer-container">
+					<Footer
+						date={`${import.meta.env.VITE_COMMIT_DATE} (${import.meta.env.VITE_COMMIT_HASH})`}
+					/>
+				</div>
+			{/if}
+		</div>
+	</QueryClientProvider>
+
+	<IconProvider />
+</FluentProvider>
 
 <style lang="scss">
 	.layout {

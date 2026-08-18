@@ -23,7 +23,7 @@
 
 <div class="level-detail-container">
 	<LevelDetailHeader level={data.level} />
-	<Container topMargin class="grid">
+	<Container topMargin class="detail-grid">
 		<div class="title-area">
 			<div class="label-container">
 				{#if level.quality === 'LEGENDARY'}
@@ -63,6 +63,12 @@
 		&-container {
 			margin-top: -56px;
 		}
+	}
+
+	:global(.detail-grid) {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: 24px;
 	}
 
 	.main-content-area,

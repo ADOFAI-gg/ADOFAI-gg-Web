@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { Avatar } from '@adofai-gg/ui'
-	import { type AnyMeltElement, melt } from '@melt-ui/svelte'
 
 	interface Props {
 		src: string
 		size: number
-		meltElement: AnyMeltElement
+		triggerProps: Record<string, unknown>
 	}
 
-	const { src, size, meltElement }: Props = $props()
+	const { src, size, triggerProps }: Props = $props()
 </script>
 
-<div use:melt={$meltElement}>
+<div {...triggerProps}>
 	<Avatar {size} {src} />
 </div>
 

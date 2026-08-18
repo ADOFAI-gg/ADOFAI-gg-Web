@@ -103,10 +103,11 @@
 		bind:inputValue={search}
 		multiple={false}
 		onSelectedChange={({ next }) => {
-			if (next) {
+			const selected = Array.isArray(next) ? next[0] : next
+			if (selected) {
 				debouncedSearch.cancel()
 
-				if (next.value === 'create') {
+				if (selected.value === 'create') {
 					value = {
 						exists: false,
 						data: {
@@ -116,10 +117,10 @@
 					}
 					return undefined
 				} else {
-					const found = results.find((x) => x.id === next.value)!
+				const found = results.find((x) => x.id === selected.value)!
 					value = {
 						exists: true,
-						id: next.value,
+						id: selected.value,
 						data: {
 							name: found.name,
 							artists: found.artists.map((x) => ({
@@ -135,7 +136,7 @@
 					}
 				}
 			}
-			return next
+			return selected
 		}}
 		items={fetchedMusicItems}
 		loading={fetching}

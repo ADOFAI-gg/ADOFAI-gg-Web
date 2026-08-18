@@ -14,7 +14,7 @@ Sentry.init({
 })
 
 const base = pubEnv.PUBLIC_API_BASE!
-const target = privEnv.INTERNAL_API_BASE
+const target = privEnv.INTERNAL_API_BASE ?? privEnv.API_PROXY_TARGET
 
 export const handle: Handle = sequence(Sentry.sentryHandle())
 
