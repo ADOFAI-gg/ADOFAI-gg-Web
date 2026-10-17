@@ -9,7 +9,13 @@
 		translateKey,
 		type TranslationKey
 	} from '@adofai-gg/ui'
-	import { modDownloadUrl, type APIModVersion, type APIMod } from '~/lib/types/mod'
+	import {
+		modDownloadUrl,
+		safeModUrl,
+		type ModPlatform,
+		type APIModVersion,
+		type APIMod
+	} from '~/lib/types/mod'
 	let {
 		open = $bindable(false),
 		mod,
@@ -20,7 +26,26 @@
 	const t = (key: TranslationKey) => translateKey($language, key, {}, false)
 	const releases = $derived(versions.length ? versions : [{ ...mod, version: mod.version ?? '' }])
 	const selected = $derived(releases.find((release) => release.version === version))
-	const url = $derived(selected ? modDownloadUrl(selected) : null)
+	let platform = $state<ModPlatform>('windows')
+	const platformLabels: Record<ModPlatform, string> = {
+		windows: 'Windows',
+		macos: 'MacOS',
+		linux: 'Linux'
+	}
+	const files = $derived(
+		Object.entries(selected?.files ?? {}).filter(([, file]) => file && safeModUrl(file.download))
+	)
+	$effect(() => {
+		if (files.length && !files.some(([key]) => key === platform))
+			platform = files[0][0] as ModPlatform
+	})
+	const url = $derived(
+		files.length
+			? safeModUrl(selected?.files?.[platform]?.download ?? null)
+			: selected
+				? modDownloadUrl(selected)
+				: null
+	)
 </script>
 
 <Modal bind:open>
@@ -41,13 +66,15 @@
 					>{/each}
 			</select>
 		</div>
-		<!--
-		<div class="field">
-			<label for="download-os"><Translation key="mod:os" /></label>
-			<p><Translation key="mod:os-unknown" /></p>
-			<select id="download-os" disabled><option>{t('mod:compatibility-unknown')}</option></select>
-		</div>
-		-->
+		{#if files.length}
+			<div class="field">
+				<label for="download-os"><Translation key="mod:os" /></label>
+				<select id="download-os" bind:value={platform}>
+					{#each files as [key]}<option value={key}>{platformLabels[key as ModPlatform]}</option
+						>{/each}
+				</select>
+			</div>
+		{/if}
 		<ModalActions>
 			{#snippet left()}<Button variant="ghost-light" size="sm" onclick={close}
 					><Translation key="mod:cancel" /></Button

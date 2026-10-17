@@ -85,13 +85,18 @@ notice-delete-error = Failed to delete notice.
 notice-delete-confirm = Are you sure you want to delete this notice?
 
 notice-banner-settings = Featured Banner Settings
-notice-banner-enabled = Show featured banner on main page
-notice-banner-image-label = Banner Image URL
-notice-banner-image-placeholder = https://... (180px height banner image URL)
+notice-banner-image-label = Upload banner image
 notice-banner-link-label = Click Target URL (optional)
 notice-banner-link-placeholder = /notices/1 or https://...
-notice-banner-title-label = Banner Overlay Text (optional)
-notice-banner-title-placeholder = e.g., Registration Open (leave empty for image only)
 notice-banner-preview = Banner Preview
 notice-banner-saved = Featured banner settings saved.
 notice-banner-save-error = Failed to save featured banner settings.
+
+notice-banner-image-help = PNG, JPG, WebP, GIF · Up to 8MB. Save after uploading.
+notice-banner-upload-error = Upload failed. Choose a PNG, JPG, WebP, or GIF file up to 8MB.
+notice-banner-remove = Remove banner image
+
+notice-content-language = Notice content language
+notice-original = Original (fallback)
+notice-translation-help = The original is shown when a translation is unavailable. Clear the title, subtitle and body to remove a translation.
+notice-translation-required = Enter a title and body for the original and each translation.

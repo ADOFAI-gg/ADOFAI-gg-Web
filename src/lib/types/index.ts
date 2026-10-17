@@ -22,7 +22,15 @@ export interface APIMe extends APIMember {
 
 export type NoticeCategory = 'FORUM' | 'WEBSITE' | 'EVENT' | 'UPDATE' | 'MAINTENANCE'
 
+export interface NoticeTranslation {
+	title: string
+	subtitle: string | null
+	body?: string
+	excerpt?: string | null
+}
+
 export interface APINotice {
+	translations?: Record<string, NoticeTranslation>
 	id: number
 	title: string
 	subtitle: string | null

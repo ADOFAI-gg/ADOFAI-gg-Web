@@ -132,3 +132,59 @@ license-unregistered = Unspecified
 updated-label = updated
 released-label = released
 just-now = Just now
+
+manage-tag-search = Select tags…
+manage-view-latest = View latest version
+manage-video-url = Video link
+manage-reset = Reset
+manage-upload-file-label = Mod file
+manage-save-current = Save current version
+manage-new-version = Upload new version
+manage-license-title = Edit license
+manage-apply = Apply
+manage-version-exists = This version already exists. Enter a different version.
+manage-loading = Loading…
+manage-formatting = Description formatting
+manage-developer-unavailable = The developer list contains someone without a forum account and cannot be edited.
+
+manage-replace-file = Replacement mod file (.zip, up to 100MB)
+manage-replace-file-hint = Leave empty to keep the existing file.
+manage-developers-search-error = Could not search accounts. Please try again.
+
+manage-file-select = Choose a file…
+manage-edit-files = Edit mod files
+
+manage-cross-platform = Cross-platform upload
+manage-all-platforms = All platforms
+
+manage-mine-only = Show only my mods
+
+manage-editing-version = Editing version { $version }
+manage-back-to-info = Back to mod information
+manage-view-version = View selected version
+manage-save-version = Save selected version
+
+media-gallery = Media gallery
+media-video = Video
+media-image-error = Unable to load image.
+media-previous = Previous slide
+media-next = Next slide
+media-slide-select = Select slide
+media-slide = Slide { $index }
+media-editor = Videos & images
+media-limit = You can add up to 10 images.
+media-upload-error = Upload PNG, JPEG, GIF or WebP images up to 10MB each.
+media-uploaded = Images uploaded. Save your changes to publish.
+media-uploading = Uploading { $completed } / { $total }
+media-add = Choose images or drop them here
+media-formats = PNG · JPEG · GIF · WebP / up to 10MB each
+media-remove = Remove image { $index }
+media-caption = Image { $index } caption
+media-caption-placeholder = Add an image caption
+media-move-left = Move image { $index } earlier
+media-move-right = Move image { $index } later
+media-order = Reorder
+
+media-video-first = Add a YouTube link to show the video as the first slide, followed by your images.
+
+manage-beta = Beta release

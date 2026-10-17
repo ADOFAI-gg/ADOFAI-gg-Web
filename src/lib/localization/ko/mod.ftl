@@ -61,7 +61,7 @@ manage-tag-add = 태그 추가
 manage-tag-admin-only = 공식 태그는 포럼 관리자만 설정할 수 있습니다.
 manage-developers = 개발자
 manage-developers-add = 추가하기
-manage-developers-search = 개발자 이름...
+manage-developers-search = ADOFAI.gg 계정 이름...
 manage-developers-remove = 개발자 제거
 manage-developers-empty = 등록된 개발자가 없습니다.
 manage-release-info = 출시 정보
@@ -132,3 +132,59 @@ license-unregistered = 미등록
 updated-label = 업데이트됨
 released-label = 출시됨
 just-now = 방금 전
+
+manage-tag-search = 태그 선택...
+manage-view-latest = 최신 버전 보기
+manage-video-url = 영상 링크
+manage-reset = 재설정
+manage-upload-file-label = 모드 파일
+manage-save-current = 현재 버전 수정
+manage-new-version = 새 버전 업데이트
+manage-license-title = 라이선스 선택
+manage-apply = 적용
+manage-version-exists = 이미 등록된 버전입니다. 다른 버전을 입력해 주세요.
+manage-loading = 불러오는 중...
+manage-formatting = 설명 서식 도구
+manage-developer-unavailable = 포럼에 가입하지 않은 개발자가 있어 목록을 수정할 수 없습니다.
+
+manage-replace-file = 교체할 모드 파일 (.zip, 최대 100MB)
+manage-replace-file-hint = 파일을 선택하지 않으면 기존 파일을 유지합니다.
+manage-developers-search-error = 계정 검색에 실패했습니다. 다시 시도해 주세요.
+
+manage-file-select = 파일 선택...
+manage-edit-files = 모드 파일 수정
+
+manage-cross-platform = 크로스플랫폼 업로드
+manage-all-platforms = 모든 플랫폼
+
+manage-mine-only = 내가 만든 모드만 표시
+
+manage-editing-version = { $version } 버전 편집 중
+manage-back-to-info = 모드 정보로 돌아가기
+manage-view-version = 선택한 버전 보기
+manage-save-version = 선택한 버전 저장
+
+media-gallery = 미디어 갤러리
+media-video = 영상
+media-image-error = 이미지를 불러올 수 없습니다.
+media-previous = 이전 슬라이드
+media-next = 다음 슬라이드
+media-slide-select = 슬라이드 선택
+media-slide = 슬라이드 { $index }
+media-editor = 영상·이미지
+media-limit = 이미지는 최대 10장까지 등록할 수 있습니다.
+media-upload-error = PNG, JPEG, GIF, WebP 이미지를 장당 10MB 이하로 올려 주세요.
+media-uploaded = 이미지를 올렸습니다. 변경 사항을 저장해 주세요.
+media-uploading = 업로드 중 { $completed } / { $total }
+media-add = 이미지 선택 또는 여기에 끌어놓기
+media-formats = PNG · JPEG · GIF · WebP / 장당 최대 10MB
+media-remove = 이미지 { $index } 삭제
+media-caption = 이미지 { $index } 설명
+media-caption-placeholder = 이미지 설명을 입력하세요
+media-move-left = 이미지 { $index } 앞으로 이동
+media-move-right = 이미지 { $index } 뒤로 이동
+media-order = 순서 변경
+
+media-video-first = YouTube 영상 링크를 입력하면 슬라이드 첫 번째 장에 표시됩니다. 이미지는 그다음부터 표시됩니다.
+
+manage-beta = 베타 버전

@@ -1,3 +1,4 @@
+import type { APINotice } from '~/lib/types'
 import type { NoticeCategory } from '~/lib/types'
 import type { TranslationKey } from '@adofai-gg/ui'
 
@@ -54,4 +55,9 @@ export function formatNoticeDate(
 		month: 'short',
 		day: 'numeric'
 	}).format(date)
+}
+
+export function localizeNotice(notice: APINotice, language: string): APINotice {
+	const translation = notice.translations?.[language]
+	return translation ? { ...notice, ...translation } : notice
 }

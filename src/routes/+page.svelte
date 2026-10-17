@@ -5,7 +5,7 @@
 	import type { PageData } from './$types'
 	import LevelListItem from '~/lib/components/levelList/LevelListItem.svelte'
 	import MainLink from '~/lib/components/main/MainLink.svelte'
-	import { formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
+	import { localizeNotice, formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
 
 	interface Props {
 		data: PageData
@@ -49,7 +49,7 @@
 			<div class="column">
 				<MainSection title="main:notices" link="/notices">
 					<div class="notice-section-body">
-						{#if banner && banner.enabled && banner.imageUrl}
+						{#if banner && banner.imageUrl}
 							{#if banner.linkUrl}
 								<a
 									href={banner.linkUrl}
@@ -57,34 +57,18 @@
 									target={banner.linkUrl.startsWith('http') ? '_blank' : undefined}
 									rel={banner.linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
 								>
-									<img
-										class="featured-notice-bg"
-										src={banner.imageUrl}
-										alt={banner.title ?? 'Banner'}
-									/>
-									<div class="featured-notice-gradient"></div>
-									{#if banner.title}
-										<div class="featured-notice-title">{banner.title}</div>
-									{/if}
+									<img class="featured-notice-bg" src={banner.imageUrl} alt="Banner" />
 								</a>
 							{:else}
 								<div class="featured-notice-card">
-									<img
-										class="featured-notice-bg"
-										src={banner.imageUrl}
-										alt={banner.title ?? 'Banner'}
-									/>
-									<div class="featured-notice-gradient"></div>
-									{#if banner.title}
-										<div class="featured-notice-title">{banner.title}</div>
-									{/if}
+									<img class="featured-notice-bg" src={banner.imageUrl} alt="Banner" />
 								</div>
 							{/if}
 						{/if}
 
 						{#if data.notices.results.length > 0}
 							<div class="notice-list">
-								{#each data.notices.results as notice (notice.id)}
+								{#each data.notices.results.map((notice) => localizeNotice(notice, $language)) as notice (notice.id)}
 									<a href="/notices/{notice.id}" class="notice-row">
 										{#if notice.featured}
 											<span class="notice-chip notice-chip-pinned">
@@ -207,46 +191,6 @@
 		height: 100%;
 		object-fit: cover;
 		transition: transform 0.3s ease;
-	}
-
-	.featured-notice-gradient {
-		position: absolute;
-		inset: 0;
-		background:
-			radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%),
-			linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-	}
-
-	.featured-notice-subtitle {
-		position: absolute;
-		bottom: 28px;
-		left: 28px;
-		z-index: 1;
-		max-width: 40%;
-		color: rgba(255, 255, 255, 0.85);
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 1.3;
-		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-	}
-
-	.featured-notice-title {
-		position: relative;
-		z-index: 1;
-		max-width: 100%;
-		overflow: hidden;
-		color: #ebe5cd;
-		font-weight: 700;
-		font-size: 36px;
-		line-height: 1.2;
-		letter-spacing: -1.4px;
-		text-align: right;
-		text-overflow: ellipsis;
-		text-shadow:
-			0 0 36.9px rgba(0, 0, 0, 0.44),
-			0 0 105px rgba(0, 0, 0, 0.44),
-			0 4px 13.7px rgba(0, 0, 0, 0.25);
-		white-space: nowrap;
 	}
 
 	.notice-list {

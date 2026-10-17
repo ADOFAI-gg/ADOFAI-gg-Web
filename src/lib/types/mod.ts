@@ -1,3 +1,11 @@
+export interface APIModImage {
+	id: string
+	name: string
+	alt: string
+	path: string
+}
+export type ModPlatform = 'windows' | 'macos' | 'linux'
+export type ModPlatformFiles = Partial<Record<ModPlatform, { name: string; download: string }>>
 import type { APIComments } from './comment'
 export type { APIComment as APIModComment, APIComments as APIModComments } from './comment'
 
@@ -10,14 +18,13 @@ export interface ModDeveloper {
 	memberId?: number
 }
 
-export type APIModTag =
-	| 'OFFICIAL'
-	| 'LIBRARY'
-	| 'LEVEL_EDITOR_ADD_ON'
-	| 'OVERLAY'
-	| 'MISCELLANEOUS'
+export type APIModTag = 'OFFICIAL' | 'LIBRARY' | 'LEVEL_EDITOR_ADD_ON' | 'OVERLAY' | 'MISCELLANEOUS'
 
 export interface APIModVersion {
+	isBeta?: boolean
+	images?: APIModImage[]
+	videoUrl?: string | null
+	files?: ModPlatformFiles
 	version: string
 	name: string
 	description: string | null
@@ -32,6 +39,10 @@ export interface APIModVersion {
 }
 
 export interface APIMod {
+	isBeta?: boolean
+	images?: APIModImage[]
+	videoUrl?: string | null
+	files?: ModPlatformFiles
 	license?: string | null
 	licenseUrl?: string | null
 	latestVersion?: string | null
@@ -60,6 +71,12 @@ export interface APIMod {
 }
 
 export interface APIModManageVersion {
+	isBeta?: boolean
+	images?: APIModImage[]
+	videoUrl?: string | null
+	downloadUrl?: string | null
+	downloadName?: string | null
+	files?: ModPlatformFiles
 	version: string
 	name: string
 	description: string | null
@@ -68,6 +85,12 @@ export interface APIModManageVersion {
 }
 
 export interface APIModManage {
+	isBeta?: boolean
+	images?: APIModImage[]
+	files?: ModPlatformFiles
+	videoUrl: string | null
+	downloadUrl: string | null
+	downloadName: string | null
 	id: string
 	name: string
 	version: string | null

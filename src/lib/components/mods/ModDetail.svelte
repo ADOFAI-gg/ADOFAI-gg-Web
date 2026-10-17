@@ -17,6 +17,7 @@
 		type SearchOptionScheme,
 		type SearchOptionsData
 	} from '@adofai-gg/ui'
+	import ModMediaGallery from './ModMediaGallery.svelte'
 	import Description from '~/lib/components/Description.svelte'
 	import Discussion from '../comments/Discussion.svelte'
 	import ModReleaseInfo from './ModReleaseInfo.svelte'
@@ -162,17 +163,19 @@
 				{#if mod.tags?.length}
 					<div class="tag-row">
 						{#each mod.tags as tag (tag)}
-							{#if tag === 'OFFICIAL'}
-								<span class="official-badge"><Icon icon="check" size={16} alt="" />ADOFAI.gg OFFICIAL</span>
-							{:else}
-								<span class="tag-chip">{tagChipLabels[tag]}</span>
-							{/if}
+							<Tag color={tag === 'OFFICIAL' ? 'blue' : 'darkblue'}
+								>{#if tag === 'OFFICIAL'}<Icon icon="check" size={16} alt="" />{/if}{tagChipLabels[
+									tag
+								]}</Tag
+							>
 						{/each}
 					</div>
 				{/if}
 				<h1>{mod.name}</h1>
 				{#if mod.version}<div class="release-heading">
 						<Translation key="mod:release-version" params={{ version: mod.version }} />
+						{#if mod.isBeta ?? /alpha|beta|rc/i.test(mod.version)}<Tag color="yellow">BETA</Tag
+							>{/if}
 						{#if mod.version !== latestVersion}<a href="/mods/{encodeURIComponent(mod.id)}"
 								><Translation key="mod:view-latest" /></a
 							>{/if}
@@ -216,23 +219,6 @@
 					onclick={() => (tab = 'versions')}><Translation key="mod:version-list" /></button
 				>
 			</div>
-			<div class="links">
-				{#if mod.canManage}<Button
-						variant="ghost-light"
-						leftIcon="pencil"
-						link
-						href="/mods/{encodeURIComponent(mod.id)}/manage"
-						><Translation key="mod:manage" /></Button
-					>{/if}
-				{#if messageUrl}<Button
-						link
-						href={messageUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						variant="ghost-light"
-						leftIcon="discord"><Translation key="mod:original-post" /></Button
-					>{/if}
-			</div>
 		</div>
 		{#if tab === 'info'}
 			<div
@@ -243,7 +229,12 @@
 				class="detail-grid"
 			>
 				<div class="main-column">
-					{#if mod.imageUrl}<div class="cover"><img src={mod.imageUrl} alt={mod.name} /></div>{/if}
+					<ModMediaGallery
+						images={mod.images ?? []}
+						videoUrl={mod.videoUrl ?? null}
+						fallbackImage={mod.imageUrl}
+						label={mod.name}
+					/>
 					<div class="actions">
 						<Button
 							leftIcon="fileDownload"
@@ -293,6 +284,13 @@
 						/>{/key}
 				</div>
 				<aside>
+					{#if mod.canManage}<Button
+							variant="primary"
+							leftIcon="pencil"
+							link
+							href="/mods/{encodeURIComponent(mod.id)}/manage"
+							><Translation key="mod:manage" /></Button
+						>{/if}
 					<div class="notice">
 						<h2><Translation key="mod:notice" /></h2>
 						<p><Translation key="mod:notice-description" /></p>
@@ -342,7 +340,8 @@
 								<div class="version-list-metadata">
 									{#if version.version === latestVersion}<Tag color="blue"
 											><Translation key="mod:latest-version" /></Tag
-										>{:else if /alpha|beta|rc/i.test(version.version)}<span class="beta">BETA</span
+										>{/if}{#if version.isBeta ?? /alpha|beta|rc/i.test(version.version)}<Tag
+											color="yellow">BETA</Tag
 										>{/if}
 									{#if version.developer?.displayName || version.cachedUsername}<span
 											>{version.developer?.displayName ?? version.cachedUsername}</span
@@ -381,7 +380,9 @@
 			<div class="version-heading">
 				{#if version.version === latestVersion}<Tag color="blue"
 						><Translation key="mod:latest-version" /></Tag
-					>{:else if /alpha|beta|rc/i.test(version.version)}<span class="beta">BETA</span>{/if}
+					>{/if}{#if version.isBeta ?? /alpha|beta|rc/i.test(version.version)}<Tag color="yellow"
+						>BETA</Tag
+					>{/if}
 				<a href={modVersionPath(mod.id, version.version)} title={version.version}
 					>{version.version}</a
 				>
@@ -422,25 +423,12 @@
 		gap: 6px 10px;
 		margin-bottom: 12px;
 	}
-	.tag-chip {
-		background: rgb(3 6 28 / 20%);
-		border-radius: 8px;
-		padding: 8px 10px;
-		font-size: 14px;
-		font-weight: 600;
-		text-transform: uppercase;
-		color: rgb(255 255 255 / 80%);
-	}
-	.official-badge {
-		background: #3b84f1;
-		border-radius: 8px;
-		padding: 8px 10px;
-		display: inline-flex;
+	.tag-row :global(.tag) {
 		align-items: center;
 		gap: 4px;
 		font-size: 14px;
-		font-weight: 600;
 	}
+
 	h1 {
 		font-size: 32px;
 		font-weight: 500;
@@ -502,17 +490,6 @@
 		flex-direction: column;
 		gap: 32px;
 	}
-	.cover {
-		aspect-ratio: 16/9;
-		overflow: hidden;
-		border-radius: 16px;
-		background: rgb(3 6 28 / 20%);
-	}
-	.cover img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
 	.actions + :global(*) {
 		margin-top: -24px;
 	}
@@ -565,12 +542,6 @@
 	}
 	.version-heading a:hover {
 		text-decoration: underline;
-	}
-	.beta {
-		padding: 0 6px;
-		background: #4b4c77;
-		border-radius: 4px;
-		font-size: 14px;
 	}
 	time {
 		display: flex;

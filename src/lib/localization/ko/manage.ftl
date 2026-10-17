@@ -85,13 +85,18 @@ notice-delete-error = 공지를 삭제하지 못했습니다.
 notice-delete-confirm = 정말 이 공지를 삭제하시겠습니까?
 
 notice-banner-settings = 대표 배너 설정
-notice-banner-enabled = 메인 페이지 대표 배너 표시
-notice-banner-image-label = 배너 이미지 URL
-notice-banner-image-placeholder = https://... (180px 높이 배너 이미지 URL)
+notice-banner-image-label = 배너 이미지 업로드
 notice-banner-link-label = 클릭 시 이동할 링크 (선택)
 notice-banner-link-placeholder = /notices/1 또는 https://...
-notice-banner-title-label = 배너 우측 하단 문구 (선택)
-notice-banner-title-placeholder = 예: 참가 신청 모집 중 (비워두면 이미지 그대로 표시)
 notice-banner-preview = 배너 미리보기
 notice-banner-saved = 대표 배너 설정을 저장했습니다.
 notice-banner-save-error = 대표 배너 설정을 저장하지 못했습니다.
+
+notice-banner-image-help = PNG, JPG, WebP, GIF · 최대 8MB. 업로드 후 저장해 주세요.
+notice-banner-upload-error = 이미지를 업로드하지 못했습니다. 8MB 이하의 PNG, JPG, WebP, GIF 파일인지 확인해 주세요.
+notice-banner-remove = 배너 이미지 삭제
+
+notice-content-language = 공지 작성 언어
+notice-original = 기본 원문
+notice-translation-help = 번역이 없으면 기본 원문이 표시됩니다. 번역을 삭제하려면 해당 언어의 제목, 부제, 본문을 모두 비우세요.
+notice-translation-required = 기본 원문과 작성한 번역의 제목 및 본문을 입력해 주세요.

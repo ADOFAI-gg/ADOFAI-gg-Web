@@ -50,7 +50,7 @@
 	import { checkFlag, isForumAdmin } from '~/lib/utils/perm'
 
 	interface Props {
-		children: Snippet
+		children?: Snippet
 		data: LayoutData
 	}
 
@@ -195,11 +195,7 @@
 								</NavMenuItem>
 							{/if}
 							{#if isForumAdmin(data.currentUser)}
-								<NavMenuItem
-									link
-									href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/admin'}
-									target="_blank"
-								>
+								<NavMenuItem link href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/admin'} target="_blank">
 									<Translation key="common:manage-auth-service" />
 								</NavMenuItem>
 							{/if}
@@ -223,7 +219,7 @@
 			</Nav>
 		</div>
 		<main class="content">
-			{@render children()}
+			{@render children?.()}
 		</main>
 
 		{#if !page.data.noFooter}
