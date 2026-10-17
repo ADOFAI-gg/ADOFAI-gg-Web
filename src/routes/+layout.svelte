@@ -26,6 +26,7 @@
 		type User,
 		NavMenuGroup,
 		NavMenuItem,
+		NavMenuDivider,
 		Translation,
 		NavLanguageSwitcher,
 		Button,
@@ -46,7 +47,7 @@
 	import Cookies from 'js-cookie'
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation'
 	import ky from 'ky'
-	import { checkFlag } from '~/lib/utils/perm'
+	import { checkFlag, isForumAdmin } from '~/lib/utils/perm'
 
 	interface Props {
 		children: Snippet
@@ -69,6 +70,10 @@
 		{
 			href: '/levels',
 			key: 'common:levels'
+		},
+		{
+			href: '/mods',
+			key: 'common:mods'
 		},
 		{
 			href: '/references',
@@ -168,14 +173,7 @@
 						{/if}
 
 						{#if user}
-							<NavMenuItem link href="/my-levels">
-								<Translation key="common:my-levels" />
-							</NavMenuItem>
-							{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
-								<NavMenuItem link href="/manage/rating">
-									<Translation key="common:manage-rating" />
-								</NavMenuItem>
-							{/if}
+							<NavMenuItem link href="/profile"><Translation key="profile:title" /></NavMenuItem>
 							<NavMenuItem
 								link
 								href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/settings/account'}
@@ -186,6 +184,25 @@
 							<NavMenuItem onclick={() => onLogout()} type="danger">
 								<Translation key="ui-common:sign-out" />
 							</NavMenuItem>
+						{/if}
+
+						{#if user}
+							<NavMenuDivider />
+
+							{#if checkFlag(data.currentUser!.permissionFlag, 1 << 7)}
+								<NavMenuItem link href="/manage/rating">
+									<Translation key="common:manage-rating" />
+								</NavMenuItem>
+							{/if}
+							{#if isForumAdmin(data.currentUser)}
+								<NavMenuItem
+									link
+									href={env.PUBLIC_ACCOUNT_SERVICE_URL + '/admin'}
+									target="_blank"
+								>
+									<Translation key="common:manage-auth-service" />
+								</NavMenuItem>
+							{/if}
 						{/if}
 					</NavMenuGroup>
 
