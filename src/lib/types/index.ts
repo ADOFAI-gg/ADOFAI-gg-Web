@@ -15,6 +15,7 @@ export interface APIMember {
 }
 
 export interface APIMe extends APIMember {
+	roleFlag: number
 	permissionFlag: number
 	levelRaterDifficultyRangeFlag: number
 }
