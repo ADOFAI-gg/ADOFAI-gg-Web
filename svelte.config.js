@@ -22,7 +22,9 @@ const config = {
 	extensions: ['.svelte', '.md', '.svx'],
 	kit: {
 		// Builds must not overwrite the route/component manifest of a running dev server.
-		outDir: process.env.NODE_ENV === 'production' ? '.svelte-kit-build' : '.svelte-kit',
+		outDir:
+			process.env.SVELTEKIT_OUT_DIR ||
+			(process.env.NODE_ENV === 'production' ? '.svelte-kit-build' : '.svelte-kit'),
 		adapter: nodeAdapter(),
 		alias: {
 			'~/*': './src/*'

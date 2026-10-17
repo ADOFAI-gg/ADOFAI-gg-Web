@@ -6,6 +6,7 @@
 	import Placeholder from '@tiptap/extension-placeholder'
 	import TextAlign from '@tiptap/extension-text-align'
 	import {
+		availableLanguages,
 		Button,
 		Icon,
 		LabeledCheckbox,
@@ -17,21 +18,14 @@
 		translateKey,
 		type TranslationKey
 	} from '@adofai-gg/ui'
-	import {
-		api,
-		ky,
-		type APINotice,
-		type APINoticeBanner,
-		type NoticeCategory
-	} from '~/lib'
+	import { api, ky, type APINotice, type APINoticeBanner, type NoticeCategory } from '~/lib'
 	import type { ListResponse } from '~/types'
 	import { NOTICE_CATEGORIES, formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
 	import { page } from '$app/state'
 	import { goto } from '$app/navigation'
 
 	const { language } = getGlobalContext()
-	const t = (key: TranslationKey, params = {}) =>
-		translateKey($language, key, params, false)
+	const t = (key: TranslationKey, params = {}) => translateKey($language, key, params, false)
 
 	let viewMode = $state<'notice' | 'banner'>('notice')
 
@@ -43,6 +37,28 @@
 	let searchQuery = $state('')
 
 	let selectedId = $state<number | null>(null)
+	let contentLanguage = $state('')
+	let translations = $state<
+		Record<string, { title: string; subtitle: string | null; body: string }>
+	>({})
+	let original = $state({ title: '', subtitle: '', body: '<p></p>' })
+
+	function storeContent() {
+		const content = { title, subtitle, body: editor?.getHTML() ?? bodyHtml }
+		if (contentLanguage) translations[contentLanguage] = content
+		else original = content
+	}
+
+	function changeContentLanguage(next: string) {
+		storeContent()
+		contentLanguage = next
+		const content = next ? translations[next] : original
+		title = content?.title ?? ''
+		subtitle = content?.subtitle ?? ''
+		bodyHtml = content?.body ?? '<p></p>'
+		editor?.commands.setContent(bodyHtml)
+	}
+
 	let title = $state('')
 	let subtitle = $state('')
 	let category = $state<NoticeCategory>('FORUM')
@@ -51,10 +67,10 @@
 	let bodyHtml = $state('<p></p>')
 
 	// ---- separate main banner state ------------------------------------------
-	let bannerEnabled = $state(false)
 	let bannerImageUrl = $state('')
 	let bannerLinkUrl = $state('')
-	let bannerTitle = $state('')
+	let uploadingBanner = $state(false)
+	let bannerFileInput = $state<HTMLInputElement | null>(null)
 	let savingBanner = $state(false)
 
 	let editorElement = $state<HTMLDivElement | null>(null)
@@ -93,9 +109,7 @@
 				}),
 				Placeholder.configure({
 					placeholder:
-						$language === 'ko'
-							? '여기에 공지 본문을 작성하세요...'
-							: 'Write notice content here...'
+						$language === 'ko' ? '여기에 공지 본문을 작성하세요...' : 'Write notice content here...'
 				})
 			],
 			content: initialContent,
@@ -127,42 +141,64 @@
 
 	async function loadBanner() {
 		try {
-			const banner = await ky
-				.get(api.forum('notices/banner'), { retry: 0 })
-				.json<APINoticeBanner>()
-			bannerEnabled = banner.enabled
+			const banner = await ky.get(api.forum('notices/banner'), { retry: 0 }).json<APINoticeBanner>()
 			bannerImageUrl = banner.imageUrl ?? ''
 			bannerLinkUrl = banner.linkUrl ?? ''
-			bannerTitle = banner.title ?? ''
 		} catch {
 			// keep defaults
 		}
 	}
 
 	async function saveBanner() {
-		if (savingBanner) return
+		if (savingBanner || uploadingBanner) return
 		savingBanner = true
 		try {
 			const updated = await ky
 				.put(api.forum('notices/banner'), {
 					json: {
-						enabled: bannerEnabled,
+						enabled: Boolean(bannerImageUrl.trim()),
 						imageUrl: bannerImageUrl.trim() || null,
 						linkUrl: bannerLinkUrl.trim() || null,
-						title: bannerTitle.trim() || null
+						title: null
 					},
 					retry: 0
 				})
 				.json<APINoticeBanner>()
-			bannerEnabled = updated.enabled
 			bannerImageUrl = updated.imageUrl ?? ''
 			bannerLinkUrl = updated.linkUrl ?? ''
-			bannerTitle = updated.title ?? ''
 			toast.success(t('manage:notice-banner-saved'))
 		} catch {
 			toast.error(t('manage:notice-banner-save-error'))
 		} finally {
 			savingBanner = false
+		}
+	}
+
+	async function uploadBanner(event: Event) {
+		const input = event.currentTarget as HTMLInputElement
+		const file = input.files?.[0]
+		if (!file || uploadingBanner || savingBanner) return
+		if (
+			!['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(file.type) ||
+			file.size > 8 * 1024 * 1024
+		) {
+			toast.error(t('manage:notice-banner-upload-error'))
+			input.value = ''
+			return
+		}
+		uploadingBanner = true
+		try {
+			const form = new FormData()
+			form.set('file', file)
+			const { imagePath } = await ky
+				.post(api.forum('notices/banner/image'), { body: form, retry: 0, timeout: 60000 })
+				.json<{ imagePath: string }>()
+			bannerImageUrl = String(api.forum(imagePath))
+		} catch {
+			toast.error(t('manage:notice-banner-upload-error'))
+		} finally {
+			uploadingBanner = false
+			input.value = ''
 		}
 	}
 
@@ -174,6 +210,9 @@
 	function startNewNotice() {
 		viewMode = 'notice'
 		selectedId = null
+		contentLanguage = ''
+		translations = {}
+		original = { title: '', subtitle: '', body: '<p></p>' }
 		title = ''
 		subtitle = ''
 		category = 'FORUM'
@@ -196,9 +235,19 @@
 		selectedId = id
 		loadingDetail = true
 		try {
-			const detail = await ky
-				.get(api.forum(`notices/${id}`), { retry: 0 })
-				.json<APINotice>()
+			const detail = await ky.get(api.forum(`notices/${id}`), { retry: 0 }).json<APINotice>()
+			contentLanguage = ''
+			translations = Object.fromEntries(
+				Object.entries(detail.translations ?? {}).map(([lang, text]) => [
+					lang,
+					{ title: text.title, subtitle: text.subtitle, body: text.body ?? '<p></p>' }
+				])
+			)
+			original = {
+				title: detail.title,
+				subtitle: detail.subtitle ?? '',
+				body: detail.body ?? '<p></p>'
+			}
 			title = detail.title
 			subtitle = detail.subtitle ?? ''
 			category = detail.category
@@ -217,21 +266,29 @@
 
 	async function saveNotice() {
 		if (saving) return
-		const trimmedTitle = title.trim()
-		const currentBody = editor ? editor.getHTML() : bodyHtml
-		const plainText = currentBody.replace(/<[^>]*>/g, '').trim()
-
-		if (!trimmedTitle || (!plainText && !currentBody.includes('<img'))) {
-			toast.error(t('manage:notice-save-error'))
+		storeContent()
+		const hasBody = (body: string) => !!body.replace(/<[^>]*>/g, '').trim() || body.includes('<img')
+		const nonemptyTranslations = Object.fromEntries(
+			Object.entries(translations).filter(
+				([, text]) => text.title.trim() || text.subtitle?.trim() || hasBody(text.body)
+			)
+		)
+		if (
+			!original.title.trim() ||
+			!hasBody(original.body) ||
+			Object.values(nonemptyTranslations).some((text) => !text.title.trim() || !hasBody(text.body))
+		) {
+			toast.error(t('manage:notice-translation-required'))
 			return
 		}
 
 		saving = true
 		try {
 			const payload = {
-				title: trimmedTitle,
-				subtitle: subtitle.trim() || null,
-				body: currentBody,
+				title: original.title.trim(),
+				translations: nonemptyTranslations,
+				subtitle: original.subtitle.trim() || null,
+				body: original.body,
 				category,
 				featured,
 				published
@@ -385,11 +442,7 @@
 			</div>
 
 			<div class="editor-header-actions">
-				<LabeledCheckbox bind:checked={bannerEnabled}>
-					<Translation key="manage:notice-banner-enabled" />
-				</LabeledCheckbox>
-
-				<Button size="md" disabled={savingBanner} onclick={saveBanner}>
+				<Button size="md" disabled={savingBanner || uploadingBanner} onclick={saveBanner}>
 					<Translation key="manage:notice-save" />
 				</Button>
 			</div>
@@ -399,12 +452,15 @@
 			<label class="field">
 				<span class="field-label"><Translation key="manage:notice-banner-image-label" /></span>
 				<input
+					bind:this={bannerFileInput}
 					class="text-input"
-					type="url"
-					maxlength={2048}
-					bind:value={bannerImageUrl}
-					placeholder={t('manage:notice-banner-image-placeholder')}
+					type="file"
+					accept="image/png,image/jpeg,image/webp,image/gif"
+					disabled={savingBanner || uploadingBanner}
+					onchange={uploadBanner}
 				/>
+				{#if uploadingBanner}<LoadingSpinner />{/if}
+				<span class="field-label"><Translation key="manage:notice-banner-image-help" /></span>
 			</label>
 
 			<label class="field">
@@ -418,26 +474,25 @@
 				/>
 			</label>
 
-			<label class="field">
-				<span class="field-label"><Translation key="manage:notice-banner-title-label" /></span>
-				<input
-					class="text-input"
-					type="text"
-					maxlength={200}
-					bind:value={bannerTitle}
-					placeholder={t('manage:notice-banner-title-placeholder')}
-				/>
-			</label>
+			{#if bannerImageUrl}
+				<Button
+					size="md"
+					variant="outlined"
+					disabled={savingBanner || uploadingBanner}
+					onclick={() => {
+						bannerImageUrl = ''
+						if (bannerFileInput) bannerFileInput.value = ''
+					}}
+				>
+					<Translation key="manage:notice-banner-remove" />
+				</Button>
+			{/if}
 
 			<div class="banner-preview-section">
 				<span class="field-label"><Translation key="manage:notice-banner-preview" /></span>
 				<div class="banner-preview-card">
 					{#if bannerImageUrl.trim()}
-						<img class="banner-preview-bg" src={bannerImageUrl.trim()} alt={bannerTitle || 'Banner'} />
-					{/if}
-					<div class="banner-preview-gradient"></div>
-					{#if bannerTitle.trim()}
-						<div class="banner-preview-title">{bannerTitle.trim()}</div>
+						<img class="banner-preview-bg" src={bannerImageUrl.trim()} alt="Banner" />
 					{/if}
 				</div>
 			</div>
@@ -466,23 +521,32 @@
 					<Button size="md" variant="outlined" link href="/notices/{selectedId}">
 						<Translation key="manage:notice-view" />
 					</Button>
-					<Button
-						size="md"
-						variant="outlined"
-						disabled={deleting || saving}
-						onclick={removeNotice}
-					>
+					<Button size="md" variant="outlined" disabled={deleting || saving} onclick={removeNotice}>
 						<Translation key="manage:notice-delete" />
 					</Button>
 				{/if}
 
 				<Button size="md" disabled={saving} onclick={saveNotice}>
-					<Translation
-						key={selectedId === null ? 'manage:notice-create' : 'manage:notice-save'}
-					/>
+					<Translation key={selectedId === null ? 'manage:notice-create' : 'manage:notice-save'} />
 				</Button>
 			</div>
 		</div>
+
+		<label class="field">
+			<span class="field-label"><Translation key="manage:notice-content-language" /></span>
+			<select
+				class="select-input"
+				value={contentLanguage}
+				onchange={(event) => changeContentLanguage(event.currentTarget.value)}
+				disabled={saving || loadingDetail}
+			>
+				<option value="">{t('manage:notice-original')}</option>
+				{#each availableLanguages as lang (lang.code)}
+					<option value={lang.code}>{lang.name}</option>
+				{/each}
+			</select>
+			<span class="field-label"><Translation key="manage:notice-translation-help" /></span>
+		</label>
 
 		<div class="meta-grid">
 			<label class="field field-title">
@@ -901,33 +965,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
-
-	.banner-preview-gradient {
-		position: absolute;
-		inset: 0;
-		background:
-			radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%),
-			linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-	}
-
-	.banner-preview-title {
-		position: relative;
-		z-index: 1;
-		max-width: 100%;
-		overflow: hidden;
-		color: #ebe5cd;
-		font-weight: 700;
-		font-size: 36px;
-		line-height: 1.2;
-		letter-spacing: -1.4px;
-		text-align: right;
-		text-overflow: ellipsis;
-		text-shadow:
-			0 0 36.9px rgba(0, 0, 0, 0.44),
-			0 0 105px rgba(0, 0, 0, 0.44),
-			0 4px 13.7px rgba(0, 0, 0, 0.25);
-		white-space: nowrap;
 	}
 
 	.editor-header {

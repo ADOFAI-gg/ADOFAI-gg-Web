@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { Button, Container, Translation, getGlobalContext } from '@adofai-gg/ui'
 	import type { PageData } from './$types'
-	import { NOTICE_CATEGORIES, formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
+	import {
+		NOTICE_CATEGORIES,
+		localizeNotice,
+		formatNoticeDate,
+		noticeCategoryKey
+	} from '~/lib/utils/notice'
 	import { isForumAdmin } from '~/lib/utils/perm'
 	import { page } from '$app/state'
 
@@ -21,19 +26,10 @@
 			<h1 class="page-title">
 				<Translation key="main:notices" />
 			</h1>
-			{#if isAdmin}
-				<Button size="md" variant="outlined" link href="/manage/notice">
-					<Translation key="common:manage-notice" />
-				</Button>
-			{/if}
 		</div>
 
 		<div class="category-tabs">
-			<a
-				href="/notices"
-				class="category-tab"
-				class:active={!data.selectedCategory}
-			>
+			<a href="/notices" class="category-tab" class:active={!data.selectedCategory}>
 				{$language === 'ko' ? '전체' : 'All'}
 			</a>
 			{#each NOTICE_CATEGORIES as category (category)}
@@ -49,7 +45,7 @@
 
 		{#if data.notices.results.length > 0}
 			<div class="notice-list">
-				{#each data.notices.results as notice (notice.id)}
+				{#each data.notices.results.map( (notice) => localizeNotice(notice, $language) ) as notice (notice.id)}
 					<a href="/notices/{notice.id}" class="notice-item">
 						<div class="notice-item-top">
 							{#if notice.featured}

@@ -3,7 +3,7 @@
 	import type { PageData } from './$types'
 	import { createTableOfContents } from '@melt-ui/svelte'
 	import ToCTree from '../../docs/[...slug]/ToCTree.svelte'
-	import { formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
+	import { localizeNotice, formatNoticeDate, noticeCategoryKey } from '~/lib/utils/notice'
 	import { isForumAdmin } from '~/lib/utils/perm'
 	import { page } from '$app/state'
 
@@ -14,7 +14,7 @@
 	const { data }: Props = $props()
 	const { language } = getGlobalContext()
 
-	const notice = $derived(data.notice)
+	const notice = $derived(localizeNotice(data.notice, $language))
 	const isAdmin = $derived(isForumAdmin(page.data.currentUser))
 
 	const {
@@ -61,26 +61,26 @@
 					<Translation key={noticeCategoryKey(notice.category)} />
 				</span>
 			</div>
-			<br/>
+			<br />
 
 			<h1 class="title">{notice.title}</h1>
 			<div class="meta-container">
-    			<span class="meta-date">
-    				{formatNoticeDate(notice.publishedAt ?? notice.createdAt, $language, true)}
-    			</span>
-                <span class="meta-divider">•</span>
-    			{#if notice.author}
-    				<a href="/members/{notice.author.id}" class="meta-author">
-    					{notice.author.name}
-    				</a>
-    			{/if}
+				<span class="meta-date">
+					{formatNoticeDate(notice.publishedAt ?? notice.createdAt, $language, true)}
+				</span>
+				<span class="meta-divider">•</span>
+				{#if notice.author}
+					<a href="/members/{notice.author.id}" class="meta-author">
+						{notice.author.name}
+					</a>
+				{/if}
 			</div>
 
 			{#if notice.subtitle}
 				<h2 class="subtitle">{notice.subtitle}</h2>
 			{/if}
 
-			{#key notice.id}
+			{#key `${notice.id}-${$language}`}
 				<div class="markdown-body" id="docs-body">
 					{@html notice.body ?? ''}
 				</div>
@@ -93,7 +93,7 @@
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints' as *;
 
 	.meta-container {
-	    display: flex;
+		display: flex;
 		margin-top: 8px;
 		gap: 8px;
 	}
@@ -126,8 +126,8 @@
 	}
 
 	.meta-divider {
-    	color: rgba(255, 255, 255, 0.5);
-    	font-size: 14px;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 14px;
 	}
 
 	.back-link {
