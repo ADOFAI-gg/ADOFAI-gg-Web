@@ -1,6 +1,15 @@
 @use '@adofai-gg/ui/style-system/colors' as *;
 
 .markdown-body {
+	.discord-subtext {
+		&,
+		* {
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 12px;
+			line-height: 1.4;
+		}
+	}
+
 	*:not(h1, h2, h3, h4, h5, h6) {
 		color: rgba(255, 255, 255, 0.8);
 		font-weight: 400;
