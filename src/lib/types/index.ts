@@ -20,6 +20,35 @@ export interface APIMe extends APIMember {
 	levelRaterDifficultyRangeFlag: number
 }
 
+export type NoticeCategory = 'FORUM' | 'WEBSITE' | 'EVENT' | 'UPDATE' | 'MAINTENANCE'
+
+export interface APINotice {
+	id: number
+	title: string
+	subtitle: string | null
+	category: NoticeCategory
+	featured: boolean
+	thumbnailUrl: string | null
+	createdAt: string
+	updatedAt: string | null
+	publishedAt: string | null
+	published: boolean
+	excerpt: string | null
+	body?: string
+	author: {
+		id: number
+		name: string
+	} | null
+}
+
+export interface APINoticeBanner {
+	enabled: boolean
+	imageUrl: string | null
+	linkUrl: string | null
+	title: string | null
+	updatedAt: string | null
+}
+
 export interface APIMusic {
 	id: number
 	name: string

@@ -6,6 +6,7 @@
 	import SidebarItem from '~/lib/components/management/sidebar-item.svelte'
 	import { page } from '$app/state'
 	import { Translation } from '@adofai-gg/ui'
+	import { checkFlag, isForumAdmin, PERM_RATING_REVIEW } from '~/lib/utils/perm'
 
 	interface Props {
 		data: LayoutData
@@ -15,6 +16,10 @@
 	const { data, children }: Props = $props()
 
 	const activeSidebarItem = $derived(page.data.activeSidebarItem)
+	const canRate = $derived(
+		Boolean(data.currentUser && checkFlag(data.currentUser.permissionFlag, PERM_RATING_REVIEW))
+	)
+	const canManageNotices = $derived(isForumAdmin(data.currentUser))
 </script>
 
 <div class="management-layout">
@@ -22,9 +27,16 @@
 		<SidebarCollapse>
 			<Translation key="manage:menu-title" />
 		</SidebarCollapse>
-		<SidebarItem active={activeSidebarItem === 'rating'} href="/manage/rating" icon="scale">
-			<Translation key="manage:menu-rating" />
-		</SidebarItem>
+		{#if canRate}
+			<SidebarItem active={activeSidebarItem === 'rating'} href="/manage/rating" icon="scale">
+				<Translation key="manage:menu-rating" />
+			</SidebarItem>
+		{/if}
+		{#if canManageNotices}
+			<SidebarItem active={activeSidebarItem === 'notice'} href="/manage/notice" icon="document">
+				<Translation key="manage:menu-notice" />
+			</SidebarItem>
+		{/if}
 		<!-- <SidebarItem active={activeSidebarItem === 'levels'} href="/manage/levels" icon="pencil">
 			<Translation key="manage:menu-levels" />
 		</SidebarItem> -->
