@@ -8,8 +8,13 @@ account-settings = Account settings
 upload-level = Submit level
 submit = Submit
 table-of-contents = Table of Contets
-my-levels = 내 레벨
-back = 돌아가기
-post-comment = 게시
-cancel = 취소
-manage-rating = 레벨 책정
+
+back = Back
+post-comment = Post
+cancel = Cancel
+manage-rating = Manage ratings
+manage-notice = Manage notices
+manage-auth-service = Auth service admin
+
+mods = Mods
+notices = Notices

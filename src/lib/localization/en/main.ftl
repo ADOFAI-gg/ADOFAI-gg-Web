@@ -1,3 +1,11 @@
 recent-legendary-levels = Recent Legendary Levels
 link-usage = Forum Usage Guide
 link-quality-guideline = Quality Guidelines
+notices = Notices
+notice-pinned = Pinned
+notice-empty = No notices yet.
+notice-category-FORUM = Forum
+notice-category-WEBSITE = Website
+notice-category-EVENT = Event
+notice-category-UPDATE = Update
+notice-category-MAINTENANCE = Maintenance

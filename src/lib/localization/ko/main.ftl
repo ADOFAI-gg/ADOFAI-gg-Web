@@ -1,3 +1,11 @@
-recent-legendary-levels = 최근 등재된 레전드리 레벨
+recent-legendary-levels = 최근 등재된 Legendary 레벨
 link-usage = 포럼 이용 가이드
 link-quality-guideline = Hidden/Unlisted 가이드라인
+notices = 공지
+notice-pinned = 고정
+notice-empty = 등록된 공지가 없습니다.
+notice-category-FORUM = 포럼
+notice-category-WEBSITE = 웹사이트
+notice-category-EVENT = 이벤트
+notice-category-UPDATE = 업데이트
+notice-category-MAINTENANCE = 점검

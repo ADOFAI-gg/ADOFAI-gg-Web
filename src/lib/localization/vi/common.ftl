@@ -8,8 +8,9 @@ upload-level = Đăng lên một cấp độ
 references = Tham khảo
 levels = Các cấp độ
 table-of-contents = chỉ số
-my-levels = 내 레벨
-back = 돌아가기
-post-comment = 게시
-cancel = 취소
-manage-rating = 레벨 책정
+
+back = Quay lại
+post-comment = Đăng
+cancel = Hủy
+manage-rating = Quản lý xếp hạng
+manage-auth-service = Trang quản trị dịch vụ xác thực

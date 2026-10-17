@@ -7,6 +7,8 @@ export const extraSections = [
 	'level-create',
 	'form',
 	'errors',
-	'my-levels',
-	'manage'
+	'manage',
+	'profile',
+	'comment',
+	'mod'
 ] as const

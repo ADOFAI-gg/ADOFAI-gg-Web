@@ -8,8 +8,9 @@ upload-level = 上传谱面
 references = 参考
 levels = 谱面
 table-of-contents = 续表
-my-levels = 我的关卡
-back = 돌아가기
-post-comment = 게시
-cancel = 취소
-manage-rating = 레벨 책정
+
+back = 返回
+post-comment = 发布
+cancel = 取消
+manage-rating = 谱面评级管理
+manage-auth-service = 认证服务管理页面
