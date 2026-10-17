@@ -33,7 +33,7 @@
 	{@const customIcon = customIcons[tag]}
 	{#if customIcon}
 		<CustomTagIconContent {meltElement} {size} src={customIcon} />
-	{:else}
+	{:else if icon}
 		<TagIconContent
 			{meltElement}
 			danger={dangerIcons.includes(tag)}
