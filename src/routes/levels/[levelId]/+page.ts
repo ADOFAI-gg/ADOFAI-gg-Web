@@ -1,3 +1,4 @@
+import type { APIComments } from '~/lib/types/comment'
 import { api, ky, type APILevel } from '~/lib'
 import type { PageLoad } from './$types'
 import { error } from '@sveltejs/kit'
@@ -11,7 +12,12 @@ export const load: PageLoad = async ({ params, fetch }) => {
 
 		const data: APILevel = await res.json()
 
+		const comments = await ky
+			.get(api.forum(`levels/${encodeURIComponent(params.levelId)}/comments`), { fetch, retry: 0 })
+			.json<APIComments>()
+			.catch(() => null)
 		return {
+			comments,
 			level: data,
 			pageTitle: data.title
 		}

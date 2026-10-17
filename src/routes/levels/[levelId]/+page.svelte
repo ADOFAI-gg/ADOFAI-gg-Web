@@ -6,6 +6,7 @@
 	import LevelTagDisplay from '~/lib/components/levelDetail/LevelTagDisplay.svelte'
 	import UserListPanel from '~/lib/components/UserListPanel.svelte'
 	import LevelActionsArea from '~/lib/components/levelDetail/LevelActionsArea.svelte'
+	import Discussion from '~/lib/components/comments/Discussion.svelte'
 	import Description from '~/lib/components/Description.svelte'
 	import { artistListModel, creatorListModel } from '~/lib/utils/list.svelte'
 
@@ -47,6 +48,13 @@
 				<LevelActionsArea level={data.level} />
 				<Description maxHeight={84}>{data.level.description}</Description>
 			</div>
+			<div class="level-comments">
+				{#key level.id}<Discussion
+						resource="levels"
+						resourceId={level.id}
+						initialPage={data.comments}
+					/>{/key}
+			</div>
 		</div>
 		<div class="meta-area">
 			<LevelTagDisplay level={data.level} />
@@ -58,6 +66,9 @@
 
 <style lang="scss">
 	@use '@adofai-gg/ui/dist/stylesheets/system/breakpoints';
+	.level-comments {
+		margin: 40px 0 64px;
+	}
 
 	.level-detail {
 		&-container {
