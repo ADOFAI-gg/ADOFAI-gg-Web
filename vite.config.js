@@ -5,6 +5,9 @@ import preload from 'vite-plugin-preload'
 import { execSync } from 'child_process'
 
 export default defineConfig({
+	server: {
+		watch: { ignored: ['**/.svelte-kit-build/**', '**/build/**'] }
+	},
 	plugins: [
 		sentrySvelteKit({
 			sourceMapsUploadOptions: {
