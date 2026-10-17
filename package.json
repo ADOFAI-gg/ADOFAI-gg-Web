@@ -84,8 +84,17 @@
 	"type": "module",
 	"dependencies": {
 		"@sentry/sveltekit": "^10.15.0",
+		"@tiptap/core": "^3.32.0",
+		"@tiptap/extension-image": "^3",
+		"@tiptap/extension-link": "^3",
+		"@tiptap/extension-placeholder": "^3",
+		"@tiptap/extension-text-align": "^3",
+		"@tiptap/extension-underline": "^3",
+		"@tiptap/pm": "^3",
+		"@tiptap/starter-kit": "^3.32.0",
 		"compression": "^1.8.1",
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"marked": "7.0.4"
 	},
 	"lint-staged": {
 		"*.{js,ts,jsx,tsx,svelte}": "eslint --cache --fix",
