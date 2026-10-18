@@ -1,46 +1,38 @@
-FROM --platform=$BUILDPLATFORM node:22-alpine AS builder
-
-ARG GH_NPM_TOKEN
-ARG SENTRY_AUTH_TOKEN
-
-RUN mkdir -p /app
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml .npmrc ./
+RUN apk add --no-cache git && corepack enable
 
-RUN echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 
-RUN corepack enable && pnpm i --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 ENV IS_RELEASE=1
 
-RUN apk add git && \
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN,env=SENTRY_AUTH_TOKEN \
     pnpm build
 
-RUN apk add jq
+RUN pnpm pack && mv adofai-gg-*.tgz /tmp/package.tgz
 
-RUN cat package.json | jq 'del(.devDependencies) | del(.resolutions) | del(.scripts)' | tee package.json
-
-RUN pnpm pack && mv adofai-gg-*.tgz package.tgz
 
 FROM node:22-alpine AS runner
 
-COPY --from=builder /app/package.tgz .
-COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
-
-RUN tar xvzf package.tgz && \
-    rm package.tgz && \
-    mv package app && \
-    cp pnpm-workspace.yaml app/pnpm-workspace.yaml && \
-    rm pnpm-workspace.yaml && \
-    cd app && \
-    echo '//npm.pkg.github.com/:_authToken=${GH_NPM_TOKEN}' >> .npmrc && \
-    corepack enable && \
-    pnpm i --production
-
 WORKDIR /app
+
+RUN corepack enable
+
+COPY --from=builder /tmp/package.tgz /tmp/package.tgz
+COPY --from=builder /app/.npmrc .
+COPY pnpm-workspace.yaml .
+
+RUN tar -xzf /tmp/package.tgz \
+        --strip-components=1 \
+        -C /app \
+    && rm /tmp/package.tgz
+
+RUN pnpm install --prod
 
 CMD ["node", "server.js"]

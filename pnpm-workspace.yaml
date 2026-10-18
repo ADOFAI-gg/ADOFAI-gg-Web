@@ -3,3 +3,5 @@ packages:
 
 allowBuilds:
   '@sentry/cli': true
+  "eslint": true
+  "esbuild": true
